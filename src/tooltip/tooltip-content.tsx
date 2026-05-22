@@ -21,6 +21,9 @@ export const TooltipContent = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    placement: { type: String as PropType<'top' | 'bottom' | 'left' | 'right' | 'top start' | 'top end' | 'bottom start' | 'bottom end' | 'left start' | 'left end' | 'right start' | 'right end'>, default: undefined },
+    side: { type: String as PropType<'top' | 'bottom' | 'left' | 'right'>, default: undefined },
+    offset: { type: Number, default: undefined },
     sideOffset: { type: Number, default: undefined },
     showArrow: { type: Boolean, default: false }
   },
@@ -32,7 +35,11 @@ export const TooltipContent = defineComponent({
 
       return (
         <TooltipPortal>
-          <RekaTooltipContent sideOffset={props.sideOffset ?? (props.showArrow ? 7 : 3)} asChild>
+          <RekaTooltipContent
+            side={props.side ?? props.placement?.split(' ')[0] as 'top' | 'bottom' | 'left' | 'right' | undefined}
+            sideOffset={props.sideOffset ?? props.offset ?? (props.showArrow ? 7 : 3)}
+            asChild
+          >
             {withDirectives(
               (
                 <div {...attrs} class={cn(styles.base(), props.class)}>

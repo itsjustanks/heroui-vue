@@ -80,11 +80,17 @@
  * only under the selected tab. reka has no SelectionIndicator equivalent, so
  * the indicator is a child of every tab — reveal it only when its tab is
  * active, otherwise every tab reads as selected.
+ *
+ * IMPORTANT: every selector here is scoped to `[data-state]` — reka-ui's
+ * vocabulary. React Aria uses `data-selected` and emits no `data-state`, so
+ * these rules can never match React Aria's DOM. (A negative selector like
+ * `:not([data-state="active"])` WOULD match it — it has no `data-state` at all
+ * — which is why bridge rules must use positive `[data-state]` matches only.)
  */
-.tabs__indicator {
+.tabs__tab[data-state] .tabs__indicator {
   transition: opacity 200ms var(--ease-smooth);
 }
-.tabs__tab:not([data-state="active"]) .tabs__indicator {
+.tabs__tab[data-state="inactive"] .tabs__indicator {
   opacity: 0;
 }
 
