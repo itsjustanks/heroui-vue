@@ -13,6 +13,12 @@
  *   `Calendar.HeaderCell`
  *   `Calendar.Cell`
  *   `Calendar.CellIndicator`
+ *   `Calendar.YearPickerTrigger`
+ *   `Calendar.YearPickerTriggerHeading`
+ *   `Calendar.YearPickerTriggerIndicator`
+ *   `Calendar.YearPickerGrid`
+ *   `Calendar.YearPickerGridBody`
+ *   `Calendar.YearPickerCell`
  *
  * Named flat exports (`CalendarRoot`, `CalendarHeader`, …) are available for
  * callers that prefer explicit imports.
@@ -31,6 +37,14 @@ import { CalendarGridRow } from './calendar-grid-row'
 import { CalendarHeaderCell } from './calendar-header-cell'
 import { CalendarCell } from './calendar-cell'
 import { CalendarCellIndicator } from './calendar-cell-indicator'
+import {
+  CalendarYearPickerCell,
+  CalendarYearPickerGrid,
+  CalendarYearPickerGridBody,
+  CalendarYearPickerTrigger,
+  CalendarYearPickerTriggerHeading,
+  CalendarYearPickerTriggerIndicator
+} from '@/calendar-year-picker'
 
 /** Compound component — `Calendar.Header`, `Calendar.NavButton`, … (HeroUI v3 API). */
 export const Calendar = Object.assign(CalendarRoot, {
@@ -45,6 +59,12 @@ export const Calendar = Object.assign(CalendarRoot, {
   HeaderCell: CalendarHeaderCell,
   Cell: CalendarCell,
   CellIndicator: CalendarCellIndicator,
+  YearPickerTrigger: CalendarYearPickerTrigger,
+  YearPickerTriggerHeading: CalendarYearPickerTriggerHeading,
+  YearPickerTriggerIndicator: CalendarYearPickerTriggerIndicator,
+  YearPickerGrid: CalendarYearPickerGrid,
+  YearPickerGridBody: CalendarYearPickerGridBody,
+  YearPickerCell: CalendarYearPickerCell,
 })
 
 export {
@@ -59,7 +79,17 @@ export {
   CalendarHeaderCell,
   CalendarCell,
   CalendarCellIndicator,
+  CalendarYearPickerTrigger,
+  CalendarYearPickerTriggerHeading,
+  CalendarYearPickerTriggerIndicator,
+  CalendarYearPickerGrid,
+  CalendarYearPickerGridBody,
+  CalendarYearPickerCell,
 }
 
+export {
+  YearPickerContext,
+  useYearPicker
+} from '@/calendar-year-picker'
 export { calendarVariants } from '@heroui/styles'
 export type { CalendarVariants } from '@heroui/styles'

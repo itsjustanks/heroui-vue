@@ -1,20 +1,20 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { AccordionContent as RekaAccordionContent, injectAccordionItemContext } from 'reka-ui'
-import { disclosureVariants } from '@heroui/styles'
+import { accordionVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
 
 /**
- * AccordionContent — Vue port of HeroUI v3 `DisclosureContent` + `DisclosureBody`.
+ * AccordionPanel — Vue port of HeroUI v3 `AccordionPanel`.
  *
  * DOM structure mirrors HeroUI React:
- *   div[data-slot="disclosure-content"][data-expanded]   ← height-animated panel
- *     div[data-slot="disclosure-body"]                   ← overflow clip
- *       div[data-slot="disclosure-body-inner"]           ← padded content
- *         {children}
+ *   div[data-slot="accordion-panel"][data-expanded]   ← height-animated panel
+ *     {children (usually AccordionBody)}
+ *
+ * Also exported as `AccordionContent` for backward compatibility.
  */
-export const AccordionContent = defineComponent({
-  name: 'AccordionContent',
+export const AccordionPanel = defineComponent({
+  name: 'AccordionPanel',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
@@ -24,25 +24,23 @@ export const AccordionContent = defineComponent({
     const itemContext = injectAccordionItemContext()
 
     return () => {
-      const s = ctx?.slots.value ?? disclosureVariants()
+      const s = ctx?.slots.value ?? accordionVariants()
 
       return (
         <RekaAccordionContent
           {...attrs}
-          data-slot="disclosure-content"
-          class={cn(s.content())}
+          data-slot="accordion-panel"
+          class={cn(s.panel(), props.class)}
           data-expanded={itemContext.open.value ? 'true' : undefined}
-          style="--disclosure-panel-height: var(--reka-accordion-content-height)"
         >
-          <div data-slot="disclosure-body" class={cn(s.body())}>
-            <div data-slot="disclosure-body-inner" class={cn(s.bodyInner(), props.class)}>
-              {slots.default?.()}
-            </div>
-          </div>
+          {slots.default?.()}
         </RekaAccordionContent>
       )
     }
   }
 })
 
-export default AccordionContent
+/** @deprecated Use `AccordionPanel` — kept for backward compatibility. */
+export const AccordionContent = AccordionPanel
+
+export default AccordionPanel

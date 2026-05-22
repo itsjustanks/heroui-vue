@@ -6,12 +6,11 @@ import { vHerouiState } from '@/composables/use-heroui-state'
 import { POPOVER_CONTEXT } from './popover-context'
 
 /**
- * PopoverContent — the floating panel surface.
- * Mirrors HeroUI v3 `PopoverContent` (`slots.base()` on the outer overlay,
- * no `data-slot` at the overlay level — the inner `PopoverDialog` carries
- * `data-slot="popover-dialog"` and `slots.dialog()`).
+ * PopoverContent — the floating panel surface (HeroUI `popover__base`).
+ * Mirrors HeroUI v3 `PopoverContent` which renders `PopoverPrimitive` with
+ * `slots.base()`. Children (typically `Popover.Dialog`) are passed through as-is.
  *
- * ⚠️  OVERLAY SHIM — DO NOT REMOVE.
+ * OVERLAY SHIM — DO NOT REMOVE.
  * Rendered `asChild` so reka-ui hands control of the overlay DOM element to our
  * `<div>`. `withDirectives(..., [[vHerouiState]])` then mirrors reka-ui's
  * `data-side` → `data-placement` and `data-state` → `data-entering`/`data-exiting`
@@ -36,10 +35,8 @@ export const PopoverContent = defineComponent({
           <RekaPopoverContent align={props.align} sideOffset={props.sideOffset} asChild>
             {withDirectives(
               (
-                <div class={cn(styles.base(), props.class)}>
-                  <div {...attrs} data-slot="popover-dialog" class={cn(styles.dialog())}>
-                    {slots.default?.()}
-                  </div>
+                <div {...attrs} class={cn(styles.base(), props.class)}>
+                  {slots.default?.()}
                 </div>
               ),
               [[vHerouiState]]

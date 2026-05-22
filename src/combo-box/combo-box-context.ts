@@ -7,6 +7,11 @@ export type ComboBoxSlots = ReturnType<typeof comboBoxVariants>
 export interface ComboBoxContext {
   /** Reactive slot map — recomputed when root `fullWidth` changes. */
   slots: ComputedRef<ComboBoxSlots>
+  /**
+   * Variant passed from `ComboBoxRoot` — consumed by `Input` when nested inside
+   * a `ComboBox.InputGroup` (mirrors HeroUI's `ComboBoxContext.variant`).
+   */
+  variant?: ComputedRef<'primary' | 'secondary' | undefined>
 }
 
 /** Provided by `ComboBoxRoot`, consumed by every compound part. */

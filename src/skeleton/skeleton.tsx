@@ -21,7 +21,6 @@ export const SkeletonRoot = defineComponent({
     return () => (
       <div
         {...attrs}
-        data-slot="skeleton"
         class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}

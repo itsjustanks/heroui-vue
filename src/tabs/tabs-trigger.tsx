@@ -9,11 +9,8 @@ import { TABS_CONTEXT } from './tabs-context'
  * Faithful Vue port of HeroUI v3 `Tabs.Tab` (`tabs__tab`).
  *
  * reka-ui `TabsTrigger` drives the selection state and sets
- * `data-state="active"` / `data-selected` on the element.
- *
- * A `TabSeparator` is rendered as the first child (mirrors HeroUI React's
- * pattern where each `Tab` contains a sibling separator span used by CSS
- * selectors for the adjacent-trigger border rule).
+ * `data-state="active"` / `data-selected` on the element. The consumer places
+ * `Tabs.Indicator` / `Tabs.Separator` inside the tab as children.
  */
 const TabTriggerImpl = RekaTabsTrigger as any
 
@@ -21,7 +18,9 @@ export const Tab = defineComponent({
   name: 'Tab',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Unique key identifying this tab (HeroUI's `id`). */
+    id:    { type: [String, Number] as PropType<string | number>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     const ctx = inject(TABS_CONTEXT, null)
@@ -30,14 +29,10 @@ export const Tab = defineComponent({
       return (
         <TabTriggerImpl
           {...attrs}
+          value={props.id != null ? String(props.id) : undefined}
           data-slot="tabs-tab"
           class={cn(slotMap.tab(), props.class)}
         >
-          <span
-            aria-hidden="true"
-            data-slot="tabs-separator"
-            class={cn(slotMap.separator())}
-          />
           {slots.default?.()}
         </TabTriggerImpl>
       )

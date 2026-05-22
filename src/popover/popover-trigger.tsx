@@ -9,8 +9,8 @@ import { POPOVER_CONTEXT } from './popover-context'
  * Mirrors HeroUI v3 `PopoverTrigger` (`data-slot="popover-trigger"`,
  * styled with `slots.trigger()`).
  *
- * Pass `asChild` to forward the trigger role onto a custom child element
- * (reka-ui convention).
+ * Uses `asChild` to forward trigger role onto the inner element without
+ * creating nested interactive elements.
  */
 export const PopoverTrigger = defineComponent({
   name: 'PopoverTrigger',
@@ -22,12 +22,15 @@ export const PopoverTrigger = defineComponent({
     const ctx = inject(POPOVER_CONTEXT, null)
 
     return () => (
-      <RekaPopoverTrigger
-        {...attrs}
-        data-slot="popover-trigger"
-        class={cn((ctx?.slots.value ?? popoverVariants()).trigger(), props.class)}
-      >
-        {slots.default?.()}
+      <RekaPopoverTrigger asChild>
+        <div
+          {...attrs}
+          data-slot="popover-trigger"
+          role="button"
+          class={cn((ctx?.slots.value ?? popoverVariants()).trigger(), props.class)}
+        >
+          {slots.default?.()}
+        </div>
       </RekaPopoverTrigger>
     )
   }

@@ -24,6 +24,7 @@ export const RadioRoot = defineComponent({
 
     return () => (
       <RekaRadioGroupItem
+        as="label"
         {...attrs}
         data-slot="radio"
         class={cn(styles.value.base(), props.class)}

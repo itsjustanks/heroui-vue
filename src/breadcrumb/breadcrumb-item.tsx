@@ -39,7 +39,7 @@ export const BreadcrumbsItem = defineComponent({
             {...attrs}
             as={props.as}
             asChild={props.asChild}
-            data-slot="breadcrumbs-link"
+            data-slot="link"
             aria-current={props.isCurrent ? 'page' : undefined}
             class={cn(slotMap.link())}
           >

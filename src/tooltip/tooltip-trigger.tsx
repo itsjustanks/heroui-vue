@@ -8,6 +8,9 @@ import { TOOLTIP_CONTEXT } from './tooltip-context'
  * TooltipTrigger — the element the tooltip is anchored to.
  * Mirrors HeroUI v3 `TooltipTrigger` (`data-slot="tooltip-trigger"`,
  * styled with `slots.trigger()`).
+ *
+ * Uses `asChild` to forward trigger role onto the inner element without
+ * creating nested interactive elements.
  */
 export const TooltipTrigger = defineComponent({
   name: 'TooltipTrigger',
@@ -19,12 +22,14 @@ export const TooltipTrigger = defineComponent({
     const ctx = inject(TOOLTIP_CONTEXT, null)
 
     return () => (
-      <RekaTooltipTrigger
-        {...attrs}
-        data-slot="tooltip-trigger"
-        class={cn((ctx?.slots.value ?? tooltipVariants()).trigger(), props.class)}
-      >
-        {slots.default?.()}
+      <RekaTooltipTrigger asChild>
+        <div
+          {...attrs}
+          data-slot="tooltip-trigger"
+          class={cn((ctx?.slots.value ?? tooltipVariants()).trigger(), props.class)}
+        >
+          {slots.default?.()}
+        </div>
       </RekaTooltipTrigger>
     )
   }

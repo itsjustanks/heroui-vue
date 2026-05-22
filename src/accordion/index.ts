@@ -1,20 +1,20 @@
 /**
- * Accordion — faithful Vue port of HeroUI v3 `DisclosureGroup` + `Disclosure`.
+ * Accordion — faithful Vue port of HeroUI v3 `Accordion`.
  *
  * Compound API (HeroUI v3):
- *   `Accordion`            → DisclosureGroup root
- *   `Accordion.Item`       → Disclosure root (per item)
- *   `Accordion.Heading`    → DisclosureHeading
- *   `Accordion.Trigger`    → DisclosureTrigger (includes Heading + Indicator)
- *   `Accordion.Content`    → DisclosureContent (includes Body + BodyInner)
- *   `Accordion.Body`       → DisclosureBody
- *   `Accordion.Indicator`  → DisclosureIndicator
+ *   `Accordion`            → AccordionRoot (DisclosureGroup)
+ *   `Accordion.Item`       → AccordionItem (Disclosure)
+ *   `Accordion.Heading`    → AccordionHeading
+ *   `Accordion.Trigger`    → AccordionTrigger
+ *   `Accordion.Panel`      → AccordionPanel (DisclosurePanel)
+ *   `Accordion.Body`       → AccordionBody
+ *   `Accordion.Indicator`  → AccordionIndicator
  */
 import { AccordionRoot } from './accordion'
 import { AccordionItem } from './accordion-item'
 import { AccordionHeading } from './accordion-heading'
 import { AccordionTrigger } from './accordion-trigger'
-import { AccordionContent } from './accordion-content'
+import { AccordionPanel, AccordionContent } from './accordion-content'
 import { AccordionBody } from './accordion-body'
 import { AccordionIndicator } from './accordion-indicator'
 
@@ -24,7 +24,7 @@ export const Accordion = Object.assign(AccordionRoot, {
   Item: AccordionItem,
   Heading: AccordionHeading,
   Trigger: AccordionTrigger,
-  Content: AccordionContent,
+  Panel: AccordionPanel,
   Body: AccordionBody,
   Indicator: AccordionIndicator
 })
@@ -34,12 +34,11 @@ export {
   AccordionItem,
   AccordionHeading,
   AccordionTrigger,
+  AccordionPanel,
   AccordionContent,
   AccordionBody,
   AccordionIndicator
 }
 
-export { disclosureGroupVariants } from '@heroui/styles'
-export type { DisclosureGroupVariants } from '@heroui/styles'
-export { disclosureVariants } from '@heroui/styles'
-export type { DisclosureVariants } from '@heroui/styles'
+export { accordionVariants } from '@heroui/styles'
+export type { AccordionVariants } from '@heroui/styles'

@@ -1,6 +1,7 @@
-import { computed, defineComponent, provide } from 'vue'
-import { DialogRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type PropType } from 'vue'
+import { DialogRoot, DialogTrigger } from 'reka-ui'
 import { drawerVariants } from '@heroui/styles'
+import { withAutoTrigger } from '@/lib/auto-trigger'
 import { DRAWER_CONTEXT, type DrawerPlacement } from './drawer-context'
 
 /**
@@ -12,16 +13,28 @@ import { DRAWER_CONTEXT, type DrawerPlacement } from './drawer-context'
  *
  * HeroUI v3 compound: Root > Trigger / Backdrop > Content > Dialog >
  * Header / Heading / Body / Footer / Handle / CloseTrigger.
+ *
+ * Like HeroUI v3, the FIRST child of `<Drawer>` is treated as the trigger
+ * automatically — no explicit `<Drawer.Trigger>` wrapper required (though
+ * `<Drawer.Trigger>` still works for back-compat).
  */
 export const DrawerRoot = defineComponent({
   name: 'DrawerRoot',
   inheritAttrs: false,
+  props: {
+    isDismissable: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    state: { type: Object as PropType<unknown>, default: undefined }
+  },
   setup (_props, { attrs, slots }) {
     const placement = computed<DrawerPlacement>(() => 'bottom')
     const styles = computed(() => drawerVariants({ placement: placement.value }))
     provide(DRAWER_CONTEXT, { slots: styles, placement })
 
-    return () => <DialogRoot data-slot="drawer-root" {...attrs}>{slots.default?.()}</DialogRoot>
+    return () => (
+      <DialogRoot data-slot="drawer-root" {...attrs}>
+        {withAutoTrigger(slots.default?.(), DialogTrigger, 'DrawerTrigger')}
+      </DialogRoot>
+    )
   }
 })
 

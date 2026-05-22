@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import '@itsjustanks/heroui-vue/styles.css'
-import './playground.css'
+import './styles.css'      // HeroUI v3's full stylesheet (Tailwind v4 compiled)
+import './playground.css'  // playground chrome
 
 createApp(App).mount('#app')

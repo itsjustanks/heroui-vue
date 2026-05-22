@@ -14,6 +14,27 @@
  * Rules are intentionally UNLAYERED so they win over a host `@layer base`.
  * ============================================================================= */
 
+/*
+ * reka-ui ↔ HeroUI CSS data-attribute bridge
+ *
+ * reka-ui uses `data-state="checked|unchecked|indeterminate"` while HeroUI's
+ * CSS targets `data-selected="true"` / `data-indeterminate="true"`. The
+ * @heroui/styles checkbox CSS already handles `aria-checked="true"` (which
+ * reka-ui does emit) for the control fill. We add bridging only for the gaps:
+ * the indicator border-color rule which checks only `data-selected`/`data-indeterminate`.
+ */
+
+/* Checkbox indicator border-color when checked (reka uses data-state, HeroUI uses data-selected) */
+.checkbox[data-state="checked"] .checkbox__indicator,
+.checkbox[data-state="indeterminate"] .checkbox__indicator {
+  border-color: var(--accent-foreground);
+}
+
+/* Checkmark transition timing when checked */
+.checkbox[data-state="checked"] [data-slot="checkbox-default-indicator--checkmark"] {
+  transition: stroke-dashoffset 150ms linear 15ms;
+}
+
 :root {
   /* base */
   --background: oklch(0.9702 0 0);

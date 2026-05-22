@@ -13,6 +13,12 @@
  *   `RangeCalendar.HeaderCell`
  *   `RangeCalendar.Cell`
  *   `RangeCalendar.CellIndicator`
+ *   `RangeCalendar.YearPickerTrigger`
+ *   `RangeCalendar.YearPickerTriggerHeading`
+ *   `RangeCalendar.YearPickerTriggerIndicator`
+ *   `RangeCalendar.YearPickerGrid`
+ *   `RangeCalendar.YearPickerGridBody`
+ *   `RangeCalendar.YearPickerCell`
  *
  * Named flat exports (`RangeCalendarRoot`, `RangeCalendarHeader`, …) are
  * available for callers that prefer explicit imports.
@@ -32,6 +38,14 @@ import { RangeCalendarGridRow } from './range-calendar-grid-row'
 import { RangeCalendarHeaderCell } from './range-calendar-header-cell'
 import { RangeCalendarCell } from './range-calendar-cell'
 import { RangeCalendarCellIndicator } from './range-calendar-cell-indicator'
+import {
+  CalendarYearPickerCell,
+  CalendarYearPickerGrid,
+  CalendarYearPickerGridBody,
+  CalendarYearPickerTrigger,
+  CalendarYearPickerTriggerHeading,
+  CalendarYearPickerTriggerIndicator
+} from '@/calendar-year-picker'
 
 /** Compound component — `RangeCalendar.Header`, `RangeCalendar.NavButton`, … (HeroUI v3 API). */
 export const RangeCalendar = Object.assign(RangeCalendarRoot, {
@@ -46,6 +60,12 @@ export const RangeCalendar = Object.assign(RangeCalendarRoot, {
   HeaderCell: RangeCalendarHeaderCell,
   Cell: RangeCalendarCell,
   CellIndicator: RangeCalendarCellIndicator,
+  YearPickerTrigger: CalendarYearPickerTrigger,
+  YearPickerTriggerHeading: CalendarYearPickerTriggerHeading,
+  YearPickerTriggerIndicator: CalendarYearPickerTriggerIndicator,
+  YearPickerGrid: CalendarYearPickerGrid,
+  YearPickerGridBody: CalendarYearPickerGridBody,
+  YearPickerCell: CalendarYearPickerCell,
 })
 
 export {
@@ -60,7 +80,17 @@ export {
   RangeCalendarHeaderCell,
   RangeCalendarCell,
   RangeCalendarCellIndicator,
+  CalendarYearPickerTrigger,
+  CalendarYearPickerTriggerHeading,
+  CalendarYearPickerTriggerIndicator,
+  CalendarYearPickerGrid,
+  CalendarYearPickerGridBody,
+  CalendarYearPickerCell,
 }
 
+export {
+  YearPickerContext,
+  useYearPicker
+} from '@/calendar-year-picker'
 export { rangeCalendarVariants } from '@heroui/styles'
 export type { RangeCalendarVariants } from '@heroui/styles'

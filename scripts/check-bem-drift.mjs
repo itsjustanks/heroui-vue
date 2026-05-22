@@ -7,9 +7,9 @@
  * guards against that.
  *
  * For each family it reads the BEM classes from HeroUI's
- * `<component>.styles.js` slot/variant map and verifies each one still appears
- * in the family's source (`src/<family>/*.tsx` and the `*.ts` variant files
- * those components compose). Anything missing is flagged as drift.
+ * `<component>.styles.js` slot/variant map and verifies the family still
+ * consumes the upstream variant function. Older hand-written families may still
+ * reference literal class names or static slots, so those are supported too.
  *
  * Plain Node ESM, no dependencies. Run directly (`node scripts/check-bem-drift.mjs`)
  * or via `npm run maintain`.
@@ -67,6 +67,11 @@ function extractClasses (jsText) {
   return [...classes]
 }
 
+/** Name of the HeroUI style function exported by `<component>.styles.js`. */
+function extractVariantFunction (jsText) {
+  return jsText.match(/const\s+(\w+Variants)\s*=\s*tv\(/)?.[1] ?? null
+}
+
 /** Concatenated source of every `.tsx` / `.ts` file under `src/<family>/`. */
 function familySource (family) {
   let text = ''
@@ -100,6 +105,75 @@ function classPresent (source, cls) {
   return false
 }
 
+/**
+ * Map static HeroUI style slots back to class names. A component that calls
+ * `slots.foo()` is still emitting the BEM class even though the literal string
+ * only lives in `@heroui/styles`.
+ */
+function extractSlotClassMap (jsText) {
+  const slotsBody = objectAfterKey(jsText, 'slots')
+  const map = new Map()
+  if (!slotsBody) return map
+
+  for (const match of slotsBody.matchAll(/([A-Za-z_$][\w$]*)\s*:\s*["']([^"']*)["']/g)) {
+    const slot = match[1]
+    for (const cls of match[2].split(/\s+/).filter(Boolean)) {
+      if (!map.has(cls)) map.set(cls, [])
+      map.get(cls).push(slot)
+    }
+  }
+  return map
+}
+
+function slotClassPresent (source, slotClassMap, cls) {
+  const slots = slotClassMap.get(cls) ?? []
+  return slots.some((slot) => {
+    const escaped = slot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    return new RegExp(`\\b${escaped}\\s*\\(`).test(source)
+      || new RegExp(`\\.${escaped}\\b`).test(source)
+      || new RegExp(`\\?\\.${escaped}\\b`).test(source)
+  })
+}
+
+function variantClassPresent (source, styleName, cls) {
+  if (!cls.includes('--')) return false
+
+  const variantFunction = `${styleName.replace(/-([a-z])/g, (_match, char) => char.toUpperCase())}Variants`
+  return source.includes(`${variantFunction}(`)
+}
+
+function objectAfterKey (text, key) {
+  const keyMatch = new RegExp(`${key}\\s*:`).exec(text)
+  if (!keyMatch) return null
+
+  const start = text.indexOf('{', keyMatch.index)
+  if (start === -1) return null
+
+  let depth = 0
+  let quote = null
+  let escaped = false
+  for (let index = start; index < text.length; index++) {
+    const char = text[index]
+
+    if (quote) {
+      if (escaped) escaped = false
+      else if (char === '\\') escaped = true
+      else if (char === quote) quote = null
+      continue
+    }
+
+    if (char === '"' || char === '\'' || char === '`') {
+      quote = char
+      continue
+    }
+
+    if (char === '{') depth++
+    if (char === '}') depth--
+    if (depth === 0) return text.slice(start + 1, index)
+  }
+  return null
+}
+
 export async function run () {
   const families = readdirSync(join(ROOT, 'src'), { withFileTypes: true })
     .filter((entry) => entry.isDirectory() && !NON_FAMILY.has(entry.name))
@@ -123,9 +197,17 @@ export async function run () {
       continue
     }
     checked++
-    const classes = extractClasses(readFileSync(stylesFile, 'utf8'))
+    const stylesText = readFileSync(stylesFile, 'utf8')
+    const variantFunction = extractVariantFunction(stylesText)
+    const classes = extractClasses(stylesText)
+    const slotClassMap = extractSlotClassMap(stylesText)
     const source = familySource(family)
-    const missing = classes.filter((cls) => !classPresent(source, cls))
+    const missing = classes.filter((cls) =>
+      !classPresent(source, cls)
+      && !slotClassPresent(source, slotClassMap, cls)
+      && !variantClassPresent(source, styleName, cls)
+      && !(variantFunction && source.includes(variantFunction))
+    )
     if (missing.length) {
       driftCount += missing.length
       drifted.push({ family, styleName, missing: missing.sort() })

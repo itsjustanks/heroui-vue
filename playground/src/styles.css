@@ -1,0 +1,7 @@
+/*
+ * HeroUI v3's complete stylesheet — Tailwind CSS v4 core, base resets, the
+ * default theme tokens, and every component's CSS — compiled by `@tailwindcss/vite`
+ * exactly the way HeroUI itself builds it. This replaces the partial precompiled
+ * `heroui.min.css`, which was missing component styles (checkbox, etc.).
+ */
+@import "@heroui/styles/css";

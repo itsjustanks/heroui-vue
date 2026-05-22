@@ -1,22 +1,23 @@
 /**
  * DatePicker — faithful Vue port of HeroUI v3 `DatePicker`.
  *
- * Compound API (HeroUI v3):
+ * Compound API (HeroUI v3) — mirrors `Object.assign(DatePickerRoot, …)`:
  *   `DatePicker` / `DatePicker.Root`
  *   `DatePicker.Trigger`          — popover trigger button
  *   `DatePicker.TriggerIndicator` — calendar icon inside the trigger
- *   `DatePicker.Popover`          — floating panel that contains the calendar
+ *   `DatePicker.Popover`          — floating panel that holds the calendar
  *
- * The segmented date-field input and calendar are composed using `DateField`
- * and `Calendar` / `DatePickerCalendar` inside the popover.
+ * The segmented input is composed with `DateField.Group` / `DateField.Input` /
+ * `DateField.Segment` (which bridge to reka-ui's `DatePickerField`). The
+ * calendar inside the popover uses `DatePickerCalendar` — reka-ui scopes its
+ * calendar primitives per picker, so the standalone `Calendar` cannot wire to
+ * the picker value; `DatePickerCalendar` renders the identical `Calendar` DOM.
  */
 import { DatePickerRoot } from './date-picker'
 import { DatePickerTrigger } from './date-picker-trigger'
 import { DatePickerTriggerIndicator } from './date-picker-trigger-indicator'
 import { DatePickerPopover, DatePickerContent } from './date-picker-content'
 import { DatePickerCalendar } from './date-picker-calendar'
-import { DatePickerField } from './date-picker-field'
-import { DatePickerInput } from './date-picker-input'
 
 /** Compound component — mirrors HeroUI v3 `DatePicker.*` API exactly. */
 export const DatePicker = Object.assign(DatePickerRoot, {
@@ -33,12 +34,8 @@ export {
   DatePickerPopover,
   /** @deprecated Use `DatePickerPopover` */
   DatePickerContent,
-  /** Convenience: full calendar grid wired to the date-picker context. */
+  /** reka-ui-wired calendar for use inside `DatePicker.Popover`. */
   DatePickerCalendar,
-  /** Legacy: segmented field surface (use `DateField.Group` inside `DatePicker` instead). */
-  DatePickerField,
-  /** Legacy: individual date segment (use `DateField.Segment` instead). */
-  DatePickerInput,
 }
 
 export { datePickerVariants } from '@heroui/styles'

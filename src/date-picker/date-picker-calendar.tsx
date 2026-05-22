@@ -1,5 +1,4 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { IconChevronLeft, IconChevronRight } from '@/icons'
 import {
   DatePickerCalendar as RekaDatePickerCalendar,
   DatePickerCell,
@@ -12,113 +11,106 @@ import {
   DatePickerHeader,
   DatePickerHeading,
   DatePickerNext,
-  DatePickerPrev
+  DatePickerPrev,
 } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
+import { IconChevronLeft, IconChevronRight } from '@/icons'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/button'
 
-type TCalendarSlot = {
-  grid: Array<{ value: { toString: () => string }; rows: unknown[][] }>
-  weekDays: string[]
-}
+type GridMonth = { value: { toString: () => string }; rows: Array<Array<{ toString: () => string }>> }
+type CalendarSlot = { grid: GridMonth[]; weekDays: string[] }
 
 /**
- * DatePickerCalendar — the month grid inside `DatePickerContent`. HeroUI v3
- * `Calendar` (as used inside `DatePicker`).
+ * DatePickerCalendar — the month grid rendered inside `DatePicker.Popover`.
  *
- * Composes reka-ui's `DatePicker`-scoped calendar parts (context-wired to
- * `DatePickerRoot`) and applies the exact same HeroUI v3 styling as the
- * standalone `calendar` primitive — `rounded-lg` day cells, `bg-primary`
- * selected, `bg-accent` today, muted outside-month days — keyed to reka-ui's
- * `data-selected` / `data-today` / `data-disabled` / `data-outside-view`.
+ * reka-ui scopes the calendar primitives per picker (`DatePickerCalendar`,
+ * `DatePickerCell`, …) so they wire to `DatePickerRoot`'s value; the standalone
+ * `Calendar` cannot. This component therefore composes the reka-ui
+ * `DatePicker`-scoped parts while applying the exact `calendarVariants` slot
+ * classes and `data-slot` attributes of the standalone `Calendar` — keeping the
+ * rendered DOM identical to HeroUI's `<Calendar>` inside `DatePicker.Popover`.
  */
 export const DatePickerCalendar = defineComponent({
   name: 'DatePickerCalendar',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
   },
   setup (props, { attrs }) {
+    const s = calendarVariants()
+
     return () => (
-      <RekaDatePickerCalendar {...attrs} class={cn('p-0', props.class)}>
+      <RekaDatePickerCalendar {...attrs} data-slot="calendar" class={cn(s.base(), props.class)}>
         {{
-          default: ({ grid, weekDays }: TCalendarSlot) => (
+          default: ({ grid, weekDays }: CalendarSlot) => (
             <>
-              <DatePickerHeader class="relative flex w-full items-center justify-between px-0.5 pb-4 pt-1">
-                <DatePickerPrev
-                  class={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'size-7 rounded-lg p-0 text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  <IconChevronLeft class="size-4" />
+              <DatePickerHeader data-slot="calendar-header" class={s.header()}>
+                <DatePickerHeading data-slot="calendar-heading" class={s.heading()} />
+                <DatePickerPrev data-slot="calendar-nav-button" class={s.navButton()}>
+                  <IconChevronLeft data-slot="calendar-nav-button-icon" class={s.navButtonIcon()} />
                 </DatePickerPrev>
-                <DatePickerHeading class="flex-1 text-center text-sm font-medium" />
-                <DatePickerNext
-                  class={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'size-7 rounded-lg p-0 text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  <IconChevronRight class="size-4" />
+                <DatePickerNext data-slot="calendar-nav-button" class={s.navButton()}>
+                  <IconChevronRight data-slot="calendar-nav-button-icon" class={s.navButtonIcon()} />
                 </DatePickerNext>
               </DatePickerHeader>
-
-              <div class="flex flex-col gap-y-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
-                {grid.map((month) => (
-                  <DatePickerGrid key={month.value.toString()} class="w-full border-collapse space-y-1">
-                    <DatePickerGridHead>
-                      <DatePickerGridRow class="flex">
-                        {weekDays.map((day) => (
-                          <DatePickerHeadCell
-                            key={day}
-                            class="w-9 rounded-lg text-xs font-medium text-muted-foreground"
+              {grid.map((month) => (
+                <DatePickerGrid
+                  key={month.value.toString()}
+                  data-slot="calendar-grid"
+                  class={s.grid()}
+                >
+                  <DatePickerGridHead data-slot="calendar-grid-header" class={s.gridHeader()}>
+                    <DatePickerGridRow class={s.gridRow()}>
+                      {weekDays.map((day) => (
+                        <DatePickerHeadCell
+                          key={day}
+                          data-slot="calendar-header-cell"
+                          class={s.headerCell()}
+                        >
+                          {day}
+                        </DatePickerHeadCell>
+                      ))}
+                    </DatePickerGridRow>
+                  </DatePickerGridHead>
+                  <DatePickerGridBody data-slot="calendar-grid-body" class={s.gridBody()}>
+                    {month.rows.map((week, i) => (
+                      <DatePickerGridRow key={`week-${i}`} class={s.gridRow()}>
+                        {week.map((day) => (
+                          <DatePickerCell
+                            key={day.toString()}
+                            date={day as never}
                           >
-                            {day}
-                          </DatePickerHeadCell>
+                            <DatePickerCellTrigger
+                              day={day as never}
+                              month={month.value as never}
+                              data-slot="calendar-cell"
+                              class={s.cell()}
+                            >
+                              {{
+                                default: ({ formattedDate }: { formattedDate: string }) => (
+                                  <span
+                                    aria-hidden="true"
+                                    data-slot="calendar-cell-indicator"
+                                    class={s.cellIndicator()}
+                                  >
+                                    {formattedDate}
+                                  </span>
+                                ),
+                              }}
+                            </DatePickerCellTrigger>
+                          </DatePickerCell>
                         ))}
                       </DatePickerGridRow>
-                    </DatePickerGridHead>
-                    <DatePickerGridBody>
-                      {month.rows.map((weekDates, index) => (
-                        <DatePickerGridRow key={`weekDate-${index}`} class="mt-2 flex w-full">
-                          {(weekDates as Array<{ toString: () => string }>).map((weekDate) => (
-                            <DatePickerCell
-                              key={weekDate.toString()}
-                              date={weekDate as never}
-                              class={cn(
-                                'relative size-9 p-0 text-center text-sm focus-within:relative focus-within:z-20',
-                                '[&:has([data-selected])]:rounded-lg [&:has([data-selected])]:bg-accent',
-                                '[&:has([data-selected][data-outside-view])]:bg-accent/50'
-                              )}
-                            >
-                              <DatePickerCellTrigger
-                                day={weekDate as never}
-                                month={month.value as never}
-                                class={cn(
-                                  buttonVariants({ variant: 'ghost' }),
-                                  'size-9 rounded-lg p-0 font-normal',
-                                  '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
-                                  'data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:opacity-100 data-[selected]:hover:bg-primary data-[selected]:hover:text-primary-foreground data-[selected]:focus:bg-primary data-[selected]:focus:text-primary-foreground',
-                                  'data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
-                                  'data-[unavailable]:text-destructive-foreground data-[unavailable]:line-through',
-                                  'data-[outside-view]:text-muted-foreground data-[outside-view]:opacity-50'
-                                )}
-                              />
-                            </DatePickerCell>
-                          ))}
-                        </DatePickerGridRow>
-                      ))}
-                    </DatePickerGridBody>
-                  </DatePickerGrid>
-                ))}
-              </div>
+                    ))}
+                  </DatePickerGridBody>
+                </DatePickerGrid>
+              ))}
             </>
-          )
+          ),
         }}
       </RekaDatePickerCalendar>
     )
-  }
+  },
 })
 
 export default DatePickerCalendar

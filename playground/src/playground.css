@@ -131,6 +131,20 @@ body {
   margin: 22px 0 8px;
 }
 
+.pg-loading {
+  border: 1px solid #e6e7e9;
+  border-radius: 12px;
+  background: #fff;
+  color: #6b7177;
+  padding: 28px 24px;
+  font-size: 13px;
+}
+.pg-loading.is-error {
+  border-color: #fecaca;
+  background: #fff5f5;
+  color: #b42318;
+}
+
 /* ── comparison panes ───────────────────────────────────────────────────── */
 .pg-panes {
   display: grid;
@@ -241,3 +255,93 @@ body {
   color: #8a9097;
   line-height: 1.55;
 }
+
+/* ── Vue ↔ React source diff ─────────────────────────────────────────────── */
+.pg-diff {
+  border: 1px solid #23262b;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #16181d;
+}
+.pg-diff-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #1d2026;
+  border-bottom: 1px solid #23262b;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+}
+.pg-diff-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+.pg-diff-label .dot { width: 8px; height: 8px; border-radius: 50%; }
+.pg-diff-label--vue { color: #6fcf9f; }
+.pg-diff-label--vue .dot { background: #42b883; }
+.pg-diff-label--react { color: #6cc7e6; margin-left: auto; }
+.pg-diff-label--react .dot { background: #149eca; }
+.pg-diff-verdict {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.pg-diff-verdict.is-match { color: #6fcf9f; background: rgba(66, 184, 131, 0.14); }
+.pg-diff-verdict.is-diff { color: #e6b455; background: rgba(230, 180, 85, 0.14); }
+
+.pg-diff-body {
+  max-height: 480px;
+  overflow: auto;
+}
+.pg-diff-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.pg-diff-cell {
+  display: flex;
+  gap: 6px;
+  padding: 1px 12px 1px 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.62;
+  color: #d7dadd;
+  border-right: 1px solid #23262b;
+}
+.pg-diff-cell:last-child { border-right: 0; }
+.pg-diff-cell code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.pg-diff-token--added {
+  color: #ffd38a;
+  background: rgba(230, 180, 85, 0.24);
+  border-radius: 3px;
+}
+.pg-diff-mark {
+  flex: none;
+  width: 24px;
+  text-align: center;
+  font-weight: 700;
+  color: #6b7177;
+  user-select: none;
+}
+
+/* Vue-only rows are still visible, but the important signal is the inline span. */
+.pg-diff-row--vue .pg-diff-side-vue {
+  background: rgba(230, 180, 85, 0.08);
+  box-shadow: inset 3px 0 0 rgba(230, 180, 85, 0.72);
+}
+.pg-diff-row--vue .pg-diff-side-vue .pg-diff-mark { color: #e6b455; }
+.pg-diff-row--vue .pg-diff-side-react { background: rgba(255, 255, 255, 0.022); }
+
+/* React-only rows are context for alignment, not the primary highlight. */
+.pg-diff-row--react .pg-diff-side-react {
+  background: rgba(255, 255, 255, 0.04);
+  color: #8f98a3;
+}
+.pg-diff-row--react .pg-diff-side-react .pg-diff-mark { color: #6b7177; }
+.pg-diff-row--react .pg-diff-side-vue { background: rgba(255, 255, 255, 0.022); }

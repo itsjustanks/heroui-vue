@@ -1,38 +1,88 @@
 /**
- * Sonner / Toast — HeroUI v3 `Toast.Provider` region wrapped via `vue-sonner`.
+ * Sonner / Toast — HeroUI v3 `Toast` compound, runtime backed by `vue-sonner`.
  *
- * ⚠️  ARCHITECTURAL FLAG
- * HeroUI React's `Toast` is a compound BEM component built on React Aria's
- * `UNSTABLE_Toast` / `UNSTABLE_ToastRegion` primitives with full compound parts:
- * `Toast.Root`, `Toast.Content`, `Toast.Indicator`, `Toast.Title`,
- * `Toast.Description`, `Toast.ActionButton`, `Toast.CloseButton`.
+ * heroui-vue's family directory is `sonner`, but — matching HeroUI — the
+ * exported compound component is `Toast`.
  *
- * `vue-sonner` wraps `sonner` and has no reka-ui / React Aria equivalent.
- * A faithful 1:1 port of every compound part is NOT possible without replacing
- * `vue-sonner` entirely, so this package exports only `ToastProvider` (≈
- * HeroUI's `Toast.Provider` region) and re-exports `toast` from `vue-sonner`.
- * HeroUI's BEM classes are wired via `toastVariants` so styles match.
+ * Compound API (HeroUI v3):
+ *   `Toast`               — the single toast surface (= `ToastRoot`)
+ *   `Toast.Provider`      — the toast region (`vue-sonner` `Toaster`)
+ *   `Toast.Content`       — `ToastContent`
+ *   `Toast.Indicator`     — `ToastIndicator`
+ *   `Toast.Title`         — `ToastTitle`
+ *   `Toast.Description`   — `ToastDescription`
+ *   `Toast.ActionButton`  — `ToastActionButton`
+ *   `Toast.CloseButton`   — `ToastCloseButton`
+ *   `Toast.Queue`         — `ToastQueue` class
+ *   `Toast.toast`         — imperative `toast()` API
  *
- * The legacy `Toaster` export is kept as an alias for backward compatibility.
+ * ⚠️  ARCHITECTURAL NOTE
+ * HeroUI React's `Toast` is built on React Aria's `UNSTABLE_Toast` primitives.
+ * heroui-vue's runtime is `vue-sonner`; the compound parts above are faithful
+ * BEM transcriptions (see `toast-parts.tsx`) for use inside a `Toast.Provider`
+ * custom render function, and `Toast.Provider` wraps vue-sonner's `Toaster`.
  */
 import ToastProvider from './sonner'
 import { toast } from 'vue-sonner'
 import { toastVariants } from '@heroui/styles'
+import {
+  ToastRoot,
+  ToastContent,
+  ToastIndicator,
+  ToastTitle,
+  ToastDescription,
+  ToastActionButton,
+  ToastCloseButton
+} from './toast-parts'
+import { ToastQueue, toastQueue } from './toast-queue'
 
-/** `Toast` — alias for `ToastProvider` (mirrors HeroUI's `Toast.Provider` naming). */
-export const Toast = Object.assign(ToastProvider, {
+/** Compound component — `Toast.Provider`, `Toast.Content`, … (HeroUI v3 API). */
+export const Toast = Object.assign(ToastRoot, {
   Provider: ToastProvider,
+  Content: ToastContent,
+  Indicator: ToastIndicator,
+  Title: ToastTitle,
+  Description: ToastDescription,
+  ActionButton: ToastActionButton,
+  CloseButton: ToastCloseButton,
+  Queue: ToastQueue,
+  toast
 })
 
-export { ToastProvider }
+/* -------------------------------------------------------------------------------------------------
+ * Named Components
+ * -----------------------------------------------------------------------------------------------*/
+export {
+  ToastProvider,
+  ToastRoot,
+  ToastContent,
+  ToastIndicator,
+  ToastTitle,
+  ToastDescription,
+  ToastActionButton,
+  ToastCloseButton
+}
 
 /** Keep `Toaster` as a backward-compatible alias for `ToastProvider`. */
 export { default as Toaster } from './sonner'
 
+/* -------------------------------------------------------------------------------------------------
+ * Utilities
+ * -----------------------------------------------------------------------------------------------*/
+export { ToastQueue, toastQueue }
+
 /** `toast()` imperative API from `vue-sonner` (mirrors HeroUI's `toast` export). */
 export { toast }
 
-/** BEM variant function — `toastVariants({ placement, variant })`. */
+/* -------------------------------------------------------------------------------------------------
+ * Constants
+ * -----------------------------------------------------------------------------------------------*/
+export { DEFAULT_TOAST_TIMEOUT } from './toast-queue'
+export type { ToastQueueOptions, ToastContentValue } from './toast-queue'
+
+/* -------------------------------------------------------------------------------------------------
+ * Variants
+ * -----------------------------------------------------------------------------------------------*/
 export { toastVariants }
 export type { ToastVariants } from '@heroui/styles'
 

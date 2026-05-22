@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "kind": "pro",
+  "component": "kpi",
+  "generatedAt": "2026-05-22T05:18:14.389Z",
+  "source": {
+    "package": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/package.json",
+    "packageExport": {
+      "types": "./dist/components/kpi/index.d.ts",
+      "import": "./dist/components/kpi/index.js"
+    },
+    "indexTypes": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/kpi/index.d.ts",
+    "compiledComponent": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/kpi/kpi.js",
+    "componentTypes": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/kpi/kpi.d.ts",
+    "styles": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/kpi/kpi.styles.js",
+    "styleTypes": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/kpi/kpi.styles.d.ts",
+    "css": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/css/components/kpi.css"
+  },
+  "upstream": {
+    "exports": [
+      "KPI",
+      "KPIActions",
+      "KPIChart",
+      "KPIContent",
+      "KPIFooter",
+      "KPIHeader",
+      "KPIIcon",
+      "KPIProgress",
+      "KPIRoot",
+      "KPISeparator",
+      "KPITitle",
+      "KPITrend",
+      "KPIValue",
+      "kpiVariants"
+    ],
+    "compoundParts": [],
+    "propTypes": [
+      "KPIActionsProps",
+      "KPIChartProps",
+      "KPIContentProps",
+      "KPIFooterProps",
+      "KPIHeaderProps",
+      "KPIIconProps",
+      "KPIProgressProps",
+      "KPIRootProps",
+      "KPISeparatorProps",
+      "KPITitleProps",
+      "KPITrendProps",
+      "KPIValueProps"
+    ],
+    "dataSlots": [
+      "kpi",
+      "kpi-actions",
+      "kpi-chart",
+      "kpi-content",
+      "kpi-footer",
+      "kpi-header",
+      "kpi-icon",
+      "kpi-progress",
+      "kpi-separator",
+      "kpi-title",
+      "kpi-trend",
+      "kpi-value"
+    ],
+    "styleSlots": {
+      "actions": "kpi__actions",
+      "base": "kpi",
+      "chart": "kpi__chart",
+      "content": "kpi__content",
+      "footer": "kpi__footer",
+      "header": "kpi__header",
+      "icon": "kpi__icon",
+      "progress": "kpi__progress",
+      "separator": "kpi__separator",
+      "title": "kpi__title",
+      "trend": "kpi__trend",
+      "value": "kpi__value"
+    },
+    "styleClasses": [
+      "kpi",
+      "kpi__actions",
+      "kpi__chart",
+      "kpi__content",
+      "kpi__footer",
+      "kpi__header",
+      "kpi__icon",
+      "kpi__progress",
+      "kpi__separator",
+      "kpi__title",
+      "kpi__trend",
+      "kpi__value"
+    ],
+    "cssClasses": [
+      "com",
+      "kpi",
+      "kpi__actions",
+      "kpi__chart",
+      "kpi__content",
+      "kpi__footer",
+      "kpi__header",
+      "kpi__icon",
+      "kpi__progress",
+      "kpi__separator",
+      "kpi__title",
+      "kpi__trend",
+      "kpi__value"
+    ],
+    "renderHosts": []
+  },
+  "local": {
+    "familyDir": "pro/src/kpi",
+    "manifestNotes": []
+  }
+}

@@ -4,6 +4,7 @@ import { tooltipVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { vHerouiState } from '@/composables/use-heroui-state'
 import { TOOLTIP_CONTEXT } from './tooltip-context'
+import { TooltipArrow } from './tooltip-arrow'
 
 /**
  * TooltipContent — the floating tip surface.
@@ -20,7 +21,8 @@ export const TooltipContent = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    sideOffset: { type: Number, default: 4 }
+    sideOffset: { type: Number, default: undefined },
+    showArrow: { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
     const ctx = inject(TOOLTIP_CONTEXT, null)
@@ -30,10 +32,11 @@ export const TooltipContent = defineComponent({
 
       return (
         <TooltipPortal>
-          <RekaTooltipContent sideOffset={props.sideOffset} asChild>
+          <RekaTooltipContent sideOffset={props.sideOffset ?? (props.showArrow ? 7 : 3)} asChild>
             {withDirectives(
               (
                 <div {...attrs} class={cn(styles.base(), props.class)}>
+                  {props.showArrow ? <TooltipArrow /> : null}
                   {slots.default?.()}
                 </div>
               ),

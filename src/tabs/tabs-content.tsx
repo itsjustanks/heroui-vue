@@ -16,13 +16,16 @@ export const TabPanel = defineComponent({
   name: 'TabPanel',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Key of the tab this panel belongs to (HeroUI's `id`). */
+    id:    { type: [String, Number] as PropType<string | number>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     const ctx = inject(TABS_CONTEXT, null)
     return () => (
       <RekaContent
         {...attrs}
+        value={props.id != null ? String(props.id) : undefined}
         data-slot="tabs-panel"
         class={cn((ctx?.slots.value ?? tabsVariants()).tabPanel(), props.class)}
       >

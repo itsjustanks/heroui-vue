@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "kind": "pro",
+  "component": "sheet",
+  "generatedAt": "2026-05-22T05:18:14.391Z",
+  "source": {
+    "package": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/package.json",
+    "packageExport": {
+      "types": "./dist/components/sheet/index.d.ts",
+      "import": "./dist/components/sheet/index.js"
+    },
+    "indexTypes": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/sheet/index.d.ts",
+    "compiledComponent": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/sheet/sheet.js",
+    "componentTypes": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/sheet/sheet.d.ts",
+    "styles": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/sheet/sheet.styles.js",
+    "styleTypes": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/components/sheet/sheet.styles.d.ts",
+    "css": "/Users/ankit/.superset/projects/unfold-next/node_modules/@heroui-pro/react/dist/css/components/sheet.css"
+  },
+  "upstream": {
+    "exports": [
+      "Sheet",
+      "SheetBackdrop",
+      "SheetBody",
+      "SheetClose",
+      "SheetCloseTrigger",
+      "SheetContent",
+      "SheetDialog",
+      "SheetFooter",
+      "SheetHandle",
+      "SheetHeader",
+      "SheetHeading",
+      "SheetNestedRoot",
+      "SheetRoot",
+      "SheetTrigger",
+      "sheetVariants"
+    ],
+    "compoundParts": [],
+    "propTypes": [
+      "SheetBackdropProps",
+      "SheetBodyProps",
+      "SheetCloseProps",
+      "SheetCloseTriggerProps",
+      "SheetContentProps",
+      "SheetDialogProps",
+      "SheetFooterProps",
+      "SheetHandleProps",
+      "SheetHeaderProps",
+      "SheetHeadingProps",
+      "SheetRootProps",
+      "SheetTriggerProps",
+      "WithFadeFromProps",
+      "WithoutFadeFromProps"
+    ],
+    "dataSlots": [
+      "sheet-backdrop",
+      "sheet-body",
+      "sheet-close-trigger",
+      "sheet-content",
+      "sheet-dialog",
+      "sheet-footer",
+      "sheet-handle",
+      "sheet-handle-bar",
+      "sheet-handle-hitarea",
+      "sheet-header",
+      "sheet-heading"
+    ],
+    "styleSlots": {
+      "backdrop": "sheet__backdrop",
+      "body": "sheet__body",
+      "closeTrigger": "sheet__close-trigger",
+      "content": "sheet__content",
+      "dialog": "sheet__dialog",
+      "footer": "sheet__footer",
+      "handle": "sheet__handle",
+      "handleBar": "sheet__handle-bar",
+      "header": "sheet__header",
+      "heading": "sheet__heading"
+    },
+    "styleClasses": [
+      "sheet__backdrop",
+      "sheet__body",
+      "sheet__close-trigger",
+      "sheet__content",
+      "sheet__dialog",
+      "sheet__footer",
+      "sheet__handle",
+      "sheet__handle-bar",
+      "sheet__header",
+      "sheet__heading"
+    ],
+    "cssClasses": [
+      "com",
+      "sheet-dragging",
+      "sheet__backdrop",
+      "sheet__backdrop--blur",
+      "sheet__backdrop--opaque",
+      "sheet__backdrop--transparent",
+      "sheet__body",
+      "sheet__close-trigger",
+      "sheet__content",
+      "sheet__content--bottom",
+      "sheet__content--left",
+      "sheet__content--right",
+      "sheet__content--top",
+      "sheet__dialog",
+      "sheet__dialog--bottom",
+      "sheet__dialog--left",
+      "sheet__dialog--right",
+      "sheet__dialog--top",
+      "sheet__footer",
+      "sheet__handle",
+      "sheet__handle-bar",
+      "sheet__header",
+      "sheet__heading"
+    ],
+    "renderHosts": []
+  },
+  "local": {
+    "familyDir": "pro/src/sheet",
+    "manifestNotes": []
+  }
+}

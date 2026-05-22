@@ -25,6 +25,7 @@ export const SwitchRoot = defineComponent({
 
     return () => (
       <RekaSwitchRoot
+        as="label"
         {...attrs}
         data-slot="switch"
         class={cn(styles.value.base(), props.class)}

@@ -1,6 +1,6 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { injectAccordionItemContext } from 'reka-ui'
-import { disclosureVariants } from '@heroui/styles'
+import { accordionVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { IconChevronDown } from '@/icons'
 import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
@@ -8,7 +8,7 @@ import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
 /**
  * AccordionIndicator — Vue port of HeroUI v3 `DisclosureIndicator`.
  *
- * Renders `data-slot="disclosure-indicator"` with `data-expanded` wired to
+ * Renders `data-slot="accordion-indicator"` with `data-expanded` wired to
  * the open state. Defaults to `IconChevronDown`; pass a child to override.
  */
 export const AccordionIndicator = defineComponent({
@@ -22,14 +22,14 @@ export const AccordionIndicator = defineComponent({
     const itemContext = injectAccordionItemContext()
 
     return () => {
-      const s = ctx?.slots.value ?? disclosureVariants()
+      const s = ctx?.slots.value ?? accordionVariants()
       const expanded = itemContext.open.value ? 'true' : undefined
 
       if (slots.default) {
         return (
           <span
             {...attrs}
-            data-slot="disclosure-indicator"
+            data-slot="accordion-indicator"
             data-expanded={expanded}
             class={cn(s.indicator(), props.class)}
           >
@@ -41,7 +41,7 @@ export const AccordionIndicator = defineComponent({
       return (
         <IconChevronDown
           {...(attrs as Record<string, any>)}
-          data-slot="disclosure-indicator"
+          data-slot="accordion-indicator"
           data-expanded={expanded}
           class={cn(s.indicator(), props.class)}
         />

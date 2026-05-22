@@ -6,9 +6,6 @@
  * `Pagination.Link`, `Pagination.Next`, `Pagination.NextIcon`,
  * `Pagination.Previous`, `Pagination.PreviousIcon`, `Pagination.Summary`.
  * Flat part exports use the `Pagination*` prefix.
- *
- * The `First` / `Last` parts (reka-ui extensions beyond HeroUI's API) are
- * still exported as named flat exports for callers that need them.
  */
 import { PaginationRoot } from './pagination-root'
 import { PaginationContent } from './pagination-list'
@@ -20,8 +17,6 @@ import { PaginationNext } from './pagination-next'
 import { PaginationNextIcon } from './pagination-next-icon'
 import { PaginationEllipsis } from './pagination-ellipsis'
 import { PaginationSummary } from './pagination-summary'
-import { PaginationFirst } from './pagination-first'
-import { PaginationLast } from './pagination-last'
 
 /** Compound component — `Pagination.Content`, `Pagination.Item`, … (HeroUI v3 API). */
 export const Pagination = Object.assign(PaginationRoot, {
@@ -48,10 +43,6 @@ export {
   PaginationPrevious,
   PaginationPreviousIcon,
   PaginationSummary,
-  /** reka-ui extension — jump to first page. */
-  PaginationFirst,
-  /** reka-ui extension — jump to last page. */
-  PaginationLast,
 }
 
 export { paginationVariants } from '@heroui/styles'

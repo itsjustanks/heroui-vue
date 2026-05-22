@@ -1,5 +1,5 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
-import { disclosureVariants } from '@heroui/styles'
+import { accordionVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
 
@@ -7,8 +7,8 @@ import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
  * AccordionBody — Vue port of HeroUI v3 `DisclosureBody`.
  *
  * Renders the outer clip container + inner padded wrapper:
- *   div[data-slot="disclosure-body"]
- *     div[data-slot="disclosure-body-inner"]
+ *   div[data-slot="accordion-body"]
+ *     div[data-slot="accordion-body-inner"]
  *       {children}
  *
  * Use inside `AccordionContent` when you need manual control over the body
@@ -24,11 +24,11 @@ export const AccordionBody = defineComponent({
     const ctx = inject(ACCORDION_ITEM_CONTEXT, null)
 
     return () => {
-      const s = ctx?.slots.value ?? disclosureVariants()
+      const s = ctx?.slots.value ?? accordionVariants()
 
       return (
-        <div {...attrs} data-slot="disclosure-body" class={cn(s.body())}>
-          <div data-slot="disclosure-body-inner" class={cn(s.bodyInner(), props.class)}>
+        <div {...attrs} data-slot="accordion-body" class={cn(s.body())}>
+          <div data-slot="accordion-body-inner" class={cn(s.bodyInner(), props.class)}>
             {slots.default?.()}
           </div>
         </div>

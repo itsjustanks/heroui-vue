@@ -1,7 +1,7 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { alertVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { IconCircle, IconCheck, IconX, IconChevronDown } from '@/icons'
+import { DangerIcon, InfoIcon, SuccessIcon, WarningIcon } from '@/icons'
 import { ALERT_CONTEXT } from './alert-context'
 
 /**
@@ -25,15 +25,16 @@ export const AlertIndicator = defineComponent({
 
     function renderDefaultIcon () {
       switch (ctx?.status.value) {
-        case 'success':
-          return <IconCheck data-slot="alert-default-icon" />
-        case 'danger':
-          return <IconX data-slot="alert-default-icon" />
-        case 'warning':
-          return <IconChevronDown data-slot="alert-default-icon" />
         case 'accent':
+          return <InfoIcon data-slot="alert-default-icon" />
+        case 'success':
+          return <SuccessIcon data-slot="alert-default-icon" />
+        case 'warning':
+          return <WarningIcon data-slot="alert-default-icon" />
+        case 'danger':
+          return <DangerIcon data-slot="alert-default-icon" />
         default:
-          return <IconCircle data-slot="alert-default-icon" />
+          return <InfoIcon data-slot="alert-default-icon" />
       }
     }
 

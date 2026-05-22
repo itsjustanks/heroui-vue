@@ -1,17 +1,16 @@
-import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
-import { DateFieldRoot as RekaDateFieldRoot, useForwardPropsEmits } from 'reka-ui'
-import type { DateFieldRootProps } from 'reka-ui'
+import { defineComponent, provide, ref, type HTMLAttributes, type PropType } from 'vue'
+import { DateFieldRoot as RekaDateFieldRoot } from 'reka-ui'
 import { dateFieldVariants, type DateFieldVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { DATE_FIELD_CONTEXT } from './date-field-context'
-import { dateInputGroupVariants } from '@heroui/styles'
+import { DATE_FIELD_KIND, DATE_SEGMENTS, type DateSegment } from '@/date-input-group'
 
 /**
- * DateFieldRoot — the segmented date-field root. HeroUI v3 `DateField`.
+ * DateField.Root — the segmented date-field root. Faithful Vue port of
+ * HeroUI v3 `DateField` (`data-slot="date-field"`).
  *
- * Computes `dateFieldVariants` for the wrapper and provides a `dateInputGroupVariants`
- * slot map to the compound parts (Group, Input, Segment, Prefix, Suffix).
- * Wraps reka-ui `DateFieldRoot`; all reka props and emits are forwarded.
+ * Wraps reka-ui `DateFieldRoot`, applies `dateFieldVariants`, advertises the
+ * `date` field kind, and republishes reka's segment slot so `DateField.Input`
+ * can iterate it. All reka props/emits are forwarded via `attrs`.
  */
 export const DateFieldRoot = defineComponent({
   name: 'DateField',
@@ -19,31 +18,30 @@ export const DateFieldRoot = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** HeroUI `fullWidth` — stretch the field to fill its container. @default false */
-    fullWidth: { type: Boolean as PropType<DateFieldVariants['fullWidth']>, default: false }
+    fullWidth: { type: Boolean as PropType<DateFieldVariants['fullWidth']>, default: false },
   },
-  emits: ['update:modelValue', 'update:placeholder'],
-  setup (props, { attrs, emit, slots }) {
-    // Provide dateInputGroupVariants slot map — parts read this for BEM classes.
-    // We store variant/fullWidth defaults here so Group can override at its level.
-    const groupSlots = computed(() => dateInputGroupVariants())
-    provide(DATE_FIELD_CONTEXT, { slots: groupSlots })
+  setup (props, { attrs, slots }) {
+    provide(DATE_FIELD_KIND, 'date')
 
-    const styles = computed(() => dateFieldVariants({ fullWidth: props.fullWidth }))
-    const forwarded = useForwardPropsEmits(attrs as DateFieldRootProps, emit)
+    const segments = ref<DateSegment[]>([])
+    provide(DATE_SEGMENTS, { kind: 'date', segments })
 
     return () => (
       <RekaDateFieldRoot
-        {...forwarded.value}
+        {...(attrs as Record<string, unknown>)}
         data-slot="date-field"
-        data-required={(forwarded.value as Record<string, unknown>).required ? '' : undefined}
-        class={cn(styles.value, props.class)}
+        data-required={(attrs as Record<string, unknown>).required ? '' : undefined}
+        class={cn(dateFieldVariants({ fullWidth: props.fullWidth }), props.class)}
       >
         {{
-          default: (slotProps: Record<string, unknown>) => slots.default?.(slotProps)
+          default: (slotProps: { segments: DateSegment[] }) => {
+            segments.value = slotProps.segments
+            return slots.default?.(slotProps)
+          },
         }}
       </RekaDateFieldRoot>
     )
-  }
+  },
 })
 
 export default DateFieldRoot

@@ -1,12 +1,14 @@
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { disclosureGroupVariants } from '@heroui/styles'
+import type { accordionVariants } from '@heroui/styles'
 
-/** The `disclosureGroupVariants()` slot map. */
-export type AccordionSlots = ReturnType<typeof disclosureGroupVariants>
+/** The `accordionVariants()` slot map. */
+export type AccordionSlots = ReturnType<typeof accordionVariants>
 
 export interface AccordionContext {
   /** Reactive slot map — recomputed when root variant props change. */
   slots: ComputedRef<AccordionSlots>
+  /** Hide separator between items. */
+  hideSeparator: ComputedRef<boolean>
 }
 
 /** Provided by `Accordion`, consumed by compound parts. */

@@ -22,6 +22,9 @@ export const ComboBox = Object.assign(ComboBoxRoot, {
 
 export { ComboBoxRoot, ComboBoxInputGroup, ComboBoxTrigger, ComboBoxPopover }
 
+/** ComboBoxContext — re-exported to match HeroUI v3 React's named export. */
+export { COMBO_BOX_CONTEXT as ComboBoxContext } from './combo-box-context'
+
 export { ComboBoxInput } from './combo-box-input'
 export { ComboBoxItem } from './combo-box-item'
 export { ComboBoxItemIndicator } from './combo-box-item-indicator'

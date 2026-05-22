@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "kind": "oss",
+  "component": "table",
+  "generatedAt": "2026-05-22T05:18:14.358Z",
+  "source": {
+    "reactIndex": "/Users/ankit/Downloads/heroui-3/packages/react/src/components/table/index.ts",
+    "reactComponent": "/Users/ankit/Downloads/heroui-3/packages/react/src/components/table/table.tsx",
+    "styles": "/Users/ankit/Downloads/heroui-3/packages/styles/src/components/table/table.styles.ts",
+    "css": null
+  },
+  "upstream": {
+    "exports": [
+      "Table",
+      "TableBody",
+      "TableCell",
+      "TableCollection",
+      "TableColumn",
+      "TableColumnResizer",
+      "TableContent",
+      "TableFooter",
+      "TableHeader",
+      "TableLoadMoreContent",
+      "TableLoadMoreItem",
+      "TableResizableContainer",
+      "TableRoot",
+      "TableRow",
+      "TableScrollContainer",
+      "tableVariants"
+    ],
+    "compoundParts": [
+      "Body",
+      "Cell",
+      "Collection",
+      "Column",
+      "ColumnResizer",
+      "Content",
+      "Footer",
+      "Header",
+      "LoadMore",
+      "LoadMoreContent",
+      "ResizableContainer",
+      "Root",
+      "Row",
+      "ScrollContainer"
+    ],
+    "dataSlots": [
+      "table",
+      "table-body",
+      "table-cell",
+      "table-column",
+      "table-column-resizer",
+      "table-content",
+      "table-footer",
+      "table-header",
+      "table-load-more",
+      "table-load-more-content",
+      "table-resizable-container",
+      "table-row",
+      "table-scroll-container"
+    ],
+    "styleSlots": {
+      "base": "table-root",
+      "body": "table__body",
+      "cell": "table__cell",
+      "column": "table__column",
+      "columnResizer": "table__column-resizer",
+      "content": "table__content",
+      "footer": "table__footer",
+      "header": "table__header",
+      "loadMore": "table__load-more",
+      "loadMoreContent": "table__load-more-content",
+      "resizableContainer": "table__resizable-container",
+      "row": "table__row",
+      "scrollContainer": "table__scroll-container"
+    },
+    "styleClasses": [
+      "table-root",
+      "table__body",
+      "table__cell",
+      "table__column",
+      "table__column-resizer",
+      "table__content",
+      "table__footer",
+      "table__header",
+      "table__load-more",
+      "table__load-more-content",
+      "table__resizable-container",
+      "table__row",
+      "table__scroll-container"
+    ],
+    "cssClasses": [],
+    "renderHosts": [
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table"
+      },
+      {
+        "tag": "TableContext",
+        "dataSlot": "table"
+      },
+      {
+        "tag": "dom.div",
+        "dataSlot": "table"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-scroll-container"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-scroll-container"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-scroll-container"
+      },
+      {
+        "tag": "dom.div",
+        "dataSlot": "table-scroll-container"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "table-content"
+      },
+      {
+        "tag": "TablePrimitive",
+        "dataSlot": "table-content"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-header"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-header"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-header"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-header"
+      },
+      {
+        "tag": "TableHeaderPrimitive",
+        "dataSlot": "table-header"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "table-column"
+      },
+      {
+        "tag": "ColumnPrimitive",
+        "dataSlot": "table-column"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-body"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-body"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-body"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-body"
+      },
+      {
+        "tag": "TableBodyPrimitive",
+        "dataSlot": "table-body"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-row"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "table-row"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-row"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-row"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "table-row"
+      },
+      {
+        "tag": "RowPrimitive",
+        "dataSlot": "table-row"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "table-cell"
+      },
+      {
+        "tag": "CellPrimitive",
+        "dataSlot": "table-cell"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-footer"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-footer"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-footer"
+      },
+      {
+        "tag": "dom.div",
+        "dataSlot": "table-footer"
+      },
+      {
+        "tag": "ResizableTableContainerPrimitive",
+        "dataSlot": "table-resizable-container"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "table-column-resizer"
+      },
+      {
+        "tag": "ColumnResizerPrimitive",
+        "dataSlot": "table-column-resizer"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "table-load-more"
+      },
+      {
+        "tag": "TableLoadMoreItemPrimitive",
+        "dataSlot": "table-load-more"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-load-more-content"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-load-more-content"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "table-load-more-content"
+      },
+      {
+        "tag": "dom.div",
+        "dataSlot": "table-load-more-content"
+      },
+      {
+        "tag": "Table.Collection",
+        "dataSlot": null
+      }
+    ]
+  },
+  "local": {
+    "familyDir": "src/table",
+    "manifestNotes": []
+  }
+}

@@ -1,15 +1,16 @@
-import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, provide, ref, type HTMLAttributes, type PropType } from 'vue'
 import { TimeFieldRoot as RekaTimeFieldRoot } from 'reka-ui'
-import { timeFieldVariants, dateInputGroupVariants, type TimeFieldVariants } from '@heroui/styles'
+import { timeFieldVariants, type TimeFieldVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { TIME_FIELD_CONTEXT } from './time-field-context'
+import { DATE_FIELD_KIND, DATE_SEGMENTS, type DateSegment } from '@/date-input-group'
 
 /**
- * TimeFieldRoot — the segmented time-field root. HeroUI v3 `TimeField`.
+ * TimeField.Root — the segmented time-field root. Faithful Vue port of
+ * HeroUI v3 `TimeField` (`data-slot="time-field"`).
  *
- * Computes `timeFieldVariants` for the wrapper class and provides a
- * `dateInputGroupVariants` slot map to the compound parts (Group, Input,
- * Segment, Prefix, Suffix). Wraps reka-ui `TimeFieldRoot`.
+ * Wraps reka-ui `TimeFieldRoot`, applies `timeFieldVariants`, advertises the
+ * `time` field kind, and republishes reka's segment slot so `TimeField.Input`
+ * can iterate it. All reka props/emits are forwarded via `attrs`.
  */
 export const TimeFieldRoot = defineComponent({
   name: 'TimeField',
@@ -17,27 +18,30 @@ export const TimeFieldRoot = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** HeroUI `fullWidth` — stretch the field to fill its container. @default false */
-    fullWidth: { type: Boolean as PropType<TimeFieldVariants['fullWidth']>, default: false }
+    fullWidth: { type: Boolean as PropType<TimeFieldVariants['fullWidth']>, default: false },
   },
   setup (props, { attrs, slots }) {
-    // Provide default dateInputGroupVariants slot map — Group overrides this for its own variant.
-    const groupSlots = computed(() => dateInputGroupVariants())
-    provide(TIME_FIELD_CONTEXT, { slots: groupSlots })
+    provide(DATE_FIELD_KIND, 'time')
 
-    const styles = computed(() => timeFieldVariants({ fullWidth: props.fullWidth }))
+    const segments = ref<DateSegment[]>([])
+    provide(DATE_SEGMENTS, { kind: 'time', segments })
 
     return () => (
       <RekaTimeFieldRoot
-        {...(attrs as Record<string, any>)}
+        {...(attrs as Record<string, unknown>)}
         data-slot="time-field"
-        class={cn(styles.value, props.class)}
+        data-required={(attrs as Record<string, unknown>).required ? '' : undefined}
+        class={cn(timeFieldVariants({ fullWidth: props.fullWidth }), props.class)}
       >
         {{
-          default: (slotProps: Record<string, unknown>) => slots.default?.(slotProps)
+          default: (slotProps: { segments: DateSegment[] }) => {
+            segments.value = slotProps.segments
+            return slots.default?.(slotProps)
+          },
         }}
       </RekaTimeFieldRoot>
     )
-  }
+  },
 })
 
 export default TimeFieldRoot

@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 import { PAGINATION_CONTEXT } from './pagination-context'
 
 /**
- * PaginationLink — a page-navigation button / anchor.
+ * PaginationLink — a page-navigation button.
  * Faithful Vue port of HeroUI v3 `Pagination.Link` (`pagination__link`).
  *
  * `isActive` marks the current page (sets `aria-current="page"` and
@@ -19,7 +19,7 @@ export const PaginationLink = defineComponent({
     /** Marks this link as the current page. */
     isActive: { type: Boolean, default: false },
     as:       { type: [String, Object, Function] as PropType<PrimitiveProps['as']>, default: 'button' },
-    asChild:  { type: Boolean as PropType<PrimitiveProps['asChild']>, default: false }
+    asChild:  { type: Boolean as PropType<PrimitiveProps['asChild']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     const ctx = inject(PAGINATION_CONTEXT, null)

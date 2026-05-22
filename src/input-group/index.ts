@@ -22,4 +22,4 @@ export const InputGroup = Object.assign(InputGroupRoot, {
 
 export { InputGroupRoot, InputGroupInput, InputGroupTextArea, InputGroupPrefix, InputGroupSuffix }
 export { inputGroupVariants } from '@heroui/styles'
-export type { InputGroupVariants } from '@heroui/styles'
+export type { InputGroupVariants, InputGroupVariants as InputGroupProps } from '@heroui/styles'

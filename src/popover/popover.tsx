@@ -1,6 +1,7 @@
 import { computed, defineComponent, provide } from 'vue'
-import { PopoverRoot as RekaPopoverRoot } from 'reka-ui'
+import { PopoverRoot as RekaPopoverRoot, PopoverTrigger as RekaPopoverTrigger } from 'reka-ui'
 import { popoverVariants } from '@heroui/styles'
+import { withAutoTrigger } from '@/lib/auto-trigger'
 import { POPOVER_CONTEXT } from './popover-context'
 
 /**
@@ -10,6 +11,10 @@ import { POPOVER_CONTEXT } from './popover-context'
  *
  * reka-ui `PopoverRoot` is the direct Vue equivalent of RAC `DialogTrigger`:
  * it manages open state and anchors `PopoverTrigger` to `PopoverContent`.
+ *
+ * Like HeroUI v3, the FIRST child of `<Popover>` is treated as the trigger
+ * automatically — no explicit `<Popover.Trigger>` wrapper required (though
+ * `<Popover.Trigger>` still works for back-compat).
  */
 export const PopoverRoot = defineComponent({
   name: 'PopoverRoot',
@@ -20,7 +25,7 @@ export const PopoverRoot = defineComponent({
 
     return () => (
       <RekaPopoverRoot data-slot="popover-root" {...attrs}>
-        {slots.default?.()}
+        {withAutoTrigger(slots.default?.(), RekaPopoverTrigger, 'PopoverTrigger')}
       </RekaPopoverRoot>
     )
   }

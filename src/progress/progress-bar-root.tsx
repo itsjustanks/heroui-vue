@@ -17,6 +17,9 @@ export const ProgressBarRoot = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    style: { type: [String, Object, Array] as PropType<HTMLAttributes['style']>, default: undefined },
+    /** Current value (HeroUI API alias for `modelValue`). `null`/undefined → indeterminate. */
+    value: { type: [Number, null] as PropType<number | null | undefined>, default: undefined },
     /** Current value. `null` → indeterminate. */
     modelValue: { type: [Number, null] as PropType<ProgressRootProps['modelValue']>, default: null },
     /** Minimum value. @default 0 */
@@ -31,13 +34,16 @@ export const ProgressBarRoot = defineComponent({
   setup (props, { attrs, slots }) {
     const styles = computed(() => progressBarVariants({ color: props.color, size: props.size }))
 
-    const isIndeterminate = computed(() => props.modelValue == null)
+    // `value` (HeroUI API) takes precedence over `modelValue` (v-model API)
+    const effectiveValue = computed(() => props.value !== undefined ? props.value : props.modelValue)
+
+    const isIndeterminate = computed(() => effectiveValue.value == null)
 
     const percentage = computed<number | undefined>(() => {
       if (isIndeterminate.value) return undefined
       const span = (props.maxValue ?? 100) - (props.minValue ?? 0)
       if (span <= 0) return 0
-      return Math.min(100, Math.max(0, (((props.modelValue as number) - (props.minValue ?? 0)) / span) * 100))
+      return Math.min(100, Math.max(0, (((effectiveValue.value as number) - (props.minValue ?? 0)) / span) * 100))
     })
 
     const valueText = computed(() =>
@@ -50,8 +56,9 @@ export const ProgressBarRoot = defineComponent({
       <ProgressRoot
         {...attrs}
         modelValue={isIndeterminate.value ? null : (percentage.value ?? 0)}
-        max={props.maxValue}
+        max={100}
         data-slot="progress-bar"
+        style={props.style}
         class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}

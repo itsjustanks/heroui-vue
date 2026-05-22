@@ -1,21 +1,52 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, shallowRef, ref, watch } from 'vue'
 import ReactMount from './react-mount'
 import VueSafe from './vue-safe'
 import CodeBlock from './CodeBlock.vue'
-import { categories, demos, type Demo } from './registry'
+import DiffView from './DiffView.vue'
+import { categories, demos, loadDemo, type Demo, type DemoMeta } from './registry'
 
 type Mode = 'both' | 'vue' | 'react'
 
-const selectedId = ref(demos[0]?.id ?? '')
+const selectedId = ref(
+  new URLSearchParams(location.search).get('c') ?? demos[0]?.id ?? ''
+)
 const mode = ref<Mode>('both')
-const current = computed<Demo | undefined>(
+const current = shallowRef<Demo>()
+const isLoading = ref(false)
+const loadError = ref('')
+
+// Keep the URL in sync so any component is directly linkable (`?c=<id>`).
+watch(selectedId, (id) => {
+  const url = new URL(location.href)
+  url.searchParams.set('c', id)
+  history.replaceState(null, '', url)
+})
+const currentMeta = computed(
   () => demos.find((d) => d.id === selectedId.value) ?? demos[0]
 )
 
-function demosIn (category: string): Demo[] {
+function demosIn (category: string): DemoMeta[] {
   return demos.filter((d) => d.category === category)
 }
+
+watch(selectedId, async (id) => {
+  const loadId = id
+  isLoading.value = true
+  loadError.value = ''
+
+  try {
+    const demo = await loadDemo(loadId)
+    if (selectedId.value === loadId) current.value = demo
+  } catch (error) {
+    if (selectedId.value === loadId) {
+      loadError.value = error instanceof Error ? error.message : String(error)
+      current.value = undefined
+    }
+  } finally {
+    if (selectedId.value === loadId) isLoading.value = false
+  }
+}, { immediate: true })
 </script>
 
 <template>
@@ -44,10 +75,10 @@ function demosIn (category: string): Demo[] {
         </template>
       </nav>
 
-      <main v-if="current" class="pg-main">
+      <main v-if="currentMeta" class="pg-main">
         <div class="pg-main-head">
-          <h2>{{ current.title }}</h2>
-          <span class="pg-cat-tag">{{ current.category }}</span>
+          <h2>{{ current?.title ?? currentMeta.title }}</h2>
+          <span class="pg-cat-tag">{{ current?.category ?? currentMeta.category }}</span>
           <span class="pg-spacer" />
           <div class="pg-toggle">
             <button :class="{ 'is-active': mode === 'both' }" @click="mode = 'both'">Both</button>
@@ -57,7 +88,9 @@ function demosIn (category: string): Demo[] {
         </div>
 
         <div class="pg-section-title">Preview</div>
-        <div class="pg-panes" :class="{ 'is-single': mode !== 'both' }">
+        <div v-if="isLoading" class="pg-loading">Loading {{ currentMeta.title }} preview…</div>
+        <div v-else-if="loadError" class="pg-loading is-error">{{ loadError }}</div>
+        <div v-else-if="current" class="pg-panes" :class="{ 'is-single': mode !== 'both' }">
           <section v-if="mode !== 'react'" class="pg-pane pg-pane--vue">
             <div class="pg-pane-label"><span class="dot" />Vue · @itsjustanks/heroui-vue</div>
             <div class="pg-pane-body">
@@ -73,20 +106,25 @@ function demosIn (category: string): Demo[] {
             </div>
           </section>
         </div>
-        <p v-if="current.note" class="pg-note">{{ current.note }}</p>
+        <p v-if="current?.note" class="pg-note">{{ current.note }}</p>
 
-        <div class="pg-section-title">Code</div>
-        <div class="pg-panes" :class="{ 'is-single': mode !== 'both' }">
+        <div class="pg-section-title">Code · Vue ↔ React diff</div>
+        <DiffView
+          v-if="current && mode === 'both'"
+          :vue-source="current.vueSource"
+          :react-source="current.reactSource"
+        />
+        <div v-else-if="current" class="pg-panes is-single">
           <CodeBlock
-            v-if="mode !== 'react'"
+            v-if="mode === 'vue'"
             variant="vue"
-            :label="current.id + '.vue'"
+            :label="'demos/vue/' + current.id + '.tsx'"
             :source="current.vueSource"
           />
           <CodeBlock
-            v-if="mode !== 'vue'"
+            v-if="mode === 'react'"
             variant="react"
-            :label="current.id + '.tsx'"
+            :label="'demos/react/' + current.id + '.tsx'"
             :source="current.reactSource"
           />
         </div>

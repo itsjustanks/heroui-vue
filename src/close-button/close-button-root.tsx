@@ -1,8 +1,9 @@
-import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { Primitive, type PrimitiveProps } from 'reka-ui'
 import { closeButtonVariants, type CloseButtonVariants } from '@heroui/styles'
 import { IconX } from '@/icons'
 import { cn } from '@/lib/utils'
+import { reactClass, reactClassProps, reactDisabled, reactDisabledProps, reactPressAttrs } from '@/lib/react-compat'
 
 /**
  * CloseButtonRoot — the standard dismiss control. Faithful Vue port of HeroUI v3 `CloseButtonRoot`.
@@ -16,7 +17,8 @@ export const CloseButtonRoot = defineComponent({
   name: 'CloseButtonRoot',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    ...reactClassProps,
+    ...reactDisabledProps,
     /** Visual variant. @default 'default' */
     variant: { type: String as PropType<CloseButtonVariants['variant']>, default: 'default' },
     as: { type: [String, Object, Function] as PropType<PrimitiveProps['as']>, default: 'button' },
@@ -25,18 +27,25 @@ export const CloseButtonRoot = defineComponent({
   setup (props, { attrs, slots }) {
     const styles = computed(() => closeButtonVariants({ variant: props.variant }))
 
-    return () => (
-      <Primitive
-        aria-label="Close"
-        {...attrs}
-        as={props.as}
-        asChild={props.asChild}
-        data-slot="close-button"
-        class={cn(styles.value, props.class)}
-      >
-        {slots.default ? slots.default() : <IconX data-slot="close-button-icon" />}
-      </Primitive>
-    )
+    return () => {
+      const isDisabled = reactDisabled(props)
+      const forwardedAttrs = reactPressAttrs(attrs)
+      if (isDisabled) forwardedAttrs.disabled = true
+
+      return (
+        <Primitive
+          aria-label="Close"
+          {...forwardedAttrs}
+          as={props.as}
+          asChild={props.asChild}
+          data-disabled={isDisabled ? 'true' : undefined}
+          data-slot="close-button"
+          class={cn(styles.value, reactClass(props))}
+        >
+          {slots.default ? slots.default() : <IconX data-slot="close-button-icon" />}
+        </Primitive>
+      )
+    }
   }
 })
 

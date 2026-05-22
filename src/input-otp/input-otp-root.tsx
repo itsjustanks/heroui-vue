@@ -21,7 +21,10 @@ export const InputOTPRoot = defineComponent({
     /** When `true`, the input is non-interactive. */
     isDisabled: { type: Boolean, default: false },
     /** When `true`, slots render in the invalid state. */
-    isInvalid:  { type: Boolean, default: false }
+    isInvalid:  { type: Boolean, default: false },
+    inputClassName: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    validationDetails: { type: Object as PropType<unknown>, default: undefined },
+    validationErrors: { type: Array as PropType<unknown[]>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     const styles    = computed(() => inputOTPVariants({ variant: props.variant }))

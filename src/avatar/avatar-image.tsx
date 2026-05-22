@@ -19,7 +19,6 @@ export const AvatarImage = defineComponent({
       <RekaAvatarImage
         {...(attrs as Record<string, any>)}
         src={props.src as string}
-        data-slot="avatar-image"
         class={cn((ctx?.slots.value ?? avatarVariants()).image(), props.class)}
       />
     )

@@ -15,6 +15,7 @@ export const SelectRoot = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    items: { type: Array as PropType<unknown[]>, default: undefined },
     /** Visual variant. @default 'primary' */
     variant: { type: String as PropType<SelectVariants['variant']>, default: 'primary' },
     /** Stretch to container width. */

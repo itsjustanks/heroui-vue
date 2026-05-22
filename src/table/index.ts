@@ -8,14 +8,15 @@
  *   `Table.Content`           — TableContent
  *   `Table.Header`            — TableHeader
  *   `Table.Column`            — TableColumn
+ *   `Table.ColumnResizer`     — TableColumnResizer (Vue anatomy shim)
  *   `Table.Body`              — TableBody
  *   `Table.Row`               — TableRow
  *   `Table.Cell`              — TableCell
  *   `Table.Footer`            — TableFooter
- *
- * Omitted vs. HeroUI React (require RAC primitives not available in Vue):
- *   Table.Collection, Table.ColumnResizer, Table.LoadMore,
- *   Table.LoadMoreContent, Table.ResizableContainer
+ *   `Table.Collection`        — TableCollection (fragment shim)
+ *   `Table.LoadMore`          — TableLoadMoreItem
+ *   `Table.LoadMoreContent`   — TableLoadMoreContent
+ *   `Table.ResizableContainer`— TableResizableContainer (Vue anatomy shim)
  *
  * Removed (breaking change from v0): TableHead, TableCaption, TableEmpty.
  */
@@ -24,10 +25,15 @@ import { TableScrollContainer } from './table-scroll-container'
 import { TableContent } from './table-content'
 import { TableHeader } from './table-header'
 import { TableColumn } from './table-column'
+import { TableColumnResizer } from './table-column-resizer'
 import { TableBody } from './table-body'
 import { TableRow } from './table-row'
 import { TableCell } from './table-cell'
 import { TableFooter } from './table-footer'
+import { TableCollection } from './table-collection'
+import { TableLoadMoreItem } from './table-load-more-item'
+import { TableLoadMoreContent } from './table-load-more-content'
+import { TableResizableContainer } from './table-resizable-container'
 
 /** Compound component — `Table.ScrollContainer`, `Table.Content`, … (HeroUI v3 API). */
 export const Table = Object.assign(TableRoot, {
@@ -36,10 +42,15 @@ export const Table = Object.assign(TableRoot, {
   Content:         TableContent,
   Header:          TableHeader,
   Column:          TableColumn,
+  ColumnResizer:   TableColumnResizer,
   Body:            TableBody,
   Row:             TableRow,
   Cell:            TableCell,
   Footer:          TableFooter,
+  Collection:      TableCollection,
+  LoadMore:        TableLoadMoreItem,
+  LoadMoreContent: TableLoadMoreContent,
+  ResizableContainer: TableResizableContainer,
 })
 
 export {
@@ -48,10 +59,15 @@ export {
   TableContent,
   TableHeader,
   TableColumn,
+  TableColumnResizer,
   TableBody,
   TableRow,
   TableCell,
   TableFooter,
+  TableCollection,
+  TableLoadMoreItem,
+  TableLoadMoreContent,
+  TableResizableContainer,
 }
 
 export { tableVariants } from '@heroui/styles'

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "kind": "oss",
+  "component": "accordion",
+  "generatedAt": "2026-05-22T05:18:14.355Z",
+  "source": {
+    "reactIndex": "/Users/ankit/Downloads/heroui-3/packages/react/src/components/accordion/index.ts",
+    "reactComponent": "/Users/ankit/Downloads/heroui-3/packages/react/src/components/accordion/accordion.tsx",
+    "styles": "/Users/ankit/Downloads/heroui-3/packages/styles/src/components/accordion/accordion.styles.ts",
+    "css": null
+  },
+  "upstream": {
+    "exports": [
+      "Accordion",
+      "AccordionBody",
+      "AccordionHeading",
+      "AccordionIndicator",
+      "AccordionItem",
+      "AccordionPanel",
+      "AccordionRoot",
+      "AccordionTrigger",
+      "accordionVariants"
+    ],
+    "compoundParts": [
+      "Root",
+      "Item",
+      "Heading",
+      "Trigger",
+      "Panel",
+      "Indicator",
+      "Body"
+    ],
+    "dataSlots": [
+      "accordion",
+      "accordion-body",
+      "accordion-heading",
+      "accordion-indicator",
+      "accordion-item",
+      "accordion-panel",
+      "accordion-trigger"
+    ],
+    "styleSlots": {
+      "base": "accordion",
+      "body": "accordion__body",
+      "bodyInner": "accordion__body-inner",
+      "heading": "accordion__heading",
+      "indicator": "accordion__indicator",
+      "item": "accordion__item",
+      "panel": "accordion__panel",
+      "trigger": "accordion__trigger"
+    },
+    "styleClasses": [
+      "accordion",
+      "accordion__body",
+      "accordion__body-inner",
+      "accordion__heading",
+      "accordion__indicator",
+      "accordion__item",
+      "accordion__panel",
+      "accordion__trigger"
+    ],
+    "cssClasses": [],
+    "renderHosts": [
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "accordion"
+      },
+      {
+        "tag": "DisclosureGroup",
+        "dataSlot": "accordion"
+      },
+      {
+        "tag": "AccordionContext",
+        "dataSlot": null
+      },
+      {
+        "tag": "SurfaceContext",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "accordion-item"
+      },
+      {
+        "tag": "Disclosure",
+        "dataSlot": "accordion-item"
+      },
+      {
+        "tag": "E",
+        "dataSlot": null
+      },
+      {
+        "tag": "E",
+        "dataSlot": null
+      },
+      {
+        "tag": "E",
+        "dataSlot": null
+      },
+      {
+        "tag": "IconChevronDown",
+        "dataSlot": "accordion-indicator"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "accordion-heading"
+      },
+      {
+        "tag": "DisclosureHeading",
+        "dataSlot": "accordion-heading"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "accordion-trigger"
+      },
+      {
+        "tag": "Button",
+        "dataSlot": "accordion-trigger"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "accordion-body"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "accordion-body"
+      },
+      {
+        "tag": "E",
+        "dataSlot": "accordion-body"
+      },
+      {
+        "tag": "dom.div",
+        "dataSlot": "accordion-body"
+      },
+      {
+        "tag": "div",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "accordion-panel"
+      },
+      {
+        "tag": "DisclosurePanel",
+        "dataSlot": "accordion-panel"
+      }
+    ]
+  },
+  "local": {
+    "familyDir": "src/accordion",
+    "manifestNotes": []
+  }
+}

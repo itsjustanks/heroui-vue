@@ -1,6 +1,7 @@
 import { computed, defineComponent, provide } from 'vue'
-import { TooltipRoot as RekaTooltipRoot } from 'reka-ui'
+import { TooltipRoot as RekaTooltipRoot, TooltipTrigger as RekaTooltipTrigger } from 'reka-ui'
 import { tooltipVariants } from '@heroui/styles'
+import { withAutoTrigger } from '@/lib/auto-trigger'
 import { TOOLTIP_CONTEXT } from './tooltip-context'
 
 /**
@@ -10,6 +11,10 @@ import { TOOLTIP_CONTEXT } from './tooltip-context'
  *
  * reka-ui `TooltipRoot` is the direct Vue equivalent of RAC `TooltipTrigger`:
  * it manages open state and anchors `TooltipTrigger` to `TooltipContent`.
+ *
+ * Like HeroUI v3, the FIRST child of `<Tooltip>` is treated as the trigger
+ * automatically — no explicit `<Tooltip.Trigger>` wrapper required (though
+ * `<Tooltip.Trigger>` still works for back-compat).
  */
 export const TooltipRoot = defineComponent({
   name: 'TooltipRoot',
@@ -20,7 +25,7 @@ export const TooltipRoot = defineComponent({
 
     return () => (
       <RekaTooltipRoot data-slot="tooltip-root" {...attrs}>
-        {slots.default?.()}
+        {withAutoTrigger(slots.default?.(), RekaTooltipTrigger, 'TooltipTrigger')}
       </RekaTooltipRoot>
     )
   }

@@ -1,5 +1,4 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { IconChevronLeft, IconChevronRight } from '@/icons'
 import {
   DateRangePickerCalendar as RekaDateRangePickerCalendar,
   DateRangePickerCell,
@@ -12,99 +11,111 @@ import {
   DateRangePickerHeader,
   DateRangePickerHeading,
   DateRangePickerNext,
-  DateRangePickerPrev
+  DateRangePickerPrev,
 } from 'reka-ui'
 import { rangeCalendarVariants } from '@heroui/styles'
+import { IconChevronLeft, IconChevronRight } from '@/icons'
 import { cn } from '@/lib/utils'
 
-type TCalendarSlot = {
-  grid: Array<{ value: { toString: () => string }; rows: unknown[][] }>
-  weekDays: string[]
-}
+type GridMonth = { value: { toString: () => string }; rows: Array<Array<{ toString: () => string }>> }
+type CalendarSlot = { grid: GridMonth[]; weekDays: string[] }
 
 /**
  * DateRangePickerCalendar — the range month grid inside `DateRangePicker.Popover`.
- * Styled via `rangeCalendarVariants` (HeroUI's `RangeCalendar` BEM family). Composes
- * reka-ui's `DateRangePicker`-scoped calendar parts, which share context with the
- * `DateRangePickerRoot`.
+ *
+ * reka-ui scopes the range-calendar primitives per picker, so the standalone
+ * `RangeCalendar` cannot wire to `DateRangePickerRoot`'s value. This component
+ * composes the reka-ui `DateRangePicker`-scoped parts while applying the exact
+ * `rangeCalendarVariants` slot classes and `data-slot` attributes of the
+ * standalone `RangeCalendar`.
  */
 export const DateRangePickerCalendar = defineComponent({
   name: 'DateRangePickerCalendar',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
   },
   setup (props, { attrs }) {
-    const styles = rangeCalendarVariants()
+    const s = rangeCalendarVariants()
+
     return () => (
-      <RekaDateRangePickerCalendar {...attrs} data-slot="range-calendar" class={cn(styles.base(), props.class)}>
+      <RekaDateRangePickerCalendar
+        {...attrs}
+        data-slot="range-calendar"
+        class={cn(s.base(), props.class)}
+      >
         {{
-          default: ({ grid, weekDays }: TCalendarSlot) => (
+          default: ({ grid, weekDays }: CalendarSlot) => (
             <>
-              <DateRangePickerHeader data-slot="range-calendar-header" class={cn(styles.header())}>
-                <DateRangePickerPrev data-slot="range-calendar-nav-button" class={cn(styles.navButton())}>
-                  <IconChevronLeft class={cn(styles.navButtonIcon())} />
+              <DateRangePickerHeader data-slot="range-calendar-header" class={s.header()}>
+                <DateRangePickerHeading data-slot="range-calendar-heading" class={s.heading()} />
+                <DateRangePickerPrev data-slot="range-calendar-nav-button" class={s.navButton()}>
+                  <IconChevronLeft
+                    data-slot="range-calendar-nav-button-icon"
+                    class={s.navButtonIcon()}
+                  />
                 </DateRangePickerPrev>
-                <DateRangePickerHeading data-slot="range-calendar-heading" class={cn(styles.heading())} />
-                <DateRangePickerNext data-slot="range-calendar-nav-button" class={cn(styles.navButton())}>
-                  <IconChevronRight class={cn(styles.navButtonIcon())} />
+                <DateRangePickerNext data-slot="range-calendar-nav-button" class={s.navButton()}>
+                  <IconChevronRight
+                    data-slot="range-calendar-nav-button-icon"
+                    class={s.navButtonIcon()}
+                  />
                 </DateRangePickerNext>
               </DateRangePickerHeader>
-
-              <div class="flex flex-col gap-y-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
-                {grid.map((month) => (
-                  <DateRangePickerGrid
-                    key={month.value.toString()}
-                    data-slot="range-calendar-grid"
-                    class={cn(styles.grid())}
+              {grid.map((month) => (
+                <DateRangePickerGrid
+                  key={month.value.toString()}
+                  data-slot="range-calendar-grid"
+                  class={s.grid()}
+                >
+                  <DateRangePickerGridHead
+                    data-slot="range-calendar-grid-header"
+                    class={s.gridHeader()}
                   >
-                    <DateRangePickerGridHead data-slot="range-calendar-grid-header" class={cn(styles.gridHeader())}>
-                      <DateRangePickerGridRow data-slot="range-calendar-grid-row" class={cn(styles.gridRow())}>
-                        {weekDays.map((day) => (
-                          <DateRangePickerHeadCell
-                            key={day}
-                            data-slot="range-calendar-header-cell"
-                            class={cn(styles.headerCell())}
+                    <DateRangePickerGridRow class={s.gridRow()}>
+                      {weekDays.map((day) => (
+                        <DateRangePickerHeadCell
+                          key={day}
+                          data-slot="range-calendar-header-cell"
+                          class={s.headerCell()}
+                        >
+                          {day}
+                        </DateRangePickerHeadCell>
+                      ))}
+                    </DateRangePickerGridRow>
+                  </DateRangePickerGridHead>
+                  <DateRangePickerGridBody
+                    data-slot="range-calendar-grid-body"
+                    class={s.gridBody()}
+                  >
+                    {month.rows.map((week, i) => (
+                      <DateRangePickerGridRow key={`week-${i}`} class={s.gridRow()}>
+                        {week.map((day) => (
+                          <DateRangePickerCell
+                            key={day.toString()}
+                            date={day as never}
+                            data-slot="range-calendar-cell"
+                            class={s.cell()}
                           >
-                            {day}
-                          </DateRangePickerHeadCell>
+                            <DateRangePickerCellTrigger
+                              day={day as never}
+                              month={month.value as never}
+                              data-slot="range-calendar-cell-button"
+                              class="range-calendar__cell-button"
+                            />
+                          </DateRangePickerCell>
                         ))}
                       </DateRangePickerGridRow>
-                    </DateRangePickerGridHead>
-                    <DateRangePickerGridBody data-slot="range-calendar-grid-body" class={cn(styles.gridBody())}>
-                      {month.rows.map((weekDates, index) => (
-                        <DateRangePickerGridRow
-                          key={`weekDate-${index}`}
-                          data-slot="range-calendar-grid-row"
-                          class={cn(styles.gridRow())}
-                        >
-                          {(weekDates as Array<{ toString: () => string }>).map((weekDate) => (
-                            <DateRangePickerCell
-                              key={weekDate.toString()}
-                              date={weekDate as never}
-                              data-slot="range-calendar-cell"
-                              class={cn(styles.cell())}
-                            >
-                              <DateRangePickerCellTrigger
-                                day={weekDate as never}
-                                month={month.value as never}
-                                data-slot="range-calendar-cell-indicator"
-                                class={cn(styles.cellIndicator())}
-                              />
-                            </DateRangePickerCell>
-                          ))}
-                        </DateRangePickerGridRow>
-                      ))}
-                    </DateRangePickerGridBody>
-                  </DateRangePickerGrid>
-                ))}
-              </div>
+                    ))}
+                  </DateRangePickerGridBody>
+                </DateRangePickerGrid>
+              ))}
             </>
-          )
+          ),
         }}
       </RekaDateRangePickerCalendar>
     )
-  }
+  },
 })
 
 export default DateRangePickerCalendar

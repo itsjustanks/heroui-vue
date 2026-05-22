@@ -3,6 +3,7 @@ import { CheckboxRoot as RekaCheckboxRoot, injectCheckboxRootContext } from 'rek
 import { checkboxVariants, type CheckboxVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { CHECKBOX_CONTEXT } from './checkbox-context'
+import { CHECKBOX_GROUP_CONTEXT } from '@/checkbox-group/checkbox-group-context'
 
 /* -------------------------------------------------------------------------------------------------
  * CheckboxRoot — the interactive checkbox element. Faithful Vue port of HeroUI v3 `Checkbox`.
@@ -16,15 +17,18 @@ export const CheckboxRoot = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Visual variant — `checkbox--{variant}`. @default 'primary' */
-    variant: { type: String as PropType<CheckboxVariants['variant']>, default: 'primary' }
+    /** Visual variant — `checkbox--{variant}`. Inherits from a parent `CheckboxGroup`. */
+    variant: { type: String as PropType<CheckboxVariants['variant']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const styles = computed(() => checkboxVariants({ variant: props.variant }))
+    const group = inject(CHECKBOX_GROUP_CONTEXT, null)
+    const styles = computed(() =>
+      checkboxVariants({ variant: props.variant ?? group?.variant.value ?? 'primary' }))
     provide(CHECKBOX_CONTEXT, { slots: styles })
 
     return () => (
       <RekaCheckboxRoot
+        as="label"
         {...attrs}
         data-slot="checkbox"
         class={cn(styles.value.base(), props.class)}

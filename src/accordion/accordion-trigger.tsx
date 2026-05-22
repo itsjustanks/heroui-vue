@@ -1,18 +1,18 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { AccordionHeader, AccordionTrigger as RekaAccordionTrigger, injectAccordionItemContext } from 'reka-ui'
-import { disclosureVariants } from '@heroui/styles'
+import { accordionVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { IconChevronDown } from '@/icons'
 import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
 
 /**
- * AccordionTrigger — Vue port of HeroUI v3 `DisclosureHeading` + `DisclosureTrigger` + `DisclosureIndicator`.
+ * AccordionTrigger — Vue port of HeroUI v3 `AccordionTrigger`.
  *
  * DOM structure mirrors HeroUI React:
- *   h3[data-slot="disclosure-heading"]
- *     button[data-slot="disclosure-trigger"]
+ *   h3[data-slot="accordion-heading"]
+ *     button[data-slot="accordion-trigger"]
  *       {children}
- *       svg[data-slot="disclosure-indicator"][data-expanded]
+ *       svg[data-slot="accordion-indicator"][data-expanded]
  */
 export const AccordionTrigger = defineComponent({
   name: 'AccordionTrigger',
@@ -25,16 +25,16 @@ export const AccordionTrigger = defineComponent({
     const itemContext = injectAccordionItemContext()
 
     return () => {
-      const s = ctx?.slots.value ?? disclosureVariants()
+      const s = ctx?.slots.value ?? accordionVariants()
 
       return (
         <AccordionHeader
-          data-slot="disclosure-heading"
+          data-slot="accordion-heading"
           class={cn(s.heading())}
         >
           <RekaAccordionTrigger
             {...attrs}
-            data-slot="disclosure-trigger"
+            data-slot="accordion-trigger"
             class={cn(s.trigger(), props.class)}
           >
             {slots.default?.()}
@@ -42,7 +42,7 @@ export const AccordionTrigger = defineComponent({
               ? slots.indicator()
               : (
                 <IconChevronDown
-                  data-slot="disclosure-indicator"
+                  data-slot="accordion-indicator"
                   class={cn(s.indicator())}
                   data-expanded={itemContext.open.value ? 'true' : undefined}
                 />

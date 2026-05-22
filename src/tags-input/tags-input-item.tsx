@@ -20,6 +20,8 @@ export const TagRoot = defineComponent({
   inheritAttrs: false,
   props: {
     class:   { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Stable identity — HeroUI's `id` prop (forwarded to reka-ui as `value`). */
+    id:      { type: String, default: undefined },
     /** Tag size — falls back to parent `TagGroup` context. */
     size:    { type: String as PropType<TagVariants['size']>, default: undefined },
     /** Tag variant — falls back to parent `TagGroup` context. */
@@ -39,6 +41,8 @@ export const TagRoot = defineComponent({
     return () => (
       <RekaTagsInputItem
         {...(attrs as Record<string, any>)}
+        id={props.id}
+        value={props.id ?? (attrs as Record<string, any>).value}
         data-slot="tag"
         class={cn(tagSlots.value.base(), props.class)}
       >

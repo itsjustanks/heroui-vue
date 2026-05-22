@@ -41,7 +41,12 @@
     "dev": "vite",
     "build": "vite build && vue-tsc -p tsconfig.build.json",
     "type-check": "vue-tsc --noEmit",
+    "type-check:pro": "vue-tsc -p pro/tsconfig.json --noEmit",
     "maintain": "node scripts/maintain.mjs",
+    "port:component": "node scripts/port-react-component.mjs",
+    "extract:oss-manifest": "node scripts/extract-oss-manifest.mjs",
+    "extract:pro-manifest": "node scripts/extract-pro-manifest.mjs",
+    "check:parity": "node scripts/check-parity.mjs",
     "check:upstream": "node scripts/check-upstream.mjs",
     "check:coverage": "node scripts/check-coverage.mjs",
     "check:bem-drift": "node scripts/check-bem-drift.mjs"

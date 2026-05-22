@@ -30,7 +30,7 @@ export const AvatarRoot = defineComponent({
     provide(AVATAR_CONTEXT, { slots: styles })
 
     return () => (
-      <RekaAvatarRoot {...attrs} data-slot="avatar" class={cn(styles.value.base(), props.class)}>
+      <RekaAvatarRoot {...attrs} class={cn(styles.value.base(), props.class)}>
         {slots.default?.()}
       </RekaAvatarRoot>
     )

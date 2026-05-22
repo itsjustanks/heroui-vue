@@ -7,8 +7,9 @@ import { ALERT_DIALOG_CONTEXT } from './alert-dialog-context'
 /**
  * AlertDialogTrigger — Vue port of HeroUI v3 `AlertDialogTrigger`.
  *
- * Renders `data-slot="alert-dialog-trigger"` with the `alert-dialog__trigger`
- * class. Wraps the child in reka-ui `AlertDialogTrigger` for open/close behaviour.
+ * Mirrors HeroUI React: renders `data-slot="alert-dialog-trigger"` with
+ * `role="button"` and the `alert-dialog__trigger` class. Uses reka-ui
+ * `AlertDialogTrigger` as `asChild` so the inner div acts as the actual trigger.
  */
 export const AlertDialogTrigger = defineComponent({
   name: 'AlertDialogTrigger',
@@ -23,9 +24,11 @@ export const AlertDialogTrigger = defineComponent({
       const s = ctx?.slots.value ?? alertDialogVariants()
 
       return (
-        <RekaAlertDialogTrigger {...attrs}>
+        <RekaAlertDialogTrigger asChild>
           <div
+            {...attrs}
             data-slot="alert-dialog-trigger"
+            role="button"
             class={cn(s.trigger(), props.class)}
           >
             {slots.default?.()}

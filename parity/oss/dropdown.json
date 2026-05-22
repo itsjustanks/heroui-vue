@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "kind": "oss",
+  "component": "dropdown",
+  "generatedAt": "2026-05-22T05:18:14.357Z",
+  "source": {
+    "reactIndex": "/Users/ankit/Downloads/heroui-3/packages/react/src/components/dropdown/index.ts",
+    "reactComponent": "/Users/ankit/Downloads/heroui-3/packages/react/src/components/dropdown/dropdown.tsx",
+    "styles": "/Users/ankit/Downloads/heroui-3/packages/styles/src/components/dropdown/dropdown.styles.ts",
+    "css": null
+  },
+  "upstream": {
+    "exports": [
+      "Dropdown",
+      "DropdownItem",
+      "DropdownItemIndicator",
+      "DropdownMenu",
+      "DropdownPopover",
+      "DropdownRoot",
+      "DropdownSection",
+      "DropdownSubmenuIndicator",
+      "DropdownSubmenuTrigger",
+      "DropdownTrigger",
+      "dropdownVariants"
+    ],
+    "compoundParts": [
+      "Root",
+      "Trigger",
+      "Popover",
+      "Menu",
+      "Section",
+      "Item",
+      "ItemIndicator",
+      "SubmenuIndicator",
+      "SubmenuTrigger"
+    ],
+    "dataSlots": [
+      "dropdown-menu",
+      "dropdown-submenu-trigger",
+      "dropdown-trigger"
+    ],
+    "styleSlots": {
+      "menu": "dropdown__menu",
+      "popover": "dropdown__popover",
+      "root": "dropdown",
+      "trigger": "dropdown__trigger"
+    },
+    "styleClasses": [
+      "dropdown",
+      "dropdown__menu",
+      "dropdown__popover",
+      "dropdown__trigger"
+    ],
+    "cssClasses": [],
+    "renderHosts": [
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "DropdownContext",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "DropdownContext",
+        "dataSlot": null
+      },
+      {
+        "tag": "MenuTriggerPrimitive",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "dropdown-trigger"
+      },
+      {
+        "tag": "Button",
+        "dataSlot": "dropdown-trigger"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "SurfaceContext",
+        "dataSlot": null
+      },
+      {
+        "tag": "PopoverPrimitive",
+        "dataSlot": null
+      },
+      {
+        "tag": "T",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": "dropdown-menu"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "dropdown-menu"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "dropdown-menu"
+      },
+      {
+        "tag": "T",
+        "dataSlot": "dropdown-menu"
+      },
+      {
+        "tag": "MenuPrimitive",
+        "dataSlot": "dropdown-menu"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "MenuItemRoot",
+        "dataSlot": null
+      },
+      {
+        "tag": "MenuItemSubmenuIndicator",
+        "dataSlot": null
+      },
+      {
+        "tag": "SubmenuTriggerPrimitive",
+        "dataSlot": "dropdown-submenu-trigger"
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "MenuItemIndicator",
+        "dataSlot": null
+      },
+      {
+        "tag": "typeof",
+        "dataSlot": null
+      },
+      {
+        "tag": "MenuSectionRoot",
+        "dataSlot": null
+      }
+    ]
+  },
+  "local": {
+    "familyDir": "src/dropdown",
+    "manifestNotes": []
+  }
+}

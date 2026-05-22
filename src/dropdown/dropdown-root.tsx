@@ -1,7 +1,8 @@
 import { computed, defineComponent, provide } from 'vue'
-import { DropdownMenuRoot as RekaDropdownMenuRoot } from 'reka-ui'
+import { DropdownMenuRoot as RekaDropdownMenuRoot, DropdownMenuTrigger as RekaDropdownMenuTrigger } from 'reka-ui'
 import { dropdownVariants, type DropdownVariants } from '@heroui/styles'
 import type { PropType } from 'vue'
+import { withAutoTrigger } from '@/lib/auto-trigger'
 import { DROPDOWN_CONTEXT } from './dropdown-context'
 
 /**
@@ -9,6 +10,10 @@ import { DROPDOWN_CONTEXT } from './dropdown-context'
  *
  * Computes `dropdownVariants()` and provides the slot map to all compound
  * parts. Renders no DOM — wraps reka-ui `DropdownMenuRoot` (logic only).
+ *
+ * Like HeroUI v3, the FIRST child of `<Dropdown>` is treated as the trigger
+ * automatically — no explicit `<Dropdown.Trigger>` wrapper required (though
+ * `<Dropdown.Trigger>` still works for back-compat).
  */
 export const DropdownRoot = defineComponent({
   name: 'DropdownRoot',
@@ -23,7 +28,7 @@ export const DropdownRoot = defineComponent({
 
     return () => (
       <RekaDropdownMenuRoot {...attrs}>
-        {slots.default?.()}
+        {withAutoTrigger(slots.default?.(), RekaDropdownMenuTrigger, 'DropdownTrigger')}
       </RekaDropdownMenuRoot>
     )
   }
