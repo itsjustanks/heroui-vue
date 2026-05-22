@@ -1,0 +1,17 @@
+/* Shimmer pulse keyframe ported verbatim from `shadcn/shimmer/SearchResultShimmer.vue`
+ * (`<style scoped>`). Component-local custom rule per the repo CSS policy. */
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.skeletonPulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}

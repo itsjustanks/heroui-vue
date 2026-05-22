@@ -1,0 +1,33 @@
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { PaginationEllipsis as RekaPaginationEllipsis } from 'reka-ui'
+import { cn } from '@/lib/utils'
+import { usePaginationContext } from './pagination-context'
+import { paginationEllipsisVariants } from './pagination-variants'
+
+/**
+ * PaginationEllipsis — the truncation-gap glyph (`…`) between page ranges.
+ *
+ * Wraps reka-ui `PaginationEllipsis`; size inherited from `PaginationRoot`.
+ */
+export const PaginationEllipsis = defineComponent({
+  name: 'PaginationEllipsis',
+  inheritAttrs: false,
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
+    const context = usePaginationContext()
+
+    return () => (
+      <RekaPaginationEllipsis
+        {...attrs}
+        data-slot="pagination-ellipsis"
+        class={cn(paginationEllipsisVariants({ size: context?.size.value }), props.class)}
+      >
+        {slots.default ? slots.default() : '…'}
+      </RekaPaginationEllipsis>
+    )
+  }
+})
+
+export default PaginationEllipsis

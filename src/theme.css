@@ -1,0 +1,93 @@
+/* =============================================================================
+ * heroui — package theme (OSS)
+ *
+ * The design-token layer for this package. Repaints every `heroui/*` component
+ * to HeroUI v3's real design language by mapping the repo's CSS-variable tokens
+ * to HeroUI v3's actual oklch values. Because every component is token-based
+ * (Tailwind utilities → `var(--token)`), this one file themes the whole package.
+ *
+ * USAGE: `@import` this from the app's CSS entry (or import the Pro package's
+ * `theme.css`, which chains this one). Comment the import out to revert to the
+ * host app's original brand tokens — the components keep working either way.
+ *
+ * Source of truth: `@heroui/react` default theme (oklch palette + radii).
+ * Rules are intentionally UNLAYERED so they win over a host `@layer base`.
+ * ============================================================================= */
+
+:root {
+  /* base */
+  --background: oklch(0.9702 0 0);
+  --foreground: oklch(0.2103 0.0059 285.89);
+
+  /* surfaces — HeroUI `surface` (cards) / `overlay` (popovers, menus, modals) */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2103 0.0059 285.89);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2103 0.0059 285.89);
+
+  /* primary action — HeroUI `accent` (the HeroUI blue) */
+  --primary: oklch(0.6204 0.195 253.83);
+  --primary-foreground: oklch(0.9911 0 0);
+
+  /* secondary / subtle surfaces — HeroUI `default` */
+  --secondary: oklch(0.94 0.001 286.375);
+  --secondary-foreground: oklch(0.2103 0.0059 285.89);
+  --accent: oklch(0.94 0.001 286.375);
+  --accent-foreground: oklch(0.2103 0.0059 285.89);
+
+  /* muted — HeroUI `surface-secondary` (bg) + `muted` (text) */
+  --muted: oklch(0.9524 0.0013 286.37);
+  --muted-foreground: oklch(0.5517 0.0138 285.94);
+
+  /* status — HeroUI `danger` / `success` / `warning` */
+  --destructive: oklch(0.6532 0.2328 25.74);
+  --destructive-foreground: oklch(0.9911 0 0);
+  --success: oklch(0.7329 0.1935 150.81);
+  --success-foreground: oklch(0.2103 0.0059 285.89);
+  --warning: oklch(0.7819 0.1585 72.33);
+  --warning-foreground: oklch(0.2103 0.0059 285.89);
+  --danger: oklch(0.6532 0.2328 25.74);
+  --danger-foreground: oklch(0.9911 0 0);
+
+  /* lines + focus — HeroUI `border` / `separator` / `focus` */
+  --border: oklch(0.9 0.004 286.32);
+  --input: oklch(0.9 0.004 286.32);
+  --ring: oklch(0.6204 0.195 253.83);
+
+  /* HeroUI radius scale */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.12 0.005 285.823);
+  --foreground: oklch(0.9911 0 0);
+
+  --card: oklch(0.2103 0.0059 285.89);
+  --card-foreground: oklch(0.9911 0 0);
+  --popover: oklch(0.2103 0.0059 285.89);
+  --popover-foreground: oklch(0.9911 0 0);
+
+  --primary: oklch(0.6204 0.195 253.83);
+  --primary-foreground: oklch(0.9911 0 0);
+
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.9911 0 0);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.9911 0 0);
+
+  --muted: oklch(0.257 0.0037 286.14);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+
+  --destructive: oklch(0.594 0.1967 24.63);
+  --destructive-foreground: oklch(0.9911 0 0);
+  --success: oklch(0.7329 0.1935 150.81);
+  --success-foreground: oklch(0.2103 0.0059 285.89);
+  --warning: oklch(0.8203 0.1388 76.34);
+  --warning-foreground: oklch(0.2103 0.0059 285.89);
+  --danger: oklch(0.594 0.1967 24.63);
+  --danger-foreground: oklch(0.9911 0 0);
+
+  --border: oklch(0.28 0.006 286.033);
+  --input: oklch(0.28 0.006 286.033);
+  --ring: oklch(0.6204 0.195 253.83);
+}

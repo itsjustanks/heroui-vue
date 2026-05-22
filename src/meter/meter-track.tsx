@@ -1,0 +1,34 @@
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { cn } from '@/lib/utils'
+import { useMeterContext } from './meter-context'
+import { meterTrackVariants } from './variants'
+
+/**
+ * MeterTrack — the meter's track rail. HeroUI v3 `Meter.Track`.
+ *
+ * Adapts HeroUI's `meter__track`: a `rounded` `bg-muted` rail spanning the full
+ * width of the grid's `track` row. Height + radius follow the `size` variant
+ * (read from context). Holds the `MeterFill`.
+ */
+export const MeterTrack = defineComponent({
+  name: 'MeterTrack',
+  inheritAttrs: false,
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
+    const ctx = useMeterContext()
+    return () => (
+      <div
+        {...attrs}
+        data-slot="meter-track"
+        style={{ gridColumn: '1 / -1' }}
+        class={cn(meterTrackVariants({ size: ctx.size.value }), props.class)}
+      >
+        {slots.default?.()}
+      </div>
+    )
+  }
+})
+
+export default MeterTrack

@@ -1,0 +1,45 @@
+{
+  "name": "heroui-vue",
+  "version": "0.1.0",
+  "description": "A faithful Vue 3 port of HeroUI v3 — accessible, composable components built on reka-ui.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["vue", "vue3", "heroui", "components", "ui", "design-system", "reka-ui"],
+  "files": ["dist"],
+  "main": "./dist/heroui-vue.js",
+  "module": "./dist/heroui-vue.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/heroui-vue.js"
+    },
+    "./styles.css": "./dist/heroui-vue.css"
+  },
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "^12.8.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "lucide-vue-next": "^0.475.0",
+    "reka-ui": "^2.8.0",
+    "tailwind-merge": "^2.5.5",
+    "vue-sonner": "^1.2.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-vue-jsx": "^5.1.5",
+    "typescript": "~5.7.3",
+    "vite": "^8.0.3",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.0"
+  }
+}
