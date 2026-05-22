@@ -47,9 +47,9 @@ Current generated inventory:
 
 | | Count |
 |---|---:|
-| Upstream React source components | 84 |
+| Standalone docs components | 71 |
 | Registered docs examples | 594 |
-| Ported playground examples | 254 |
+| Ported playground examples | 255 |
 
 The first ported example batch covers every registered docs example for:
 accordion, avatar, badge, breadcrumbs, button, and card. The highest-traffic

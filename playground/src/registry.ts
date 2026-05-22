@@ -75,6 +75,7 @@ const SLUG_AWARE_FLAT_COMPONENTS = new Set([
   'radio-group',
   'select',
   'slider',
+  'surface',
   'switch',
   'tabs',
   'textarea',

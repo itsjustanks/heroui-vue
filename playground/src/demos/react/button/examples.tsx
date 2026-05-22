@@ -1,8 +1,16 @@
 import { Button } from '@heroui/react'
 import { currentExample } from '../../shared'
 
-function Icon({ children }: { children: string }) {
-  return <span className="demo-icon" aria-hidden="true">{children}</span>
+function IconPlus() {
+  return <svg className="demo-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path d="M8.75 2.5a.75.75 0 0 0-1.5 0v4.75H2.5a.75.75 0 0 0 0 1.5h4.75v4.75a.75.75 0 0 0 1.5 0V8.75h4.75a.75.75 0 0 0 0-1.5H8.75z" /></svg>
+}
+
+function IconSearch() {
+  return <svg className="demo-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fillRule="evenodd" d="M11.5 7a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-.82 4.74a6 6 0 1 1 1.06-1.06l2.79 2.79a.75.75 0 1 1-1.06 1.06z" clipRule="evenodd" /></svg>
+}
+
+function IconX() {
+  return <svg className="demo-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fillRule="evenodd" d="M3.47 3.47a.75.75 0 0 1 1.06 0L8 6.94l3.47-3.47a.75.75 0 1 1 1.06 1.06L9.06 8l3.47 3.47a.75.75 0 1 1-1.06 1.06L8 9.06l-3.47 3.47a.75.75 0 0 1-1.06-1.06L6.94 8L3.47 4.53a.75.75 0 0 1 0-1.06" clipRule="evenodd" /></svg>
 }
 
 export default function ButtonExamples() {
@@ -63,9 +71,9 @@ export default function ButtonExamples() {
   if (example === 'icon-only') {
     return (
       <div className="demo-row">
-        <Button aria-label="Add" isIconOnly><Icon>+</Icon></Button>
-        <Button aria-label="Email" isIconOnly variant="secondary"><Icon>@</Icon></Button>
-        <Button aria-label="Delete" isIconOnly variant="danger"><Icon>x</Icon></Button>
+        <Button aria-label="Add" isIconOnly><IconPlus /></Button>
+        <Button aria-label="Search" isIconOnly variant="secondary"><IconSearch /></Button>
+        <Button aria-label="Delete" isIconOnly variant="danger"><IconX /></Button>
       </div>
     )
   }
@@ -73,10 +81,9 @@ export default function ButtonExamples() {
   if (example === 'with-icons' || example === 'social' || example === 'ripple-effect') {
     return (
       <div className="demo-row">
-        <Button><Icon>S</Icon>Search</Button>
-        <Button variant="secondary"><Icon>+</Icon>Add Member</Button>
-        <Button variant="tertiary"><Icon>@</Icon>Email</Button>
-        <Button variant="danger"><Icon>x</Icon>Delete</Button>
+        <Button><IconSearch />Search</Button>
+        <Button variant="secondary"><IconPlus />Add Member</Button>
+        <Button variant="danger"><IconX />Delete</Button>
       </div>
     )
   }

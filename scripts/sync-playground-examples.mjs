@@ -18,7 +18,24 @@ const REACT_COMPONENTS = '/Users/ankit/Downloads/heroui-3/packages/react/src/com
 const OUT_FILE = join(ROOT, 'playground/src/example-manifest.ts')
 const VUE_DEMOS = join(ROOT, 'playground/src/demos/vue')
 const REACT_DEMOS = join(ROOT, 'playground/src/demos/react')
-const INTERNAL_COMPONENT_DIRS = new Set(['rac'])
+const INTERNAL_COMPONENT_DIRS = new Set([
+  'rac',
+  // Present in @heroui/react source, but not standalone component docs pages in
+  // llms-components.txt. They are support parts of documented families.
+  'calendar-year-picker',
+  'color-input-group',
+  'date-input-group',
+  'empty-state',
+  'header',
+  'list-box-item',
+  'list-box-section',
+  'menu',
+  'menu-item',
+  'menu-section',
+  'radio',
+  'switch-group',
+  'tag'
+])
 const BATCHED_EXAMPLE_COMPONENTS = new Set([
   'accordion',
   'avatar',
@@ -45,6 +62,7 @@ const SLUG_AWARE_FLAT_COMPONENTS = new Set([
   'radio-group',
   'select',
   'slider',
+  'surface',
   'switch',
   'tabs',
   'textarea',

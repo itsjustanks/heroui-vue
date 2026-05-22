@@ -105,14 +105,6 @@ export const upstreamComponents = [
     "portedCount": 1
   },
   {
-    "id": "calendar-year-picker",
-    "title": "Calendar Year Picker",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
     "id": "card",
     "title": "Card",
     "category": "Layout",
@@ -169,14 +161,6 @@ export const upstreamComponents = [
     "portedCount": 1
   },
   {
-    "id": "color-input-group",
-    "title": "Color Input Group",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
     "id": "color-picker",
     "title": "Color Picker",
     "category": "Colors",
@@ -223,14 +207,6 @@ export const upstreamComponents = [
     "docPath": "(date-and-time)/date-field.mdx",
     "exampleCount": 16,
     "portedCount": 1
-  },
-  {
-    "id": "date-input-group",
-    "title": "Date Input Group",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
   },
   {
     "id": "date-picker",
@@ -289,14 +265,6 @@ export const upstreamComponents = [
     "portedCount": 1
   },
   {
-    "id": "empty-state",
-    "title": "Empty State",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
     "id": "error-message",
     "title": "Error Message",
     "category": "Forms",
@@ -327,14 +295,6 @@ export const upstreamComponents = [
     "docPath": "(forms)/form.mdx",
     "exampleCount": 2,
     "portedCount": 1
-  },
-  {
-    "id": "header",
-    "title": "Header",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
   },
   {
     "id": "input",
@@ -393,46 +353,6 @@ export const upstreamComponents = [
     "portedCount": 1
   },
   {
-    "id": "list-box-item",
-    "title": "List BOX Item",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
-    "id": "list-box-section",
-    "title": "List BOX Section",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
-    "id": "menu",
-    "title": "Menu",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
-    "id": "menu-item",
-    "title": "Menu Item",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
-    "id": "menu-section",
-    "title": "Menu Section",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
-  },
-  {
     "id": "meter",
     "title": "Meter",
     "category": "Feedback",
@@ -487,14 +407,6 @@ export const upstreamComponents = [
     "docPath": "(feedback)/progress-circle.mdx",
     "exampleCount": 6,
     "portedCount": 1
-  },
-  {
-    "id": "radio",
-    "title": "Radio",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
   },
   {
     "id": "radio-group",
@@ -574,7 +486,7 @@ export const upstreamComponents = [
     "category": "Layout",
     "docPath": "(layout)/surface.mdx",
     "exampleCount": 1,
-    "portedCount": 0
+    "portedCount": 1
   },
   {
     "id": "switch",
@@ -583,14 +495,6 @@ export const upstreamComponents = [
     "docPath": "(controls)/switch.mdx",
     "exampleCount": 15,
     "portedCount": 15
-  },
-  {
-    "id": "switch-group",
-    "title": "Switch Group",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
   },
   {
     "id": "table",
@@ -607,14 +511,6 @@ export const upstreamComponents = [
     "docPath": "(navigation)/tabs.mdx",
     "exampleCount": 8,
     "portedCount": 8
-  },
-  {
-    "id": "tag",
-    "title": "TAG",
-    "category": "Undocumented",
-    "docPath": "",
-    "exampleCount": 0,
-    "portedCount": 0
   },
   {
     "id": "tag-group",
@@ -4712,7 +4608,7 @@ export const upstreamExamples = [
     "category": "Layout",
     "docPath": "(layout)/surface.mdx",
     "upstreamFile": "surface/variants.tsx",
-    "ported": false
+    "ported": true
   },
   {
     "id": "switch-basic",
