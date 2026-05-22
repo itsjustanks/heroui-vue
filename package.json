@@ -65,6 +65,7 @@
     "vue-sonner": "^1.2.1"
   },
   "devDependencies": {
+    "@gravity-ui/icons": "^2.18.0",
     "@heroui/react": "^3.0.5",
     "@vitejs/plugin-vue": "^6.0.5",
     "@vitejs/plugin-vue-jsx": "^5.1.5",

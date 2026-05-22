@@ -1,18 +1,6 @@
 import { defineComponent } from 'vue'
-import { Button } from '@itsjustanks/heroui-vue'
+import { Button, IconPlus, IconSearch, IconX } from '@itsjustanks/heroui-vue'
 import { currentExample } from '../../shared'
-
-function IconPlus() {
-  return <svg class="demo-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path d="M8.75 2.5a.75.75 0 0 0-1.5 0v4.75H2.5a.75.75 0 0 0 0 1.5h4.75v4.75a.75.75 0 0 0 1.5 0V8.75h4.75a.75.75 0 0 0 0-1.5H8.75z" /></svg>
-}
-
-function IconSearch() {
-  return <svg class="demo-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M11.5 7a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-.82 4.74a6 6 0 1 1 1.06-1.06l2.79 2.79a.75.75 0 1 1-1.06 1.06z" clip-rule="evenodd" /></svg>
-}
-
-function IconX() {
-  return <svg class="demo-icon" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.47 3.47a.75.75 0 0 1 1.06 0L8 6.94l3.47-3.47a.75.75 0 1 1 1.06 1.06L9.06 8l3.47 3.47a.75.75 0 1 1-1.06 1.06L8 9.06l-3.47 3.47a.75.75 0 0 1-1.06-1.06L6.94 8L3.47 4.53a.75.75 0 0 1 0-1.06" clip-rule="evenodd" /></svg>
-}
 
 export default defineComponent(() => () => {
   const example = currentExample()
@@ -72,9 +60,9 @@ export default defineComponent(() => () => {
   if (example === 'icon-only') {
     return (
       <div class="demo-row">
-        <Button aria-label="Add" isIconOnly><IconPlus /></Button>
-        <Button aria-label="Search" isIconOnly variant="secondary"><IconSearch /></Button>
-        <Button aria-label="Delete" isIconOnly variant="danger"><IconX /></Button>
+        <Button aria-label="Add" isIconOnly><IconPlus class="demo-icon" /></Button>
+        <Button aria-label="Search" isIconOnly variant="secondary"><IconSearch class="demo-icon" /></Button>
+        <Button aria-label="Delete" isIconOnly variant="danger"><IconX class="demo-icon" /></Button>
       </div>
     )
   }
@@ -82,9 +70,9 @@ export default defineComponent(() => () => {
   if (example === 'with-icons' || example === 'social' || example === 'ripple-effect') {
     return (
       <div class="demo-row">
-        <Button><IconSearch />Search</Button>
-        <Button variant="secondary"><IconPlus />Add Member</Button>
-        <Button variant="danger"><IconX />Delete</Button>
+        <Button><IconSearch class="demo-icon" />Search</Button>
+        <Button variant="secondary"><IconPlus class="demo-icon" />Add Member</Button>
+        <Button variant="danger"><IconX class="demo-icon" />Delete</Button>
       </div>
     )
   }
