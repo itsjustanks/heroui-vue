@@ -1,9 +1,17 @@
 {
-  "name": "heroui-vue",
+  "name": "@itsjustanks/heroui-vue",
   "version": "0.1.0",
-  "description": "A faithful Vue 3 port of HeroUI v3 — accessible, composable components built on reka-ui.",
+  "description": "A faithful Vue 3 port of HeroUI v3: accessible, composable components built on reka-ui.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsjustanks/heroui-vue.git"
+  },
+  "homepage": "https://github.com/itsjustanks/heroui-vue#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "vue",
     "vue3",
