@@ -26,13 +26,15 @@ export const Slider = defineComponent({
       >
         <SliderTrack class="slider__track">
           <SliderRange class="slider__fill" />
+          {/* Thumb sits INSIDE the track — HeroUI's CSS sizes `.slider__thumb`
+              (absolute, h-full) against `.slider__track` as its positioned ancestor. */}
+          {(props.modelValue ?? []).map((_, key) => (
+            <SliderThumb
+              key={key}
+              class="slider__thumb"
+            />
+          ))}
         </SliderTrack>
-        {(props.modelValue ?? []).map((_, key) => (
-          <SliderThumb
-            key={key}
-            class="slider__thumb"
-          />
-        ))}
       </SliderRoot>
     )
   }
