@@ -63,3 +63,33 @@
 .select__value[data-placeholder]:not([data-placeholder="false"]) {
   color: var(--field-placeholder);
 }
+
+/*
+ * Tabs — reka emits `data-state="active"` on the selected trigger; HeroUI's CSS
+ * keys tab selection off `data-selected="true"`. Re-create the affected rules.
+ */
+.tabs__tab[data-state="active"] {
+  color: var(--segment-foreground);
+}
+.tabs--secondary .tabs__tab[data-state="active"] {
+  color: var(--foreground);
+}
+
+/*
+ * HeroUI's SelectionIndicator (React Aria) renders one indicator and shows it
+ * only under the selected tab. reka has no SelectionIndicator equivalent, so
+ * the indicator is a child of every tab — reveal it only when its tab is
+ * active, otherwise every tab reads as selected.
+ */
+.tabs__indicator {
+  transition: opacity 200ms var(--ease-smooth);
+}
+.tabs__tab:not([data-state="active"]) .tabs__indicator {
+  opacity: 0;
+}
+
+/* Hide the separator beside the active tab (HeroUI keys this off data-selected) */
+.tabs__tab[data-state="active"] .tabs__separator,
+.tabs__tab[data-state="active"] + .tabs__tab .tabs__separator {
+  opacity: 0;
+}

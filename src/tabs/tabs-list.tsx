@@ -45,6 +45,9 @@ export const TabList = defineComponent({
       <RekaTabsList
         {...attrs}
         data-slot="tabs-list"
+        // reka-ui's TabsList emits only `aria-orientation`; HeroUI's CSS keys
+        // the track layout off `data-orientation`, so emit it here.
+        data-orientation={ctx?.orientation.value ?? 'horizontal'}
         class={cn((ctx?.slots.value ?? tabsVariants()).tabList(), props.class)}
       >
         {slots.default?.()}

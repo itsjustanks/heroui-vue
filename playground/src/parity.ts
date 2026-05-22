@@ -41,10 +41,6 @@ const DIVERGENT: Record<string, ParityInfo> = {
     status: 'broken',
     note: 'Thumb is a hollow oblong pill instead of a filled white circle.'
   },
-  tabs: {
-    status: 'broken',
-    note: 'Pills instead of a segmented-control track; panel content not rendered.'
-  },
   'date-field': {
     status: 'minor',
     note: 'Empty date-segment placeholder renders too dark.'

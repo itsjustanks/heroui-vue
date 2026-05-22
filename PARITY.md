@@ -4,7 +4,7 @@ Per-component parity status of **heroui-vue** against **HeroUI v3 React**
 (`@heroui/react` 3.0.5). This is the source-of-truth checklist; the README
 carries a summary and the playground surfaces these statuses live.
 
-**Last full sweep:** 2026-05-22.
+**Last full sweep:** 2026-05-22. **Fixed since:** tabs.
 
 ## How parity is measured
 
@@ -21,9 +21,9 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 
 | | Count |
 |---|---|
-| ✅ Pixel-match | 51 |
+| ✅ Pixel-match | 52 |
 | 🟡 Minor polish | 5 |
-| 🔴 Broken | 6 |
+| 🔴 Broken | 5 |
 | 💥 Crash | 1 |
 | **Total demoed** | **63** |
 
@@ -105,8 +105,8 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 | Component | Status | Notes |
 |---|---|---|
 | pagination | ✅ | |
+| tabs | ✅ | **Fixed 2026-05-22.** Now a proper segmented-control track with a visible active segment + panel content — matches HeroUI's docs. Three fixes: auto-select the first tab (reka-ui doesn't; HeroUI does), emit `data-orientation` on the list (reka-ui only emits `aria-orientation`), and reveal the per-tab indicator only under the active tab (no React-Aria `SelectionIndicator` in reka). Note: the playground's React pane shows the indicator at `opacity:0` — a React-Aria `SelectionIndicator` init quirk — so the Vue pane is the accurate reference here. |
 | breadcrumb | 🔴 | Renders a trailing separator after the last crumb; the current page is not styled (HeroUI bolds the current page and emits no trailing separator). |
-| tabs | 🔴 | Renders as separate pill buttons instead of one segmented-control track; the active tab panel content is not rendered below the tab list. |
 | toolbar | 🟡 | The vertical separator between groups is not visible. |
 
 ### Data display
@@ -145,11 +145,12 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 
 Ordered by impact. Tick as each is verified against HeroUI in the playground.
 
+- [x] **tabs** — segmented-control track + active segment + render the active
+  panel. *Done 2026-05-22.*
 - [ ] **tooltip** — resolve the `TooltipProvider` injection crash.
 - [ ] **calendar** — render day numbers (reset list styling / emit date label).
 - [ ] **accordion** — single, right-aligned chevron.
 - [ ] **breadcrumb** — drop the trailing separator; style the current page.
-- [ ] **tabs** — segmented-control track + render the active panel.
 - [ ] **range-calendar** — 3-letter weekday headers, muted outside days, today highlight.
 - [ ] **slider** — filled white circular thumb.
 - [ ] **date-field / date-picker / date-range-picker / time-field** — muted placeholder colour (shared fix).

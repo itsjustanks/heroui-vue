@@ -13,8 +13,8 @@ npm install @itsjustanks/heroui-vue
 with a live parity dashboard.
 
 > **Status — work in progress** (v1.0.1). 69 component families are ported and
-> build green. **51 of 63** demoed components are pixel-faithful to HeroUI v3
-> React; **12 have tracked visual gaps.** See the [Parity TODO](#parity-todo)
+> build green. **52 of 63** demoed components are pixel-faithful to HeroUI v3
+> React; **11 have tracked visual gaps.** See the [Parity TODO](#parity-todo)
 > below and the [live playground](https://heroui-vue.vercel.app).
 
 ---
@@ -166,6 +166,10 @@ below are **visual** gaps.
   was overriding `@heroui/styles` and clobbering `--accent` (rendered the whole
   UI grey instead of HeroUI blue), `--accent-foreground` and `--muted`. The
   file is now only the reka-ui ↔ HeroUI `data-state` bridge.
+- [x] **tabs** — now a proper segmented-control track with a visible active
+  segment and panel content (matches HeroUI's docs). Fixed: auto-select the
+  first tab, emit `data-orientation` on the list, and reveal the per-tab
+  indicator only under the active tab.
 
 ### 🔴 Crash — fix first
 
@@ -188,8 +192,6 @@ below are **visual** gaps.
   highlighted.
 - [ ] **slider** — thumb renders as a hollow, oblong outlined pill instead of a
   filled white circle.
-- [ ] **tabs** — renders as separate pill buttons instead of a single
-  segmented-control track; the active tab panel content is not rendered.
 
 ### 🟡 Minor polish
 
@@ -202,9 +204,9 @@ below are **visual** gaps.
 
 | Status | Components |
 |---|---|
-| ✅ Match (51) | alert, alert-dialog, avatar, badge, button, button-group, card, checkbox, checkbox-group, chip, close-button, collapsible, color-picker, combo-box, description, drawer, dropdown, empty-state, form, header, input, input-group, input-otp, kbd, label, link, list-box, meter, modal, number-field, pagination, popover, progress, progress-circle, radio-group, scroll-area, select, separator, skeleton, sonner, spinner, surface, switch, switch-group, table, tags-input, textarea, textfield, toggle, toggle-group, typography |
+| ✅ Match (52) | alert, alert-dialog, avatar, badge, button, button-group, card, checkbox, checkbox-group, chip, close-button, collapsible, color-picker, combo-box, description, drawer, dropdown, empty-state, form, header, input, input-group, input-otp, kbd, label, link, list-box, meter, modal, number-field, pagination, popover, progress, progress-circle, radio-group, scroll-area, select, separator, skeleton, sonner, spinner, surface, switch, switch-group, table, tabs, tags-input, textarea, textfield, toggle, toggle-group, typography |
 | 🟡 Minor (5) | date-field, date-picker, date-range-picker, time-field, toolbar |
-| 🔴 Broken (6) | accordion, breadcrumb, calendar, range-calendar, slider, tabs |
+| 🔴 Broken (5) | accordion, breadcrumb, calendar, range-calendar, slider |
 | 💥 Crash (1) | tooltip |
 
 ## Project roadmap
