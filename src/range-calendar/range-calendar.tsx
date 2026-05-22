@@ -1,97 +1,40 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RangeCalendarRoot, useForwardPropsEmits } from 'reka-ui'
-import type { RangeCalendarRootProps } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarRoot as RekaRangeCalendarRoot } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { RangeCalendarCell } from './range-calendar-cell'
-import { RangeCalendarCellTrigger } from './range-calendar-cell-trigger'
-import { RangeCalendarGrid } from './range-calendar-grid'
-import { RangeCalendarGridBody } from './range-calendar-grid-body'
-import { RangeCalendarGridHead } from './range-calendar-grid-head'
-import { RangeCalendarGridRow } from './range-calendar-grid-row'
-import { RangeCalendarHeadCell } from './range-calendar-head-cell'
-import { RangeCalendarHeader } from './range-calendar-header'
-import { RangeCalendarHeading } from './range-calendar-heading'
-import { RangeCalendarNextButton } from './range-calendar-next-button'
-import { RangeCalendarPrevButton } from './range-calendar-prev-button'
-
-type TRangeCalendarGridSlot = {
-  grid: any[]
-  weekDays: string[]
-}
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
 /**
- * RangeCalendar — HeroUI-Vue range-calendar root (primitive library, net-new).
+ * RangeCalendarRoot — the surface container. Faithful Vue port of HeroUI v3 `RangeCalendar`.
  *
- * Faithful port of HeroUI v3 `RangeCalendar` over reka-ui `RangeCalendarRoot`.
- * Mirrors `calendar`'s day-cell styling and adds the **connected-range
- * band** — a continuous track spanning the selected days, drawn by
- * `RangeCalendarCell`, with `bg-primary` caps on the start/end days. Keeps
- * `@internationalized/date` as the date engine and forwards every
- * `RangeCalendarRoot` prop/emit/v-model (`modelValue` as a `{ start, end }`
- * `DateRange`, `placeholder`, `numberOfMonths`, `minValue`, `maxValue`,
- * `allowNonContiguousRanges`, `maximumDays`, `fixedDate`, `isDateDisabled`,
- * `isDateUnavailable`, `isDateHighlightable`, …).
+ * Computes the `rangeCalendarVariants` slot map and provides it via context so
+ * every compound part (`RangeCalendar.Header`, `RangeCalendar.NavButton`, …)
+ * sources its class from `@heroui/styles` — never a hand-written string.
  *
- * Compound API: `RangeCalendar`, `RangeCalendarHeader`, `RangeCalendarHeading`,
- * `RangeCalendarPrevButton`, `RangeCalendarNextButton`, `RangeCalendarGrid`,
- * `RangeCalendarGridHead`, `RangeCalendarGridBody`, `RangeCalendarGridRow`,
- * `RangeCalendarHeadCell`, `RangeCalendarCell`, `RangeCalendarCellTrigger`.
+ * All reka-ui `RangeCalendarRoot` props/emits (modelValue as `{ start, end }`
+ * DateRange, placeholder, minValue, maxValue, numberOfMonths, isDateDisabled,
+ * isDateUnavailable, …) are forwarded via `attrs`.
  */
-export const RangeCalendar = defineComponent({
-  name: 'RangeCalendarRootView',
+export const RangeCalendarRoot = defineComponent({
+  name: 'RangeCalendarRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
-  // reka-ui `RangeCalendarRoot` emits — declared as a string array so
-  // `defineComponent`'s overload resolves and `useForwardPropsEmits` forwards.
-  emits: ['update:modelValue', 'update:placeholder', 'update:validModelValue', 'update:startValue'],
-  setup (props, { attrs, emit }) {
-    const forwarded = useForwardPropsEmits(attrs as RangeCalendarRootProps, emit)
-    return () => (
-      <RangeCalendarRoot
-        {...forwarded.value}
-        class={cn('range-calendar', props.class)}
-      >
-        {{
-          default: ({ grid, weekDays }: TRangeCalendarGridSlot) => (
-            <>
-              <RangeCalendarHeader>
-                <RangeCalendarPrevButton />
-                <RangeCalendarHeading />
-                <RangeCalendarNextButton />
-              </RangeCalendarHeader>
+  setup (props, { attrs, slots }) {
+    const styles = computed(() => rangeCalendarVariants())
+    provide(RANGE_CALENDAR_CONTEXT, { slots: styles })
 
-              <div>
-                {grid.map((month) => (
-                  <RangeCalendarGrid key={month.value.toString()}>
-                    <RangeCalendarGridHead>
-                      <RangeCalendarGridRow>
-                        {weekDays.map((day) => (
-                          <RangeCalendarHeadCell key={day}>{day}</RangeCalendarHeadCell>
-                        ))}
-                      </RangeCalendarGridRow>
-                    </RangeCalendarGridHead>
-                    <RangeCalendarGridBody>
-                      {month.rows.map((weekDates: any[], index: number) => (
-                        <RangeCalendarGridRow key={`weekDate-${index}`}>
-                          {weekDates.map((weekDate) => (
-                            <RangeCalendarCell key={weekDate.toString()} date={weekDate}>
-                              <RangeCalendarCellTrigger day={weekDate} month={month.value} />
-                            </RangeCalendarCell>
-                          ))}
-                        </RangeCalendarGridRow>
-                      ))}
-                    </RangeCalendarGridBody>
-                  </RangeCalendarGrid>
-                ))}
-              </div>
-            </>
-          )
-        }}
-      </RangeCalendarRoot>
+    return () => (
+      <RekaRangeCalendarRoot
+        {...(attrs as Record<string, any>)}
+        data-slot="range-calendar"
+        class={cn(styles.value.base(), props.class)}
+      >
+        {slots.default}
+      </RekaRangeCalendarRoot>
     )
   }
 })
 
-export default RangeCalendar
+export default RangeCalendarRoot

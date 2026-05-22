@@ -1,41 +1,54 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { Primitive, type PrimitiveProps } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { buttonGroupVariants, type ButtonGroupVariants, type ButtonVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { buttonGroupVariants, type ButtonGroupVariants } from './button-group-variants'
+import { BUTTON_GROUP_CONTEXT } from './button-group-context'
 
 /**
- * ButtonGroup — HeroUI-Vue primitive over reka-ui `Primitive`.
+ * ButtonGroup — the surface container. Faithful Vue port of HeroUI v3 `ButtonGroup`.
  *
- * HeroUI BEM: `button-group` base + `button-group--{orientation}` + optional
- * `button-group--full-width` modifier. Child `Button` elements have their radius
- * and scale-on-press handled by the CSS.
+ * Computes HeroUI's `buttonGroupVariants` slot map and provides it to compound
+ * parts (`ButtonGroup.Separator`) plus forwarded variant props to child Buttons.
  */
-export const ButtonGroup = defineComponent({
-  name: 'HeroButtonGroup',
+export const ButtonGroupRoot = defineComponent({
+  name: 'ButtonGroup',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    class:       { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Layout direction. @default 'horizontal' */
     orientation: { type: String as PropType<ButtonGroupVariants['orientation']>, default: 'horizontal' },
-    fullWidth: { type: Boolean, default: false },
-    as: { type: [String, Object, Function] as PropType<PrimitiveProps['as']>, default: 'div' },
-    asChild: { type: Boolean as PropType<PrimitiveProps['asChild']>, default: undefined }
+    /** Stretch the group to full container width. */
+    fullWidth:   { type: Boolean as PropType<ButtonGroupVariants['fullWidth']>, default: false },
+    /** Disabled state forwarded to child Buttons. */
+    isDisabled:  { type: Boolean, default: false },
+    /** Size forwarded to all child Buttons. */
+    size:        { type: String as PropType<ButtonVariants['size']>, default: undefined },
+    /** Variant forwarded to all child Buttons. */
+    variant:     { type: String as PropType<ButtonVariants['variant']>, default: undefined },
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() =>
+      buttonGroupVariants({ orientation: props.orientation, fullWidth: props.fullWidth })
+    )
+
+    provide(BUTTON_GROUP_CONTEXT, {
+      slots:      styles,
+      size:       computed(() => props.size),
+      variant:    computed(() => props.variant),
+      isDisabled: computed(() => props.isDisabled || undefined),
+      fullWidth:  computed(() => props.fullWidth || undefined),
+    })
+
     return () => (
-      <Primitive
-        {...(attrs as Record<string, any>)}
-        {...({ role: 'group' } as Record<string, any>)}
-        as={props.as}
-        asChild={props.asChild}
-        class={cn(
-          buttonGroupVariants({ orientation: props.orientation, fullWidth: props.fullWidth }),
-          props.class
-        )}
+      <div
+        {...attrs}
+        role="group"
+        data-slot="button-group"
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
-      </Primitive>
+      </div>
     )
   }
 })
 
-export default ButtonGroup
+export default ButtonGroupRoot

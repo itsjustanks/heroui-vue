@@ -1,11 +1,25 @@
 /**
- * HeroUI-Vue Alert — faithful HeroUI v3 alert (`alert.css`), restyled to the
- * repo tokens. Part of the HeroUI-for-Vue primitive library.
+ * Alert — a faithful Vue port of HeroUI v3 `Alert`.
  *
- * Export names mirror `shadcn-vue` exactly.
+ * Compound API (HeroUI v3): `Alert`, `Alert.Root`, `Alert.Indicator`,
+ * `Alert.Content`, `Alert.Title`, `Alert.Description`.
+ * Flat named exports are also available for callers that prefer named imports.
  */
-export { default as Alert } from './alert'
-export { default as AlertTitle } from './alert-title'
-export { default as AlertDescription } from './alert-description'
-export { alertVariants } from './alert-variants'
-export type { AlertVariants } from './alert-variants'
+import { AlertRoot } from './alert'
+import { AlertIndicator } from './alert-indicator'
+import { AlertContent } from './alert-content'
+import { AlertTitle } from './alert-title'
+import { AlertDescription } from './alert-description'
+
+/** Compound component — `Alert.Indicator`, `Alert.Content`, … (HeroUI v3 API). */
+export const Alert = Object.assign(AlertRoot, {
+  Root: AlertRoot,
+  Indicator: AlertIndicator,
+  Content: AlertContent,
+  Title: AlertTitle,
+  Description: AlertDescription
+})
+
+export { AlertRoot, AlertIndicator, AlertContent, AlertTitle, AlertDescription }
+export { alertVariants } from '@heroui/styles'
+export type { AlertVariants } from '@heroui/styles'

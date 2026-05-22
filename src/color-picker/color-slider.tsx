@@ -1,4 +1,5 @@
 import { computed, defineComponent, inject, provide, ref, type ComputedRef, type HTMLAttributes, type InjectionKey, type PropType, type Ref } from 'vue'
+import { colorSliderVariants, type ColorSliderVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { formatColor, hsvToRgb, type TColorValue } from './color-utils'
 import { useColorPickerContext } from './color-picker-context'
@@ -21,7 +22,6 @@ const CHANNEL_RANGE: Record<TColorSliderChannel, [number, number]> = {
   alpha: [0, 1]
 }
 
-/** Read a channel value from the working color model. */
 function readChannel (c: TColorValue, channel: TColorSliderChannel): number {
   switch (channel) {
     case 'hue': return c.h
@@ -33,7 +33,6 @@ function readChannel (c: TColorValue, channel: TColorSliderChannel): number {
   }
 }
 
-/** Patch a channel value back onto the working color model. */
 function patchChannel (channel: TColorSliderChannel, raw: number): Partial<TColorValue> {
   switch (channel) {
     case 'hue': return { h: raw }
@@ -45,7 +44,6 @@ function patchChannel (channel: TColorSliderChannel, raw: number): Partial<TColo
   }
 }
 
-/** Track gradient background for the given channel. */
 function trackGradient (c: TColorValue, channel: TColorSliderChannel): string {
   if (channel === 'hue') {
     return 'linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)'
@@ -60,7 +58,7 @@ function trackGradient (c: TColorValue, channel: TColorSliderChannel): string {
   return `linear-gradient(to right,${lo},${hi})`
 }
 
-/** Per-slider context — Track/Thumb/Output read state + the rail ref from here. */
+/** Per-slider context — Track/Thumb/Output read state + rail ref from here. */
 type TColorSliderInternal = {
   ratio: ComputedRef<number>
   gradient: ComputedRef<string>
@@ -69,21 +67,21 @@ type TColorSliderInternal = {
   range: ComputedRef<[number, number]>
   channel: ComputedRef<TColorSliderChannel>
   disabled: ComputedRef<boolean>
+  slots: ComputedRef<ReturnType<typeof colorSliderVariants>>
   railEl: Ref<HTMLElement | undefined>
   onPointerDown: (e: PointerEvent) => void
   onPointerMove: (e: PointerEvent) => void
   onPointerUp: (e: PointerEvent) => void
   onKeyDown: (e: KeyboardEvent) => void
 }
-const SLIDER_KEY: InjectionKey<TColorSliderInternal> = Symbol('HeroColorSlider')
+const SLIDER_KEY: InjectionKey<TColorSliderInternal> = Symbol('heroui-vue-color-slider')
 const useSlider = (): TColorSliderInternal | null => inject(SLIDER_KEY, null)
 
 /**
- * ColorSlider.Track — the gradient rail AND the pointer/keyboard surface. HeroUI
- * places the interaction on the track; the rail handlers from the parent
- * `ColorSlider` are wired here.
+ * ColorSliderTrack — the gradient rail and pointer/keyboard interaction surface.
+ * HeroUI v3 `ColorSlider.Track` (`data-slot="color-slider-track"`).
  */
-const ColorSliderTrack = defineComponent({
+export const ColorSliderTrack = defineComponent({
   name: 'ColorSliderTrack',
   inheritAttrs: false,
   props: {
@@ -91,33 +89,40 @@ const ColorSliderTrack = defineComponent({
   },
   setup (props, { attrs, slots }) {
     const slider = useSlider()
-    return () => (
-      <div
-        {...attrs}
-        ref={slider?.railEl}
-        data-slot="track"
-        role="slider"
-        tabindex={slider?.disabled.value ? -1 : 0}
-        aria-orientation="horizontal"
-        aria-valuemin={slider?.range.value[0]}
-        aria-valuemax={slider?.range.value[1]}
-        aria-valuenow={slider?.channelValue.value}
-        aria-label={`${slider?.channel.value ?? 'color'} value`}
-        onPointerdown={slider?.onPointerDown}
-        onPointermove={slider?.onPointerMove}
-        onPointerup={slider?.onPointerUp}
-        onKeydown={slider?.onKeyDown}
-        style={{ background: slider?.gradient.value }}
-        class={cn('color-slider__track', props.class)}
-      >
-        {slots.default?.()}
-      </div>
-    )
+    const fallback = colorSliderVariants()
+    return () => {
+      const slots_ = slider?.slots.value ?? fallback
+      return (
+        <div
+          {...attrs}
+          ref={slider?.railEl}
+          data-slot="color-slider-track"
+          role="slider"
+          tabindex={slider?.disabled.value ? -1 : 0}
+          aria-orientation="horizontal"
+          aria-valuemin={slider?.range.value[0]}
+          aria-valuemax={slider?.range.value[1]}
+          aria-valuenow={slider?.channelValue.value}
+          aria-label={`${slider?.channel.value ?? 'color'} value`}
+          onPointerdown={slider?.onPointerDown}
+          onPointermove={slider?.onPointerMove}
+          onPointerup={slider?.onPointerUp}
+          onKeydown={slider?.onKeyDown}
+          style={{ background: slider?.gradient.value }}
+          class={cn(slots_.track(), props.class)}
+        >
+          {slots.default?.()}
+        </div>
+      )
+    }
   }
 })
 
-/** ColorSlider.Thumb — the draggable handle, positioned from the slider ratio. */
-const ColorSliderThumb = defineComponent({
+/**
+ * ColorSliderThumb — the draggable handle, positioned from the slider ratio.
+ * HeroUI v3 `ColorSlider.Thumb` (`data-slot="color-slider-thumb"`).
+ */
+export const ColorSliderThumb = defineComponent({
   name: 'ColorSliderThumb',
   inheritAttrs: false,
   props: {
@@ -125,19 +130,26 @@ const ColorSliderThumb = defineComponent({
   },
   setup (props, { attrs }) {
     const slider = useSlider()
-    return () => (
-      <div
-        {...attrs}
-        data-slot="thumb"
-        class={cn('color-slider__thumb', props.class)}
-        style={{ left: `${(slider?.ratio.value ?? 0) * 100}%` }}
-      />
-    )
+    const fallback = colorSliderVariants()
+    return () => {
+      const slots = slider?.slots.value ?? fallback
+      return (
+        <div
+          {...attrs}
+          data-slot="color-slider-thumb"
+          class={cn(slots.thumb(), props.class)}
+          style={{ left: `${(slider?.ratio.value ?? 0) * 100}%` }}
+        />
+      )
+    }
   }
 })
 
-/** ColorSlider.Output — the formatted channel value readout. */
-const ColorSliderOutput = defineComponent({
+/**
+ * ColorSliderOutput — the formatted channel value readout.
+ * HeroUI v3 `ColorSlider.Output` (`data-slot="color-slider-output"`).
+ */
+export const ColorSliderOutput = defineComponent({
   name: 'ColorSliderOutput',
   inheritAttrs: false,
   props: {
@@ -145,25 +157,26 @@ const ColorSliderOutput = defineComponent({
   },
   setup (props, { attrs, slots }) {
     const slider = useSlider()
-    return () => (
-      <output {...attrs} class={cn('color-slider__output', props.class)}>
-        {slots.default ? slots.default() : slider?.output.value}
-      </output>
-    )
+    const fallback = colorSliderVariants()
+    return () => {
+      const slots_ = slider?.slots.value ?? fallback
+      return (
+        <output {...attrs} data-slot="color-slider-output" class={cn(slots_.output(), props.class)}>
+          {slots.default ? slots.default() : slider?.output.value}
+        </output>
+      )
+    }
   }
 })
 
 /**
- * ColorSlider — a single-channel slider (hue / alpha / saturation / …). HeroUI's
- * `ColorSlider` is built on React Aria; reka-ui (2.8) ships no color primitive
- * so the pointer/keyboard logic lives in `setup()`. It
- * drives the ColorPicker context; the compound parts (`Track`, `Thumb`,
- * `Output`) read ratio/gradient/readout — and the Track also receives the rail
- * handlers — from a per-slider context.
+ * ColorSliderRoot — a single-channel slider (hue / alpha / saturation / …).
+ * HeroUI v3 `ColorSlider.Root` (`data-slot="color-slider"`). Computes
+ * `colorSliderVariants` and provides the slot map + rail state to compound parts.
  *
- * `colorSpace` is accepted for HeroUI API parity (HSB is the working space).
+ * reka-ui (2.8) ships no color primitive; pointer/keyboard logic lives in setup.
  */
-export const ColorSlider = defineComponent({
+export const ColorSliderRoot = defineComponent({
   name: 'ColorSlider',
   inheritAttrs: false,
   props: {
@@ -191,6 +204,7 @@ export const ColorSlider = defineComponent({
         ? `${Math.round(channelValue.value)}°`
         : String(Math.round(channelValue.value))
     )
+    const sliderSlots = computed(() => colorSliderVariants())
 
     const setFromRatio = (r: number): void => {
       if (!ctx) return
@@ -246,6 +260,7 @@ export const ColorSlider = defineComponent({
       range,
       channel: computed(() => props.channel),
       disabled: computed(() => props.isDisabled),
+      slots: sliderSlots,
       railEl,
       onPointerDown,
       onPointerMove,
@@ -260,7 +275,8 @@ export const ColorSlider = defineComponent({
         aria-label={(attrs['aria-label'] as string | undefined) ?? `${props.channel} slider`}
         data-channel={props.channel}
         data-disabled={props.isDisabled || undefined}
-        class={cn('color-slider', props.class)}
+        data-slot="color-slider"
+        class={cn(sliderSlots.value.base(), props.class)}
       >
         {slots.default
           ? slots.default()
@@ -274,5 +290,4 @@ export const ColorSlider = defineComponent({
   }
 })
 
-export { ColorSliderTrack, ColorSliderThumb, ColorSliderOutput }
-export default ColorSlider
+export default ColorSliderRoot

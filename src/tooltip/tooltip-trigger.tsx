@@ -1,8 +1,14 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { TooltipTrigger as RekaTooltipTrigger } from 'reka-ui'
+import { tooltipVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TOOLTIP_CONTEXT } from './tooltip-context'
 
-/** TooltipTrigger — the element the tooltip is anchored to. */
+/**
+ * TooltipTrigger — the element the tooltip is anchored to.
+ * Mirrors HeroUI v3 `TooltipTrigger` (`data-slot="tooltip-trigger"`,
+ * styled with `slots.trigger()`).
+ */
 export const TooltipTrigger = defineComponent({
   name: 'TooltipTrigger',
   inheritAttrs: false,
@@ -10,11 +16,13 @@ export const TooltipTrigger = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(TOOLTIP_CONTEXT, null)
+
     return () => (
       <RekaTooltipTrigger
         {...attrs}
         data-slot="tooltip-trigger"
-        class={cn('tooltip__trigger', props.class)}
+        class={cn((ctx?.slots.value ?? tooltipVariants()).trigger(), props.class)}
       >
         {slots.default?.()}
       </RekaTooltipTrigger>

@@ -1,9 +1,16 @@
 /**
- * HeroUI-Vue Toggle — faithful HeroUI v3 toggle-button over reka-ui.
- * Part of the HeroUI-for-Vue primitive library.
+ * Toggle — faithful Vue port of HeroUI v3 `ToggleButton`.
+ *
+ * Compound API (HeroUI v3): `ToggleButton`, `ToggleButton.Root`.
+ * Flat export: `ToggleButtonRoot`.
  */
-export { default as Toggle } from './toggle'
-export { toggleVariants } from './toggle-variants'
-// Compat export name — `shadcn-vue` exports the type as `ToggleVariants`.
-// Re-export alias (not a declaration) so migration stays a mechanical swap.
-export type { TToggleVariants as ToggleVariants } from './toggle-variants'
+import { ToggleButtonRoot } from './toggle'
+
+/** Compound component — `ToggleButton.Root` (HeroUI v3 API). */
+export const ToggleButton = Object.assign(ToggleButtonRoot, {
+  Root: ToggleButtonRoot,
+})
+
+export { ToggleButtonRoot }
+export { toggleButtonVariants } from '@heroui/styles'
+export type { ToggleButtonVariants } from '@heroui/styles'

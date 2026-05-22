@@ -1,22 +1,66 @@
 /**
- * HeroUI-Vue RangeCalendar — faithful HeroUI v3 `RangeCalendar` over reka-ui.
+ * RangeCalendar — faithful Vue port of HeroUI v3 `RangeCalendar`.
  *
- * NET-NEW primitive (no `shadcn-vue` base). Compound parts
- * mirror HeroUI's `RangeCalendar.*` API and reka-ui's `RangeCalendar*`
- * primitives. Mirrors `calendar`'s day-cell styling and adds a
- * connected-range band — the continuous track over the selected day span with
- * `bg-primary` start/end caps. Date engine stays `@internationalized/date` via
- * reka-ui `RangeCalendarRoot`. Part of the HeroUI-for-Vue primitive library.
+ * Compound API (HeroUI v3):
+ *   `RangeCalendar` / `RangeCalendar.Root`
+ *   `RangeCalendar.Header`
+ *   `RangeCalendar.Heading`
+ *   `RangeCalendar.NavButton`       (slot="previous" | "next")
+ *   `RangeCalendar.Grid`
+ *   `RangeCalendar.GridHeader`
+ *   `RangeCalendar.GridBody`
+ *   `RangeCalendar.GridRow`
+ *   `RangeCalendar.HeaderCell`
+ *   `RangeCalendar.Cell`
+ *   `RangeCalendar.CellIndicator`
+ *
+ * Named flat exports (`RangeCalendarRoot`, `RangeCalendarHeader`, …) are
+ * available for callers that prefer explicit imports.
+ *
+ * Keeps reka-ui primitives (`RangeCalendarRoot`, `RangeCalendarGrid`,
+ * `RangeCalendarCell`, `RangeCalendarCellTrigger`, …) and
+ * `@internationalized/date` as the date engine.
  */
-export { default as RangeCalendar } from './range-calendar'
-export { default as RangeCalendarCell } from './range-calendar-cell'
-export { default as RangeCalendarCellTrigger } from './range-calendar-cell-trigger'
-export { default as RangeCalendarGrid } from './range-calendar-grid'
-export { default as RangeCalendarGridBody } from './range-calendar-grid-body'
-export { default as RangeCalendarGridHead } from './range-calendar-grid-head'
-export { default as RangeCalendarGridRow } from './range-calendar-grid-row'
-export { default as RangeCalendarHeadCell } from './range-calendar-head-cell'
-export { default as RangeCalendarHeader } from './range-calendar-header'
-export { default as RangeCalendarHeading } from './range-calendar-heading'
-export { default as RangeCalendarNextButton } from './range-calendar-next-button'
-export { default as RangeCalendarPrevButton } from './range-calendar-prev-button'
+import { RangeCalendarRoot } from './range-calendar'
+import { RangeCalendarHeader } from './range-calendar-header'
+import { RangeCalendarHeading } from './range-calendar-heading'
+import { RangeCalendarNavButton } from './range-calendar-nav-button'
+import { RangeCalendarGrid } from './range-calendar-grid'
+import { RangeCalendarGridHeader } from './range-calendar-grid-header'
+import { RangeCalendarGridBody } from './range-calendar-grid-body'
+import { RangeCalendarGridRow } from './range-calendar-grid-row'
+import { RangeCalendarHeaderCell } from './range-calendar-header-cell'
+import { RangeCalendarCell } from './range-calendar-cell'
+import { RangeCalendarCellIndicator } from './range-calendar-cell-indicator'
+
+/** Compound component — `RangeCalendar.Header`, `RangeCalendar.NavButton`, … (HeroUI v3 API). */
+export const RangeCalendar = Object.assign(RangeCalendarRoot, {
+  Root: RangeCalendarRoot,
+  Header: RangeCalendarHeader,
+  Heading: RangeCalendarHeading,
+  NavButton: RangeCalendarNavButton,
+  Grid: RangeCalendarGrid,
+  GridHeader: RangeCalendarGridHeader,
+  GridBody: RangeCalendarGridBody,
+  GridRow: RangeCalendarGridRow,
+  HeaderCell: RangeCalendarHeaderCell,
+  Cell: RangeCalendarCell,
+  CellIndicator: RangeCalendarCellIndicator,
+})
+
+export {
+  RangeCalendarRoot,
+  RangeCalendarHeader,
+  RangeCalendarHeading,
+  RangeCalendarNavButton,
+  RangeCalendarGrid,
+  RangeCalendarGridHeader,
+  RangeCalendarGridBody,
+  RangeCalendarGridRow,
+  RangeCalendarHeaderCell,
+  RangeCalendarCell,
+  RangeCalendarCellIndicator,
+}
+
+export { rangeCalendarVariants } from '@heroui/styles'
+export type { RangeCalendarVariants } from '@heroui/styles'

@@ -1,35 +1,17 @@
-import { inject, provide, type ComputedRef, type InjectionKey } from 'vue'
-import type { TMeterColor, TMeterSize } from './variants'
+import type { ComputedRef, InjectionKey } from 'vue'
+import type { meterVariants } from '@heroui/styles'
 
-/**
- * Meter context — the shared state HeroUI's `Meter` drives across its compound
- * parts (`Output`, `Track`, `Fill`). HeroUI uses React Aria's `Meter` render
- * state (`percentage` / `valueText`); reka-ui has no `Meter` primitive, so the
- * value math lives in the root `setup()` and is shared via provide/inject.
- */
-export type TMeterContext = {
-  /** Clamped fill ratio, 0–100. */
+/** The `meterVariants()` slot map — one class-name function per Meter part. */
+export type MeterSlots = ReturnType<typeof meterVariants>
+
+export interface MeterContext {
+  /** Reactive slot map — recomputed when color/size change. */
+  slots: ComputedRef<MeterSlots>
+  /** Clamped fill percentage, 0–100. */
   percentage: ComputedRef<number>
   /** Formatted value text (defaults to a percent string). */
   valueText: ComputedRef<string>
-  /** Size variant. */
-  size: ComputedRef<TMeterSize>
-  /** Colour variant. */
-  color: ComputedRef<TMeterColor>
 }
 
-export const METER_INJECTION_KEY: InjectionKey<TMeterContext> = Symbol('HeroMeter')
-
-/** Provide the Meter context to descendant compound parts. */
-export function provideMeterContext (ctx: TMeterContext): void {
-  provide(METER_INJECTION_KEY, ctx)
-}
-
-/** Consume the Meter context. Throws when used outside a `<Meter>`. */
-export function useMeterContext (): TMeterContext {
-  const ctx = inject(METER_INJECTION_KEY, null)
-  if (!ctx) {
-    throw new Error('Meter compound parts must be used within a <Meter>.')
-  }
-  return ctx
-}
+/** Provided by `Meter`, consumed by every compound part. */
+export const METER_CONTEXT: InjectionKey<MeterContext> = Symbol('heroui-vue-meter')

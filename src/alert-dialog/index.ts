@@ -1,17 +1,59 @@
 /**
- * HeroUI-Vue AlertDialog — faithful port of `shadcn-vue` over reka-ui
- * `AlertDialog*`, restyled to HeroUI v3 modal taste (`rounded-2xl` surface,
- * `bg-black/50` backdrop, `data-[state]` zoom animation — mirrors `modal`).
- * Part of the HeroUI-for-Vue primitive library.
+ * AlertDialog — faithful Vue port of HeroUI v3 `AlertDialog`.
  *
- * Export names mirror `shadcn-vue` exactly.
+ * Compound API (HeroUI v3):
+ *   `AlertDialog`                 → AlertDialogRoot (DialogTrigger wrapper, no DOM)
+ *   `AlertDialog.Trigger`         → AlertDialogTrigger
+ *   `AlertDialog.Backdrop`        → AlertDialogBackdrop  (portal + overlay)
+ *   `AlertDialog.Container`       → AlertDialogContainer  (modal + focus trap)
+ *   `AlertDialog.Dialog`          → AlertDialogDialog  (role="alertdialog")
+ *   `AlertDialog.Header`          → AlertDialogHeader
+ *   `AlertDialog.Heading`         → AlertDialogHeading  (accessible title)
+ *   `AlertDialog.Body`            → AlertDialogBody  (accessible description)
+ *   `AlertDialog.Footer`          → AlertDialogFooter
+ *   `AlertDialog.Icon`            → AlertDialogIcon
+ *   `AlertDialog.CloseTrigger`    → AlertDialogCloseTrigger
  */
-export { default as AlertDialog } from './alert-dialog'
-export { default as AlertDialogAction } from './alert-dialog-action'
-export { default as AlertDialogCancel } from './alert-dialog-cancel'
-export { default as AlertDialogContent } from './alert-dialog-content'
-export { default as AlertDialogDescription } from './alert-dialog-description'
-export { default as AlertDialogFooter } from './alert-dialog-footer'
-export { default as AlertDialogHeader } from './alert-dialog-header'
-export { default as AlertDialogTitle } from './alert-dialog-title'
-export { default as AlertDialogTrigger } from './alert-dialog-trigger'
+import { AlertDialogRoot } from './alert-dialog'
+import { AlertDialogTrigger } from './alert-dialog-trigger'
+import { AlertDialogBackdrop } from './alert-dialog-backdrop'
+import { AlertDialogContainer } from './alert-dialog-container'
+import { AlertDialogDialog } from './alert-dialog-dialog'
+import { AlertDialogHeader } from './alert-dialog-header'
+import { AlertDialogHeading } from './alert-dialog-heading'
+import { AlertDialogBody } from './alert-dialog-body'
+import { AlertDialogFooter } from './alert-dialog-footer'
+import { AlertDialogIcon } from './alert-dialog-icon'
+import { AlertDialogCloseTrigger } from './alert-dialog-close-trigger'
+
+/** Compound component — `AlertDialog.Trigger`, `AlertDialog.Backdrop`, … (HeroUI v3 API). */
+export const AlertDialog = Object.assign(AlertDialogRoot, {
+  Root: AlertDialogRoot,
+  Trigger: AlertDialogTrigger,
+  Backdrop: AlertDialogBackdrop,
+  Container: AlertDialogContainer,
+  Dialog: AlertDialogDialog,
+  Header: AlertDialogHeader,
+  Heading: AlertDialogHeading,
+  Body: AlertDialogBody,
+  Footer: AlertDialogFooter,
+  Icon: AlertDialogIcon,
+  CloseTrigger: AlertDialogCloseTrigger
+})
+
+export {
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  AlertDialogBackdrop,
+  AlertDialogContainer,
+  AlertDialogDialog,
+  AlertDialogHeader,
+  AlertDialogHeading,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogIcon,
+  AlertDialogCloseTrigger
+}
+
+export { alertDialogVariants } from '@heroui/styles'
+export type { AlertDialogVariants } from '@heroui/styles'

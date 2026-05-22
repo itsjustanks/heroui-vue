@@ -1,6 +1,8 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { DialogTitle } from 'reka-ui'
+import { modalVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { MODAL_CONTEXT } from './modal-context'
 
 /** ModalHeading — the modal title (HeroUI `modal__heading`), wired as the reka-ui dialog title. */
 export const ModalHeading = defineComponent({
@@ -10,8 +12,13 @@ export const ModalHeading = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(MODAL_CONTEXT, null)
     return () => (
-      <DialogTitle {...attrs} data-slot="modal-heading" class={cn('modal__heading', props.class)}>
+      <DialogTitle
+        {...attrs}
+        data-slot="modal-heading"
+        class={cn((ctx?.slots.value ?? modalVariants()).heading(), props.class)}
+      >
         {slots.default?.()}
       </DialogTitle>
     )

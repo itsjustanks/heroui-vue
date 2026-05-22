@@ -1,23 +1,25 @@
 /**
- * HeroUI-Vue InputGroup — faithful HeroUI v3 input-group over plain DOM.
- * Part of the HeroUI-for-Vue primitive library.
+ * InputGroup — faithful Vue port of HeroUI v3 `InputGroup`.
  *
- * Export names (components, cva variants, and types) mirror `shadcn-vue`
- * exactly so call-site migration is a pure import-path swap.
+ * Compound API (HeroUI v3): `InputGroup`, `InputGroup.Root`, `InputGroup.Input`,
+ * `InputGroup.TextArea`, `InputGroup.Prefix`, `InputGroup.Suffix`.
+ * Flat exports mirror HeroUI v3 React named exports exactly.
  */
-export { default as InputGroup } from './input-group'
-export { default as InputGroupAddon } from './input-group-addon'
-export { default as InputGroupButton } from './input-group-button'
-export { default as InputGroupInput } from './input-group-input'
-export { default as InputGroupText } from './input-group-text'
-export { default as InputGroupTextarea } from './input-group-textarea'
+import { InputGroupRoot } from './input-group'
+import { InputGroupInput } from './input-group-input'
+import { InputGroupTextArea } from './input-group-textarea'
+import { InputGroupPrefix } from './input-group-prefix'
+import { InputGroupSuffix } from './input-group-suffix'
 
-export {
-  inputGroupAddonVariants,
-  inputGroupButtonVariants
-} from './variants'
-export type {
-  InputGroupVariants,
-  InputGroupButtonVariants,
-  InputGroupButtonProps
-} from './variants'
+/** Compound component — `InputGroup.Root`, `.Input`, `.TextArea`, `.Prefix`, `.Suffix` (HeroUI v3 API). */
+export const InputGroup = Object.assign(InputGroupRoot, {
+  Root:     InputGroupRoot,
+  Input:    InputGroupInput,
+  TextArea: InputGroupTextArea,
+  Prefix:   InputGroupPrefix,
+  Suffix:   InputGroupSuffix,
+})
+
+export { InputGroupRoot, InputGroupInput, InputGroupTextArea, InputGroupPrefix, InputGroupSuffix }
+export { inputGroupVariants } from '@heroui/styles'
+export type { InputGroupVariants } from '@heroui/styles'

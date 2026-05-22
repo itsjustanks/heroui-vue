@@ -1,14 +1,10 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarHeader as RekaCalendarHeader, useForwardProps } from 'reka-ui'
-import type { CalendarHeaderProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { CalendarHeader as RekaCalendarHeader } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CALENDAR_CONTEXT } from './calendar-context'
 
-/**
- * CalendarHeader — the nav row above the grid.
- *
- * HeroUI `calendar__header`: a flex row holding prev / heading / next, with
- * compact horizontal padding and bottom spacing.
- */
+/** Calendar.Header — the nav row above the grid (HeroUI `calendar__header`). */
 export const CalendarHeader = defineComponent({
   name: 'CalendarHeader',
   inheritAttrs: false,
@@ -16,11 +12,12 @@ export const CalendarHeader = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as CalendarHeaderProps)
+    const ctx = inject(CALENDAR_CONTEXT, null)
     return () => (
       <RekaCalendarHeader
-        {...forwardedProps.value}
-        class={cn('calendar__header', props.class)}
+        {...attrs}
+        data-slot="calendar-header"
+        class={cn((ctx?.slots.value ?? calendarVariants()).header(), props.class)}
       >
         {slots.default?.()}
       </RekaCalendarHeader>

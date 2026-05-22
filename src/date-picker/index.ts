@@ -1,23 +1,45 @@
 /**
- * HeroUI-Vue DatePicker — faithful HeroUI v3 `DatePicker` over reka-ui.
+ * DatePicker — faithful Vue port of HeroUI v3 `DatePicker`.
  *
- * Net-new primitive (no `shadcn-vue` base). Composes a segmented date
- * field + a popover + a calendar via reka-ui's context-wired `DatePicker*`
- * parts, styled to HeroUI v3 taste (and matching the standalone `calendar`
- * and `popover` primitives). Date engine is `@internationalized/date`.
- * Part of the HeroUI-for-Vue primitive library.
+ * Compound API (HeroUI v3):
+ *   `DatePicker` / `DatePicker.Root`
+ *   `DatePicker.Trigger`          — popover trigger button
+ *   `DatePicker.TriggerIndicator` — calendar icon inside the trigger
+ *   `DatePicker.Popover`          — floating panel that contains the calendar
  *
- * Compound API:
- *   DatePicker            — root (reka `DatePickerRoot`)
- *   DatePickerField       — segmented-input surface (HeroUI `DateField.Group`)
- *   DatePickerInput       — one date segment   (HeroUI `DateField.Segment`)
- *   DatePickerTrigger     — popover trigger    (HeroUI `DatePicker.Trigger`)
- *   DatePickerContent     — popover panel      (HeroUI `DatePicker.Popover`)
- *   DatePickerCalendar    — month grid         (HeroUI `Calendar`)
+ * The segmented date-field input and calendar are composed using `DateField`
+ * and `Calendar` / `DatePickerCalendar` inside the popover.
  */
-export { default as DatePicker } from './date-picker'
-export { default as DatePickerField } from './date-picker-field'
-export { default as DatePickerInput } from './date-picker-input'
-export { default as DatePickerTrigger } from './date-picker-trigger'
-export { default as DatePickerContent } from './date-picker-content'
-export { default as DatePickerCalendar } from './date-picker-calendar'
+import { DatePickerRoot } from './date-picker'
+import { DatePickerTrigger } from './date-picker-trigger'
+import { DatePickerTriggerIndicator } from './date-picker-trigger-indicator'
+import { DatePickerPopover, DatePickerContent } from './date-picker-content'
+import { DatePickerCalendar } from './date-picker-calendar'
+import { DatePickerField } from './date-picker-field'
+import { DatePickerInput } from './date-picker-input'
+
+/** Compound component — mirrors HeroUI v3 `DatePicker.*` API exactly. */
+export const DatePicker = Object.assign(DatePickerRoot, {
+  Root: DatePickerRoot,
+  Trigger: DatePickerTrigger,
+  TriggerIndicator: DatePickerTriggerIndicator,
+  Popover: DatePickerPopover,
+})
+
+export {
+  DatePickerRoot,
+  DatePickerTrigger,
+  DatePickerTriggerIndicator,
+  DatePickerPopover,
+  /** @deprecated Use `DatePickerPopover` */
+  DatePickerContent,
+  /** Convenience: full calendar grid wired to the date-picker context. */
+  DatePickerCalendar,
+  /** Legacy: segmented field surface (use `DateField.Group` inside `DatePicker` instead). */
+  DatePickerField,
+  /** Legacy: individual date segment (use `DateField.Segment` instead). */
+  DatePickerInput,
+}
+
+export { datePickerVariants } from '@heroui/styles'
+export type { DatePickerVariants } from '@heroui/styles'

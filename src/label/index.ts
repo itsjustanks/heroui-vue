@@ -1,5 +1,16 @@
 /**
- * HeroUI-Vue Label — faithful HeroUI v3 label over reka-ui.
- * Part of the HeroUI-for-Vue primitive library.
+ * Label — faithful Vue port of HeroUI v3 `Label`.
+ *
+ * Compound API (HeroUI v3): `Label`, `Label.Root`.
+ * Flat export `LabelRoot` available for named imports.
  */
-export { default as Label } from './label'
+import { LabelRoot } from './label'
+
+/** Compound component — `Label.Root` (HeroUI v3 API). */
+export const Label = Object.assign(LabelRoot, {
+  Root: LabelRoot
+})
+
+export { LabelRoot }
+export { labelVariants } from '@heroui/styles'
+export type { LabelVariants } from '@heroui/styles'

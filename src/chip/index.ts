@@ -1,21 +1,19 @@
 /**
- * HeroUI-Vue Chip — faithful HeroUI v3 chip primitive.
- * Part of the HeroUI-for-Vue primitive library.
+ * Chip — a faithful Vue port of HeroUI v3 `Chip`.
  *
- * A compact, pill-shaped tag — distinct from `badge`. Compound API mirrors
- * HeroUI v3: `Chip` (= `ChipRoot`) with `.Root` / `.Label` dot-notation parts.
+ * Compound API (HeroUI v3): `Chip`, `Chip.Root`, `Chip.Label`.
+ * Flat named exports (`ChipRoot`, `ChipLabel`) are also available for callers
+ * that prefer named imports.
  */
 import { ChipRoot } from './chip-root'
 import { ChipLabel } from './chip-label'
 
-/** Compound component — `Chip` is `ChipRoot` with dot-notation parts attached. */
+/** Compound component — `Chip.Root`, `Chip.Label` (HeroUI v3 API). */
 export const Chip = Object.assign(ChipRoot, {
   Root: ChipRoot,
   Label: ChipLabel
 })
 
 export { ChipRoot, ChipLabel }
-export { chipVariants } from './chip-variants'
-export type { TChipVariants } from './chip-variants'
-
-export default Chip
+export { chipVariants } from '@heroui/styles'
+export type { ChipVariants } from '@heroui/styles'

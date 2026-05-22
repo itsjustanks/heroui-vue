@@ -1,56 +1,49 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { DateFieldRoot, useForwardPropsEmits } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { DateFieldRoot as RekaDateFieldRoot, useForwardPropsEmits } from 'reka-ui'
 import type { DateFieldRootProps } from 'reka-ui'
+import { dateFieldVariants, type DateFieldVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { DATE_FIELD_CONTEXT } from './date-field-context'
+import { dateInputGroupVariants } from '@heroui/styles'
 
 /**
- * DateField — HeroUI-Vue date-field root (primitive library, net-new).
+ * DateFieldRoot — the segmented date-field root. HeroUI v3 `DateField`.
  *
- * Faithful port of HeroUI v3 `DateField` over reka-ui `DateFieldRoot`. A
- * `DateField` is a segmented date input with **no popover / no calendar** — the
- * counterpart to `TimeField` for dates. HeroUI's `date-field` BEM is just a
- * `flex flex-col gap-1` layout wrapper; the segmented input surface lives in
- * `DateFieldGroup`. Date engine stays `@internationalized/date` via reka-ui —
- * `modelValue` / `placeholder` / `granularity` / `hourCycle` / `hideTimeZone` /
- * `step` / `minValue` / `maxValue` / `locale` / `isDateUnavailable` are all
- * forwarded.
- *
- * Compound API: `DateField`, `DateFieldGroup`, `DateFieldInput`,
- * `DateFieldSegment`, `DateFieldPrefix`, `DateFieldSuffix` — mirrors HeroUI's
- * `DateField.*` parts (HeroUI's `DateField` ships as a single root; the segment
- * compound parts mirror `TimeField`'s, the sibling control).
+ * Computes `dateFieldVariants` for the wrapper and provides a `dateInputGroupVariants`
+ * slot map to the compound parts (Group, Input, Segment, Prefix, Suffix).
+ * Wraps reka-ui `DateFieldRoot`; all reka props and emits are forwarded.
  */
-export const DateField = defineComponent({
-  name: 'DateFieldView',
+export const DateFieldRoot = defineComponent({
+  name: 'DateField',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** HeroUI `fullWidth` — stretch the field to fill its container. */
-    fullWidth: { type: Boolean, default: false }
+    /** HeroUI `fullWidth` — stretch the field to fill its container. @default false */
+    fullWidth: { type: Boolean as PropType<DateFieldVariants['fullWidth']>, default: false }
   },
-  // reka-ui `DateFieldRoot` emits — declared as a string array so
-  // `defineComponent`'s overload resolves and `useForwardPropsEmits` forwards.
   emits: ['update:modelValue', 'update:placeholder'],
   setup (props, { attrs, emit, slots }) {
+    // Provide dateInputGroupVariants slot map — parts read this for BEM classes.
+    // We store variant/fullWidth defaults here so Group can override at its level.
+    const groupSlots = computed(() => dateInputGroupVariants())
+    provide(DATE_FIELD_CONTEXT, { slots: groupSlots })
+
+    const styles = computed(() => dateFieldVariants({ fullWidth: props.fullWidth }))
     const forwarded = useForwardPropsEmits(attrs as DateFieldRootProps, emit)
+
     return () => (
-      <DateFieldRoot
+      <RekaDateFieldRoot
         {...forwarded.value}
         data-slot="date-field"
-        class={cn(
-          'date-field',
-          props.fullWidth && 'date-field--full-width',
-          props.class
-        )}
+        data-required={(forwarded.value as Record<string, unknown>).required ? '' : undefined}
+        class={cn(styles.value, props.class)}
       >
         {{
-          // reka-ui `DateFieldRoot` exposes `segments`/`modelValue` — surface them
-          // so consumers can drive a render-prop child, matching HeroUI's pattern.
           default: (slotProps: Record<string, unknown>) => slots.default?.(slotProps)
         }}
-      </DateFieldRoot>
+      </RekaDateFieldRoot>
     )
   }
 })
 
-export default DateField
+export default DateFieldRoot

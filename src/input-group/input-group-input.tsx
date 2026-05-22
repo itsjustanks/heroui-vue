@@ -1,13 +1,11 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { inputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { Input } from '@/input'
+import { INPUT_GROUP_CONTEXT } from './input-group-context'
 
 /**
- * InputGroupInput — the text control inside an `InputGroup`.
- *
- * Emits HeroUI v3 BEM class name from `input-group.css`:
- *   `input-group__input`
- * with `data-slot="input-group-input"` so the group's CSS selectors work.
+ * InputGroupInput — the text `<input>` inside an `InputGroup` (HeroUI `input-group__input`).
+ * Faithful Vue port of HeroUI v3 `InputGroupInput`.
  */
 export const InputGroupInput = defineComponent({
   name: 'InputGroupInput',
@@ -16,11 +14,12 @@ export const InputGroupInput = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
+    const ctx = inject(INPUT_GROUP_CONTEXT, null)
     return () => (
-      <Input
+      <input
         {...attrs}
         data-slot="input-group-input"
-        class={cn('input-group__input', props.class)}
+        class={cn((ctx?.slots.value ?? inputGroupVariants()).input(), props.class)}
       />
     )
   }

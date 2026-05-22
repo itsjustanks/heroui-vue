@@ -1,25 +1,17 @@
-import { inject, provide, type InjectionKey, type Ref } from 'vue'
-import type { TInputOTPVariant } from './input-otp-variants'
+import type { ComputedRef, InjectionKey } from 'vue'
+import type { inputOTPVariants } from '@heroui/styles'
 
-/** Context shared from `InputOTPRoot` to its `InputOTPSlot` descendants. */
-interface IInputOTPContext {
-  /** Visual variant — consumed by each slot. */
-  variant: Ref<TInputOTPVariant>
+/** The `inputOTPVariants()` slot map — one class-name function per InputOTP part. */
+export type InputOTPSlots = ReturnType<typeof inputOTPVariants>
+
+export interface InputOTPContext {
+  /** Reactive slot map — recomputed when variant changes. */
+  slots: ComputedRef<InputOTPSlots>
   /** Whether the whole input is disabled. */
-  isDisabled: Ref<boolean>
+  isDisabled: ComputedRef<boolean>
   /** Whether the input is in an invalid state. */
-  isInvalid: Ref<boolean>
+  isInvalid: ComputedRef<boolean>
 }
 
-const INPUT_OTP_INJECTION_KEY: InjectionKey<IInputOTPContext> =
-  Symbol('HeroUIInputOTPContext')
-
-/** Provide input-otp context from `InputOTPRoot`. */
-export function provideInputOTPContext (context: IInputOTPContext): void {
-  provide(INPUT_OTP_INJECTION_KEY, context)
-}
-
-/** Inject input-otp context within an `InputOTPSlot`. */
-export function useInputOTPContext (): IInputOTPContext | undefined {
-  return inject(INPUT_OTP_INJECTION_KEY, undefined)
-}
+/** Provided by `InputOTPRoot`, consumed by every compound part. */
+export const INPUT_OTP_CONTEXT: InjectionKey<InputOTPContext> = Symbol('heroui-vue-input-otp')

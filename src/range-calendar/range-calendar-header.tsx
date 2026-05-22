@@ -1,15 +1,10 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RangeCalendarHeader as RekaRangeCalendarHeader, useForwardProps } from 'reka-ui'
-import type { RangeCalendarHeaderProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarHeader as RekaRangeCalendarHeader } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
-/**
- * RangeCalendarHeader — the nav row above the grid. HeroUI v3
- * `RangeCalendar.Header`.
- *
- * Adapts HeroUI's `range-calendar__header`: a flex row holding prev / heading /
- * next, with compact horizontal padding and bottom spacing.
- */
+/** RangeCalendar.Header — the nav row above the grid (HeroUI `range-calendar__header`). */
 export const RangeCalendarHeader = defineComponent({
   name: 'RangeCalendarHeader',
   inheritAttrs: false,
@@ -17,11 +12,12 @@ export const RangeCalendarHeader = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as RangeCalendarHeaderProps)
+    const ctx = inject(RANGE_CALENDAR_CONTEXT, null)
     return () => (
       <RekaRangeCalendarHeader
-        {...forwardedProps.value}
-        class={cn('range-calendar__header', props.class)}
+        {...attrs}
+        data-slot="range-calendar-header"
+        class={cn((ctx?.slots.value ?? rangeCalendarVariants()).header(), props.class)}
       >
         {slots.default?.()}
       </RekaRangeCalendarHeader>

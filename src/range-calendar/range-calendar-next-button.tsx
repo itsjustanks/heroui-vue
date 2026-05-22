@@ -1,14 +1,13 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarNext as RekaRangeCalendarNext } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { IconChevronRight } from '@/icons'
-import { RangeCalendarNext as RekaRangeCalendarNext, useForwardProps } from 'reka-ui'
-import type { RangeCalendarNextProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
 /**
- * RangeCalendarNextButton — steps the range calendar to the next page. HeroUI
- * v3 `RangeCalendar.Next`.
- *
- * Emits HeroUI BEM class `range-calendar__nav-button`.
+ * @deprecated Use `RangeCalendar.NavButton slot="next"` instead (HeroUI v3 API).
+ * RangeCalendarNextButton — steps the calendar to the next page.
  */
 export const RangeCalendarNextButton = defineComponent({
   name: 'RangeCalendarNextButton',
@@ -17,13 +16,16 @@ export const RangeCalendarNextButton = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as RangeCalendarNextProps)
+    const ctx = inject(RANGE_CALENDAR_CONTEXT, null)
     return () => (
       <RekaRangeCalendarNext
-        {...forwardedProps.value}
-        class={cn('range-calendar__nav-button', props.class)}
+        {...attrs}
+        data-slot="range-calendar-nav-button"
+        class={cn((ctx?.slots.value ?? rangeCalendarVariants()).navButton(), props.class)}
       >
-        {slots.default ? slots.default() : <IconChevronRight class="range-calendar__nav-button-icon" />}
+        {slots.default
+          ? slots.default()
+          : <IconChevronRight data-slot="range-calendar-nav-button-icon" class={(ctx?.slots.value ?? rangeCalendarVariants()).navButtonIcon()} />}
       </RekaRangeCalendarNext>
     )
   }

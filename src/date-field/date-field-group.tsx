@@ -1,37 +1,34 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { dateInputGroupVariants, type DateInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import type { TDateInputGroupVariants } from '@/time-field'
+import { DATE_FIELD_CONTEXT } from './date-field-context'
 
 /**
- * DateFieldGroup — the segmented-input surface. HeroUI v3 `DateField.Group`.
+ * DateField.Group — the segmented-input surface. HeroUI v3 `DateField.Group`
+ * (maps to `DateInputGroupRoot`).
  *
- * Reuses HeroUI's shared `date-input-group` BEM (the same surface every HeroUI
- * date control uses — `time-field`, `date-picker`, `date-range-picker`):
- * `rounded-md` bordered surface, a focus-within ring, and `primary` /
- * `secondary` variants. Holds the optional `DateFieldPrefix`, the
- * `DateFieldInput`, and the optional `DateFieldSuffix`.
+ * Computes `dateInputGroupVariants` and provides the slot map to
+ * `DateField.Input`, `.Segment`, `.Prefix`, `.Suffix`.
  */
 export const DateFieldGroup = defineComponent({
   name: 'DateFieldGroup',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** HeroUI surface variant — `primary` (bordered) or `secondary` (muted). */
-    variant: { type: String as PropType<TDateInputGroupVariants['variant']>, default: 'primary' },
-    /** HeroUI `fullWidth` — stretch the group to fill its container. */
-    fullWidth: { type: Boolean, default: false }
+    /** HeroUI surface variant — `primary` (bordered) or `secondary` (muted). @default 'primary' */
+    variant: { type: String as PropType<DateInputGroupVariants['variant']>, default: 'primary' },
+    /** HeroUI `fullWidth` — stretch the group to fill its container. @default false */
+    fullWidth: { type: Boolean as PropType<DateInputGroupVariants['fullWidth']>, default: false }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => dateInputGroupVariants({ variant: props.variant, fullWidth: props.fullWidth }))
+    provide(DATE_FIELD_CONTEXT, { slots: styles })
+
     return () => (
       <div
         {...attrs}
-        data-slot="date-field-group"
-        class={cn(
-          'date-input-group',
-          props.variant === 'secondary' ? 'date-input-group--secondary' : 'date-input-group--primary',
-          props.fullWidth && 'date-input-group--full-width',
-          props.class
-        )}
+        data-slot="date-input-group"
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
       </div>

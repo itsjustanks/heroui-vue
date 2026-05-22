@@ -1,12 +1,13 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { SelectValue as RekaSelectValue } from 'reka-ui'
+import { selectVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { SELECT_CONTEXT } from './select-context'
 
 /**
- * SelectValue — renders the selected item's text inside the trigger.
+ * SelectValue — renders the selected item's text inside the trigger (HeroUI `select__value`).
  *
- * Emits HeroUI BEM class `select__value`. Placeholder state is styled via
- * `select__value[data-placeholder="true"]` in `select.css`.
+ * Placeholder state is styled via `select__value[data-placeholder]` in `select.css`.
  */
 export const SelectValue = defineComponent({
   name: 'SelectValue',
@@ -15,8 +16,13 @@ export const SelectValue = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(SELECT_CONTEXT, null)
     return () => (
-      <RekaSelectValue {...attrs} class={cn('select__value', props.class)}>
+      <RekaSelectValue
+        {...attrs}
+        data-slot="select-value"
+        class={cn((ctx?.slots.value ?? selectVariants()).value(), props.class)}
+      >
         {slots.default?.()}
       </RekaSelectValue>
     )

@@ -6,8 +6,8 @@ import type { HTMLAttributes, PropType } from 'vue'
 /**
  * MenubarTrigger — the clickable label in the bar that opens its menu.
  *
- * Open state uses reka-ui's `data-[state=open]` attribute, lit with the HeroUI
- * `accent` token; rounded to the HeroUI `md` radius.
+ * Styled with Tailwind tokens only (no HeroUI `@heroui/styles` variant exists
+ * for the bar trigger). Open state uses reka-ui's `data-[state=open]`.
  */
 export const MenubarTrigger = defineComponent({
   name: 'MenubarTrigger',
@@ -19,6 +19,7 @@ export const MenubarTrigger = defineComponent({
     return () => (
       <RekaMenubarTrigger
         {...attrs}
+        data-slot="menubar-trigger"
         class={cn(
           'flex cursor-default select-none items-center rounded-md px-3 py-1.5 text-sm font-medium outline-none transition-colors',
           'focus:bg-accent focus:text-accent-foreground',

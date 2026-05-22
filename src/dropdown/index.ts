@@ -1,28 +1,63 @@
 /**
- * HeroUI-Vue Dropdown — a faithful HeroUI v3 dropdown for Vue, over reka-ui
- * (headless behaviour).
+ * Dropdown — HeroUI v3 `Dropdown` compound component for Vue.
  *
- * Granular parts keep reka-ui-style names, so migrating from shadcn-vue is a
- * mechanical import-path swap.
+ * Compound API (HeroUI v3):
+ *   `Dropdown`                 — root (DropdownMenuRoot, provides context)
+ *   `Dropdown.Trigger`         — trigger button (dropdown__trigger)
+ *   `Dropdown.Popover`         — popover surface (dropdown__popover) — carries overlay shim
+ *   `Dropdown.Menu`            — inner list container (dropdown__menu)
+ *   `Dropdown.Section`         — grouped section (menu-section)
+ *   `Dropdown.Item`            — menu row (menu-item)
+ *   `Dropdown.ItemIndicator`   — leading checkmark / dot span (menu-item__indicator)
+ *   `Dropdown.SubmenuIndicator`— trailing chevron span (menu-item__indicator--submenu)
+ *   `Dropdown.SubmenuTrigger`  — submenu trigger row
  *
- * `Dropdown` + `DropdownItem` are the 2-part Popover-backed dropdown — a
- * distinct, smaller primitive from the 14-part `DropdownMenu*` family above;
- * the names do not collide.
+ * Additional helpers (not in HeroUI v3 but retained for reka-ui parity):
+ *   `DropdownSub`              — sub-root (DropdownMenuSub)
+ *   `DropdownSubPopover`       — nested submenu popover surface (carries overlay shim)
  */
-export { default as DropdownMenu } from './dropdown-menu'
-export { default as DropdownMenuTrigger } from './dropdown-menu-trigger'
-export { default as DropdownMenuContent } from './dropdown-menu-content'
-export { default as DropdownMenuItem } from './dropdown-menu-item'
-export { default as DropdownMenuSeparator } from './dropdown-menu-separator'
-export { default as DropdownMenuLabel } from './dropdown-menu-label'
-export { default as DropdownMenuGroup } from './dropdown-menu-group'
-export { default as DropdownMenuShortcut } from './dropdown-menu-shortcut'
-export { default as DropdownMenuCheckboxItem } from './dropdown-menu-checkbox-item'
-export { default as DropdownMenuRadioGroup } from './dropdown-menu-radio-group'
-export { default as DropdownMenuRadioItem } from './dropdown-menu-radio-item'
-export { default as DropdownMenuSub } from './dropdown-menu-sub'
-export { default as DropdownMenuSubTrigger } from './dropdown-menu-sub-trigger'
-export { default as DropdownMenuSubContent } from './dropdown-menu-sub-content'
-export { DropdownMenuPortal } from 'reka-ui'
-export { default as Dropdown } from './dropdown'
-export { default as DropdownItem } from './dropdown-item'
+import { DropdownRoot } from './dropdown-root'
+import { DropdownTrigger } from './dropdown-trigger'
+import { DropdownPopover } from './dropdown-popover'
+import { DropdownMenu } from './dropdown-menu'
+import { DropdownSection } from './dropdown-section'
+import { DropdownItem } from './dropdown-item'
+import { DropdownItemIndicator } from './dropdown-item-indicator'
+import { DropdownSubmenuIndicator } from './dropdown-submenu-indicator'
+import { DropdownSubmenuTrigger } from './dropdown-submenu-trigger'
+import { DropdownSub } from './dropdown-sub'
+import { DropdownSubPopover } from './dropdown-sub-popover'
+
+/** Compound component — matches HeroUI v3 `Dropdown` API exactly. */
+export const Dropdown = Object.assign(DropdownRoot, {
+  Root: DropdownRoot,
+  Trigger: DropdownTrigger,
+  Popover: DropdownPopover,
+  Menu: DropdownMenu,
+  Section: DropdownSection,
+  Item: DropdownItem,
+  ItemIndicator: DropdownItemIndicator,
+  SubmenuIndicator: DropdownSubmenuIndicator,
+  SubmenuTrigger: DropdownSubmenuTrigger,
+})
+
+export {
+  DropdownRoot,
+  DropdownTrigger,
+  DropdownPopover,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+  DropdownItemIndicator,
+  DropdownSubmenuIndicator,
+  DropdownSubmenuTrigger,
+  DropdownSub,
+  DropdownSubPopover,
+}
+
+export { dropdownVariants } from '@heroui/styles'
+export type { DropdownVariants } from '@heroui/styles'
+export { menuItemVariants } from '@heroui/styles'
+export type { MenuItemVariants } from '@heroui/styles'
+export { menuSectionVariants } from '@heroui/styles'
+export type { MenuSectionVariants } from '@heroui/styles'

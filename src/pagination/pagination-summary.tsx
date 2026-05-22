@@ -1,11 +1,13 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { paginationVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { PAGINATION_CONTEXT } from './pagination-context'
 
 /**
- * PaginationSummary — left-side info text (e.g. "Showing 1–10 of 240").
+ * PaginationSummary — the informational text block (e.g. "Showing 1–10 of 240").
+ * Faithful Vue port of HeroUI v3 `Pagination.Summary` (`pagination__summary`).
  *
- * Faithful port of HeroUI v3 `PaginationSummary` (`pagination__summary`): a
- * muted, sized informational block. A plain `<div>` — no reka primitive needed.
+ * A plain `<div>` — no reka-ui primitive required.
  */
 export const PaginationSummary = defineComponent({
   name: 'PaginationSummary',
@@ -14,11 +16,12 @@ export const PaginationSummary = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(PAGINATION_CONTEXT, null)
     return () => (
       <div
         {...attrs}
         data-slot="pagination-summary"
-        class={cn('pagination__summary', props.class)}
+        class={cn((ctx?.slots.value ?? paginationVariants()).summary(), props.class)}
       >
         {slots.default?.()}
       </div>

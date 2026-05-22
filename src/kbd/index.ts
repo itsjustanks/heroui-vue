@@ -1,9 +1,24 @@
 /**
- * HeroUI-Vue Kbd — faithful HeroUI v3 keyboard-key hint.
- * Part of the HeroUI-for-Vue primitive library.
+ * Kbd — faithful Vue port of HeroUI v3 `Kbd`.
  *
- * Compat-named exports mirror `shadcn-vue` so call-site
- * migration is a mechanical import-path swap.
+ * Compound API (HeroUI v3): `Kbd`, `Kbd.Root`, `Kbd.Abbr`, `Kbd.Content`.
+ * Flat part exports (`KbdRoot`, `KbdAbbr`, `KbdContent`) are available for
+ * callers that prefer named imports.
  */
-export { default as Kbd } from './kbd'
-export { default as KbdGroup } from './kbd-group'
+import { KbdRoot } from './kbd'
+import { KbdAbbr } from './kbd-abbr'
+import { KbdContent } from './kbd-content'
+
+/** Compound component — `Kbd.Root`, `Kbd.Abbr`, `Kbd.Content` (HeroUI v3 API). */
+export const Kbd = Object.assign(KbdRoot, {
+  Root: KbdRoot,
+  Abbr: KbdAbbr,
+  Content: KbdContent
+})
+
+export { KbdRoot, KbdAbbr, KbdContent }
+export { kbdVariants } from '@heroui/styles'
+export type { KbdVariants } from '@heroui/styles'
+
+export type { KbdKey } from './kbd.constants'
+export { kbdKeysMap, kbdKeysLabelMap } from './kbd.constants'

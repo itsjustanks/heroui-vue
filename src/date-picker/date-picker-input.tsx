@@ -2,7 +2,8 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DatePickerInput as RekaDatePickerInput } from 'reka-ui'
 import type { SegmentPart } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import type { TTimeSegment } from '@/time-field'
+/** A single segment descriptor from reka-ui's DatePicker context. */
+type TDatePickerSegment = { part: string; value: string }
 
 /**
  * DatePickerInput — a single date segment (day / month / year / hour / minute /
@@ -18,7 +19,7 @@ export const DatePickerInput = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** The segment descriptor handed down from `DatePickerField`'s render-prop. */
-    segment: { type: Object as PropType<TTimeSegment>, required: true }
+    segment: { type: Object as PropType<TDatePickerSegment>, required: true }
   },
   setup (props, { attrs }) {
     return () => {

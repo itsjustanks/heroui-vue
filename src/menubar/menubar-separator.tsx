@@ -3,10 +3,7 @@ import { MenubarSeparator as RekaMenubarSeparator } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import type { HTMLAttributes, PropType } from 'vue'
 
-/**
- * MenubarSeparator — a quiet divider between menu groups, inset to sit inside
- * the HeroUI `menu` padding.
- */
+/** MenubarSeparator — a quiet divider between menu groups (HeroUI `separator`). */
 export const MenubarSeparator = defineComponent({
   name: 'MenubarSeparator',
   inheritAttrs: false,
@@ -18,7 +15,7 @@ export const MenubarSeparator = defineComponent({
       <RekaMenubarSeparator
         {...attrs}
         data-slot="separator"
-        class={cn(props.class)}
+        class={cn('separator', props.class)}
       />
     )
   }

@@ -1,12 +1,12 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarHeadCell as RekaCalendarHeadCell, useForwardProps } from 'reka-ui'
-import type { CalendarHeadCellProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { CalendarHeadCell as RekaCalendarHeadCell } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CALENDAR_CONTEXT } from './calendar-context'
 
 /**
- * CalendarHeadCell — a single weekday `<th>`.
- *
- * HeroUI `calendar__header-cell`: centered `text-xs font-medium` muted label.
+ * @deprecated Use `CalendarHeaderCell` instead (HeroUI v3 API).
+ * Calendar.HeaderCell — a weekday `<th>` column header (HeroUI `calendar__header-cell`).
  */
 export const CalendarHeadCell = defineComponent({
   name: 'CalendarHeadCell',
@@ -15,11 +15,12 @@ export const CalendarHeadCell = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as CalendarHeadCellProps)
+    const ctx = inject(CALENDAR_CONTEXT, null)
     return () => (
       <RekaCalendarHeadCell
-        {...forwardedProps.value}
-        class={cn('calendar__header-cell', props.class)}
+        {...attrs}
+        data-slot="calendar-header-cell"
+        class={cn((ctx?.slots.value ?? calendarVariants()).headerCell(), props.class)}
       >
         {slots.default?.()}
       </RekaCalendarHeadCell>

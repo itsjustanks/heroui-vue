@@ -1,41 +1,43 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { TimeFieldRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { TimeFieldRoot as RekaTimeFieldRoot } from 'reka-ui'
+import { timeFieldVariants, dateInputGroupVariants, type TimeFieldVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TIME_FIELD_CONTEXT } from './time-field-context'
 
 /**
- * TimeField — HeroUI-Vue time-field root (primitive library, net-new).
+ * TimeFieldRoot — the segmented time-field root. HeroUI v3 `TimeField`.
  *
- * Faithful port of HeroUI v3 `TimeField` over reka-ui `TimeFieldRoot`. HeroUI's
- * `time-field` BEM is just a layout wrapper (`time-field`, `time-field--full-width`);
- * the segmented input surface lives in `TimeFieldGroup`. Date engine stays
- * `@internationalized/date` via reka-ui — `value` / `granularity` / `hourCycle`
- * / `hideTimeZone` / `step` / `minValue` / `maxValue` are all forwarded.
- *
- * Compound API: `TimeField`, `TimeFieldGroup`, `TimeFieldInput`, `TimeFieldSegment`,
- * `TimeFieldPrefix`, `TimeFieldSuffix` — mirrors HeroUI's `TimeField.*` parts.
+ * Computes `timeFieldVariants` for the wrapper class and provides a
+ * `dateInputGroupVariants` slot map to the compound parts (Group, Input,
+ * Segment, Prefix, Suffix). Wraps reka-ui `TimeFieldRoot`.
  */
-export const TimeField = defineComponent({
-  name: 'TimeFieldView',
+export const TimeFieldRoot = defineComponent({
+  name: 'TimeField',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** HeroUI `fullWidth` — stretch the field to fill its container. */
-    fullWidth: { type: Boolean, default: false }
+    /** HeroUI `fullWidth` — stretch the field to fill its container. @default false */
+    fullWidth: { type: Boolean as PropType<TimeFieldVariants['fullWidth']>, default: false }
   },
   setup (props, { attrs, slots }) {
+    // Provide default dateInputGroupVariants slot map — Group overrides this for its own variant.
+    const groupSlots = computed(() => dateInputGroupVariants())
+    provide(TIME_FIELD_CONTEXT, { slots: groupSlots })
+
+    const styles = computed(() => timeFieldVariants({ fullWidth: props.fullWidth }))
+
     return () => (
-      <TimeFieldRoot
+      <RekaTimeFieldRoot
         {...(attrs as Record<string, any>)}
-        class={cn('time-field', props.fullWidth && 'time-field--full-width', props.class)}
+        data-slot="time-field"
+        class={cn(styles.value, props.class)}
       >
         {{
-          // reka-ui `TimeFieldRoot` exposes `segments`/`modelValue` — surface them
-          // so consumers can drive a render-prop child, matching HeroUI's pattern.
           default: (slotProps: Record<string, unknown>) => slots.default?.(slotProps)
         }}
-      </TimeFieldRoot>
+      </RekaTimeFieldRoot>
     )
   }
 })
 
-export default TimeField
+export default TimeFieldRoot

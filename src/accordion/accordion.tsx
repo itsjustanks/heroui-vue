@@ -1,35 +1,35 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { AccordionRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { AccordionRoot as RekaAccordionRoot } from 'reka-ui'
+import { disclosureGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { ACCORDION_CONTEXT } from './accordion-context'
 
 /**
- * Accordion — root of the HeroUI-Vue accordion (primitive library).
+ * AccordionRoot — Vue port of HeroUI v3 `DisclosureGroup`.
  *
- * HeroUI BEM: `accordion` base, `accordion--surface` variant modifier.
- * Forwards all props/emits (`type`, `collapsible`, `modelValue`,
- * `defaultValue`, `onUpdate:modelValue`, `disabled`, …) to reka-ui.
+ * Computes `disclosureGroupVariants` and provides the slot map to child items.
+ * Renders `data-slot="disclosure-group"` on the reka-ui AccordionRoot.
  */
-export const Accordion = defineComponent({
+export const AccordionRoot = defineComponent({
   name: 'Accordion',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<'default' | 'surface'>, default: 'default' }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => disclosureGroupVariants({}))
+    provide(ACCORDION_CONTEXT, { slots: styles })
+
     return () => (
-      <AccordionRoot
+      <RekaAccordionRoot
         {...attrs}
-        class={cn(
-          'accordion',
-          props.variant === 'surface' && 'accordion--surface',
-          props.class
-        )}
+        data-slot="disclosure-group"
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
-      </AccordionRoot>
+      </RekaAccordionRoot>
     )
   }
 })
 
-export default Accordion
+export default AccordionRoot

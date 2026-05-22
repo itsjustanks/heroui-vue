@@ -1,15 +1,16 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RangeCalendarCellTrigger as RekaRangeCalendarCellTrigger, useForwardProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarCellTrigger as RekaRangeCalendarCellTrigger } from 'reka-ui'
 import type { RangeCalendarCellTriggerProps } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
 /**
- * RangeCalendarCellTrigger — the pressable day button inside a cell. HeroUI v3
- * `RangeCalendar.CellTrigger`.
+ * RangeCalendarCellTrigger — the pressable button inside a range cell.
  *
- * Emits HeroUI BEM class `range-calendar__cell-button`. All interactive states
- * (today, selected, caps, disabled, unavailable, outside-month) are handled by
- * `range-calendar.css` via native pseudo-classes and data-attributes.
+ * @internal Used internally by `RangeCalendarCell`.  Exported for advanced
+ * use-cases that need direct access to the reka-ui trigger primitive.
+ * Prefer `RangeCalendar.Cell` for typical usage.
  */
 export const RangeCalendarCellTrigger = defineComponent({
   name: 'RangeCalendarCellTrigger',
@@ -20,12 +21,13 @@ export const RangeCalendarCellTrigger = defineComponent({
     month: { type: Object as PropType<RangeCalendarCellTriggerProps['month']>, required: true }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as Omit<RangeCalendarCellTriggerProps, 'day' | 'month'>)
+    const ctx = inject(RANGE_CALENDAR_CONTEXT, null)
     return () => (
       <RekaRangeCalendarCellTrigger
-        {...forwardedProps.value}
         day={props.day}
         month={props.month}
+        {...attrs}
+        data-slot="range-calendar-cell-button"
         class={cn('range-calendar__cell-button', props.class)}
       >
         {slots.default?.()}

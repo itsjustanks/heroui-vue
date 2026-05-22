@@ -1,33 +1,37 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { TagsInputItemDelete as RekaTagsInputItemDelete } from 'reka-ui'
+import { tagVariants } from '@heroui/styles'
 import { IconX } from '@/icons'
 import { cn } from '@/lib/utils'
+import { TAG_CONTEXT } from './tag-context'
 
 /**
- * TagsInputItemDelete — the remove (`×`) control inside a {@link TagsInputItem}.
+ * TagRemoveButton — the remove control inside a `TagRoot`. Faithful Vue port of
+ * HeroUI v3 `Tag.RemoveButton` (`tag__remove-button`).
  *
- * Faithful port over reka-ui `TagsInputItemDelete`. HeroUI `tag` taste: a small
- * `rounded` icon button that brightens on hover. Defaults to a lucide `X`
- * glyph; the default slot overrides it. Real-logic props (`as`, `asChild`)
- * flow through `{...attrs}`.
+ * Reads `tag__remove-button` class from the parent `TagContext`. Defaults to an
+ * `IconX` glyph; override via default slot. All reka-ui `TagsInputItemDelete`
+ * props (`as`, `asChild`) pass through via `{...attrs}`.
  */
-export const TagsInputItemDelete = defineComponent({
-  name: 'TagsInputItemDelete',
+export const TagRemoveButton = defineComponent({
+  name: 'TagRemoveButton',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(TAG_CONTEXT, null)
     return () => (
       <RekaTagsInputItemDelete
         {...attrs}
+        aria-label="Remove tag"
         data-slot="tag-remove-button"
-        class={cn('tag__remove-button', props.class)}
+        class={cn((ctx?.slots.value ?? tagVariants()).removeButton(), props.class)}
       >
         {slots.default?.() ?? <IconX class="size-3" />}
       </RekaTagsInputItemDelete>
     )
-  }
+  },
 })
 
-export default TagsInputItemDelete
+export default TagRemoveButton

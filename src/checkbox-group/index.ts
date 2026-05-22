@@ -1,34 +1,53 @@
 /**
- * HeroUI-Vue CheckboxGroup — faithful HeroUI v3 checkbox group over reka-ui
- * `CheckboxGroupRoot` + `CheckboxRoot`.
+ * CheckboxGroup — faithful Vue port of HeroUI v3 `CheckboxGroup` + inner `Checkbox` parts.
  *
- * Net-new primitive (no `shadcn-vue` base) — built fresh from HeroUI v3 specs.
- * Part of the HeroUI-for-Vue primitive library.
- *
- * The root owns the shared `string[]` value (`v-model`) and provides variant /
- * disabled / invalid state to its items.
- *
- * Anatomy (HeroUI dot-notation → this Vue flat API):
- *   CheckboxGroup           → CheckboxGroup
- *   Label (in group)        → CheckboxGroupLabel
- *   Description (in group)  → CheckboxGroupDescription
- *   Checkbox (in group)     → CheckboxGroupItem (value prop)
- *   Checkbox.Control        → CheckboxGroupItemControl
- *   Checkbox.Indicator      → CheckboxGroupItemIndicator
- *   Checkbox.Content        → CheckboxGroupItemContent
- *   Label (in Content)      → CheckboxGroupItemLabel
- *   Description (in Content) → CheckboxGroupDescription
- *   FieldError              → CheckboxGroupError
+ * HeroUI v3 exports `CheckboxGroup` as a standalone component; the inner items use the
+ * `Checkbox` compound. This heroui-vue family mirrors that structure with named parts:
+ *   CheckboxGroup              → CheckboxGroupRoot / CheckboxGroup
+ *   Label (in group)           → CheckboxGroupLabel
+ *   Description (in group)     → CheckboxGroupDescription
+ *   Checkbox (in group)        → CheckboxGroupItem
+ *   Checkbox.Control           → CheckboxGroupItemControl
+ *   Checkbox.Indicator         → CheckboxGroupItemIndicator
+ *   Checkbox.Content           → CheckboxGroupItemContent
+ *   Label (in Content)         → CheckboxGroupItemLabel
+ *   Description (in Content)   → CheckboxGroupDescription
+ *   FieldError                 → CheckboxGroupError
  */
-export { default as CheckboxGroup } from './checkbox-group'
-export { default as CheckboxGroupLabel } from './checkbox-group-label'
-export { default as CheckboxGroupDescription } from './checkbox-group-description'
-export { default as CheckboxGroupItem } from './checkbox-group-item'
-export { default as CheckboxGroupItemControl } from './checkbox-group-item-control'
-export { default as CheckboxGroupItemIndicator } from './checkbox-group-item-indicator'
-export { default as CheckboxGroupItemContent } from './checkbox-group-item-content'
-export { default as CheckboxGroupItemLabel } from './checkbox-group-item-label'
-export { default as CheckboxGroupError } from './checkbox-group-error'
+import { CheckboxGroupRoot } from './checkbox-group'
+import { CheckboxGroupLabel } from './checkbox-group-label'
+import { CheckboxGroupDescription } from './checkbox-group-description'
+import { CheckboxGroupError } from './checkbox-group-error'
+import { CheckboxGroupItem } from './checkbox-group-item'
+import { CheckboxGroupItemControl } from './checkbox-group-item-control'
+import { CheckboxGroupItemIndicator } from './checkbox-group-item-indicator'
+import { CheckboxGroupItemContent } from './checkbox-group-item-content'
+import { CheckboxGroupItemLabel } from './checkbox-group-item-label'
+
+/** Compound component — `CheckboxGroup.Label`, `CheckboxGroup.Item`, … (HeroUI v3 API). */
+export const CheckboxGroup = Object.assign(CheckboxGroupRoot, {
+  Root: CheckboxGroupRoot,
+  Label: CheckboxGroupLabel,
+  Description: CheckboxGroupDescription,
+  Error: CheckboxGroupError,
+  Item: CheckboxGroupItem,
+  ItemControl: CheckboxGroupItemControl,
+  ItemIndicator: CheckboxGroupItemIndicator,
+  ItemContent: CheckboxGroupItemContent,
+  ItemLabel: CheckboxGroupItemLabel
+})
+
+export {
+  CheckboxGroupRoot,
+  CheckboxGroupLabel,
+  CheckboxGroupDescription,
+  CheckboxGroupError,
+  CheckboxGroupItem,
+  CheckboxGroupItemControl,
+  CheckboxGroupItemIndicator,
+  CheckboxGroupItemContent,
+  CheckboxGroupItemLabel
+}
 
 export {
   useCheckboxGroup,
@@ -36,5 +55,8 @@ export {
 } from './checkbox-group-context'
 export type {
   ICheckboxGroupContext,
-  TCheckboxGroupVariant
+  CheckboxGroupVariantProp
 } from './checkbox-group-context'
+
+export { checkboxGroupVariants } from '@heroui/styles'
+export type { CheckboxGroupVariants } from '@heroui/styles'

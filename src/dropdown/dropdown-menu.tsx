@@ -1,17 +1,32 @@
-import { defineComponent } from 'vue'
-import { DropdownMenuRoot } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { dropdownVariants } from '@heroui/styles'
+import { cn } from '@/lib/utils'
+import { DROPDOWN_CONTEXT } from './dropdown-context'
 
 /**
- * DropdownMenu — root of the HeroUI-Vue dropdown.
+ * DropdownMenu — the scrollable list container (HeroUI `dropdown__menu`).
  *
- * Thin wrapper over reka-ui `DropdownMenuRoot` — logic only, renders no DOM.
- * Forwards all props/emits (`open`, `defaultOpen`, `onUpdate:open`, `modal`, …).
+ * Placed inside `DropdownPopover` to hold `DropdownItem` / `DropdownSection`
+ * children. Pure presentational `<div>`.
  */
 export const DropdownMenu = defineComponent({
   name: 'DropdownMenu',
   inheritAttrs: false,
-  setup (_props, { attrs, slots }) {
-    return () => <DropdownMenuRoot {...attrs}>{slots.default?.()}</DropdownMenuRoot>
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
+    const ctx = inject(DROPDOWN_CONTEXT, null)
+
+    return () => (
+      <div
+        {...attrs}
+        data-slot="dropdown-menu"
+        class={cn((ctx?.slots.value ?? dropdownVariants()).menu(), props.class)}
+      >
+        {slots.default?.()}
+      </div>
+    )
   }
 })
 

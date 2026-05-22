@@ -3,10 +3,8 @@ import { cn } from '@/lib/utils'
 
 /**
  * CheckboxGroupDescription — supporting helper text under the group label or a
- * group item. Mirrors the `Description` placed inside HeroUI v3's
- * `CheckboxGroup` / `Checkbox.Content`.
- *
- * Muted, `text-xs`.
+ * group item. Mirrors the `Description` placed inside HeroUI v3's `CheckboxGroup`
+ * or `Checkbox.Content`.
  */
 export const CheckboxGroupDescription = defineComponent({
   name: 'CheckboxGroupDescription',

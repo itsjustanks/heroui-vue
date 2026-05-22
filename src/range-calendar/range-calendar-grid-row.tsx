@@ -1,9 +1,10 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RangeCalendarGridRow as RekaRangeCalendarGridRow, useForwardProps } from 'reka-ui'
-import type { RangeCalendarGridRowProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarGridRow as RekaRangeCalendarGridRow } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
-/** RangeCalendarGridRow — a single `<tr>`, a flex row of cells. HeroUI v3 `RangeCalendar.GridRow`. */
+/** RangeCalendar.GridRow — a `<tr>` week row (HeroUI `range-calendar__grid-row`). */
 export const RangeCalendarGridRow = defineComponent({
   name: 'RangeCalendarGridRow',
   inheritAttrs: false,
@@ -11,11 +12,11 @@ export const RangeCalendarGridRow = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as RangeCalendarGridRowProps)
+    const ctx = inject(RANGE_CALENDAR_CONTEXT, null)
     return () => (
       <RekaRangeCalendarGridRow
-        {...forwardedProps.value}
-        class={cn('range-calendar__grid-row', props.class)}
+        {...attrs}
+        class={cn((ctx?.slots.value ?? rangeCalendarVariants()).gridRow(), props.class)}
       >
         {slots.default?.()}
       </RekaRangeCalendarGridRow>

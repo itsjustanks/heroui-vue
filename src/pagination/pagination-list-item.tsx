@@ -1,15 +1,18 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { PaginationListItem as RekaPaginationListItem } from 'reka-ui'
+import { paginationVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { PAGINATION_CONTEXT } from './pagination-context'
+
 /**
- * PaginationListItem — a single page-number button.
+ * PaginationItem — a single `<li>` page-number slot.
+ * Faithful Vue port of HeroUI v3 `Pagination.Item` (`pagination__item`).
  *
- * Wraps reka-ui `PaginationListItem` (handles `data-selected` for the active
- * page and dispatches the page change). Styled with the shared link variant;
- * size is inherited from `PaginationRoot` via context.
+ * reka-ui `PaginationListItem` handles `data-selected` for the active page and
+ * dispatches the page-change event.
  */
-export const PaginationListItem = defineComponent({
-  name: 'PaginationListItem',
+export const PaginationItem = defineComponent({
+  name: 'PaginationItem',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
@@ -17,13 +20,13 @@ export const PaginationListItem = defineComponent({
     value: { type: Number, required: true }
   },
   setup (props, { attrs, slots }) {
-
+    const ctx = inject(PAGINATION_CONTEXT, null)
     return () => (
       <RekaPaginationListItem
         {...attrs}
         value={props.value}
         data-slot="pagination-item"
-        class={cn('pagination__item pagination__link', props.class)}
+        class={cn((ctx?.slots.value ?? paginationVariants()).item(), props.class)}
       >
         {slots.default ? slots.default() : props.value}
       </RekaPaginationListItem>
@@ -31,4 +34,4 @@ export const PaginationListItem = defineComponent({
   }
 })
 
-export default PaginationListItem
+export default PaginationItem

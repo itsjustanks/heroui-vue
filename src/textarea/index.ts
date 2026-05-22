@@ -1,8 +1,16 @@
 /**
- * HeroUI-Vue Textarea — faithful HeroUI v3 textarea, Vue TSX port.
- * Part of the HeroUI-for-Vue primitive library.
+ * TextArea — faithful Vue port of HeroUI v3 `TextArea`.
  *
- * Export name matches `shadcn-vue` so call-site
- * migration is a mechanical import-path swap.
+ * Compound API (HeroUI v3): `TextArea`, `TextArea.Root`.
+ * Flat export: `TextAreaRoot`.
  */
-export { default as Textarea } from './textarea'
+import { TextAreaRoot } from './textarea'
+
+/** Compound component — `TextArea.Root` (HeroUI v3 API). */
+export const TextArea = Object.assign(TextAreaRoot, {
+  Root: TextAreaRoot,
+})
+
+export { TextAreaRoot }
+export { textAreaVariants } from '@heroui/styles'
+export type { TextAreaVariants } from '@heroui/styles'

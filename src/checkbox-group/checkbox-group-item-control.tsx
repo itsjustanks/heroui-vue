@@ -1,16 +1,13 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { checkboxVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CHECKBOX_CONTEXT } from '../checkbox/checkbox-context'
 
 /**
- * CheckboxGroupItemControl — the square control box of a CheckboxGroupItem.
- * Faithful port of HeroUI v3 `Checkbox.Control` (`checkbox.css`): a compact
- * `rounded-md` box that fills with the accent colour when its parent item is
- * checked.
+ * CheckboxGroupItemControl — the square control box of a `CheckboxGroupItem`.
+ * Faithful port of HeroUI v3 `Checkbox.Control` (`checkbox__control`).
  *
- * Reacts to the parent `CheckboxGroupItem`'s reka-ui state via the
- * `group-data-[state=checked]` / `group-data-[state=indeterminate]` selectors
- * (`CheckboxGroupItem` renders `CheckboxRoot` with `class="group …"`). Holds a
- * `CheckboxGroupItemIndicator`.
+ * Reads slot classes from `CHECKBOX_CONTEXT` provided by the parent `CheckboxGroupItem`.
  */
 export const CheckboxGroupItemControl = defineComponent({
   name: 'CheckboxGroupItemControl',
@@ -19,11 +16,12 @@ export const CheckboxGroupItemControl = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(CHECKBOX_CONTEXT, null)
     return () => (
       <span
         {...attrs}
         data-slot="checkbox-control"
-        class={cn('checkbox__control', props.class)}
+        class={cn((ctx?.slots.value ?? checkboxVariants()).control(), props.class)}
       >
         {slots.default?.()}
       </span>

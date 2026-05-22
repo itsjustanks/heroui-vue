@@ -1,9 +1,9 @@
 /**
- * HeroUI-Vue Typography — faithful HeroUI v3 typography primitives.
- * Part of the HeroUI-for-Vue primitive library.
+ * Typography — a faithful Vue port of HeroUI v3 `Typography`.
  *
- * Compound API mirrors HeroUI v3: `Typography` (= `TypographyRoot`) with
+ * Compound API (HeroUI v3): `Typography` (= `TypographyRoot`) with
  * `.Root` / `.Heading` / `.Paragraph` / `.Code` / `.Prose` dot-notation parts.
+ * The flat exports (`TypographyRoot`, `Heading`, …) are available for named imports.
  */
 import { TypographyRoot } from './typography-root'
 import { Heading } from './typography-heading'
@@ -11,7 +11,7 @@ import { Paragraph } from './typography-paragraph'
 import { Code } from './typography-code'
 import { Prose } from './typography-prose'
 
-/** Compound component — `Typography` is `TypographyRoot` with presets attached. */
+/** Compound component — `Typography.Heading`, `Typography.Paragraph`, … (HeroUI v3 API). */
 export const Typography = Object.assign(TypographyRoot, {
   Root: TypographyRoot,
   Heading,
@@ -21,10 +21,5 @@ export const Typography = Object.assign(TypographyRoot, {
 })
 
 export { TypographyRoot, Heading, Paragraph, Code, Prose }
-export { typographyVariants } from './typography-variants'
-export type {
-  TTypographyVariants,
-  TTypographyType
-} from './typography-variants'
-
-export default Typography
+export { typographyVariants } from '@heroui/styles'
+export type { TypographyVariants } from '@heroui/styles'

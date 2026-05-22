@@ -1,28 +1,35 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, toRef, type HTMLAttributes, type PropType } from 'vue'
+import { alertVariants, type AlertVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { alertStatusClass, type TAlertStatus } from './alert-variants'
+import { ALERT_CONTEXT } from './alert-context'
 
 /**
- * Alert — HeroUI-Vue primitive.
+ * Alert — the status message container. Faithful Vue port of HeroUI v3 `Alert`.
  *
- * HeroUI BEM: `alert` base + `alert--{status}` modifier. The `alert__indicator`,
- * `alert__content`, `alert__title`, and `alert__description` slots are rendered
- * by their own sub-components. `role=alert` for a11y.
+ * The root computes HeroUI's `alertVariants` slot map and provides it (plus the
+ * reactive `status`) to compound parts, so every part is styled from
+ * `@heroui/styles` — never a hand-written class string.
+ *
+ * Compound API: `Alert.Indicator`, `Alert.Content`, `Alert.Title`, `Alert.Description`.
  */
-export const Alert = defineComponent({
+export const AlertRoot = defineComponent({
   name: 'Alert',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    status: { type: String as PropType<TAlertStatus>, default: 'default' }
+    /** Alert status — drives color and the default indicator icon. @default 'default' */
+    status: { type: String as PropType<AlertVariants['status']>, default: 'default' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => alertVariants({ status: props.status }))
+    provide(ALERT_CONTEXT, { slots: styles, status: toRef(props, 'status') })
+
     return () => (
-      <div {...attrs} role="alert" class={cn('alert', alertStatusClass(props.status), props.class)}>
+      <div {...attrs} data-slot="alert-root" class={cn(styles.value.base(), props.class)}>
         {slots.default?.()}
       </div>
     )
   }
 })
 
-export default Alert
+export default AlertRoot

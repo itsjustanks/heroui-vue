@@ -1,10 +1,9 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { cardVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CARD_CONTEXT } from './card-context'
 
-/**
- * CardFooter — the bottom region for footer actions. HeroUI v3 taste: `p-6`
- * padding, `pt-0` so it tucks beneath the content region.
- */
+/** Card.Footer — the bottom action region (HeroUI `card__footer`). */
 export const CardFooter = defineComponent({
   name: 'CardFooter',
   inheritAttrs: false,
@@ -12,8 +11,13 @@ export const CardFooter = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(CARD_CONTEXT, null)
     return () => (
-      <div {...attrs} class={cn('card__footer', props.class)}>
+      <div
+        {...attrs}
+        data-slot="card-footer"
+        class={cn((ctx?.slots.value ?? cardVariants()).footer(), props.class)}
+      >
         {slots.default?.()}
       </div>
     )

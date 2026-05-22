@@ -1,14 +1,10 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RangeCalendarHeading as RekaRangeCalendarHeading, useForwardProps } from 'reka-ui'
-import type { RangeCalendarHeadingProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarHeading as RekaRangeCalendarHeading } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
-/**
- * RangeCalendarHeading — the month/year label. HeroUI v3 `RangeCalendar.Heading`.
- *
- * Adapts HeroUI's `range-calendar__heading`: `flex-1 text-sm font-medium`.
- * Exposes reka-ui's `headingValue` scoped slot as a JSX render-prop child.
- */
+/** RangeCalendar.Heading — the month/year label (HeroUI `range-calendar__heading`). */
 export const RangeCalendarHeading = defineComponent({
   name: 'RangeCalendarHeading',
   inheritAttrs: false,
@@ -16,16 +12,16 @@ export const RangeCalendarHeading = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as RangeCalendarHeadingProps)
+    const ctx = inject(RANGE_CALENDAR_CONTEXT, null)
     return () => (
       <RekaRangeCalendarHeading
-        {...forwardedProps.value}
-        class={cn('range-calendar__heading', props.class)}
+        {...attrs}
+        data-slot="range-calendar-heading"
+        class={cn((ctx?.slots.value ?? rangeCalendarVariants()).heading(), props.class)}
       >
         {{
-          default: ({ headingValue }: { headingValue: string }) => (
+          default: ({ headingValue }: { headingValue: string }) =>
             slots.default ? slots.default({ headingValue }) : headingValue
-          )
         }}
       </RekaRangeCalendarHeading>
     )

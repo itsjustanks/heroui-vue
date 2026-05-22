@@ -1,76 +1,56 @@
-import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
 import { ProgressRoot } from 'reka-ui'
+import { progressCircleVariants, type ProgressCircleVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { provideProgressCircleContext } from './progress-circle-context'
-import type { TProgressCircleColor, TProgressCircleSize } from './constants'
+import { PROGRESS_CIRCLE_CONTEXT } from './progress-circle-context'
 
 const clamp = (n: number, min: number, max: number): number => Math.min(max, Math.max(min, n))
 
 /**
- * ProgressCircle — HeroUI-Vue circular progress indicator (primitive library,
- * net-new).
+ * ProgressCircleRoot — the circular progress container. Faithful Vue port of HeroUI v3 `ProgressCircleRoot`.
  *
- * Faithful port of HeroUI v3 `ProgressCircle` — a circular counterpart to the
- * `Progress` bar. HeroUI builds it on React Aria's `ProgressBar`; here reka-ui's
- * `ProgressRoot` provides the `progressbar` role + `aria-valuenow/min/max`
- * a11y, and the SVG ring is rendered as its child. The geometry math
- * (`percentage`, `isIndeterminate`) is shared with the compound parts via
- * context.
- *
- * When `value` is `null`/omitted the circle is **indeterminate** — a partial
- * arc spins (adapts HeroUI's `progress-circle-spin` keyframe via Tailwind's
- * `animate-spin`).
- *
- * `value` gives a `v-model`-style binding (progress is driven by the consumer,
- * so the root never emits an update).
- *
- * Compound API: `ProgressCircle`, `ProgressCircleTrack`,
- * `ProgressCircleTrackCircle`, `ProgressCircleFillCircle` — mirrors HeroUI's
- * `ProgressCircle.*` parts.
+ * Computes HeroUI's `progressCircleVariants` slot map and provides it (plus
+ * reactive geometry state) to compound parts (`ProgressCircle.Track`,
+ * `.TrackCircle`, `.FillCircle`). Uses reka-ui `ProgressRoot` for the
+ * `progressbar` ARIA role. When `value` is `null`/omitted the circle is
+ * indeterminate — the CSS `progress-circle-spin` keyframe applies.
  */
-export const ProgressCircle = defineComponent({
-  name: 'ProgressCircleView',
+export const ProgressCircleRoot = defineComponent({
+  name: 'ProgressCircleRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** The progress value. `null`/omitted → indeterminate (spinning arc). */
+    /** Current value. `null`/omitted → indeterminate (spinning arc). */
     value: { type: [Number, null] as PropType<number | null>, default: null },
-    /** Lower bound of the range. */
+    /** Lower bound of the range. @default 0 */
     minValue: { type: Number, default: 0 },
-    /** Upper bound of the range. */
+    /** Upper bound of the range. @default 100 */
     maxValue: { type: Number, default: 100 },
-    /** Size variant. */
-    size: { type: String as PropType<TProgressCircleSize>, default: 'md' },
-    /** Colour variant. */
-    color: { type: String as PropType<TProgressCircleColor>, default: 'accent' }
+    /** Color variant. @default 'accent' */
+    color: { type: String as PropType<ProgressCircleVariants['color']>, default: 'accent' },
+    /** Size variant. @default 'md' */
+    size: { type: String as PropType<ProgressCircleVariants['size']>, default: 'md' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => progressCircleVariants({ color: props.color, size: props.size }))
+
     const isIndeterminate = computed(() => props.value == null)
 
     const percentage = computed(() => {
       if (isIndeterminate.value) return 0
       const span = props.maxValue - props.minValue
       if (span <= 0) return 0
-      return clamp((((props.value ?? 0) - props.minValue) / span) * 100, 0, 100)
+      return clamp((((props.value as number) - props.minValue) / span) * 100, 0, 100)
     })
 
-    provideProgressCircleContext({
-      percentage,
-      isIndeterminate,
-      size: computed(() => props.size),
-      color: computed(() => props.color)
-    })
+    provide(PROGRESS_CIRCLE_CONTEXT, { slots: styles, percentage, isIndeterminate })
 
     return () => (
       <ProgressRoot
         {...attrs}
         modelValue={isIndeterminate.value ? null : percentage.value}
-        class={cn(
-          'progress-circle',
-          `progress-circle--${props.color}`,
-          `progress-circle--${props.size}`,
-          props.class
-        )}
+        data-slot="progress-circle"
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
       </ProgressRoot>
@@ -78,4 +58,4 @@ export const ProgressCircle = defineComponent({
   }
 })
 
-export default ProgressCircle
+export default ProgressCircleRoot

@@ -1,45 +1,22 @@
 /**
- * HeroUI-Vue Meter — faithful HeroUI v3 `Meter` for Vue.
+ * Meter — faithful Vue port of HeroUI v3 `Meter`.
  *
- * NET-NEW primitive (no `shadcn-vue` base). A `Meter` is a
- * **labelled quantity indicator within a known range** — disk usage, a score, a
- * capacity gauge — distinct from `Progress`, which shows task completion. HeroUI
- * builds it on React Aria's `Meter`; reka-ui has **no `Meter` primitive**, so
- * the value math lives in the root `setup()` and is shared with the compound
- * parts via context. Part of the HeroUI-for-Vue primitive library.
- *
- * Compound API mirrors HeroUI:
- *   Meter (.Label, .Output, .Track, .Fill)
+ * Compound API (HeroUI v3): `Meter`, `Meter.Root`, `Meter.Output`, `Meter.Track`, `Meter.Fill`.
+ * Flat exports: `MeterRoot`, `MeterOutput`, `MeterTrack`, `MeterFill`.
  */
-import { Meter as MeterRoot } from './meter'
-import { MeterLabel } from './meter-label'
+import { MeterRoot } from './meter'
 import { MeterOutput } from './meter-output'
 import { MeterTrack } from './meter-track'
 import { MeterFill } from './meter-fill'
 
-/** Compound `Meter` — attaches `.Label` / `.Output` / `.Track` / `.Fill`. */
-type TMeter = typeof MeterRoot & {
-  Label: typeof MeterLabel
-  Output: typeof MeterOutput
-  Track: typeof MeterTrack
-  Fill: typeof MeterFill
-}
+/** Compound component — `Meter.Root`, `Meter.Output`, `Meter.Track`, `Meter.Fill` (HeroUI v3 API). */
+export const Meter = Object.assign(MeterRoot, {
+  Root:   MeterRoot,
+  Output: MeterOutput,
+  Track:  MeterTrack,
+  Fill:   MeterFill,
+})
 
-const Meter = MeterRoot as TMeter
-Meter.Label = MeterLabel
-Meter.Output = MeterOutput
-Meter.Track = MeterTrack
-Meter.Fill = MeterFill
-
-export { Meter, MeterLabel, MeterOutput, MeterTrack, MeterFill }
-export default Meter
-
-export { useMeterContext, type TMeterContext } from './meter-context'
-export {
-  meterTrackVariants,
-  meterFillVariants,
-  type TMeterColor,
-  type TMeterSize,
-  type TMeterTrackVariants,
-  type TMeterFillVariants
-} from './variants'
+export { MeterRoot, MeterOutput, MeterTrack, MeterFill }
+export { meterVariants } from '@heroui/styles'
+export type { MeterVariants } from '@heroui/styles'

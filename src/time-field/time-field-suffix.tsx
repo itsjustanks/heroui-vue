@@ -1,10 +1,11 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { dateInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TIME_FIELD_CONTEXT } from './time-field-context'
 
 /**
- * TimeFieldSuffix — trailing adornment slot (icon / button). HeroUI v3
- * `TimeField.Suffix`. Adapts HeroUI's `date-input-group__suffix`; `ml-auto`
- * pushes it to the trailing edge of the group.
+ * TimeField.Suffix — trailing adornment (icon / button).
+ * HeroUI v3 `TimeField.Suffix` (maps to `DateInputGroupSuffix`).
  */
 export const TimeFieldSuffix = defineComponent({
   name: 'TimeFieldSuffix',
@@ -13,14 +14,16 @@ export const TimeFieldSuffix = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(TIME_FIELD_CONTEXT, null)
+
     return () => (
-      <span
+      <div
         {...attrs}
         data-slot="date-input-group-suffix"
-        class={cn('date-input-group__suffix', props.class)}
+        class={cn((ctx?.slots.value ?? dateInputGroupVariants()).suffix(), props.class)}
       >
         {slots.default?.()}
-      </span>
+      </div>
     )
   }
 })

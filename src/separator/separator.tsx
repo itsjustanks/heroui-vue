@@ -1,25 +1,24 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { Separator as RekaSeparator, type SeparatorProps } from 'reka-ui'
+import { separatorVariants, type SeparatorVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 
-type TSeparatorVariant = 'default' | 'secondary' | 'tertiary'
-
 /**
- * Separator — HeroUI-Vue primitive over reka-ui `Separator`.
+ * SeparatorRoot — faithful Vue port of HeroUI v3 `SeparatorRoot`.
  *
- * Emits HeroUI v3 BEM class names from `separator.css`:
- *   - base: `separator`
- *   - orientation: `separator--horizontal` / `separator--vertical`
- *   - variant: `separator--default` / `separator--secondary` / `separator--tertiary`
+ * Wraps reka-ui `Separator` and applies BEM classes from `separatorVariants`
+ * in `@heroui/styles`. Flat style (no slots) — `separatorVariants({...})`
+ * returns a class string directly.
  */
-export const Separator = defineComponent({
+export const SeparatorRoot = defineComponent({
   name: 'SeparatorRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     orientation: { type: String as PropType<SeparatorProps['orientation']>, default: 'horizontal' },
     decorative: { type: Boolean as PropType<SeparatorProps['decorative']>, default: true },
-    variant: { type: String as PropType<TSeparatorVariant>, default: 'default' }
+    /** Visual variant — `separator--{variant}`. @default 'default' */
+    variant: { type: String as PropType<SeparatorVariants['variant']>, default: 'default' }
   },
   setup (props, { attrs }) {
     return () => (
@@ -27,10 +26,10 @@ export const Separator = defineComponent({
         {...attrs}
         orientation={props.orientation}
         decorative={props.decorative}
+        data-slot="separator"
+        data-orientation={props.orientation}
         class={cn(
-          'separator',
-          `separator--${props.orientation}`,
-          `separator--${props.variant}`,
+          separatorVariants({ orientation: props.orientation as SeparatorVariants['orientation'], variant: props.variant }),
           props.class
         )}
       />
@@ -38,4 +37,4 @@ export const Separator = defineComponent({
   }
 })
 
-export default Separator
+export default SeparatorRoot

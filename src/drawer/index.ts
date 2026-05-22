@@ -1,10 +1,13 @@
 /**
  * HeroUI-Vue Drawer — faithful HeroUI v3 drawer over reka-ui Dialog.
  *
- * An edge-anchored sliding panel. Same 3-layer compound as the modal (HeroUI
- * `drawer.css`): Backdrop > Content (positioning, owns `placement`) > Dialog
- * (the panel). Use via dot notation (`Drawer.Trigger`, …) or the named exports.
- * Part of the HeroUI-for-Vue primitive library.
+ * An edge-anchored sliding panel. Compound (HeroUI `drawer.css`):
+ * Backdrop > Content (positioning, owns `placement`) > Dialog (the panel).
+ * Use via dot notation (`Drawer.Trigger`, …) or the named exports.
+ *
+ * Compound API (mirrors HeroUI v3 React `index.ts`):
+ *   Drawer / Drawer.Root, .Trigger, .Backdrop, .Content, .Dialog,
+ *   .Header, .Heading, .Body, .Footer, .Handle, .CloseTrigger
  */
 import DrawerRoot from './drawer'
 import DrawerTrigger from './drawer-trigger'
@@ -46,5 +49,8 @@ export {
   DrawerHandle,
   DrawerCloseTrigger
 }
+
+export { drawerVariants } from '@heroui/styles'
+export type { DrawerVariants } from '@heroui/styles'
 
 export default Drawer

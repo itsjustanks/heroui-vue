@@ -1,31 +1,24 @@
 import { computed, defineComponent, toRef, type HTMLAttributes, type PropType } from 'vue'
-import { CheckboxGroupRoot } from 'reka-ui'
+import { CheckboxGroupRoot as RekaCheckboxGroupRoot } from 'reka-ui'
+import { checkboxGroupVariants, type CheckboxGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { provideCheckboxGroupContext, type TCheckboxGroupVariant } from './checkbox-group-context'
+import { provideCheckboxGroupContext } from './checkbox-group-context'
 
 /**
  * CheckboxGroup — a grouped set of checkboxes sharing one `string[]` value.
- * HeroUI-Vue primitive over reka-ui `CheckboxGroupRoot`.
+ * Faithful Vue port of HeroUI v3 `CheckboxGroup` over reka-ui `CheckboxGroupRoot`.
  *
- * Faithful port of HeroUI v3 `CheckboxGroup` (`checkbox-group.css`): a vertical
- * `flex flex-col` stack. The root owns the array value and provides the variant
- * / disabled / invalid state to descendant `CheckboxGroupItem`s via context.
- *
- * `v-model` binds the selected values (`modelValue: string[]` /
- * `onUpdate:modelValue`). reka-ui `CheckboxGroupRoot` props/emits
- * (`defaultValue`, `name`, `required`, `orientation`, `disabled`, …) forward
- * through `{...attrs}`.
- *
- * `variant="secondary"` mirrors HeroUI's lower-emphasis variant for use on
- * Surfaces; `invalid` flags the group's validation state.
+ * Uses `checkboxGroupVariants` from `@heroui/styles` (flat variant, returns a string)
+ * for BEM class generation. Provides variant / disabled / invalid state to descendant
+ * `CheckboxGroupItem`s via context.
  */
-export const CheckboxGroup = defineComponent({
+export const CheckboxGroupRoot = defineComponent({
   name: 'CheckboxGroup',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Emphasis variant — `secondary` is the lower-emphasis variant for Surfaces. */
-    variant: { type: String as PropType<TCheckboxGroupVariant>, default: 'primary' },
+    /** Emphasis variant — propagated to each item. @default 'primary' */
+    variant: { type: String as PropType<CheckboxGroupVariants['variant']>, default: 'primary' },
     /** Whether the whole group is disabled. */
     disabled: { type: Boolean, default: false },
     /** Whether the group is in an invalid state. */
@@ -38,25 +31,22 @@ export const CheckboxGroup = defineComponent({
       isInvalid: toRef(props, 'invalid')
     })
 
+    const styles = computed(() => checkboxGroupVariants({ variant: props.variant }))
     const dataInvalid = computed(() => (props.invalid ? 'true' : undefined))
 
     return () => (
-      <CheckboxGroupRoot
+      <RekaCheckboxGroupRoot
         {...attrs}
         disabled={props.disabled}
-        data-variant={props.variant}
+        data-slot="checkbox-group"
         data-invalid={dataInvalid.value}
         aria-invalid={props.invalid || undefined}
-        class={cn(
-          'checkbox-group',
-          `checkbox-group--${props.variant}`,
-          props.class
-        )}
+        class={cn(styles.value, props.class)}
       >
         {slots.default?.()}
-      </CheckboxGroupRoot>
+      </RekaCheckboxGroupRoot>
     )
   }
 })
 
-export default CheckboxGroup
+export default CheckboxGroupRoot

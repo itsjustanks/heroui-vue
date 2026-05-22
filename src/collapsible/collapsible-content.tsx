@@ -1,13 +1,18 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { CollapsibleContent as RekaCollapsibleContent } from 'reka-ui'
+import { disclosureVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { COLLAPSIBLE_CONTEXT } from './collapsible-context'
 
 /**
- * CollapsibleContent — the collapsible panel body.
+ * CollapsibleContent — Vue port of HeroUI v3 `DisclosureContent`.
  *
- * HeroUI v3 BEM: `disclosure__content`. The height animation is driven by
- * reka-ui's `--reka-collapsible-content-height` CSS var, complemented by
- * `disclosure__body` for inner padding.
+ * DOM structure mirrors HeroUI React:
+ *   div[data-slot="disclosure-content"]   ← height-animated panel
+ *
+ * The body/body-inner structure lives in `CollapsibleBody` for parity with
+ * HeroUI's separate `DisclosureBody` part. Use `CollapsibleBody` as a child
+ * of this component for the full padded layout.
  */
 export const CollapsibleContent = defineComponent({
   name: 'CollapsibleContent',
@@ -16,16 +21,21 @@ export const CollapsibleContent = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <RekaCollapsibleContent
-        {...attrs}
-        class={cn('disclosure__content', props.class)}
-      >
-        <div class="disclosure__body">
+    const ctx = inject(COLLAPSIBLE_CONTEXT, null)
+
+    return () => {
+      const s = ctx?.slots.value ?? disclosureVariants()
+
+      return (
+        <RekaCollapsibleContent
+          {...attrs}
+          data-slot="disclosure-content"
+          class={cn(s.content(), props.class)}
+        >
           {slots.default?.()}
-        </div>
-      </RekaCollapsibleContent>
-    )
+        </RekaCollapsibleContent>
+      )
+    }
   }
 })
 

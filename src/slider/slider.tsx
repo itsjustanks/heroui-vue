@@ -1,43 +1,58 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from 'reka-ui'
+import { computed, defineComponent, provide, type CSSProperties, type HTMLAttributes, type PropType } from 'vue'
+import { SliderRoot as RekaSliderRoot } from 'reka-ui'
+import { sliderVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { SLIDER_CONTEXT } from './slider-context'
 
 /**
- * Slider — HeroUI-Vue primitive over reka-ui `SliderRoot`.
+ * SliderRoot — the range-input container. Faithful Vue port of HeroUI v3 `Slider`.
  *
- * Maps to HeroUI `slider` BEM classes: `slider` (root), `slider__track`,
- * `slider__fill`, `slider__thumb`. reka-ui sets `data-orientation` on the root
- * which HeroUI CSS already selects for horizontal/vertical layout.
- * One thumb is rendered per `modelValue` entry; all other props/emits forward via attrs.
+ * Built over reka-ui `SliderRoot` which owns keyboard stepping, ARIA and form
+ * integration. Computes HeroUI's `sliderVariants` slot map and provides it plus
+ * reactive state to compound parts (`Slider.Output`, `.Track`, `.Fill`, `.Thumb`, `.Marks`).
  */
-export const Slider = defineComponent({
+export const SliderRoot = defineComponent({
   name: 'Slider',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    modelValue: { type: Array as PropType<number[]>, default: undefined }
+    class:       { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    modelValue:  { type: Array as PropType<number[]>, default: undefined },
+    /** Minimum value of the range. @default 0 */
+    min:         { type: Number, default: 0 },
+    /** Maximum value of the range. @default 100 */
+    max:         { type: Number, default: 100 },
+    /** Slider orientation. @default 'horizontal' */
+    orientation: { type: String as PropType<'horizontal' | 'vertical'>, default: 'horizontal' },
+    /** When `true`, prevents interaction. */
+    disabled:    { type: Boolean, default: false }
   },
-  setup (props, { attrs }) {
+  emits: ['update:modelValue'],
+  setup (props, { attrs, emit, slots }) {
+    const styles      = computed(() => sliderVariants({}))
+    const modelValue  = computed(() => props.modelValue ?? [])
+    const min         = computed(() => props.min)
+    const max         = computed(() => props.max)
+    const orientation = computed(() => props.orientation)
+    const isDisabled  = computed(() => props.disabled)
+
+    provide(SLIDER_CONTEXT, { slots: styles, modelValue, min, max, orientation, isDisabled })
+
     return () => (
-      <SliderRoot
+      <RekaSliderRoot
         {...attrs}
         modelValue={props.modelValue}
-        class={cn('slider', props.class)}
+        min={props.min}
+        max={props.max}
+        orientation={props.orientation}
+        disabled={props.disabled}
+        data-slot="slider"
+        class={cn(styles.value.base(), props.class)}
+        onUpdate:modelValue={(v: number[] | undefined) => emit('update:modelValue', v ?? [])}
       >
-        <SliderTrack class="slider__track">
-          <SliderRange class="slider__fill" />
-          {/* Thumb sits INSIDE the track — HeroUI's CSS sizes `.slider__thumb`
-              (absolute, h-full) against `.slider__track` as its positioned ancestor. */}
-          {(props.modelValue ?? []).map((_, key) => (
-            <SliderThumb
-              key={key}
-              class="slider__thumb"
-            />
-          ))}
-        </SliderTrack>
-      </SliderRoot>
+        {slots.default?.()}
+      </RekaSliderRoot>
     )
   }
 })
 
-export default Slider
+export default SliderRoot

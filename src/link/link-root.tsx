@@ -1,35 +1,39 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
 import { Primitive, type PrimitiveProps } from 'reka-ui'
+import { linkVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { LINK_CONTEXT } from './link-context'
 
 /**
- * LinkRoot — HeroUI-Vue Link primitive. A styled anchor.
+ * LinkRoot — the anchor container. Faithful Vue port of HeroUI v3 `LinkRoot`.
  *
- * Faithful port of HeroUI v3 `LinkRoot` (`link.css`): `text-link` foreground,
- * subtle underline that strengthens on hover, focus ring. Renders an `<a>` by
- * default; `as` / `asChild` polymorphism via reka-ui `Primitive` so it can wrap
- * a router-link. `disabled` maps to `aria-disabled` (HeroUI's `isDisabled`).
+ * Computes HeroUI's `linkVariants` slot map and provides it to `LinkIcon` so
+ * every part is styled from `@heroui/styles` — never a hand-written class string.
+ * Renders an `<a>` by default; `as`/`asChild` polymorphism via reka-ui `Primitive`.
  */
 export const LinkRoot = defineComponent({
   name: 'LinkRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** When `true`, renders as disabled (`aria-disabled`, no pointer events). */
+    /** When `true`, marks the link as disabled (`aria-disabled`, data-disabled). */
     disabled: { type: Boolean, default: false },
     as: { type: [String, Object, Function] as PropType<PrimitiveProps['as']>, default: 'a' },
     asChild: { type: Boolean as PropType<PrimitiveProps['asChild']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => linkVariants())
+    provide(LINK_CONTEXT, { slots: styles })
+
     return () => (
       <Primitive
         {...attrs}
         as={props.as}
         asChild={props.asChild}
-        data-slot="link"
         aria-disabled={props.disabled || undefined}
         data-disabled={props.disabled ? '' : undefined}
-        class={cn('link', props.class)}
+        data-slot="link"
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
       </Primitive>

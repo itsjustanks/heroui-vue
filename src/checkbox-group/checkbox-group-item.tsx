@@ -1,21 +1,19 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CheckboxRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { CheckboxRoot as RekaCheckboxRoot } from 'reka-ui'
+import { checkboxVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { useCheckboxGroup } from './checkbox-group-context'
+import { CHECKBOX_CONTEXT } from '../checkbox/checkbox-context'
 
 /**
- * CheckboxGroupItem — one checkbox within a CheckboxGroup. Faithful port of the
- * `Checkbox` placed inside HeroUI v3's `CheckboxGroup`.
+ * CheckboxGroupItem — one checkbox within a `CheckboxGroup`.
+ * Faithful port of HeroUI v3 `Checkbox` placed inside `CheckboxGroup`.
  *
- * Built over reka-ui `CheckboxRoot` with a required `value` — the value added to
- * / removed from the group's `string[]` when toggled. A `flex` row laying out a
- * `CheckboxGroupItemControl` next to a `CheckboxGroupItemContent`.
- *
- * The item's checked state is exposed to its `Control`/`Indicator`/`Content`
- * descendants via reka-ui's own `injectCheckboxRootContext`, so no extra context
- * is needed here. reka-ui `CheckboxRoot` props (`value`, `disabled`, `id`,
- * `required`, …) forward through `{...attrs}`; selection is owned by the parent
- * group.
+ * Reads the group's variant via context and provides a `CHECKBOX_CONTEXT` so
+ * descendant parts (`CheckboxGroupItemControl`, `CheckboxGroupItemIndicator`,
+ * `CheckboxGroupItemContent`) can pull class-name functions from `checkboxVariants`.
+ * Behaviour is delegated to reka-ui `CheckboxRoot`; the `value` is added to /
+ * removed from the group's `string[]` when toggled.
  */
 export const CheckboxGroupItem = defineComponent({
   name: 'CheckboxGroupItem',
@@ -24,27 +22,24 @@ export const CheckboxGroupItem = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** The value contributed to the group's `string[]` when this item is checked. */
     value: { type: String, required: true },
-    /** Whether this individual item is disabled. */
+    /** Whether this individual item is disabled (in addition to group-level disabled). */
     disabled: { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
     const group = useCheckboxGroup()
+    const styles = computed(() => checkboxVariants({ variant: group.variant.value }))
+    provide(CHECKBOX_CONTEXT, { slots: styles })
 
     return () => (
-      <CheckboxRoot
+      <RekaCheckboxRoot
         {...attrs}
         value={props.value}
         disabled={props.disabled || group.isDisabled.value}
         data-slot="checkbox"
-        data-variant={group.variant.value}
-        class={cn(
-          'checkbox',
-          `checkbox--${group.variant.value}`,
-          props.class
-        )}
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
-      </CheckboxRoot>
+      </RekaCheckboxRoot>
     )
   }
 })

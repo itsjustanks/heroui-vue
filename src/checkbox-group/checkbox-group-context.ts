@@ -1,19 +1,17 @@
 /**
- * HeroUI-Vue CheckboxGroup — shared context.
- *
- * `CheckboxGroup` provides the group-level variant / disabled / invalid state;
- * `CheckboxGroupItem` consumes it so each checkbox card can react to the group's
- * emphasis variant and validation state. Kept in its own module so the part
- * files import it without a circular dependency.
+ * CheckboxGroup shared context — variant and state propagated from `CheckboxGroup`
+ * to descendant `CheckboxGroupItem`s. Kept in its own module to avoid circular
+ * dependencies.
  */
 import { createContext } from 'reka-ui'
 import type { Ref } from 'vue'
+import type { CheckboxVariants } from '@heroui/styles'
 
-export type TCheckboxGroupVariant = 'primary' | 'secondary'
+export type CheckboxGroupVariantProp = CheckboxVariants['variant']
 
 export interface ICheckboxGroupContext {
-  /** Emphasis variant — `secondary` is the lower-emphasis variant for Surfaces. */
-  variant: Ref<TCheckboxGroupVariant>
+  /** Emphasis variant forwarded to each item's `checkboxVariants`. */
+  variant: Ref<CheckboxGroupVariantProp>
   /** Whether the whole group is disabled. */
   isDisabled: Ref<boolean>
   /** Whether the group is in an invalid state. */

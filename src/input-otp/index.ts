@@ -1,30 +1,28 @@
 /**
- * HeroUI-Vue Input OTP — faithful HeroUI v3 one-time-code input.
- * Part of the HeroUI-for-Vue primitive library.
+ * InputOTP — faithful Vue port of HeroUI v3 `InputOTP`.
  *
- * Segmented one-time-passcode input built over reka-ui `PinInputRoot` /
- * `PinInputInput`. Compound API mirrors HeroUI v3 — `InputOTP`
- * (= `InputOTPRoot`) with `.Root` / `.Group` / `.Slot` / `.Separator`
- * dot-notation parts. Code value binds via `v-model` on `InputOTPRoot`.
+ * Compound API (HeroUI v3): `InputOTP`, `InputOTP.Root`, `InputOTP.Group`,
+ * `InputOTP.Slot`, `InputOTP.Separator`.
+ * Flat exports mirror HeroUI v3 React named exports exactly.
  */
 import { InputOTPRoot } from './input-otp-root'
 import { InputOTPGroup } from './input-otp-group'
 import { InputOTPSlot } from './input-otp-slot'
 import { InputOTPSeparator } from './input-otp-separator'
 
-/** Compound component — `InputOTP` is `InputOTPRoot` with parts attached. */
+/** Compound component — `InputOTP.Root`, `.Group`, `.Slot`, `.Separator` (HeroUI v3 API). */
 export const InputOTP = Object.assign(InputOTPRoot, {
-  Root: InputOTPRoot,
-  Group: InputOTPGroup,
-  Slot: InputOTPSlot,
-  Separator: InputOTPSeparator
+  Root:      InputOTPRoot,
+  Group:     InputOTPGroup,
+  Slot:      InputOTPSlot,
+  Separator: InputOTPSeparator,
 })
 
 export { InputOTPRoot, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
-export { inputOTPSlotVariants } from './input-otp-variants'
-export type {
-  TInputOTPSlotVariants,
-  TInputOTPVariant
-} from './input-otp-variants'
+export { inputOTPVariants } from '@heroui/styles'
+export type { InputOTPVariants } from '@heroui/styles'
 
-export default InputOTP
+// Convenience regex constants (mirrors HeroUI v3 React export)
+export const REGEXP_ONLY_DIGITS = '^\\d+$'
+export const REGEXP_ONLY_CHARS = '^[a-zA-Z]+$'
+export const REGEXP_ONLY_DIGITS_AND_CHARS = '^[a-zA-Z0-9]+$'

@@ -1,7 +1,9 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { alertDialogVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { ALERT_DIALOG_CONTEXT } from './alert-dialog-context'
 
-/** AlertDialogHeader — HeroUI BEM: `alert-dialog__header`. Title + description stack. */
+/** AlertDialogHeader — Vue port of HeroUI v3 `AlertDialogHeader`. Title + description stack. */
 export const AlertDialogHeader = defineComponent({
   name: 'AlertDialogHeader',
   inheritAttrs: false,
@@ -9,11 +11,21 @@ export const AlertDialogHeader = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <div {...attrs} class={cn('alert-dialog__header', props.class)}>
-        {slots.default?.()}
-      </div>
-    )
+    const ctx = inject(ALERT_DIALOG_CONTEXT, null)
+
+    return () => {
+      const s = ctx?.slots.value ?? alertDialogVariants()
+
+      return (
+        <div
+          {...attrs}
+          data-slot="alert-dialog-header"
+          class={cn(s.header(), props.class)}
+        >
+          {slots.default?.()}
+        </div>
+      )
+    }
   }
 })
 

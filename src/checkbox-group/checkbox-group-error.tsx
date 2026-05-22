@@ -2,8 +2,8 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * CheckboxGroupError — the validation error message for a CheckboxGroup. Mirrors
- * the `FieldError` placed inside HeroUI v3's `CheckboxGroup`.
+ * CheckboxGroupError — the validation error message for a `CheckboxGroup`.
+ * Mirrors the `FieldError` placed inside HeroUI v3's `CheckboxGroup`.
  *
  * Renders only when given content; styled in the danger token, `text-xs`.
  */

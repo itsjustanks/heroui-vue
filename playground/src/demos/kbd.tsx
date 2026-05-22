@@ -1,0 +1,44 @@
+import { Kbd } from '@heroui/react'
+
+export default function KbdDemo() {
+  return (
+    <div className="demo-col">
+      <div className="demo-row">
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>K</Kbd.Content>
+        </Kbd>
+        <Kbd>
+          <Kbd.Abbr keyValue="shift" />
+          <Kbd.Content>P</Kbd.Content>
+        </Kbd>
+        <Kbd>
+          <Kbd.Abbr keyValue="ctrl" />
+          <Kbd.Content>C</Kbd.Content>
+        </Kbd>
+        <Kbd>
+          <Kbd.Abbr keyValue="option" />
+          <Kbd.Content>D</Kbd.Content>
+        </Kbd>
+      </div>
+      <div className="demo-row">
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>K</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="shift" />
+          <Kbd.Content>P</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="ctrl" />
+          <Kbd.Content>C</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="option" />
+          <Kbd.Content>D</Kbd.Content>
+        </Kbd>
+      </div>
+    </div>
+  )
+}

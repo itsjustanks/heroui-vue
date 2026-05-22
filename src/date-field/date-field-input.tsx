@@ -1,16 +1,20 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { injectDateFieldRootContext } from 'reka-ui'
+import { dateInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { DATE_FIELD_CONTEXT } from './date-field-context'
 
-/** One editable/literal date segment, as exposed by reka-ui's root context. */
-export type TDateSegment = { part: string; value: string }
+/** Segment descriptor from reka-ui's DateFieldRoot slot context. */
+export type DateFieldSegmentItem = { part: string; value: string }
 
 /**
- * DateFieldInput — the segment container. HeroUI v3 `DateField.Input`.
+ * DateField.Input — the segment container that iterates all date segments.
+ * HeroUI v3 `DateField.Input` (maps to `DateInputGroupInput`).
  *
- * Reads reka-ui's `DateFieldRoot` context (`segmentContents`) and exposes each
- * segment to a render-prop child, mirroring HeroUI's
- * `<DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>`.
+ * In reka-ui, there is no single-element date input container; this component
+ * reads `segmentContents` from `injectDateFieldRootContext` and renders each
+ * segment via `slots.default({ part, value })`. Maps to HeroUI's
+ * `DateInputGroupInput` BEM class (`date-input-group__input`).
  */
 export const DateFieldInput = defineComponent({
   name: 'DateFieldInput',
@@ -19,18 +23,18 @@ export const DateFieldInput = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const rootContext = injectDateFieldRootContext()
+    const ctx = inject(DATE_FIELD_CONTEXT, null)
+    const rootCtx = injectDateFieldRootContext()
+
     return () => (
       <div
         {...attrs}
-        data-slot="date-field-input"
-        class={cn('date-input-group__input-container', props.class)}
+        data-slot="date-input-group-input"
+        class={cn((ctx?.slots.value ?? dateInputGroupVariants()).input(), props.class)}
       >
-        {rootContext.segmentContents.value.map((item: TDateSegment) => (
-          slots.default
-            ? slots.default(item)
-            : <span key={item.part}>{item.value}</span>
-        ))}
+        {rootCtx.segmentContents.value.map((item: DateFieldSegmentItem) =>
+          slots.default ? slots.default(item) : <span key={item.part}>{item.value}</span>
+        )}
       </div>
     )
   }

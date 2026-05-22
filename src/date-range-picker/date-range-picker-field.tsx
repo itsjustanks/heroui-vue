@@ -1,19 +1,20 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DateRangePickerField as RekaDateRangePickerField } from 'reka-ui'
+import { dateInputGroupVariants, type DateInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { type TDateInputGroupVariants, type TTimeSegment } from '@/time-field'
+/** A single segment descriptor as provided by reka-ui's range picker context. */
+export type TRangeSegmentItem = { part: string; value: string }
 
 /** The `{ start, end }` segment pair handed to `DateRangePickerField`'s slot. */
-export type TDateRangeSegments = { start: TTimeSegment[]; end: TTimeSegment[] }
+export type TDateRangeSegments = { start: TRangeSegmentItem[]; end: TRangeSegmentItem[] }
 
 /**
- * DateRangePickerField — the dual-segment input surface. HeroUI v3
- * `DateField.Group` as used inside `DateRangePicker`.
+ * DateRangePickerField — the dual-segment input surface. Styled via
+ * `dateInputGroupVariants` (matches HeroUI's shared `date-input-group` BEM).
  *
- * Adapts HeroUI's shared `date-input-group` BEM (`rounded-md` bordered surface,
- * focus-within ring, `primary` / `secondary` variants). Exposes reka-ui's range
- * `segments` (`{ start, end }`) to a render-prop child so consumers map the
- * `start` group, drop a `DateRangePickerSeparator`, then the `end` group.
+ * Exposes reka-ui's range `segments` (`{ start, end }`) to a render-prop child
+ * so consumers can map start segments, drop a `DateRangePicker.RangeSeparator`,
+ * then map the end segments.
  */
 export const DateRangePickerField = defineComponent({
   name: 'DateRangePickerField',
@@ -21,37 +22,35 @@ export const DateRangePickerField = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** HeroUI surface variant — `primary` (bordered) or `secondary` (muted). */
-    variant: { type: String as PropType<TDateInputGroupVariants['variant']>, default: 'primary' },
-    /** HeroUI `fullWidth` — stretch the field to fill its container. */
-    fullWidth: { type: Boolean, default: true }
+    variant: { type: String as PropType<DateInputGroupVariants['variant']>, default: 'primary' },
+    /** Stretch the field to fill its container. */
+    fullWidth: { type: Boolean as PropType<boolean>, default: true }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <RekaDateRangePickerField
-        {...attrs}
-        data-slot="date-range-picker-field"
-        class={cn(
-          'date-input-group',
-          props.variant === 'secondary' ? 'date-input-group--secondary' : 'date-input-group--primary',
-          props.fullWidth && 'date-input-group--full-width',
-          props.class
-        )}
-      >
-        {{
-          default: ({ segments }: { segments: TDateRangeSegments }) => (
-            slots.default
-              ? slots.default({ segments })
-              : (
-                <>
-                  {segments.start.map((s) => <span key={`start-${s.part}`}>{s.value}</span>)}
-                  <span class="px-1 text-muted-foreground">–</span>
-                  {segments.end.map((s) => <span key={`end-${s.part}`}>{s.value}</span>)}
-                </>
-              )
-          )
-        }}
-      </RekaDateRangePickerField>
-    )
+    return () => {
+      const styles = dateInputGroupVariants({ variant: props.variant, fullWidth: props.fullWidth })
+      return (
+        <RekaDateRangePickerField
+          {...attrs}
+          data-slot="date-range-picker-field"
+          class={cn(styles.base(), props.class)}
+        >
+          {{
+            default: ({ segments }: { segments: TDateRangeSegments }) => (
+              slots.default
+                ? slots.default({ segments })
+                : (
+                  <>
+                    {segments.start.map((s) => <span key={`start-${s.part}`}>{s.value}</span>)}
+                    <span class="px-1 text-muted-foreground">–</span>
+                    {segments.end.map((s) => <span key={`end-${s.part}`}>{s.value}</span>)}
+                  </>
+                )
+            )
+          }}
+        </RekaDateRangePickerField>
+      )
+    }
   }
 })
 

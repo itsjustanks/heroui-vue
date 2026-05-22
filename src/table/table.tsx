@@ -1,34 +1,45 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { tableVariants, type TableVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TABLE_CONTEXT } from './table-context'
 
 /**
- * Table — HeroUI v3 `table-root` BEM classes. The outer div is `table-root`
- * (+ variant modifier), the scroll wrapper is `table__scroll-container`, and
- * the `<table>` element is `table__content`.
+ * TableRoot — the outermost table container. Faithful Vue port of HeroUI v3 `Table`.
  *
- * `variant` prop selects `table-root--primary` (default) or `table-root--secondary`.
+ * Computes `tableVariants` slot map and provides it to all compound parts so
+ * every child uses HeroUI's BEM classes — never hand-written strings.
+ *
+ * HeroUI DOM structure:
+ *   <div data-slot="table">                      ← TableRoot
+ *     <div data-slot="table-scroll-container">   ← Table.ScrollContainer
+ *       <table data-slot="table-content">        ← Table.Content
+ *         …
+ *       </table>
+ *     </div>
+ *   </div>
  */
-export const Table = defineComponent({
-  name: 'TableRoot',
+export const TableRoot = defineComponent({
+  name: 'Table',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: {
-      type: String as PropType<'primary' | 'secondary'>,
-      default: 'primary'
-    }
+    class:   { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Visual variant. @default 'primary' */
+    variant: { type: String as PropType<TableVariants['variant']>, default: 'primary' },
   },
   setup (props, { attrs, slots }) {
+    const slots_ = computed(() => tableVariants({ variant: props.variant }))
+    provide(TABLE_CONTEXT, { slots: slots_ })
+
     return () => (
-      <div class={cn('table-root', props.variant === 'secondary' ? 'table-root--secondary' : 'table-root--primary')}>
-        <div class="table__scroll-container">
-          <table {...attrs} class={cn('table__content', props.class)}>
-            {slots.default?.()}
-          </table>
-        </div>
+      <div
+        {...attrs}
+        data-slot="table"
+        class={cn(slots_.value.base(), props.class)}
+      >
+        {slots.default?.()}
       </div>
     )
-  }
+  },
 })
 
-export default Table
+export default TableRoot

@@ -1,22 +1,29 @@
-import { defineComponent } from 'vue'
-import { AlertDialogRoot } from 'reka-ui'
+import { computed, defineComponent, provide, ref } from 'vue'
+import { AlertDialogRoot as RekaAlertDialogRoot } from 'reka-ui'
+import { alertDialogVariants } from '@heroui/styles'
+import { ALERT_DIALOG_CONTEXT } from './alert-dialog-context'
 
 /**
- * AlertDialog — root of the HeroUI-Vue alert-dialog, over reka-ui
- * `AlertDialogRoot`. A modal interruption that must be explicitly confirmed or
- * dismissed (no light-dismiss). reka-ui carries the headless behaviour
- * (focus trap, scroll lock). Renders no DOM.
+ * AlertDialogRoot — Vue port of HeroUI v3 `AlertDialogRoot`.
  *
- * Faithful port of `shadcn-vue`'s `AlertDialog`: all props/emits
- * (`open`, `defaultOpen`, `v-model:open`, `onUpdate:open`, …) fall through
- * unchanged via `attrs` to `AlertDialogRoot`.
+ * Renders no DOM — wraps reka-ui `AlertDialogRoot` for headless behaviour
+ * (focus trap, scroll lock). Computes `alertDialogVariants` and provides
+ * the slot map + placement state to all compound parts.
  */
-export const AlertDialog = defineComponent({
+export const AlertDialogRoot = defineComponent({
   name: 'AlertDialog',
   inheritAttrs: false,
   setup (_props, { attrs, slots }) {
-    return () => <AlertDialogRoot {...attrs}>{slots.default?.()}</AlertDialogRoot>
+    const styles = computed(() => alertDialogVariants())
+    const placement = computed<'auto' | 'top' | 'center' | 'bottom'>(() => 'auto')
+    provide(ALERT_DIALOG_CONTEXT, { slots: styles, placement })
+
+    return () => (
+      <RekaAlertDialogRoot {...attrs} data-slot="alert-dialog-root">
+        {slots.default?.()}
+      </RekaAlertDialogRoot>
+    )
   }
 })
 
-export default AlertDialog
+export default AlertDialogRoot

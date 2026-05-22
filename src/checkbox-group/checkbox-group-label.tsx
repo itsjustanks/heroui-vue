@@ -3,10 +3,8 @@ import { Label as RekaLabel } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
 /**
- * CheckboxGroupLabel — the group's heading. Mirrors the `Label` placed directly
- * inside HeroUI v3's `CheckboxGroup`.
- *
- * `text-sm font-medium`, matching `label`.
+ * CheckboxGroupLabel — the group's heading.
+ * Mirrors the `Label` placed directly inside HeroUI v3's `CheckboxGroup`.
  */
 export const CheckboxGroupLabel = defineComponent({
   name: 'CheckboxGroupLabel',

@@ -2,9 +2,12 @@
  * HeroUI-Vue Modal — faithful HeroUI v3 modal over reka-ui Dialog.
  *
  * 3-layer compound (HeroUI `modal.css`): Backdrop (dim overlay) > Container
- * (positioning) > Dialog (the `role=dialog` box). Use via dot notation
- * (`Modal.Trigger`, `Modal.Backdrop`, …) or the named exports.
- * Part of the HeroUI-for-Vue primitive library.
+ * (positioning, scroll, size) > Dialog (the `role=dialog` box). Use via dot
+ * notation (`Modal.Trigger`, `Modal.Backdrop`, …) or the named exports.
+ *
+ * Compound API (mirrors HeroUI v3 React `index.ts`):
+ *   Modal / Modal.Root, .Trigger, .Backdrop, .Container, .Dialog,
+ *   .Header, .Icon, .Heading, .Body, .Footer, .CloseTrigger
  */
 import ModalRoot from './modal'
 import ModalTrigger from './modal-trigger'
@@ -46,6 +49,9 @@ export {
   ModalFooter,
   ModalCloseTrigger
 }
+
+export { modalVariants } from '@heroui/styles'
+export type { ModalVariants } from '@heroui/styles'
 
 /**
  * shadcn-vue `Dialog` compatibility aliases — let a project migrating from

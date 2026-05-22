@@ -1,39 +1,40 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { AvatarRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { AvatarRoot as RekaAvatarRoot } from 'reka-ui'
+import { avatarVariants, type AvatarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { avatarSizeClass, type TAvatarColor, type TAvatarSize, type TAvatarVariantName } from './avatar-variants'
+import { AVATAR_CONTEXT } from './avatar-context'
 
 /**
- * Avatar — root.
+ * Avatar — the circular image container. Faithful Vue port of HeroUI v3 `Avatar`.
  *
- * HeroUI BEM: `avatar` base, `avatar--{size}` modifier, `avatar--soft` modifier.
- * `color` flows down to AvatarFallback via slot — consumers pass it to `<AvatarFallback>` directly.
+ * The root computes HeroUI's `avatarVariants` slot map and provides it to
+ * compound parts (`Avatar.Image`, `Avatar.Fallback`), so every part is styled
+ * from `@heroui/styles` — never a hand-written class string.
+ *
+ * Delegates show/hide logic to reka-ui `AvatarRoot`.
  */
-export const Avatar = defineComponent({
+export const AvatarRoot = defineComponent({
   name: 'Avatar',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    size: { type: String as PropType<TAvatarSize>, default: 'md' },
-    variant: { type: String as PropType<TAvatarVariantName>, default: 'default' },
-    /** @deprecated Pass color directly to AvatarFallback */
-    color: { type: String as PropType<TAvatarColor>, default: undefined }
+    /** Color family applied to the fallback. @default 'default' */
+    color: { type: String as PropType<AvatarVariants['color']>, default: 'default' },
+    /** Avatar size. @default 'md' */
+    size: { type: String as PropType<AvatarVariants['size']>, default: 'md' },
+    /** Visual variant. @default undefined (plain circle) */
+    variant: { type: String as PropType<AvatarVariants['variant']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => avatarVariants({ color: props.color, size: props.size, variant: props.variant }))
+    provide(AVATAR_CONTEXT, { slots: styles })
+
     return () => (
-      <AvatarRoot
-        {...attrs}
-        class={cn(
-          'avatar',
-          avatarSizeClass(props.size),
-          props.variant === 'soft' && 'avatar--soft',
-          props.class
-        )}
-      >
+      <RekaAvatarRoot {...attrs} data-slot="avatar" class={cn(styles.value.base(), props.class)}>
         {slots.default?.()}
-      </AvatarRoot>
+      </RekaAvatarRoot>
     )
   }
 })
 
-export default Avatar
+export default AvatarRoot

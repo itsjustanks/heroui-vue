@@ -1,8 +1,16 @@
 /**
- * HeroUI-Vue Input — faithful HeroUI v3 text-field control over a native input.
- * Part of the HeroUI-for-Vue primitive library.
+ * Input — faithful Vue port of HeroUI v3 `Input`.
  *
- * Export names mirror `shadcn-vue` so call-site migration is a pure
- * import-path swap.
+ * Compound API (HeroUI v3): `Input`, `Input.Root`.
+ * Flat export: `InputRoot`.
  */
-export { default as Input } from './input'
+import { InputRoot } from './input'
+
+/** Compound component — `Input.Root` (HeroUI v3 API). */
+export const Input = Object.assign(InputRoot, {
+  Root: InputRoot,
+})
+
+export { InputRoot }
+export { inputVariants } from '@heroui/styles'
+export type { InputVariants } from '@heroui/styles'

@@ -39,9 +39,9 @@ export const FieldError = defineComponent({
       const resolved = content.value
 
       return (
-        <div
+        <span
           {...attrs}
-          role="alert"
+          data-visible
           data-slot="field-error"
           class={cn('field-error', props.class)}
         >
@@ -58,7 +58,7 @@ export const FieldError = defineComponent({
                   </ul>
                 )
                 : null}
-        </div>
+        </span>
       )
     }
   }

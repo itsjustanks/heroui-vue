@@ -11,7 +11,11 @@ export const MenubarShortcut = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <span {...attrs} class={cn('ml-auto text-xs tracking-widest text-muted-foreground', props.class)}>
+      <span
+        {...attrs}
+        data-slot="menu-shortcut"
+        class={cn('ml-auto text-xs tracking-widest text-muted-foreground', props.class)}
+      >
         {slots.default?.()}
       </span>
     )

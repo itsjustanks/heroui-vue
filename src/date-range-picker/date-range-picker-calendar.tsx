@@ -14,8 +14,8 @@ import {
   DateRangePickerNext,
   DateRangePickerPrev
 } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/button'
 
 type TCalendarSlot = {
   grid: Array<{ value: { toString: () => string }; rows: unknown[][] }>
@@ -23,14 +23,10 @@ type TCalendarSlot = {
 }
 
 /**
- * DateRangePickerCalendar — the range month grid inside `DateRangePickerContent`.
- * HeroUI v3 `RangeCalendar` (as used inside `DateRangePicker`).
- *
- * Composes reka-ui's `DateRangePicker`-scoped calendar parts (context-wired to
- * `DateRangePickerRoot`). Range styling adapts HeroUI's `range-calendar`:
- * `bg-accent` connected in-range band (`data-highlighted` / `data-selected`),
- * `bg-primary` rounded endpoints (`data-selection-start` / `data-selection-end`),
- * `bg-accent` today, muted outside-month days.
+ * DateRangePickerCalendar — the range month grid inside `DateRangePicker.Popover`.
+ * Styled via `rangeCalendarVariants` (HeroUI's `RangeCalendar` BEM family). Composes
+ * reka-ui's `DateRangePicker`-scoped calendar parts, which share context with the
+ * `DateRangePickerRoot`.
  */
 export const DateRangePickerCalendar = defineComponent({
   name: 'DateRangePickerCalendar',
@@ -39,28 +35,19 @@ export const DateRangePickerCalendar = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
+    const styles = rangeCalendarVariants()
     return () => (
-      <RekaDateRangePickerCalendar {...attrs} class={cn('p-0', props.class)}>
+      <RekaDateRangePickerCalendar {...attrs} data-slot="range-calendar" class={cn(styles.base(), props.class)}>
         {{
           default: ({ grid, weekDays }: TCalendarSlot) => (
             <>
-              <DateRangePickerHeader class="relative flex w-full items-center justify-between px-0.5 pb-4 pt-1">
-                <DateRangePickerPrev
-                  class={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'size-7 rounded-lg p-0 text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  <IconChevronLeft class="size-4" />
+              <DateRangePickerHeader data-slot="range-calendar-header" class={cn(styles.header())}>
+                <DateRangePickerPrev data-slot="range-calendar-nav-button" class={cn(styles.navButton())}>
+                  <IconChevronLeft class={cn(styles.navButtonIcon())} />
                 </DateRangePickerPrev>
-                <DateRangePickerHeading class="flex-1 text-center text-sm font-medium" />
-                <DateRangePickerNext
-                  class={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'size-7 rounded-lg p-0 text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  <IconChevronRight class="size-4" />
+                <DateRangePickerHeading data-slot="range-calendar-heading" class={cn(styles.heading())} />
+                <DateRangePickerNext data-slot="range-calendar-nav-button" class={cn(styles.navButton())}>
+                  <IconChevronRight class={cn(styles.navButtonIcon())} />
                 </DateRangePickerNext>
               </DateRangePickerHeader>
 
@@ -68,54 +55,41 @@ export const DateRangePickerCalendar = defineComponent({
                 {grid.map((month) => (
                   <DateRangePickerGrid
                     key={month.value.toString()}
-                    class="w-full border-collapse space-y-1"
+                    data-slot="range-calendar-grid"
+                    class={cn(styles.grid())}
                   >
-                    <DateRangePickerGridHead>
-                      <DateRangePickerGridRow class="flex">
+                    <DateRangePickerGridHead data-slot="range-calendar-grid-header" class={cn(styles.gridHeader())}>
+                      <DateRangePickerGridRow data-slot="range-calendar-grid-row" class={cn(styles.gridRow())}>
                         {weekDays.map((day) => (
                           <DateRangePickerHeadCell
                             key={day}
-                            class="w-9 rounded-lg text-xs font-medium text-muted-foreground"
+                            data-slot="range-calendar-header-cell"
+                            class={cn(styles.headerCell())}
                           >
                             {day}
                           </DateRangePickerHeadCell>
                         ))}
                       </DateRangePickerGridRow>
                     </DateRangePickerGridHead>
-                    <DateRangePickerGridBody>
+                    <DateRangePickerGridBody data-slot="range-calendar-grid-body" class={cn(styles.gridBody())}>
                       {month.rows.map((weekDates, index) => (
-                        <DateRangePickerGridRow key={`weekDate-${index}`} class="mt-2 flex w-full">
+                        <DateRangePickerGridRow
+                          key={`weekDate-${index}`}
+                          data-slot="range-calendar-grid-row"
+                          class={cn(styles.gridRow())}
+                        >
                           {(weekDates as Array<{ toString: () => string }>).map((weekDate) => (
                             <DateRangePickerCell
                               key={weekDate.toString()}
                               date={weekDate as never}
-                              class={cn(
-                                'relative size-9 p-0 text-center text-sm focus-within:relative focus-within:z-20',
-                                // In-range band — connected accent fill.
-                                '[&:has([data-selected])]:bg-accent',
-                                '[&:has([data-selection-start])]:rounded-l-lg [&:has([data-selection-end])]:rounded-r-lg',
-                                '[&:has([data-outside-view][data-selected])]:bg-accent/50'
-                              )}
+                              data-slot="range-calendar-cell"
+                              class={cn(styles.cell())}
                             >
                               <DateRangePickerCellTrigger
                                 day={weekDate as never}
                                 month={month.value as never}
-                                class={cn(
-                                  buttonVariants({ variant: 'ghost' }),
-                                  'size-9 rounded-lg p-0 font-normal',
-                                  // Today
-                                  '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
-                                  // In-range middle days — keep them flat over the band.
-                                  'data-[highlighted]:rounded-none data-[selected]:rounded-none',
-                                  // Range endpoints — solid primary, rounded.
-                                  'data-[selection-start]:rounded-lg data-[selection-start]:bg-primary data-[selection-start]:text-primary-foreground data-[selection-start]:hover:bg-primary data-[selection-start]:hover:text-primary-foreground',
-                                  'data-[selection-end]:rounded-lg data-[selection-end]:bg-primary data-[selection-end]:text-primary-foreground data-[selection-end]:hover:bg-primary data-[selection-end]:hover:text-primary-foreground',
-                                  // Disabled / unavailable
-                                  'data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
-                                  'data-[unavailable]:text-destructive-foreground data-[unavailable]:line-through',
-                                  // Outside months
-                                  'data-[outside-view]:text-muted-foreground data-[outside-view]:opacity-50'
-                                )}
+                                data-slot="range-calendar-cell-indicator"
+                                class={cn(styles.cellIndicator())}
                               />
                             </DateRangePickerCell>
                           ))}

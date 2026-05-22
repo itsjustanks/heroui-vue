@@ -1,13 +1,9 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { meterVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { METER_CONTEXT } from './meter-context'
 
-/**
- * MeterTrack — the meter's track rail. HeroUI v3 `Meter.Track`.
- *
- * Adapts HeroUI's `meter__track`: a `rounded` `bg-muted` rail spanning the full
- * width of the grid's `track` row. Height + radius follow the `size` variant
- * (read from context). Holds the `MeterFill`.
- */
+/** Meter.Track — the track rail that contains the fill bar (HeroUI `meter__track`). */
 export const MeterTrack = defineComponent({
   name: 'MeterTrack',
   inheritAttrs: false,
@@ -15,11 +11,12 @@ export const MeterTrack = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(METER_CONTEXT, null)
     return () => (
       <div
         {...attrs}
         data-slot="meter-track"
-        class={cn('meter__track', props.class)}
+        class={cn((ctx?.slots.value ?? meterVariants()).track(), props.class)}
       >
         {slots.default?.()}
       </div>

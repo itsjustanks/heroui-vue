@@ -1,45 +1,30 @@
 /**
- * HeroUI-Vue NumberField — faithful HeroUI v3 `NumberField` over reka-ui.
+ * NumberField — faithful Vue port of HeroUI v3 `NumberField`.
  *
- * NET-NEW primitive (no `shadcn-vue` base). Compound parts
- * mirror HeroUI's `NumberField.*` API. Built over reka-ui `NumberFieldRoot` /
- * `NumberFieldInput` / `NumberFieldIncrement` / `NumberFieldDecrement` — the
- * reka-ui analogue of React Aria's `NumberField` HeroUI wraps. Part of the
- * HeroUI-for-Vue primitive library.
- *
- * Compound API mirrors HeroUI exactly:
- *   NumberField (.Group, .Input, .IncrementButton, .DecrementButton)
+ * Compound API (HeroUI v3): `NumberField`, `NumberField.Root`, `NumberField.Group`,
+ * `NumberField.Input`, `NumberField.IncrementButton`, `NumberField.DecrementButton`.
+ * Flat exports mirror HeroUI v3 React named exports exactly.
  */
-import { NumberField as NumberFieldRoot } from './number-field'
+import { NumberFieldRoot } from './number-field'
 import { NumberFieldGroup } from './number-field-group'
 import { NumberFieldInput } from './number-field-input'
-import {
-  NumberFieldDecrementButton,
-  NumberFieldIncrementButton
-} from './number-field-button'
+import { NumberFieldIncrementButton, NumberFieldDecrementButton } from './number-field-button'
 
-/** Compound `NumberField` — attaches `.Group` / `.Input` / `.IncrementButton` / `.DecrementButton`. */
-type TNumberField = typeof NumberFieldRoot & {
-  Group: typeof NumberFieldGroup
-  Input: typeof NumberFieldInput
-  IncrementButton: typeof NumberFieldIncrementButton
-  DecrementButton: typeof NumberFieldDecrementButton
-}
-
-const NumberField = NumberFieldRoot as TNumberField
-NumberField.Group = NumberFieldGroup
-NumberField.Input = NumberFieldInput
-NumberField.IncrementButton = NumberFieldIncrementButton
-NumberField.DecrementButton = NumberFieldDecrementButton
+/** Compound component — `NumberField.Root`, `.Group`, `.Input`, `.IncrementButton`, `.DecrementButton` (HeroUI v3 API). */
+export const NumberField = Object.assign(NumberFieldRoot, {
+  Root:             NumberFieldRoot,
+  Group:            NumberFieldGroup,
+  Input:            NumberFieldInput,
+  IncrementButton:  NumberFieldIncrementButton,
+  DecrementButton:  NumberFieldDecrementButton,
+})
 
 export {
-  NumberField,
+  NumberFieldRoot,
   NumberFieldGroup,
   NumberFieldInput,
   NumberFieldIncrementButton,
-  NumberFieldDecrementButton
+  NumberFieldDecrementButton,
 }
-export default NumberField
-
-export { numberFieldGroupVariants } from './variants'
-export type { TNumberFieldGroupVariants } from './variants'
+export { numberFieldVariants } from '@heroui/styles'
+export type { NumberFieldVariants } from '@heroui/styles'

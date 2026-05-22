@@ -1,45 +1,50 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { ListboxItem, type AcceptableValue } from 'reka-ui'
+import { computed, defineComponent, provide, ref, type HTMLAttributes, type PropType } from 'vue'
+import { ListboxItem, injectListboxItemContext, type AcceptableValue } from 'reka-ui'
+import { listboxItemVariants, type ListBoxItemVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { LIST_BOX_ITEM_CONTEXT } from './list-box-item-context'
 
 /**
- * ListBoxItem — a selectable option within a ListBox. Faithful port of HeroUI
- * v3 `ListBox.Item` (`list-box-item.css`).
+ * ListBoxItemRoot — a selectable option within a ListBox. Faithful Vue port of
+ * HeroUI v3 `ListBox.Item`.
  *
- * `min-h-9`, `gap-3`, `rounded-2xl`, `px-2`, a hover surface, a `scale-[0.98]`
- * pressed micro-interaction, and reka-ui `data-[highlighted]` / `data-[state]` /
- * `data-[disabled]` interactive states. `variant="danger"` tints the label red.
- *
- * reka-ui `ListboxItem` props/emits (`value`, `disabled`, `textValue`,
- * `onSelect`, …) forward through `{...attrs}`.
+ * Computes `listboxItemVariants` slot map and provides it (plus `isSelected`
+ * state from reka-ui context) to `ListBoxItemIndicator`. All reka-ui
+ * `ListboxItem` props (`value`, `disabled`, `textValue`, `onSelect`, …) pass
+ * through via `{...attrs}`.
  */
-export const ListBoxItem = defineComponent({
+export const ListBoxItemRoot = defineComponent({
   name: 'ListBoxItem',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** The unique value of this option — required by reka-ui `ListboxItem`. */
-    value: { type: [String, Number, Object, null] as PropType<AcceptableValue>, default: undefined },
-    /** Visual variant — `danger` tints the label/indicator red. Mirrors HeroUI `list-box-item--danger`. */
-    variant: { type: String as PropType<'default' | 'danger'>, default: 'default' }
+    class:   { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** The unique value for this option — required by reka-ui `ListboxItem`. */
+    value:   { type: [String, Number, Object, null] as PropType<AcceptableValue>, default: undefined },
+    /** Visual variant. @default 'default' */
+    variant: { type: String as PropType<ListBoxItemVariants['variant']>, default: 'default' },
   },
   setup (props, { attrs, slots }) {
+    const itemSlots = computed(() => listboxItemVariants({ variant: props.variant }))
+
+    // reka-ui's ListboxItem injects `isSelected` onto descendant components.
+    // Because reka provides this context from the ListboxItem component itself,
+    // we forward a reactive ref that ListBoxItemIndicator can read.
+    const rekaCtx = injectListboxItemContext(null)
+    const isSelected = computed(() => rekaCtx?.isSelected.value ?? false)
+
+    provide(LIST_BOX_ITEM_CONTEXT, { slots: itemSlots, isSelected })
+
     return () => (
       <ListboxItem
         {...attrs}
         value={props.value as AcceptableValue}
         data-slot="list-box-item"
-        data-variant={props.variant}
-        class={cn(
-          'list-box-item',
-          props.variant === 'danger' ? 'list-box-item--danger' : 'list-box-item--default',
-          props.class
-        )}
+        class={cn(itemSlots.value.item(), props.class)}
       >
         {slots.default?.()}
       </ListboxItem>
     )
-  }
+  },
 })
 
-export default ListBoxItem
+export default ListBoxItemRoot

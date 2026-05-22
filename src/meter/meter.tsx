@@ -1,52 +1,40 @@
-import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type CSSProperties, type HTMLAttributes, type PropType } from 'vue'
+import { meterVariants, type MeterVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { provideMeterContext } from './meter-context'
-import type { TMeterColor, TMeterSize } from './variants'
+import { METER_CONTEXT } from './meter-context'
 
 const clamp = (n: number, min: number, max: number): number => Math.min(max, Math.max(min, n))
 
 /**
- * Meter — HeroUI-Vue meter root (primitive library, net-new).
+ * MeterRoot — the measurement container. Faithful Vue port of HeroUI v3 `Meter`.
  *
- * Faithful port of HeroUI v3 `Meter` — a **labelled quantity indicator within a
- * known range**, distinct from `Progress`: a `Progress` shows task completion,
- * a `Meter` shows a static measured value (disk usage, score, capacity). HeroUI
- * builds it on React Aria's `Meter`; reka-ui has no `Meter` primitive, so the
- * value math (`clamp` + percentage) lives here and is shared with the compound
- * parts via context.
- *
- * Adapts HeroUI's `meter` BEM: a 2-row CSS grid — `"label output"` on top,
- * `"track track"` below. The root carries `role="meter"` plus the
- * `aria-valuenow` / `aria-valuemin` / `aria-valuemax` / `aria-valuetext`
- * attributes React Aria would emit.
- *
- * `value` gives a `v-model` binding (a meter is read-only, so it never emits an
- * update — `value` is just the displayed measurement).
- *
- * Compound API: `Meter`, `MeterLabel`, `MeterOutput`, `MeterTrack`, `MeterFill`
- * — mirrors HeroUI's `Meter.*` parts (`MeterLabel` ≅ HeroUI's `Label` slot).
+ * A `Meter` shows a static measured value within a known range (disk usage,
+ * score, capacity) — distinct from `Progress` which shows task completion.
+ * Computes HeroUI's `meterVariants` slot map and provides it plus reactive
+ * `percentage` / `valueText` state to compound parts.
  */
-export const Meter = defineComponent({
-  name: 'MeterView',
+export const MeterRoot = defineComponent({
+  name: 'Meter',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    class:         { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    style:         { type: Object as PropType<CSSProperties>, default: undefined },
+    /** Colour variant. @default 'accent' */
+    color:         { type: String as PropType<MeterVariants['color']>, default: 'accent' },
+    /** Size variant. @default 'md' */
+    size:          { type: String as PropType<MeterVariants['size']>, default: 'md' },
     /** The measured value. */
-    value: { type: Number, default: 0 },
-    /** Lower bound of the range. */
-    minValue: { type: Number, default: 0 },
-    /** Upper bound of the range. */
-    maxValue: { type: Number, default: 100 },
-    /** Size variant. */
-    size: { type: String as PropType<TMeterSize>, default: 'md' },
-    /** Colour variant. */
-    color: { type: String as PropType<TMeterColor>, default: 'accent' },
-    /** `Intl.NumberFormat` options for the formatted value text. Defaults to a percent string. */
+    value:         { type: Number, default: 0 },
+    /** Lower bound of the range. @default 0 */
+    minValue:      { type: Number, default: 0 },
+    /** Upper bound of the range. @default 100 */
+    maxValue:      { type: Number, default: 100 },
+    /** `Intl.NumberFormat` options for the formatted value text. Defaults to percent. */
     formatOptions: { type: Object as PropType<Intl.NumberFormatOptions>, default: undefined },
-    /** Whether the meter is disabled (dims the surface). */
-    disabled: { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => meterVariants({ color: props.color, size: props.size }))
+
     const percentage = computed(() => {
       const span = props.maxValue - props.minValue
       if (span <= 0) return 0
@@ -60,12 +48,7 @@ export const Meter = defineComponent({
       return `${Math.round(percentage.value)}%`
     })
 
-    provideMeterContext({
-      percentage,
-      valueText,
-      size: computed(() => props.size),
-      color: computed(() => props.color)
-    })
+    provide(METER_CONTEXT, { slots: styles, percentage, valueText })
 
     return () => (
       <div
@@ -75,21 +58,9 @@ export const Meter = defineComponent({
         aria-valuemin={props.minValue}
         aria-valuemax={props.maxValue}
         aria-valuetext={valueText.value}
-        aria-disabled={props.disabled || undefined}
         data-slot="meter"
-        data-disabled={props.disabled || undefined}
-        class={cn(
-          'meter',
-          props.color === 'accent' ? 'meter--accent'
-            : props.color === 'danger' ? 'meter--danger'
-              : props.color === 'success' ? 'meter--success'
-                : props.color === 'warning' ? 'meter--warning'
-                  : 'meter--default',
-          props.size === 'sm' ? 'meter--sm'
-            : props.size === 'lg' ? 'meter--lg'
-              : 'meter--md',
-          props.class
-        )}
+        style={props.style}
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
       </div>
@@ -97,4 +68,4 @@ export const Meter = defineComponent({
   }
 })
 
-export default Meter
+export default MeterRoot

@@ -1,10 +1,9 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { cardVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CARD_CONTEXT } from './card-context'
 
-/**
- * CardHeader — the top region holding title/description. HeroUI v3 taste:
- * generous `p-6` padding, vertical `gap-1.5` rhythm between title and description.
- */
+/** Card.Header — the top region holding the title and description (HeroUI `card__header`). */
 export const CardHeader = defineComponent({
   name: 'CardHeader',
   inheritAttrs: false,
@@ -12,8 +11,13 @@ export const CardHeader = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(CARD_CONTEXT, null)
     return () => (
-      <div {...attrs} class={cn('card__header', props.class)}>
+      <div
+        {...attrs}
+        data-slot="card-header"
+        class={cn((ctx?.slots.value ?? cardVariants()).header(), props.class)}
+      >
         {slots.default?.()}
       </div>
     )

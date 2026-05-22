@@ -1,34 +1,26 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { numberFieldVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { NUMBER_FIELD_CONTEXT } from './number-field-context'
 
 /**
- * NumberFieldGroup — the segmented-input surface. HeroUI v3 `NumberField.Group`.
- *
- * Adapts HeroUI's `number-field__group` BEM: a 3-column CSS grid
- * (`40px 1fr 40px`) so the optional `NumberFieldDecrementButton`, the
- * `NumberFieldInput`, and the optional `NumberFieldIncrementButton` line up;
- * `rounded-md` bordered surface with a focus-within ring and `primary` /
- * `secondary` variants.
+ * NumberFieldGroup — the segmented input surface (HeroUI `number-field__group`).
+ * Faithful Vue port of HeroUI v3 `NumberFieldGroup`.
  */
 export const NumberFieldGroup = defineComponent({
   name: 'NumberFieldGroup',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** HeroUI `fullWidth` — stretch the group to fill its container. */
-    fullWidth: { type: Boolean, default: false }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(NUMBER_FIELD_CONTEXT, null)
     return () => (
       <div
         {...attrs}
         role="group"
         data-slot="number-field-group"
-        class={cn(
-          'number-field__group',
-          props.fullWidth && 'number-field__group--full-width',
-          props.class
-        )}
+        class={cn((ctx?.slots.value ?? numberFieldVariants()).group(), props.class)}
       >
         {slots.default?.()}
       </div>

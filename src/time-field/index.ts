@@ -1,16 +1,43 @@
 /**
- * HeroUI-Vue TimeField — faithful HeroUI v3 `TimeField` over reka-ui.
+ * TimeField — faithful Vue port of HeroUI v3 `TimeField`.
  *
- * Net-new primitive (no `shadcn-vue` base). Compound parts mirror
- * HeroUI's `TimeField.*` API. Date engine is `@internationalized/date` via
- * reka-ui `TimeFieldRoot`. Part of the HeroUI-for-Vue primitive library.
+ * Compound API (HeroUI v3):
+ *   `TimeField` / `TimeField.Root`
+ *   `TimeField.Group`          — date-input-group surface (DateInputGroupRoot)
+ *   `TimeField.Input`          — TimeInput element (DateInputGroupInput)
+ *   `TimeField.InputContainer` — input layout wrapper (DateInputGroupInputContainer)
+ *   `TimeField.Segment`        — individual time segment (DateInputGroupSegment)
+ *   `TimeField.Prefix`         — leading adornment (DateInputGroupPrefix)
+ *   `TimeField.Suffix`         — trailing adornment (DateInputGroupSuffix)
  */
-export { default as TimeField } from './time-field'
-export { default as TimeFieldGroup } from './time-field-group'
-export { default as TimeFieldInput } from './time-field-input'
-export { default as TimeFieldSegment } from './time-field-segment'
-export { default as TimeFieldPrefix } from './time-field-prefix'
-export { default as TimeFieldSuffix } from './time-field-suffix'
-export { dateInputGroupVariants } from './variants'
-export type { TDateInputGroupVariants } from './variants'
-export type { TTimeSegment } from './time-field-input'
+import { TimeFieldRoot } from './time-field'
+import { TimeFieldGroup } from './time-field-group'
+import { TimeFieldInput } from './time-field-input'
+import { TimeFieldInputContainer } from './time-field-input-container'
+import { TimeFieldSegment } from './time-field-segment'
+import { TimeFieldPrefix } from './time-field-prefix'
+import { TimeFieldSuffix } from './time-field-suffix'
+
+/** Compound component — mirrors HeroUI v3 `TimeField.*` API exactly. */
+export const TimeField = Object.assign(TimeFieldRoot, {
+  Root: TimeFieldRoot,
+  Group: TimeFieldGroup,
+  Input: TimeFieldInput,
+  InputContainer: TimeFieldInputContainer,
+  Segment: TimeFieldSegment,
+  Prefix: TimeFieldPrefix,
+  Suffix: TimeFieldSuffix,
+})
+
+export {
+  TimeFieldRoot,
+  TimeFieldGroup,
+  TimeFieldInput,
+  TimeFieldInputContainer,
+  TimeFieldSegment,
+  TimeFieldPrefix,
+  TimeFieldSuffix,
+}
+
+export { timeFieldVariants } from '@heroui/styles'
+export type { TimeFieldVariants } from '@heroui/styles'

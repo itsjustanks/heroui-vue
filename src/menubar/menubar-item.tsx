@@ -1,27 +1,33 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
 import { MenubarItem as RekaMenubarItem } from 'reka-ui'
+import { menuItemVariants, type MenuItemVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import type { HTMLAttributes, PropType } from 'vue'
+import { MENUBAR_ITEM_CONTEXT } from './menubar-item-context'
 
 /**
- * MenubarItem — HeroUI `menu-item`.
+ * MenubarItem — a single menu row (HeroUI `menu-item`).
  *
- * Interactive states use reka-ui's `data-[highlighted]` / `data-[disabled]`
- * attributes. `inset` adds left padding to align with checkbox/radio items.
+ * Computes `menuItemVariants({ variant })` and provides the slot map to
+ * `MenubarItemIndicator` children.
  */
 export const MenubarItem = defineComponent({
   name: 'MenubarItem',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    inset: { type: Boolean, default: false }
+    /** `"danger"` maps to HeroUI `menu-item--danger`. @default 'default' */
+    variant: { type: String as PropType<MenuItemVariants['variant']>, default: 'default' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => menuItemVariants({ variant: props.variant }))
+    const isSelected = computed(() => (attrs as any)['data-state'] === 'checked')
+    provide(MENUBAR_ITEM_CONTEXT, { slots: styles, isSelected })
+
     return () => (
       <RekaMenubarItem
         {...attrs}
         data-slot="menu-item"
-        class={cn('menu-item menu-item--default', props.class)}
+        class={cn(styles.value.item(), props.class)}
       >
         {slots.default?.()}
       </RekaMenubarItem>

@@ -1,28 +1,27 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { NumberFieldInput as RekaNumberFieldInput } from 'reka-ui'
+import { numberFieldVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { NUMBER_FIELD_CONTEXT } from './number-field-context'
 
 /**
- * NumberFieldInput — the numeric `<input>`. HeroUI v3 `NumberField.Input`.
- *
- * Renders reka-ui `NumberFieldInput`, which is wired into `NumberFieldRoot`'s
- * context — typing, parsing, formatting and keyboard stepping are all handled
- * by reka-ui. Adapts HeroUI's `number-field__input` BEM: a borderless
- * `bg-transparent` field, `tabular-nums`, `text-sm`. It is the middle (`1fr`)
- * column of `NumberFieldGroup`'s grid.
+ * NumberFieldInput — the numeric `<input>` (HeroUI `number-field__input`).
+ * Faithful Vue port of HeroUI v3 `NumberFieldInput`.
+ * Built over reka-ui `NumberFieldInput` which handles parsing and formatting.
  */
 export const NumberFieldInput = defineComponent({
-  name: 'NumberFieldInputView',
+  name: 'NumberFieldInput',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
+    const ctx = inject(NUMBER_FIELD_CONTEXT, null)
     return () => (
       <RekaNumberFieldInput
         {...attrs}
         data-slot="number-field-input"
-        class={cn('number-field__input', props.class)}
+        class={cn((ctx?.slots.value ?? numberFieldVariants()).input(), props.class)}
       />
     )
   }

@@ -1,34 +1,33 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { cardVariants, type CardVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-
-type TCardVariant = 'default' | 'secondary' | 'tertiary' | 'transparent'
+import { CARD_CONTEXT } from './card-context'
 
 /**
- * Card — the surface container. HeroUI v3 BEM: `card` base, `card--{variant}`
- * modifier. Defaults to `card--default`.
+ * Card — the surface container. Faithful Vue port of HeroUI v3 `Card`.
+ *
+ * The root computes HeroUI's `cardVariants` slot map and provides it to the
+ * compound parts (`Card.Header`, `Card.Title`, …), so every part is styled
+ * straight from `@heroui/styles` — never a hand-written class string.
  */
-export const Card = defineComponent({
+export const CardRoot = defineComponent({
   name: 'Card',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Visual variant matching HeroUI `card--{variant}`. */
-    variant: { type: String as PropType<TCardVariant>, default: 'default' }
+    /** Visual variant — `card--{variant}`. @default 'default' */
+    variant: { type: String as PropType<CardVariants['variant']>, default: 'default' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => cardVariants({ variant: props.variant }))
+    provide(CARD_CONTEXT, { slots: styles })
+
     return () => (
-      <div
-        {...attrs}
-        class={cn(
-          'card',
-          `card--${props.variant}`,
-          props.class
-        )}
-      >
+      <div {...attrs} data-slot="card" class={cn(styles.value.base(), props.class)}>
         {slots.default?.()}
       </div>
     )
   }
 })
 
-export default Card
+export default CardRoot

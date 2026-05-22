@@ -1,34 +1,48 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { TabsTrigger as TabsTriggerBase } from 'reka-ui'
-// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
-const RekaTabsTrigger: any = TabsTriggerBase
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { TabsTrigger as RekaTabsTrigger } from 'reka-ui'
+import { tabsVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TABS_CONTEXT } from './tabs-context'
 
 /**
- * TabsTrigger — an individual tab inside the segmented track.
+ * Tab — an individual tab trigger inside the track.
+ * Faithful Vue port of HeroUI v3 `Tabs.Tab` (`tabs__tab`).
  *
- * Maps to HeroUI `tabs__tab`. reka-ui sets `data-[state=active]` on the trigger;
- * HeroUI CSS uses `[data-selected="true"]` — both are real DOM attributes that
- * native CSS selectors pick up. The separator spans `tabs__separator` for the
- * divider between unselected tabs.
+ * reka-ui `TabsTrigger` drives the selection state and sets
+ * `data-state="active"` / `data-selected` on the element.
+ *
+ * A `TabSeparator` is rendered as the first child (mirrors HeroUI React's
+ * pattern where each `Tab` contains a sibling separator span used by CSS
+ * selectors for the adjacent-trigger border rule).
  */
-export const TabsTrigger = defineComponent({
-  name: 'TabsTrigger',
+const TabTriggerImpl = RekaTabsTrigger as any
+
+export const Tab = defineComponent({
+  name: 'Tab',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <RekaTabsTrigger
-        {...(attrs as Record<string, any>)}
-        class={cn('tabs__tab', props.class)}
-      >
-        <span class="tabs__separator" aria-hidden="true" />
-        {slots.default?.()}
-      </RekaTabsTrigger>
-    )
+    const ctx = inject(TABS_CONTEXT, null)
+    return () => {
+      const slotMap = ctx?.slots.value ?? tabsVariants()
+      return (
+        <TabTriggerImpl
+          {...attrs}
+          data-slot="tabs-tab"
+          class={cn(slotMap.tab(), props.class)}
+        >
+          <span
+            aria-hidden="true"
+            data-slot="tabs-separator"
+            class={cn(slotMap.separator())}
+          />
+          {slots.default?.()}
+        </TabTriggerImpl>
+      )
+    }
   }
 })
 
-export default TabsTrigger
+export default Tab

@@ -1,15 +1,14 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { progressCircleVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { PROGRESS_CIRCLE_CONTEXT } from './progress-circle-context'
 import { CENTER } from './constants'
 
 /**
- * ProgressCircleTrack — the `<svg>` canvas of the ring. HeroUI v3
- * `ProgressCircle.Track`.
+ * ProgressCircleTrack — the `<svg>` canvas of the ring (HeroUI `progress-circle__track`).
  *
- * Emits HeroUI BEM class `progress-circle__track`. The CSS sizes the SVG via
- * the parent `progress-circle--{size}` modifier. When indeterminate the CSS
- * `progress-circle-spin` keyframe is applied via the `:not([aria-valuenow])`
- * selector on the parent root.
+ * Faithful Vue port of HeroUI v3 `ProgressCircleTrack`. The CSS sizes the SVG
+ * via the parent `progress-circle--{size}` modifier on the root.
  */
 export const ProgressCircleTrack = defineComponent({
   name: 'ProgressCircleTrack',
@@ -18,12 +17,14 @@ export const ProgressCircleTrack = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(PROGRESS_CIRCLE_CONTEXT, null)
     return () => (
       <svg
         {...attrs}
         fill="none"
         viewBox={`0 0 ${CENTER * 2} ${CENTER * 2}`}
-        class={cn('progress-circle__track', props.class)}
+        data-slot="progress-circle-track"
+        class={cn((ctx?.slots.value ?? progressCircleVariants()).track(), props.class)}
       >
         {slots.default?.()}
       </svg>

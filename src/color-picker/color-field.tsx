@@ -1,4 +1,5 @@
 import { computed, defineComponent, inject, provide, ref, type ComputedRef, type HTMLAttributes, type InjectionKey, type PropType } from 'vue'
+import { colorFieldVariants, colorInputGroupVariants, type ColorFieldVariants, type ColorInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { formatColor, hsvToHsl, hsvToRgb, parseColor, type TColorValue } from './color-utils'
 import { useColorPickerContext } from './color-picker-context'
@@ -9,12 +10,12 @@ const FALLBACK: TColorValue = { h: 0, s: 0, v: 0, a: 1 }
 /** Per-field context — Input/Prefix/Suffix read display value + commit fn here. */
 type TColorFieldInternal = {
   text: ComputedRef<string>
+  groupSlots: ComputedRef<ReturnType<typeof colorInputGroupVariants>>
   commit: (raw: string) => void
 }
-const FIELD_KEY: InjectionKey<TColorFieldInternal> = Symbol('HeroColorField')
+const FIELD_KEY: InjectionKey<TColorFieldInternal> = Symbol('heroui-vue-color-field')
 const useField = (): TColorFieldInternal | null => inject(FIELD_KEY, null)
 
-/** Read a single channel's display value. */
 function channelText (c: TColorValue, channel: TColorSliderChannel): string {
   switch (channel) {
     case 'hue': return String(Math.round(c.h))
@@ -29,70 +30,91 @@ function channelText (c: TColorValue, channel: TColorSliderChannel): string {
   }
 }
 
-/** ColorField.Group — the bordered input shell (prefix + input + suffix). */
-const ColorFieldGroup = defineComponent({
+/**
+ * ColorInputGroupRoot (`ColorField.Group`) — the bordered input shell.
+ * HeroUI v3 `ColorField.Group` (`data-slot="color-input-group"`).
+ */
+export const ColorFieldGroup = defineComponent({
   name: 'ColorFieldGroup',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Visual variant — `secondary` mirrors HeroUI's softer field surface. */
-    variant: { type: String as PropType<'primary' | 'secondary'>, default: 'primary' }
+    variant: { type: String as PropType<ColorInputGroupVariants['variant']>, default: 'primary' },
+    fullWidth: { type: Boolean as PropType<ColorInputGroupVariants['fullWidth']>, default: false }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <div
-        {...attrs}
-        data-slot="group"
-        data-variant={props.variant}
-        class={cn(
-          'color-input-group',
-          `color-input-group--${props.variant}`,
-          props.class
-        )}
-      >
-        {slots.default?.()}
-      </div>
-    )
+    const field = useField()
+    const fallback = colorInputGroupVariants()
+    return () => {
+      const s = field?.groupSlots.value ?? fallback
+      return (
+        <div
+          {...attrs}
+          data-slot="color-input-group"
+          class={cn(s.base(), props.class)}
+        >
+          {slots.default?.()}
+        </div>
+      )
+    }
   }
 })
 
-/** ColorField.Prefix — leading adornment (e.g. a small ColorSwatch). */
-const ColorFieldPrefix = defineComponent({
+/**
+ * ColorInputGroupPrefix (`ColorField.Prefix`) — leading adornment.
+ * HeroUI v3 `ColorField.Prefix` (`data-slot="color-input-group-prefix"`).
+ */
+export const ColorFieldPrefix = defineComponent({
   name: 'ColorFieldPrefix',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <span {...attrs} class={cn('color-input-group__prefix', props.class)}>
-        {slots.default?.()}
-      </span>
-    )
+    const field = useField()
+    const fallback = colorInputGroupVariants()
+    return () => {
+      const s = field?.groupSlots.value ?? fallback
+      return (
+        <span {...attrs} data-slot="color-input-group-prefix" class={cn(s.prefix(), props.class)}>
+          {slots.default?.()}
+        </span>
+      )
+    }
   }
 })
 
-/** ColorField.Suffix — trailing adornment. */
-const ColorFieldSuffix = defineComponent({
+/**
+ * ColorInputGroupSuffix (`ColorField.Suffix`) — trailing adornment.
+ * HeroUI v3 `ColorField.Suffix` (`data-slot="color-input-group-suffix"`).
+ */
+export const ColorFieldSuffix = defineComponent({
   name: 'ColorFieldSuffix',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <span {...attrs} class={cn('color-input-group__suffix', props.class)}>
-        {slots.default?.()}
-      </span>
-    )
+    const field = useField()
+    const fallback = colorInputGroupVariants()
+    return () => {
+      const s = field?.groupSlots.value ?? fallback
+      return (
+        <span {...attrs} data-slot="color-input-group-suffix" class={cn(s.suffix(), props.class)}>
+          {slots.default?.()}
+        </span>
+      )
+    }
   }
 })
 
 /**
- * ColorField.Input — the editable value. Shows the current field text and
- * commits on `change` / Enter. An invalid entry is reverted on blur.
+ * ColorInputGroupInput (`ColorField.Input`) — the editable color value input.
+ * HeroUI v3 `ColorField.Input` (`data-slot="color-input-group-input"`). Shows
+ * the current field text and commits on `change` / Enter. Invalid entries are
+ * reverted on blur.
  */
-const ColorFieldInput = defineComponent({
+export const ColorFieldInput = defineComponent({
   name: 'ColorFieldInput',
   inheritAttrs: false,
   props: {
@@ -101,49 +123,53 @@ const ColorFieldInput = defineComponent({
   setup (props, { attrs }) {
     const field = useField()
     const draft = ref<string | null>(null)
+    const fallback = colorInputGroupVariants()
 
-    return () => (
-      <input
-        {...attrs}
-        type="text"
-        spellcheck={false}
-        value={draft.value ?? field?.text.value ?? ''}
-        onInput={(e: Event) => { draft.value = (e.target as HTMLInputElement).value }}
-        onChange={(e: Event) => {
-          field?.commit((e.target as HTMLInputElement).value)
-          draft.value = null
-        }}
-        onKeydown={(e: KeyboardEvent) => {
-          if (e.key === 'Enter') {
+    return () => {
+      const s = field?.groupSlots.value ?? fallback
+      return (
+        <input
+          {...attrs}
+          type="text"
+          spellcheck={false}
+          data-slot="color-input-group-input"
+          value={draft.value ?? field?.text.value ?? ''}
+          onInput={(e: Event) => { draft.value = (e.target as HTMLInputElement).value }}
+          onChange={(e: Event) => {
             field?.commit((e.target as HTMLInputElement).value)
             draft.value = null
-          } else if (e.key === 'Escape') {
-            draft.value = null
-          }
-        }}
-        onBlur={() => { draft.value = null }}
-        class={cn('color-input-group__input', props.class)}
-      />
-    )
+          }}
+          onKeydown={(e: KeyboardEvent) => {
+            if (e.key === 'Enter') {
+              field?.commit((e.target as HTMLInputElement).value)
+              draft.value = null
+            } else if (e.key === 'Escape') {
+              draft.value = null
+            }
+          }}
+          onBlur={() => { draft.value = null }}
+          class={cn(s.input(), props.class)}
+        />
+      )
+    }
   }
 })
 
 /**
- * ColorField — a text input for a color. With no `channel` it edits the full
- * hex value; with a `channel` (`red`, `hue`, …) it edits one channel. HeroUI's
- * `ColorField` is built on React Aria; this is the reka-ui/Vue analogue, driving
- * the ColorPicker context.
- *
- * Exposes `ColorField.Group`, `.Input`, `.Prefix`, `.Suffix`.
+ * ColorFieldRoot — a text input for a color channel or full hex value.
+ * HeroUI v3 `ColorField.Root` (`data-slot="color-field"`). With no `channel`
+ * it edits the full hex string; with a `channel` it edits one channel.
+ * Drives the ColorPicker context.
  */
-export const ColorField = defineComponent({
+export const ColorFieldRoot = defineComponent({
   name: 'ColorField',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** Single channel to edit. Omit to edit the full hex value. */
     channel: { type: String as PropType<TColorSliderChannel>, default: undefined },
-    colorSpace: { type: String as PropType<'hsb' | 'hsl' | 'rgb'>, default: 'hsb' }
+    colorSpace: { type: String as PropType<'hsb' | 'hsl' | 'rgb'>, default: 'hsb' },
+    fullWidth: { type: Boolean as PropType<ColorFieldVariants['fullWidth']>, default: false }
   },
   setup (props, { attrs, slots }) {
     const ctx = useColorPickerContext()
@@ -153,6 +179,11 @@ export const ColorField = defineComponent({
       ? channelText(color.value, props.channel)
       : formatColor(color.value, 'hex')
     )
+
+    const groupSlots = computed(() => colorInputGroupVariants({
+      variant: 'primary',
+      fullWidth: props.fullWidth
+    }))
 
     const commit = (raw: string): void => {
       if (!ctx) return
@@ -182,14 +213,16 @@ export const ColorField = defineComponent({
       }
     }
 
-    provide(FIELD_KEY, { text, commit })
+    provide(FIELD_KEY, { text, groupSlots, commit })
+
+    const fieldStyles = computed(() => colorFieldVariants({ fullWidth: props.fullWidth }))
 
     return () => (
       <div
         {...attrs}
         data-slot="color-field"
         data-channel={props.channel}
-        class={cn('color-field', props.class)}
+        class={cn(fieldStyles.value, props.class)}
       >
         {slots.default?.()}
       </div>
@@ -197,5 +230,4 @@ export const ColorField = defineComponent({
   }
 })
 
-export { ColorFieldGroup, ColorFieldInput, ColorFieldPrefix, ColorFieldSuffix }
-export default ColorField
+export default ColorFieldRoot

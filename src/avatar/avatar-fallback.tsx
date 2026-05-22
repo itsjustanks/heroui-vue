@@ -1,24 +1,23 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { AvatarFallback as RekaAvatarFallback } from 'reka-ui'
+import { avatarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { avatarFallbackColorClass, type TAvatarColor } from './avatar-variants'
+import { AVATAR_CONTEXT } from './avatar-context'
 
-/**
- * AvatarFallback — shown while the image is missing or loading.
- * HeroUI BEM: `avatar__fallback` + `avatar__fallback--{color}` modifier.
- */
+/** Avatar.Fallback — shown while the image is missing or loading (HeroUI `avatar__fallback`). */
 export const AvatarFallback = defineComponent({
   name: 'AvatarFallback',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    color: { type: String as PropType<TAvatarColor>, default: 'default' }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(AVATAR_CONTEXT, null)
     return () => (
       <RekaAvatarFallback
         {...attrs}
-        class={cn('avatar__fallback', avatarFallbackColorClass(props.color), props.class)}
+        data-slot="avatar-fallback"
+        class={cn((ctx?.slots.value ?? avatarVariants()).fallback(), props.class)}
       >
         {slots.default?.()}
       </RekaAvatarFallback>

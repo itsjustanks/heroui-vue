@@ -1,39 +1,36 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { DateRangePickerRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { DateRangePickerRoot as RekaDateRangePickerRoot } from 'reka-ui'
+import { dateRangePickerVariants, type DateRangePickerVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { DATE_RANGE_PICKER_CONTEXT } from './date-range-picker-context'
 
 /**
- * DateRangePicker — HeroUI-Vue date-range-picker root (primitive library, net-new).
- *
- * Faithful port of HeroUI v3 `DateRangePicker` over reka-ui `DateRangePickerRoot`.
- * `DateRangePickerRoot` wires a dual-segment date field + a popover + a range
- * calendar into one shared context. Date engine stays `@internationalized/date`
- * — `modelValue`/`defaultValue` is a `{ start, end }` `DateRange`; every
- * `DateRangePickerRoot` prop is forwarded: `granularity`, `hourCycle`,
- * `minValue`/`maxValue`, `isDateDisabled`, `isDateUnavailable`,
- * `allowNonContiguousRanges`, `numberOfMonths`, `locale`, …
- *
- * Compound API: `DateRangePicker`, `DateRangePickerField`,
- * `DateRangePickerInput`, `DateRangePickerSeparator`, `DateRangePickerTrigger`,
- * `DateRangePickerContent`, `DateRangePickerCalendar` — mirrors HeroUI's
- * `DateRangePicker.*` parts.
+ * DateRangePickerRoot — the root context provider. Faithful Vue port of HeroUI v3
+ * `DateRangePickerRoot`. Computes `dateRangePickerVariants` and provides the slot
+ * map to all compound parts. Wraps reka-ui `DateRangePickerRoot` for the date
+ * engine (`@internationalized/date` `DateRange`).
  */
-export const DateRangePicker = defineComponent({
-  name: 'DateRangePickerView',
+export const DateRangePickerRoot = defineComponent({
+  name: 'DateRangePicker',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => dateRangePickerVariants())
+    provide(DATE_RANGE_PICKER_CONTEXT, { slots: styles })
+
     return () => (
-      <DateRangePickerRoot
+      <RekaDateRangePickerRoot
         {...(attrs as Record<string, any>)}
-        class={cn('date-range-picker', props.class)}
+        data-slot="date-range-picker"
+        data-required={(attrs as Record<string, any>).required ? '' : undefined}
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
-      </DateRangePickerRoot>
+      </RekaDateRangePickerRoot>
     )
   }
 })
 
-export default DateRangePicker
+export default DateRangePickerRoot

@@ -1,38 +1,36 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RadioGroupRoot } from 'reka-ui'
+import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { RadioGroupRoot as RekaRadioGroupRoot } from 'reka-ui'
+import { radioGroupVariants, type RadioGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 
-type TRadioGroupVariant = 'primary' | 'secondary'
-
 /**
- * RadioGroup — HeroUI-Vue primitive over reka-ui `RadioGroupRoot`.
+ * RadioGroupRoot — a group of mutually exclusive radio buttons.
+ * Faithful Vue port of HeroUI v3 `RadioGroup` over reka-ui `RadioGroupRoot`.
  *
- * Emits HeroUI v3 BEM class names from `radio-group.css`.
- * All `RadioGroupRoot` props/emits (`modelValue`, `onUpdate:modelValue`,
- * `disabled`, `required`, `name`, `orientation`, `loop`, …) forward through
- * `{...attrs}` — only `class` and `variant` are declared so they can be merged via `cn()`.
+ * Uses `radioGroupVariants` from `@heroui/styles` (flat variant, returns a string).
+ * All reka-ui `RadioGroupRoot` props (`modelValue`, `disabled`, `required`, `name`,
+ * `orientation`, `loop`, …) forward through `{...attrs}`.
  */
-export const RadioGroup = defineComponent({
+export const RadioGroupRoot = defineComponent({
   name: 'RadioGroup',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<TRadioGroupVariant>, default: 'primary' }
+    /** Visual variant. @default 'primary' */
+    variant: { type: String as PropType<RadioGroupVariants['variant']>, default: 'primary' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => radioGroupVariants({ variant: props.variant }))
     return () => (
-      <RadioGroupRoot
+      <RekaRadioGroupRoot
         {...attrs}
-        class={cn(
-          'radio-group',
-          `radio-group--${props.variant}`,
-          props.class
-        )}
+        data-slot="radio-group"
+        class={cn(styles.value, props.class)}
       >
         {slots.default?.()}
-      </RadioGroupRoot>
+      </RekaRadioGroupRoot>
     )
   }
 })
 
-export default RadioGroup
+export default RadioGroupRoot

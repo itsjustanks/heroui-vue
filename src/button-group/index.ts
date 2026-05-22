@@ -1,12 +1,20 @@
 /**
- * HeroUI-Vue ButtonGroup — faithful HeroUI v3 button-group over reka-ui.
- * Part of the HeroUI-for-Vue primitive library.
+ * ButtonGroup — faithful Vue port of HeroUI v3 `ButtonGroup`.
  *
- * Compat exports mirror `shadcn-vue` exactly:
- * `ButtonGroup`, `ButtonGroupSeparator`, `ButtonGroupText`, `buttonGroupVariants`,
- * and the `ButtonGroupVariants` type.
+ * Compound API (HeroUI v3): `ButtonGroup`, `ButtonGroup.Root`, `ButtonGroup.Separator`.
+ * Flat exports: `ButtonGroupRoot`, `ButtonGroupSeparator`.
  */
-export { default as ButtonGroup } from './button-group'
-export { default as ButtonGroupSeparator } from './button-group-separator'
-export { default as ButtonGroupText } from './button-group-text'
-export { buttonGroupVariants, type ButtonGroupVariants } from './button-group-variants'
+import { ButtonGroupRoot } from './button-group'
+import { ButtonGroupSeparator } from './button-group-separator'
+
+/** Compound component — `ButtonGroup.Root`, `ButtonGroup.Separator` (HeroUI v3 API). */
+export const ButtonGroup = Object.assign(ButtonGroupRoot, {
+  Root:      ButtonGroupRoot,
+  Separator: ButtonGroupSeparator,
+})
+
+export { ButtonGroupRoot, ButtonGroupSeparator }
+export { BUTTON_GROUP_CONTEXT, BUTTON_GROUP_CHILD } from './button-group-context'
+export type { ButtonGroupContext } from './button-group-context'
+export { buttonGroupVariants } from '@heroui/styles'
+export type { ButtonGroupVariants } from '@heroui/styles'

@@ -1,8 +1,8 @@
 import { computed, defineComponent, type CSSProperties, type HTMLAttributes, type PropType } from 'vue'
+import { colorSwatchVariants, type ColorSwatchVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { formatColor, parseColor, type TColorValue } from './color-utils'
 import { useColorPickerContext } from './color-picker-context'
-
 
 /** Render-props handed to the `style` function form. */
 export type TColorSwatchRenderProps = {
@@ -13,14 +13,12 @@ export type TColorSwatchRenderProps = {
 }
 
 /**
- * ColorSwatch — a visual preview of a color value. Faithful HeroUI v3 port of
- * `color-swatch.css`: checkered transparency backdrop, circle/square shapes,
- * five sizes. When nested in a `ColorPicker` it previews the picker's live
- * color; standalone, it shows its own `color` prop.
- *
- * Tokens adapted to the repo (`border-border`, `ring-ring`).
+ * ColorSwatchRoot — a visual preview of a color value. HeroUI v3 `ColorSwatch.Root`
+ * (`data-slot="color-swatch"`). Computes `colorSwatchVariants` for shape + size BEM
+ * classes. When nested in a `ColorPicker` it previews the picker's live color;
+ * standalone it shows its own `color` prop.
  */
-export const ColorSwatch = defineComponent({
+export const ColorSwatchRoot = defineComponent({
   name: 'ColorSwatch',
   inheritAttrs: false,
   props: {
@@ -29,8 +27,8 @@ export const ColorSwatch = defineComponent({
     color: { type: [String, Object] as PropType<string | TColorValue>, default: undefined },
     /** Accessible name for the color. */
     colorName: { type: String, default: undefined },
-    shape: { type: String as PropType<'circle' | 'square' | 'rounded'>, default: 'circle' },
-    size: { type: String as PropType<'xs' | 'sm' | 'md' | 'lg' | 'xl'>, default: 'md' },
+    shape: { type: String as PropType<ColorSwatchVariants['shape']>, default: 'circle' },
+    size: { type: String as PropType<ColorSwatchVariants['size']>, default: 'md' },
     /** Inline styles, or a render-prop function with access to the color. */
     style: {
       type: [Object, Function] as PropType<CSSProperties | ((p: TColorSwatchRenderProps) => CSSProperties)>,
@@ -62,23 +60,22 @@ export const ColorSwatch = defineComponent({
       return { ...swatchVar, background: cssColor.value, ...(props.style ?? {}) }
     })
 
-    return () => (
-      <div
-        {...attrs}
-        role="img"
-        aria-label={props.colorName ?? (attrs['aria-label'] as string | undefined) ?? cssColor.value}
-        data-shape={props.shape}
-        data-size={props.size}
-        style={resolvedStyle.value}
-        class={cn(
-          'color-swatch',
-          `color-swatch--${props.shape}`,
-          `color-swatch--${props.size}`,
-          props.class
-        )}
-      />
-    )
+    return () => {
+      const styles = colorSwatchVariants({ shape: props.shape, size: props.size })
+      return (
+        <div
+          {...attrs}
+          role="img"
+          aria-label={props.colorName ?? (attrs['aria-label'] as string | undefined) ?? cssColor.value}
+          data-shape={props.shape}
+          data-size={props.size}
+          data-slot="color-swatch"
+          style={resolvedStyle.value}
+          class={cn(styles, props.class)}
+        />
+      )
+    }
   }
 })
 
-export default ColorSwatch
+export default ColorSwatchRoot

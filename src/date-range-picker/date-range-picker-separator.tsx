@@ -1,31 +1,37 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { dateRangePickerVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { DATE_RANGE_PICKER_CONTEXT } from './date-range-picker-context'
 
 /**
- * DateRangePickerSeparator — the visual divider between the start and end
- * segment groups. HeroUI v3 `DateRangePicker.RangeSeparator`.
+ * DateRangePickerRangeSeparator — the visual divider between the start and end
+ * segment groups. HeroUI v3 `DateRangePicker.RangeSeparator`
+ * (`data-slot="date-range-picker-range-separator"`).
  *
- * Adapts HeroUI's `date-range-picker__range-separator` — a muted en-dash; pass
- * children to override the glyph.
+ * Defaults to " - ". Pass default slot children to override the glyph.
  */
-export const DateRangePickerSeparator = defineComponent({
-  name: 'DateRangePickerSeparator',
+export const DateRangePickerRangeSeparator = defineComponent({
+  name: 'DateRangePickerRangeSeparator',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <span
-        {...attrs}
-        aria-hidden="true"
-        data-slot="date-range-picker-separator"
-        class={cn('date-range-picker__range-separator', props.class)}
-      >
-        {slots.default ? slots.default() : '–'}
-      </span>
-    )
+    const ctx = inject(DATE_RANGE_PICKER_CONTEXT, null)
+    return () => {
+      const styles = ctx?.slots.value ?? dateRangePickerVariants()
+      return (
+        <span
+          {...attrs}
+          aria-hidden="true"
+          data-slot="date-range-picker-range-separator"
+          class={cn(styles.rangeSeparator(), props.class)}
+        >
+          {slots.default ? slots.default() : ' - '}
+        </span>
+      )
+    }
   }
 })
 
-export default DateRangePickerSeparator
+export default DateRangePickerRangeSeparator

@@ -1,60 +1,55 @@
-import { defineComponent, provide, type HTMLAttributes, type InjectionKey, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
 import { ToggleGroupRoot } from 'reka-ui'
+import { toggleButtonGroupVariants, type ToggleButtonGroupVariants, type ToggleButtonVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { type TToggleVariants } from '../toggle/toggle-variants'
+import { TOGGLE_BUTTON_GROUP_CONTEXT } from './toggle-group-context'
 
-/** Shared variant/size context for `ToggleGroupItem`. */
-export interface IToggleGroupContext {
-  variant?: TToggleVariants['variant']
-  size?: TToggleVariants['size']
-}
-
-export const TOGGLE_GROUP_KEY: InjectionKey<IToggleGroupContext> = Symbol('toggleGroup')
-
-/** Toolbar flow axis — mirrors reka-ui's `DataOrientation`. */
-type TToggleGroupOrientation = 'horizontal' | 'vertical'
+/** Flow axis for the group container. */
+type TOrientation = 'horizontal' | 'vertical'
 
 /**
- * ToggleGroup — HeroUI v3 `toggle-button-group` ported to Vue over reka-ui
- * `ToggleGroupRoot`.
+ * ToggleButtonGroup — faithful Vue port of HeroUI v3 `ToggleButtonGroup`.
  *
- * Emits HeroUI BEM class names from `toggle-button-group.styles.js`. Provides
- * `variant` / `size` to its `ToggleGroupItem` children via Vue `provide`. All
- * reka `ToggleGroupRoot` props/emits (`type`, `modelValue`, …) forward via
- * `{...attrs}`.
+ * Backed by reka-ui `ToggleGroupRoot`. Computes `toggleButtonGroupVariants` slot
+ * map and provides it to compound parts (`ToggleButtonGroup.Separator`), plus
+ * propagates `size` to child `ToggleButton` items via the same context.
  */
-export const ToggleGroup = defineComponent({
-  name: 'ToggleGroup',
+export const ToggleButtonGroupRoot = defineComponent({
+  name: 'ToggleButtonGroup',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Shared item variant — forwarded to each `ToggleGroupItem`. */
-    variant: { type: String as PropType<TToggleVariants['variant']>, default: undefined },
-    /** Shared item size — forwarded to each `ToggleGroupItem`. */
-    size: { type: String as PropType<TToggleVariants['size']>, default: undefined },
-    /** Flow axis for the group container. */
-    orientation: { type: String as PropType<TToggleGroupOrientation>, default: 'horizontal' },
-    /** Stretch group to fill container width. */
-    fullWidth: { type: Boolean, default: false },
-    /** Detached mode — gaps between buttons instead of connected. */
-    isDetached: { type: Boolean, default: false }
+    class:       { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Stretch group to fill container width. @default false */
+    fullWidth:   { type: Boolean as PropType<ToggleButtonGroupVariants['fullWidth']>, default: false },
+    /** Detached — gaps between buttons instead of connected. @default false */
+    isDetached:  { type: Boolean as PropType<ToggleButtonGroupVariants['isDetached']>, default: false },
+    /** Flow axis. @default 'horizontal' */
+    orientation: { type: String as PropType<TOrientation>, default: 'horizontal' },
+    /** Size propagated to all child ToggleButtons. */
+    size:        { type: String as PropType<ToggleButtonVariants['size']>, default: undefined },
+    /** Disable the entire group. */
+    isDisabled:  { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
-    provide(TOGGLE_GROUP_KEY, {
-      variant: props.variant,
-      size: props.size
+    const styles = computed(() =>
+      toggleButtonGroupVariants({
+        fullWidth:   props.fullWidth,
+        isDetached:  props.isDetached,
+        orientation: props.orientation as ToggleButtonGroupVariants['orientation'],
+      })
+    )
+
+    provide(TOGGLE_BUTTON_GROUP_CONTEXT, {
+      slots: styles,
+      get size ()       { return props.size },
+      get isDisabled () { return props.isDisabled }
     })
 
     return () => (
       <ToggleGroupRoot
         {...attrs}
-        class={cn(
-          'toggle-button-group',
-          props.orientation === 'vertical' ? 'toggle-button-group--vertical' : 'toggle-button-group--horizontal',
-          props.fullWidth && 'toggle-button-group--full-width',
-          props.isDetached && 'toggle-button-group--detached',
-          props.class
-        )}
+        data-slot="toggle-button-group"
+        class={cn(styles.value.base(), props.class)}
       >
         {(slotProps: Record<string, unknown>) => slots.default?.(slotProps)}
       </ToggleGroupRoot>
@@ -62,4 +57,4 @@ export const ToggleGroup = defineComponent({
   }
 })
 
-export default ToggleGroup
+export default ToggleButtonGroupRoot

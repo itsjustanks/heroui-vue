@@ -1,34 +1,37 @@
-import { defineComponent } from 'vue'
-import { MenubarRoot } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import { defineComponent, provide } from 'vue'
+import { MenubarRoot as RekaMenubarRoot } from 'reka-ui'
 import type { HTMLAttributes, PropType } from 'vue'
+import { cn } from '@/lib/utils'
+import { MENUBAR_CONTEXT } from './menubar-context'
 
 /**
- * Menubar — root of the HeroUI-Vue menubar.
+ * MenubarRoot — the horizontal application menu bar.
  *
- * A faithful HeroUI v3 menubar for Vue, over reka-ui `MenubarRoot` (headless
- * behaviour). The horizontal bar shares the dropdown's menu surface +
- * menu-item styling. Forwards all props/emits via `{...attrs}`.
+ * Provides `MENUBAR_CONTEXT` so compound parts can share state. Wraps reka-ui
+ * `MenubarRoot` (headless behaviour) and applies the HeroUI bar chrome.
  */
-export const Menubar = defineComponent({
+export const MenubarRoot = defineComponent({
   name: 'Menubar',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    provide(MENUBAR_CONTEXT, {})
+
     return () => (
-      <MenubarRoot
+      <RekaMenubarRoot
         {...attrs}
+        data-slot="menubar"
         class={cn(
           'flex h-10 items-center gap-x-1 rounded-lg border border-border bg-background p-1',
           props.class
         )}
       >
         {slots.default?.()}
-      </MenubarRoot>
+      </RekaMenubarRoot>
     )
   }
 })
 
-export default Menubar
+export default MenubarRoot

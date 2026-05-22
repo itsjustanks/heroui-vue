@@ -1,27 +1,19 @@
 import { computed, defineComponent, inject, withDirectives, type HTMLAttributes, type PropType } from 'vue'
 import { DialogContent as RekaDialogContent } from 'reka-ui'
+import { drawerVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { vHerouiState } from '@/composables/use-heroui-state'
-import { DRAWER_PLACEMENT_KEY, type TDrawerPlacement } from './drawer-content'
-
-/** Per-placement BEM modifier classes for the dialog panel. */
-const PLACEMENT_CLASS: Record<TDrawerPlacement, string> = {
-  bottom: 'drawer__dialog--bottom',
-  top: 'drawer__dialog--top',
-  left: 'drawer__dialog--left',
-  right: 'drawer__dialog--right'
-}
+import { DRAWER_CONTEXT, type DrawerPlacement } from './drawer-context'
 
 /**
  * DrawerDialog — the sliding panel (HeroUI `drawer__dialog`). The focus-trapped
- * `role=dialog` element (reka-ui `DialogContent`); sizing, edge rounding and
- * slide direction follow the `placement` provided by `DrawerContent`.
+ * `role=dialog` element (reka-ui `DialogContent`). Placement and slot classes
+ * are read from the `DrawerContent`-provided context.
  *
- * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) binds the
- * real element. `drawer.css` slides the panel via a CSS *transition* keyed off
- * `data-entering`/`data-exiting` on the `.drawer__content` wrapper — so the
- * shim is given `{ ancestor }` to mirror those onto it, and pins the dialog
- * mounted for the slide-out duration so the exit can play.
+ * OVERLAY SHIM: Rendered `asChild` with `vHerouiState({ ancestor: '.drawer__content' })`
+ * so `data-entering`/`data-exiting` are mirrored onto the content wrapper,
+ * enabling the CSS slide entry/exit animation to play out fully.
+ * Do NOT remove `withDirectives` or the `ancestor` option.
  */
 export const DrawerDialog = defineComponent({
   name: 'DrawerDialog',
@@ -30,18 +22,19 @@ export const DrawerDialog = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const placement = inject(DRAWER_PLACEMENT_KEY, computed<TDrawerPlacement>(() => 'bottom'))
+    const ctx = inject(DRAWER_CONTEXT, null)
+    const placement = computed<DrawerPlacement>(() => ctx?.placement.value ?? 'bottom')
+    const styles = computed(() => ctx?.slots.value ?? drawerVariants({ placement: placement.value }))
     return () => (
       <RekaDialogContent asChild>
         {withDirectives(
           (
             <div
               {...attrs}
-              class={cn(
-                'drawer__dialog',
-                PLACEMENT_CLASS[placement.value],
-                props.class
-              )}
+              data-slot="drawer-dialog"
+              data-placement={placement.value}
+              style={{ touchAction: 'none' }}
+              class={cn(styles.value.dialog(), props.class)}
             >
               {slots.default?.()}
             </div>

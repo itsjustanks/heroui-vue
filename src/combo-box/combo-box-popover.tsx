@@ -1,18 +1,18 @@
-import { defineComponent, withDirectives, type HTMLAttributes, type PropType } from 'vue'
-import { ComboboxContent, ComboboxPortal, ComboboxViewport } from 'reka-ui'
+import { defineComponent, inject, withDirectives, type HTMLAttributes, type PropType } from 'vue'
+import { ComboboxContent, ComboboxPortal } from 'reka-ui'
+import { comboBoxVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { vHerouiState } from '@/composables/use-heroui-state'
+import { COMBO_BOX_CONTEXT } from './combo-box-context'
 
 /**
- * ComboBoxPopover — the floating surface that holds the filtered option list
+ * ComboBoxPopover — the floating surface holding the filtered option list
  * (HeroUI v3 `ComboBox.Popover`, `combo-box__popover`).
  *
- * Built over reka-ui `ComboboxContent` (in a `ComboboxPortal`) with a
- * `ComboboxViewport` so the list scrolls. Rendered `as-child` so the
- * data-attribute shim (`v-heroui-state`) binds the real overlay element: it
- * mirrors reka-ui's `data-side` to `data-placement` and derives
- * `data-entering`/`data-exiting` from `data-state`, which `combo-box.css` keys
- * its placement-aware enter/exit animation off.
+ * Rendered `asChild` so the data-attribute shim (`vHerouiState`) binds the real
+ * overlay element: it mirrors reka-ui's `data-side` → `data-placement` and derives
+ * `data-entering`/`data-exiting` from `data-state`, which `combo-box.css` keys its
+ * placement-aware enter/exit animation off. DO NOT remove the `withDirectives` shim.
  */
 export const ComboBoxPopover = defineComponent({
   name: 'ComboBoxPopover',
@@ -22,15 +22,18 @@ export const ComboBoxPopover = defineComponent({
     sideOffset: { type: Number, default: 4 }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(COMBO_BOX_CONTEXT, null)
     return () => (
       <ComboboxPortal>
         <ComboboxContent sideOffset={props.sideOffset} position="popper" asChild>
           {withDirectives(
             (
-              <div {...attrs} class={cn('combo-box__popover', props.class)}>
-                <ComboboxViewport>
-                  {slots.default?.()}
-                </ComboboxViewport>
+              <div
+                {...attrs}
+                data-slot="combo-box-popover"
+                class={cn((ctx?.slots.value ?? comboBoxVariants()).popover(), props.class)}
+              >
+                {slots.default?.()}
               </div>
             ),
             [[vHerouiState]]

@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { SelectItem as SelectItemBase, SelectItemIndicator, SelectItemText } from 'reka-ui'
+import { SelectItem as SelectItemBase, SelectItemText } from 'reka-ui'
 // Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
 const RekaSelectItem: any = SelectItemBase
 import { IconCheck } from '@/icons'
@@ -8,9 +8,17 @@ import { cn } from '@/lib/utils'
 /**
  * SelectItem — HeroUI `list-box-item`.
  *
- * Emits HeroUI v3 BEM class names from `list-box-item.css`. Interactive states
- * (hover, focus-visible, pressed, disabled, selected) are handled by CSS via
- * native pseudo-classes and reka-ui data-attributes.
+ * Structural fidelity to HeroUI v3 React `ListBoxItemRoot`:
+ *   root[data-slot="list-box-item"]
+ *     > span[data-slot="list-box-item-indicator" aria-hidden].list-box-item__indicator
+ *       > svg[data-slot="list-box-item-indicator--checkmark"]
+ *
+ * The indicator span is **always present in the DOM** (not conditionally
+ * rendered) — it matches the React compound which uses a plain `<span>` with
+ * `data-visible` driven by CSS visibility. This replaces the reka-ui
+ * `SelectItemIndicator` which only rendered when the item was selected,
+ * breaking any CSS structural selectors that expect the indicator wrapper to
+ * always exist.
  */
 export const SelectItem = defineComponent({
   name: 'SelectItem',
@@ -25,9 +33,13 @@ export const SelectItem = defineComponent({
         data-slot="list-box-item"
         class={cn('list-box-item list-box-item--default', props.class)}
       >
-        <SelectItemIndicator class="list-box-item__indicator" data-slot="list-box-item-indicator">
+        <span
+          aria-hidden="true"
+          class="list-box-item__indicator"
+          data-slot="list-box-item-indicator"
+        >
           <IconCheck class="size-4" data-slot="list-box-item-indicator--checkmark" />
-        </SelectItemIndicator>
+        </span>
         <SelectItemText>{slots.default?.()}</SelectItemText>
       </RekaSelectItem>
     )

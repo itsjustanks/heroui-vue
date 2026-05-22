@@ -1,39 +1,32 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { kbdVariants, type KbdVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-
-type TKbdVariant = 'default' | 'light'
+import { KBD_CONTEXT } from './kbd-context'
 
 /**
- * Kbd — a keyboard key hint.
+ * KbdRoot — the keyboard key container. Faithful Vue port of HeroUI v3 `KbdRoot`.
  *
- * Emits HeroUI v3 BEM class names from `kbd.css`:
- *   base: `kbd`
- *   variant: `kbd--default` | `kbd--light`
+ * Computes the `kbdVariants` slot map and provides it to `Kbd.Abbr` and
+ * `Kbd.Content` so every part is styled from `@heroui/styles`.
  */
-export const Kbd = defineComponent({
-  // `kbd` is a reserved HTML element name — keep the PascalCase export, name the
-  // defineComponent uniquely so vue/no-reserved-component-names stays quiet.
-  name: 'HeroKbd',
+export const KbdRoot = defineComponent({
+  name: 'KbdRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<TKbdVariant>, default: 'default' }
+    /** Visual variant — `kbd--{variant}`. @default 'default' */
+    variant: { type: String as PropType<KbdVariants['variant']>, default: 'default' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => kbdVariants({ variant: props.variant }))
+    provide(KBD_CONTEXT, { slots: styles })
+
     return () => (
-      <kbd
-        {...attrs}
-        data-slot="kbd"
-        class={cn(
-          'kbd',
-          props.variant === 'light' ? 'kbd--light' : 'kbd--default',
-          props.class
-        )}
-      >
+      <kbd {...attrs} data-slot="kbd" class={cn(styles.value.base(), props.class)}>
         {slots.default?.()}
       </kbd>
     )
   }
 })
 
-export default Kbd
+export default KbdRoot

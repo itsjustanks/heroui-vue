@@ -1,48 +1,54 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { DateFieldInput as RekaDateFieldInput } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { DateFieldInput as RekaDateSegment } from 'reka-ui'
 import type { SegmentPart } from 'reka-ui'
+import { dateInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import type { TDateSegment } from './date-field-input'
+import { DATE_FIELD_CONTEXT } from './date-field-context'
 
 /**
- * DateFieldSegment — a single date segment (day / month / year / hour / minute /
- * dayPeriod / timeZoneName / literal). HeroUI v3 `DateField.Segment`.
+ * DateField.Segment — a single editable date segment (day / month / year /
+ * hour / minute / dayPeriod / timeZoneName / literal).
+ * HeroUI v3 `DateField.Segment` (maps to `DateInputGroupSegment`).
  *
- * Renders reka-ui `DateFieldInput` (one `part`) for editable segments and a
- * plain inert span for literals. Mirrors `TimeFieldSegment`'s styling — a
- * `rounded` focus chip, `text-foreground` selection, muted placeholder.
+ * Pass `part` from the segment item handed down by `DateField.Input`'s
+ * render-prop slot.
  */
 export const DateFieldSegment = defineComponent({
   name: 'DateFieldSegment',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** The segment descriptor handed down from `DateFieldInput`'s render-prop. */
-    segment: { type: Object as PropType<TDateSegment>, required: true }
+    /** The segment part key — `'day'`, `'month'`, `'year'`, `'literal'`, etc. */
+    part: { type: String as PropType<SegmentPart | 'literal'>, required: true }
   },
-  setup (props, { attrs }) {
+  setup (props, { attrs, slots }) {
+    const ctx = inject(DATE_FIELD_CONTEXT, null)
+
     return () => {
-      const isLiteral = props.segment.part === 'literal'
-      if (isLiteral) {
+      const segmentClass = cn((ctx?.slots.value ?? dateInputGroupVariants()).segment(), props.class)
+
+      if (props.part === 'literal') {
         return (
           <span
             {...attrs}
-            data-slot="date-input-group__segment--literal"
-            class={cn('date-input-group__segment date-input-group__segment--literal', props.class)}
+            data-slot="date-input-group-segment"
+            data-type="literal"
+            class={segmentClass}
           >
-            {props.segment.value}
+            {slots.default?.()}
           </span>
         )
       }
+
       return (
-        <RekaDateFieldInput
+        <RekaDateSegment
           {...attrs}
-          part={props.segment.part as SegmentPart}
-          data-slot="date-input-group__segment"
-          class={cn('date-input-group__segment', props.class)}
+          part={props.part as SegmentPart}
+          data-slot="date-input-group-segment"
+          class={segmentClass}
         >
-          {props.segment.value}
-        </RekaDateFieldInput>
+          {slots.default?.()}
+        </RekaDateSegment>
       )
     }
   }

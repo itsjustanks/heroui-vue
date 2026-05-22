@@ -1,40 +1,36 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { DatePickerRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { DatePickerRoot as RekaDatePickerRoot } from 'reka-ui'
+import { datePickerVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { DATE_PICKER_CONTEXT } from './date-picker-context'
 
 /**
- * DatePicker — HeroUI-Vue date-picker root (primitive library, net-new).
+ * DatePickerRoot — root of the date-picker compound. HeroUI v3 `DatePicker`.
  *
- * Faithful port of HeroUI v3 `DatePicker` over reka-ui `DatePickerRoot`.
- * `DatePickerRoot` wires a segmented date field + a popover + a calendar into
- * one shared context, so the compound parts (`DatePickerField`, `DatePickerInput`,
- * `DatePickerTrigger`, `DatePickerContent`, `DatePickerCalendar`) all stay in
- * sync. Date engine stays `@internationalized/date` — every `DatePickerRoot`
- * prop is forwarded: `modelValue`/`defaultValue`, `granularity`, `hourCycle`,
- * `minValue`/`maxValue`, `isDateDisabled`, `isDateUnavailable`, `locale`,
- * `numberOfMonths`, `disabled`, `readonly`, `placeholder`, …
- *
- * Compound API: `DatePicker`, `DatePickerField`, `DatePickerInput`,
- * `DatePickerTrigger`, `DatePickerContent`, `DatePickerCalendar` — mirrors
- * HeroUI's `DatePicker.*` parts (with `DatePickerContent` ≅ HeroUI
- * `DatePicker.Popover`).
+ * Computes `datePickerVariants` and provides the slot map to `.Trigger`,
+ * `.TriggerIndicator`, and `.Popover`. Wraps reka-ui `DatePickerRoot`.
  */
-export const DatePicker = defineComponent({
-  name: 'DatePickerView',
+export const DatePickerRoot = defineComponent({
+  name: 'DatePicker',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => datePickerVariants())
+    provide(DATE_PICKER_CONTEXT, { slots: styles })
+
     return () => (
-      <DatePickerRoot
+      <RekaDatePickerRoot
         {...(attrs as Record<string, any>)}
-        class={cn('date-picker', props.class)}
+        data-slot="date-picker"
+        data-required={(attrs as Record<string, any>).required ? '' : undefined}
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
-      </DatePickerRoot>
+      </RekaDatePickerRoot>
     )
   }
 })
 
-export default DatePicker
+export default DatePickerRoot

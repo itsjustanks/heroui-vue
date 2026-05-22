@@ -1,26 +1,43 @@
 /**
- * HeroUI-Vue DateRangePicker — faithful HeroUI v3 `DateRangePicker` over reka-ui.
+ * DateRangePicker — faithful Vue port of HeroUI v3 `DateRangePicker`.
  *
- * Net-new primitive (no `shadcn-vue` base). Composes a dual-segment date
- * field + a popover + a range calendar via reka-ui's context-wired
- * `DateRangePicker*` parts, styled to HeroUI v3 taste (matching `calendar`
- * and `popover`). Date engine is `@internationalized/date`; the value is
- * a `{ start, end }` `DateRange`. Part of the HeroUI-for-Vue primitive library.
+ * Compound API (HeroUI v3):
+ *   DateRangePicker (.Root, .Trigger, .TriggerIndicator, .RangeSeparator, .Popover)
  *
- * Compound API:
- *   DateRangePicker          — root (reka `DateRangePickerRoot`)
- *   DateRangePickerField     — dual-segment surface (HeroUI `DateField.Group`)
- *   DateRangePickerInput     — one segment, `type="start" | "end"`
- *   DateRangePickerSeparator — start/end divider   (HeroUI `RangeSeparator`)
- *   DateRangePickerTrigger   — popover trigger      (HeroUI `Trigger`)
- *   DateRangePickerContent   — popover panel        (HeroUI `Popover`)
- *   DateRangePickerCalendar  — range month grid     (HeroUI `RangeCalendar`)
+ * Additional reka-ui-specific parts (no HeroUI React equivalent, kept for
+ * composing the calendar panel inside `.Popover`):
+ *   DateRangePickerField, DateRangePickerInput, DateRangePickerCalendar
  */
-export { default as DateRangePicker } from './date-range-picker'
-export { default as DateRangePickerField } from './date-range-picker-field'
-export { default as DateRangePickerInput } from './date-range-picker-input'
-export { default as DateRangePickerSeparator } from './date-range-picker-separator'
-export { default as DateRangePickerTrigger } from './date-range-picker-trigger'
-export { default as DateRangePickerContent } from './date-range-picker-content'
-export { default as DateRangePickerCalendar } from './date-range-picker-calendar'
+import { DateRangePickerRoot } from './date-range-picker'
+import { DateRangePickerTrigger } from './date-range-picker-trigger'
+import { DateRangePickerTriggerIndicator } from './date-range-picker-trigger-indicator'
+import { DateRangePickerRangeSeparator } from './date-range-picker-separator'
+import { DateRangePickerPopover } from './date-range-picker-content'
+import { DateRangePickerField } from './date-range-picker-field'
+import { DateRangePickerInput } from './date-range-picker-input'
+import { DateRangePickerCalendar } from './date-range-picker-calendar'
+
+/** Compound component — matches HeroUI v3 `DateRangePicker.*` API. */
+export const DateRangePicker = Object.assign(DateRangePickerRoot, {
+  Root: DateRangePickerRoot,
+  Trigger: DateRangePickerTrigger,
+  TriggerIndicator: DateRangePickerTriggerIndicator,
+  RangeSeparator: DateRangePickerRangeSeparator,
+  Popover: DateRangePickerPopover,
+})
+
+export {
+  DateRangePickerRoot,
+  DateRangePickerTrigger,
+  DateRangePickerTriggerIndicator,
+  DateRangePickerRangeSeparator,
+  DateRangePickerPopover,
+  /** reka-ui-specific parts for composing the calendar inside `.Popover` */
+  DateRangePickerField,
+  DateRangePickerInput,
+  DateRangePickerCalendar,
+}
+
+export { dateRangePickerVariants } from '@heroui/styles'
+export type { DateRangePickerVariants } from '@heroui/styles'
 export type { TDateRangeSegments } from './date-range-picker-field'

@@ -1,36 +1,34 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { inputGroupVariants, type InputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-
-type TInputGroupVariant = 'primary' | 'secondary'
+import { INPUT_GROUP_CONTEXT } from './input-group-context'
 
 /**
- * InputGroup — HeroUI-Vue input-group container.
+ * InputGroupRoot — the group container. Faithful Vue port of HeroUI v3 `InputGroup`.
  *
- * Emits HeroUI v3 BEM class names from `input-group.css`:
- *   base: `input-group`
- *   variant: `input-group--primary` | `input-group--secondary`
- *   full-width: `input-group--full-width`
+ * Computes HeroUI's `inputGroupVariants` slot map and provides it to the
+ * compound parts (`InputGroup.Input`, `.TextArea`, `.Prefix`, `.Suffix`),
+ * so every part is styled from `@heroui/styles` — never a hand-written class.
  */
-export const InputGroup = defineComponent({
+export const InputGroupRoot = defineComponent({
   name: 'InputGroup',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<TInputGroupVariant>, default: 'primary' },
-    fullWidth: { type: Boolean, default: false }
+    class:     { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** Visual variant. @default 'primary' */
+    variant:   { type: String as PropType<InputGroupVariants['variant']>, default: 'primary' },
+    /** Stretch the group to fill its container. @default false */
+    fullWidth: { type: Boolean as PropType<boolean>, default: false }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => inputGroupVariants({ variant: props.variant, fullWidth: props.fullWidth }))
+    provide(INPUT_GROUP_CONTEXT, { slots: styles })
+
     return () => (
       <div
         {...attrs}
         data-slot="input-group"
-        role="group"
-        class={cn(
-          'input-group',
-          props.variant === 'secondary' ? 'input-group--secondary' : 'input-group--primary',
-          props.fullWidth && 'input-group--full-width',
-          props.class
-        )}
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
       </div>
@@ -38,4 +36,4 @@ export const InputGroup = defineComponent({
   }
 })
 
-export default InputGroup
+export default InputGroupRoot

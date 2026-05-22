@@ -1,15 +1,16 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarCellTrigger as RekaCalendarCellTrigger, useForwardProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { CalendarCellTrigger as RekaCalendarCellTrigger } from 'reka-ui'
 import type { CalendarCellTriggerProps } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CALENDAR_CONTEXT } from './calendar-context'
 
 /**
- * CalendarCellTrigger — the pressable day button inside a cell.
+ * CalendarCellTrigger — the pressable button inside a calendar cell.
  *
- * HeroUI v3 BEM: `calendar__cell`. HeroUI's CSS uses native pseudo-classes
- * (`:hover`, `:focus-visible`, `:active`) and `data-selected`, `data-today`,
- * `data-disabled`, `data-unavailable`, `data-outside-month` data attributes
- * which reka-ui sets automatically.
+ * @internal Used internally by `CalendarCell`.  Exported for advanced
+ * use-cases that need direct access to the reka-ui trigger primitive.
+ * Prefer `Calendar.Cell` for typical usage.
  */
 export const CalendarCellTrigger = defineComponent({
   name: 'CalendarCellTrigger',
@@ -20,15 +21,29 @@ export const CalendarCellTrigger = defineComponent({
     month: { type: Object as PropType<CalendarCellTriggerProps['month']>, required: true }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as Omit<CalendarCellTriggerProps, 'day' | 'month'>)
+    const ctx = inject(CALENDAR_CONTEXT, null)
     return () => (
       <RekaCalendarCellTrigger
-        {...forwardedProps.value}
         day={props.day}
         month={props.month}
-        class={cn('calendar__cell', props.class)}
+        {...attrs}
+        data-slot="calendar-cell"
+        class={cn((ctx?.slots.value ?? calendarVariants()).cell(), props.class)}
       >
-        {slots.default?.()}
+        {{
+          default: ({ formattedDate }: { formattedDate: string }) =>
+            slots.default
+              ? slots.default({ formattedDate })
+              : (
+                <span
+                  aria-hidden="true"
+                  data-slot="calendar-cell-indicator"
+                  class={(ctx?.slots.value ?? calendarVariants()).cellIndicator()}
+                >
+                  {formattedDate}
+                </span>
+              )
+        }}
       </RekaCalendarCellTrigger>
     )
   }

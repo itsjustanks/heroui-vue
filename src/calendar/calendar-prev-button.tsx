@@ -1,13 +1,13 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { CalendarPrev as RekaCalendarPrev } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
 import { IconChevronLeft } from '@/icons'
-import { CalendarPrev as RekaCalendarPrev, useForwardProps } from 'reka-ui'
-import type { CalendarPrevProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { CALENDAR_CONTEXT } from './calendar-context'
 
 /**
+ * @deprecated Use `Calendar.NavButton slot="previous"` instead (HeroUI v3 API).
  * CalendarPrevButton — steps the calendar to the previous page.
- *
- * HeroUI v3 BEM: `calendar__nav-button`.
  */
 export const CalendarPrevButton = defineComponent({
   name: 'CalendarPrevButton',
@@ -16,15 +16,16 @@ export const CalendarPrevButton = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as CalendarPrevProps)
+    const ctx = inject(CALENDAR_CONTEXT, null)
     return () => (
       <RekaCalendarPrev
-        {...forwardedProps.value}
-        class={cn('calendar__nav-button', props.class)}
+        {...attrs}
+        data-slot="calendar-nav-button"
+        class={cn((ctx?.slots.value ?? calendarVariants()).navButton(), props.class)}
       >
         {slots.default
           ? slots.default()
-          : <IconChevronLeft class="calendar__nav-button-icon" />}
+          : <IconChevronLeft data-slot="calendar-nav-button-icon" class={(ctx?.slots.value ?? calendarVariants()).navButtonIcon()} />}
       </RekaCalendarPrev>
     )
   }

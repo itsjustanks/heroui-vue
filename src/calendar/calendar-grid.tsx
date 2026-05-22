@@ -1,9 +1,10 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarGrid as RekaCalendarGrid, useForwardProps } from 'reka-ui'
-import type { CalendarGridProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { CalendarGrid as RekaCalendarGrid } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CALENDAR_CONTEXT } from './calendar-context'
 
-/** CalendarGrid — the `<table>` wrapping one month. HeroUI `calendar__grid`. */
+/** Calendar.Grid — the `<table>` wrapping one month (HeroUI `calendar__grid`). */
 export const CalendarGrid = defineComponent({
   name: 'CalendarGrid',
   inheritAttrs: false,
@@ -11,11 +12,12 @@ export const CalendarGrid = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as CalendarGridProps)
+    const ctx = inject(CALENDAR_CONTEXT, null)
     return () => (
       <RekaCalendarGrid
-        {...forwardedProps.value}
-        class={cn('calendar__grid', props.class)}
+        {...attrs}
+        data-slot="calendar-grid"
+        class={cn((ctx?.slots.value ?? calendarVariants()).grid(), props.class)}
       >
         {slots.default?.()}
       </RekaCalendarGrid>

@@ -1,20 +1,37 @@
 /**
- * HeroUI-Vue ListBox — faithful HeroUI v3 list-box over reka-ui `Listbox*`.
+ * ListBox — faithful Vue port of HeroUI v3 `ListBox`.
  *
- * Net-new primitive (no `shadcn-vue` base) — built fresh from HeroUI v3 specs.
- * Part of the HeroUI-for-Vue primitive library.
+ * Compound API (HeroUI v3):
+ *   `ListBox`                  — root (= ListBoxRoot)
+ *   `ListBox.Root`             — ListBoxRoot
+ *   `ListBox.Item`             — ListBoxItemRoot
+ *   `ListBox.ItemIndicator`    — ListBoxItemIndicator
+ *   `ListBox.Section`          — ListBoxSection
  *
- * Anatomy (HeroUI dot-notation → this Vue flat API):
- *   ListBox            → ListBox
- *   ListBox.Item       → ListBoxItem
- *   ListBox.ItemIndicator → ListBoxItemIndicator
- *   ListBox.Section    → ListBoxSection
- *   Header (in Section) → ListBoxSectionHeader
- *   Separator          → ListBoxSeparator
+ * Note: HeroUI React composes `ListBox.Item` from a separate package
+ * (`list-box-item`) and `ListBox.Section` from `list-box-section`.
+ * This Vue port merges them all under one directory for simplicity while
+ * keeping the same public compound API.
  */
-export { default as ListBox } from './list-box'
-export { default as ListBoxItem } from './list-box-item'
-export { default as ListBoxItemIndicator } from './list-box-item-indicator'
-export { default as ListBoxSection } from './list-box-section'
-export { default as ListBoxSectionHeader } from './list-box-section-header'
-export { default as ListBoxSeparator } from './list-box-separator'
+import { ListBoxRoot } from './list-box'
+import { ListBoxItemRoot } from './list-box-item'
+import { ListBoxItemIndicator } from './list-box-item-indicator'
+import { ListBoxSection } from './list-box-section'
+
+/** Compound component — `ListBox.Item`, `ListBox.ItemIndicator`, `ListBox.Section` (HeroUI v3 API). */
+export const ListBox = Object.assign(ListBoxRoot, {
+  Root:          ListBoxRoot,
+  Item:          ListBoxItemRoot,
+  ItemIndicator: ListBoxItemIndicator,
+  Section:       ListBoxSection,
+})
+
+export { ListBoxRoot, ListBoxItemRoot, ListBoxItemIndicator, ListBoxSection }
+
+export { listboxVariants }       from '@heroui/styles'
+export { listboxItemVariants }   from '@heroui/styles'
+export { listboxSectionVariants } from '@heroui/styles'
+
+export type { ListBoxVariants }        from '@heroui/styles'
+export type { ListBoxItemVariants }    from '@heroui/styles'
+export type { ListBoxSectionVariants } from '@heroui/styles'

@@ -1,15 +1,9 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { meterVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { useMeterContext } from './meter-context'
+import { METER_CONTEXT } from './meter-context'
 
-/**
- * MeterOutput — the meter's value readout. HeroUI v3 `Meter.Output`.
- *
- * Adapts HeroUI's `meter__output`: a `text-sm font-medium tabular-nums` readout
- * in the grid's `output` cell (top-right). Renders the context's formatted
- * `valueText` when no children are provided, mirroring HeroUI's
- * `children ?? state.valueText`.
- */
+/** Meter.Output — the value readout (HeroUI `meter__output`). Defaults to the formatted `valueText`. */
 export const MeterOutput = defineComponent({
   name: 'MeterOutput',
   inheritAttrs: false,
@@ -17,14 +11,14 @@ export const MeterOutput = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const ctx = useMeterContext()
+    const ctx = inject(METER_CONTEXT, null)
     return () => (
       <span
         {...attrs}
         data-slot="meter-output"
-        class={cn('meter__output', props.class)}
+        class={cn((ctx?.slots.value ?? meterVariants()).output(), props.class)}
       >
-        {slots.default ? slots.default() : ctx.valueText.value}
+        {slots.default ? slots.default() : ctx?.valueText.value}
       </span>
     )
   }

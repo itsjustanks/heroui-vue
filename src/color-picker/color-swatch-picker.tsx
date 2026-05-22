@@ -1,5 +1,6 @@
 import { computed, defineComponent, inject, provide, type ComputedRef, type HTMLAttributes, type InjectionKey, type PropType, type Ref } from 'vue'
 import { useVModel } from '@vueuse/core'
+import { colorSwatchPickerVariants, type ColorSwatchPickerVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { formatColor, parseColor, type TColorValue } from './color-utils'
 import { useColorPickerContext } from './color-picker-context'
@@ -8,26 +9,28 @@ import { useColorPickerContext } from './color-picker-context'
 type TSwatchPickerInternal = {
   selected: ComputedRef<string | null>
   select: (hex: string) => void
-  size: ComputedRef<TSwatchSize>
-  variant: ComputedRef<'circle' | 'square'>
+  size: ComputedRef<ColorSwatchPickerVariants['size']>
+  variant: ComputedRef<ColorSwatchPickerVariants['variant']>
+  slots: ComputedRef<ReturnType<typeof colorSwatchPickerVariants>>
 }
-type TSwatchSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
-const PICKER_KEY: InjectionKey<TSwatchPickerInternal> = Symbol('HeroColorSwatchPicker')
+const PICKER_KEY: InjectionKey<TSwatchPickerInternal> = Symbol('heroui-vue-color-swatch-picker')
 const usePicker = (): TSwatchPickerInternal | null => inject(PICKER_KEY, null)
 
-/** Item context — the swatch part reads its own color/selected state. */
+/** Item context — Swatch and Indicator read their own color/selected state. */
 type TSwatchItemInternal = {
   color: ComputedRef<string>
   isSelected: ComputedRef<boolean>
   isDisabled: ComputedRef<boolean>
+  slots: ComputedRef<ReturnType<typeof colorSwatchPickerVariants>>
 }
-const ITEM_KEY: InjectionKey<TSwatchItemInternal> = Symbol('HeroColorSwatchItem')
+const ITEM_KEY: InjectionKey<TSwatchItemInternal> = Symbol('heroui-vue-color-swatch-picker-item')
 const useItem = (): TSwatchItemInternal | null => inject(ITEM_KEY, null)
 
-
-/** ColorSwatchPicker.Swatch — the colored fill of an item. */
-const ColorSwatchPickerSwatch = defineComponent({
+/**
+ * ColorSwatchPickerSwatch — the colored fill of a picker item.
+ * HeroUI v3 `ColorSwatchPicker.Swatch` (`data-slot="color-swatch-picker-swatch"`).
+ */
+export const ColorSwatchPickerSwatch = defineComponent({
   name: 'ColorSwatchPickerSwatch',
   inheritAttrs: false,
   props: {
@@ -35,19 +38,26 @@ const ColorSwatchPickerSwatch = defineComponent({
   },
   setup (props, { attrs }) {
     const item = useItem()
-    return () => (
-      <span
-        {...attrs}
-        data-slot="swatch"
-        style={{ background: item?.color.value }}
-        class={cn('color-swatch-picker__swatch', props.class)}
-      />
-    )
+    const fallback = colorSwatchPickerVariants()
+    return () => {
+      const slots = item?.slots.value ?? fallback
+      return (
+        <span
+          {...attrs}
+          data-slot="color-swatch-picker-swatch"
+          style={{ background: item?.color.value }}
+          class={cn(slots.swatch(), props.class)}
+        />
+      )
+    }
   }
 })
 
-/** ColorSwatchPicker.Indicator — the selected-state checkmark/icon. */
-const ColorSwatchPickerIndicator = defineComponent({
+/**
+ * ColorSwatchPickerIndicator — the selected-state checkmark icon.
+ * HeroUI v3 `ColorSwatchPicker.Indicator` (`data-slot="color-swatch-picker-indicator"`).
+ */
+export const ColorSwatchPickerIndicator = defineComponent({
   name: 'ColorSwatchPickerIndicator',
   inheritAttrs: false,
   props: {
@@ -55,13 +65,15 @@ const ColorSwatchPickerIndicator = defineComponent({
   },
   setup (props, { attrs, slots }) {
     const item = useItem()
+    const fallback = colorSwatchPickerVariants()
     return () => {
       if (!item?.isSelected.value) return null
+      const styles = item?.slots.value ?? fallback
       return (
         <span
           {...attrs}
-          data-slot="indicator"
-          class={cn('color-swatch-picker__indicator', props.class)}
+          data-slot="color-swatch-picker-indicator"
+          class={cn(styles.indicator(), props.class)}
         >
           {slots.default
             ? slots.default()
@@ -76,8 +88,11 @@ const ColorSwatchPickerIndicator = defineComponent({
   }
 })
 
-/** ColorSwatchPicker.Item — a single selectable preset swatch. */
-const ColorSwatchPickerItem = defineComponent({
+/**
+ * ColorSwatchPickerItem — a single selectable preset swatch.
+ * HeroUI v3 `ColorSwatchPicker.Item` (`data-slot="color-swatch-picker-item"`).
+ */
+export const ColorSwatchPickerItem = defineComponent({
   name: 'ColorSwatchPickerItem',
   inheritAttrs: false,
   props: {
@@ -88,14 +103,17 @@ const ColorSwatchPickerItem = defineComponent({
   },
   setup (props, { attrs, slots }) {
     const picker = usePicker()
+    const fallback = colorSwatchPickerVariants()
 
     const hex = computed(() => formatColor(parseColor(props.color), 'hex'))
     const isSelected = computed(() => picker?.selected.value === hex.value)
+    const itemSlots = computed(() => picker?.slots.value ?? fallback)
 
     provide(ITEM_KEY, {
       color: hex,
       isSelected,
-      isDisabled: computed(() => props.isDisabled)
+      isDisabled: computed(() => props.isDisabled),
+      slots: itemSlots
     })
 
     return () => (
@@ -105,11 +123,11 @@ const ColorSwatchPickerItem = defineComponent({
         aria-label={hex.value}
         aria-pressed={isSelected.value}
         disabled={props.isDisabled}
-        data-slot="item"
+        data-slot="color-swatch-picker-item"
         data-selected={isSelected.value || undefined}
         data-disabled={props.isDisabled || undefined}
         onClick={() => { if (!props.isDisabled) picker?.select(hex.value) }}
-        class={cn('color-swatch-picker__item', props.class)}
+        class={cn(itemSlots.value.item(), props.class)}
       >
         {slots.default
           ? slots.default()
@@ -125,14 +143,14 @@ const ColorSwatchPickerItem = defineComponent({
 })
 
 /**
- * ColorSwatchPicker — a palette of preset color swatches. Faithful HeroUI v3
- * port (`color-swatch-picker.css`): grid/stack layouts, circle/square variants,
- * five sizes. Standalone it owns its own selection (`v-model` / `defaultValue`);
- * nested in a `ColorPicker` it drives the picker context instead.
+ * ColorSwatchPickerRoot — a palette of preset color swatches. HeroUI v3
+ * `ColorSwatchPicker.Root` (`data-slot="color-swatch-picker"`). Computes
+ * `colorSwatchPickerVariants` and provides the slot map + selection state.
  *
- * Exposes `ColorSwatchPicker.Item`, `.Swatch`, `.Indicator`.
+ * Standalone it owns its own selection (`modelValue` / `defaultValue`); nested
+ * in a `ColorPicker` it drives the picker context instead.
  */
-export const ColorSwatchPicker = defineComponent({
+export const ColorSwatchPickerRoot = defineComponent({
   name: 'ColorSwatchPicker',
   inheritAttrs: false,
   props: {
@@ -141,9 +159,9 @@ export const ColorSwatchPicker = defineComponent({
     modelValue: { type: [String, Object] as PropType<string | TColorValue>, default: undefined },
     /** Uncontrolled initial selected color. */
     defaultValue: { type: [String, Object] as PropType<string | TColorValue>, default: undefined },
-    size: { type: String as PropType<TSwatchSize>, default: 'md' },
-    variant: { type: String as PropType<'circle' | 'square'>, default: 'circle' },
-    layout: { type: String as PropType<'grid' | 'stack'>, default: 'grid' }
+    size: { type: String as PropType<ColorSwatchPickerVariants['size']>, default: 'md' },
+    variant: { type: String as PropType<ColorSwatchPickerVariants['variant']>, default: 'circle' },
+    layout: { type: String as PropType<ColorSwatchPickerVariants['layout']>, default: 'grid' }
   },
   emits: {
     'update:modelValue': (_hex: string) => true
@@ -151,7 +169,6 @@ export const ColorSwatchPicker = defineComponent({
   setup (props, { attrs, emit, slots }) {
     const ctx = useColorPickerContext()
 
-    // Standalone selection state (used only when not inside a ColorPicker).
     const own: Ref<string | TColorValue | undefined> = useVModel(props, 'modelValue', emit, {
       passive: true,
       defaultValue: props.defaultValue
@@ -170,11 +187,18 @@ export const ColorSwatchPicker = defineComponent({
       own.value = hex
     }
 
+    const pickerSlots = computed(() => colorSwatchPickerVariants({
+      size: props.size,
+      variant: props.variant,
+      layout: props.layout
+    }))
+
     provide(PICKER_KEY, {
       selected,
       select,
       size: computed(() => props.size),
-      variant: computed(() => props.variant)
+      variant: computed(() => props.variant),
+      slots: pickerSlots
     })
 
     return () => (
@@ -185,13 +209,8 @@ export const ColorSwatchPicker = defineComponent({
         data-layout={props.layout}
         data-variant={props.variant}
         data-size={props.size}
-        class={cn(
-          'color-swatch-picker',
-          `color-swatch-picker--${props.layout}`,
-          `color-swatch-picker--${props.size}`,
-          `color-swatch-picker--${props.variant}`,
-          props.class
-        )}
+        data-slot="color-swatch-picker"
+        class={cn(pickerSlots.value.base(), props.class)}
       >
         {slots.default?.()}
       </div>
@@ -199,5 +218,4 @@ export const ColorSwatchPicker = defineComponent({
   }
 })
 
-export { ColorSwatchPickerItem, ColorSwatchPickerSwatch, ColorSwatchPickerIndicator }
-export default ColorSwatchPicker
+export default ColorSwatchPickerRoot

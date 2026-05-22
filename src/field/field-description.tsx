@@ -13,13 +13,13 @@ export const FieldDescription = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <p
+      <span
         {...attrs}
         data-slot="description"
         class={cn('description', props.class)}
       >
         {slots.default?.()}
-      </p>
+      </span>
     )
   }
 })

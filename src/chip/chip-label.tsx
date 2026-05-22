@@ -1,8 +1,10 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { chipVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { CHIP_CONTEXT } from './chip-context'
 
 /**
- * ChipLabel — the text span inside a Chip. HeroUI v3 `chip__label` slot.
+ * Chip.Label — the text span inside a Chip (HeroUI `chip__label`).
  *
  * `ChipRoot` auto-wraps a plain string/number child in this; render it
  * explicitly only when composing richer chip content (icon + label).
@@ -14,8 +16,13 @@ export const ChipLabel = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(CHIP_CONTEXT, null)
     return () => (
-      <span {...attrs} data-slot="chip-label" class={cn('chip__label', props.class)}>
+      <span
+        {...attrs}
+        data-slot="chip-label"
+        class={cn((ctx?.slots.value ?? chipVariants()).label(), props.class)}
+      >
         {slots.default?.()}
       </span>
     )

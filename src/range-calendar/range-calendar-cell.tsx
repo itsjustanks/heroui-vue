@@ -1,36 +1,74 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { RangeCalendarCell as RekaRangeCalendarCell, useForwardProps } from 'reka-ui'
-import type { RangeCalendarCellProps } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { RangeCalendarCell as RekaRangeCalendarCell, RangeCalendarCellTrigger as RekaRangeCalendarCellTrigger } from 'reka-ui'
+import type { RangeCalendarCellProps, RangeCalendarCellTriggerProps } from 'reka-ui'
+import { rangeCalendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { RANGE_CALENDAR_CONTEXT } from './range-calendar-context'
 
 /**
- * RangeCalendarCell — the `<td>` wrapping one day's trigger. HeroUI v3
- * `RangeCalendar.Cell`.
+ * RangeCalendar.Cell — the pressable range day cell.
  *
- * This part draws the **connected-range band**. Adapting HeroUI's
- * `range-calendar__cell` BEM: a cell whose descendant carries `[data-selected]`
- * gets a continuous `bg-accent/40` track; the row boundaries and the
- * start/end caps round off so the band reads as one capsule across weeks.
- * reka-ui surfaces `data-selected` / `data-selection-start` /
- * `data-selection-end` / `data-outside-view` on the cell trigger, so the band
- * is keyed off `&:has(...)` descendant selectors.
+ * Mirrors HeroUI React `RangeCalendarCell` which wraps
+ * `<CalendarCellPrimitive data-slot="range-calendar-cell">` and renders an
+ * inner `<span data-slot="range-calendar-cell-button">` for the range-band.
+ *
+ * In reka-ui the `<td>` (`RangeCalendarCell`) and the pressable button
+ * (`RangeCalendarCellTrigger`) are separate primitives, so both are composed here.
+ * The `date` prop is the specific day; `month` is the grid month value needed
+ * by reka-ui to determine out-of-month cells — it must be the `month.value`
+ * object from the root's scoped slot.
+ *
+ * ```vue
+ * <RangeCalendar>
+ *   <template #default="{ grid, weekDays }">
+ *     <RangeCalendar.Grid v-for="month in grid" :key="month.value.toString()">
+ *       <RangeCalendar.GridBody>
+ *         <RangeCalendar.GridRow v-for="(week, i) in month.rows" :key="i">
+ *           <RangeCalendar.Cell
+ *             v-for="day in week"
+ *             :key="day.toString()"
+ *             :date="day"
+ *             :month="month.value"
+ *           />
+ *         </RangeCalendar.GridRow>
+ *       </RangeCalendar.GridBody>
+ *     </RangeCalendar.Grid>
+ *   </template>
+ * </RangeCalendar>
+ * ```
  */
 export const RangeCalendarCell = defineComponent({
   name: 'RangeCalendarCell',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    date: { type: Object as PropType<RangeCalendarCellProps['date']>, required: true }
+    /** The specific day DateValue for this cell. */
+    date: { type: Object as PropType<RangeCalendarCellProps['date']>, required: true },
+    /** The current grid month DateValue — required by reka-ui to detect out-of-month days. */
+    month: { type: Object as PropType<RangeCalendarCellTriggerProps['month']>, required: true }
   },
   setup (props, { attrs, slots }) {
-    const forwardedProps = useForwardProps(attrs as Omit<RangeCalendarCellProps, 'date'>)
+    const ctx = inject(RANGE_CALENDAR_CONTEXT, null)
     return () => (
       <RekaRangeCalendarCell
-        {...forwardedProps.value}
         date={props.date}
-        class={cn('range-calendar__cell', props.class)}
+        data-slot="range-calendar-cell"
+        class={cn((ctx?.slots.value ?? rangeCalendarVariants()).cell(), props.class)}
       >
-        {slots.default?.()}
+        <RekaRangeCalendarCellTrigger
+          day={props.date}
+          month={props.month}
+          {...attrs}
+          data-slot="range-calendar-cell-button"
+          class="range-calendar__cell-button"
+        >
+          {{
+            default: ({ formattedDate, isDisabled, isHovered, isPressed, isSelectionStart, isSelectionEnd }: any) =>
+              slots.default
+                ? slots.default({ formattedDate, isDisabled, isHovered, isPressed, isSelectionStart, isSelectionEnd })
+                : formattedDate
+          }}
+        </RekaRangeCalendarCellTrigger>
       </RekaRangeCalendarCell>
     )
   }

@@ -1,18 +1,16 @@
-import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { progressCircleVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { useProgressCircleContext } from './progress-circle-context'
+import { PROGRESS_CIRCLE_CONTEXT } from './progress-circle-context'
 import { CENTER, CIRCUMFERENCE, RADIUS, STROKE_WIDTH } from './constants'
 
 /**
- * ProgressCircleFillCircle — the filled progress arc `<circle>`. HeroUI v3
- * `ProgressCircle.FillCircle`.
+ * ProgressCircleFillCircle — the filled progress arc `<circle>` (HeroUI `progress-circle__fill-circle`).
  *
- * Adapts HeroUI's `progress-circle__fill-circle`: the same circle as the track,
- * stroked with the `color` token, drawn as an arc via `stroke-dasharray` /
- * `stroke-dashoffset`. The offset shrinks as progress rises (a smooth
- * `stroke-dashoffset` transition); a `rotate(-90)` puts 0 % at the top.
- * Indeterminate → a fixed 25 % arc (the parent `<svg>` spins it). Geometry is
- * verbatim from HeroUI's component.
+ * Faithful Vue port of HeroUI v3 `ProgressCircleFillCircle`. The arc is drawn
+ * via `stroke-dasharray`/`stroke-dashoffset`; a `rotate(-90)` puts 0% at the
+ * top. Indeterminate → a fixed 25% arc that spins via the parent `<svg>`.
+ * Geometry is verbatim from HeroUI.
  */
 export const ProgressCircleFillCircle = defineComponent({
   name: 'ProgressCircleFillCircle',
@@ -21,11 +19,11 @@ export const ProgressCircleFillCircle = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
-    const ctx = useProgressCircleContext()
+    const ctx = inject(PROGRESS_CIRCLE_CONTEXT, null)
     const strokeDashoffset = computed(() => (
-      ctx.isIndeterminate.value
+      ctx?.isIndeterminate.value
         ? CIRCUMFERENCE * 0.75
-        : CIRCUMFERENCE - (ctx.percentage.value / 100) * CIRCUMFERENCE
+        : CIRCUMFERENCE - ((ctx?.percentage.value ?? 0) / 100) * CIRCUMFERENCE
     ))
     return () => (
       <circle
@@ -39,7 +37,7 @@ export const ProgressCircleFillCircle = defineComponent({
         stroke-dasharray={CIRCUMFERENCE}
         stroke-dashoffset={strokeDashoffset.value}
         transform={`rotate(-90 ${CENTER} ${CENTER})`}
-        class={cn('progress-circle__fill-circle', props.class)}
+        class={cn((ctx?.slots.value ?? progressCircleVariants()).fillCircle(), props.class)}
       />
     )
   }

@@ -1,16 +1,15 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { ComboboxTrigger } from 'reka-ui'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { ComboboxTrigger, injectComboboxRootContext } from 'reka-ui'
+import { comboBoxVariants } from '@heroui/styles'
 import { IconChevronDown } from '@/icons'
 import { cn } from '@/lib/utils'
+import { COMBO_BOX_CONTEXT } from './combo-box-context'
 
 /**
- * ComboBoxTrigger — the button that toggles the ComboBox popover, pinned to the
- * right edge of the input group. Faithful port of HeroUI v3 `ComboBox.Trigger`
- * (`combo-box.css` `.combo-box__trigger`).
+ * ComboBoxTrigger — the button that toggles the ComboBox popover (HeroUI `combo-box__trigger`).
  *
- * Built over reka-ui `ComboboxTrigger`. With no children it renders the default
- * chevron, which rotates `180deg` while the popover is open (reka-ui
- * `data-[state=open]`). With children it renders the custom trigger content.
+ * Mirrors HeroUI v3 `ComboBox.Trigger`. Renders `data-open` while the popover is open.
+ * With no children, falls back to `IconChevronDown`.
  */
 export const ComboBoxTrigger = defineComponent({
   name: 'ComboBoxTrigger',
@@ -19,16 +18,18 @@ export const ComboBoxTrigger = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(COMBO_BOX_CONTEXT, null)
+    const rootContext = injectComboboxRootContext()
     return () => (
       <ComboboxTrigger
         {...attrs}
-        class={cn('combo-box__trigger', props.class)}
+        data-slot="combo-box-trigger"
+        data-open={rootContext.open.value ? '' : undefined}
+        class={cn((ctx?.slots.value ?? comboBoxVariants()).trigger(), props.class)}
       >
         {slots.default
           ? slots.default()
-          : (
-            <IconChevronDown data-slot="combo-box-trigger-default-icon" class="size-4" />
-          )}
+          : <IconChevronDown data-slot="combo-box-trigger-default-icon" class="size-4" />}
       </ComboboxTrigger>
     )
   }

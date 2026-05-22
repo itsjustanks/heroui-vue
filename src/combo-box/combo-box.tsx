@@ -1,40 +1,36 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
 import { ComboboxRoot } from 'reka-ui'
+import { comboBoxVariants, type ComboBoxVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { COMBO_BOX_CONTEXT } from './combo-box-context'
 
 /**
- * ComboBox — a searchable select: a text input combined with a filterable
- * listbox. HeroUI-Vue primitive over reka-ui `ComboboxRoot`.
+ * ComboBoxRoot — the root of the HeroUI v3 `ComboBox` compound component.
  *
- * Faithful port of HeroUI v3 `ComboBox` (`combo-box.css`): a `flex flex-col
- * gap-1` field stack. HeroUI also publishes the same family as `Autocomplete`
- * (a single-select combobox); both names are exported from this dir's barrel.
+ * Computes `comboBoxVariants` and provides the slot map to all compound parts
+ * (`ComboBox.InputGroup`, `ComboBox.Trigger`, `ComboBox.Popover`).
  *
  * reka-ui `ComboboxRoot` props/emits forward through `{...attrs}`:
- * `modelValue` / `onUpdate:modelValue` (selected value), `open` /
- * `onUpdate:open`, `multiple`, `disabled`, `by`, `ignoreFilter`,
- * `resetSearchTermOnSelect`, `name`, `required`, … — so `v-model` and
- * `v-model:open` work straight through.
- *
- * The `fullWidth` prop mirrors HeroUI's `combo-box--full-width` modifier.
+ * `modelValue` / `onUpdate:modelValue`, `open` / `onUpdate:open`, `multiple`,
+ * `disabled`, `by`, `ignoreFilter`, `resetSearchTermOnSelect`, `name`, `required`.
  */
-export const ComboBox = defineComponent({
-  name: 'ComboBox',
+export const ComboBoxRoot = defineComponent({
+  name: 'ComboBoxRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Whether the ComboBox stretches to its container's full width. Mirrors HeroUI `combo-box--full-width`. */
-    fullWidth: { type: Boolean, default: false }
+    /** Stretch to container width. Mirrors HeroUI `combo-box--full-width`. */
+    fullWidth: { type: Boolean as PropType<ComboBoxVariants['fullWidth']>, default: false }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => comboBoxVariants({ fullWidth: props.fullWidth }))
+    provide(COMBO_BOX_CONTEXT, { slots: styles })
+
     return () => (
       <ComboboxRoot
         {...attrs}
-        class={cn(
-          'combo-box',
-          props.fullWidth && 'combo-box--full-width',
-          props.class
-        )}
+        data-slot="combo-box"
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default?.()}
       </ComboboxRoot>
@@ -42,4 +38,4 @@ export const ComboBox = defineComponent({
   }
 })
 
-export default ComboBox
+export default ComboBoxRoot

@@ -1,29 +1,33 @@
-import { defineComponent, withDirectives, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, withDirectives, type HTMLAttributes, type PropType } from 'vue'
 import { DialogContent as RekaDialogContent } from 'reka-ui'
+import { modalVariants, type ModalVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { vHerouiState } from '@/composables/use-heroui-state'
 
-type TModalSize = 'xs' | 'sm' | 'md' | 'lg' | 'cover' | 'full'
-
 /**
- * ModalDialog — the content box (HeroUI `modal__dialog`). This is the focus-
- * trapped `role=dialog` element (reka-ui `DialogContent`), styled as the modal
- * surface: `rounded-2xl`, `p-6`, `shadow-lg`. `size`: xs | sm | md | lg | cover | full.
+ * ModalDialog — the content box (HeroUI `modal__dialog`). The focus-trapped
+ * `role=dialog` element (reka-ui `DialogContent`).
  *
- * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) binds the
- * real element. `modal.css` animates the always-mounted `.modal__container`
- * wrapper, not the dialog — so the shim is given `{ ancestor }` to mirror
- * `data-entering`/`data-exiting` onto it, and pins the dialog mounted for the
- * container's exit duration so the animation can play out.
+ * `size`: xs | sm | md (default) | lg | cover | full.
+ * `scroll`: inside (default) | outside.
+ *
+ * OVERLAY SHIM: Rendered `asChild` with `vHerouiState({ ancestor: '.modal__container' })`
+ * so `data-entering`/`data-exiting` are mirrored onto the container wrapper,
+ * enabling the CSS entry/exit animation to play out fully.
+ * Do NOT remove `withDirectives` or the `ancestor` option.
  */
 export const ModalDialog = defineComponent({
   name: 'ModalDialog',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    size: { type: String as PropType<TModalSize>, default: 'md' }
+    /** Dialog size. @default 'md' */
+    size: { type: String as PropType<ModalVariants['size']>, default: 'md' },
+    /** Scroll behaviour. @default 'inside' */
+    scroll: { type: String as PropType<ModalVariants['scroll']>, default: 'inside' }
   },
   setup (props, { attrs, slots }) {
+    const styles = computed(() => modalVariants({ size: props.size, scroll: props.scroll }))
     return () => (
       <RekaDialogContent asChild>
         {withDirectives(
@@ -31,16 +35,7 @@ export const ModalDialog = defineComponent({
             <div
               {...attrs}
               data-slot="modal-dialog"
-              class={cn(
-                'modal__dialog',
-                props.size === 'xs' ? 'modal__dialog--xs'
-                  : props.size === 'sm' ? 'modal__dialog--sm'
-                    : props.size === 'lg' ? 'modal__dialog--lg'
-                      : props.size === 'cover' ? 'modal__dialog--cover'
-                        : props.size === 'full' ? 'modal__dialog--full'
-                          : 'modal__dialog--md',
-                props.class
-              )}
+              class={cn(styles.value.dialog(), props.class)}
             >
               {slots.default?.()}
             </div>

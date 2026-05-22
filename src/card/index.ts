@@ -1,14 +1,27 @@
 /**
- * HeroUI-Vue Card — faithful HeroUI v3 card surface over plain elements.
- * Part of the HeroUI-for-Vue primitive library.
+ * Card — a faithful Vue port of HeroUI v3 `Card`.
  *
- * Compat-named exports mirror `shadcn-vue` so call-site
- * migration is a mechanical import-path swap.
+ * Compound API (HeroUI v3): `Card`, `Card.Header`, `Card.Title`,
+ * `Card.Description`, `Card.Content`, `Card.Footer`. The flat part exports
+ * (`CardHeader`, …) are available too, for callers that prefer named imports.
  */
-export { default as Card } from './card'
-export { default as CardAction } from './card-action'
-export { default as CardContent } from './card-content'
-export { default as CardDescription } from './card-description'
-export { default as CardFooter } from './card-footer'
-export { default as CardHeader } from './card-header'
-export { default as CardTitle } from './card-title'
+import { CardRoot } from './card'
+import { CardHeader } from './card-header'
+import { CardTitle } from './card-title'
+import { CardDescription } from './card-description'
+import { CardContent } from './card-content'
+import { CardFooter } from './card-footer'
+
+/** Compound component — `Card.Header`, `Card.Title`, … (HeroUI v3 API). */
+export const Card = Object.assign(CardRoot, {
+  Root: CardRoot,
+  Header: CardHeader,
+  Title: CardTitle,
+  Description: CardDescription,
+  Content: CardContent,
+  Footer: CardFooter
+})
+
+export { CardRoot, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
+export { cardVariants } from '@heroui/styles'
+export type { CardVariants } from '@heroui/styles'

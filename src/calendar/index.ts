@@ -1,20 +1,65 @@
 /**
- * HeroUI-Vue Calendar — faithful HeroUI v3 calendar over reka-ui.
+ * Calendar — faithful Vue port of HeroUI v3 `Calendar`.
  *
- * Part of the HeroUI-for-Vue primitive library.
- * Ported from `shadcn-vue` — compound parts keep reka-ui-style
- * names so call-site migration is a mechanical import-path swap. Date engine stays
- * `@internationalized/date` via reka-ui `CalendarRoot`.
+ * Compound API (HeroUI v3):
+ *   `Calendar` / `Calendar.Root`
+ *   `Calendar.Header`
+ *   `Calendar.Heading`
+ *   `Calendar.NavButton`       (slot="previous" | "next")
+ *   `Calendar.Grid`
+ *   `Calendar.GridHeader`
+ *   `Calendar.GridBody`
+ *   `Calendar.GridRow`
+ *   `Calendar.HeaderCell`
+ *   `Calendar.Cell`
+ *   `Calendar.CellIndicator`
+ *
+ * Named flat exports (`CalendarRoot`, `CalendarHeader`, …) are available for
+ * callers that prefer explicit imports.
+ *
+ * Keeps reka-ui primitives (`CalendarRoot`, `CalendarGrid`, `CalendarCell`,
+ * `CalendarCellTrigger`, …) and `@internationalized/date` as the date engine.
  */
-export { default as Calendar } from './calendar'
-export { default as CalendarCell } from './calendar-cell'
-export { default as CalendarCellTrigger } from './calendar-cell-trigger'
-export { default as CalendarGrid } from './calendar-grid'
-export { default as CalendarGridBody } from './calendar-grid-body'
-export { default as CalendarGridHead } from './calendar-grid-head'
-export { default as CalendarGridRow } from './calendar-grid-row'
-export { default as CalendarHeadCell } from './calendar-head-cell'
-export { default as CalendarHeader } from './calendar-header'
-export { default as CalendarHeading } from './calendar-heading'
-export { default as CalendarNextButton } from './calendar-next-button'
-export { default as CalendarPrevButton } from './calendar-prev-button'
+import { CalendarRoot } from './calendar'
+import { CalendarHeader } from './calendar-header'
+import { CalendarHeading } from './calendar-heading'
+import { CalendarNavButton } from './calendar-nav-button'
+import { CalendarGrid } from './calendar-grid'
+import { CalendarGridHeader } from './calendar-grid-header'
+import { CalendarGridBody } from './calendar-grid-body'
+import { CalendarGridRow } from './calendar-grid-row'
+import { CalendarHeaderCell } from './calendar-header-cell'
+import { CalendarCell } from './calendar-cell'
+import { CalendarCellIndicator } from './calendar-cell-indicator'
+
+/** Compound component — `Calendar.Header`, `Calendar.NavButton`, … (HeroUI v3 API). */
+export const Calendar = Object.assign(CalendarRoot, {
+  Root: CalendarRoot,
+  Header: CalendarHeader,
+  Heading: CalendarHeading,
+  NavButton: CalendarNavButton,
+  Grid: CalendarGrid,
+  GridHeader: CalendarGridHeader,
+  GridBody: CalendarGridBody,
+  GridRow: CalendarGridRow,
+  HeaderCell: CalendarHeaderCell,
+  Cell: CalendarCell,
+  CellIndicator: CalendarCellIndicator,
+})
+
+export {
+  CalendarRoot,
+  CalendarHeader,
+  CalendarHeading,
+  CalendarNavButton,
+  CalendarGrid,
+  CalendarGridHeader,
+  CalendarGridBody,
+  CalendarGridRow,
+  CalendarHeaderCell,
+  CalendarCell,
+  CalendarCellIndicator,
+}
+
+export { calendarVariants } from '@heroui/styles'
+export type { CalendarVariants } from '@heroui/styles'

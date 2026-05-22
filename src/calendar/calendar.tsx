@@ -1,83 +1,40 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarRoot } from 'reka-ui'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { CalendarRoot as RekaCalendarRoot } from 'reka-ui'
+import { calendarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { CalendarCell } from './calendar-cell'
-import { CalendarCellTrigger } from './calendar-cell-trigger'
-import { CalendarGrid } from './calendar-grid'
-import { CalendarGridBody } from './calendar-grid-body'
-import { CalendarGridHead } from './calendar-grid-head'
-import { CalendarGridRow } from './calendar-grid-row'
-import { CalendarHeadCell } from './calendar-head-cell'
-import { CalendarHeader } from './calendar-header'
-import { CalendarHeading } from './calendar-heading'
-import { CalendarNextButton } from './calendar-next-button'
-import { CalendarPrevButton } from './calendar-prev-button'
-
-type TCalendarGridSlot = {
-  grid: any[]
-  weekDays: string[]
-}
+import { CALENDAR_CONTEXT } from './calendar-context'
 
 /**
- * Calendar — HeroUI-Vue calendar root (primitive library port).
+ * CalendarRoot — the surface container. Faithful Vue port of HeroUI v3 `Calendar`.
  *
- * Faithful port of `shadcn-vue` over reka-ui `CalendarRoot`, restyled to
- * HeroUI v3 taste (`rounded-lg` day cells, `bg-primary` selected, `bg-accent`
- * today). Keeps `@internationalized/date` as the date engine and forwards every
- * `CalendarRoot` prop/emit/v-model (`modelValue`, `placeholder`, `numberOfMonths`,
- * `minValue`, `maxValue`, `isDateDisabled`, `isDateUnavailable`, …).
+ * Computes the `calendarVariants` slot map and provides it via context so every
+ * compound part (`Calendar.Header`, `Calendar.NavButton`, …) sources its class
+ * from `@heroui/styles` rather than a hand-written string.
+ *
+ * All reka-ui `CalendarRoot` props/emits (modelValue, placeholder, minValue,
+ * maxValue, numberOfMonths, isDateDisabled, isDateUnavailable, …) are forwarded
+ * via `attrs`.
  */
-export const Calendar = defineComponent({
-  name: 'CalendarRootView',
+export const CalendarRoot = defineComponent({
+  name: 'CalendarRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
-  setup (props, { attrs }) {
-    return () => (
-      <CalendarRoot
-        {...(attrs as Record<string, any>)}
-        class={cn('calendar', props.class)}
-      >
-        {{
-          default: ({ grid, weekDays }: TCalendarGridSlot) => (
-            <>
-              <CalendarHeader>
-                <CalendarPrevButton />
-                <CalendarHeading />
-                <CalendarNextButton />
-              </CalendarHeader>
+  setup (props, { attrs, slots }) {
+    const styles = computed(() => calendarVariants())
+    provide(CALENDAR_CONTEXT, { slots: styles })
 
-              <div>
-                {grid.map((month) => (
-                  <CalendarGrid key={month.value.toString()}>
-                    <CalendarGridHead>
-                      <CalendarGridRow>
-                        {weekDays.map((day) => (
-                          <CalendarHeadCell key={day}>{day}</CalendarHeadCell>
-                        ))}
-                      </CalendarGridRow>
-                    </CalendarGridHead>
-                    <CalendarGridBody>
-                      {month.rows.map((weekDates: any[], index: number) => (
-                        <CalendarGridRow key={`weekDate-${index}`} class="mt-2 w-full">
-                          {weekDates.map((weekDate) => (
-                            <CalendarCell key={weekDate.toString()} date={weekDate}>
-                              <CalendarCellTrigger day={weekDate} month={month.value} />
-                            </CalendarCell>
-                          ))}
-                        </CalendarGridRow>
-                      ))}
-                    </CalendarGridBody>
-                  </CalendarGrid>
-                ))}
-              </div>
-            </>
-          )
-        }}
-      </CalendarRoot>
+    return () => (
+      <RekaCalendarRoot
+        {...(attrs as Record<string, any>)}
+        data-slot="calendar"
+        class={cn(styles.value.base(), props.class)}
+      >
+        {slots.default}
+      </RekaCalendarRoot>
     )
   }
 })
 
-export default Calendar
+export default CalendarRoot

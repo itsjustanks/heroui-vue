@@ -1,14 +1,14 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { progressCircleVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { PROGRESS_CIRCLE_CONTEXT } from './progress-circle-context'
 import { CENTER, RADIUS, STROKE_WIDTH } from './constants'
 
 /**
- * ProgressCircleTrackCircle — the unfilled rail `<circle>`. HeroUI v3
- * `ProgressCircle.TrackCircle`.
+ * ProgressCircleTrackCircle — the unfilled rail `<circle>` (HeroUI `progress-circle__track-circle`).
  *
- * Adapts HeroUI's `progress-circle__track-circle`: a full circle stroked with
- * the neutral `stroke-muted` token (HeroUI's `--default` track). Geometry
- * (`cx`/`cy`/`r`/`stroke-width`) is verbatim from HeroUI's component.
+ * Faithful Vue port of HeroUI v3 `ProgressCircleTrackCircle`. A full circle
+ * stroked with the neutral track color. Geometry is verbatim from HeroUI.
  */
 export const ProgressCircleTrackCircle = defineComponent({
   name: 'ProgressCircleTrackCircle',
@@ -17,6 +17,7 @@ export const ProgressCircleTrackCircle = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
+    const ctx = inject(PROGRESS_CIRCLE_CONTEXT, null)
     return () => (
       <circle
         {...attrs}
@@ -25,7 +26,7 @@ export const ProgressCircleTrackCircle = defineComponent({
         cy={CENTER}
         r={RADIUS}
         stroke-width={STROKE_WIDTH}
-        class={cn('progress-circle__track-circle', props.class)}
+        class={cn((ctx?.slots.value ?? progressCircleVariants()).trackCircle(), props.class)}
       />
     )
   }

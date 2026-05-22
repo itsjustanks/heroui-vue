@@ -1,18 +1,27 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent, provide } from 'vue'
 import { DialogRoot } from 'reka-ui'
+import { drawerVariants } from '@heroui/styles'
+import { DRAWER_CONTEXT, type DrawerPlacement } from './drawer-context'
 
 /**
  * DrawerRoot — root of the HeroUI-Vue drawer, over reka-ui `DialogRoot`.
  *
- * Faithful to HeroUI v3's `Drawer` (a panel that slides from a screen edge).
- * Same 3-layer compound as the modal: Backdrop > Content (positioning) > Dialog
- * (the panel). reka-ui carries the headless behaviour. Renders no DOM.
+ * Computes `drawerVariants()` with default placement and provides the slot map
+ * to all compound parts. Renders no DOM — reka-ui `DialogRoot` carries
+ * focus-trap, scroll-lock, and dismiss behaviour.
+ *
+ * HeroUI v3 compound: Root > Trigger / Backdrop > Content > Dialog >
+ * Header / Heading / Body / Footer / Handle / CloseTrigger.
  */
 export const DrawerRoot = defineComponent({
   name: 'DrawerRoot',
   inheritAttrs: false,
   setup (_props, { attrs, slots }) {
-    return () => <DialogRoot {...attrs}>{slots.default?.()}</DialogRoot>
+    const placement = computed<DrawerPlacement>(() => 'bottom')
+    const styles = computed(() => drawerVariants({ placement: placement.value }))
+    provide(DRAWER_CONTEXT, { slots: styles, placement })
+
+    return () => <DialogRoot data-slot="drawer-root" {...attrs}>{slots.default?.()}</DialogRoot>
   }
 })
 

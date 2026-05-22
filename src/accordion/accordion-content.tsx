@@ -1,16 +1,17 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { AccordionContent as RekaAccordionContent, injectAccordionItemContext } from 'reka-ui'
+import { disclosureVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
 
 /**
- * AccordionContent — the collapsible panel body.
+ * AccordionContent — Vue port of HeroUI v3 `DisclosureContent` + `DisclosureBody`.
  *
- * HeroUI BEM: `accordion__panel` on the reka content element (height transition),
- * `accordion__body` + `accordion__body-inner` on the inner divs.
- *
- * HeroUI CSS uses:
- *   - `--disclosure-panel-height` — bridged from reka-ui's `--reka-accordion-content-height`
- *   - `[data-expanded="true"]` — wired reactively via `injectAccordionItemContext().open`
+ * DOM structure mirrors HeroUI React:
+ *   div[data-slot="disclosure-content"][data-expanded]   ← height-animated panel
+ *     div[data-slot="disclosure-body"]                   ← overflow clip
+ *       div[data-slot="disclosure-body-inner"]           ← padded content
+ *         {children}
  */
 export const AccordionContent = defineComponent({
   name: 'AccordionContent',
@@ -19,20 +20,28 @@ export const AccordionContent = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(ACCORDION_ITEM_CONTEXT, null)
     const itemContext = injectAccordionItemContext()
 
-    return () => (
-      <RekaAccordionContent
-        {...attrs}
-        class="accordion__panel"
-        data-expanded={itemContext.open.value ? 'true' : undefined}
-        style="--disclosure-panel-height: var(--reka-accordion-content-height)"
-      >
-        <div class="accordion__body">
-          <div class={cn('accordion__body-inner', props.class)}>{slots.default?.()}</div>
-        </div>
-      </RekaAccordionContent>
-    )
+    return () => {
+      const s = ctx?.slots.value ?? disclosureVariants()
+
+      return (
+        <RekaAccordionContent
+          {...attrs}
+          data-slot="disclosure-content"
+          class={cn(s.content())}
+          data-expanded={itemContext.open.value ? 'true' : undefined}
+          style="--disclosure-panel-height: var(--reka-accordion-content-height)"
+        >
+          <div data-slot="disclosure-body" class={cn(s.body())}>
+            <div data-slot="disclosure-body-inner" class={cn(s.bodyInner(), props.class)}>
+              {slots.default?.()}
+            </div>
+          </div>
+        </RekaAccordionContent>
+      )
+    }
   }
 })
 

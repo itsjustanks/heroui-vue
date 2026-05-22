@@ -1,10 +1,21 @@
 /**
- * HeroUI-Vue Badge — faithful HeroUI v3 badge/chip primitive.
- * Part of the HeroUI-for-Vue primitive library.
+ * Badge — a faithful Vue port of HeroUI v3 `Badge`.
  *
- * Compat-named exports mirror `shadcn-vue` so call-site
- * migration is a mechanical import-path swap.
+ * Compound API (HeroUI v3): `Badge`, `Badge.Anchor`, `Badge.Label`, `Badge.Root`.
+ * Flat named exports (`BadgeRoot`, `BadgeLabel`, `BadgeAnchor`) are also
+ * available for callers that prefer named imports.
  */
-export { default as Badge } from './badge'
-export { badgeVariants, badgeDotColors } from './badge-variants'
-export type { TBadgeVariants, TBadgeColor } from './badge-variants'
+import { BadgeRoot } from './badge'
+import { BadgeLabel } from './badge-label'
+import { BadgeAnchor } from './badge-anchor'
+
+/** Compound component — `Badge.Anchor`, `Badge.Label` (HeroUI v3 API). */
+export const Badge = Object.assign(BadgeRoot, {
+  Anchor: BadgeAnchor,
+  Label: BadgeLabel,
+  Root: BadgeRoot
+})
+
+export { BadgeRoot, BadgeLabel, BadgeAnchor }
+export { badgeVariants } from '@heroui/styles'
+export type { BadgeVariants } from '@heroui/styles'

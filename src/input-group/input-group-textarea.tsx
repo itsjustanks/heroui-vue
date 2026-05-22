@@ -1,29 +1,28 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { inputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { Textarea } from '@/textarea'
+import { INPUT_GROUP_CONTEXT } from './input-group-context'
 
 /**
- * InputGroupTextarea — the textarea control inside an `InputGroup`.
- *
- * Emits HeroUI v3 BEM class names from `input-group.css`:
- *   `input-group__input` (same base as input, scoped via data-slot)
- * with `data-slot="input-group-textarea"` so the group's CSS selectors work.
+ * InputGroupTextArea — the `<textarea>` inside an `InputGroup` (HeroUI `input-group__input`).
+ * Faithful Vue port of HeroUI v3 `InputGroupTextArea`.
  */
-export const InputGroupTextarea = defineComponent({
-  name: 'InputGroupTextarea',
+export const InputGroupTextArea = defineComponent({
+  name: 'InputGroupTextArea',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
+    const ctx = inject(INPUT_GROUP_CONTEXT, null)
     return () => (
-      <Textarea
+      <textarea
         {...attrs}
         data-slot="input-group-textarea"
-        class={cn('input-group__input', props.class)}
+        class={cn((ctx?.slots.value ?? inputGroupVariants()).input(), props.class)}
       />
     )
   }
 })
 
-export default InputGroupTextarea
+export default InputGroupTextArea

@@ -1,12 +1,24 @@
 /**
- * HeroUI-Vue Avatar — faithful HeroUI v3 avatar over reka-ui.
- * Part of the HeroUI-for-Vue primitive library.
+ * Avatar — a faithful Vue port of HeroUI v3 `Avatar`.
  *
- * Compat-named exports mirror `shadcn-vue` so call-site
- * migration is a mechanical import-path swap.
+ * Compound API (HeroUI v3): `Avatar`, `Avatar.Image`, `Avatar.Fallback`.
+ * Flat named exports (`AvatarRoot`, `AvatarImage`, `AvatarFallback`) are also
+ * available for callers that prefer named imports.
+ *
+ * Behaviour delegates to reka-ui `AvatarRoot` / `AvatarImage` / `AvatarFallback`;
+ * all styling comes from `@heroui/styles` `avatarVariants`.
  */
-export { default as Avatar } from './avatar'
-export { default as AvatarFallback } from './avatar-fallback'
-export { default as AvatarImage } from './avatar-image'
-export { avatarVariant } from './avatar-variants'
-export type { TAvatarVariants as AvatarVariants } from './avatar-variants'
+import { AvatarRoot } from './avatar'
+import { AvatarImage } from './avatar-image'
+import { AvatarFallback } from './avatar-fallback'
+
+/** Compound component — `Avatar.Image`, `Avatar.Fallback` (HeroUI v3 API). */
+export const Avatar = Object.assign(AvatarRoot, {
+  Root: AvatarRoot,
+  Image: AvatarImage,
+  Fallback: AvatarFallback
+})
+
+export { AvatarRoot, AvatarImage, AvatarFallback }
+export { avatarVariants } from '@heroui/styles'
+export type { AvatarVariants } from '@heroui/styles'

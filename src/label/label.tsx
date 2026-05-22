@@ -1,33 +1,32 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { Label as RekaLabel } from 'reka-ui'
+import { labelVariants, type LabelVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 
 /**
- * Label — HeroUI-Vue primitive over reka-ui `Label`.
+ * LabelRoot — faithful Vue port of HeroUI v3 `LabelRoot`.
  *
- * Emits HeroUI v3 BEM class names from `label.css`:
- *   base: `label`
- *   modifiers: `label--disabled` | `label--invalid` | `label--required`
+ * Wraps reka-ui `Label` and applies BEM classes from `labelVariants`
+ * in `@heroui/styles`. Flat style — `labelVariants({...})` returns a class
+ * string directly.
  */
-export const Label = defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names -- the HeroUI/shadcn component is named Label
-  name: 'Label',
+export const LabelRoot = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
+  name: 'LabelRoot',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    isDisabled: { type: Boolean, default: false },
-    isInvalid: { type: Boolean, default: false },
-    isRequired: { type: Boolean, default: false }
+    isDisabled: { type: Boolean as PropType<LabelVariants['isDisabled']>, default: false },
+    isInvalid: { type: Boolean as PropType<LabelVariants['isInvalid']>, default: false },
+    isRequired: { type: Boolean as PropType<LabelVariants['isRequired']>, default: false }
   },
   setup (props, { attrs, slots }) {
     return () => (
       <RekaLabel
         {...attrs}
+        data-slot="label"
         class={cn(
-          'label',
-          props.isDisabled && 'label--disabled',
-          props.isInvalid && 'label--invalid',
-          props.isRequired && 'label--required',
+          labelVariants({ isDisabled: props.isDisabled, isInvalid: props.isInvalid, isRequired: props.isRequired }),
           props.class
         )}
       >
@@ -37,4 +36,4 @@ export const Label = defineComponent({
   }
 })
 
-export default Label
+export default LabelRoot

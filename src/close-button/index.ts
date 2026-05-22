@@ -1,17 +1,17 @@
 /**
- * HeroUI-Vue Close Button — faithful HeroUI v3 close-button primitive.
- * Part of the HeroUI-for-Vue primitive library.
+ * CloseButton — a faithful Vue port of HeroUI v3 `CloseButton`.
  *
- * The standard ✕ dismiss icon button. Compound API mirrors HeroUI v3:
- * `CloseButton` (= `CloseButtonRoot`) with a `.Root` dot-notation alias.
+ * Compound API (HeroUI v3): `CloseButton` (= `CloseButtonRoot`) with a
+ * `.Root` dot-notation alias. The flat export (`CloseButtonRoot`) is available
+ * for named imports.
  */
 import { CloseButtonRoot } from './close-button-root'
 
-/** Compound component — `CloseButton` is `CloseButtonRoot` with a `.Root` alias. */
+/** Compound component — `CloseButton.Root` (HeroUI v3 API). */
 export const CloseButton = Object.assign(CloseButtonRoot, {
   Root: CloseButtonRoot
 })
 
 export { CloseButtonRoot }
-
-export default CloseButton
+export { closeButtonVariants } from '@heroui/styles'
+export type { CloseButtonVariants } from '@heroui/styles'

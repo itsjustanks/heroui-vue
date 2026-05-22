@@ -1,48 +1,43 @@
 /**
- * HeroUI-Vue DateField — faithful HeroUI v3 `DateField` over reka-ui.
+ * DateField — faithful Vue port of HeroUI v3 `DateField`.
  *
- * NET-NEW primitive (no `shadcn-vue` base). A `DateField` is a
- * segmented date input with **no popover and no calendar** — the date
- * counterpart to `TimeField`. Compound parts mirror HeroUI's `DateField.*` API
- * and `TimeField`'s segment parts. Built over reka-ui `DateFieldRoot` /
- * `DateFieldInput`. Date engine is `@internationalized/date`. Reuses
- * `time-field`'s shared `dateInputGroupVariants`. Part of the HeroUI-for-Vue
- * primitive library.
- *
- * Compound API:
- *   DateField (.Group, .Input, .Segment, .Prefix, .Suffix)
+ * Compound API (HeroUI v3):
+ *   `DateField` / `DateField.Root`
+ *   `DateField.Group`          — date-input-group surface (DateInputGroupRoot)
+ *   `DateField.Input`          — DateInput element (DateInputGroupInput)
+ *   `DateField.InputContainer` — input layout wrapper (DateInputGroupInputContainer)
+ *   `DateField.Segment`        — individual date segment (DateInputGroupSegment)
+ *   `DateField.Prefix`         — leading adornment (DateInputGroupPrefix)
+ *   `DateField.Suffix`         — trailing adornment (DateInputGroupSuffix)
  */
-import { DateField as DateFieldRoot } from './date-field'
+import { DateFieldRoot } from './date-field'
 import { DateFieldGroup } from './date-field-group'
 import { DateFieldInput } from './date-field-input'
+import { DateFieldInputContainer } from './date-field-input-container'
 import { DateFieldSegment } from './date-field-segment'
 import { DateFieldPrefix } from './date-field-prefix'
 import { DateFieldSuffix } from './date-field-suffix'
 
-/** Compound `DateField` — attaches `.Group` / `.Input` / `.Segment` / `.Prefix` / `.Suffix`. */
-type TDateField = typeof DateFieldRoot & {
-  Group: typeof DateFieldGroup
-  Input: typeof DateFieldInput
-  Segment: typeof DateFieldSegment
-  Prefix: typeof DateFieldPrefix
-  Suffix: typeof DateFieldSuffix
-}
-
-const DateField = DateFieldRoot as TDateField
-DateField.Group = DateFieldGroup
-DateField.Input = DateFieldInput
-DateField.Segment = DateFieldSegment
-DateField.Prefix = DateFieldPrefix
-DateField.Suffix = DateFieldSuffix
+/** Compound component — mirrors HeroUI v3 `DateField.*` API exactly. */
+export const DateField = Object.assign(DateFieldRoot, {
+  Root: DateFieldRoot,
+  Group: DateFieldGroup,
+  Input: DateFieldInput,
+  InputContainer: DateFieldInputContainer,
+  Segment: DateFieldSegment,
+  Prefix: DateFieldPrefix,
+  Suffix: DateFieldSuffix,
+})
 
 export {
-  DateField,
+  DateFieldRoot,
   DateFieldGroup,
   DateFieldInput,
+  DateFieldInputContainer,
   DateFieldSegment,
   DateFieldPrefix,
-  DateFieldSuffix
+  DateFieldSuffix,
 }
-export default DateField
 
-export type { TDateSegment } from './date-field-input'
+export { dateFieldVariants } from '@heroui/styles'
+export type { DateFieldVariants } from '@heroui/styles'

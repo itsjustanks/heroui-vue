@@ -2,12 +2,11 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * CheckboxGroupItemLabel — the title of a CheckboxGroupItem. Mirrors the `Label`
- * placed inside HeroUI v3's `Checkbox.Content`.
+ * CheckboxGroupItemLabel — the title of a `CheckboxGroupItem`.
+ * Mirrors the label text placed inside HeroUI v3's `Checkbox.Content`.
  *
  * Rendered as a plain span (the parent `CheckboxGroupItem` is itself the
- * clickable `CheckboxRoot`, so a nested `<label>` is not needed). `text-sm
- * font-medium`.
+ * clickable `CheckboxRoot`, so a nested `<label>` is not needed).
  */
 export const CheckboxGroupItemLabel = defineComponent({
   name: 'CheckboxGroupItemLabel',

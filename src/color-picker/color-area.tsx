@@ -1,4 +1,5 @@
-import { computed, defineComponent, ref, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, inject, provide, ref, type ComputedRef, type HTMLAttributes, type InjectionKey, type PropType } from 'vue'
+import { colorAreaVariants, type ColorAreaVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { formatColor, hueToCss, type TColorValue } from './color-utils'
 import { useColorPickerContext } from './color-picker-context'
@@ -6,43 +7,55 @@ import { useColorPickerContext } from './color-picker-context'
 const clamp = (n: number): number => Math.min(1, Math.max(0, n))
 const FALLBACK: TColorValue = { h: 0, s: 0, v: 0, a: 1 }
 
+/** Per-area context — Thumb reads live color + slot classes from here. */
+type TColorAreaInternal = {
+  color: ComputedRef<TColorValue>
+  slots: ComputedRef<ReturnType<typeof colorAreaVariants>>
+}
+const AREA_KEY: InjectionKey<TColorAreaInternal> = Symbol('heroui-vue-color-area')
+
 /**
- * ColorArea.Thumb — the draggable handle. Reads the live color from the
- * ColorPicker context and positions itself (saturation → x, brightness → y).
+ * ColorAreaThumb — the draggable handle. HeroUI v3 `ColorArea.Thumb`
+ * (`data-slot="color-area-thumb"`). Positions itself via saturation → x and
+ * brightness → y from the shared area context.
  */
-const ColorAreaThumb = defineComponent({
+export const ColorAreaThumb = defineComponent({
   name: 'ColorAreaThumb',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs }) {
-    const ctx = useColorPickerContext()
-    const color = computed<TColorValue>(() => ctx?.color.value ?? FALLBACK)
-    return () => (
-      <div
-        {...attrs}
-        class={cn('color-area__thumb', props.class)}
-        style={{
-          left: `${color.value.s}%`,
-          top: `${100 - color.value.v}%`,
-          background: formatColor(color.value, 'rgb')
-        }}
-      />
-    )
+    const area = inject(AREA_KEY, null)
+    const fallbackSlots = colorAreaVariants()
+    return () => {
+      const color = area?.color.value ?? FALLBACK
+      const slots = area?.slots.value ?? fallbackSlots
+      return (
+        <div
+          {...attrs}
+          data-slot="color-area-thumb"
+          class={cn(slots.thumb(), props.class)}
+          style={{
+            left: `${color.s}%`,
+            top: `${100 - color.v}%`,
+            background: formatColor(color, 'rgb')
+          }}
+        />
+      )
+    }
   }
 })
 
 /**
- * ColorArea — the 2-D saturation/brightness picking surface. HeroUI's `ColorArea`
- * is built on React Aria; reka-ui (2.8) ships no color primitive, so the
- * pointer/keyboard logic lives here in `setup()`.
- * `xChannel`/`yChannel`/`colorSpace` are accepted for HeroUI API parity — the
- * working space is HSB, x = saturation, y = brightness.
+ * ColorAreaRoot — the 2-D saturation/brightness picking surface. HeroUI v3
+ * `ColorArea.Root` (`data-slot="color-area"`). Computes `colorAreaVariants` and
+ * provides the slot map + live color to `ColorAreaThumb`.
  *
- * Exposes the `ColorArea.Thumb` compound part.
+ * reka-ui (2.8) ships no color primitive; pointer/keyboard logic lives here.
+ * `xChannel`/`yChannel`/`colorSpace` props are accepted for HeroUI API parity.
  */
-export const ColorArea = defineComponent({
+export const ColorAreaRoot = defineComponent({
   name: 'ColorArea',
   inheritAttrs: false,
   props: {
@@ -50,7 +63,8 @@ export const ColorArea = defineComponent({
     colorSpace: { type: String as PropType<'hsb' | 'hsl' | 'rgb'>, default: 'hsb' },
     xChannel: { type: String, default: 'saturation' },
     yChannel: { type: String, default: 'brightness' },
-    isDisabled: { type: Boolean, default: false }
+    isDisabled: { type: Boolean, default: false },
+    showDots: { type: Boolean as PropType<ColorAreaVariants['showDots']>, default: false }
   },
   setup (props, { attrs, slots }) {
     const ctx = useColorPickerContext()
@@ -58,6 +72,9 @@ export const ColorArea = defineComponent({
     const dragging = ref(false)
 
     const color = computed<TColorValue>(() => ctx?.color.value ?? FALLBACK)
+    const styles = computed(() => colorAreaVariants({ showDots: props.showDots }))
+
+    provide(AREA_KEY, { color, slots: styles })
 
     const updateFromEvent = (e: PointerEvent): void => {
       if (props.isDisabled || !surface.value || !ctx) return
@@ -80,7 +97,6 @@ export const ColorArea = defineComponent({
       dragging.value = false;
       (e.currentTarget as HTMLElement).releasePointerCapture?.(e.pointerId)
     }
-
     const onKeyDown = (e: KeyboardEvent): void => {
       if (props.isDisabled || !ctx) return
       const step = e.shiftKey ? 10 : 1
@@ -105,15 +121,13 @@ export const ColorArea = defineComponent({
         aria-disabled={props.isDisabled || undefined}
         data-disabled={props.isDisabled || undefined}
         data-color-space={props.colorSpace}
+        data-slot="color-area"
         onPointerdown={onPointerDown}
         onPointermove={onPointerMove}
         onPointerup={onPointerUp}
         onKeydown={onKeyDown}
         style={{ backgroundColor: hueToCss(color.value.h) }}
-        class={cn(
-          'color-area',
-          props.class
-        )}
+        class={cn(styles.value.base(), props.class)}
       >
         {slots.default ? slots.default() : <ColorAreaThumb />}
       </div>
@@ -121,5 +135,4 @@ export const ColorArea = defineComponent({
   }
 })
 
-export { ColorAreaThumb }
-export default ColorArea
+export default ColorAreaRoot

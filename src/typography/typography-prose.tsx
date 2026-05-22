@@ -1,11 +1,14 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { typographyVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 
 /**
- * Prose — HeroUI v3 typography preset. A long-form content container that styles
- * raw HTML descendants (headings, paragraphs, lists, code, blockquotes, etc.) —
- * the equivalent of HeroUI's `typography-prose` slot. Use for rendered markdown
- * or rich-text bodies where child tags are not individually wrapped.
+ * Prose — HeroUI v3 typography container for long-form content.
+ *
+ * Styles raw HTML descendants (headings, paragraphs, lists, code, blockquotes)
+ * using the `typography-prose` slot from `@heroui/styles` `typographyVariants`.
+ * Use for rendered markdown or rich-text bodies where child tags are not
+ * individually wrapped.
  */
 export const Prose = defineComponent({
   name: 'TypographyProse',
@@ -18,7 +21,7 @@ export const Prose = defineComponent({
       <div
         {...attrs}
         data-slot="prose"
-        class={cn('typography-prose', props.class)}
+        class={cn(typographyVariants().prose(), props.class)}
       >
         {slots.default?.()}
       </div>

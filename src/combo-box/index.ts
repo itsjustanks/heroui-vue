@@ -1,46 +1,46 @@
 /**
- * HeroUI-Vue ComboBox / Autocomplete — faithful HeroUI v3 searchable select over
- * reka-ui `Combobox*`.
+ * ComboBox — HeroUI v3 compound searchable select over reka-ui (headless behaviour).
  *
- * Net-new primitive (no `shadcn-vue` base) — built fresh from HeroUI v3 specs.
- * Part of the HeroUI-for-Vue primitive library.
+ * Compound API (HeroUI v3): `ComboBox`, `ComboBox.Root`, `ComboBox.InputGroup`,
+ * `ComboBox.Trigger`, `ComboBox.Popover`.
  *
- * HeroUI v3 ships this as two doc entries — `ComboBox` and `Autocomplete` — that
- * are the same component family (a text input + a filterable listbox). Both name
- * sets are exported here: the `ComboBox*` parts are canonical; the `Autocomplete*`
- * aliases point at the identical components.
- *
- * Anatomy (HeroUI dot-notation → this Vue flat API):
- *   ComboBox                → ComboBox        (alias: Autocomplete)
- *   ComboBox.InputGroup     → ComboBoxInputGroup
- *   ComboBox.Trigger        → ComboBoxTrigger (alias: AutocompleteIndicator)
- *   ComboBox.Popover        → ComboBoxPopover (alias: AutocompletePopover)
- *   (Input inside group)    → ComboBoxInput
- *   ListBox.Item            → ComboBoxItem
- *   ListBox.ItemIndicator   → ComboBoxItemIndicator
- *   ListBox.Section + Header → ComboBoxGroup (heading prop)
- *   Separator               → ComboBoxSeparator
- *   empty-state             → ComboBoxEmpty
+ * HeroUI v3 ships this family as both `ComboBox` and `Autocomplete` (same
+ * component, two doc entries). Both name sets are exported; `ComboBox*` is canonical.
  */
-export { default as ComboBox } from './combo-box'
-export { default as ComboBoxInputGroup } from './combo-box-input-group'
-export { default as ComboBoxInput } from './combo-box-input'
-export { default as ComboBoxTrigger } from './combo-box-trigger'
-export { default as ComboBoxPopover } from './combo-box-popover'
-export { default as ComboBoxItem } from './combo-box-item'
-export { default as ComboBoxItemIndicator } from './combo-box-item-indicator'
-export { default as ComboBoxGroup } from './combo-box-group'
-export { default as ComboBoxSeparator } from './combo-box-separator'
-export { default as ComboBoxEmpty } from './combo-box-empty'
+import { ComboBoxRoot } from './combo-box'
+import { ComboBoxInputGroup } from './combo-box-input-group'
+import { ComboBoxTrigger } from './combo-box-trigger'
+import { ComboBoxPopover } from './combo-box-popover'
+
+/** Compound component — `ComboBox.InputGroup`, `ComboBox.Trigger`, … (HeroUI v3 API). */
+export const ComboBox = Object.assign(ComboBoxRoot, {
+  Root: ComboBoxRoot,
+  InputGroup: ComboBoxInputGroup,
+  Trigger: ComboBoxTrigger,
+  Popover: ComboBoxPopover
+})
+
+export { ComboBoxRoot, ComboBoxInputGroup, ComboBoxTrigger, ComboBoxPopover }
+
+export { ComboBoxInput } from './combo-box-input'
+export { ComboBoxItem } from './combo-box-item'
+export { ComboBoxItemIndicator } from './combo-box-item-indicator'
+export { ComboBoxGroup } from './combo-box-group'
+export { ComboBoxSeparator } from './combo-box-separator'
+export { ComboBoxEmpty } from './combo-box-empty'
 
 // Autocomplete aliases — HeroUI's `Autocomplete` family is the same combobox.
-export { default as Autocomplete } from './combo-box'
-export { default as AutocompleteInputGroup } from './combo-box-input-group'
-export { default as AutocompleteInput } from './combo-box-input'
-export { default as AutocompleteIndicator } from './combo-box-trigger'
-export { default as AutocompletePopover } from './combo-box-popover'
-export { default as AutocompleteItem } from './combo-box-item'
-export { default as AutocompleteItemIndicator } from './combo-box-item-indicator'
-export { default as AutocompleteGroup } from './combo-box-group'
-export { default as AutocompleteSeparator } from './combo-box-separator'
-export { default as AutocompleteEmpty } from './combo-box-empty'
+export { ComboBoxRoot as Autocomplete }
+export { ComboBoxRoot as AutocompleteRoot }
+export { ComboBoxInputGroup as AutocompleteInputGroup }
+export { ComboBoxInput as AutocompleteInput } from './combo-box-input'
+export { ComboBoxTrigger as AutocompleteIndicator }
+export { ComboBoxPopover as AutocompletePopover }
+export { ComboBoxItem as AutocompleteItem } from './combo-box-item'
+export { ComboBoxItemIndicator as AutocompleteItemIndicator } from './combo-box-item-indicator'
+export { ComboBoxGroup as AutocompleteGroup } from './combo-box-group'
+export { ComboBoxSeparator as AutocompleteSeparator } from './combo-box-separator'
+export { ComboBoxEmpty as AutocompleteEmpty } from './combo-box-empty'
+
+export { comboBoxVariants } from '@heroui/styles'
+export type { ComboBoxVariants } from '@heroui/styles'

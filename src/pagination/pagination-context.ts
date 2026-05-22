@@ -1,21 +1,13 @@
-import { inject, provide, type InjectionKey, type Ref } from 'vue'
-import type { TPaginationSize } from './pagination-variants'
+import type { ComputedRef, InjectionKey } from 'vue'
+import type { paginationVariants } from '@heroui/styles'
 
-/** Context shared from `PaginationRoot` to its descendant parts. */
-interface IPaginationContext {
-  /** Current size step — consumed by Link / Previous / Next / Ellipsis. */
-  size: Ref<TPaginationSize>
+/** The `paginationVariants()` slot map — one class-name function per Pagination part. */
+export type PaginationSlots = ReturnType<typeof paginationVariants>
+
+export interface PaginationContext {
+  /** Reactive slot map — recomputed when the root `size` changes. */
+  slots: ComputedRef<PaginationSlots>
 }
 
-const PAGINATION_INJECTION_KEY: InjectionKey<IPaginationContext> =
-  Symbol('HeroUIPaginationContext')
-
-/** Provide pagination context from `PaginationRoot`. */
-export function providePaginationContext (context: IPaginationContext): void {
-  provide(PAGINATION_INJECTION_KEY, context)
-}
-
-/** Inject pagination context within a descendant part. */
-export function usePaginationContext (): IPaginationContext | undefined {
-  return inject(PAGINATION_INJECTION_KEY, undefined)
-}
+/** Provided by `PaginationRoot`, consumed by every compound part. */
+export const PAGINATION_CONTEXT: InjectionKey<PaginationContext> = Symbol('heroui-vue-pagination')

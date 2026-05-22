@@ -1,39 +1,48 @@
-import { computed, defineComponent, ref, watch, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, inject, ref, watch, type HTMLAttributes, type PropType } from 'vue'
 import { useVModel } from '@vueuse/core'
+import { colorPickerVariants, type ColorPickerVariants } from '@heroui/styles'
+import { Popover, PopoverContent } from '@/popover'
 import { cn } from '@/lib/utils'
-import { Popover, PopoverContent, PopoverTrigger } from '@/popover'
 import { normalizeColor, parseColor, type TColorValue } from './color-utils'
-import { provideColorPickerContext } from './color-picker-context'
+import { provideColorPickerContext, COLOR_PICKER_CONTEXT } from './color-picker-context'
 
 /**
- * ColorPicker.Trigger — the element that opens the picker popover (typically a
- * `ColorSwatch` + `Label`). Composes `popover`'s `PopoverTrigger`, which
- * renders as a `<button>`.
+ * ColorPickerTrigger — the element that opens the picker popover. HeroUI v3
+ * `ColorPicker.Trigger` (`data-slot="color-picker-trigger"`).
+ *
+ * reka-ui (2.8) ships no color primitive; the trigger is a plain button that
+ * lets the parent `<Popover>` route focus. Pass children (e.g. a `ColorSwatch`).
  */
-const ColorPickerTrigger = defineComponent({
+export const ColorPickerTrigger = defineComponent({
   name: 'ColorPickerTrigger',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <PopoverTrigger
-        {...attrs}
-        data-slot="color-picker-trigger"
-        class={cn('color-picker__trigger', props.class)}
-      >
-        {slots.default?.()}
-      </PopoverTrigger>
-    )
+    const ctx = inject(COLOR_PICKER_CONTEXT, null)
+    return () => {
+      const styles = ctx?.slots.value ?? colorPickerVariants()
+      return (
+        <button
+          {...attrs}
+          type="button"
+          data-slot="color-picker-trigger"
+          class={cn(styles.trigger(), props.class)}
+        >
+          {slots.default?.()}
+        </button>
+      )
+    }
   }
 })
 
 /**
- * ColorPicker.Popover — the floating panel holding the color controls. Composes
- * `popover`'s `PopoverContent`.
+ * ColorPickerPopover — the floating panel holding the color controls. HeroUI v3
+ * `ColorPicker.Popover` (`data-slot="color-picker-popover"`). Wraps the repo's
+ * `PopoverContent` so the overlay shim (`vHerouiState`) is applied automatically.
  */
-const ColorPickerPopover = defineComponent({
+export const ColorPickerPopover = defineComponent({
   name: 'ColorPickerPopover',
   inheritAttrs: false,
   props: {
@@ -42,34 +51,33 @@ const ColorPickerPopover = defineComponent({
     sideOffset: { type: Number, default: 8 }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <PopoverContent
-        {...attrs}
-        align={props.align}
-        sideOffset={props.sideOffset}
-        data-slot="color-picker-popover"
-        class={cn('color-picker__popover', props.class)}
-      >
-        {slots.default?.()}
-      </PopoverContent>
-    )
+    const ctx = inject(COLOR_PICKER_CONTEXT, null)
+    return () => {
+      const styles = ctx?.slots.value ?? colorPickerVariants()
+      return (
+        <PopoverContent
+          {...attrs}
+          align={props.align}
+          sideOffset={props.sideOffset}
+          class={cn(styles.popover(), props.class)}
+        >
+          {slots.default?.()}
+        </PopoverContent>
+      )
+    }
   }
 })
 
 /**
- * ColorPicker — a composable color picker that synchronises a color value across
- * its compound parts. Faithful HeroUI v3 port: HeroUI's `ColorPicker` is built on
- * React Aria; reka-ui (2.8) ships no color primitive, so the color model lives in
- * `setup()` and the popover composes the `Popover` component.
+ * ColorPickerRoot — root context provider. Faithful Vue port of HeroUI v3
+ * `ColorPickerRoot`. Computes `colorPickerVariants`, provides the slot map and
+ * the live color state to all compound parts. Wraps `Popover` since reka-ui
+ * (2.8) ships no color primitive.
  *
- * Parts: `ColorPicker.Trigger`, `ColorPicker.Popover`. The picking controls
- * (`ColorArea`, `ColorSlider`, `ColorSwatch`, `ColorField`, `ColorSwatchPicker`)
- * are imported separately and read the shared context.
- *
- * `value` / `defaultValue` accept any CSS color string or a `TColorValue`;
+ * `value` / `defaultValue` accept any CSS color string or a `TColorValue`.
  * `onChange` (`update:value` emit) fires with the normalised `TColorValue`.
  */
-export const ColorPicker = defineComponent({
+export const ColorPickerRoot = defineComponent({
   name: 'ColorPicker',
   inheritAttrs: false,
   props: {
@@ -83,16 +91,15 @@ export const ColorPicker = defineComponent({
     'update:value': (_color: TColorValue) => true
   },
   setup (props, { attrs, emit, slots }) {
-    // Color value — controlled via `value`/`update:value`, else internal.
+    const styles = computed(() => colorPickerVariants())
+
     const valueModel = useVModel(props, 'value', emit, {
       passive: true,
       defaultValue: props.defaultValue
     })
 
-    // The working model — always a normalised TColorValue.
     const internal = ref<TColorValue>(parseColor(valueModel.value ?? props.defaultValue))
 
-    // Keep the internal model in sync with an external `value`.
     watch(
       () => valueModel.value,
       (next) => {
@@ -114,6 +121,7 @@ export const ColorPicker = defineComponent({
     }
 
     provideColorPickerContext({
+      slots: styles,
       color: computed(() => internal.value),
       setColor,
       patchColor
@@ -121,7 +129,7 @@ export const ColorPicker = defineComponent({
 
     return () => (
       <Popover>
-        <div {...attrs} data-slot="color-picker" class={cn('color-picker', props.class)}>
+        <div {...attrs} data-slot="color-picker" class={cn(styles.value.base(), props.class)}>
           {slots.default?.()}
         </div>
       </Popover>
@@ -129,5 +137,4 @@ export const ColorPicker = defineComponent({
   }
 })
 
-export { ColorPickerTrigger, ColorPickerPopover }
-export default ColorPicker
+export default ColorPickerRoot

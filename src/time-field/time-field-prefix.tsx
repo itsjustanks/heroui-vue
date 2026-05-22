@@ -1,9 +1,11 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { dateInputGroupVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TIME_FIELD_CONTEXT } from './time-field-context'
 
 /**
- * TimeFieldPrefix — leading adornment slot (icon / text). HeroUI v3
- * `TimeField.Prefix`. Adapts HeroUI's `date-input-group__prefix`.
+ * TimeField.Prefix — leading adornment (icon / text).
+ * HeroUI v3 `TimeField.Prefix` (maps to `DateInputGroupPrefix`).
  */
 export const TimeFieldPrefix = defineComponent({
   name: 'TimeFieldPrefix',
@@ -12,14 +14,16 @@ export const TimeFieldPrefix = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(TIME_FIELD_CONTEXT, null)
+
     return () => (
-      <span
+      <div
         {...attrs}
         data-slot="date-input-group-prefix"
-        class={cn('date-input-group__prefix', props.class)}
+        class={cn((ctx?.slots.value ?? dateInputGroupVariants()).prefix(), props.class)}
       >
         {slots.default?.()}
-      </span>
+      </div>
     )
   }
 })

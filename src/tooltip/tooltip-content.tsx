@@ -1,15 +1,19 @@
-import { defineComponent, withDirectives, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, withDirectives, type HTMLAttributes, type PropType } from 'vue'
 import { TooltipContent as RekaTooltipContent, TooltipPortal } from 'reka-ui'
+import { tooltipVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { vHerouiState } from '@/composables/use-heroui-state'
+import { TOOLTIP_CONTEXT } from './tooltip-context'
 
 /**
- * TooltipContent — the floating tip (HeroUI `tooltip`).
+ * TooltipContent — the floating tip surface.
+ * Mirrors HeroUI v3 `TooltipContent` (`slots.base()` on the overlay element).
  *
- * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) binds the
- * real overlay element: it mirrors reka-ui's `data-side` to `data-placement`
- * and derives `data-entering`/`data-exiting` from `data-state`, which
- * `tooltip.css` keys its placement-aware enter/exit animation off.
+ * ⚠️  OVERLAY SHIM — DO NOT REMOVE.
+ * Rendered `asChild` so reka-ui hands control of the overlay DOM element to our
+ * `<div>`. `withDirectives(..., [[vHerouiState]])` then mirrors reka-ui's
+ * `data-side` → `data-placement` and `data-state` → `data-entering`/`data-exiting`
+ * so HeroUI's CSS placement-aware animations work correctly.
  */
 export const TooltipContent = defineComponent({
   name: 'TooltipContent',
@@ -19,20 +23,26 @@ export const TooltipContent = defineComponent({
     sideOffset: { type: Number, default: 4 }
   },
   setup (props, { attrs, slots }) {
-    return () => (
-      <TooltipPortal>
-        <RekaTooltipContent sideOffset={props.sideOffset} asChild>
-          {withDirectives(
-            (
-              <div {...attrs} data-slot="tooltip" class={cn('tooltip', props.class)}>
-                {slots.default?.()}
-              </div>
-            ),
-            [[vHerouiState]]
-          )}
-        </RekaTooltipContent>
-      </TooltipPortal>
-    )
+    const ctx = inject(TOOLTIP_CONTEXT, null)
+
+    return () => {
+      const styles = ctx?.slots.value ?? tooltipVariants()
+
+      return (
+        <TooltipPortal>
+          <RekaTooltipContent sideOffset={props.sideOffset} asChild>
+            {withDirectives(
+              (
+                <div {...attrs} class={cn(styles.base(), props.class)}>
+                  {slots.default?.()}
+                </div>
+              ),
+              [[vHerouiState]]
+            )}
+          </RekaTooltipContent>
+        </TooltipPortal>
+      )
+    }
   }
 })
 

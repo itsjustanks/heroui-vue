@@ -1,14 +1,12 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { IconCalendarDays } from '@/icons'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { DatePickerTrigger as RekaDatePickerTrigger } from 'reka-ui'
+import { datePickerVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { DATE_PICKER_CONTEXT } from './date-picker-context'
 
 /**
- * DatePickerTrigger — opens the calendar popover. HeroUI v3 `DatePicker.Trigger`
- * + `DatePicker.TriggerIndicator` collapsed into one part.
- *
- * Sits as the trailing adornment of `DatePickerField` (`ml-auto`). Defaults to a
- * calendar icon (HeroUI's `triggerIndicator`); pass children to override.
+ * DatePicker.Trigger — the button that opens the date-picker popover.
+ * HeroUI v3 `DatePicker.Trigger`.
  */
 export const DatePickerTrigger = defineComponent({
   name: 'DatePickerTrigger',
@@ -17,13 +15,15 @@ export const DatePickerTrigger = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(DATE_PICKER_CONTEXT, null)
+
     return () => (
       <RekaDatePickerTrigger
         {...attrs}
         data-slot="date-picker-trigger"
-        class={cn('date-picker__trigger', props.class)}
+        class={cn((ctx?.slots.value ?? datePickerVariants()).trigger(), props.class)}
       >
-        {slots.default ? slots.default() : <IconCalendarDays data-slot="date-picker-trigger-indicator" class="date-picker__trigger-indicator" />}
+        {slots.default?.()}
       </RekaDatePickerTrigger>
     )
   }

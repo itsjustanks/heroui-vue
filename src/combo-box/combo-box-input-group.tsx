@@ -1,32 +1,28 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { ComboboxAnchor } from 'reka-ui'
+import { comboBoxVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { COMBO_BOX_CONTEXT } from './combo-box-context'
 
 /**
- * ComboBoxInputGroup — the field row that holds the `ComboBoxInput` and the
- * `ComboBoxTrigger`. Faithful port of HeroUI v3 `ComboBox.InputGroup`
- * (`combo-box.css` `.combo-box__input-group`).
+ * ComboBoxInputGroup — the field row holding the `ComboBoxInput` and `ComboBoxTrigger`.
  *
- * Built over reka-ui `ComboboxAnchor` so the popover positions against it. A
- * `relative isolate inline-flex` row; the trigger overlays its right edge.
+ * Mirrors HeroUI v3 `ComboBox.InputGroup` (`combo-box__input-group`). Built over
+ * reka-ui `ComboboxAnchor` so the popover positions against it.
  */
 export const ComboBoxInputGroup = defineComponent({
   name: 'ComboBoxInputGroup',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** Stretch the input group to full width. Mirrors HeroUI `combo-box__input-group--full-width`. */
-    fullWidth: { type: Boolean, default: false }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const ctx = inject(COMBO_BOX_CONTEXT, null)
     return () => (
       <ComboboxAnchor
         {...attrs}
-        class={cn(
-          'combo-box__input-group',
-          props.fullWidth && 'combo-box__input-group--full-width',
-          props.class
-        )}
+        data-slot="combo-box-input-group"
+        class={cn((ctx?.slots.value ?? comboBoxVariants()).inputGroup(), props.class)}
       >
         {slots.default?.()}
       </ComboboxAnchor>
