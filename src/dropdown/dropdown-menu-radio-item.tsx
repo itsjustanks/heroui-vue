@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { DropdownMenuRadioItem as RekaDropdownMenuRadioItem, DropdownMenuItemIndicator } from 'reka-ui'
+import { DropdownMenuRadioItem as DropdownMenuRadioItemBase, DropdownMenuItemIndicator } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaDropdownMenuRadioItem: any = DropdownMenuRadioItemBase
 import { Circle as IconCircle } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 
@@ -13,7 +15,7 @@ export const DropdownMenuRadioItem = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaDropdownMenuRadioItem
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           'relative flex min-h-9 w-full cursor-pointer select-none items-center gap-3 rounded-2xl py-1.5 pl-7 pr-2.5 text-sm outline-none transition-colors',
           'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',

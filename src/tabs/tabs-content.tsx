@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { TabsContent as RekaTabsContent } from 'reka-ui'
+import { TabsContent as TabsContentBase } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaTabsContent: any = TabsContentBase
 import { cn } from '@/lib/utils'
 
 /**
@@ -17,7 +19,7 @@ export const TabsContent = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaTabsContent
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           props.class

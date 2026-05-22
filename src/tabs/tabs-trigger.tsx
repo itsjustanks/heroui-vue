@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { TabsTrigger as RekaTabsTrigger } from 'reka-ui'
+import { TabsTrigger as TabsTriggerBase } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaTabsTrigger: any = TabsTriggerBase
 import { cn } from '@/lib/utils'
 
 /**
@@ -19,7 +21,7 @@ export const TabsTrigger = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaTabsTrigger
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',

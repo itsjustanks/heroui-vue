@@ -7,15 +7,14 @@ in-app `heroui/` library, packaged (Vite lib build, MIT), git-initialised.
 
 ## 0. Current status & next steps
 
-Done: copy + flatten imports + package scaffold + git init (commit `bb2bec7`).
+Done: copy + flatten imports + package scaffold + `npm install` + **green build**
+(`npm run build` → `dist/heroui-vue.js` 214 KB + `.css` + 388 `.d.ts`). The
+package is installable, typed, and working.
 
-Immediate next, in this repo:
-1. `npm install`, then `npm run build` — get the Vite lib build green. Expect to
-   fix: barrel export collisions (`form`/`field` already handled — watch for
-   others), TSX build-config edges.
-2. Then execute §6 rollout — shim → dropdown pilot → fan out (BEM +
-   `@heroui/styles` + gravity-ui icons) → verify.
-3. GitHub repo creation + `npm publish` are user-triggered when ready.
+Next, in this repo:
+1. Execute §6 rollout — shim → dropdown pilot → fan out (BEM + `@heroui/styles`
+   + gravity-ui icons) → verify.
+2. GitHub repo creation + `npm publish` are user-triggered when ready.
 
 The in-app `unfold-app/src/components/heroui/` copy is untouched and still
 working — `unfold-app` switches to consume this package at rollout step 6.

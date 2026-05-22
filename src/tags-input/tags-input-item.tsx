@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { TagsInputItem as RekaTagsInputItem } from 'reka-ui'
+import { TagsInputItem as TagsInputItemBase } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaTagsInputItem: any = TagsInputItemBase
 import { cn } from '@/lib/utils'
 
 /**
@@ -19,7 +21,7 @@ export const TagsInputItem = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaTagsInputItem
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           'flex h-6 items-center gap-0.5 rounded-md bg-secondary pl-2 pr-1 text-xs font-medium text-secondary-foreground',
           'ring-offset-background data-[state=active]:ring-2 data-[state=active]:ring-ring data-[state=active]:ring-offset-2',

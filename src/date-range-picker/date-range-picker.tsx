@@ -1,6 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { DateRangePickerRoot, useForwardPropsEmits } from 'reka-ui'
-import type { DateRangePickerRootEmits, DateRangePickerRootProps } from 'reka-ui'
+import { DateRangePickerRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
 /**
@@ -25,12 +24,10 @@ export const DateRangePicker = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
-  emits: [] as unknown as DateRangePickerRootEmits,
-  setup (props, { attrs, emit, slots }) {
-    const forwarded = useForwardPropsEmits(attrs as DateRangePickerRootProps, emit as any)
+  setup (props, { attrs, slots }) {
     return () => (
       <DateRangePickerRoot
-        {...forwarded.value}
+        {...(attrs as Record<string, any>)}
         class={cn('flex flex-col gap-1.5', props.class)}
       >
         {slots.default?.()}

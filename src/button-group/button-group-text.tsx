@@ -21,10 +21,8 @@ export const ButtonGroupText = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <Primitive
-        {...attrs}
-        role="group"
-        data-slot="button-group"
-        data-orientation={props.orientation}
+        {...(attrs as Record<string, any>)}
+        {...({ role: 'group', 'data-slot': 'button-group', 'data-orientation': props.orientation } as Record<string, any>)}
         as={props.as}
         asChild={props.asChild}
         class={cn(

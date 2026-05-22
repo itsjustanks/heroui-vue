@@ -1,6 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { TimeFieldRoot, useForwardPropsEmits } from 'reka-ui'
-import type { TimeFieldRootEmits, TimeFieldRootProps } from 'reka-ui'
+import { TimeFieldRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
 /**
@@ -23,12 +22,10 @@ export const TimeField = defineComponent({
     /** HeroUI `fullWidth` — stretch the field to fill its container. */
     fullWidth: { type: Boolean, default: false }
   },
-  emits: [] as unknown as TimeFieldRootEmits,
-  setup (props, { attrs, emit, slots }) {
-    const forwarded = useForwardPropsEmits(attrs as TimeFieldRootProps, emit as any)
+  setup (props, { attrs, slots }) {
     return () => (
       <TimeFieldRoot
-        {...forwarded.value}
+        {...(attrs as Record<string, any>)}
         class={cn('flex flex-col gap-1.5', props.fullWidth && 'w-full', props.class)}
       >
         {{

@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { SelectItem as RekaSelectItem, SelectItemIndicator, SelectItemText } from 'reka-ui'
+import { SelectItem as SelectItemBase, SelectItemIndicator, SelectItemText } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaSelectItem: any = SelectItemBase
 import { Check as IconCheck } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 
@@ -20,7 +22,7 @@ export const SelectItem = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaSelectItem
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           'relative flex w-full cursor-default select-none items-center rounded-lg py-1.5 pl-8 pr-2.5 text-sm outline-none transition-colors',
           'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',

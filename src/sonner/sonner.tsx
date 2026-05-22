@@ -1,5 +1,6 @@
 import { defineComponent, type PropType } from 'vue'
-import { Toaster as Sonner, type ToasterProps } from 'vue-sonner'
+import { Toaster as SonnerBase, type ToasterProps } from 'vue-sonner'
+const Sonner: any = SonnerBase
 
 /**
  * Toaster — HeroUI-Vue toast region. A faithful port of `shadcn/sonner`: it
@@ -25,12 +26,12 @@ export const Toaster = defineComponent({
     gap: { type: Number, required: false, default: undefined },
     visibleToasts: { type: Number, required: false, default: undefined },
     closeButton: { type: Boolean, required: false, default: undefined },
-    toastOptions: { type: Object as PropType<ToasterProps['toastOptions']>, required: false, default: undefined },
+    toastOptions: { type: Object as PropType<Record<string, any>>, required: false, default: undefined },
     class: { type: String, required: false, default: undefined },
     style: { type: null, required: false, default: undefined },
     offset: { type: [String, Number], required: false, default: undefined },
     dir: { type: String as PropType<ToasterProps['dir']>, required: false, default: undefined },
-    icons: { type: Object as PropType<ToasterProps['icons']>, required: false, default: undefined },
+    icons: { type: Object as PropType<Record<string, any>>, required: false, default: undefined },
     containerAriaLabel: { type: String, required: false, default: undefined },
     pauseWhenPageIsHidden: { type: Boolean, required: false, default: undefined },
     cn: { type: Function as PropType<ToasterProps['cn']>, required: false, default: undefined }
@@ -38,8 +39,8 @@ export const Toaster = defineComponent({
   setup (props) {
     return () => (
       <Sonner
-        class="toaster group"
         {...props}
+        class={['toaster group', props.class]}
         toast-options={{
           classes: {
             toast:

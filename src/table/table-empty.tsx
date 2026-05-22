@@ -1,6 +1,8 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import { TableCell } from './table-cell'
+import { TableCell as TableCellBase } from './table-cell'
+// Forwards `colspan` (an HTML attr not modelled on TableCell's props).
+const TableCell: any = TableCellBase
 import { TableRow } from './table-row'
 
 /**

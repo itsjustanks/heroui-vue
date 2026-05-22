@@ -1,5 +1,7 @@
 import { defineComponent } from 'vue'
-import { MenubarRadioItem as RekaMenubarRadioItem, MenubarItemIndicator } from 'reka-ui'
+import { MenubarRadioItem as MenubarRadioItemBase, MenubarItemIndicator } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaMenubarRadioItem: any = MenubarRadioItemBase
 import { Circle as IconCircle } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 import type { HTMLAttributes, PropType } from 'vue'
@@ -14,7 +16,7 @@ export const MenubarRadioItem = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaMenubarRadioItem
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           'relative flex min-h-9 w-full cursor-pointer select-none items-center gap-3 rounded-lg py-1.5 pl-7 pr-2.5 text-sm outline-none transition-colors',
           'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',

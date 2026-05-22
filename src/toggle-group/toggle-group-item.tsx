@@ -1,5 +1,7 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
-import { ToggleGroupItem as RekaToggleGroupItem } from 'reka-ui'
+import { ToggleGroupItem as ToggleGroupItemBase } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaToggleGroupItem: any = ToggleGroupItemBase
 import { cn } from '@/lib/utils'
 import { toggleVariants, type TToggleVariants } from '../toggle/toggle-variants'
 import { TOGGLE_GROUP_KEY } from './toggle-group'
@@ -25,7 +27,7 @@ export const ToggleGroupItem = defineComponent({
 
     return () => (
       <RekaToggleGroupItem
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn(
           toggleVariants({
             variant: context?.variant || props.variant,

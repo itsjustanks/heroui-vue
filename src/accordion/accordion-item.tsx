@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { AccordionItem as RekaAccordionItem } from 'reka-ui'
+import { AccordionItem as AccordionItemBase } from 'reka-ui'
+// Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
+const RekaAccordionItem: any = AccordionItemBase
 import { cn } from '@/lib/utils'
 
 /**
@@ -18,7 +20,7 @@ export const AccordionItem = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <RekaAccordionItem
-        {...attrs}
+        {...(attrs as Record<string, any>)}
         class={cn('border-b border-border', props.class)}
       >
         {slots.default?.()}

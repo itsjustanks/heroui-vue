@@ -1,6 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarRoot, useForwardPropsEmits } from 'reka-ui'
-import type { CalendarRootEmits, CalendarRootProps } from 'reka-ui'
+import { CalendarRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import { CalendarCell } from './calendar-cell'
 import { CalendarCellTrigger } from './calendar-cell-trigger'
@@ -34,12 +33,10 @@ export const Calendar = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
-  emits: [] as unknown as CalendarRootEmits,
-  setup (props, { attrs, emit }) {
-    const forwarded = useForwardPropsEmits(attrs as CalendarRootProps, emit as any)
+  setup (props, { attrs }) {
     return () => (
       <CalendarRoot
-        {...forwarded.value}
+        {...(attrs as Record<string, any>)}
         class={cn('p-3', props.class)}
       >
         {{

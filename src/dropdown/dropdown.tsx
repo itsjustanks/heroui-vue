@@ -22,16 +22,11 @@ export const Dropdown = defineComponent({
   setup (props, { attrs, slots, emit }) {
     return () => (
       <Popover
-        {...attrs}
-        open={props.open}
-        onUpdate:open={() => emit('update:open')}
+        {...({ ...attrs, open: props.open, 'onUpdate:open': () => emit('update:open') } as Record<string, any>)}
       >
         <PopoverTrigger>{slots.trigger?.()}</PopoverTrigger>
         <PopoverContent
-          side={props.side}
-          sideOffset={props.sideOffset}
-          align={props.align}
-          alignOffset={props.alignOffset}
+          {...({ side: props.side, sideOffset: props.sideOffset, align: props.align, alignOffset: props.alignOffset } as Record<string, any>)}
           class="max-w-48 border-none p-1"
         >
           {slots.content?.()}

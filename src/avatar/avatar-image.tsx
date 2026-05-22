@@ -1,5 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { AvatarImage as RekaAvatarImage } from 'reka-ui'
+import { AvatarImage as AvatarImageBase } from 'reka-ui'
+// Thin wrapper: reka props (`src`, …) are forwarded via attrs at runtime.
+const RekaAvatarImage: any = AvatarImageBase
 import { cn } from '@/lib/utils'
 
 /**
@@ -15,7 +17,7 @@ export const AvatarImage = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaAvatarImage {...attrs} class={cn('h-full w-full object-cover', props.class)}>
+      <RekaAvatarImage {...(attrs as Record<string, any>)} class={cn('h-full w-full object-cover', props.class)}>
         {slots.default?.()}
       </RekaAvatarImage>
     )
