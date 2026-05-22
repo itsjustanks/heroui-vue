@@ -347,3 +347,52 @@ body {
 }
 .pg-diff-row--react .pg-diff-side-react .pg-diff-mark { color: #6b7177; }
 .pg-diff-row--react .pg-diff-side-vue { background: rgba(255, 255, 255, 0.022); }
+
+/* ── parity dashboard ───────────────────────────────────────────────────── */
+
+/* sidebar status dots */
+.pg-sidebar button { display: flex; align-items: center; gap: 8px; }
+.pg-nav-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pg-nav-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cdd1d6;
+}
+.pg-nav-dot.is-match { background: #16a34a; }
+.pg-nav-dot.is-minor { background: #d97706; }
+.pg-nav-dot.is-broken { background: #dc2626; }
+.pg-nav-dot.is-crash { background: #7c3aed; }
+
+/* header summary + per-component chips */
+.pg-parity-summary { display: flex; gap: 6px; }
+.pg-pchip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pg-pchip.is-match { color: #15803d; background: #dcfce7; }
+.pg-pchip.is-minor { color: #b45309; background: #fef3c7; }
+.pg-pchip.is-broken { color: #b91c1c; background: #fee2e2; }
+.pg-pchip.is-crash { color: #6d28d9; background: #ede9fe; }
+
+/* per-component divergence banner */
+.pg-parity-banner {
+  margin: 12px 0 0;
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.pg-parity-banner.is-minor { color: #92400e; background: #fffbeb; border: 1px solid #fde68a; }
+.pg-parity-banner.is-broken { color: #991b1b; background: #fef2f2; border: 1px solid #fecaca; }
+.pg-parity-banner.is-crash { color: #5b21b6; background: #f5f3ff; border: 1px solid #ddd6fe; }

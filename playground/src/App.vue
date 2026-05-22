@@ -5,6 +5,7 @@ import VueSafe from './vue-safe'
 import CodeBlock from './CodeBlock.vue'
 import DiffView from './DiffView.vue'
 import { categories, demos, loadDemo, type Demo, type DemoMeta } from './registry'
+import { parityOf, paritySummary, PARITY_LABEL } from './parity'
 
 type Mode = 'both' | 'vue' | 'react'
 
@@ -25,6 +26,10 @@ watch(selectedId, (id) => {
 const currentMeta = computed(
   () => demos.find((d) => d.id === selectedId.value) ?? demos[0]
 )
+
+// Live parity dashboard data.
+const summary = computed(() => paritySummary(demos.map((d) => d.id)))
+const currentParity = computed(() => parityOf(selectedId.value))
 
 function demosIn (category: string): DemoMeta[] {
   return demos.filter((d) => d.category === category)
@@ -55,6 +60,12 @@ watch(selectedId, async (id) => {
       <h1>heroui-vue</h1>
       <span class="pg-sub">parity playground — the Vue port vs. HeroUI v3 React</span>
       <span class="pg-spacer" />
+      <div class="pg-parity-summary" title="Visual parity against HeroUI v3 React">
+        <span class="pg-pchip is-match">{{ summary.match }} match</span>
+        <span class="pg-pchip is-minor">{{ summary.minor }} minor</span>
+        <span class="pg-pchip is-broken">{{ summary.broken }} broken</span>
+        <span class="pg-pchip is-crash">{{ summary.crash }} crash</span>
+      </div>
       <span class="pg-count">{{ demos.length }} components</span>
       <a href="https://www.npmjs.com/package/@itsjustanks/heroui-vue" target="_blank" rel="noopener">npm</a>
       <a href="https://github.com/itsjustanks/heroui-vue" target="_blank" rel="noopener">GitHub</a>
@@ -70,7 +81,12 @@ watch(selectedId, async (id) => {
             :class="{ 'is-active': d.id === selectedId }"
             @click="selectedId = d.id"
           >
-            {{ d.title }}
+            <span
+              class="pg-nav-dot"
+              :class="'is-' + parityOf(d.id).status"
+              :title="PARITY_LABEL[parityOf(d.id).status]"
+            />
+            <span class="pg-nav-text">{{ d.title }}</span>
           </button>
         </template>
       </nav>
@@ -79,12 +95,24 @@ watch(selectedId, async (id) => {
         <div class="pg-main-head">
           <h2>{{ current?.title ?? currentMeta.title }}</h2>
           <span class="pg-cat-tag">{{ current?.category ?? currentMeta.category }}</span>
+          <span class="pg-pchip" :class="'is-' + currentParity.status">
+            {{ PARITY_LABEL[currentParity.status] }}
+          </span>
           <span class="pg-spacer" />
           <div class="pg-toggle">
             <button :class="{ 'is-active': mode === 'both' }" @click="mode = 'both'">Both</button>
             <button :class="{ 'is-active': mode === 'vue' }" @click="mode = 'vue'">Vue</button>
             <button :class="{ 'is-active': mode === 'react' }" @click="mode = 'react'">React</button>
           </div>
+        </div>
+
+        <div
+          v-if="currentParity.note"
+          class="pg-parity-banner"
+          :class="'is-' + currentParity.status"
+        >
+          <strong>{{ PARITY_LABEL[currentParity.status] }}:</strong>
+          {{ currentParity.note }}
         </div>
 
         <div class="pg-section-title">Preview</div>
