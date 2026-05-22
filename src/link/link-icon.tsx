@@ -1,6 +1,5 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
 import { linkVariants } from '@heroui/styles'
-import { IconExternalLink } from '@/icons'
 import { cn } from '@/lib/utils'
 import { LINK_CONTEXT } from './link-context'
 
@@ -28,7 +27,24 @@ export const LinkIcon = defineComponent({
           data-default-icon={child ? undefined : 'true'}
           class={cn((ctx?.slots.value ?? linkVariants()).icon(), props.class)}
         >
-          {child ?? <IconExternalLink data-slot="link-default-icon" />}
+          {child ?? (
+            <svg
+              aria-hidden="true"
+              aria-label="External link icon"
+              data-slot="link-default-icon"
+              fill="none"
+              height="9"
+              role="presentation"
+              viewBox="0 0 7 7"
+              width="9"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.20592 6.84333L0.379822 6.01723L4.52594 1.8672H1.37819L1.38601 0.731812H6.48742V5.83714H5.34421L5.35203 2.6933L1.20592 6.84333Z"
+                fill="currentColor"
+              />
+            </svg>
+          )}
         </span>
       )
     }

@@ -1,4 +1,4 @@
-import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, toRef, type HTMLAttributes, type PropType } from 'vue'
 import { SelectRoot as RekaSelectRoot } from 'reka-ui'
 import { selectVariants, type SelectVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
@@ -16,6 +16,7 @@ export const SelectRoot = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     items: { type: Array as PropType<unknown[]>, default: undefined },
+    placeholder: { type: String, default: undefined },
     /** Visual variant. @default 'primary' */
     variant: { type: String as PropType<SelectVariants['variant']>, default: 'primary' },
     /** Stretch to container width. */
@@ -23,7 +24,7 @@ export const SelectRoot = defineComponent({
   },
   setup (props, { attrs, slots }) {
     const styles = computed(() => selectVariants({ variant: props.variant, fullWidth: props.fullWidth }))
-    provide(SELECT_CONTEXT, { slots: styles })
+    provide(SELECT_CONTEXT, { slots: styles, placeholder: toRef(props, 'placeholder') })
 
     return () => (
       <RekaSelectRoot {...attrs}>

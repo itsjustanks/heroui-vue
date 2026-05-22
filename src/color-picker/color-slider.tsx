@@ -109,6 +109,7 @@ export const ColorSliderTrack = defineComponent({
           onPointerup={slider?.onPointerUp}
           onKeydown={slider?.onKeyDown}
           style={{ background: slider?.gradient.value }}
+          data-disabled={slider?.disabled.value ? 'true' : undefined}
           class={cn(slots_.track(), props.class)}
         >
           {slots.default?.()}
@@ -138,7 +139,10 @@ export const ColorSliderThumb = defineComponent({
           {...attrs}
           data-slot="color-slider-thumb"
           class={cn(slots.thumb(), props.class)}
-          style={{ left: `${(slider?.ratio.value ?? 0) * 100}%` }}
+          style={{
+            left: `${(slider?.ratio.value ?? 0) * 100}%`,
+            transform: 'translate(-50%, -50%)'
+          }}
         />
       )
     }
@@ -274,7 +278,8 @@ export const ColorSliderRoot = defineComponent({
         role="group"
         aria-label={(attrs['aria-label'] as string | undefined) ?? `${props.channel} slider`}
         data-channel={props.channel}
-        data-disabled={props.isDisabled || undefined}
+        data-disabled={props.isDisabled ? 'true' : undefined}
+        data-orientation="horizontal"
         data-slot="color-slider"
         class={cn(sliderSlots.value.base(), props.class)}
       >

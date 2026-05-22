@@ -5,3 +5,4 @@
  * `heroui.min.css`, which was missing component styles (checkbox, etc.).
  */
 @import "@heroui/styles/css";
+@import "../../src/theme.css";

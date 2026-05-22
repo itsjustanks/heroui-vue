@@ -31,9 +31,21 @@ export const ToggleButtonRoot = defineComponent({
     /** Renders a square icon-only button (removes horizontal padding). */
     isIconOnly: { type: Boolean as PropType<ToggleButtonVariants['isIconOnly']>, default: false },
     /** Identifies the button within a `ToggleButtonGroup` (HeroUI prop). */
-    id:         { type: String as PropType<string>, default: undefined }
+    id:         { type: String as PropType<string>, default: undefined },
+    /** React Aria alias for controlled selected state. */
+    isSelected: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    /** React Aria alias for uncontrolled initial selected state. */
+    defaultSelected: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    /** React Aria change callback. */
+    onChange: { type: Function as PropType<(isSelected: boolean) => void>, default: undefined },
+    disabled: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isDisabled: { type: Boolean as PropType<boolean | undefined>, default: undefined }
   },
-  setup (props, { attrs, slots }) {
+  emits: {
+    'update:modelValue': (_value: boolean) => true,
+    'update:isSelected': (_value: boolean) => true
+  },
+  setup (props, { attrs, emit, slots }) {
     const ctx = inject(TOGGLE_BUTTON_GROUP_CONTEXT, null)
 
     return () => {
@@ -53,6 +65,7 @@ export const ToggleButtonRoot = defineComponent({
           <RekaToggleGroupItem
             {...(attrs as Record<string, any>)}
             value={props.id}
+            disabled={props.disabled ?? props.isDisabled}
             data-slot="toggle-button"
             class={className}
           >
@@ -69,8 +82,16 @@ export const ToggleButtonRoot = defineComponent({
         <RekaToggleAny
           {...attrs}
           id={props.id}
+          modelValue={props.isSelected ?? (attrs as Record<string, any>).modelValue}
+          defaultValue={props.defaultSelected}
+          disabled={props.disabled ?? props.isDisabled}
           data-slot="toggle-button"
           class={className}
+          onUpdate:modelValue={(value: boolean) => {
+            props.onChange?.(value)
+            emit('update:modelValue', value)
+            emit('update:isSelected', value)
+          }}
         >
           {(slotProps: Record<string, unknown>) => slots.default?.(slotProps)}
         </RekaToggleAny>

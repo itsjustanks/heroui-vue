@@ -21,6 +21,8 @@ export const ComboBoxRoot = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     items: { type: Array as PropType<unknown[]>, default: undefined },
     onClear: { type: Function as PropType<() => void>, default: undefined },
+    openOnFocus: { type: Boolean, default: true },
+    openOnClick: { type: Boolean, default: true },
     /** Stretch to container width. Mirrors HeroUI `combo-box--full-width`. */
     fullWidth: { type: Boolean as PropType<ComboBoxVariants['fullWidth']>, default: false },
     /**
@@ -37,6 +39,8 @@ export const ComboBoxRoot = defineComponent({
     return () => (
       <ComboboxRoot
         {...attrs}
+        openOnFocus={props.openOnFocus}
+        openOnClick={props.openOnClick}
         data-slot="combo-box"
         class={cn(styles.value.base(), props.class)}
       >

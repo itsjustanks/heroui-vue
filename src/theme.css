@@ -1,28 +1,18 @@
 /* =============================================================================
- * heroui — package theme (OSS)
+ * heroui-vue — reka-ui ↔ @heroui/styles bridge
  *
- * The design-token layer for this package. Repaints every `heroui/*` component
- * to HeroUI v3's real design language by mapping the repo's CSS-variable tokens
- * to HeroUI v3's actual oklch values. Because every component is token-based
- * (Tailwind utilities → `var(--token)`), this one file themes the whole package.
+ * This file does NOT define design tokens. The palette, radii, shadows, spacing
+ * and dark-mode values are owned entirely by `@heroui/styles` (its
+ * `themes/default` — imported via `@heroui/styles/css`). That IS the real
+ * HeroUI v3 theme; redefining tokens here only desynchronises us from upstream.
  *
- * USAGE: `@import` this from the app's CSS entry (or import the Pro package's
- * `theme.css`, which chains this one). Comment the import out to revert to the
- * host app's original brand tokens — the components keep working either way.
- *
- * Source of truth: `@heroui/react` default theme (oklch palette + radii).
- * Rules are intentionally UNLAYERED so they win over a host `@layer base`.
+ * The sole job of this file is to bridge the handful of places where reka-ui's
+ * DOM state attributes differ from the `data-*` attributes HeroUI's CSS expects.
+ * reka-ui emits `data-state="checked|unchecked|indeterminate|on|active"`;
+ * HeroUI's CSS keys selection styling off `data-selected` / `data-indeterminate`
+ * (it already resolves the control fill via `aria-checked`, which reka emits).
+ * The rules below cover only the remaining gaps.
  * ============================================================================= */
-
-/*
- * reka-ui ↔ HeroUI CSS data-attribute bridge
- *
- * reka-ui uses `data-state="checked|unchecked|indeterminate"` while HeroUI's
- * CSS targets `data-selected="true"` / `data-indeterminate="true"`. The
- * @heroui/styles checkbox CSS already handles `aria-checked="true"` (which
- * reka-ui does emit) for the control fill. We add bridging only for the gaps:
- * the indicator border-color rule which checks only `data-selected`/`data-indeterminate`.
- */
 
 /* Checkbox indicator border-color when checked (reka uses data-state, HeroUI uses data-selected) */
 .checkbox[data-state="checked"] .checkbox__indicator,
@@ -35,80 +25,41 @@
   transition: stroke-dashoffset 150ms linear 15ms;
 }
 
-:root {
-  /* base */
-  --background: oklch(0.9702 0 0);
-  --foreground: oklch(0.2103 0.0059 285.89);
-
-  /* surfaces — HeroUI `surface` (cards) / `overlay` (popovers, menus, modals) */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2103 0.0059 285.89);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2103 0.0059 285.89);
-
-  /* primary action — HeroUI `accent` (the HeroUI blue) */
-  --primary: oklch(0.6204 0.195 253.83);
-  --primary-foreground: oklch(0.9911 0 0);
-
-  /* secondary / subtle surfaces — HeroUI `default` */
-  --secondary: oklch(0.94 0.001 286.375);
-  --secondary-foreground: oklch(0.2103 0.0059 285.89);
-  --accent: oklch(0.94 0.001 286.375);
-  --accent-foreground: oklch(0.2103 0.0059 285.89);
-
-  /* muted — HeroUI `surface-secondary` (bg) + `muted` (text) */
-  --muted: oklch(0.9524 0.0013 286.37);
-  --muted-foreground: oklch(0.5517 0.0138 285.94);
-
-  /* status — HeroUI `danger` / `success` / `warning` */
-  --destructive: oklch(0.6532 0.2328 25.74);
-  --destructive-foreground: oklch(0.9911 0 0);
-  --success: oklch(0.7329 0.1935 150.81);
-  --success-foreground: oklch(0.2103 0.0059 285.89);
-  --warning: oklch(0.7819 0.1585 72.33);
-  --warning-foreground: oklch(0.2103 0.0059 285.89);
-  --danger: oklch(0.6532 0.2328 25.74);
-  --danger-foreground: oklch(0.9911 0 0);
-
-  /* lines + focus — HeroUI `border` / `separator` / `focus` */
-  --border: oklch(0.9 0.004 286.32);
-  --input: oklch(0.9 0.004 286.32);
-  --ring: oklch(0.6204 0.195 253.83);
-
-  /* HeroUI radius scale */
-  --radius: 0.5rem;
+/* reka emits `data-state="on"` for toggles; HeroUI's CSS keys off `data-selected` */
+.toggle-button[data-state="on"] {
+  background-color: var(--toggle-button-bg-selected);
+  color: var(--toggle-button-fg-selected);
 }
 
-.dark {
-  --background: oklch(0.12 0.005 285.823);
-  --foreground: oklch(0.9911 0 0);
+@media (hover: hover) {
+  .toggle-button[data-state="on"]:hover,
+  .toggle-button[data-state="on"][data-hovered="true"] {
+    background-color: var(--toggle-button-bg-selected-hover);
+  }
+}
 
-  --card: oklch(0.2103 0.0059 285.89);
-  --card-foreground: oklch(0.9911 0 0);
-  --popover: oklch(0.2103 0.0059 285.89);
-  --popover-foreground: oklch(0.9911 0 0);
+.toggle-button[data-state="on"]:active,
+.toggle-button[data-state="on"][data-pressed="true"] {
+  background-color: var(--toggle-button-bg-selected-pressed);
+}
 
-  --primary: oklch(0.6204 0.195 253.83);
-  --primary-foreground: oklch(0.9911 0 0);
+/* reka emits `data-state="active"` for tags; HeroUI keys off `data-selected`/`aria-current` */
+.tag[data-state="active"],
+.tag[aria-current="true"] {
+  background-color: var(--accent-soft);
+  color: var(--accent-soft-foreground);
+}
 
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.9911 0 0);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.9911 0 0);
+@media (hover: hover) {
+  .tag[data-state="active"]:hover,
+  .tag[data-state="active"][data-hovered="true"],
+  .tag[aria-current="true"]:hover,
+  .tag[aria-current="true"][data-hovered="true"] {
+    background-color: var(--accent-soft-hover);
+  }
+}
 
-  --muted: oklch(0.257 0.0037 286.14);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-
-  --destructive: oklch(0.594 0.1967 24.63);
-  --destructive-foreground: oklch(0.9911 0 0);
-  --success: oklch(0.7329 0.1935 150.81);
-  --success-foreground: oklch(0.2103 0.0059 285.89);
-  --warning: oklch(0.8203 0.1388 76.34);
-  --warning-foreground: oklch(0.2103 0.0059 285.89);
-  --danger: oklch(0.594 0.1967 24.63);
-  --danger-foreground: oklch(0.9911 0 0);
-
-  --border: oklch(0.28 0.006 286.033);
-  --input: oklch(0.28 0.006 286.033);
-  --ring: oklch(0.6204 0.195 253.83);
+/* Select placeholder colour when no value is chosen */
+.select__value[data-placeholder]:not([data-placeholder="false"]) {
+  color: var(--field-placeholder);
 }

@@ -73,9 +73,8 @@ export const RangeCalendarRoot = defineComponent({
             {...(attrs as Record<string, any>)}
             data-slot="range-calendar"
             class={cn(styles.value.base(), reactClass(props))}
-          >
-            {slots.default}
-          </RekaDateRangePickerCalendar>
+            v-slots={{ default: slots.default }}
+          />
         )
       }
 
@@ -84,9 +83,8 @@ export const RangeCalendarRoot = defineComponent({
           {...(attrs as Record<string, any>)}
           data-slot="range-calendar"
           class={cn(styles.value.base(), reactClass(props))}
-        >
-          {slots.default}
-        </RekaRangeCalendarRoot>
+          v-slots={{ default: slots.default }}
+        />
       )
     }
   }

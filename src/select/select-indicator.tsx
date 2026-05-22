@@ -31,7 +31,7 @@ export const SelectIndicator = defineComponent({
           <span
             {...attrs}
             data-slot="select-indicator"
-            data-open={isOpen ? '' : undefined}
+            data-open={isOpen ? 'true' : undefined}
             class={indicatorClass}
           >
             {slots.default()}
@@ -43,7 +43,7 @@ export const SelectIndicator = defineComponent({
         <IconChevronDown
           {...attrs}
           data-slot="select-default-indicator"
-          data-open={isOpen ? '' : undefined}
+          data-open={isOpen ? 'true' : undefined}
           class={indicatorClass}
         />
       )

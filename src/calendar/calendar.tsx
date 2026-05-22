@@ -69,9 +69,8 @@ export const CalendarRoot = defineComponent({
             {...(attrs as Record<string, any>)}
             data-slot="calendar"
             class={cn(styles.value.base(), reactClass(props))}
-          >
-            {slots.default}
-          </RekaDatePickerCalendar>
+            v-slots={{ default: slots.default }}
+          />
         )
       }
 
@@ -80,9 +79,8 @@ export const CalendarRoot = defineComponent({
           {...(attrs as Record<string, any>)}
           data-slot="calendar"
           class={cn(styles.value.base(), reactClass(props))}
-        >
-          {slots.default}
-        </RekaCalendarRoot>
+          v-slots={{ default: slots.default }}
+        />
       )
     }
   }

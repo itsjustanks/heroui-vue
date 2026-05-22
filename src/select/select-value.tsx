@@ -13,13 +13,15 @@ export const SelectValue = defineComponent({
   name: 'SelectValue',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    placeholder: { type: String, default: undefined }
   },
   setup (props, { attrs, slots }) {
     const ctx = inject(SELECT_CONTEXT, null)
     return () => (
       <RekaSelectValue
         {...attrs}
+        placeholder={props.placeholder ?? ctx?.placeholder.value}
         data-slot="select-value"
         class={cn((ctx?.slots.value ?? selectVariants()).value(), props.class)}
       >

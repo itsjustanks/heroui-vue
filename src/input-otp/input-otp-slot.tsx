@@ -49,10 +49,10 @@ export const InputOTPSlot = defineComponent({
         <div
           {...attrs}
           data-slot="input-otp-slot"
-          data-active={isActive.value ? '' : undefined}
-          data-filled={isFilled.value ? '' : undefined}
-          data-disabled={isDisabled.value ? '' : undefined}
-          data-invalid={isInvalid.value ? '' : undefined}
+          data-active={isActive.value ? 'true' : undefined}
+          data-filled={isFilled.value ? 'true' : undefined}
+          data-disabled={isDisabled.value ? 'true' : undefined}
+          data-invalid={isInvalid.value ? 'true' : undefined}
           class={cn(slots.slot(), props.class)}
         >
           {isFilled.value

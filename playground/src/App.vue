@@ -94,9 +94,11 @@ watch(selectedId, async (id) => {
           <section v-if="mode !== 'react'" class="pg-pane pg-pane--vue">
             <div class="pg-pane-label"><span class="dot" />Vue · @itsjustanks/heroui-vue</div>
             <div class="pg-pane-body">
-              <VueSafe :key="'vue-' + current.id">
-                <component :is="current.vue" />
-              </VueSafe>
+              <div class="vue-host">
+                <VueSafe :key="'vue-' + current.id">
+                  <component :is="current.vue" />
+                </VueSafe>
+              </div>
             </div>
           </section>
           <section v-if="mode !== 'vue'" class="pg-pane pg-pane--react">

@@ -17,14 +17,17 @@ export const RadioGroupRoot = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** Visual variant. @default 'primary' */
-    variant: { type: String as PropType<RadioGroupVariants['variant']>, default: 'primary' }
+    variant: { type: String as PropType<RadioGroupVariants['variant']>, default: 'primary' },
+    orientation: { type: String as PropType<'horizontal' | 'vertical'>, default: 'vertical' }
   },
   setup (props, { attrs, slots }) {
     const styles = computed(() => radioGroupVariants({ variant: props.variant }))
     return () => (
       <RekaRadioGroupRoot
         {...attrs}
+        orientation={props.orientation}
         data-slot="radio-group"
+        data-orientation={props.orientation}
         class={cn(styles.value, props.class)}
       >
         {slots.default?.()}

@@ -59,6 +59,7 @@ export const ColorPickerPopover = defineComponent({
           {...attrs}
           align={props.align}
           sideOffset={props.sideOffset}
+          data-slot="color-picker-popover"
           class={cn(styles.popover(), props.class)}
         >
           {slots.default?.()}

@@ -1,7 +1,6 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
-import { SelectIcon, SelectTrigger as RekaSelectTrigger } from 'reka-ui'
+import { SelectTrigger as RekaSelectTrigger } from 'reka-ui'
 import { selectVariants } from '@heroui/styles'
-import { IconChevronDown } from '@/icons'
 import { cn } from '@/lib/utils'
 import { SELECT_CONTEXT } from './select-context'
 
@@ -26,12 +25,6 @@ export const SelectTrigger = defineComponent({
         class={cn((ctx?.slots.value ?? selectVariants()).trigger(), props.class)}
       >
         {slots.default?.()}
-        <SelectIcon asChild>
-          <IconChevronDown
-            class={cn((ctx?.slots.value ?? selectVariants()).indicator())}
-            data-slot="select-default-indicator"
-          />
-        </SelectIcon>
       </RekaSelectTrigger>
     )
   }

@@ -1,4 +1,4 @@
-import { computed, defineComponent, provide, type CSSProperties, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, ref, type HTMLAttributes, type PropType } from 'vue'
 import { SliderRoot as RekaSliderRoot } from 'reka-ui'
 import { sliderVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
@@ -17,6 +17,7 @@ export const SliderRoot = defineComponent({
   props: {
     class:       { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     modelValue:  { type: Array as PropType<number[]>, default: undefined },
+    defaultValue: { type: [Array, Number] as PropType<number[] | number>, default: undefined },
     /** Minimum value of the range. @default 0 */
     min:         { type: Number, default: 0 },
     /** Maximum value of the range. @default 100 */
@@ -29,7 +30,13 @@ export const SliderRoot = defineComponent({
   emits: ['update:modelValue'],
   setup (props, { attrs, emit, slots }) {
     const styles      = computed(() => sliderVariants({}))
-    const modelValue  = computed(() => props.modelValue ?? [])
+    const normalizeValue = (value: number[] | number | undefined): number[] => {
+      if (Array.isArray(value)) return value
+      if (typeof value === 'number') return [value]
+      return [props.min]
+    }
+    const localValue  = ref<number[]>(normalizeValue(props.defaultValue))
+    const modelValue  = computed(() => props.modelValue ?? localValue.value)
     const min         = computed(() => props.min)
     const max         = computed(() => props.max)
     const orientation = computed(() => props.orientation)
@@ -40,14 +47,19 @@ export const SliderRoot = defineComponent({
     return () => (
       <RekaSliderRoot
         {...attrs}
+        as="div"
         modelValue={props.modelValue}
+        defaultValue={normalizeValue(props.defaultValue)}
         min={props.min}
         max={props.max}
         orientation={props.orientation}
         disabled={props.disabled}
         data-slot="slider"
         class={cn(styles.value.base(), props.class)}
-        onUpdate:modelValue={(v: number[] | undefined) => emit('update:modelValue', v ?? [])}
+        onUpdate:modelValue={(v: number[] | undefined) => {
+          localValue.value = v ?? []
+          emit('update:modelValue', v ?? [])
+        }}
       >
         {slots.default?.()}
       </RekaSliderRoot>

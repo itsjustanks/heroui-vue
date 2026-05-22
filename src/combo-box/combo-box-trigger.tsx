@@ -24,7 +24,7 @@ export const ComboBoxTrigger = defineComponent({
       <ComboboxTrigger
         {...attrs}
         data-slot="combo-box-trigger"
-        data-open={rootContext.open.value ? '' : undefined}
+        data-open={rootContext.open.value ? 'true' : undefined}
         class={cn((ctx?.slots.value ?? comboBoxVariants()).trigger(), props.class)}
       >
         {slots.default

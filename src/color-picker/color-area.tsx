@@ -37,9 +37,11 @@ export const ColorAreaThumb = defineComponent({
           data-slot="color-area-thumb"
           class={cn(slots.thumb(), props.class)}
           style={{
+            position: 'absolute',
             left: `${color.s}%`,
             top: `${100 - color.v}%`,
-            background: formatColor(color, 'rgb')
+            transform: 'translate(-50%, -50%)',
+            '--color-area-thumb-color': formatColor(color, 'rgb')
           }}
         />
       )
@@ -119,14 +121,20 @@ export const ColorAreaRoot = defineComponent({
         tabindex={props.isDisabled ? -1 : 0}
         aria-label={(attrs['aria-label'] as string | undefined) ?? 'Color area'}
         aria-disabled={props.isDisabled || undefined}
-        data-disabled={props.isDisabled || undefined}
+        data-disabled={props.isDisabled ? 'true' : undefined}
         data-color-space={props.colorSpace}
         data-slot="color-area"
         onPointerdown={onPointerDown}
         onPointermove={onPointerMove}
         onPointerup={onPointerUp}
         onKeydown={onKeyDown}
-        style={{ backgroundColor: hueToCss(color.value.h) }}
+        style={{
+          '--color-area-background': [
+            'linear-gradient(to top, black, transparent)',
+            'linear-gradient(to right, white, transparent)',
+            hueToCss(color.value.h)
+          ].join(', ')
+        }}
         class={cn(styles.value.base(), props.class)}
       >
         {slots.default ? slots.default() : <ColorAreaThumb />}

@@ -2,6 +2,8 @@
  * heroui-vue — a faithful Vue 3 port of HeroUI v3, built on reka-ui.
  * Auto-generated barrel. Prefer per-component imports for tree-shaking.
  */
+import './theme.css'
+
 export * from './icons'
 export { vHerouiState, type HerouiStateOptions } from './composables/use-heroui-state'
 export * from './accordion'
@@ -23,6 +25,7 @@ export * from './collapsible'
 export * from './color-picker'
 export * from './combo-box'
 export * from './date-field'
+export * from './date-input-group'
 export * from './date-picker'
 export * from './date-range-picker'
 export * from './description'
@@ -72,3 +75,4 @@ export * from './toggle'
 export * from './toolbar'
 export * from './tooltip'
 export * from './typography'
+export * from './compat'
