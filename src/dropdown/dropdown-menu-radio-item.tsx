@@ -2,7 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DropdownMenuRadioItem as DropdownMenuRadioItemBase, DropdownMenuItemIndicator } from 'reka-ui'
 // Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
 const RekaDropdownMenuRadioItem: any = DropdownMenuRadioItemBase
-import { Circle as IconCircle } from 'lucide-vue-next'
+import { IconCircle } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /** DropdownMenuRadioItem — HeroUI menu-item with a leading dot indicator. */

@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { CheckboxIndicator } from 'reka-ui'
-import { Check as IconCheck } from 'lucide-vue-next'
+import { IconCheck } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

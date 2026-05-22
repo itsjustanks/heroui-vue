@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { Minus as IconMinus, Plus as IconPlus } from 'lucide-vue-next'
+import { IconMinus, IconPlus } from '@/icons'
 import { NumberFieldDecrement, NumberFieldIncrement } from 'reka-ui'
 import { cn } from '@/lib/utils'
 

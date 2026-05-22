@@ -2,7 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { SelectItem as SelectItemBase, SelectItemIndicator, SelectItemText } from 'reka-ui'
 // Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
 const RekaSelectItem: any = SelectItemBase
-import { Check as IconCheck } from 'lucide-vue-next'
+import { IconCheck } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

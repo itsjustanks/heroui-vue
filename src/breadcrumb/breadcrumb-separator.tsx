@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { ChevronRight as IconChevronRight } from 'lucide-vue-next'
+import { IconChevronRight } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

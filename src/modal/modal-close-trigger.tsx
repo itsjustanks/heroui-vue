@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DialogClose } from 'reka-ui'
-import { X as IconX } from 'lucide-vue-next'
+import { IconX } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /** ModalCloseTrigger — the corner close button (HeroUI `modal__close-trigger`). */

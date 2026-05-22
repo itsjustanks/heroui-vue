@@ -2,6 +2,7 @@
  * heroui-vue — a faithful Vue 3 port of HeroUI v3, built on reka-ui.
  * Auto-generated barrel. Prefer per-component imports for tree-shaking.
  */
+export * from './icons'
 export * from './accordion'
 export * from './alert-dialog'
 export * from './alert'

@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { PaginationPrev as RekaPaginationPrev } from 'reka-ui'
-import { ChevronLeft as IconChevronLeft } from 'lucide-vue-next'
+import { IconChevronLeft } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

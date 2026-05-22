@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { MenubarCheckboxItem as RekaMenubarCheckboxItem, MenubarItemIndicator } from 'reka-ui'
-import { Check as IconCheck } from 'lucide-vue-next'
+import { IconCheck } from '@/icons'
 import { cn } from '@/lib/utils'
 import type { HTMLAttributes, PropType } from 'vue'
 

@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { ChevronLeft as IconChevronLeft } from 'lucide-vue-next'
+import { IconChevronLeft } from '@/icons'
 import { RangeCalendarPrev as RekaRangeCalendarPrev, useForwardProps } from 'reka-ui'
 import type { RangeCalendarPrevProps } from 'reka-ui'
 import { cn } from '@/lib/utils'

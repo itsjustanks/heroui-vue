@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { SelectScrollUpButton as RekaSelectScrollUpButton } from 'reka-ui'
-import { ChevronUp as IconChevronUp } from 'lucide-vue-next'
+import { IconChevronUp } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

@@ -7,15 +7,14 @@ in-app `heroui/` library, packaged (Vite lib build, MIT), git-initialised.
 
 ## 0. Current status & next steps
 
-Done: copy + flatten imports + package scaffold + `npm install` + green build +
-**all 61 families converted to HeroUI BEM classes**, styled by `@heroui/styles`.
-`npm run build` green (`dist/heroui-vue.js` 186 KB + `.css` + 388 `.d.ts`).
+Done: package scaffold + `npm install` + **all 61 families on HeroUI BEM classes**
+(styled by `@heroui/styles`) + **gravity-ui icon set** (lucide removed). `npm run
+build` green (`dist/heroui-vue.js` 191 KB + `.css` + 389 `.d.ts`).
 
 Next, in this repo:
-1. lucide → gravity-ui icon swap (§3.2).
-2. Visual QA against heroui.com; wire popover `data-entering`/`data-placement`
+1. Visual QA against heroui.com; wire popover `data-entering`/`data-placement`
    where animations need it.
-3. GitHub repo creation + `npm publish` are user-triggered when ready.
+2. GitHub repo creation + `npm publish` are user-triggered when ready.
 
 The in-app `unfold-app/src/components/heroui/` copy is untouched and still
 working — `unfold-app` switches to consume this package at rollout step 6.

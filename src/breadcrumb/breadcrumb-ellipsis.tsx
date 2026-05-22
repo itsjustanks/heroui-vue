@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { MoreHorizontal as IconMoreHorizontal } from 'lucide-vue-next'
+import { IconMoreHorizontal } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

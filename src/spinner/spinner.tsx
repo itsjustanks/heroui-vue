@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { Loader2 as IconLoader2 } from 'lucide-vue-next'
+import { IconLoader } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**
@@ -25,7 +25,7 @@ export const Spinner = defineComponent({
   },
   setup (props, { attrs }) {
     return () => (
-      <IconLoader2
+      <IconLoader
         role="status"
         aria-label="Loading"
         data-slot="spinner"

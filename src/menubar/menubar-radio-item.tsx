@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { MenubarRadioItem as MenubarRadioItemBase, MenubarItemIndicator } from 'reka-ui'
 // Thin wrapper: reka props (`value`, …) are forwarded via attrs at runtime.
 const RekaMenubarRadioItem: any = MenubarRadioItemBase
-import { Circle as IconCircle } from 'lucide-vue-next'
+import { IconCircle } from '@/icons'
 import { cn } from '@/lib/utils'
 import type { HTMLAttributes, PropType } from 'vue'
 

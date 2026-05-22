@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { MenubarSubTrigger as RekaMenubarSubTrigger } from 'reka-ui'
-import { ChevronRight as IconChevronRight } from 'lucide-vue-next'
+import { IconChevronRight } from '@/icons'
 import { cn } from '@/lib/utils'
 import type { HTMLAttributes, PropType } from 'vue'
 

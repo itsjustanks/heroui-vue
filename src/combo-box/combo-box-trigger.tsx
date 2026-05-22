@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { ComboboxTrigger } from 'reka-ui'
-import { ChevronDown as IconChevronDown } from 'lucide-vue-next'
+import { IconChevronDown } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

@@ -5,9 +5,8 @@ composable UI components built on [reka-ui](https://reka-ui.com) (the Vue analog
 of React Aria).
 
 > **Status: work in progress.** All 61 component families render HeroUI v3's real
-> BEM class names and are styled by HeroUI's own `@heroui/styles` package.
-> Remaining: the lucide to gravity-ui icon swap, and visual QA. See
-> [`PROJECT.md`](./PROJECT.md).
+> BEM class names (styled by HeroUI's own `@heroui/styles`) and use the gravity-ui
+> icon set. Remaining: visual QA. See [`PROJECT.md`](./PROJECT.md).
 
 ## What it is
 
@@ -54,6 +53,8 @@ Stateful components use `v-model`; every component accepts a `class` prop.
 - **styling** — components emit HeroUI v3 BEM class names; the visual layer is
   HeroUI's own `@heroui/styles` (a dependency). HeroUI's CSS keys off native
   pseudo-classes, which work directly over reka-ui's real DOM.
+- **icons** — the gravity-ui icon set (vendored from `@gravity-ui/icons`, MIT),
+  exported as `Icon*` Vue components.
 
 ## Relationship to HeroUI
 

@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { ChevronLeft as IconChevronLeft, ChevronRight as IconChevronRight } from 'lucide-vue-next'
+import { IconChevronLeft, IconChevronRight } from '@/icons'
 import {
   DateRangePickerCalendar as RekaDateRangePickerCalendar,
   DateRangePickerCell,

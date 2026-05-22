@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { CalendarDays as IconCalendarDays } from 'lucide-vue-next'
+import { IconCalendarDays } from '@/icons'
 import { DatePickerTrigger as RekaDatePickerTrigger } from 'reka-ui'
 import { cn } from '@/lib/utils'
 

@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DropdownMenuCheckboxItem as RekaDropdownMenuCheckboxItem, DropdownMenuItemIndicator } from 'reka-ui'
-import { Check as IconCheck } from 'lucide-vue-next'
+import { IconCheck } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /** DropdownMenuCheckboxItem — HeroUI menu-item with a leading checkmark indicator. */

@@ -25,7 +25,6 @@ export default defineConfig({
       external: [
         'vue',
         'reka-ui',
-        'lucide-vue-next',
         'class-variance-authority',
         '@vueuse/core',
         'vue-sonner',

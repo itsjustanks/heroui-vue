@@ -1,5 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { ExternalLink as IconExternalLink } from 'lucide-vue-next'
+import { IconExternalLink } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

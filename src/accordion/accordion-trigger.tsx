@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { AccordionHeader, AccordionTrigger as RekaAccordionTrigger, injectAccordionItemContext } from 'reka-ui'
-import { ChevronDown as IconChevronDown } from 'lucide-vue-next'
+import { IconChevronDown } from '@/icons'
 import { cn } from '@/lib/utils'
 
 /**

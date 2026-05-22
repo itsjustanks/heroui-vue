@@ -42,7 +42,6 @@
     "@vueuse/core": "^12.8.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "lucide-vue-next": "^0.475.0",
     "reka-ui": "^2.8.0",
     "tailwind-merge": "^2.5.5",
     "vue-sonner": "^1.2.1"
