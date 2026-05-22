@@ -49,6 +49,7 @@
     "check:parity": "node scripts/check-parity.mjs",
     "check:upstream": "node scripts/check-upstream.mjs",
     "check:coverage": "node scripts/check-coverage.mjs",
+    "check:variant-props": "node scripts/check-variant-props.mjs",
     "check:bem-drift": "node scripts/check-bem-drift.mjs"
   },
   "peerDependencies": {

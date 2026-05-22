@@ -25,13 +25,18 @@ export const DatePickerRoot = defineComponent({
     provide(DATE_FIELD_KIND, 'date-picker')
 
     return () => (
-      <RekaDatePickerRoot
-        {...(attrs as Record<string, unknown>)}
-        data-slot="date-picker"
-        data-required={(attrs as Record<string, unknown>).required ? '' : undefined}
-        class={cn(styles.value.base(), props.class)}
-      >
-        {slots.default?.()}
+      // reka-ui's DatePickerRoot is element-less (it is a PopoverRoot), so it
+      // cannot carry the `.date-picker` class. Render an explicit container —
+      // HeroUI keys the layout AND `pointer-events-auto` on the trigger suffix
+      // off `.date-picker`; without this element the trigger is unclickable.
+      <RekaDatePickerRoot {...(attrs as Record<string, unknown>)}>
+        <div
+          data-slot="date-picker"
+          data-required={(attrs as Record<string, unknown>).required ? '' : undefined}
+          class={cn(styles.value.base(), props.class)}
+        >
+          {slots.default?.()}
+        </div>
       </RekaDatePickerRoot>
     )
   },

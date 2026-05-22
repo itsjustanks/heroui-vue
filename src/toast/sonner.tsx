@@ -82,6 +82,10 @@ export const ToastProvider = defineComponent({
           class={[slots.region(), props.class]}
           data-slot="toast-region"
           toastOptions={{
+            // `unstyled` drops vue-sonner's own toast styling (8px radius,
+            // border, fixed width) so HeroUI's `.toast` BEM fully controls the
+            // look — otherwise vue-sonner's CSS and HeroUI's collide.
+            unstyled: true,
             ...props.toastOptions,
             classes: {
               toast: slots.toast(),

@@ -4,6 +4,7 @@
  * Aggregates:
  *   - check-upstream    is `@heroui/styles` behind its latest npm release?
  *   - check-coverage    which HeroUI components are not yet ported?
+ *   - check-variant-props does each Vue family expose upstream style variants?
  *   - check-bem-drift   does every family still emit HeroUI's BEM classes?
  *
  * This is a diagnostic report: it always exits 0 once the report is printed
@@ -12,6 +13,7 @@
  */
 import { run as runUpstream } from './check-upstream.mjs'
 import { run as runCoverage } from './check-coverage.mjs'
+import { run as runVariantProps } from './check-variant-props.mjs'
 import { run as runBemDrift } from './check-bem-drift.mjs'
 
 const MARK = { ok: 'OK  ', warn: 'WARN', error: 'FAIL' }
@@ -28,6 +30,7 @@ async function main () {
   const results = [
     await runUpstream(),
     await runCoverage(),
+    await runVariantProps(),
     await runBemDrift()
   ]
   for (const result of results) printSection(result)

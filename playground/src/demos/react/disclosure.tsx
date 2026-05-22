@@ -1,14 +1,16 @@
-import { Disclosure } from '@heroui/react'
+import { Button, Disclosure } from '@heroui/react'
 
+/** Disclosure demo — HeroUI v3 React, mirrors the docs' basic example, which
+ *  composes a styled Button as the trigger via `slot="trigger"`. */
 export default function CollapsibleDemo() {
   return (
     <div className="demo-col">
       <Disclosure>
         <Disclosure.Heading>
-          <Disclosure.Trigger>
+          <Button slot="trigger" variant="secondary">
             What is HeroUI?
             <Disclosure.Indicator />
-          </Disclosure.Trigger>
+          </Button>
         </Disclosure.Heading>
         <Disclosure.Content>
           <Disclosure.Body>
@@ -19,10 +21,10 @@ export default function CollapsibleDemo() {
 
       <Disclosure>
         <Disclosure.Heading>
-          <Disclosure.Trigger>
+          <Button slot="trigger" variant="secondary">
             Is it open source?
             <Disclosure.Indicator />
-          </Disclosure.Trigger>
+          </Button>
         </Disclosure.Heading>
         <Disclosure.Content>
           <Disclosure.Body>

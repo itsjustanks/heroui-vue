@@ -1,14 +1,17 @@
 import { defineComponent } from 'vue'
-import { Disclosure } from '@itsjustanks/heroui-vue'
+import { Button, Disclosure } from '@itsjustanks/heroui-vue'
 
-/** Disclosure demo — Vue TSX, mirrors HeroUI v3's disclosure basic demo. */
+/** Disclosure demo — Vue TSX, mirrors HeroUI v3's disclosure basic demo, which
+ *  composes a styled `Button` as the trigger via `Disclosure.Trigger`. */
 export default defineComponent(() => () => (
   <div class="demo-col">
     <Disclosure>
       <Disclosure.Heading>
-        <Disclosure.Trigger>
-          What is HeroUI?
-          <Disclosure.Indicator />
+        <Disclosure.Trigger asChild>
+          <Button variant="secondary">
+            What is HeroUI?
+            <Disclosure.Indicator />
+          </Button>
         </Disclosure.Trigger>
       </Disclosure.Heading>
       <Disclosure.Content>
@@ -20,9 +23,11 @@ export default defineComponent(() => () => (
 
     <Disclosure>
       <Disclosure.Heading>
-        <Disclosure.Trigger>
-          Is it open source?
-          <Disclosure.Indicator />
+        <Disclosure.Trigger asChild>
+          <Button variant="secondary">
+            Is it open source?
+            <Disclosure.Indicator />
+          </Button>
         </Disclosure.Trigger>
       </Disclosure.Heading>
       <Disclosure.Content>

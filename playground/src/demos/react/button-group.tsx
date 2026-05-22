@@ -1,18 +1,33 @@
 import { Button, ButtonGroup } from '@heroui/react'
+import { currentExample } from '../shared'
 
 export default function ButtonGroupDemo() {
+  const example = currentExample('basic')
+  const variant = example === 'variants' ? 'outline' : undefined
+  const size = example === 'sizes' ? 'sm' : undefined
+  const fullWidth = example === 'full-width'
+  const orientation = example === 'orientation' ? 'vertical' : 'horizontal'
+  const disabled = example === 'disabled'
+  const showSeparator = example !== 'without-separator'
+
   return (
     <div className="demo-col">
       <div className="demo-row">
-        <ButtonGroup>
+        <ButtonGroup
+          variant={variant}
+          size={size}
+          fullWidth={fullWidth}
+          orientation={orientation}
+          isDisabled={disabled}
+        >
           <Button>Previous</Button>
           <Button>
-            <ButtonGroup.Separator />
+            {showSeparator && <ButtonGroup.Separator />}
             Next
           </Button>
         </ButtonGroup>
       </div>
-      <div className="demo-row">
+      {example === 'variants' && <div className="demo-row">
         <ButtonGroup variant="tertiary">
           <Button>Left</Button>
           <Button>
@@ -24,8 +39,8 @@ export default function ButtonGroupDemo() {
             Right
           </Button>
         </ButtonGroup>
-      </div>
-      <div className="demo-row">
+      </div>}
+      {example === 'variants' && <div className="demo-row">
         <ButtonGroup variant="outline">
           <Button>Save</Button>
           <Button>
@@ -37,7 +52,7 @@ export default function ButtonGroupDemo() {
             Export
           </Button>
         </ButtonGroup>
-      </div>
+      </div>}
     </div>
   )
 }

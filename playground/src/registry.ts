@@ -1,32 +1,44 @@
 import type { Component } from 'vue'
 import type { ComponentType } from 'react'
+import {
+  upstreamComponents,
+  upstreamExamples,
+  type ComponentMeta as UpstreamComponentMeta,
+  type ExampleMeta as UpstreamExampleMeta
+} from './example-manifest'
 
 /**
- * Demos are discovered from the filesystem: `demos/vue/<id>.tsx` paired with
- * `demos/react/<id>.tsx`. A component shows up only when both demo files exist.
+ * Demos are discovered from the filesystem:
+ * `demos/vue/<component>/<example>.tsx` paired with
+ * `demos/react/<component>/<example>.tsx`. The generated upstream manifest
+ * lists every docs example; the filesystem decides which ones are ported.
  *
  * Keep these globs lazy. The playground can have dozens of React+Vue demos, and
  * eager loading makes the first page pay for every component instead of just
  * the selected parity preview.
  */
-const vueComponents = import.meta.glob<{ default: Component }>('./demos/vue/*.tsx')
-const reactComponents = import.meta.glob<{ default: ComponentType }>('./demos/react/*.tsx')
-const vueSources = import.meta.glob('./demos/vue/*.tsx', {
+const vueComponents = import.meta.glob<{ default: Component }>('./demos/vue/**/*.tsx')
+const reactComponents = import.meta.glob<{ default: ComponentType }>('./demos/react/**/*.tsx')
+const vueSources = import.meta.glob('./demos/vue/**/*.tsx', {
   query: '?raw', import: 'default'
 }) as Record<string, () => Promise<string>>
-const reactSources = import.meta.glob('./demos/react/*.tsx', {
+const reactSources = import.meta.glob('./demos/react/**/*.tsx', {
   query: '?raw', import: 'default'
 }) as Record<string, () => Promise<string>>
 
-/** Manifest entry for a component, without loading its preview modules yet. */
-export interface DemoMeta {
-  id: string
-  title: string
-  category: string
+/** Manifest entry for a docs example, without loading its preview modules yet. */
+export interface ExampleMeta extends UpstreamExampleMeta {
+  ported: boolean
 }
 
-/** One component, rendered both ways for side-by-side comparison. */
-export interface Demo extends DemoMeta {
+export interface ComponentGroup extends UpstreamComponentMeta {
+  examples: ExampleMeta[]
+}
+
+export interface DemoMeta extends ExampleMeta {}
+
+/** One docs example, rendered both ways for side-by-side comparison. */
+export interface Demo extends ExampleMeta {
   vue: Component
   react: ComponentType
   vueSource: string
@@ -34,54 +46,97 @@ export interface Demo extends DemoMeta {
   note?: string
 }
 
-/** Display titles for ids where naive title-casing isn't right. */
-const TITLES: Record<string, string> = {
-  'input-otp': 'Input OTP',
-  kbd: 'Kbd'
+const DEMO_PATH_ALIASES: Record<string, string> = {
+  'button-outline-variant': 'button/variants'
+}
+const BATCHED_EXAMPLE_COMPONENTS = new Set([
+  'accordion',
+  'avatar',
+  'badge',
+  'breadcrumbs',
+  'button',
+  'card'
+])
+const BATCHED_EXAMPLE_SLUGS: Record<string, Set<string>> = {
+  accordion: new Set(['basic', 'surface', 'multiple', 'disabled', 'custom-indicator', 'faq', 'custom-styles', 'without-separator', 'custom-render-function', 'controlled']),
+  avatar: new Set(['basic', 'sizes', 'colors', 'variants', 'fallback', 'group', 'custom-styles']),
+  badge: new Set(['basic', 'colors', 'sizes', 'variants', 'placements', 'with-content', 'dot']),
+  breadcrumbs: new Set(['basic', 'level-2', 'level-3', 'custom-separator', 'disabled', 'custom-render-function']),
+  button: new Set(['basic', 'custom-variants', 'disabled', 'icon-only', 'loading', 'loading-state', 'sizes', 'full-width', 'social', 'ripple-effect', 'variants', 'outline-variant', 'with-icons', 'custom-render-function']),
+  card: new Set(['default', 'horizontal', 'variants', 'with-avatar', 'with-form', 'with-images'])
+}
+const SLUG_AWARE_FLAT_COMPONENTS = new Set([
+  'button-group',
+  'checkbox',
+  'chip',
+  'combo-box',
+  'input',
+  'pagination',
+  'radio-group',
+  'select',
+  'slider',
+  'switch',
+  'tabs',
+  'textarea',
+  'textfield'
+])
+const DEMO_COMPONENT_ALIASES: Record<string, string> = {
+  autocomplete: 'combo-box',
+  'color-area': 'color-picker',
+  'color-field': 'color-picker',
+  'color-slider': 'color-picker',
+  'color-swatch': 'color-picker',
+  'color-swatch-picker': 'color-picker',
+  'disclosure-group': 'disclosure',
+  'error-message': 'form',
+  'field-error': 'form',
+  fieldset: 'form',
+  menu: 'dropdown',
+  radio: 'radio-group',
+  tag: 'tag-group'
 }
 
-/** Categories, in sidebar order, each listing component ids in display order. */
-const CATEGORIES: Array<{ name: string; ids: string[] }> = [
-  {
-    name: 'Buttons & actions',
-    ids: ['button', 'button-group', 'toggle', 'toggle-group', 'close-button', 'link']
-  },
-  {
-    name: 'Inputs & forms',
-    ids: ['input', 'textarea', 'textfield', 'number-field', 'checkbox', 'checkbox-group', 'radio-group',
-      'switch', 'switch-group', 'slider', 'select', 'combo-box', 'input-group', 'input-otp', 'tags-input',
-      'color-picker', 'label', 'description', 'form', 'field']
-  },
-  {
-    name: 'Date & time',
-    ids: ['calendar', 'range-calendar', 'date-field', 'date-picker', 'date-range-picker', 'time-field']
-  },
-  {
-    name: 'Overlays',
-    ids: ['modal', 'drawer', 'popover', 'tooltip', 'dropdown', 'alert-dialog']
-  },
-  {
-    name: 'Navigation',
-    ids: ['breadcrumb', 'tabs', 'pagination', 'toolbar']
-  },
-  {
-    name: 'Data display',
-    ids: ['avatar', 'badge', 'card', 'surface', 'header', 'chip', 'accordion', 'collapsible', 'table', 'list-box',
-      'kbd', 'separator', 'scroll-area', 'typography', 'item']
-  },
-  {
-    name: 'Feedback',
-    ids: ['alert', 'empty-state', 'progress', 'progress-circle', 'meter', 'spinner', 'skeleton', 'sonner', 'shimmer']
+function demoPathCandidates (meta: UpstreamExampleMeta): string[] {
+  const flatComponentId = DEMO_COMPONENT_ALIASES[meta.componentId] ?? meta.componentId
+  const candidates: string[] = []
+  if (BATCHED_EXAMPLE_COMPONENTS.has(meta.componentId) && BATCHED_EXAMPLE_SLUGS[meta.componentId]?.has(meta.slug)) {
+    candidates.push(`${meta.componentId}/examples`)
   }
-]
-
-function titleOf (id: string): string {
-  return TITLES[id] ?? id.replace(/(^|-)([a-z])/g, (_, sep: string, ch: string) =>
-    (sep ? ' ' : '') + ch.toUpperCase())
+  if (DEMO_PATH_ALIASES[meta.id]) candidates.push(DEMO_PATH_ALIASES[meta.id])
+  candidates.push(`${meta.componentId}/${meta.slug}`)
+  if (meta.slug === 'basic' || meta.slug === 'default' || SLUG_AWARE_FLAT_COMPONENTS.has(flatComponentId)) {
+    candidates.push(flatComponentId)
+  }
+  return candidates
 }
 
-export const demos: DemoMeta[] = []
-export const categories: string[] = []
+function resolveDemoPath (meta: UpstreamExampleMeta): string | undefined {
+  return demoPathCandidates(meta).find((path) =>
+    !!vueComponents[`./demos/vue/${path}.tsx`] &&
+    !!reactComponents[`./demos/react/${path}.tsx`] &&
+    !!vueSources[`./demos/vue/${path}.tsx`] &&
+    !!reactSources[`./demos/react/${path}.tsx`]
+  )
+}
+
+function hasLoaders (meta: UpstreamExampleMeta): boolean {
+  return !!resolveDemoPath(meta)
+}
+
+export const demos: DemoMeta[] = upstreamExamples.map((example) => ({
+  ...example,
+  ported: hasLoaders(example)
+}))
+export const portedDemos: DemoMeta[] = demos.filter((demo) => demo.ported)
+export const categories: string[] = [...new Set(upstreamComponents.map((component) => component.category))]
+export const componentGroups: ComponentGroup[] = upstreamComponents.map((component) => {
+  const examples = demos.filter((demo) => demo.componentId === component.id)
+  return {
+    ...component,
+    portedCount: examples.filter((example) => example.ported).length,
+    examples
+  }
+})
 
 const demoLoaders: Record<string, {
   vue: () => Promise<{ default: Component }>
@@ -90,35 +145,27 @@ const demoLoaders: Record<string, {
   reactSource: () => Promise<string>
 }> = {}
 
-for (const cat of CATEGORIES) {
-  let added = false
-  for (const id of cat.ids) {
-    const vue = vueComponents[`./demos/vue/${id}.tsx`]
-    const react = reactComponents[`./demos/react/${id}.tsx`]
-    const vueSource = vueSources[`./demos/vue/${id}.tsx`]
-    const reactSource = reactSources[`./demos/react/${id}.tsx`]
-    if (!vue || !react || !vueSource || !reactSource) continue
-
-    demos.push({
-      id,
-      title: titleOf(id),
-      category: cat.name
-    })
-    demoLoaders[id] = { vue, react, vueSource, reactSource }
-    added = true
+for (const demo of portedDemos) {
+  const path = resolveDemoPath(demo)
+  if (!path) continue
+  const vue = vueComponents[`./demos/vue/${path}.tsx`]
+  const react = reactComponents[`./demos/react/${path}.tsx`]
+  const vueSource = vueSources[`./demos/vue/${path}.tsx`]
+  const reactSource = reactSources[`./demos/react/${path}.tsx`]
+  if (vue && react && vueSource && reactSource) {
+    demoLoaders[demo.id] = { vue, react, vueSource, reactSource }
   }
-  if (added) categories.push(cat.name)
 }
 
 const cache = new Map<string, Promise<Demo>>()
 
 export function loadDemo (id: string): Promise<Demo> {
-  const meta = demos.find((demo) => demo.id === id) ?? demos[0]
+  const meta = demos.find((demo) => demo.id === id) ?? portedDemos[0]
   if (!meta) return Promise.reject(new Error('No demos found'))
   if (cache.has(meta.id)) return cache.get(meta.id)!
 
   const loaders = demoLoaders[meta.id]
-  if (!loaders) return Promise.reject(new Error(`Demo not found: ${meta.id}`))
+  if (!loaders) return Promise.reject(new Error(`Example not ported yet: ${meta.id}`))
 
   const promise = Promise.all([
     loaders.vue(),

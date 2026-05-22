@@ -15,53 +15,14 @@ export interface ParityInfo {
   note?: string
 }
 
-/** Components that diverge. Anything not listed is treated as a clean match. */
-const DIVERGENT: Record<string, ParityInfo> = {
-  tooltip: {
-    status: 'crash',
-    note: 'Demo throws: Injection Symbol(TooltipProviderContext) not found.'
-  },
-  calendar: {
-    status: 'broken',
-    note: 'Day numbers do not render — cells show as bullet dots.'
-  },
-  accordion: {
-    status: 'broken',
-    note: 'Chevron icon rendered twice and not right-aligned.'
-  },
-  breadcrumb: {
-    status: 'broken',
-    note: 'Trailing separator after the last crumb; current page not styled.'
-  },
-  'range-calendar': {
-    status: 'broken',
-    note: 'Single-letter weekday headers; no muted outside days or today highlight.'
-  },
-  slider: {
-    status: 'broken',
-    note: 'Thumb is a hollow oblong pill instead of a filled white circle.'
-  },
-  'date-field': {
-    status: 'minor',
-    note: 'Empty date-segment placeholder renders too dark.'
-  },
-  'date-picker': {
-    status: 'minor',
-    note: 'Empty date-segment placeholder renders too dark.'
-  },
-  'date-range-picker': {
-    status: 'minor',
-    note: 'Empty date-segment placeholder renders too dark.'
-  },
-  'time-field': {
-    status: 'minor',
-    note: 'Empty time-segment placeholder renders too dark.'
-  },
-  toolbar: {
-    status: 'minor',
-    note: 'Vertical separator between groups is not visible.'
-  }
-}
+/**
+ * Components that diverge. Anything not listed is treated as a clean match.
+ *
+ * Every entry from the 2026-05-22 sweep has been resolved — see PARITY.md for
+ * the per-component fix notes. This map is intentionally empty; add a component
+ * back only when a fresh regression is found.
+ */
+const DIVERGENT: Record<string, ParityInfo> = {}
 
 const MATCH: ParityInfo = { status: 'match' }
 

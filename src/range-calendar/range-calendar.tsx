@@ -64,13 +64,21 @@ export const RangeCalendarRoot = defineComponent({
     const dateRangePickerCtx = inject(DATE_RANGE_PICKER_CONTEXT, null)
 
     return () => {
+      // HeroUI's calendar uses three-letter weekday headers; reka-ui defaults to
+      // single-letter ("narrow"). Default to "short" unless the caller overrides.
+      const a = attrs as Record<string, any>
+      const calendarAttrs: Record<string, any> = {
+        weekdayFormat: a.weekdayFormat ?? a['weekday-format'] ?? 'short',
+        ...a,
+      }
+
       // Inside a DateRangePicker, render reka-ui's DateRangePickerCalendar so the
       // range calendar is wired to the picker value. It IS a RangeCalendarRoot,
       // so all generic RangeCalendar.* parts keep working.
       if (dateRangePickerCtx) {
         return (
           <RekaDateRangePickerCalendar
-            {...(attrs as Record<string, any>)}
+            {...calendarAttrs}
             data-slot="range-calendar"
             class={cn(styles.value.base(), reactClass(props))}
             v-slots={{ default: slots.default }}
@@ -80,7 +88,7 @@ export const RangeCalendarRoot = defineComponent({
 
       return (
         <RekaRangeCalendarRoot
-          {...(attrs as Record<string, any>)}
+          {...calendarAttrs}
           data-slot="range-calendar"
           class={cn(styles.value.base(), reactClass(props))}
           v-slots={{ default: slots.default }}

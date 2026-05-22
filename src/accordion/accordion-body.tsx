@@ -8,7 +8,7 @@ import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
  *
  * Renders the outer clip container + inner padded wrapper:
  *   div[data-slot="accordion-body"]
- *     div[data-slot="accordion-body-inner"]
+ *     div
  *       {children}
  *
  * Use inside `AccordionContent` when you need manual control over the body
@@ -28,7 +28,7 @@ export const AccordionBody = defineComponent({
 
       return (
         <div {...attrs} data-slot="accordion-body" class={cn(s.body())}>
-          <div data-slot="accordion-body-inner" class={cn(s.bodyInner(), props.class)}>
+          <div class={cn(s.bodyInner(), props.class)}>
             {slots.default?.()}
           </div>
         </div>

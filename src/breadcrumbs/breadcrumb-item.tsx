@@ -40,6 +40,7 @@ export const BreadcrumbsItem = defineComponent({
             as={props.as}
             asChild={props.asChild}
             data-slot="link"
+            data-current={props.isCurrent ? 'true' : undefined}
             aria-current={props.isCurrent ? 'page' : undefined}
             class={cn(slotMap.link())}
           >

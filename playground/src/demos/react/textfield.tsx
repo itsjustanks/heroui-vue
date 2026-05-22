@@ -1,10 +1,28 @@
-import { Input, Label, TextField } from '@heroui/react'
+import { Description, FieldError, Input, Label, TextArea, TextField } from '@heroui/react'
+import { currentExample } from '../shared'
 
 export default function TextFieldDemo() {
+  const example = currentExample('basic')
+  const fullWidth = example === 'full-width'
+  const disabled = example === 'disabled'
+  const invalid = example === 'with-error' || example === 'validation'
+  const useTextarea = example === 'textarea'
+
   return (
-    <TextField className="w-full max-w-64" name="email" type="email">
+    <TextField
+      className={fullWidth ? 'w-full' : 'w-full max-w-64'}
+      name="email"
+      type="email"
+      isDisabled={disabled}
+      isInvalid={invalid}
+      isRequired={example === 'required'}
+    >
       <Label>Email</Label>
-      <Input placeholder="Enter your email" />
+      {useTextarea
+        ? <TextArea placeholder="Tell us more" />
+        : <Input placeholder="Enter your email" defaultValue={example === 'controlled' ? 'hello@heroui.com' : undefined} />}
+      {example === 'with-description' && <Description>We will never share your email.</Description>}
+      {invalid && <FieldError>Enter a valid email address.</FieldError>}
     </TextField>
   )
 }

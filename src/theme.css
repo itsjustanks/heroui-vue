@@ -65,6 +65,18 @@
 }
 
 /*
+ * Date/time segment placeholder colour. reka-ui emits `data-placeholder=""`
+ * (empty string) on an unfilled segment; HeroUI's CSS keys the muted colour
+ * off `[data-placeholder="true"]` (React renders the boolean as the string
+ * "true"), so the upstream rule never matches reka's DOM. Re-apply it for
+ * reka's attribute shape. Clears date-field / date-picker / date-range-picker
+ * / time-field in one rule.
+ */
+.date-input-group__segment[data-placeholder]:not([data-placeholder="false"]) {
+  color: var(--field-placeholder);
+}
+
+/*
  * Tabs — reka emits `data-state="active"` on the selected trigger; HeroUI's CSS
  * keys tab selection off `data-selected="true"`. Re-create the affected rules.
  */
@@ -98,4 +110,99 @@
 .tabs__tab[data-state="active"] .tabs__separator,
 .tabs__tab[data-state="active"] + .tabs__tab .tabs__separator {
   opacity: 0;
+}
+
+/*
+ * Calendar / RangeCalendar day-cell states. reka-ui marks the today cell and
+ * out-of-month cells with empty-string attributes (`data-today=""`,
+ * `data-outside-view=""`); HeroUI's CSS keys off `data-today="true"` and a
+ * differently-named `data-outside-month="true"`, so neither upstream rule ever
+ * matches reka's DOM. Re-apply them for reka's attribute shape.
+ *
+ * Calendar puts these attributes on the cell trigger itself (`.calendar__cell`);
+ * RangeCalendar puts them on the inner button (`.range-calendar__cell-button`).
+ */
+.calendar__cell[data-today]:not([data-today="false"]),
+.range-calendar__cell-button[data-today]:not([data-today="false"]) {
+  color: var(--accent-soft-foreground);
+}
+
+.calendar__cell[data-outside-view]:not([data-outside-view="false"]),
+.range-calendar__cell-button[data-outside-view]:not([data-outside-view="false"]) {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+/*
+ * Slider thumb centering. reka-ui's `--reka-slider-thumb-transform` only
+ * centers the thumb on the position axis (`translateX(-50%)` for a horizontal
+ * slider). HeroUI's CSS places the thumb with `top:50%` / `left:50%` and
+ * relies on React-Aria's `translate(-50%,-50%)` to pull it back onto the
+ * track — reka never supplies the perpendicular half. Compose it here, or the
+ * thumb hangs half a thumb-height off the track.
+ */
+.slider[data-orientation="horizontal"] .slider__thumb {
+  transform: var(--reka-slider-thumb-transform, translateX(-50%)) translateY(-50%) !important;
+}
+.slider[data-orientation="vertical"] .slider__thumb {
+  transform: var(--reka-slider-thumb-transform, translateY(50%)) translateX(-50%) !important;
+}
+
+/*
+ * Accordion panel height animation. HeroUI's `.accordion__panel` animates a
+ * `height` transition driven by `--disclosure-panel-height` — a React-Aria var
+ * reka never sets. reka instead exposes the measured height as
+ * `--reka-accordion-content-height` and drives open/close through `data-state`
+ * + its `Presence` helper, which keeps the element mounted for the duration of
+ * a CSS *animation* (not a transition). So bridge it with keyframes keyed off
+ * reka's `data-state`; `overflow: clip` on the panel hides the overspill.
+ */
+@keyframes heroui-accordion-open {
+  from { height: 0; }
+  to { height: var(--reka-accordion-content-height); }
+}
+@keyframes heroui-accordion-close {
+  from { height: var(--reka-accordion-content-height); }
+  to { height: 0; }
+}
+.accordion__panel[data-state="open"] {
+  animation: heroui-accordion-open 200ms var(--ease-out-quad);
+}
+.accordion__panel[data-state="closed"] {
+  animation: heroui-accordion-close 200ms var(--ease-out-quad);
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion__panel[data-state="open"],
+  .accordion__panel[data-state="closed"] {
+    animation: none;
+  }
+}
+
+/*
+ * Toast status colours. HeroUI tints the title + icon by toast kind via the
+ * `.toast--success` / `--warning` / `--danger` class modifiers; vue-sonner
+ * instead tags the toast with `data-type`. Bridge the two so `toast.success()`
+ * et al. land HeroUI's status colours.
+ */
+.toast[data-type="success"] .toast__title,
+.toast[data-type="success"] .toast__indicator {
+  color: var(--success);
+}
+.toast[data-type="warning"] .toast__title,
+.toast[data-type="warning"] .toast__indicator {
+  color: var(--warning);
+}
+.toast[data-type="error"] .toast__title,
+.toast[data-type="error"] .toast__indicator {
+  color: var(--danger);
+}
+
+/*
+ * ComboBox popover width. HeroUI's `.combo-box__popover` uses
+ * `min-w-(--trigger-width)` — a React-Aria var reka never sets. reka exposes
+ * the trigger width as `--reka-combobox-trigger-width` (set inline on the
+ * popover). Re-assert the min-width so the dropdown matches the input.
+ */
+.combo-box__popover {
+  min-width: var(--reka-combobox-trigger-width, var(--trigger-width));
 }

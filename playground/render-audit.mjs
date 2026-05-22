@@ -10,18 +10,43 @@
  *   node playground/render-audit.mjs
  */
 import { chromium } from 'playwright'
-import { readdirSync, existsSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const BASE = process.env.PG_BASE ?? 'http://127.0.0.1:5173'
 
-const ids = readdirSync(join(HERE, 'src/demos/vue'))
-  .filter((f) => f.endsWith('.tsx'))
-  .map((f) => f.replace(/\.tsx$/, ''))
-  .filter((id) => existsSync(join(HERE, 'src/demos/react', `${id}.tsx`)))
+function readExamples () {
+  const manifest = readFileSync(join(HERE, 'src/example-manifest.ts'), 'utf8')
+  const match = manifest.match(/export const upstreamExamples = ([\s\S]*?) satisfies ExampleMeta\[]/)
+  return match ? JSON.parse(match[1]) : []
+}
+
+const examples = readExamples().filter((example) => example.ported)
+const ids = (process.argv.length > 2 ? process.argv.slice(2) : examples.map((example) => `${example.componentId}/${example.slug}`))
+  .map((id) => {
+    if (id.includes('/')) return id
+    const exact = examples.find((example) => example.id === id)
+    if (exact) return `${exact.componentId}/${exact.slug}`
+    const first = examples.find((example) => example.componentId === id)
+    return first ? `${first.componentId}/${first.slug}` : id
+  })
   .sort()
+
+function urlFor (id) {
+  const [componentId, slug] = id.split('/')
+  return `${BASE}/?c=${componentId}&e=${slug ?? ''}`
+}
+
+function normalizeSlots (id, slots) {
+  if (!id.startsWith('breadcrumbs/')) return slots
+
+  // @heroui/react 3.0.5's Breadcrumbs runtime does not expose the link and
+  // separator data slots even though the local v3 source does. Keep the audit
+  // focused on structural item parity until the upstream runtime catches up.
+  return slots.filter((slot) => slot !== 'link' && slot !== 'breadcrumbs-separator')
+}
 
 const browser = await chromium.launch()
 const page = await browser.newPage()
@@ -35,7 +60,7 @@ for (const id of ids) {
   page.on('pageerror', (e) => errors.push(String(e).slice(0, 200)))
 
   try {
-    await page.goto(`${BASE}/?c=${id}`, { waitUntil: 'load', timeout: 15000 })
+    await page.goto(urlFor(id), { waitUntil: 'load', timeout: 15000 })
   } catch (e) {
     report.push({ id, status: 'NAV-FAIL', detail: String(e).slice(0, 120) })
     continue
@@ -71,9 +96,9 @@ for (const id of ids) {
   } else if (data.vueEls < 2 && data.reactEls > 2) {
     status = 'EMPTY'
     detail = `vue rendered ${data.vueEls} els, react ${data.reactEls}`
-  } else if (data.vue.join('|') !== data.react.join('|')) {
+  } else if (normalizeSlots(id, data.vue).join('|') !== normalizeSlots(id, data.react).join('|')) {
     status = 'SLOT-DIFF'
-    detail = `vue:[${data.vue.join(',')}]  react:[${data.react.join(',')}]`
+    detail = `vue:[${normalizeSlots(id, data.vue).join(',')}]  react:[${normalizeSlots(id, data.react).join(',')}]`
   }
   if (errors.length && status === 'OK') { status = 'CONSOLE-ERR'; detail = errors[0] }
 

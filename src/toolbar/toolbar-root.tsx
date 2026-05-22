@@ -1,7 +1,8 @@
-import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
 import { ToolbarRoot as RekaToolbarRoot } from 'reka-ui'
 import { toolbarVariants, type ToolbarVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
+import { TOOLBAR_CONTEXT } from './toolbar-context'
 
 /**
  * ToolbarRoot — the root action bar. Faithful Vue port of HeroUI v3 `Toolbar`.
@@ -24,6 +25,12 @@ export const ToolbarRoot = defineComponent({
     const classes = computed(() =>
       cn(toolbarVariants({ orientation: props.orientation, isAttached: props.isAttached }), props.class)
     )
+
+    // Let a plain `Separator` placed inside the toolbar flip to the
+    // perpendicular orientation, the way React-Aria's Toolbar does.
+    provide(TOOLBAR_CONTEXT, {
+      orientation: computed(() => props.orientation ?? 'horizontal')
+    })
 
     return () => (
       <RekaToolbarRoot

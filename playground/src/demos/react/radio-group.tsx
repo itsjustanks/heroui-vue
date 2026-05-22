@@ -1,9 +1,15 @@
 import { Description, Label, Radio, RadioGroup } from '@heroui/react'
+import { currentExample } from '../shared'
 
 export default function RadioGroupDemo() {
+  const example = currentExample('basic')
+  const disabled = example === 'disabled'
+  const orientation = example === 'horizontal' ? 'horizontal' : 'vertical'
+  const variant = example === 'variants' || example === 'on-surface' ? 'secondary' : undefined
+
   return (
     <div className="demo-row">
-      <RadioGroup defaultValue="premium" name="plan">
+      <RadioGroup defaultValue="premium" name="plan" isDisabled={disabled} orientation={orientation} variant={variant}>
         <Label>Plan selection</Label>
         <Description>Choose the plan that suits you best</Description>
         <Radio value="basic">

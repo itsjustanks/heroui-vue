@@ -1,10 +1,16 @@
 import { defineComponent } from 'vue'
 import { Tabs } from '@itsjustanks/heroui-vue'
+import { currentExample } from '../shared'
 
 /** Vue demo — Tabs compound API. */
-export default defineComponent(() => () => (
-  <div class="demo-col">
-    <Tabs class="w-full max-w-md">
+export default defineComponent(() => () => {
+  const example = currentExample('basic')
+  const orientation = example === 'vertical' || example === 'secondary-vertical' ? 'vertical' : 'horizontal'
+  const variant = example === 'secondary' || example === 'secondary-vertical' ? 'secondary' : undefined
+
+  return (
+    <div class="demo-col">
+      <Tabs class="w-full max-w-md" orientation={orientation} variant={variant}>
       <Tabs.ListContainer>
         <Tabs.List aria-label="Options">
           <Tabs.Tab id="overview">
@@ -15,7 +21,7 @@ export default defineComponent(() => () => (
             Analytics
             <Tabs.Indicator />
           </Tabs.Tab>
-          <Tabs.Tab id="reports">
+          <Tabs.Tab id="reports" isDisabled={example === 'disabled'}>
             Reports
             <Tabs.Indicator />
           </Tabs.Tab>
@@ -30,6 +36,7 @@ export default defineComponent(() => () => (
       <Tabs.Panel class="pt-4" id="reports">
         <p>Generate and download detailed reports.</p>
       </Tabs.Panel>
-    </Tabs>
-  </div>
-))
+      </Tabs>
+    </div>
+  )
+})

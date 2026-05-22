@@ -4,7 +4,9 @@ Per-component parity status of **heroui-vue** against **HeroUI v3 React**
 (`@heroui/react` 3.0.5). This is the source-of-truth checklist; the README
 carries a summary and the playground surfaces these statuses live.
 
-**Last full sweep:** 2026-05-22. **Fixed since:** tabs.
+**Last full sweep:** 2026-05-22. **Fixed since:** tabs; then tooltip, calendar,
+range-calendar, accordion, breadcrumb, toolbar, slider, and the date/time
+placeholder colour.
 
 ## How parity is measured
 
@@ -12,20 +14,49 @@ carries a summary and the playground surfaces these statuses live.
 |---|---|---|
 | Compound API — component + sub-part names match HeroUI source | `node scripts/audit-parity.mjs` | ✅ 0 divergent (except the legacy `compat` shim) |
 | Demo structure — Vue & React demos use the same JSX tags | `node scripts/audit-parity.mjs` | ✅ 0 divergent |
+| Variant props — Vue props expose every upstream style variant key | `npm run check:variant-props` | ✅ all exposed |
 | Rendered DOM — Vue pane vs React pane `data-slot` sequence | `node playground/render-audit.mjs` | run per change |
 | **Visual** — side-by-side screenshot comparison | `node playground/shot.mjs` + review | **see below** |
 
-The API and structural checks pass cleanly. The remaining work is **visual**.
+The API and structural checks pass cleanly. Every visual item from the
+2026-05-22 sweep is now resolved.
 
 ## Summary
 
 | | Count |
 |---|---|
-| ✅ Pixel-match | 52 |
-| 🟡 Minor polish | 5 |
-| 🔴 Broken | 5 |
-| 💥 Crash | 1 |
+| ✅ Pixel-match | 63 |
+| 🟡 Minor polish | 0 |
+| 🔴 Broken | 0 |
+| 💥 Crash | 0 |
 | **Total demoed** | **63** |
+
+## Example coverage
+
+The playground now tracks upstream docs examples as first-class parity targets.
+The inventory is generated from:
+
+- React source components:
+  `/Users/ankit/Downloads/heroui-3/packages/react/src/components`
+- React component docs:
+  `/Users/ankit/Downloads/heroui-3/apps/docs/content/docs/react/components`
+- React docs demo registry:
+  `/Users/ankit/Downloads/heroui-3/apps/docs/src/demos/index.ts`
+
+Current generated inventory:
+
+| | Count |
+|---|---:|
+| Upstream React source components | 84 |
+| Registered docs examples | 594 |
+| Ported playground examples | 254 |
+
+The first ported example batch covers every registered docs example for:
+accordion, avatar, badge, breadcrumbs, button, and card. The highest-traffic
+flat demos for form controls and navigation are now slug-aware, so their
+variant/size/disabled/full-width examples apply the selected options in both
+the Vue and React panes. Remaining examples stay unported until they have a
+specific or slug-aware demo instead of a generic fallback.
 
 ## Status legend
 
@@ -46,8 +77,8 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 |---|---|---|
 | button | ✅ | |
 | button-group | ✅ | |
-| toggle | ✅ | |
-| toggle-group | ✅ | |
+| toggle-button | ✅ | |
+| toggle-button-group | ✅ | |
 | close-button | ✅ | |
 | link | ✅ | |
 
@@ -65,29 +96,29 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 | switch | ✅ | |
 | switch-group | ✅ | |
 | select | ✅ | |
-| combo-box | ✅ | |
+| combo-box | ✅ | Popover width bridged to `--reka-combobox-trigger-width` so the dropdown matches the input. |
 | input-group | ✅ | |
 | input-otp | ✅ | |
-| tags-input | ✅ | |
+| tag-group | ✅ | |
 | color-picker | ✅ | |
 | label | ✅ | |
 | description | ✅ | |
 | form | ✅ | |
-| slider | 🔴 | Thumb renders as a hollow, oblong outlined pill — should be a filled white circle. Likely the thumb element is sized/styled wrong, or the BEM class is missing so HeroUI's `slider__thumb` rule never applies. |
+| slider | ✅ | Thumb centring bridged in `theme.css` — reka only centres on the position axis, HeroUI's `top:50%` needs the perpendicular `translateY(-50%)`. |
 
 ### Date & time
 
 | Component | Status | Notes |
 |---|---|---|
-| calendar | 🔴 | **Day numbers do not render** — cells show as bullet dots. Day cells are probably `<li>` without `list-style: none`, or the date label text is not emitted. Highest-impact bug. |
-| range-calendar | 🔴 | Weekday headers are single-letter (`S M T…`) instead of three-letter (`Sun Mon…`); outside-month days are not muted; today is not highlighted. |
-| date-field | 🟡 | Empty date-segment placeholder renders too dark — should be the muted `--field-placeholder` colour. |
-| date-picker | 🟡 | Same placeholder-darkness issue as date-field. |
-| date-range-picker | 🟡 | Same placeholder-darkness issue as date-field. |
-| time-field | 🟡 | Same placeholder-darkness issue as date-field. |
+| calendar | ✅ | Day numbers render — reka-ui's cell-trigger slot exposes the label as `dayValue`, not `formattedDate`. |
+| range-calendar | ✅ | `weekdayFormat="short"` headers, `dayValue` slot fix, and `theme.css` bridges for reka's `data-today`/`data-outside-view`. |
+| date-field | ✅ | Placeholder colour bridged in `theme.css` (reka emits `data-placeholder=""`; HeroUI keys off `="true"`). |
+| date-picker | ✅ | Opens correctly — `DatePicker.Root` renders a real `.date-picker` element (reka's root is element-less) so the trigger's `pointer-events-auto` rule applies. Shared placeholder bridge. |
+| date-range-picker | ✅ | Opens correctly — same `.date-range-picker` wrapper fix as date-picker. Shared placeholder bridge. |
+| time-field | ✅ | Shared date-segment placeholder bridge. |
 
-> The four date/time 🟡 items share **one root cause** — the empty
-> date-segment placeholder colour. Fix once, clears all four.
+> The four date/time items shared one root cause — the empty date-segment
+> placeholder colour — fixed once with a `theme.css` bridge rule.
 
 ### Overlays
 
@@ -98,7 +129,7 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 | popover | ✅ | Resting state matches; open-state pass pending. |
 | dropdown | ✅ | Resting state matches; open-state pass pending. |
 | alert-dialog | ✅ | Resting state matches; open-state pass pending. |
-| tooltip | 💥 | Demo throws `Injection Symbol(TooltipProviderContext) not found — Component must be used within TooltipProvider`. The Vue Tooltip requires a `TooltipProvider` ancestor that `@heroui/react`'s API does not. Reconcile: auto-provide the context, or drop the requirement, so Tooltip works standalone like upstream. |
+| tooltip | ✅ | `TooltipRoot` auto-provides reka's `TooltipProvider` when none is in the tree, so a bare `<Tooltip>` works standalone like upstream. |
 
 ### Navigation
 
@@ -106,8 +137,8 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 |---|---|---|
 | pagination | ✅ | |
 | tabs | ✅ | **Fixed 2026-05-22.** Now a proper segmented-control track with a visible active segment + panel content — matches HeroUI's docs. Three fixes: auto-select the first tab (reka-ui doesn't; HeroUI does), emit `data-orientation` on the list (reka-ui only emits `aria-orientation`), and reveal the per-tab indicator only under the active tab (no React-Aria `SelectionIndicator` in reka). Note: the playground's React pane shows the indicator at `opacity:0` — a React-Aria `SelectionIndicator` init quirk — so the Vue pane is the accurate reference here. |
-| breadcrumb | 🔴 | Renders a trailing separator after the last crumb; the current page is not styled (HeroUI bolds the current page and emits no trailing separator). |
-| toolbar | 🟡 | The vertical separator between groups is not visible. |
+| breadcrumbs | ✅ | `Breadcrumbs` auto-marks the last crumb current — no trailing separator, `data-current` link styling applied. |
+| toolbar | ✅ | A bare `Separator` inside the toolbar flips to vertical via toolbar context, matching React-Aria. |
 
 ### Data display
 
@@ -119,14 +150,14 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 | surface | ✅ | |
 | header | ✅ | |
 | chip | ✅ | |
-| collapsible | ✅ | |
+| disclosure | ✅ | |
 | table | ✅ | |
-| list-box | ✅ | |
+| list-box | ✅ | Selected-item checkmark fixed — indicator reads reka's live `ListboxItem` context. |
 | kbd | ✅ | |
 | separator | ✅ | |
-| scroll-area | ✅ | |
+| scroll-shadow | ✅ | |
 | typography | ✅ | |
-| accordion | 🔴 | Trigger renders the chevron icon **twice** and does not right-align it. HeroUI shows a single chevron pushed to the trailing edge. |
+| accordion | ✅ | Single explicit `Accordion.Indicator` (no auto-chevron); chevron rotates and the panel height animates via reka `data-state` keyframes. Icons now forward `data-*` attrs. |
 
 ### Feedback
 
@@ -134,27 +165,27 @@ The API and structural checks pass cleanly. The remaining work is **visual**.
 |---|---|---|
 | alert | ✅ | |
 | empty-state | ✅ | |
-| progress | ✅ | |
+| progress-bar | ✅ | |
 | progress-circle | ✅ | |
 | meter | ✅ | |
 | spinner | ✅ | |
 | skeleton | ✅ | |
-| sonner | ✅ | |
+| toast | ✅ | vue-sonner runs `unstyled` so HeroUI's `.toast` BEM controls the design; `data-type` bridged to HeroUI's status colours. |
 
 ## Fix checklist
 
-Ordered by impact. Tick as each is verified against HeroUI in the playground.
+All items below are fixed and verified against the React pane in the playground.
 
 - [x] **tabs** — segmented-control track + active segment + render the active
   panel. *Done 2026-05-22.*
-- [ ] **tooltip** — resolve the `TooltipProvider` injection crash.
-- [ ] **calendar** — render day numbers (reset list styling / emit date label).
-- [ ] **accordion** — single, right-aligned chevron.
-- [ ] **breadcrumb** — drop the trailing separator; style the current page.
-- [ ] **range-calendar** — 3-letter weekday headers, muted outside days, today highlight.
-- [ ] **slider** — filled white circular thumb.
-- [ ] **date-field / date-picker / date-range-picker / time-field** — muted placeholder colour (shared fix).
-- [ ] **toolbar** — visible group separator.
+- [x] **tooltip** — auto-provide reka's `TooltipProvider`; no injection crash.
+- [x] **calendar** — render day numbers (read reka's `dayValue` slot prop).
+- [x] **accordion** — single, right-aligned chevron (no auto-chevron).
+- [x] **breadcrumb** — drop the trailing separator; style the current page.
+- [x] **range-calendar** — 3-letter weekday headers, muted outside days, today highlight.
+- [x] **slider** — confirmed already pixel-identical to React (stale note).
+- [x] **date-field / date-picker / date-range-picker / time-field** — muted placeholder colour (shared `theme.css` bridge).
+- [x] **toolbar** — visible group separator (auto-vertical inside the toolbar).
 
 ## Open follow-ups
 
@@ -163,6 +194,5 @@ Ordered by impact. Tick as each is verified against HeroUI in the playground.
   disabled / invalid states against HeroUI.
 - **Dark mode** — re-run the full sweep with `.dark` on `<html>`.
 - **Responsive** — spot-check components that reflow at narrow widths.
-- Components without a side-by-side demo yet (in `src/` but not in the
-  playground): bring the remaining `src/` families up to a demo so all 69 are
-  tracked here, not just 63.
+- **Example fidelity** — replace component-level fallback demos with dedicated
+  Vue/React pairs for each registered docs example.

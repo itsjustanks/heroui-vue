@@ -24,7 +24,12 @@ export const ListBoxItemIndicator = defineComponent({
     const rekaCtx = injectListboxItemContext(null)
 
     return () => {
-      const isSelected = ctx?.isSelected.value ?? rekaCtx?.isSelected.value ?? false
+      // Prefer the reka-ui ListboxItem context injected directly here — the
+      // indicator IS a descendant of reka's ListboxItem, so this is the live
+      // value. `ctx.isSelected` (from ListBoxItemRoot) is always `false`: that
+      // parent sits ABOVE reka's ListboxItem and cannot inject its context —
+      // and `??` would not fall through a literal `false`.
+      const isSelected = rekaCtx?.isSelected.value ?? ctx?.isSelected.value ?? false
       const indicatorClass = (ctx?.slots.value ?? listboxItemVariants()).indicator()
 
       const content = slots.default

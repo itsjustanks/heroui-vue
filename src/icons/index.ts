@@ -13,12 +13,16 @@ import { h, type FunctionalComponent } from 'vue'
 type IconProps = Record<string, any>
 
 function gravityIcon (body: string): FunctionalComponent<IconProps> {
-  return () => h('svg', {
+  // Spread incoming attrs so `class`, `data-slot`, `data-expanded`, etc. all
+  // reach the <svg> — without this the chevron's `data-expanded` is dropped
+  // and HeroUI's rotation rule never fires.
+  return (props: IconProps) => h('svg', {
     xmlns: 'http://www.w3.org/2000/svg',
     viewBox: '0 0 16 16',
     width: '1em',
     height: '1em',
     fill: 'none',
+    ...props,
     innerHTML: body
   })
 }
@@ -42,6 +46,8 @@ export const IconCircle = gravityIcon('<path fill="currentColor" fill-rule="even
 export const IconCalendarDays = gravityIcon('<path fill="currentColor" fill-rule="evenodd" d="M5.25 5.497a.75.75 0 0 1-.75-.75V4A1.5 1.5 0 0 0 3 5.5v1h10v-1A1.5 1.5 0 0 0 11.5 4v.75a.75.75 0 0 1-1.5 0V4H6v.747a.75.75 0 0 1-.75.75M10 2.5H6v-.752a.75.75 0 1 0-1.5 0V2.5a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h7a3 3 0 0 0 3-3v-6a3 3 0 0 0-3-3v-.75a.75.75 0 0 0-1.5 0zM3 8v3.5A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5V8z" clip-rule="evenodd"/>')
 
 export const IconExternalLink = gravityIcon('<path fill="currentColor" fill-rule="evenodd" d="M10 1.5A.75.75 0 0 0 10 3h1.94L6.97 7.97a.75.75 0 0 0 1.06 1.06L13 4.06V6a.75.75 0 0 0 1.5 0V2.25a.75.75 0 0 0-.75-.75zM7.5 3.25a.75.75 0 0 0-.75-.75H4.5a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9.25a.75.75 0 0 0-1.5 0v2.25a1.5 1.5 0 0 1-1.5 1.5h-6A1.5 1.5 0 0 1 3 11.5v-6A1.5 1.5 0 0 1 4.5 4h2.25a.75.75 0 0 0 .75-.75" clip-rule="evenodd"/>')
+
+export const IconSearch = gravityIcon('<path fill="currentColor" fill-rule="evenodd" d="M11.5 7a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0m-.82 4.74a6 6 0 1 1 1.06-1.06l2.79 2.79a.75.75 0 1 1-1.06 1.06z" clip-rule="evenodd"/>')
 
 export const IconMinus = gravityIcon('<path fill="currentColor" fill-rule="evenodd" d="M1.75 8a.75.75 0 0 1 .75-.75h11a.75.75 0 0 1 0 1.5h-11A.75.75 0 0 1 1.75 8" clip-rule="evenodd"/>')
 

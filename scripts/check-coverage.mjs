@@ -21,14 +21,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 
 /** HeroUI `@heroui/styles` component directory -> heroui-vue `src/` family. */
 const ALIASES = {
-  breadcrumbs: 'breadcrumb',
-  'toggle-button': 'toggle',
-  'toggle-button-group': 'toggle-group',
-  'search-field': 'input',
-  'progress-bar': 'progress',
-  toast: 'sonner',
   autocomplete: 'combo-box',
-  disclosure: 'collapsible',
   'disclosure-group': 'accordion',
   menu: 'dropdown',
   'menu-item': 'dropdown',
@@ -37,7 +30,6 @@ const ALIASES = {
   'list-box-section': 'list-box',
   radio: 'radio-group',
   tag: 'chip',
-  'tag-group': 'tags-input',
   'calendar-year-picker': 'calendar',
   'color-area': 'color-picker',
   'color-field': 'color-picker',
@@ -47,8 +39,7 @@ const ALIASES = {
   'color-input-group': 'color-picker',
   'error-message': 'field',
   'field-error': 'field',
-  fieldset: 'form',
-  'scroll-shadow': 'scroll-area'
+  fieldset: 'form'
 }
 
 /** `src/` entries that are not component families. */

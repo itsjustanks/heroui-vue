@@ -60,13 +60,21 @@ export const CalendarRoot = defineComponent({
     const datePickerCtx = inject(DATE_PICKER_CONTEXT, null)
 
     return () => {
+      // HeroUI's calendar uses three-letter weekday headers; reka-ui defaults to
+      // single-letter ("narrow"). Default to "short" unless the caller overrides.
+      const a = attrs as Record<string, any>
+      const calendarAttrs: Record<string, any> = {
+        weekdayFormat: a.weekdayFormat ?? a['weekday-format'] ?? 'short',
+        ...a,
+      }
+
       // Inside a DatePicker, render reka-ui's DatePickerCalendar so the calendar
       // is wired to the picker value. It IS a CalendarRoot, so all generic
       // Calendar.* parts (which consume the calendar root context) keep working.
       if (datePickerCtx) {
         return (
           <RekaDatePickerCalendar
-            {...(attrs as Record<string, any>)}
+            {...calendarAttrs}
             data-slot="calendar"
             class={cn(styles.value.base(), reactClass(props))}
             v-slots={{ default: slots.default }}
@@ -76,7 +84,7 @@ export const CalendarRoot = defineComponent({
 
       return (
         <RekaCalendarRoot
-          {...(attrs as Record<string, any>)}
+          {...calendarAttrs}
           data-slot="calendar"
           class={cn(styles.value.base(), reactClass(props))}
           v-slots={{ default: slots.default }}

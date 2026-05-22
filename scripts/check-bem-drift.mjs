@@ -29,21 +29,15 @@ const NON_FAMILY = new Set(['icons', 'lib', 'composables'])
  * map it emits. Defaults to the same name; only renames are listed here.
  */
 const FAMILY_STYLES = {
-  breadcrumb: 'breadcrumbs',
-  toggle: 'toggle-button',
-  'toggle-group': 'toggle-button-group',
-  progress: 'progress-bar',
-  collapsible: 'disclosure',
-  menubar: 'menu',
-  'tags-input': 'tag-group'
+  menubar: 'menu'
 }
 
 /**
  * Families with no comparable HeroUI BEM slot map — skipped by the drift check.
- * `sonner` wraps the `vue-sonner` package and renders its markup, rather than
+ * `toast` wraps the `vue-sonner` package and renders its markup, rather than
  * emitting HeroUI's `toast` BEM classes.
  */
-const NO_BEM_MAP = new Set(['sonner'])
+const NO_BEM_MAP = new Set(['toast'])
 
 /**
  * Extract the BEM class names from a HeroUI `*.styles.js` file. The classes are

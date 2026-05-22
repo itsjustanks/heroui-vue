@@ -63,10 +63,13 @@ export const RangeCalendarCell = defineComponent({
           class="range-calendar__cell-button"
         >
           {{
-            default: ({ formattedDate, isDisabled, isHovered, isPressed, isSelectionStart, isSelectionEnd }: any) =>
+            // reka-ui's RangeCalendarCellTrigger exposes the day label as
+            // `dayValue`; forward it to consumers as `formattedDate` too
+            // (HeroUI React's name) so either spelling works.
+            default: (cellProps: { dayValue: string }) =>
               slots.default
-                ? slots.default({ formattedDate, isDisabled, isHovered, isPressed, isSelectionStart, isSelectionEnd })
-                : formattedDate
+                ? slots.default({ ...cellProps, formattedDate: cellProps.dayValue })
+                : cellProps.dayValue
           }}
         </RekaRangeCalendarCellTrigger>
       </RekaRangeCalendarCell>

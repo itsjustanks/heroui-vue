@@ -1,18 +1,33 @@
 import { Label, ListBox, Select } from '@heroui/react'
+import { currentExample } from '../shared'
 
 /** Select demo — HeroUI v3 React, for side-by-side parity. */
 export default function SelectDemo() {
+  const example = currentExample('default')
+  const variant = example === 'variants' || example === 'on-surface' ? 'secondary' : 'primary'
+  const fullWidth = example === 'full-width'
+  const disabled = example === 'disabled'
+  const multiple = example === 'multiple-select' || example === 'controlled-multiple' || example === 'custom-value-multiple'
+  const placeholder = multiple ? 'Select states' : 'Select one'
+
   return (
-    <div className="demo-row">
-      <Select className="w-[256px]" placeholder="Select one">
-        <Label>State</Label>
+    <div className={fullWidth ? 'demo-col' : 'demo-row'}>
+      <Select
+        className={fullWidth ? 'w-full' : 'w-[256px]'}
+        placeholder={placeholder}
+        variant={variant}
+        fullWidth={fullWidth}
+        isDisabled={disabled}
+        selectionMode={multiple ? 'multiple' : undefined}
+      >
+        <Label>{multiple ? 'States' : 'State'}</Label>
         <Select.Trigger>
           <Select.Value />
           <Select.Indicator />
         </Select.Trigger>
         <Select.Popover>
           <ListBox>
-            <ListBox.Item id="florida" textValue="Florida">
+            <ListBox.Item id="florida" textValue="Florida" isDisabled={example === 'with-disabled-options'}>
               Florida
               <ListBox.ItemIndicator />
             </ListBox.Item>
@@ -20,7 +35,7 @@ export default function SelectDemo() {
               Delaware
               <ListBox.ItemIndicator />
             </ListBox.Item>
-            <ListBox.Item id="california" textValue="California">
+            <ListBox.Item id="california" textValue="California" isDisabled={example === 'with-disabled-options'}>
               California
               <ListBox.ItemIndicator />
             </ListBox.Item>
@@ -39,6 +54,13 @@ export default function SelectDemo() {
           </ListBox>
         </Select.Popover>
       </Select>
+      {example === 'variants' && (
+        <Select className="w-[256px]" placeholder="Secondary" variant="secondary">
+          <Label>Variant</Label>
+          <Select.Trigger><Select.Value /><Select.Indicator /></Select.Trigger>
+          <Select.Popover><ListBox><ListBox.Item id="secondary">Secondary<ListBox.ItemIndicator /></ListBox.Item></ListBox></Select.Popover>
+        </Select>
+      )}
     </div>
   )
 }

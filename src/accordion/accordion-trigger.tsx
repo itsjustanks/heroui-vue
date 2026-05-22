@@ -1,18 +1,24 @@
 import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
-import { AccordionHeader, AccordionTrigger as RekaAccordionTrigger, injectAccordionItemContext } from 'reka-ui'
+import { AccordionTrigger as RekaAccordionTrigger } from 'reka-ui'
 import { accordionVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { IconChevronDown } from '@/icons'
 import { ACCORDION_ITEM_CONTEXT } from './accordion-item-context'
 
 /**
  * AccordionTrigger — Vue port of HeroUI v3 `AccordionTrigger`.
  *
- * DOM structure mirrors HeroUI React:
- *   h3[data-slot="accordion-heading"]
- *     button[data-slot="accordion-trigger"]
+ * Renders only the trigger button (`data-slot="accordion-trigger"`); the
+ * surrounding `h3` heading is `Accordion.Heading`, exactly as HeroUI React
+ * composes it:
+ *
+ *   h3[data-slot="accordion-heading"]   ← Accordion.Heading
+ *     button[data-slot="accordion-trigger"]   ← Accordion.Trigger
  *       {children}
- *       svg[data-slot="accordion-indicator"][data-expanded]
+ *
+ * The chevron is NOT auto-rendered — compose `<Accordion.Indicator>` inside the
+ * trigger explicitly, the way HeroUI's docs do. `accordion__trigger` is a flex
+ * row with `justify-between`, and `accordion__indicator` carries `ml-auto`, so
+ * an explicit indicator lands flush against the trailing edge.
  */
 export const AccordionTrigger = defineComponent({
   name: 'AccordionTrigger',
@@ -22,33 +28,18 @@ export const AccordionTrigger = defineComponent({
   },
   setup (props, { attrs, slots }) {
     const ctx = inject(ACCORDION_ITEM_CONTEXT, null)
-    const itemContext = injectAccordionItemContext()
 
     return () => {
       const s = ctx?.slots.value ?? accordionVariants()
 
       return (
-        <AccordionHeader
-          data-slot="accordion-heading"
-          class={cn(s.heading())}
+        <RekaAccordionTrigger
+          {...attrs}
+          data-slot="accordion-trigger"
+          class={cn(s.trigger(), props.class)}
         >
-          <RekaAccordionTrigger
-            {...attrs}
-            data-slot="accordion-trigger"
-            class={cn(s.trigger(), props.class)}
-          >
-            {slots.default?.()}
-            {slots.indicator
-              ? slots.indicator()
-              : (
-                <IconChevronDown
-                  data-slot="accordion-indicator"
-                  class={cn(s.indicator())}
-                  data-expanded={itemContext.open.value ? 'true' : undefined}
-                />
-              )}
-          </RekaAccordionTrigger>
-        </AccordionHeader>
+          {slots.default?.()}
+        </RekaAccordionTrigger>
       )
     }
   }

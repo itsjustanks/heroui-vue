@@ -1,7 +1,8 @@
-import { computed, defineComponent, provide, type HTMLAttributes, type PropType } from 'vue'
+import { Text, computed, defineComponent, provide, type HTMLAttributes, type PropType, type VNode } from 'vue'
 import { badgeVariants, type BadgeVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 import { BADGE_CONTEXT } from './badge-context'
+import { BadgeLabel } from './badge-label'
 
 /**
  * Badge — the positioned indicator. Faithful Vue port of HeroUI v3 `Badge`.
@@ -33,11 +34,16 @@ export const BadgeRoot = defineComponent({
     }))
     provide(BADGE_CONTEXT, { slots: styles })
 
-    return () => (
-      <span {...attrs} data-slot="badge" class={cn(styles.value.base(), props.class)}>
-        {slots.default?.()}
-      </span>
-    )
+    return () => {
+      const children = slots.default?.()
+      const shouldWrapLabel = children?.length === 1 && (children[0] as VNode).type === Text
+
+      return (
+        <span {...attrs} data-slot="badge" class={cn(styles.value.base(), props.class)}>
+          {shouldWrapLabel ? <BadgeLabel>{children}</BadgeLabel> : children}
+        </span>
+      )
+    }
   }
 })
 

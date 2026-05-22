@@ -1,10 +1,15 @@
 import { Tabs } from '@heroui/react'
+import { currentExample } from '../shared'
 
 /** React demo — Tabs (HeroUI v3), mirrors the Vue parity demo. */
 export default function TabsDemo() {
+  const example = currentExample('basic')
+  const orientation = example === 'vertical' || example === 'secondary-vertical' ? 'vertical' : 'horizontal'
+  const variant = example === 'secondary' || example === 'secondary-vertical' ? 'secondary' : undefined
+
   return (
     <div className="demo-col">
-      <Tabs className="w-full max-w-md">
+      <Tabs className="w-full max-w-md" orientation={orientation} variant={variant}>
         <Tabs.ListContainer>
           <Tabs.List aria-label="Options">
             <Tabs.Tab id="overview">
@@ -15,7 +20,7 @@ export default function TabsDemo() {
               Analytics
               <Tabs.Indicator />
             </Tabs.Tab>
-            <Tabs.Tab id="reports">
+            <Tabs.Tab id="reports" isDisabled={example === 'disabled'}>
               Reports
               <Tabs.Indicator />
             </Tabs.Tab>

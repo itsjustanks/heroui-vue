@@ -29,6 +29,7 @@ export const AccordionPanel = defineComponent({
       return (
         <RekaAccordionContent
           {...attrs}
+          forceMount
           data-slot="accordion-panel"
           class={cn(s.panel(), props.class)}
           data-expanded={itemContext.open.value ? 'true' : undefined}

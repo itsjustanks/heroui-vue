@@ -59,16 +59,19 @@ export const CalendarCell = defineComponent({
           class={cn((ctx?.slots.value ?? calendarVariants()).cell(), props.class)}
         >
           {{
-            default: ({ formattedDate }: { formattedDate: string }) =>
+            // reka-ui's CalendarCellTrigger exposes the day label as `dayValue`.
+            // Forward it to consumers as both `dayValue` and `formattedDate`
+            // (HeroUI React's name) so either spelling works.
+            default: (cellProps: { dayValue: string }) =>
               slots.default
-                ? slots.default({ formattedDate })
+                ? slots.default({ ...cellProps, formattedDate: cellProps.dayValue })
                 : (
                   <span
                     aria-hidden="true"
                     data-slot="calendar-cell-indicator"
                     class={(ctx?.slots.value ?? calendarVariants()).cellIndicator()}
                   >
-                    {formattedDate}
+                    {cellProps.dayValue}
                   </span>
                 )
           }}

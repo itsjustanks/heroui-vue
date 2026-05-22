@@ -2,7 +2,7 @@ import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue
 import { Toggle as RekaToggle, ToggleGroupItem as RekaToggleGroupItemBase } from 'reka-ui'
 import { toggleButtonVariants, type ToggleButtonVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
-import { TOGGLE_BUTTON_GROUP_CONTEXT } from '@/toggle-group/toggle-group-context'
+import { TOGGLE_BUTTON_GROUP_CONTEXT } from '@/toggle-button-group/toggle-group-context'
 
 // reka requires `value` on ToggleGroupItem, but HeroUI's API uses `id`; the
 // thin `any` cast lets us forward `value` derived from `id` at runtime.

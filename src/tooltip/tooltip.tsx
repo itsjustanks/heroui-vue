@@ -1,5 +1,10 @@
 import { computed, defineComponent, provide, type PropType } from 'vue'
-import { TooltipRoot as RekaTooltipRoot, TooltipTrigger as RekaTooltipTrigger } from 'reka-ui'
+import {
+  TooltipRoot as RekaTooltipRoot,
+  TooltipTrigger as RekaTooltipTrigger,
+  TooltipProvider as RekaTooltipProvider,
+  injectTooltipProviderContext,
+} from 'reka-ui'
 import { tooltipVariants } from '@heroui/styles'
 import { withAutoTrigger } from '@/lib/auto-trigger'
 import { TOOLTIP_CONTEXT } from './tooltip-context'
@@ -38,6 +43,12 @@ export const TooltipRoot = defineComponent({
     const styles = computed(() => tooltipVariants())
     provide(TOOLTIP_CONTEXT, { slots: styles })
 
+    // reka-ui's TooltipRoot requires a TooltipProvider ancestor; HeroUI React's
+    // Tooltip needs none. If no provider is present, supply one transparently so
+    // a bare <Tooltip> works standalone, matching upstream. A `null` fallback
+    // turns the would-be "not found" throw into a plain absence check.
+    const hasProvider = injectTooltipProviderContext(null) != null
+
     const handleOpenChange = (open: boolean) => {
       props.onOpenChange?.(open)
       emit('update:open', open)
@@ -47,7 +58,7 @@ export const TooltipRoot = defineComponent({
     return () => {
       const controlledOpen = props.isOpen ?? props.open ?? props.modelValue
 
-      return (
+      const root = (
         <RekaTooltipRoot
           data-slot="tooltip-root"
           {...attrs}
@@ -60,6 +71,8 @@ export const TooltipRoot = defineComponent({
           {withAutoTrigger(slots.default?.(), RekaTooltipTrigger, 'TooltipTrigger')}
         </RekaTooltipRoot>
       )
+
+      return hasProvider ? root : <RekaTooltipProvider>{root}</RekaTooltipProvider>
     }
   }
 })

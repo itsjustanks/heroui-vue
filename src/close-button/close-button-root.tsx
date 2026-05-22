@@ -35,11 +35,11 @@ export const CloseButtonRoot = defineComponent({
       return (
         <Primitive
           aria-label="Close"
+          data-slot="close-button"
           {...forwardedAttrs}
           as={props.as}
           asChild={props.asChild}
           data-disabled={isDisabled ? 'true' : undefined}
-          data-slot="close-button"
           class={cn(styles.value, reactClass(props))}
         >
           {slots.default ? slots.default() : <IconX data-slot="close-button-icon" />}
