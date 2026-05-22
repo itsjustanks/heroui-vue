@@ -1,10 +1,10 @@
 /**
- * HeroUI-Vue AlertDialog — faithful port of `shadcn/alert-dialog` over reka-ui
+ * HeroUI-Vue AlertDialog — faithful port of `shadcn-vue` over reka-ui
  * `AlertDialog*`, restyled to HeroUI v3 modal taste (`rounded-2xl` surface,
- * `bg-black/50` backdrop, `data-[state]` zoom animation — mirrors `heroui/modal`).
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * `bg-black/50` backdrop, `data-[state]` zoom animation — mirrors `modal`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Export names mirror `src/components/shadcn/alert-dialog/index.ts` exactly.
+ * Export names mirror `shadcn-vue` exactly.
  */
 export { default as AlertDialog } from './alert-dialog'
 export { default as AlertDialogAction } from './alert-dialog-action'

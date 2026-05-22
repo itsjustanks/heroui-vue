@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * FieldContent — vertical stack for a label + description beside a control.
- * Faithful port of `shadcn/field/FieldContent`.
+ * Faithful port of `shadcn-vue`.
  */
 export const FieldContent = defineComponent({
   name: 'FieldContent',

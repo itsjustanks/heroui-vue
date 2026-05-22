@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
 /**
  * HeroUI-Vue Item variants.
  *
- * Faithful port of `shadcn/item`'s `itemVariants` / `itemMediaVariants` cvas,
+ * Faithful port of `shadcn-vue`'s `itemVariants` / `itemMediaVariants` cvas,
  * restyled to HeroUI v3 taste (`item-card.css`): a list-row surface with
  * `rounded-lg` corners, `gap-3`, and a soft `hover:bg-accent`. Same variant
  * keys / option names as the shadcn original — zero API drift.

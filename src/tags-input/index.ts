@@ -1,9 +1,9 @@
 /**
  * HeroUI-Vue TagsInput — faithful HeroUI v3 tag-input over reka-ui.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Export names mirror `src/components/shadcn/tags-input/index.ts` so call-site
- * migration is a mechanical import-path swap (§4.3).
+ * Export names mirror `shadcn-vue` so migrating from it is a mechanical
+ * import-path swap.
  */
 export { default as TagsInput } from './tags-input'
 export { default as TagsInputInput } from './tags-input-input'

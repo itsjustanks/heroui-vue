@@ -7,7 +7,7 @@ import { provideColorPickerContext } from './color-picker-context'
 
 /**
  * ColorPicker.Trigger — the element that opens the picker popover (typically a
- * `ColorSwatch` + `Label`). Composes `heroui/popover`'s `PopoverTrigger`, which
+ * `ColorSwatch` + `Label`). Composes `popover`'s `PopoverTrigger`, which
  * renders as a `<button>`.
  */
 const ColorPickerTrigger = defineComponent({
@@ -31,7 +31,7 @@ const ColorPickerTrigger = defineComponent({
 
 /**
  * ColorPicker.Popover — the floating panel holding the color controls. Composes
- * `heroui/popover`'s `PopoverContent`.
+ * `popover`'s `PopoverContent`.
  */
 const ColorPickerPopover = defineComponent({
   name: 'ColorPickerPopover',
@@ -60,7 +60,7 @@ const ColorPickerPopover = defineComponent({
  * ColorPicker — a composable color picker that synchronises a color value across
  * its compound parts. Faithful HeroUI v3 port: HeroUI's `ColorPicker` is built on
  * React Aria; reka-ui (2.8) ships no color primitive, so the color model lives in
- * `setup()` (per the build brief) and the popover composes `heroui/popover`.
+ * `setup()` and the popover composes the `Popover` component.
  *
  * Parts: `ColorPicker.Trigger`, `ColorPicker.Popover`. The picking controls
  * (`ColorArea`, `ColorSlider`, `ColorSwatch`, `ColorField`, `ColorSwatchPicker`)

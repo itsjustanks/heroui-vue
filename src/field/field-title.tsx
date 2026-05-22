@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * FieldTitle — a non-`<label>` field title (e.g. for non-input rows). Faithful
- * port of `shadcn/field/FieldTitle`.
+ * port of `shadcn-vue`.
  *
  * Shares the `data-slot="field-label"` hook with `FieldLabel` so layout
  * selectors treat it identically.

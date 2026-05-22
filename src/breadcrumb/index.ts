@@ -1,7 +1,7 @@
 /**
  * HeroUI-Vue Breadcrumb — faithful HeroUI v3 breadcrumbs over plain
  * `<nav>/<ol>/<li>` + reka-ui `Primitive`.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Restyled to HeroUI taste: links carry no underline — quiet
  * `text-muted-foreground` resolving to `text-foreground` for the current page.

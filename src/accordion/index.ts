@@ -1,9 +1,9 @@
 /**
  * HeroUI-Vue Accordion — faithful HeroUI v3 accordion over reka-ui.
  *
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  * Granular parts keep reka-ui-style names so call-site migration is a mechanical
- * import-path swap. Export names mirror `src/components/shadcn/accordion/index.ts`.
+ * import-path swap. Export names mirror `shadcn-vue`.
  */
 export { default as Accordion } from './accordion'
 export { default as AccordionContent } from './accordion-content'

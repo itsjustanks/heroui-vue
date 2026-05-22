@@ -1,11 +1,11 @@
 /**
  * HeroUI-Vue DatePicker — faithful HeroUI v3 `DatePicker` over reka-ui.
  *
- * Net-new primitive (Phase 6, no `shadcn/` base). Composes a segmented date
+ * Net-new primitive (no `shadcn-vue` base). Composes a segmented date
  * field + a popover + a calendar via reka-ui's context-wired `DatePicker*`
- * parts, styled to HeroUI v3 taste (and matching the standalone `heroui/calendar`
- * and `heroui/popover` primitives). Date engine is `@internationalized/date`.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * parts, styled to HeroUI v3 taste (and matching the standalone `calendar`
+ * and `popover` primitives). Date engine is `@internationalized/date`.
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Compound API:
  *   DatePicker            — root (reka `DatePickerRoot`)

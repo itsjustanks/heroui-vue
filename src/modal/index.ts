@@ -4,7 +4,7 @@
  * 3-layer compound (HeroUI `modal.css`): Backdrop (dim overlay) > Container
  * (positioning) > Dialog (the `role=dialog` box). Use via dot notation
  * (`Modal.Trigger`, `Modal.Backdrop`, …) or the named exports.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  */
 import ModalRoot from './modal'
 import ModalTrigger from './modal-trigger'
@@ -48,9 +48,8 @@ export {
 }
 
 /**
- * Temporary shadcn-`Dialog` compat surface (§4.6.2 migration aid) — lets
- * `@shadcn/dialog` sites swap import path to `heroui/modal`. Delete once every
- * migrated site is converged to the real `Modal.*` API.
+ * shadcn-vue `Dialog` compatibility aliases — let a project migrating from
+ * shadcn-vue swap import paths to heroui-vue, then converge on `Modal.*`.
  */
 export {
   Dialog,

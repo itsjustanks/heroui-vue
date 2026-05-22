@@ -2,7 +2,7 @@ import { defineComponent, type PropType } from 'vue'
 import { Popover, PopoverContent, PopoverTrigger } from '@/popover'
 
 /**
- * Dropdown — legacy 2-part dropdown (HeroUI-Vue port of `shadcn/dropdown`).
+ * Dropdown — legacy 2-part dropdown (HeroUI-Vue port of `shadcn-vue`).
  *
  * A lightweight Popover-backed dropdown with `trigger` + `content` named slots,
  * distinct from the 14-part `DropdownMenu*` family in this directory. Kept as a

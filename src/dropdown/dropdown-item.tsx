@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 /**
  * DropdownItem — a single row inside the legacy 2-part `Dropdown`.
  *
- * Faithful HeroUI-Vue port of `shadcn/dropdown` `DropdownItem` — a quiet,
+ * Faithful HeroUI-Vue port of `shadcn-vue` `DropdownItem` — a quiet,
  * hover-highlighted clickable row. Distinct from `DropdownMenuItem`.
  */
 export const DropdownItem = defineComponent({

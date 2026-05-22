@@ -36,7 +36,7 @@ const ColorAreaThumb = defineComponent({
 /**
  * ColorArea — the 2-D saturation/brightness picking surface. HeroUI's `ColorArea`
  * is built on React Aria; reka-ui (2.8) ships no color primitive, so the
- * pointer/keyboard logic lives here in `setup()` (per the build brief).
+ * pointer/keyboard logic lives here in `setup()`.
  * `xChannel`/`yChannel`/`colorSpace` are accepted for HeroUI API parity — the
  * working space is HSB, x = saturation, y = brightness.
  *

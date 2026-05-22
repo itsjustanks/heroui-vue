@@ -1,13 +1,13 @@
 /**
  * HeroUI-Vue DateField — faithful HeroUI v3 `DateField` over reka-ui.
  *
- * NET-NEW primitive (Phase 6 greenfield, no `shadcn/` base). A `DateField` is a
+ * NET-NEW primitive (no `shadcn-vue` base). A `DateField` is a
  * segmented date input with **no popover and no calendar** — the date
  * counterpart to `TimeField`. Compound parts mirror HeroUI's `DateField.*` API
  * and `TimeField`'s segment parts. Built over reka-ui `DateFieldRoot` /
  * `DateFieldInput`. Date engine is `@internationalized/date`. Reuses
  * `time-field`'s shared `dateInputGroupVariants`. Part of the HeroUI-for-Vue
- * primitive library (`.planning/prps/heroui-vue-library.md`).
+ * primitive library.
  *
  * Compound API:
  *   DateField (.Group, .Input, .Segment, .Prefix, .Suffix)

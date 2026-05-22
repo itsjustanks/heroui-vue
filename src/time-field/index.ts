@@ -1,10 +1,9 @@
 /**
  * HeroUI-Vue TimeField — faithful HeroUI v3 `TimeField` over reka-ui.
  *
- * Net-new primitive (Phase 6, no `shadcn/` base). Compound parts mirror
+ * Net-new primitive (no `shadcn-vue` base). Compound parts mirror
  * HeroUI's `TimeField.*` API. Date engine is `@internationalized/date` via
- * reka-ui `TimeFieldRoot`. Part of the HeroUI-for-Vue primitive library
- * (`.planning/prps/heroui-vue-library.md`).
+ * reka-ui `TimeFieldRoot`. Part of the HeroUI-for-Vue primitive library.
  */
 export { default as TimeField } from './time-field'
 export { default as TimeFieldGroup } from './time-field-group'

@@ -1,9 +1,7 @@
 /**
  * HeroUI-Vue Select — faithful HeroUI v3 select over reka-ui (headless behaviour).
  *
- * Part of the HeroUI-for-Vue primitive library — see
- * `.planning/prps/heroui-vue-library.md`. Export names mirror
- * `src/components/shadcn/select` so call-site migration is a mechanical
+ * Export names mirror `shadcn-vue` so migrating from it is a mechanical
  * import-path swap.
  */
 export { default as Select } from './select'

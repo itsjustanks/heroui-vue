@@ -1,6 +1,6 @@
 /**
  * HeroUI-Vue Typography — faithful HeroUI v3 typography primitives.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Compound API mirrors HeroUI v3: `Typography` (= `TypographyRoot`) with
  * `.Root` / `.Heading` / `.Paragraph` / `.Code` / `.Prose` dot-notation parts.

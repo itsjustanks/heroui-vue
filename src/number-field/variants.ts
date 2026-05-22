@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * Number-field-group cva variants — adapted from HeroUI v3 `numberFieldVariants`
- * (`packages/styles/src/components/number-field/number-field.styles.ts` +
+ * (`@heroui/styles` +
  * `number-field.css`). HeroUI's BEM slots (`number-field__group`, `--primary`,
  * `--secondary`, `--full-width`) become Tailwind utilities on the repo's shadcn
  * tokens.

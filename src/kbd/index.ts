@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue Kbd — faithful HeroUI v3 keyboard-key hint.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Compat-named exports mirror `src/components/shadcn/kbd` so call-site
+ * Compat-named exports mirror `shadcn-vue` so call-site
  * migration is a mechanical import-path swap.
  */
 export { default as Kbd } from './kbd'

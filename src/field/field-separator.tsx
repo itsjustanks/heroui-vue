@@ -4,7 +4,7 @@ import { Separator } from '@/separator'
 
 /**
  * FieldSeparator — a divider between field groups, optionally with centred
- * label content. Faithful port of `shadcn/field/FieldSeparator`.
+ * label content. Faithful port of `shadcn-vue`.
  *
  * `data-content` reflects whether the default slot is present; the centred
  * label span renders only when content is provided.

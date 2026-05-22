@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 /**
  * ProgressCircle cva variants — adapted from HeroUI v3 `progressCircleVariants`
- * (`packages/styles/src/components/progress-circle/progress-circle.styles.ts` +
+ * (`@heroui/styles` +
  * `progress-circle.css`).
  *
  * HeroUI's BEM keeps the `size` on the `<svg>` track (`size-5/7/9`) and the

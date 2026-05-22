@@ -1,6 +1,6 @@
 /**
  * HeroUI-Vue Pagination — faithful HeroUI v3 pagination primitive.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Page navigation built over reka-ui's `Pagination*` family (page math, edges,
  * sibling count, `v-model:page`). Compound API mirrors HeroUI v3 — `Pagination`

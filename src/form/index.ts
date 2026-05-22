@@ -1,7 +1,7 @@
 /**
- * HeroUI-Vue Form — backwards-compatible re-exports from `heroui/field`, for
- * TanStack Form call sites. Mirrors how `shadcn/form` shimmed `shadcn/field`.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * HeroUI-Vue Form — backwards-compatible re-exports from `field`, for
+ * TanStack Form call sites. Mirrors how `shadcn-vue` shimmed `shadcn-vue`.
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Component mapping: `FormItem`→`Field`, `FormLabel`→`FieldLabel`,
  * `FormMessage`→`FieldError`, `FormDescription`→`FieldDescription`.

@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * InputGroupText — inline muted text/icon content inside an `InputGroup` addon.
- * Faithful port of `shadcn/input-group/InputGroupText`.
+ * Faithful port of `shadcn-vue`.
  */
 export const InputGroupText = defineComponent({
   name: 'InputGroupText',

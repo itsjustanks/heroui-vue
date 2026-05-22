@@ -3,10 +3,9 @@
  *
  * A horizontal application menu bar (`MenubarRoot`) whose menus share the
  * dropdown's menu surface + menu-item styling (HeroUI `menu.css` /
- * `menu-item.css`). Part of the HeroUI-for-Vue primitive library
- * (`.planning/prps/heroui-vue-library.md`).
+ * `menu-item.css`). Part of the HeroUI-for-Vue primitive library.
  *
- * Export names mirror `src/components/shadcn/menubar/index.ts` so call-site
+ * Export names mirror `shadcn-vue` so call-site
  * migration is a mechanical import-path swap.
  */
 export { default as Menubar } from './menubar'

@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
  * the `ListBox.Item` rendered inside HeroUI v3's `ComboBox.Popover`
  * (`combo-box.css` `[data-slot="list-box-item"]`, `px-2.5`).
  *
- * Built over reka-ui `ComboboxItem`; styled to match `heroui/list-box`'s item
+ * Built over reka-ui `ComboboxItem`; styled to match `list-box`'s item
  * (`min-h-9`, `gap-3`, `rounded-2xl`, hover/highlight states). reka-ui
  * `ComboboxItem` props/emits (`value`, `textValue`, `disabled`, `onSelect`, …)
  * forward through `{...attrs}`.

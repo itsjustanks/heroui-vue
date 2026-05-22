@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * Date-input-group cva variants — adapted from HeroUI v3 `dateInputGroupVariants`
- * (`packages/styles/.../date-input-group.styles.ts`). HeroUI's BEM slots
+ * (`@heroui/styles`). HeroUI's BEM slots
  * (`date-input-group`, `--primary`, `--secondary`, `--full-width`) become
  * Tailwind utilities on the repo's shadcn tokens. Shared by `time-field`,
  * `date-picker` and `date-range-picker` — every HeroUI date control uses the

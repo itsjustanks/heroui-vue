@@ -1,6 +1,6 @@
 /**
  * HeroUI-Vue Close Button — faithful HeroUI v3 close-button primitive.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * The standard ✕ dismiss icon button. Compound API mirrors HeroUI v3:
  * `CloseButton` (= `CloseButtonRoot`) with a `.Root` dot-notation alias.

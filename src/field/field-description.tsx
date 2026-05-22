@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * FieldDescription — helper text beneath a field label/control. Faithful port
- * of `shadcn/field/FieldDescription`.
+ * of `shadcn-vue`.
  */
 export const FieldDescription = defineComponent({
   name: 'FieldDescription',

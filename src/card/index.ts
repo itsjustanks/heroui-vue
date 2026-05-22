@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue Card — faithful HeroUI v3 card surface over plain elements.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Compat-named exports mirror `src/components/shadcn/card/index.ts` so call-site
+ * Compat-named exports mirror `shadcn-vue` so call-site
  * migration is a mechanical import-path swap.
  */
 export { default as Card } from './card'

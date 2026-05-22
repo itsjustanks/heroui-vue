@@ -40,7 +40,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc -p tsconfig.build.json",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "maintain": "node scripts/maintain.mjs",
+    "check:upstream": "node scripts/check-upstream.mjs",
+    "check:coverage": "node scripts/check-coverage.mjs",
+    "check:bem-drift": "node scripts/check-bem-drift.mjs"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
@@ -55,6 +59,7 @@
     "vue-sonner": "^1.2.1"
   },
   "devDependencies": {
+    "@heroui/react": "^3.0.5",
     "@vitejs/plugin-vue": "^6.0.5",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
     "typescript": "~5.7.3",

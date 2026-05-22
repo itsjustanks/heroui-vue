@@ -3,11 +3,10 @@ import { cn } from '@/lib/utils'
 import { Label } from '@/label'
 
 /**
- * FieldLabel — the label for a `Field`. Faithful port of
- * `shadcn/field/FieldLabel`.
+ * FieldLabel — the label for a `Field`.
  *
- * Wraps the shared `Label` primitive (no HeroUI-Vue label port yet — Phase 2)
- * and adds the field-specific `has-[…]` selectors for selectable card labels.
+ * Wraps the shared `Label` primitive and adds the field-specific `has-[…]`
+ * selectors for selectable card labels.
  */
 export const FieldLabel = defineComponent({
   name: 'FieldLabel',

@@ -1,9 +1,9 @@
 /**
  * HeroUI-Vue Tabs — faithful HeroUI v3 tabs over reka-ui.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Restyled to HeroUI's segmented-track taste; export names mirror
- * `src/components/shadcn/tabs/index.ts` so call-site migration is a mechanical
+ * `shadcn-vue` so call-site migration is a mechanical
  * import-path swap.
  */
 export { default as Tabs } from './tabs'

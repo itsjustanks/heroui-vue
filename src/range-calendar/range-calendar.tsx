@@ -23,7 +23,7 @@ type TRangeCalendarGridSlot = {
  * RangeCalendar — HeroUI-Vue range-calendar root (primitive library, net-new).
  *
  * Faithful port of HeroUI v3 `RangeCalendar` over reka-ui `RangeCalendarRoot`.
- * Mirrors `heroui/calendar`'s day-cell styling and adds the **connected-range
+ * Mirrors `calendar`'s day-cell styling and adds the **connected-range
  * band** — a continuous track spanning the selected days, drawn by
  * `RangeCalendarCell`, with `bg-primary` caps on the start/end days. Keeps
  * `@internationalized/date` as the date engine and forwards every

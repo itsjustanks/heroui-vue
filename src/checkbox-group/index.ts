@@ -2,8 +2,8 @@
  * HeroUI-Vue CheckboxGroup — faithful HeroUI v3 checkbox group over reka-ui
  * `CheckboxGroupRoot` + `CheckboxRoot`.
  *
- * Net-new primitive (no `shadcn/` base) — built fresh from HeroUI v3 specs.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Net-new primitive (no `shadcn-vue` base) — built fresh from HeroUI v3 specs.
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * The root owns the shared `string[]` value (`v-model`) and provides variant /
  * disabled / invalid state to its items.

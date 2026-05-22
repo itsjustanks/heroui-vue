@@ -1,11 +1,11 @@
 /**
  * HeroUI-Vue ColorPicker — faithful HeroUI v3 color picker for Vue.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * NET-NEW (Phase 6 greenfield) — no `shadcn/` base, no call sites to migrate.
+ * NET-NEW — no `shadcn-vue` base, no call sites to migrate.
  * HeroUI's ColorPicker is built on React Aria; reka-ui (2.8) ships no color
  * primitive, so the saturation/hue/alpha color model lives in `setup()`. The
- * picker popover composes `heroui/popover`.
+ * picker popover composes `popover`.
  *
  * Compound parts mirror HeroUI exactly — use dot notation or the named exports:
  *   ColorPicker (.Trigger, .Popover)

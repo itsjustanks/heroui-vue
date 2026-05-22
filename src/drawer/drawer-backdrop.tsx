@@ -1,11 +1,17 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, withDirectives, type HTMLAttributes, type PropType } from 'vue'
 import { DialogOverlay, DialogPortal } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { vHerouiState } from '@/composables/use-heroui-state'
 
 /**
  * DrawerBackdrop — the dim overlay layer (HeroUI `drawer__backdrop`). Portals the
  * drawer and renders the backdrop; the Content is passed as its children.
  * `variant`: opaque (default) | blur | transparent.
+ *
+ * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) derives
+ * `data-entering`/`data-exiting` from reka-ui's `data-state`. The backdrop's
+ * fade is a CSS *transition*, which reka-ui's presence cannot detect — the shim
+ * pins the element mounted for the transition's duration so it can play out.
  */
 export const DrawerBackdrop = defineComponent({
   name: 'DrawerBackdrop',
@@ -17,16 +23,23 @@ export const DrawerBackdrop = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <DialogPortal>
-        <DialogOverlay
-          {...attrs}
-          class={cn(
-            'drawer__backdrop',
-            props.variant === 'opaque' && 'drawer__backdrop--opaque',
-            props.variant === 'blur' && 'drawer__backdrop--blur',
-            props.variant === 'transparent' && 'drawer__backdrop--transparent',
-            props.class
+        <DialogOverlay asChild>
+          {withDirectives(
+            (
+              <div
+                {...attrs}
+                class={cn(
+                  'drawer__backdrop',
+                  props.variant === 'opaque' && 'drawer__backdrop--opaque',
+                  props.variant === 'blur' && 'drawer__backdrop--blur',
+                  props.variant === 'transparent' && 'drawer__backdrop--transparent',
+                  props.class
+                )}
+              />
+            ),
+            [[vHerouiState]]
           )}
-        />
+        </DialogOverlay>
         {slots.default?.()}
       </DialogPortal>
     )

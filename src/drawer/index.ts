@@ -4,7 +4,7 @@
  * An edge-anchored sliding panel. Same 3-layer compound as the modal (HeroUI
  * `drawer.css`): Backdrop > Content (positioning, owns `placement`) > Dialog
  * (the panel). Use via dot notation (`Drawer.Trigger`, …) or the named exports.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  */
 import DrawerRoot from './drawer'
 import DrawerTrigger from './drawer-trigger'

@@ -156,7 +156,7 @@ const ColorSliderOutput = defineComponent({
 /**
  * ColorSlider — a single-channel slider (hue / alpha / saturation / …). HeroUI's
  * `ColorSlider` is built on React Aria; reka-ui (2.8) ships no color primitive
- * so the pointer/keyboard logic lives in `setup()` (per the build brief). It
+ * so the pointer/keyboard logic lives in `setup()`. It
  * drives the ColorPicker context; the compound parts (`Track`, `Thumb`,
  * `Output`) read ratio/gradient/readout — and the Track also receives the rail
  * handlers — from a per-slider context.

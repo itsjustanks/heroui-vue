@@ -1,9 +1,15 @@
-import { defineComponent } from 'vue'
+import { defineComponent, withDirectives } from 'vue'
 import { MenubarSubContent as RekaMenubarSubContent, MenubarPortal } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { vHerouiState } from '@/composables/use-heroui-state'
 import type { HTMLAttributes, PropType } from 'vue'
 
-/** MenubarSubContent — the nested submenu popover; same surface as the root menu. */
+/**
+ * MenubarSubContent — the nested submenu popover; same surface as the root menu.
+ * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) bridges
+ * reka-ui's `data-state`/`data-side` to HeroUI's
+ * `data-entering`/`data-exiting`/`data-placement`.
+ */
 export const MenubarSubContent = defineComponent({
   name: 'MenubarSubContent',
   inheritAttrs: false,
@@ -13,12 +19,15 @@ export const MenubarSubContent = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <MenubarPortal>
-        <RekaMenubarSubContent
-          {...attrs}
-          data-slot="menu"
-          class={cn('menu', props.class)}
-        >
-          {slots.default?.()}
+        <RekaMenubarSubContent asChild>
+          {withDirectives(
+            (
+              <div {...attrs} data-slot="menu" class={cn('menu', props.class)}>
+                {slots.default?.()}
+              </div>
+            ),
+            [[vHerouiState]]
+          )}
         </RekaMenubarSubContent>
       </MenubarPortal>
     )

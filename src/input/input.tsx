@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 type TInputVariant = 'primary' | 'secondary'
 
 /**
- * Input — HeroUI-Vue text-field control. Faithful port of `shadcn/input`.
+ * Input — HeroUI-Vue text-field control. Faithful port of `shadcn-vue`.
  *
  * Emits HeroUI v3 BEM class names from `input.css`:
  *   base: `input`

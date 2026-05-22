@@ -1,148 +1,134 @@
-# PRP — `heroui-vue`: an open-source, `@heroui/styles`-backed Vue port of HeroUI v3
+# heroui-vue
 
-**Status:** Scaffolded. 61 OSS component families extracted from `unfold-app`'s
-in-app `heroui/` library, packaged (Vite lib build, MIT), git-initialised.
-**Supersedes:** the styling approach of the current in-repo `heroui/` +
-`heroui-pro/` (hand-written Tailwind utilities) and `src/components/heroui/theme.css`.
+A faithful **Vue 3** port of [HeroUI v3](https://heroui.com) — the accessible,
+composable React component library — rebuilt for Vue on top of
+[reka-ui](https://reka-ui.com) and styled by HeroUI's own published CSS.
 
-## 0. Current status & next steps
+`heroui-vue` is an independent, community project. It is not affiliated with the
+HeroUI team. HeroUI is MIT-licensed; this port is too.
 
-Done: package scaffold + `npm install` + **all 61 families on HeroUI BEM classes**
-(styled by `@heroui/styles`) + **gravity-ui icon set** (lucide removed). `npm run
-build` green (`dist/heroui-vue.js` 191 KB + `.css` + 389 `.d.ts`).
+## 1. What it is
 
-Next, in this repo:
-1. Visual QA against heroui.com; wire popover `data-entering`/`data-placement`
-   where animations need it.
-2. GitHub repo creation + `npm publish` are user-triggered when ready.
+HeroUI v3 ships for React only (`@heroui/react`). `heroui-vue` re-creates its
+open-source component set in Vue — **61 component families**, ~300 components —
+authored as Vue TSX over reka-ui for behaviour and accessibility.
 
-The in-app `unfold-app/src/components/heroui/` copy is untouched and still
-working — `unfold-app` switches to consume this package at rollout step 6.
+The defining choice: `heroui-vue` does **not** re-implement HeroUI's visual
+design. It renders HeroUI's real BEM class names and depends on
+[`@heroui/styles`](https://www.npmjs.com/package/@heroui/styles) — HeroUI's own
+maintained, MIT-licensed stylesheet — as the actual CSS layer. The port owns
+*behaviour*; HeroUI owns *appearance*. An upstream styling change reaches the
+port through `npm update`, not a manual re-skin.
 
-## 1. Goal
+The paid **HeroUI Pro** component set is closed-source and is deliberately **not**
+part of this package.
 
-Two outcomes:
-- **`heroui-vue`** — a standalone open-source GitHub repo + npm package: a faithful
-  Vue 3 port of **HeroUI OSS** (`@heroui/react`), styled by HeroUI's *real*
-  maintained CSS, so it stays aligned with upstream via `npm update`.
-- **`heroui-pro/`** — stays vendored in `unfold-app` (HeroUI Pro is paid; a port of
-  it cannot be open-sourced). Same architecture, Pro CSS vendored in-repo.
+## 2. Architecture
 
-`unfold-app` then consumes `heroui-vue` as a dependency.
+`heroui-vue` is four thin layers. Each component is the middle layer; the other
+three are dependencies it leans on.
 
-## 2. Why a separate project (the key finding)
+| Layer | Responsibility | Owned by |
+|---|---|---|
+| **reka-ui** | Headless behaviour & accessibility — focus management, keyboard interaction, ARIA, floating-element positioning. The Vue analogue of React Aria. | `reka-ui` (dependency) |
+| **component** | A Vue TSX component that wires a reka-ui primitive and emits HeroUI's BEM class names (`popover`, `modal__dialog`, `dropdown__popover`, …) and `data-slot` attributes, taken verbatim from HeroUI's `*.styles.js` slot maps. | this repo |
+| **data-attribute shim** | One reusable directive that bridges reka-ui's attribute contract to the React-Aria one HeroUI's CSS expects. | this repo |
+| **`@heroui/styles`** | The actual CSS — base resets, the default theme tokens, and one stylesheet per component. Never forked. | `@heroui/styles` (dependency) |
 
-`@heroui/styles@3.0.5` (MIT) is **a full Tailwind v4 styling foundation**, not a
-drop-in stylesheet:
-- `dist/index.css` bundles `@import "tailwindcss"` + `tw-animate-css`, base resets,
-  a `themes/default` token layer, and `@layer theme, base, components, utilities`.
-- `dist/components/*.css` — ~50 per-component stylesheets.
-- The CSS keys off **~24 React-Aria data-attributes**: `data-slot` (×177),
-  `data-selected`, `data-placement`, `data-focus-visible`, `data-hovered`,
-  `data-disabled`, `data-pressed`, `data-invalid`, `data-entering`/`-exiting`,
-  `data-orientation`, `data-focus-within`, `data-outside-month`, `data-focused`,
-  `data-indeterminate`, `data-open`, `data-selection-start`/`-end`, `data-focus`,
-  `data-expanded`, `data-dragging`, `data-placeholder`, `data-pending`,
-  `data-empty`, `data-allows-sorting`.
+### 2.1 Why the styling keys off native CSS
 
-Retrofitting that into `unfold-app` means merging two Tailwind-v4 foundations
-(collisions in layer order, preflight, theme). A greenfield package where
-`@heroui/styles` *is* the foundation avoids all of it.
+HeroUI's CSS keys most of its interactive states off **native pseudo-classes** —
+`:hover`, `:focus-visible`, `:active`, `:disabled`. Those work directly over the
+real DOM that reka-ui renders, so no JavaScript state-mirroring shim is needed
+for the common case. A component that renders the right BEM class names is
+already styled and interactive.
 
-## 3. Architecture — "A done right"
+### 2.2 The data-attribute shim
 
-| Layer | What |
-|---|---|
-| **reka-ui** | headless behaviour / a11y (Vue analog of React Aria) |
-| **component** | renders HeroUI's **BEM class names** + `data-slot` per part (names taken verbatim from HeroUI's `*.styles.ts`) |
-| **data-attr shim** | one reusable composable/directive — re-emits the React-Aria data-attribute contract from reka-ui state |
-| **`@heroui/styles`** | the actual CSS — an npm dependency, **never forked**. Upstream update → `npm update`. |
+A few HeroUI attributes have no reka-ui equivalent — overlay enter/exit
+animations especially. The shim (`src/composables/use-heroui-state.ts`, applied
+as the `v-heroui-state` directive) closes that gap:
 
-The shim is the *only* thing the port maintains. Everything visual is HeroUI's.
+- **`data-entering` / `data-exiting`** — HeroUI animates popovers, modals,
+  drawers, menus and tooltips with these. reka-ui emits `data-state="open|closed"`
+  instead; the shim derives the React-Aria pair from `data-state` transitions.
+- **`data-placement`** — HeroUI keys placement-aware slide-ins off this. reka-ui
+  emits `data-side`; the shim mirrors it across.
+- **`data-disabled`** — HeroUI expects the valued form `data-disabled="true"`;
+  reka-ui emits a bare attribute, which the shim normalises.
 
-### 3.1 The data-attribute shim contract
+The shim also honours reka-ui's presence model: where an overlay exits with a
+CSS *transition* (drawer) or animates an always-mounted ancestor (modal), it
+pins the element mounted for the exit's duration so the animation can play out.
 
-Map reka-ui → the React-Aria contract HeroUI's CSS expects:
-- **Native pass-through** (reka already emits): `data-disabled`, `data-orientation`,
-  `data-placeholder`, `data-indeterminate` (`data-state=indeterminate`).
-- **Derived from reka `data-state` / `data-highlighted` / `data-side`+`data-align`:**
-  `data-open`/`data-expanded` ← `data-state=open`; `data-selected` ←
-  `data-state=checked|on|active` / reka `data-selected`; `data-focus-visible` ←
-  `data-highlighted`; `data-placement` ← `data-side` + `data-align`;
-  `data-entering`/`data-exiting` ← `data-state` open/closed.
-- **JS-tracked (composable adds pointer/focus listeners):** `data-hovered`,
-  `data-pressed`, `data-focused`, `data-focus`, `data-focus-within`.
-- **Static:** `data-slot="<part>"` on every part — verbatim from `*.styles.ts`.
-- **Component-specific:** calendar (`data-outside-month`, `data-selection-*`),
-  form (`data-invalid`, `data-pending`), table (`data-allows-sorting`), DnD
-  (`data-dragging`), `data-empty` — wired per component.
+## 3. Component coverage
 
-### 3.2 Icons — gravity-ui, not lucide
+All 61 families are ported and build green. Each lives in its own directory
+under `src/` and is re-exported from `src/index.ts`.
 
-HeroUI v3 uses the **gravity-ui icon set** (`@gravity-ui/icons`,
-<https://github.com/gravity-ui/icons>) throughout its components and docs. The
-current port uses `lucide-vue-next` — a fidelity gap. Swap it:
-- **Vue delivery:** `@iconify/vue` with Iconify's gravity-ui collection
-  (`gravity-ui:<name>`), or `@gravity-ui/icons` directly if it ships
-  Vue-consumable SVG components. Decide in step 0.
-- Replace every `import { X as IconX } from 'lucide-vue-next'` with the
-  gravity-ui equivalent — needs a lucide→gravity-ui name map (not 1:1).
-- Done in the same per-component pass as the BEM conversion (every file is
-  already being touched). Applies to `heroui/` **and** `heroui-pro/`.
+- **Buttons & actions** — button, button-group, toggle, toggle-group,
+  close-button, link
+- **Inputs & forms** — input, input-group, input-otp, textarea, number-field,
+  checkbox, checkbox-group, radio-group, switch, slider, select, combo-box,
+  tags-input, color-picker, field, form, label
+- **Date & time** — calendar, range-calendar, date-field, date-picker,
+  date-range-picker, time-field
+- **Overlays** — modal, drawer, popover, tooltip, dropdown, menubar
+- **Navigation** — breadcrumb, pagination, tabs
+- **Data display** — table, list-box, item, card, accordion, collapsible,
+  avatar, badge, chip, kbd, separator, typography
+- **Feedback & status** — alert, alert-dialog, progress, progress-circle, meter,
+  spinner, skeleton, shimmer, sonner
+- **Layout & utility** — scroll-area, toolbar
 
-## 4. `heroui-vue` repo structure
+Icons ship as the [gravity-ui](https://github.com/gravity-ui/icons) set (the
+icon family HeroUI v3 itself uses), vendored as Vue functional components under
+`src/icons/`.
+
+## 4. Project layout
 
 ```
 heroui-vue/
-  package.json        # deps: vue, reka-ui, @heroui/styles ; peerDep: vue
   src/
-    composables/use-heroui-state.ts   # the data-attr shim
-    components/<name>/                # one dir per component (the ported set)
-    styles.ts                         # re-exports / styling entry
-    index.ts                          # master barrel
-  README.md  LICENSE (MIT)  tsconfig  build (vite lib mode)
-  playground/ or histoire/            # isolated dev + visual verification
+    composables/use-heroui-state.ts   # the data-attribute shim
+    <family>/                         # one directory per component family
+    icons/                            # gravity-ui icon set, as Vue components
+    lib/utils.ts                      # cn() class-merge helper
+    index.ts                          # public barrel
+  scripts/                            # upstream-tracking tooling (see MAINTENANCE.md)
+  dist/                               # build output (ESM + CSS + .d.ts)
 ```
 
-- Build: Vite library mode → ESM + types. Consumers import components + once
-  `@import "@heroui/styles"` (or the package re-exports it).
-- Dev/verify in isolation (Histoire/Storybook) — `@heroui/styles` is the clean
-  foundation there, no host-app Tailwind collision.
+The build is Vite library mode → ESM, with `vue-tsc` emitting `.d.ts` files.
+`vue` and the reka-ui stack stay external so the consuming app dedupes them.
 
-## 5. OSS / Pro split + licensing
+## 5. Staying aligned with HeroUI
 
-- `heroui-vue` (OSS) → depends on MIT `@heroui/styles`; the port itself MIT.
-  Legitimate — a Vue port of MIT software. (Confirm `@heroui/react` component
-  *source* isn't copied; only behaviour is re-implemented over reka-ui.)
-- `heroui-pro/` → HeroUI Pro CSS is paid/closed. Stays vendored in `unfold-app`
-  (licensed use by a Pro customer in their own private app). **Never published.**
+Because the visual layer *is* `@heroui/styles`, keeping the port faithful is
+mostly a tracking problem rather than a re-skinning one. `scripts/` holds the
+tooling for that — version checks, component-coverage diffs, and BEM-class drift
+detection — run together via `npm run maintain`. See
+[`MAINTENANCE.md`](./MAINTENANCE.md).
 
-## 6. Rollout
+## 6. Roadmap
 
-1. **Shim** — build + unit-test `use-heroui-state` against every reka primitive family.
-2. **Pilot `dropdown`** — BEM classes + `data-slot` + shim + `@heroui/styles`;
-   verify hover/focus/open match HeroUI pixel-for-pixel. Locks the recipe.
-3. **Fan out** — convert all OSS components (agent batches) using the proven
-   recipe; in the same pass, **swap `lucide-vue-next` → the gravity-ui icon set**
-   (§3.2).
-4. **Verify** — visual pass per component against heroui.com.
-5. **Extract** — move `heroui/` into the `heroui-vue` repo; package + build + README
-   + LICENSE; publish-ready. (GitHub repo creation + `npm publish` are user-triggered.)
-6. **Consume** — `unfold-app` depends on `heroui-vue`; delete the in-repo `heroui/`
-   + `theme.css`.
-7. **`heroui-pro/`** — same re-architecture, applied in-repo, vendoring Pro CSS.
-8. **Cleanup** — drop legacy `radix-vue` + shadcn-vue config (`reka-ui` stays).
+Done: all 61 families on HeroUI v3 BEM classes, the gravity-ui icon set, the
+data-attribute shim, and the upstream-maintenance tooling. The build is green.
 
-## 7. Open decisions (before step 5)
+Next:
 
-- `heroui-vue` consumption: published npm package vs. local linked package
-  (workspace / `file:` / git dependency) during development.
-- Final package name + npm scope/org; GitHub org for the public repo.
-- Whether `heroui-vue` re-exports `@heroui/styles` or documents the `@import`.
+1. **Visual QA** — verify each family against heroui.com, with attention to the
+   overlay enter/exit animations the shim drives.
+2. **Test coverage** — component tests for behaviour and accessibility, and a
+   regression test for the data-attribute shim.
+3. **Documentation site** — a live component gallery and per-component API docs.
+4. **Theming guide** — document overriding `@heroui/styles`' theme tokens (the
+   `oklch` colour variables, radii, shadows) from a consuming app.
+5. **Track HeroUI v3** — adopt new upstream components as they ship, using the
+   `npm run maintain` reports to spot coverage gaps and BEM drift.
 
-## 8. References
+## 7. License
 
-- Real CSS source of truth: `@heroui/styles` (MIT, npm) — `dist/components/*.css`,
-  `dist/themes/default/`, and `src/components/<name>/<name>.styles.ts` (BEM slot map).
-- HeroUI Pro CSS: `unfold-next/node_modules/@heroui-pro/react/dist/css/components/*.css`.
-- Current in-repo port + program ledger: `.planning/prps/heroui-vue-library.md`.
+MIT. `heroui-vue` is a Vue port of MIT-licensed software; it re-implements
+HeroUI's component *behaviour* over reka-ui and depends on the MIT
+`@heroui/styles` package — no `@heroui/react` source is copied.

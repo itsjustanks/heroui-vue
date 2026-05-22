@@ -1,12 +1,11 @@
 /**
  * HeroUI-Vue DateRangePicker — faithful HeroUI v3 `DateRangePicker` over reka-ui.
  *
- * Net-new primitive (Phase 6, no `shadcn/` base). Composes a dual-segment date
+ * Net-new primitive (no `shadcn-vue` base). Composes a dual-segment date
  * field + a popover + a range calendar via reka-ui's context-wired
- * `DateRangePicker*` parts, styled to HeroUI v3 taste (matching `heroui/calendar`
- * and `heroui/popover`). Date engine is `@internationalized/date`; the value is
- * a `{ start, end }` `DateRange`. Part of the HeroUI-for-Vue primitive library
- * (`.planning/prps/heroui-vue-library.md`).
+ * `DateRangePicker*` parts, styled to HeroUI v3 taste (matching `calendar`
+ * and `popover`). Date engine is `@internationalized/date`; the value is
+ * a `{ start, end }` `DateRange`. Part of the HeroUI-for-Vue primitive library.
  *
  * Compound API:
  *   DateRangePicker          — root (reka `DateRangePickerRoot`)

@@ -2,7 +2,7 @@
  * color-utils — HSV/RGB/HEX color math for the HeroUI-Vue ColorPicker.
  *
  * HeroUI v3's ColorPicker is built on React Aria's `Color` object + `parseColor`.
- * reka-ui (2.8) ships no color primitives, so per the PRP (§4 / build brief) the
+ * reka-ui (2.8) ships no color primitives, so the
  * saturation/hue/alpha logic lives here — a tiny self-contained color model that
  * the ColorPicker `setup()` drives. HSV ("hsb" in HeroUI terms) is the working
  * space for the saturation/brightness area + hue slider.

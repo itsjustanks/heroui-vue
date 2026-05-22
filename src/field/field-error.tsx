@@ -5,7 +5,7 @@ interface IFieldErrorItem { message?: string }
 
 /**
  * FieldError — renders validation error(s) for a field. Faithful port of
- * `shadcn/field/FieldError`.
+ * `shadcn-vue`.
  *
  * Mirrors the source's `content` resolution exactly: a single-error array
  * collapses to its message; multiple errors render as a bulleted list; an

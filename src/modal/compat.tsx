@@ -12,12 +12,11 @@ import ModalFooter from './modal-footer'
 import ModalCloseTrigger from './modal-close-trigger'
 
 /**
- * Temporary shadcn-`Dialog` compatibility surface.
+ * shadcn-vue `Dialog` compatibility surface.
  *
- * Per program rule §4.6.2, compat export names are a sanctioned *migration aid*.
- * This lets `@shadcn/dialog` call sites move to `heroui/modal` by a mechanical
- * import-path swap. Each migrated site should later be converged to the real
- * `Modal.*` compound API, after which this file is deleted.
+ * Re-exports the `Modal.*` compound under shadcn-vue's `Dialog*` names, so a
+ * project migrating from shadcn-vue can adopt heroui-vue with a mechanical
+ * import-path swap, then converge on the real `Modal.*` compound API later.
  */
 
 /** Root — same role as HeroUI `Modal`. */

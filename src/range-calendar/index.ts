@@ -1,13 +1,12 @@
 /**
  * HeroUI-Vue RangeCalendar — faithful HeroUI v3 `RangeCalendar` over reka-ui.
  *
- * NET-NEW primitive (Phase 6 greenfield, no `shadcn/` base). Compound parts
+ * NET-NEW primitive (no `shadcn-vue` base). Compound parts
  * mirror HeroUI's `RangeCalendar.*` API and reka-ui's `RangeCalendar*`
- * primitives. Mirrors `heroui/calendar`'s day-cell styling and adds a
+ * primitives. Mirrors `calendar`'s day-cell styling and adds a
  * connected-range band — the continuous track over the selected day span with
  * `bg-primary` start/end caps. Date engine stays `@internationalized/date` via
- * reka-ui `RangeCalendarRoot`. Part of the HeroUI-for-Vue primitive library
- * (`.planning/prps/heroui-vue-library.md`).
+ * reka-ui `RangeCalendarRoot`. Part of the HeroUI-for-Vue primitive library.
  */
 export { default as RangeCalendar } from './range-calendar'
 export { default as RangeCalendarCell } from './range-calendar-cell'

@@ -7,7 +7,7 @@ import { TableRow } from './table-row'
 
 /**
  * TableEmpty — empty-state row spanning the table. Faithful port of
- * `shadcn/table` TableEmpty: a `TableRow` + `TableCell` with a centered slot.
+ * `shadcn-vue` TableEmpty: a `TableRow` + `TableCell` with a centered slot.
  */
 export const TableEmpty = defineComponent({
   name: 'TableEmpty',

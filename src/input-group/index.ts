@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue InputGroup — faithful HeroUI v3 input-group over plain DOM.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Export names (components, cva variants, and types) mirror `shadcn/input-group`
+ * Export names (components, cva variants, and types) mirror `shadcn-vue`
  * exactly so call-site migration is a pure import-path swap.
  */
 export { default as InputGroup } from './input-group'

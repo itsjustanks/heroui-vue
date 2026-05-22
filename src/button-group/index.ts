@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue ButtonGroup — faithful HeroUI v3 button-group over reka-ui.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Compat exports mirror `src/components/shadcn/button-group/index.ts` exactly:
+ * Compat exports mirror `shadcn-vue` exactly:
  * `ButtonGroup`, `ButtonGroupSeparator`, `ButtonGroupText`, `buttonGroupVariants`,
  * and the `ButtonGroupVariants` type.
  */

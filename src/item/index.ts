@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue Item — faithful HeroUI v3 list-row primitive over reka-ui.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Compat-named exports mirror `src/components/shadcn/item` so call-site
+ * Compat-named exports mirror `shadcn-vue` so call-site
  * migration is a mechanical import-path swap.
  */
 export { default as Item } from './item'

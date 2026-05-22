@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue ListBox — faithful HeroUI v3 list-box over reka-ui `Listbox*`.
  *
- * Net-new primitive (no `shadcn/` base) — built fresh from HeroUI v3 specs.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Net-new primitive (no `shadcn-vue` base) — built fresh from HeroUI v3 specs.
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Anatomy (HeroUI dot-notation → this Vue flat API):
  *   ListBox            → ListBox

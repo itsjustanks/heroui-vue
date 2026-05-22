@@ -19,7 +19,7 @@ function getSubtitleWidth (index: number): number {
  * SearchResultShimmer — HeroUI-Vue primitive: a list-of-results loading
  * placeholder (avatar + title + subtitle rows).
  *
- * Faithful port of `shadcn/shimmer/SearchResultShimmer.vue`. Behaviour
+ * Faithful port of `shadcn-vue`. Behaviour
  * (deterministic varied widths, staggered per-row animation delays, the
  * `skeleton-pulse` keyframe) is identical to the shadcn source — only the
  * authoring syntax changed and surface colours adapted to the repo's

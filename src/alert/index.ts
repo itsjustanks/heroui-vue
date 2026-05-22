@@ -1,9 +1,8 @@
 /**
  * HeroUI-Vue Alert — faithful HeroUI v3 alert (`alert.css`), restyled to the
- * repo tokens. Part of the HeroUI-for-Vue primitive library
- * (`.planning/prps/heroui-vue-library.md`).
+ * repo tokens. Part of the HeroUI-for-Vue primitive library.
  *
- * Export names mirror `src/components/shadcn/alert/index.ts` exactly.
+ * Export names mirror `shadcn-vue` exactly.
  */
 export { default as Alert } from './alert'
 export { default as AlertTitle } from './alert-title'

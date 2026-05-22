@@ -4,7 +4,7 @@ import type { ButtonVariants } from '@/button'
 import { cva } from 'class-variance-authority'
 
 /**
- * Input-group cva variants — ported verbatim from `shadcn/input-group`.
+ * Input-group cva variants — ported verbatim from `shadcn-vue`.
  * Kept in a sibling module so the barrel can re-export the exact same names
  * (`inputGroupAddonVariants`, `inputGroupButtonVariants`, …).
  */
@@ -29,7 +29,7 @@ export const inputGroupAddonVariants = cva(
   }
 )
 
-// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn/input-group` export
+// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn-vue` export
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>
 
 export const inputGroupButtonVariants = cva(
@@ -49,10 +49,10 @@ export const inputGroupButtonVariants = cva(
   }
 )
 
-// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn/input-group` export
+// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn-vue` export
 export type InputGroupButtonVariants = VariantProps<typeof inputGroupButtonVariants>
 
-// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn/input-group` export
+// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn-vue` export
 export interface InputGroupButtonProps {
   variant?: ButtonVariants['variant']
   size?: InputGroupButtonVariants['size']

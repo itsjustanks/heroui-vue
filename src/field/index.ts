@@ -1,9 +1,9 @@
 /**
  * HeroUI-Vue Field — faithful HeroUI v3 form-field primitives over plain DOM.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Export names (components, the `fieldVariants` cva, and the `FieldVariants`
- * type) mirror `shadcn/field` exactly so call-site migration is a pure
+ * type) mirror `shadcn-vue` exactly so call-site migration is a pure
  * import-path swap.
  */
 export { fieldVariants } from './variants'

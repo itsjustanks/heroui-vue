@@ -1,17 +1,13 @@
 /**
- * HeroUI-Vue Dropdown — primitive library port #1.
+ * HeroUI-Vue Dropdown — a faithful HeroUI v3 dropdown for Vue, over reka-ui
+ * (headless behaviour).
  *
- * A faithful HeroUI v3 dropdown for Vue, over reka-ui (headless behaviour).
- * See `.planning/prps/heroui-vue-dropdown.md` and the program plan
- * `.planning/prps/heroui-vue-library.md`.
+ * Granular parts keep reka-ui-style names, so migrating from shadcn-vue is a
+ * mechanical import-path swap.
  *
- * Granular parts keep reka-ui-style names so call-site migration is a mechanical
- * import-path swap. (The app-specific actions-array + mobile-sheet wrapper
- * `CustomDropdown` lives in `@/components/custom/dropdown` — it is not a primitive.)
- *
- * `Dropdown` + `DropdownItem` are the legacy 2-part Popover-backed dropdown
- * (port of `shadcn/dropdown`) — a distinct, smaller primitive from the 14-part
- * `DropdownMenu*` family above; the names do not collide.
+ * `Dropdown` + `DropdownItem` are the 2-part Popover-backed dropdown — a
+ * distinct, smaller primitive from the 14-part `DropdownMenu*` family above;
+ * the names do not collide.
  */
 export { default as DropdownMenu } from './dropdown-menu'
 export { default as DropdownMenuTrigger } from './dropdown-menu-trigger'

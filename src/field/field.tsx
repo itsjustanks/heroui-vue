@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { fieldVariants, type FieldVariants } from './variants'
 
 /**
- * Field — a single form-field row. Faithful port of `shadcn/field/Field`.
+ * Field — a single form-field row. Faithful port of `shadcn-vue`.
  *
  * Orientation (`vertical` / `horizontal` / `responsive`) drives the layout via
  * `fieldVariants`; `data-slot`/`data-orientation` hooks are preserved verbatim.

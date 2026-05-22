@@ -3,6 +3,7 @@
  * Auto-generated barrel. Prefer per-component imports for tree-shaking.
  */
 export * from './icons'
+export { vHerouiState, type HerouiStateOptions } from './composables/use-heroui-state'
 export * from './accordion'
 export * from './alert-dialog'
 export * from './alert'

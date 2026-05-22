@@ -7,7 +7,7 @@ import { AlertDialogRoot } from 'reka-ui'
  * dismissed (no light-dismiss). reka-ui carries the headless behaviour
  * (focus trap, scroll lock). Renders no DOM.
  *
- * Faithful port of `shadcn/alert-dialog`'s `AlertDialog`: all props/emits
+ * Faithful port of `shadcn-vue`'s `AlertDialog`: all props/emits
  * (`open`, `defaultOpen`, `v-model:open`, `onUpdate:open`, …) fall through
  * unchanged via `attrs` to `AlertDialogRoot`.
  */

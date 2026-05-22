@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
  * field surface tokens → the repo's shadcn tokens (`bg-background`,
  * `border-input`, `text-foreground`, `ring-ring`), HeroUI's smooth
  * background/border/shadow transitions kept. Behaviour (v-model with passive
- * defaultValue) is identical to `shadcn/textarea`.
+ * defaultValue) is identical to `shadcn-vue`.
  */
 export const Textarea = defineComponent({
   // No `name`: `vue/no-reserved-component-names` rejects HTML element names

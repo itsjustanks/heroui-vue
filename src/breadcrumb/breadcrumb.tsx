@@ -3,7 +3,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 /**
  * Breadcrumb — root `<nav>` landmark.
  *
- * HeroUI-Vue primitive ported from `shadcn/breadcrumb`, restyled to HeroUI v3
+ * HeroUI-Vue primitive ported from `shadcn-vue`, restyled to HeroUI v3
  * `breadcrumbs.css` taste. Plain `<nav>` wrapper — behaviour is identical to
  * the source; only syntax changes.
  */

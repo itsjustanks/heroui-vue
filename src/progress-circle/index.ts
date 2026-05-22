@@ -1,13 +1,13 @@
 /**
  * HeroUI-Vue ProgressCircle — faithful HeroUI v3 `ProgressCircle` for Vue.
  *
- * NET-NEW primitive (Phase 6 greenfield, no `shadcn/` base). A `ProgressCircle`
+ * NET-NEW primitive (no `shadcn-vue` base). A `ProgressCircle`
  * is the circular counterpart to the `Progress` bar — an SVG ring whose arc
  * fills with progress. HeroUI builds it on React Aria's `ProgressBar`; here
  * reka-ui's `ProgressRoot` provides the `progressbar` a11y and the ring is an
  * inline SVG, with the geometry math shared via context. Supports an
  * indeterminate (spinning) state when `value` is omitted. Part of the
- * HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * HeroUI-for-Vue primitive library.
  *
  * Compound API mirrors HeroUI:
  *   ProgressCircle (.Track, .TrackCircle, .FillCircle)

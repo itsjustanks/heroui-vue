@@ -28,7 +28,7 @@ type TCalendarSlot = {
  *
  * Composes reka-ui's `DatePicker`-scoped calendar parts (context-wired to
  * `DatePickerRoot`) and applies the exact same HeroUI v3 styling as the
- * standalone `heroui/calendar` primitive — `rounded-lg` day cells, `bg-primary`
+ * standalone `calendar` primitive — `rounded-lg` day cells, `bg-primary`
  * selected, `bg-accent` today, muted outside-month days — keyed to reka-ui's
  * `data-selected` / `data-today` / `data-disabled` / `data-outside-view`.
  */

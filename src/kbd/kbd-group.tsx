@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * KbdGroup — clusters several `Kbd` keys into one inline shortcut hint
- * (e.g. ⌘ + K). Faithful port of `shadcn/kbd`'s `KbdGroup`.
+ * (e.g. ⌘ + K). Faithful port of `shadcn-vue`'s `KbdGroup`.
  */
 export const KbdGroup = defineComponent({
   name: 'KbdGroup',

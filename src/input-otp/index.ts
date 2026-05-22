@@ -1,6 +1,6 @@
 /**
  * HeroUI-Vue Input OTP — faithful HeroUI v3 one-time-code input.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Segmented one-time-passcode input built over reka-ui `PinInputRoot` /
  * `PinInputInput`. Compound API mirrors HeroUI v3 — `InputOTP`

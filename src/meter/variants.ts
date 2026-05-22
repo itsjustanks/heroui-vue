@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 
 /**
  * Meter cva variants — adapted from HeroUI v3 `meterVariants`
- * (`packages/styles/src/components/meter/meter.styles.ts` + `meter.css`).
+ * (`@heroui/styles` + `meter.css`).
  *
  * HeroUI's meter root is a 2-row CSS grid (`"label output" / "track track"`);
  * `meterTrackVariants` / `meterFillVariants` hold the `size`-driven height +

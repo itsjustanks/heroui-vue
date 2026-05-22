@@ -1,16 +1,17 @@
-import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, withDirectives, type HTMLAttributes, type PropType } from 'vue'
 import { SelectContent as RekaSelectContent, SelectPortal, SelectViewport } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { vHerouiState } from '@/composables/use-heroui-state'
 import { SelectScrollDownButton } from './select-scroll-down-button'
 import { SelectScrollUpButton } from './select-scroll-up-button'
 
 /**
- * SelectContent — the listbox popover surface.
+ * SelectContent — the listbox popover surface (HeroUI `select__popover`).
  *
- * HeroUI `select__popover`: a contained overlay card with compact padding,
- * scroll containment, and placement-aware enter/exit animation. Styling is
- * adapted from HeroUI's `select.css`, translated to reka-ui's data attributes
- * (`data-[state]`, `data-[side]`) and the repo's surface tokens.
+ * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) binds the
+ * real overlay element: it mirrors reka-ui's `data-side` to `data-placement`
+ * and derives `data-entering`/`data-exiting` from `data-state`, which
+ * `select.css` keys its placement-aware enter/exit animation off.
  */
 export const SelectContent = defineComponent({
   name: 'SelectContent',
@@ -28,21 +29,24 @@ export const SelectContent = defineComponent({
   setup (props, { attrs, slots }) {
     return () => (
       <SelectPortal disabled={props.disablePortal}>
-        <RekaSelectContent
-          {...attrs}
-          position={props.position}
-          class={cn('select__popover', props.class)}
-        >
-          <SelectScrollUpButton />
-          <SelectViewport
-            data-slot="list-box"
-            class={cn(
-              props.position === 'popper' && 'h-[var(--reka-select-trigger-height)] w-full min-w-[var(--reka-select-trigger-width)]'
-            )}
-          >
-            {slots.default?.()}
-          </SelectViewport>
-          <SelectScrollDownButton />
+        <RekaSelectContent position={props.position} asChild>
+          {withDirectives(
+            (
+              <div {...attrs} class={cn('select__popover', props.class)}>
+                <SelectScrollUpButton />
+                <SelectViewport
+                  data-slot="list-box"
+                  class={cn(
+                    props.position === 'popper' && 'h-[var(--reka-select-trigger-height)] w-full min-w-[var(--reka-select-trigger-width)]'
+                  )}
+                >
+                  {slots.default?.()}
+                </SelectViewport>
+                <SelectScrollDownButton />
+              </div>
+            ),
+            [[vHerouiState]]
+          )}
         </RekaSelectContent>
       </SelectPortal>
     )

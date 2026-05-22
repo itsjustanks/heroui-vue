@@ -1,11 +1,11 @@
 /**
  * HeroUI-Vue NumberField — faithful HeroUI v3 `NumberField` over reka-ui.
  *
- * NET-NEW primitive (Phase 6 greenfield, no `shadcn/` base). Compound parts
+ * NET-NEW primitive (no `shadcn-vue` base). Compound parts
  * mirror HeroUI's `NumberField.*` API. Built over reka-ui `NumberFieldRoot` /
  * `NumberFieldInput` / `NumberFieldIncrement` / `NumberFieldDecrement` — the
  * reka-ui analogue of React Aria's `NumberField` HeroUI wraps. Part of the
- * HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * HeroUI-for-Vue primitive library.
  *
  * Compound API mirrors HeroUI exactly:
  *   NumberField (.Group, .Input, .IncrementButton, .DecrementButton)

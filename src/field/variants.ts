@@ -2,7 +2,7 @@ import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 /**
- * Field cva variants — ported verbatim from `shadcn/field`.
+ * Field cva variants — ported verbatim from `shadcn-vue`.
  * Kept in a sibling module so the barrel can re-export the exact same name
  * (`fieldVariants`) and type (`FieldVariants`).
  */
@@ -30,5 +30,5 @@ export const fieldVariants = cva(
   }
 )
 
-// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn/field` export
+// eslint-disable-next-line @typescript-eslint/naming-convention -- compat: name must match `shadcn-vue` export
 export type FieldVariants = VariantProps<typeof fieldVariants>

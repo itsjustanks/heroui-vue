@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
  * DateRangePickerContent — the floating range-calendar panel. HeroUI v3
  * `DateRangePicker.Popover`.
  *
- * Adapts HeroUI's `popover` surface (matches `heroui/popover` taste):
+ * Adapts HeroUI's `popover` surface (matches `popover` taste):
  * `rounded-xl` overlay, `bg-popover`, `shadow-lg`, placement-aware enter/exit
  * animation keyed to reka-ui's `data-state` / `data-side`. Self-portals — drop a
  * `DateRangePickerCalendar` inside.

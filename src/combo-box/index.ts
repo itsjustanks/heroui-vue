@@ -2,8 +2,8 @@
  * HeroUI-Vue ComboBox / Autocomplete — faithful HeroUI v3 searchable select over
  * reka-ui `Combobox*`.
  *
- * Net-new primitive (no `shadcn/` base) — built fresh from HeroUI v3 specs.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Net-new primitive (no `shadcn-vue` base) — built fresh from HeroUI v3 specs.
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * HeroUI v3 ships this as two doc entries — `ComboBox` and `Autocomplete` — that
  * are the same component family (a text input + a filterable listbox). Both name

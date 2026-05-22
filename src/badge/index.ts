@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue Badge — faithful HeroUI v3 badge/chip primitive.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
- * Compat-named exports mirror `src/components/shadcn/badge` so call-site
+ * Compat-named exports mirror `shadcn-vue` so call-site
  * migration is a mechanical import-path swap.
  */
 export { default as Badge } from './badge'

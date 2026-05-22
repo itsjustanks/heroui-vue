@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { itemVariants, type TItemVariants } from './item-variants'
 
 /**
- * Item — a list-row surface. Faithful port of `shadcn/item`'s `Item`, restyled
+ * Item — a list-row surface. Faithful port of `shadcn-vue`'s `Item`, restyled
  * to HeroUI v3 taste (`item-card.css`): `rounded-lg`, `gap-3`, soft hover.
  * Renders through reka-ui `Primitive` so `as` / `as-child` work unchanged.
  */

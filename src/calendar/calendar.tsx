@@ -21,7 +21,7 @@ type TCalendarGridSlot = {
 /**
  * Calendar — HeroUI-Vue calendar root (primitive library port).
  *
- * Faithful port of `shadcn/calendar` over reka-ui `CalendarRoot`, restyled to
+ * Faithful port of `shadcn-vue` over reka-ui `CalendarRoot`, restyled to
  * HeroUI v3 taste (`rounded-lg` day cells, `bg-primary` selected, `bg-accent`
  * today). Keeps `@internationalized/date` as the date engine and forwards every
  * `CalendarRoot` prop/emit/v-model (`modelValue`, `placeholder`, `numberOfMonths`,

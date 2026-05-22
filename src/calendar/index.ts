@@ -1,8 +1,8 @@
 /**
  * HeroUI-Vue Calendar — faithful HeroUI v3 calendar over reka-ui.
  *
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
- * Ported from `src/components/shadcn/calendar/` — compound parts keep reka-ui-style
+ * Part of the HeroUI-for-Vue primitive library.
+ * Ported from `shadcn-vue` — compound parts keep reka-ui-style
  * names so call-site migration is a mechanical import-path swap. Date engine stays
  * `@internationalized/date` via reka-ui `CalendarRoot`.
  */

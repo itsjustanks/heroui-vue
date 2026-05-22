@@ -1,7 +1,7 @@
 /**
- * HeroUI-Vue ScrollArea — faithful port of `shadcn/scroll-area` over reka-ui
+ * HeroUI-Vue ScrollArea — faithful port of `shadcn-vue` over reka-ui
  * `ScrollAreaRoot` / `Viewport` / `Scrollbar` / `Thumb` / `Corner`.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * Restyled to HeroUI scroll-shadow taste: `rounded-full bg-border` thumb.
  */

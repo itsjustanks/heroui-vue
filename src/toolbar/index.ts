@@ -1,6 +1,6 @@
 /**
  * HeroUI-Vue Toolbar — faithful HeroUI v3 toolbar primitive.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * A horizontal/vertical action bar with arrow-key roving focus, built over
  * reka-ui `ToolbarRoot`/`ToolbarButton`/`ToolbarLink`/`ToolbarSeparator`.

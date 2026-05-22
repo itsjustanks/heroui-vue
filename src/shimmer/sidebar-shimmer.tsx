@@ -4,7 +4,7 @@ import { defineComponent } from 'vue'
  * SidebarShimmer — HeroUI-Vue primitive: a sidebar nav loading placeholder,
  * with collapsed/expanded layouts.
  *
- * Faithful port of `shadcn/shimmer/SidebarShimmer.vue`. Behaviour (the
+ * Faithful port of `shadcn-vue`. Behaviour (the
  * `number` row count and `expanded` layout switch) is identical to the shadcn
  * source — only the authoring syntax changed and surface colours adapted to
  * the repo's `bg-muted` token for HeroUI v3 taste.

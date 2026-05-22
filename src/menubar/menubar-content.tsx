@@ -1,14 +1,15 @@
-import { defineComponent } from 'vue'
+import { defineComponent, withDirectives } from 'vue'
 import { MenubarContent as RekaMenubarContent, MenubarPortal } from 'reka-ui'
 import { cn } from '@/lib/utils'
+import { vHerouiState } from '@/composables/use-heroui-state'
 import type { HTMLAttributes, PropType } from 'vue'
 
 /**
- * MenubarContent — the popover surface for a menu.
+ * MenubarContent — the popover surface for a menu (HeroUI `menu`).
  *
- * Same HeroUI menu surface as the dropdown (`menu.css`): contained card,
- * compact padding, placement-aware enter/exit animation. Styling adapted to
- * reka-ui's data attributes (`data-[state]`, `data-[side]`) and repo tokens.
+ * Rendered `as-child` so the data-attribute shim (`v-heroui-state`) binds the
+ * real overlay element, bridging reka-ui's `data-state`/`data-side` to
+ * HeroUI's `data-entering`/`data-exiting`/`data-placement`.
  */
 export const MenubarContent = defineComponent({
   name: 'MenubarContent',
@@ -23,14 +24,19 @@ export const MenubarContent = defineComponent({
     return () => (
       <MenubarPortal>
         <RekaMenubarContent
-          {...attrs}
           align={props.align}
           alignOffset={props.alignOffset}
           sideOffset={props.sideOffset}
-          data-slot="menu"
-          class={cn('menu', props.class)}
+          asChild
         >
-          {slots.default?.()}
+          {withDirectives(
+            (
+              <div {...attrs} data-slot="menu" class={cn('menu', props.class)}>
+                {slots.default?.()}
+              </div>
+            ),
+            [[vHerouiState]]
+          )}
         </RekaMenubarContent>
       </MenubarPortal>
     )

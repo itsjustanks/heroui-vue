@@ -1,6 +1,6 @@
 /**
  * HeroUI-Vue Chip — faithful HeroUI v3 chip primitive.
- * Part of the HeroUI-for-Vue primitive library (`.planning/prps/heroui-vue-library.md`).
+ * Part of the HeroUI-for-Vue primitive library.
  *
  * A compact, pill-shaped tag — distinct from `badge`. Compound API mirrors
  * HeroUI v3: `Chip` (= `ChipRoot`) with `.Root` / `.Label` dot-notation parts.
