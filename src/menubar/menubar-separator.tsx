@@ -17,7 +17,8 @@ export const MenubarSeparator = defineComponent({
     return () => (
       <RekaMenubarSeparator
         {...attrs}
-        class={cn('my-1 ml-[3%] h-px w-[94%] bg-border', props.class)}
+        data-slot="separator"
+        class={cn(props.class)}
       />
     )
   }

@@ -4,23 +4,6 @@ import { NumberFieldDecrement, NumberFieldIncrement } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
 /**
- * Shared stepper-button styling. Adapts HeroUI's `number-field__increment-button`
- * / `number-field__decrement-button` BEM: a full-height `w-10` cell,
- * `bg-transparent`, pressed `scale-[0.97]`, `active:bg-foreground/10`, with a
- * hairline divider against the input. reka-ui's `NumberFieldIncrement` /
- * `NumberFieldDecrement` own the press + auto-disable behaviour
- * (`data-disabled` at the bounds).
- */
-const numberFieldButtonClass = cn(
-  'flex h-full w-10 items-center justify-center bg-transparent p-0 text-foreground outline-none',
-  'transition-[background-color,transform] active:scale-[0.97] active:bg-foreground/10',
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset',
-  'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-  'disabled:pointer-events-none disabled:opacity-50',
-  'motion-reduce:transition-none [&_svg]:size-4 [&_svg]:shrink-0'
-)
-
-/**
  * NumberFieldDecrementButton — the minus stepper button. HeroUI v3
  * `NumberField.DecrementButton`. Renders reka-ui `NumberFieldDecrement` (the
  * leftmost `40px` column of `NumberFieldGroup`'s grid); a default minus icon is
@@ -39,7 +22,7 @@ export const NumberFieldDecrementButton = defineComponent({
         {...attrs}
         aria-label="Decrease"
         data-slot="number-field-decrement-button"
-        class={cn(numberFieldButtonClass, 'rounded-l-md rounded-r-none border-r border-input', props.class)}
+        class={cn('number-field__decrement-button', props.class)}
       >
         {slots.default
           ? slots.default()
@@ -68,7 +51,7 @@ export const NumberFieldIncrementButton = defineComponent({
         {...attrs}
         aria-label="Increase"
         data-slot="number-field-increment-button"
-        class={cn(numberFieldButtonClass, 'rounded-l-none rounded-r-md border-l border-input', props.class)}
+        class={cn('number-field__increment-button', props.class)}
       >
         {slots.default
           ? slots.default()

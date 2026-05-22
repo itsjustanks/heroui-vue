@@ -2,8 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * TableHeader — HeroUI `table__header` (`<thead>`). Hairline divider below the
- * header row, adapted to the repo `border-border` token.
+ * TableHeader — HeroUI `table__header` (`<thead>`).
  */
 export const TableHeader = defineComponent({
   name: 'TableHeader',
@@ -13,7 +12,7 @@ export const TableHeader = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <thead {...attrs} class={cn('[&_tr]:border-b [&_tr]:border-border', props.class)}>
+      <thead {...attrs} class={cn('table__header', props.class)}>
         {slots.default?.()}
       </thead>
     )

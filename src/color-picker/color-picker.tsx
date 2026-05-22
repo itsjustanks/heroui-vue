@@ -21,11 +21,7 @@ const ColorPickerTrigger = defineComponent({
       <PopoverTrigger
         {...attrs}
         data-slot="color-picker-trigger"
-        class={cn(
-          'inline-flex items-center gap-2 rounded-lg outline-none',
-          'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          props.class
-        )}
+        class={cn('color-picker__trigger', props.class)}
       >
         {slots.default?.()}
       </PopoverTrigger>
@@ -52,7 +48,7 @@ const ColorPickerPopover = defineComponent({
         align={props.align}
         sideOffset={props.sideOffset}
         data-slot="color-picker-popover"
-        class={cn('flex w-64 flex-col gap-3', props.class)}
+        class={cn('color-picker__popover', props.class)}
       >
         {slots.default?.()}
       </PopoverContent>
@@ -125,7 +121,7 @@ export const ColorPicker = defineComponent({
 
     return () => (
       <Popover>
-        <div {...attrs} data-slot="color-picker" class={cn('inline-flex', props.class)}>
+        <div {...attrs} data-slot="color-picker" class={cn('color-picker', props.class)}>
           {slots.default?.()}
         </div>
       </Popover>

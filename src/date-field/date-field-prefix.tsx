@@ -16,7 +16,7 @@ export const DateFieldPrefix = defineComponent({
       <span
         {...attrs}
         data-slot="date-field-prefix"
-        class={cn('flex shrink-0 items-center text-muted-foreground', props.class)}
+        class={cn('date-input-group__prefix', props.class)}
       >
         {slots.default?.()}
       </span>

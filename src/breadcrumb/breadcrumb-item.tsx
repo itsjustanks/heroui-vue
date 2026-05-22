@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
-/** BreadcrumbItem — HeroUI `breadcrumbs__item`: a single crumb wrapper `<li>`. */
+/** BreadcrumbItem — HeroUI BEM: `breadcrumbs__item`. Single crumb `<li>` wrapper. */
 export const BreadcrumbItem = defineComponent({
   name: 'BreadcrumbItem',
   inheritAttrs: false,
@@ -10,7 +10,7 @@ export const BreadcrumbItem = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <li {...attrs} class={cn('inline-flex items-center gap-1.5', props.class)}>
+      <li {...attrs} class={cn('breadcrumbs__item', props.class)}>
         {slots.default?.()}
       </li>
     )

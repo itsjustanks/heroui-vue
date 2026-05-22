@@ -22,7 +22,7 @@ export const MeterOutput = defineComponent({
       <span
         {...attrs}
         data-slot="meter-output"
-        class={cn('text-sm font-medium tabular-nums text-muted-foreground', props.class)}
+        class={cn('meter__output', props.class)}
       >
         {slots.default ? slots.default() : ctx.valueText.value}
       </span>

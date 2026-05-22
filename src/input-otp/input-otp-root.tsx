@@ -39,8 +39,8 @@ export const InputOTPRoot = defineComponent({
         data-disabled={props.disabled ? '' : undefined}
         data-invalid={props.isInvalid ? '' : undefined}
         class={cn(
-          'relative flex items-center gap-2',
-          props.disabled && 'cursor-not-allowed opacity-50',
+          'input-otp',
+          props.variant === 'secondary' ? 'input-otp--secondary' : 'input-otp--primary',
           props.class
         )}
       >

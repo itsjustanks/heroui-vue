@@ -38,7 +38,8 @@ export const SearchResultShimmer = defineComponent({
             <div key={`shimmer-${i}`} class="flex items-center gap-2 p-2">
               {/* Icon/Avatar placeholder */}
               <div
-                class={['size-8 rounded bg-muted', styles.skeletonPulse]}
+                data-slot="base"
+                class={['skeleton skeleton--shimmer size-8 rounded', styles.skeletonPulse]}
                 style={{ animationDelay: `${i * 50}ms` }}
               />
 
@@ -46,7 +47,8 @@ export const SearchResultShimmer = defineComponent({
               <div class="flex-1 space-y-1.5">
                 {/* Title */}
                 <div
-                  class={['h-3 rounded bg-muted', styles.skeletonPulse]}
+                  data-slot="base"
+                  class={['skeleton skeleton--shimmer h-3 rounded', styles.skeletonPulse]}
                   style={{
                     width: `${getTitleWidth(i)}%`,
                     animationDelay: `${i * 50 + 50}ms`
@@ -55,7 +57,8 @@ export const SearchResultShimmer = defineComponent({
 
                 {/* Subtitle/metadata */}
                 <div
-                  class={['h-2.5 rounded bg-muted/60', styles.skeletonPulse]}
+                  data-slot="base"
+                  class={['skeleton skeleton--shimmer h-2.5 rounded opacity-60', styles.skeletonPulse]}
                   style={{
                     width: `${getSubtitleWidth(i)}%`,
                     animationDelay: `${i * 50 + 100}ms`

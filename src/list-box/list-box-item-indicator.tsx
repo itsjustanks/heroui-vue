@@ -22,12 +22,8 @@ export const ListBoxItemIndicator = defineComponent({
     return () => (
       <ListboxItemIndicator
         {...attrs}
-        data-list-box-item-indicator=""
-        class={cn(
-          'absolute right-2 top-1/2 flex size-4 shrink-0 -translate-y-1/2 items-center justify-center text-foreground transition duration-200',
-          'group-data-[variant=danger]:text-danger',
-          props.class
-        )}
+        data-slot="list-box-item-indicator"
+        class={cn('list-box-item__indicator', props.class)}
       >
         {slots.default ? slots.default() : <IconCheck class="size-3.5" />}
       </ListboxItemIndicator>

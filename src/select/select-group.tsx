@@ -11,7 +11,7 @@ export const SelectGroup = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaSelectGroup {...attrs} class={cn('w-full p-1', props.class)}>
+      <RekaSelectGroup {...attrs} class={cn(props.class)}>
         {slots.default?.()}
       </RekaSelectGroup>
     )

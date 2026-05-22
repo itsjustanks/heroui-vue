@@ -35,11 +35,11 @@ export const CheckboxGroupItem = defineComponent({
         {...attrs}
         value={props.value}
         disabled={props.disabled || group.isDisabled.value}
-        data-checkbox-group-item=""
+        data-slot="checkbox"
         data-variant={group.variant.value}
         class={cn(
-          'group flex w-fit items-start gap-3 outline-none',
-          'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60',
+          'checkbox',
+          `checkbox--${group.variant.value}`,
           props.class
         )}
       >

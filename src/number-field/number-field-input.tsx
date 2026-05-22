@@ -22,12 +22,7 @@ export const NumberFieldInput = defineComponent({
       <RekaNumberFieldInput
         {...attrs}
         data-slot="number-field-input"
-        class={cn(
-          'min-w-0 border-0 bg-transparent px-3 py-2 text-center text-sm tabular-nums text-foreground shadow-none outline-none',
-          'placeholder:text-muted-foreground',
-          'disabled:cursor-not-allowed disabled:opacity-50',
-          props.class
-        )}
+        class={cn('number-field__input', props.class)}
       />
     )
   }

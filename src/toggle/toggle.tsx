@@ -17,13 +17,15 @@ export const Toggle = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     variant: { type: String as PropType<TToggleVariants['variant']>, default: 'default' },
-    size: { type: String as PropType<TToggleVariants['size']>, default: 'default' }
+    size: { type: String as PropType<TToggleVariants['size']>, default: 'default' },
+    /** Renders a square icon-only button (removes horizontal padding). */
+    isIconOnly: { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
     return () => (
       <RekaToggle
         {...attrs}
-        class={cn(toggleVariants({ variant: props.variant, size: props.size }), props.class)}
+        class={cn(toggleVariants({ variant: props.variant, size: props.size, isIconOnly: props.isIconOnly }), props.class)}
       >
         {(slotProps: Record<string, unknown>) => slots.default?.(slotProps)}
       </RekaToggle>

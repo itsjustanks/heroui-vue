@@ -1,13 +1,15 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import { inputGroupAddonVariants, type InputGroupVariants } from './variants'
+import { type InputGroupVariants } from './variants'
 
 /**
- * InputGroupAddon — a prefix/suffix slot inside an `InputGroup`. Faithful port
- * of `shadcn/input-group/InputGroupAddon`.
+ * InputGroupAddon — a prefix/suffix slot inside an `InputGroup`.
  *
- * Clicking the addon (outside a nested button) focuses the group's input —
- * behaviour ported verbatim.
+ * Emits HeroUI v3 BEM class names from `input-group.css`:
+ *   `inline-start` / `block-start` → `input-group__prefix` + `data-slot="input-group-prefix"`
+ *   `inline-end`   / `block-end`   → `input-group__suffix` + `data-slot="input-group-suffix"`
+ *
+ * Clicking the addon (outside a nested button) focuses the group's input.
  */
 export const InputGroupAddon = defineComponent({
   name: 'InputGroupAddon',
@@ -28,18 +30,24 @@ export const InputGroupAddon = defineComponent({
       }
     }
 
-    return () => (
-      <div
-        {...attrs}
-        role="group"
-        data-slot="input-group-addon"
-        data-align={props.align}
-        class={cn(inputGroupAddonVariants({ align: props.align }), props.class)}
-        onClick={handleInputGroupAddonClick}
-      >
-        {slots.default?.()}
-      </div>
-    )
+    return () => {
+      const isSuffix = props.align === 'inline-end' || props.align === 'block-end'
+      return (
+        <div
+          {...attrs}
+          role="group"
+          data-slot={isSuffix ? 'input-group-suffix' : 'input-group-prefix'}
+          data-align={props.align}
+          class={cn(
+            isSuffix ? 'input-group__suffix' : 'input-group__prefix',
+            props.class
+          )}
+          onClick={handleInputGroupAddonClick}
+        >
+          {slots.default?.()}
+        </div>
+      )
+    }
   }
 })
 

@@ -5,9 +5,8 @@ const RekaAvatarImage: any = AvatarImageBase
 import { cn } from '@/lib/utils'
 
 /**
- * AvatarImage — the photo layer. HeroUI `avatar__image`: fills the avatar box,
- * `object-cover`. reka-ui handles load/error state. All `AvatarImageProps`
- * (`src`, `referrerPolicy`, …) are forwarded via `{...attrs}`.
+ * AvatarImage — the photo layer.
+ * HeroUI BEM: `avatar__image`. reka-ui handles load/error state.
  */
 export const AvatarImage = defineComponent({
   name: 'AvatarImage',
@@ -17,7 +16,7 @@ export const AvatarImage = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaAvatarImage {...(attrs as Record<string, any>)} class={cn('h-full w-full object-cover', props.class)}>
+      <RekaAvatarImage {...(attrs as Record<string, any>)} class={cn('avatar__image', props.class)}>
         {slots.default?.()}
       </RekaAvatarImage>
     )

@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils'
 /**
  * TabsTrigger — an individual tab inside the segmented track.
  *
- * HeroUI `tabs__tab`: a `rounded-md` segment; the active tab lifts onto a
- * `bg-background` surface with `shadow-sm`. Styling is adapted from HeroUI's
- * `tabs.css`, translated to reka-ui's `data-[state=active]` selector and the
- * repo's surface tokens.
+ * Maps to HeroUI `tabs__tab`. reka-ui sets `data-[state=active]` on the trigger;
+ * HeroUI CSS uses `[data-selected="true"]` — both are real DOM attributes that
+ * native CSS selectors pick up. The separator spans `tabs__separator` for the
+ * divider between unselected tabs.
  */
 export const TabsTrigger = defineComponent({
   name: 'TabsTrigger',
@@ -22,15 +22,10 @@ export const TabsTrigger = defineComponent({
     return () => (
       <RekaTabsTrigger
         {...(attrs as Record<string, any>)}
-        class={cn(
-          'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          'disabled:pointer-events-none disabled:opacity-50',
-          'data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
-          props.class
-        )}
+        class={cn('tabs__tab', props.class)}
       >
-        <span class="truncate">{slots.default?.()}</span>
+        <span class="tabs__separator" aria-hidden="true" />
+        {slots.default?.()}
       </RekaTabsTrigger>
     )
   }

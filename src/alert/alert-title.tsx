@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
-/** AlertTitle — the alert heading (HeroUI `alert__title`): medium-weight, tight leading. */
+/** AlertTitle — HeroUI BEM: `alert__title`. Medium-weight label text. */
 export const AlertTitle = defineComponent({
   name: 'AlertTitle',
   inheritAttrs: false,
@@ -10,7 +10,7 @@ export const AlertTitle = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <h5 {...attrs} class={cn('mb-1 font-medium leading-none tracking-tight', props.class)}>
+      <h5 {...attrs} class={cn('alert__title', props.class)}>
         {slots.default?.()}
       </h5>
     )

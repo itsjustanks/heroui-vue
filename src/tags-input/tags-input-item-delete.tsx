@@ -21,10 +21,8 @@ export const TagsInputItemDelete = defineComponent({
     return () => (
       <RekaTagsInputItemDelete
         {...attrs}
-        class={cn(
-          'flex size-4 items-center justify-center rounded bg-transparent text-secondary-foreground/70 transition-colors hover:text-secondary-foreground',
-          props.class
-        )}
+        data-slot="tag-remove-button"
+        class={cn('tag__remove-button', props.class)}
       >
         {slots.default?.() ?? <IconX class="size-3" />}
       </RekaTagsInputItemDelete>

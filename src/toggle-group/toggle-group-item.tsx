@@ -30,8 +30,8 @@ export const ToggleGroupItem = defineComponent({
         {...(attrs as Record<string, any>)}
         class={cn(
           toggleVariants({
-            variant: context?.variant || props.variant,
-            size: context?.size || props.size
+            variant: context?.variant ?? props.variant,
+            size: context?.size ?? props.size
           }),
           props.class
         )}

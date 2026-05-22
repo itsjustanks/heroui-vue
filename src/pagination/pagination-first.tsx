@@ -2,8 +2,6 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { PaginationFirst as RekaPaginationFirst } from 'reka-ui'
 import { ChevronsLeft as IconChevronsLeft } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
-import { usePaginationContext } from './pagination-context'
-import { paginationLinkVariants } from './pagination-variants'
 
 /**
  * PaginationFirst — the "jump to first page" control.
@@ -18,13 +16,11 @@ export const PaginationFirst = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const context = usePaginationContext()
-
     return () => (
       <RekaPaginationFirst
         {...attrs}
         data-slot="pagination-first"
-        class={cn(paginationLinkVariants({ size: context?.size.value }), props.class)}
+        class={cn('pagination__link', props.class)}
       >
         {slots.default ? slots.default() : <IconChevronsLeft data-slot="pagination-first-icon" />}
       </RekaPaginationFirst>

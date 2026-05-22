@@ -1,6 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import { numberFieldGroupVariants, type TNumberFieldGroupVariants } from './variants'
 
 /**
  * NumberFieldGroup — the segmented-input surface. HeroUI v3 `NumberField.Group`.
@@ -16,8 +15,6 @@ export const NumberFieldGroup = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    /** HeroUI surface variant — `primary` (bordered) or `secondary` (muted). */
-    variant: { type: String as PropType<TNumberFieldGroupVariants['variant']>, default: 'primary' },
     /** HeroUI `fullWidth` — stretch the group to fill its container. */
     fullWidth: { type: Boolean, default: false }
   },
@@ -27,9 +24,9 @@ export const NumberFieldGroup = defineComponent({
         {...attrs}
         role="group"
         data-slot="number-field-group"
-        style={{ gridTemplateColumns: '40px 1fr 40px' }}
         class={cn(
-          numberFieldGroupVariants({ variant: props.variant, fullWidth: props.fullWidth }),
+          'number-field__group',
+          props.fullWidth && 'number-field__group--full-width',
           props.class
         )}
       >

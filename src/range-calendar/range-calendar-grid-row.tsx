@@ -15,7 +15,7 @@ export const RangeCalendarGridRow = defineComponent({
     return () => (
       <RekaRangeCalendarGridRow
         {...forwardedProps.value}
-        class={cn('flex', props.class)}
+        class={cn('range-calendar__grid-row', props.class)}
       >
         {slots.default?.()}
       </RekaRangeCalendarGridRow>

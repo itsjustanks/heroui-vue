@@ -4,13 +4,11 @@ import { ChevronDown as IconChevronDown } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 
 /**
- * SelectTrigger — HeroUI `select__trigger`.
+ * SelectTrigger — HeroUI `select__trigger` + `select__indicator`.
  *
- * The clickable field that opens the listbox. Styling is adapted from HeroUI's
- * `select.css` (`select__trigger` + `select__indicator`): a `rounded-lg` field
- * surface with a placeholder-aware value and a trailing chevron. Tokens are
- * mapped to the repo's shadcn tokens; interactive states use reka-ui's
- * `data-[placeholder]` / `data-[state]` attributes.
+ * Emits HeroUI v3 BEM class names from `select.css`. Interactive states
+ * (hover, focus-visible, invalid, disabled) are handled by the CSS via native
+ * pseudo-classes and data-attributes from reka-ui.
  */
 export const SelectTrigger = defineComponent({
   name: 'SelectTrigger',
@@ -22,20 +20,11 @@ export const SelectTrigger = defineComponent({
     return () => (
       <RekaSelectTrigger
         {...attrs}
-        class={cn(
-          // HeroUI select__trigger: min-h-9, rounded-field, bg-field, border, px-3 py-2, text-sm.
-          'relative isolate flex min-h-9 w-full select-none items-center justify-between gap-2 rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors',
-          'data-[placeholder]:text-muted-foreground',
-          'hover:bg-accent/40',
-          'focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          'disabled:cursor-not-allowed disabled:opacity-50',
-          '[&>span]:truncate [&>span]:text-start',
-          props.class
-        )}
+        class={cn('select__trigger', props.class)}
       >
         {slots.default?.()}
         <SelectIcon as-child>
-          <IconChevronDown class="size-4 shrink-0 text-muted-foreground transition-transform duration-150" />
+          <IconChevronDown class="select__indicator" data-slot="select-default-indicator" />
         </SelectIcon>
       </RekaSelectTrigger>
     )

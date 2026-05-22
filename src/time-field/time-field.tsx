@@ -26,7 +26,7 @@ export const TimeField = defineComponent({
     return () => (
       <TimeFieldRoot
         {...(attrs as Record<string, any>)}
-        class={cn('flex flex-col gap-1.5', props.fullWidth && 'w-full', props.class)}
+        class={cn('time-field', props.fullWidth && 'time-field--full-width', props.class)}
       >
         {{
           // reka-ui `TimeFieldRoot` exposes `segments`/`modelValue` — surface them

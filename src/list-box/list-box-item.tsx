@@ -28,18 +28,11 @@ export const ListBoxItem = defineComponent({
       <ListboxItem
         {...attrs}
         value={props.value as AcceptableValue}
+        data-slot="list-box-item"
         data-variant={props.variant}
         class={cn(
-          // HeroUI list-box-item.css: relative flex min-h-9 w-full items-center justify-start
-          // gap-3 rounded-2xl px-2 py-1.5 outline-none.
-          'group relative flex min-h-9 w-full cursor-pointer select-none items-center justify-start gap-3 rounded-2xl px-2 py-1.5 text-sm outline-none transition-[transform,box-shadow] duration-150',
-          'has-[[data-list-box-item-indicator]]:pr-7',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background',
-          'active:scale-[0.98]',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          '[&>svg]:size-4 [&>svg]:shrink-0',
-          props.variant === 'danger' && 'text-danger data-[highlighted]:text-danger',
+          'list-box-item',
+          props.variant === 'danger' ? 'list-box-item--danger' : 'list-box-item--default',
           props.class
         )}
       >

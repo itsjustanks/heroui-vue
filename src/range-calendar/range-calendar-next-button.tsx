@@ -3,15 +3,12 @@ import { ChevronRight as IconChevronRight } from 'lucide-vue-next'
 import { RangeCalendarNext as RekaRangeCalendarNext, useForwardProps } from 'reka-ui'
 import type { RangeCalendarNextProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/button'
 
 /**
  * RangeCalendarNextButton — steps the range calendar to the next page. HeroUI
  * v3 `RangeCalendar.Next`.
  *
- * Adapts HeroUI's `range-calendar__nav-button`: a compact `rounded-xl` icon
- * button. Uses the `ghost` button variant; reka-ui `data-disabled` handles the
- * disabled state.
+ * Emits HeroUI BEM class `range-calendar__nav-button`.
  */
 export const RangeCalendarNextButton = defineComponent({
   name: 'RangeCalendarNextButton',
@@ -24,13 +21,9 @@ export const RangeCalendarNextButton = defineComponent({
     return () => (
       <RekaRangeCalendarNext
         {...forwardedProps.value}
-        class={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'size-7 rounded-xl p-0 text-muted-foreground hover:text-foreground',
-          props.class
-        )}
+        class={cn('range-calendar__nav-button', props.class)}
       >
-        {slots.default ? slots.default() : <IconChevronRight class="size-4" />}
+        {slots.default ? slots.default() : <IconChevronRight class="range-calendar__nav-button-icon" />}
       </RekaRangeCalendarNext>
     )
   }

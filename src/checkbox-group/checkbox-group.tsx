@@ -48,8 +48,8 @@ export const CheckboxGroup = defineComponent({
         data-invalid={dataInvalid.value}
         aria-invalid={props.invalid || undefined}
         class={cn(
-          // HeroUI checkbox-group.css: flex flex-col; items get top spacing.
-          'flex flex-col gap-1 [&_[data-checkbox-group-item]]:mt-3',
+          'checkbox-group',
+          `checkbox-group--${props.variant}`,
           props.class
         )}
       >

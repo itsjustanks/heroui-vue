@@ -22,18 +22,12 @@ export const ComboBoxTrigger = defineComponent({
     return () => (
       <ComboboxTrigger
         {...attrs}
-        class={cn(
-          'absolute right-0 top-1/2 flex h-full shrink-0 -translate-y-1/2 cursor-pointer items-center justify-center border-none bg-transparent pr-2 text-muted-foreground outline-none transition duration-150',
-          'hover:text-foreground',
-          'focus-visible:rounded focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          'disabled:cursor-not-allowed disabled:opacity-50',
-          props.class
-        )}
+        class={cn('combo-box__trigger', props.class)}
       >
         {slots.default
           ? slots.default()
           : (
-            <IconChevronDown class="size-4 transition-transform duration-150 group-data-[state=open]:rotate-180 data-[state=open]:rotate-180" />
+            <IconChevronDown data-slot="combo-box-trigger-default-icon" class="size-4" />
           )}
       </ComboboxTrigger>
     )

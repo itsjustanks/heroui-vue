@@ -2,8 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * TableHead — HeroUI `table__column` (`<th>`). HeroUI v3 column header:
- * `text-xs font-medium text-muted-foreground`, comfortable `px-4` padding.
+ * TableHead — HeroUI `table__column` (`<th>`).
  */
 export const TableHead = defineComponent({
   name: 'TableHead',
@@ -15,10 +14,7 @@ export const TableHead = defineComponent({
     return () => (
       <th
         {...attrs}
-        class={cn(
-          'h-11 px-4 text-left align-middle text-xs font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0',
-          props.class
-        )}
+        class={cn('table__column', props.class)}
       >
         {slots.default?.()}
       </th>

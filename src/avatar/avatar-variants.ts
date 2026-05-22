@@ -1,28 +1,46 @@
-import type { VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
+/**
+ * Avatar variants — HeroUI v3 `avatar.css` BEM classes.
+ *
+ * Size: `avatar--sm` | `avatar--md` | `avatar--lg`
+ * Color (fallback): `avatar__fallback--{color}`
+ * Variant: `avatar--soft`
+ */
+export type TAvatarSize = 'sm' | 'md' | 'lg'
+export type TAvatarColor = 'default' | 'accent' | 'success' | 'warning' | 'danger'
+export type TAvatarVariantName = 'default' | 'soft'
+
+export interface TAvatarVariants {
+  size?: TAvatarSize
+  color?: TAvatarColor
+  variant?: TAvatarVariantName
+  /** @deprecated Use `size` with HeroUI values (sm/md/lg). Kept for back-compat. */
+  shape?: 'circle' | 'square'
+}
+
+/** Returns HeroUI BEM class for avatar size. */
+export function avatarSizeClass (size: TAvatarSize | undefined): string {
+  switch (size) {
+    case 'sm': return 'avatar--sm'
+    case 'lg': return 'avatar--lg'
+    default: return 'avatar--md'
+  }
+}
+
+/** Returns HeroUI BEM class for avatar fallback color. */
+export function avatarFallbackColorClass (color: TAvatarColor | undefined): string {
+  switch (color) {
+    case 'accent': return 'avatar__fallback--accent'
+    case 'success': return 'avatar__fallback--success'
+    case 'warning': return 'avatar__fallback--warning'
+    case 'danger': return 'avatar__fallback--danger'
+    default: return 'avatar__fallback--default'
+  }
+}
 
 /**
- * HeroUI-Vue Avatar variants.
- *
- * Faithful port of `shadcn/avatar`'s `avatarVariant` cva, restyled to HeroUI v3
- * taste (`avatar.css`): `bg-muted` surface, `rounded-full` circle. Same variant
- * keys / option names as the shadcn original — zero API drift.
+ * @deprecated — HeroUI BEM classes are now applied directly by Avatar components.
+ * Kept for import compatibility.
  */
-export const avatarVariant = cva(
-  'inline-flex items-center justify-center font-normal text-foreground select-none shrink-0 bg-muted overflow-hidden',
-  {
-    variants: {
-      size: {
-        sm: 'h-10 w-10 text-xs',
-        base: 'h-16 w-16 text-2xl',
-        lg: 'h-32 w-32 text-5xl'
-      },
-      shape: {
-        circle: 'rounded-full',
-        square: 'rounded-xl'
-      }
-    }
-  }
-)
-
-export type TAvatarVariants = VariantProps<typeof avatarVariant>
+export function avatarVariant (_opts?: TAvatarVariants): string {
+  return 'avatar'
+}

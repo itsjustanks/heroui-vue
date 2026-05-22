@@ -4,15 +4,6 @@ import { cn } from '@/lib/utils'
 
 type TModalSize = 'xs' | 'sm' | 'md' | 'lg' | 'cover' | 'full'
 
-const SIZE_CLASS: Record<TModalSize, string> = {
-  xs: 'max-w-xs',
-  sm: 'max-w-sm',
-  md: 'max-w-md',
-  lg: 'max-w-lg',
-  cover: 'h-full max-w-full',
-  full: 'h-full max-w-full rounded-none border-0 shadow-none'
-}
-
 /**
  * ModalDialog — the content box (HeroUI `modal__dialog`). This is the focus-
  * trapped `role=dialog` element (reka-ui `DialogContent`), styled as the modal
@@ -29,10 +20,15 @@ export const ModalDialog = defineComponent({
     return () => (
       <RekaDialogContent
         {...attrs}
+        data-slot="modal-dialog"
         class={cn(
-          'pointer-events-auto relative flex w-full flex-col gap-4 rounded-2xl border border-border bg-background p-6 text-foreground shadow-lg outline-none',
-          'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
-          SIZE_CLASS[props.size],
+          'modal__dialog',
+          props.size === 'xs' ? 'modal__dialog--xs'
+            : props.size === 'sm' ? 'modal__dialog--sm'
+              : props.size === 'lg' ? 'modal__dialog--lg'
+                : props.size === 'cover' ? 'modal__dialog--cover'
+                  : props.size === 'full' ? 'modal__dialog--full'
+                    : 'modal__dialog--md',
           props.class
         )}
       >

@@ -20,7 +20,7 @@ export const DateRangePickerSeparator = defineComponent({
         {...attrs}
         aria-hidden="true"
         data-slot="date-range-picker-separator"
-        class={cn('px-1 text-muted-foreground', props.class)}
+        class={cn('date-range-picker__range-separator', props.class)}
       >
         {slots.default ? slots.default() : '–'}
       </span>

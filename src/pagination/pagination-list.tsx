@@ -20,7 +20,7 @@ export const PaginationList = defineComponent({
       <RekaPaginationList
         {...attrs}
         data-slot="pagination-content"
-        class={cn('flex items-center gap-1 self-start sm:self-center', props.class)}
+        class={cn('pagination__content', props.class)}
       >
         {{ default: (scope: unknown) => slots.default?.(scope) }}
       </RekaPaginationList>

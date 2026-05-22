@@ -11,7 +11,7 @@ export const DrawerHeading = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <DialogTitle {...attrs} class={cn('align-middle text-base font-medium text-foreground', props.class)}>
+      <DialogTitle {...attrs} class={cn('drawer__heading', props.class)}>
         {slots.default?.()}
       </DialogTitle>
     )

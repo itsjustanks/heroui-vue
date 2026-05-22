@@ -2,8 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * TableBody — HeroUI `table__body` (`<tbody>`). Last row drops its bottom
- * hairline so the table closes flush.
+ * TableBody — HeroUI `table__body` (`<tbody>`).
  */
 export const TableBody = defineComponent({
   name: 'TableBody',
@@ -13,7 +12,7 @@ export const TableBody = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <tbody {...attrs} class={cn('[&_tr:last-child]:border-0', props.class)}>
+      <tbody {...attrs} class={cn('table__body', props.class)}>
         {slots.default?.()}
       </tbody>
     )

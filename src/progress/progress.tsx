@@ -2,14 +2,12 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { ProgressIndicator, ProgressRoot, type ProgressRootProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
+type TProgressColor = 'accent' | 'danger' | 'default' | 'success' | 'warning'
+type TProgressSize = 'sm' | 'md' | 'lg'
+
 /**
  * Progress — HeroUI-Vue progress bar over reka-ui `ProgressRoot` /
- * `ProgressIndicator`. HeroUI `progress-bar.css`: a `rounded-full` track on a
- * neutral surface with a brand-coloured fill that transitions smoothly.
- * Tokens adapted to the repo (`bg-secondary` track, `bg-primary` indicator).
- *
- * Faithful port of `shadcn/progress` — only the `<script setup>` → `setup()`
- * and `<template>` → JSX syntax changes; props/behaviour are identical.
+ * `ProgressIndicator`. Emits HeroUI v3 BEM class names from `progress-bar.css`.
  */
 export const Progress = defineComponent({
   name: 'ProgressBar',
@@ -17,7 +15,9 @@ export const Progress = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     indicatorClass: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    modelValue: { type: [Number, null] as PropType<ProgressRootProps['modelValue']>, default: 0 }
+    modelValue: { type: [Number, null] as PropType<ProgressRootProps['modelValue']>, default: 0 },
+    color: { type: String as PropType<TProgressColor>, default: 'accent' },
+    size: { type: String as PropType<TProgressSize>, default: 'md' }
   },
   setup (props, { attrs, slots }) {
     return () => (
@@ -25,14 +25,18 @@ export const Progress = defineComponent({
         {...attrs}
         modelValue={props.modelValue}
         class={cn(
-          'relative h-4 w-full overflow-hidden rounded-full bg-secondary',
+          'progress-bar',
+          `progress-bar--${props.color}`,
+          `progress-bar--${props.size}`,
           props.class
         )}
       >
-        <ProgressIndicator
-          class={cn('h-full w-full flex-1 rounded-full bg-primary transition-all', props.indicatorClass)}
-          style={`transform: translateX(-${100 - (props.modelValue ?? 0)}%);`}
-        />
+        <div class={cn('progress-bar__track')}>
+          <div
+            class={cn('progress-bar__fill', props.indicatorClass)}
+            style={`width: ${props.modelValue ?? 0}%;`}
+          />
+        </div>
         {slots.default?.()}
       </ProgressRoot>
     )

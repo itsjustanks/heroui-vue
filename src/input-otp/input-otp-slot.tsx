@@ -2,7 +2,6 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { PinInputInput } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import { useInputOTPContext } from './input-otp-context'
-import { inputOTPSlotVariants } from './input-otp-variants'
 
 /**
  * InputOTPSlot — a single one-time-code segment.
@@ -29,13 +28,7 @@ export const InputOTPSlot = defineComponent({
         index={props.index}
         data-slot="input-otp-slot"
         data-invalid={context?.isInvalid.value ? '' : undefined}
-        class={cn(
-          inputOTPSlotVariants({ variant: context?.variant.value }),
-          'text-center caret-foreground placeholder:text-muted-foreground/60',
-          'data-[invalid]:border-destructive data-[invalid]:ring-destructive/30',
-          'disabled:cursor-not-allowed',
-          props.class
-        )}
+        class={cn('input-otp__slot', props.class)}
       />
     )
   }

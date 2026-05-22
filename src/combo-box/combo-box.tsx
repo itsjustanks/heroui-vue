@@ -31,9 +31,8 @@ export const ComboBox = defineComponent({
       <ComboboxRoot
         {...attrs}
         class={cn(
-          // HeroUI combo-box.css: flex flex-col gap-1.
-          'flex flex-col gap-1',
-          props.fullWidth && 'w-full',
+          'combo-box',
+          props.fullWidth && 'combo-box--full-width',
           props.class
         )}
       >

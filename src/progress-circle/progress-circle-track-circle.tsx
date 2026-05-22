@@ -25,7 +25,7 @@ export const ProgressCircleTrackCircle = defineComponent({
         cy={CENTER}
         r={RADIUS}
         stroke-width={STROKE_WIDTH}
-        class={cn('stroke-muted', props.class)}
+        class={cn('progress-circle__track-circle', props.class)}
       />
     )
   }

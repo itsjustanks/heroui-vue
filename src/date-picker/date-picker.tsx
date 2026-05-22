@@ -29,7 +29,7 @@ export const DatePicker = defineComponent({
     return () => (
       <DatePickerRoot
         {...(attrs as Record<string, any>)}
-        class={cn('flex flex-col gap-1.5', props.class)}
+        class={cn('date-picker', props.class)}
       >
         {slots.default?.()}
       </DatePickerRoot>

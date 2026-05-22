@@ -2,8 +2,8 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * TableCaption — HeroUI `table__caption` (`<caption>`). Muted descriptive text
- * below the table.
+ * TableCaption — caption element for the table. No direct BEM slot in HeroUI
+ * table.css; keeps structural role. Class falls through to consumer.
  */
 export const TableCaption = defineComponent({
   name: 'TableCaption',

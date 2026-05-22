@@ -29,14 +29,7 @@ export const LinkRoot = defineComponent({
         data-slot="link"
         aria-disabled={props.disabled || undefined}
         data-disabled={props.disabled ? '' : undefined}
-        class={cn(
-          'relative inline-flex h-fit w-fit items-center gap-0.5 rounded-md text-sm font-medium',
-          'text-link underline decoration-[1.5px] decoration-border underline-offset-4',
-          'transition-colors hover:decoration-muted-foreground',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          props.disabled && 'pointer-events-none opacity-50',
-          props.class
-        )}
+        class={cn('link', props.class)}
       >
         {slots.default?.()}
       </Primitive>

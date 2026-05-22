@@ -14,16 +14,14 @@ export const DropdownMenuSubTrigger = defineComponent({
     return () => (
       <RekaDropdownMenuSubTrigger
         {...attrs}
-        class={cn(
-          'relative flex min-h-9 w-full cursor-pointer select-none items-center gap-3 rounded-2xl px-2.5 py-1.5 text-sm outline-none transition-colors',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          props.class
-        )}
+        data-slot="menu-item"
+        data-has-submenu="true"
+        class={cn('menu-item menu-item--default', props.class)}
       >
         {slots.default?.()}
-        <IconChevronRight class="ml-auto size-4 text-muted-foreground" />
+        <span data-slot="submenu-indicator" class="ml-auto">
+          <IconChevronRight class="size-4" />
+        </span>
       </RekaDropdownMenuSubTrigger>
     )
   }

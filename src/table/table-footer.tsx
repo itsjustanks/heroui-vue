@@ -2,8 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * TableFooter — HeroUI `table__footer` (`<tfoot>`). Muted summary row with a
- * top hairline, adapted to the repo `border-border` / `bg-muted` tokens.
+ * TableFooter — HeroUI `table__footer` (`<tfoot>`).
  */
 export const TableFooter = defineComponent({
   name: 'TableFooter',
@@ -15,7 +14,7 @@ export const TableFooter = defineComponent({
     return () => (
       <tfoot
         {...attrs}
-        class={cn('border-t border-border bg-muted/50 font-medium [&>tr]:last:border-b-0', props.class)}
+        class={cn('table__footer', props.class)}
       >
         {slots.default?.()}
       </tfoot>

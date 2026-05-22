@@ -10,8 +10,8 @@ export const DrawerHandle = defineComponent({
   },
   setup (props, { attrs }) {
     return () => (
-      <div {...attrs} class={cn('flex items-center justify-center pb-2', props.class)}>
-        <div class="h-1 w-9 rounded-full bg-border" />
+      <div {...attrs} class={cn('drawer__handle', props.class)}>
+        <div data-slot="drawer-handle-bar" />
       </div>
     )
   }

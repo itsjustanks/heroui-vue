@@ -1,15 +1,16 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
-import { AccordionContent as RekaAccordionContent } from 'reka-ui'
+import { AccordionContent as RekaAccordionContent, injectAccordionItemContext } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
 /**
  * AccordionContent — the collapsible panel body.
  *
- * HeroUI `accordion__panel` + `accordion__body`: a height-animated region. The
- * open/close height transition relies on reka-ui's
- * `--reka-accordion-content-height` CSS var, driven by the
- * `accordion-down` / `accordion-up` keyframes (tailwind.config.ts). The exact
- * `data-[state]:animate-accordion-*` classes are kept so behaviour is identical.
+ * HeroUI BEM: `accordion__panel` on the reka content element (height transition),
+ * `accordion__body` + `accordion__body-inner` on the inner divs.
+ *
+ * HeroUI CSS uses:
+ *   - `--disclosure-panel-height` — bridged from reka-ui's `--reka-accordion-content-height`
+ *   - `[data-expanded="true"]` — wired reactively via `injectAccordionItemContext().open`
  */
 export const AccordionContent = defineComponent({
   name: 'AccordionContent',
@@ -18,12 +19,18 @@ export const AccordionContent = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const itemContext = injectAccordionItemContext()
+
     return () => (
       <RekaAccordionContent
         {...attrs}
-        class="overflow-hidden text-sm text-muted-foreground transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+        class="accordion__panel"
+        data-expanded={itemContext.open.value ? 'true' : undefined}
+        style="--disclosure-panel-height: var(--reka-accordion-content-height)"
       >
-        <div class={cn('pb-4 pt-0', props.class)}>{slots.default?.()}</div>
+        <div class="accordion__body">
+          <div class={cn('accordion__body-inner', props.class)}>{slots.default?.()}</div>
+        </div>
       </RekaAccordionContent>
     )
   }

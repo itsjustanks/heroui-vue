@@ -25,16 +25,8 @@ export const ComboBoxItem = defineComponent({
       <ComboboxItem
         {...attrs}
         value={props.value as AcceptableValue}
-        class={cn(
-          'group relative flex min-h-9 w-full cursor-pointer select-none items-center justify-start gap-3 rounded-2xl px-2.5 py-1.5 text-sm outline-none transition-[transform,box-shadow] duration-150',
-          'has-[[data-combo-box-item-indicator]]:pr-7',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'data-[state=checked]:font-medium',
-          'active:scale-[0.98]',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          '[&>svg]:size-4 [&>svg]:shrink-0',
-          props.class
-        )}
+        data-slot="list-box-item"
+        class={cn('list-box-item', props.class)}
       >
         {slots.default?.()}
       </ComboboxItem>

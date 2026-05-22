@@ -28,18 +28,7 @@ export const RangeCalendarCell = defineComponent({
       <RekaRangeCalendarCell
         {...forwardedProps.value}
         date={props.date}
-        class={cn(
-          'relative size-9 p-0 text-center text-sm focus-within:relative focus-within:z-20',
-          // Continuous range track — middle days of the selection.
-          '[&:has([data-selected])]:bg-accent/40',
-          // Round the row-leading and row-trailing edges so weeks read as one band.
-          'first:[&:has([data-selected])]:rounded-l-md last:[&:has([data-selected])]:rounded-r-md',
-          // Caps — start/end days round fully into the day circle.
-          '[&:has([data-selection-start])]:rounded-l-full [&:has([data-selection-end])]:rounded-r-full',
-          // Outside-month selected days carry only a faint track.
-          '[&:has([data-selected][data-outside-view])]:bg-accent/20',
-          props.class
-        )}
+        class={cn('range-calendar__cell', props.class)}
       >
         {slots.default?.()}
       </RekaRangeCalendarCell>

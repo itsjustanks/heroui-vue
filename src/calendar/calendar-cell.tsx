@@ -22,12 +22,7 @@ export const CalendarCell = defineComponent({
       <RekaCalendarCell
         {...forwardedProps.value}
         date={props.date}
-        class={cn(
-          'relative size-9 p-0 text-center text-sm focus-within:relative focus-within:z-20',
-          '[&:has([data-selected])]:rounded-lg [&:has([data-selected])]:bg-accent',
-          '[&:has([data-selected][data-outside-view])]:bg-accent/50',
-          props.class
-        )}
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </RekaCalendarCell>

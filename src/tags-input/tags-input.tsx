@@ -24,12 +24,8 @@ export const TagsInput = defineComponent({
     return () => (
       <TagsInputRoot
         {...attrs}
-        class={cn(
-          'flex flex-wrap items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-sm',
-          'transition-[color,box-shadow] focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background',
-          'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
-          props.class
-        )}
+        data-slot="tag-group"
+        class={cn('tag-group tag-group__list', props.class)}
       >
         {slots.default?.()}
       </TagsInputRoot>

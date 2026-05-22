@@ -1,22 +1,24 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import { alertVariants, type TAlertVariants } from './alert-variants'
+import { alertStatusClass, type TAlertStatus } from './alert-variants'
 
 /**
- * Alert — HeroUI-Vue primitive. A `role=alert` callout surface (HeroUI v3
- * `alert.css`): `rounded-xl border`, semantic-color variants. Faithful port of
- * `shadcn/alert`'s `Alert` — only the radius/token styling is HeroUI-restyled.
+ * Alert — HeroUI-Vue primitive.
+ *
+ * HeroUI BEM: `alert` base + `alert--{status}` modifier. The `alert__indicator`,
+ * `alert__content`, `alert__title`, and `alert__description` slots are rendered
+ * by their own sub-components. `role=alert` for a11y.
  */
 export const Alert = defineComponent({
   name: 'Alert',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<TAlertVariants['variant']>, default: undefined }
+    status: { type: String as PropType<TAlertStatus>, default: 'default' }
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} role="alert" class={cn(alertVariants({ variant: props.variant }), props.class)}>
+      <div {...attrs} role="alert" class={cn('alert', alertStatusClass(props.status), props.class)}>
         {slots.default?.()}
       </div>
     )

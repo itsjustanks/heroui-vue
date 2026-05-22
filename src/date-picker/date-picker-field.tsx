@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DatePickerField as RekaDatePickerField } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { dateInputGroupVariants, type TDateInputGroupVariants, type TTimeSegment } from '@/time-field'
+import { type TDateInputGroupVariants, type TTimeSegment } from '@/time-field'
 
 /**
  * DatePickerField — the segmented-input surface. HeroUI v3 `DateField.Group`
@@ -29,7 +29,9 @@ export const DatePickerField = defineComponent({
         {...attrs}
         data-slot="date-picker-field"
         class={cn(
-          dateInputGroupVariants({ variant: props.variant, fullWidth: props.fullWidth }),
+          'date-input-group',
+          props.variant === 'secondary' ? 'date-input-group--secondary' : 'date-input-group--primary',
+          props.fullWidth && 'date-input-group--full-width',
           props.class
         )}
       >

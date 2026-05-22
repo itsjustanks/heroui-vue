@@ -23,14 +23,7 @@ export const CheckboxGroupItemControl = defineComponent({
       <span
         {...attrs}
         data-slot="checkbox-control"
-        class={cn(
-          'mt-0.5 grid size-4 shrink-0 place-content-center rounded-md border border-primary bg-background text-primary-foreground transition-colors',
-          'group-data-[state=checked]:border-transparent group-data-[state=checked]:bg-primary',
-          'group-data-[state=indeterminate]:border-transparent group-data-[state=indeterminate]:bg-primary',
-          'group-data-[variant=secondary]:bg-muted',
-          'group-data-[invalid=true]:border-danger',
-          props.class
-        )}
+        class={cn('checkbox__control', props.class)}
       >
         {slots.default?.()}
       </span>

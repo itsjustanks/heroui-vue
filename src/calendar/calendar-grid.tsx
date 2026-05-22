@@ -15,7 +15,7 @@ export const CalendarGrid = defineComponent({
     return () => (
       <RekaCalendarGrid
         {...forwardedProps.value}
-        class={cn('w-full border-collapse space-y-1', props.class)}
+        class={cn('calendar__grid', props.class)}
       >
         {slots.default?.()}
       </RekaCalendarGrid>

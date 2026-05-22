@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils'
 /**
  * TabsContent — the panel revealed for the active tab.
  *
- * HeroUI `tabs__panel`: a focusable region spaced below the track. Styling is
- * adapted from HeroUI's `tabs.css`, expressed with the repo's tokens.
+ * Maps to HeroUI `tabs__panel`. reka-ui already applies `data-orientation` on
+ * the root, which HeroUI CSS uses for horizontal/vertical panel spacing.
  */
 export const TabsContent = defineComponent({
   name: 'TabsContent',
@@ -20,10 +20,7 @@ export const TabsContent = defineComponent({
     return () => (
       <RekaTabsContent
         {...(attrs as Record<string, any>)}
-        class={cn(
-          'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          props.class
-        )}
+        class={cn('tabs__panel', props.class)}
       >
         {slots.default?.()}
       </RekaTabsContent>

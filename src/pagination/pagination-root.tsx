@@ -54,7 +54,10 @@ export const PaginationRoot = defineComponent({
         onUpdate:page={(value: number) => emit('update:page', value)}
         data-slot="pagination"
         class={cn(
-          'flex w-full flex-col items-center justify-between gap-4 sm:flex-row',
+          'pagination',
+          props.size === 'sm' ? 'pagination--sm'
+            : props.size === 'lg' ? 'pagination--lg'
+              : 'pagination--md',
           props.class
         )}
       >

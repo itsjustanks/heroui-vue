@@ -13,7 +13,7 @@ export const CardFooter = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('flex items-center p-6 pt-0', props.class)}>
+      <div {...attrs} class={cn('card__footer', props.class)}>
         {slots.default?.()}
       </div>
     )

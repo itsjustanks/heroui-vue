@@ -3,9 +3,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * BreadcrumbList — the ordered list of crumbs.
- *
- * HeroUI `breadcrumbs`: `flex items-center`, quiet `text-muted-foreground`
- * baseline. Wraps gracefully and uses a compact gap.
+ * HeroUI BEM: `breadcrumbs` — flex row container with item gap.
  */
 export const BreadcrumbList = defineComponent({
   name: 'BreadcrumbList',
@@ -15,13 +13,7 @@ export const BreadcrumbList = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <ol
-        {...attrs}
-        class={cn(
-          'flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5',
-          props.class
-        )}
-      >
+      <ol {...attrs} class={cn('breadcrumbs', props.class)}>
         {slots.default?.()}
       </ol>
     )

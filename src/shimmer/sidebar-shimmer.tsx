@@ -24,13 +24,16 @@ export const SidebarShimmer = defineComponent({
               key={`shimmer-${i}`}
               class={props.expanded ? 'flex gap-x-2' : 'flex flex-col items-center gap-y-2'}
             >
-              <p class={['rounded bg-muted px-3 py-3', props.expanded ? 'h-5 w-4' : 'size-5']} />
               <p
-                class={
-                  props.expanded
-                    ? 'h-5 w-full rounded bg-muted px-3 py-3'
-                    : 'h-2.5 w-full rounded bg-muted px-1'
-                }
+                data-slot="base"
+                class={['skeleton skeleton--shimmer rounded px-3 py-3', props.expanded ? 'h-5 w-4' : 'size-5']}
+              />
+              <p
+                data-slot="base"
+                class={[
+                  'skeleton skeleton--shimmer rounded',
+                  props.expanded ? 'h-5 w-full px-3 py-3' : 'h-2.5 w-full px-1'
+                ]}
               />
             </div>
           ))}

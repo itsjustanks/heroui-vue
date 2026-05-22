@@ -17,7 +17,7 @@ export const DateFieldSuffix = defineComponent({
       <span
         {...attrs}
         data-slot="date-field-suffix"
-        class={cn('ml-auto flex shrink-0 items-center text-muted-foreground', props.class)}
+        class={cn('date-input-group__suffix', props.class)}
       >
         {slots.default?.()}
       </span>

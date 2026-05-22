@@ -20,7 +20,7 @@ export const CalendarHeading = defineComponent({
     return () => (
       <RekaCalendarHeading
         {...forwardedProps.value}
-        class={cn('flex-1 text-sm font-medium', props.class)}
+        class={cn('calendar__heading', props.class)}
       >
         {{
           default: ({ headingValue }: { headingValue: string }) => (

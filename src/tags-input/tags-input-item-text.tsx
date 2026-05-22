@@ -18,7 +18,7 @@ export const TagsInputItemText = defineComponent({
     return () => (
       <RekaTagsInputItemText
         {...attrs}
-        class={cn('bg-transparent text-xs', props.class)}
+        class={cn(props.class)}
       />
     )
   }

@@ -14,6 +14,7 @@ export const DropdownMenuLabel = defineComponent({
     return () => (
       <RekaDropdownMenuLabel
         {...attrs}
+        data-slot="label"
         class={cn(
           'px-2.5 py-1.5 text-xs font-medium text-muted-foreground',
           props.inset && 'pl-8',

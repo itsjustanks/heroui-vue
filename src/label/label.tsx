@@ -5,23 +5,29 @@ import { cn } from '@/lib/utils'
 /**
  * Label — HeroUI-Vue primitive over reka-ui `Label`.
  *
- * HeroUI `label.css`: `text-sm font-medium text-foreground`. Disabled/invalid
- * styling is driven by reka-ui peer state; tokens adapted to the repo
- * (`text-foreground`). Faithful HeroUI v3 port.
+ * Emits HeroUI v3 BEM class names from `label.css`:
+ *   base: `label`
+ *   modifiers: `label--disabled` | `label--invalid` | `label--required`
  */
 export const Label = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names -- the HeroUI/shadcn component is named Label
   name: 'Label',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    isDisabled: { type: Boolean, default: false },
+    isInvalid: { type: Boolean, default: false },
+    isRequired: { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
     return () => (
       <RekaLabel
         {...attrs}
         class={cn(
-          'text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+          'label',
+          props.isDisabled && 'label--disabled',
+          props.isInvalid && 'label--invalid',
+          props.isRequired && 'label--required',
           props.class
         )}
       >

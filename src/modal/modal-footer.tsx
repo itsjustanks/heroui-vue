@@ -10,7 +10,7 @@ export const ModalFooter = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('flex flex-row items-center justify-end gap-2', props.class)}>
+      <div {...attrs} data-slot="modal-footer" class={cn('modal__footer', props.class)}>
         {slots.default?.()}
       </div>
     )

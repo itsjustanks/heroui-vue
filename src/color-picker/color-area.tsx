@@ -22,10 +22,7 @@ const ColorAreaThumb = defineComponent({
     return () => (
       <div
         {...attrs}
-        class={cn(
-          'pointer-events-none absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-md ring-1 ring-black/20',
-          props.class
-        )}
+        class={cn('color-area__thumb', props.class)}
         style={{
           left: `${color.value.s}%`,
           top: `${100 - color.value.v}%`,
@@ -114,11 +111,7 @@ export const ColorArea = defineComponent({
         onKeydown={onKeyDown}
         style={{ backgroundColor: hueToCss(color.value.h) }}
         class={cn(
-          'relative h-40 w-full touch-none select-none rounded-xl outline-none',
-          // Saturation gradient (white→transparent) over a brightness gradient (transparent→black).
-          'bg-[linear-gradient(to_top,#000,#0000),linear-gradient(to_right,#fff,#fff0)]',
-          'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          props.isDisabled && 'pointer-events-none opacity-50',
+          'color-area',
           props.class
         )}
       >

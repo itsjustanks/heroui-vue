@@ -16,17 +16,13 @@ export const MenubarSubTrigger = defineComponent({
     return () => (
       <RekaMenubarSubTrigger
         {...attrs}
-        class={cn(
-          'relative flex min-h-9 w-full cursor-pointer select-none items-center gap-3 rounded-lg px-2.5 py-1.5 text-sm outline-none transition-colors',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          props.inset && 'pl-8',
-          props.class
-        )}
+        data-slot="menu-item"
+        class={cn('menu-item menu-item--default', props.class)}
       >
         {slots.default?.()}
-        <IconChevronRight class="ml-auto size-4 text-muted-foreground" />
+        <span class="menu-item__indicator menu-item__indicator--submenu" data-slot="submenu-indicator">
+          <IconChevronRight />
+        </span>
       </RekaMenubarSubTrigger>
     )
   }

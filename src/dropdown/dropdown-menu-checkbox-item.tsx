@@ -14,16 +14,12 @@ export const DropdownMenuCheckboxItem = defineComponent({
     return () => (
       <RekaDropdownMenuCheckboxItem
         {...attrs}
-        class={cn(
-          'relative flex min-h-9 w-full cursor-pointer select-none items-center gap-3 rounded-2xl py-1.5 pl-7 pr-2.5 text-sm outline-none transition-colors',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          props.class
-        )}
+        data-slot="menu-item"
+        class={cn('menu-item menu-item--default', props.class)}
       >
-        <span class="absolute left-2 flex size-4 items-center justify-center text-muted-foreground">
+        <span class="menu-item__indicator">
           <DropdownMenuItemIndicator>
-            <IconCheck class="size-3.5" />
+            <IconCheck data-slot="menu-item-indicator--checkmark" class="size-3.5" />
           </DropdownMenuItemIndicator>
         </span>
         {slots.default?.()}

@@ -19,13 +19,10 @@ export const DropdownMenuItem = defineComponent({
     return () => (
       <RekaDropdownMenuItem
         {...attrs}
+        data-slot="menu-item"
         class={cn(
-          // HeroUI menu-item.css: min-h-9, gap-3, rounded-2xl, px-2 (dropdown overrides to px-2.5).
-          'relative flex min-h-9 w-full cursor-pointer select-none items-center justify-start gap-3 rounded-2xl px-2.5 py-1.5 text-sm outline-none transition-colors',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          '[&>svg]:size-4 [&>svg]:shrink-0',
-          props.variant === 'danger' && 'text-danger data-[highlighted]:text-danger',
+          'menu-item',
+          props.variant === 'danger' ? 'menu-item--danger' : 'menu-item--default',
           props.class
         )}
       >

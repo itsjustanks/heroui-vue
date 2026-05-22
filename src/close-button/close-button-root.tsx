@@ -28,15 +28,7 @@ export const CloseButtonRoot = defineComponent({
         as={props.as}
         asChild={props.asChild}
         data-slot="close-button"
-        class={cn(
-          'relative isolate inline-flex size-6 shrink-0 origin-center select-none items-center justify-center rounded-lg p-1',
-          'bg-muted text-muted-foreground transition-[transform,color,background-color]',
-          'hover:bg-muted/80 active:scale-95',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          'disabled:pointer-events-none disabled:opacity-50',
-          '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
-          props.class
-        )}
+        class={cn('close-button', 'close-button--default', props.class)}
       >
         {slots.default ? slots.default() : <IconX data-slot="close-button-icon" />}
       </Primitive>

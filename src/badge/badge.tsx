@@ -1,60 +1,46 @@
-import { computed, defineComponent, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import {
-  badgeDotColors,
-  badgeVariants,
-  type TBadgeColor,
-  type TBadgeVariants
-} from './badge-variants'
+import { badgeVariants, type TBadgeColor, type TBadgePlacement, type TBadgeSize, type TBadgeVariantName } from './badge-variants'
 
 /**
- * Badge — HeroUI-Vue chip/badge primitive.
+ * Badge — HeroUI-Vue badge primitive.
  *
- * Faithful port of `shadcn/badge`: same props (`variant`, `size`, `class`,
- * `label`, `color`, `isDot`, `isStatus`) and the `icon` + default slots.
- * Restyled to HeroUI v3 chip taste — `rounded-full` pill, `text-xs`, soft
- * semantic-color backgrounds. `color` takes precedence over `variant`.
+ * HeroUI BEM: `badge` base + `badge--{color}` + `badge--{variant}` + `badge--{size}`
+ * + optional `badge--{placement}` modifier.
+ * The `badge__label` wrapper is rendered around the default slot text.
+ *
+ * When `placement` is set the badge is positioned absolutely; wrap the anchor
+ * element in `<span class="badge-anchor">` to create the positioning context.
  */
 export const Badge = defineComponent({
   name: 'Badge',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<TBadgeVariants['variant']>, default: undefined },
-    size: { type: String as PropType<TBadgeVariants['size']>, default: undefined },
-    /** Text label rendered inside the badge */
-    label: { type: String, default: undefined },
-    /** Shorthand color name mapped to a color-based variant */
-    color: { type: String as PropType<TBadgeColor>, default: undefined },
-    /** Show as small dot indicator */
+    color: { type: String as PropType<TBadgeColor>, default: 'default' },
+    variant: { type: String as PropType<TBadgeVariantName>, default: 'primary' },
+    size: { type: String as PropType<TBadgeSize>, default: 'md' },
+    placement: { type: String as PropType<TBadgePlacement>, default: undefined },
+    /** Show as a small dot indicator (no label rendered) */
     isDot: { type: Boolean, default: false },
-    /** Show as vertical status bar */
+    /** Show as a vertical status bar */
     isStatus: { type: Boolean, default: false }
   },
   setup (props, { attrs, slots }) {
-    /** When `color` is provided it takes precedence over `variant` */
-    const resolvedVariant = computed(
-      (): TBadgeVariants['variant'] => props.color ?? props.variant ?? 'default'
-    )
-
-    const dotColorClasses = computed(
-      () => badgeDotColors[resolvedVariant.value as string] ?? 'bg-neutral-800'
-    )
-
     return () => (
-      <div
+      <span
         {...attrs}
-        class={cn(badgeVariants({ variant: resolvedVariant.value, size: props.size }), props.class)}
+        class={cn(
+          badgeVariants({ color: props.color, variant: props.variant, size: props.size, placement: props.placement }),
+          props.class
+        )}
       >
-        {props.isDot && (
-          <span class={cn('inline-block size-1.5 rounded-full', dotColorClasses.value)} />
+        {!props.isDot && !props.isStatus && (
+          <span class="badge__label">
+            {slots.default?.()}
+          </span>
         )}
-        {props.isStatus && (
-          <span class={cn('h-3 w-1 rounded-full', dotColorClasses.value)} />
-        )}
-        {!props.isDot && !props.isStatus && slots.icon?.()}
-        {slots.default ? slots.default() : props.label}
-      </div>
+      </span>
     )
   }
 })

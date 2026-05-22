@@ -20,10 +20,7 @@ export const TagsInputInput = defineComponent({
     return () => (
       <RekaTagsInputInput
         {...attrs}
-        class={cn(
-          'min-h-6 flex-1 bg-transparent px-1 text-sm placeholder:text-muted-foreground focus:outline-none',
-          props.class
-        )}
+        class={cn(props.class)}
       />
     )
   }

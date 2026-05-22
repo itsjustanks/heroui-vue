@@ -45,9 +45,8 @@ const ColorFieldGroup = defineComponent({
         data-slot="group"
         data-variant={props.variant}
         class={cn(
-          'flex h-9 w-full items-center gap-1.5 rounded-lg border px-2 text-sm',
-          'focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-1 focus-within:ring-offset-background',
-          props.variant === 'secondary' ? 'border-transparent bg-muted' : 'border-input bg-background',
+          'color-input-group',
+          `color-input-group--${props.variant}`,
           props.class
         )}
       >
@@ -66,7 +65,7 @@ const ColorFieldPrefix = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <span {...attrs} class={cn('flex shrink-0 items-center text-muted-foreground', props.class)}>
+      <span {...attrs} class={cn('color-input-group__prefix', props.class)}>
         {slots.default?.()}
       </span>
     )
@@ -82,7 +81,7 @@ const ColorFieldSuffix = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <span {...attrs} class={cn('flex shrink-0 items-center text-muted-foreground', props.class)}>
+      <span {...attrs} class={cn('color-input-group__suffix', props.class)}>
         {slots.default?.()}
       </span>
     )
@@ -123,10 +122,7 @@ const ColorFieldInput = defineComponent({
           }
         }}
         onBlur={() => { draft.value = null }}
-        class={cn(
-          'h-full w-full min-w-0 flex-1 bg-transparent text-sm uppercase outline-none placeholder:text-muted-foreground',
-          props.class
-        )}
+        class={cn('color-input-group__input', props.class)}
       />
     )
   }
@@ -193,7 +189,7 @@ export const ColorField = defineComponent({
         {...attrs}
         data-slot="color-field"
         data-channel={props.channel}
-        class={cn('flex w-full flex-col gap-1', props.class)}
+        class={cn('color-field', props.class)}
       >
         {slots.default?.()}
       </div>

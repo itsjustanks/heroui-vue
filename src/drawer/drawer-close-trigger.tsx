@@ -15,10 +15,7 @@ export const DrawerCloseTrigger = defineComponent({
       <DialogClose
         {...attrs}
         aria-label="Close"
-        class={cn(
-          'absolute right-4 top-4 inline-flex size-8 items-center justify-center rounded-full text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-foreground',
-          props.class
-        )}
+        class={cn('drawer__close-trigger', props.class)}
       >
         {slots.default?.() ?? <IconX class="size-4" />}
       </DialogClose>

@@ -2,8 +2,6 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { PaginationNext as RekaPaginationNext } from 'reka-ui'
 import { ChevronRight as IconChevronRight } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
-import { usePaginationContext } from './pagination-context'
-import { paginationLinkVariants } from './pagination-variants'
 
 /**
  * PaginationNext — the "go to next page" control.
@@ -18,16 +16,11 @@ export const PaginationNext = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const context = usePaginationContext()
-
     return () => (
       <RekaPaginationNext
         {...attrs}
         data-slot="pagination-next"
-        class={cn(
-          paginationLinkVariants({ size: context?.size.value, nav: true }),
-          props.class
-        )}
+        class={cn('pagination__link pagination__link--nav', props.class)}
       >
         {slots.default ? slots.default() : <IconChevronRight data-slot="pagination-next-icon" />}
       </RekaPaginationNext>

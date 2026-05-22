@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
-/** AlertDialogHeader — the top section: title + description stack. */
+/** AlertDialogHeader — HeroUI BEM: `alert-dialog__header`. Title + description stack. */
 export const AlertDialogHeader = defineComponent({
   name: 'AlertDialogHeader',
   inheritAttrs: false,
@@ -10,7 +10,7 @@ export const AlertDialogHeader = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('flex flex-col gap-y-2 text-center sm:text-left', props.class)}>
+      <div {...attrs} class={cn('alert-dialog__header', props.class)}>
         {slots.default?.()}
       </div>
     )

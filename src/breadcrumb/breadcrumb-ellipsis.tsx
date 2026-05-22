@@ -3,8 +3,9 @@ import { MoreHorizontal as IconMoreHorizontal } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 
 /**
- * BreadcrumbEllipsis — a collapsed-crumbs placeholder. Decorative `aria-hidden`
- * span with an `sr-only` "More" label. Defaults to a horizontal-dots icon.
+ * BreadcrumbEllipsis — a collapsed-crumbs placeholder.
+ * Decorative `aria-hidden` span. Defaults to a horizontal-dots icon.
+ * No dedicated HeroUI BEM class — rendered inside `breadcrumbs__item`.
  */
 export const BreadcrumbEllipsis = defineComponent({
   name: 'BreadcrumbEllipsis',
@@ -18,9 +19,9 @@ export const BreadcrumbEllipsis = defineComponent({
         {...attrs}
         role="presentation"
         aria-hidden="true"
-        class={cn('flex h-9 w-9 items-center justify-center', props.class)}
+        class={cn('breadcrumbs__link', props.class)}
       >
-        {slots.default ? slots.default() : <IconMoreHorizontal class="h-4 w-4" />}
+        {slots.default ? slots.default() : <IconMoreHorizontal class="size-4" />}
         <span class="sr-only">More</span>
       </span>
     )

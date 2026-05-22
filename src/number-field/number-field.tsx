@@ -27,6 +27,8 @@ export const NumberField = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** HeroUI surface variant — `primary` (bordered) or `secondary` (muted). */
+    variant: { type: String as PropType<'primary' | 'secondary'>, default: 'primary' },
     /** HeroUI `fullWidth` — stretch the field to fill its container. */
     fullWidth: { type: Boolean, default: false }
   },
@@ -39,7 +41,12 @@ export const NumberField = defineComponent({
       <NumberFieldRoot
         {...forwarded.value}
         data-slot="number-field"
-        class={cn('flex flex-col gap-1.5', props.fullWidth && 'w-full', props.class)}
+        class={cn(
+          'number-field',
+          props.variant === 'secondary' ? 'number-field--secondary' : 'number-field--primary',
+          props.fullWidth && 'number-field--full-width',
+          props.class
+        )}
       >
         {{
           // reka-ui `NumberFieldRoot` exposes `modelValue` / `textValue` — surface

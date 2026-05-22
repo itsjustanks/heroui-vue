@@ -11,7 +11,7 @@ export const SelectSeparator = defineComponent({
   },
   setup (props, { attrs }) {
     return () => (
-      <RekaSelectSeparator {...attrs} class={cn('-mx-1 my-1 h-px bg-border', props.class)} />
+      <RekaSelectSeparator {...attrs} class={cn('separator separator--horizontal separator--default', props.class)} />
     )
   }
 })

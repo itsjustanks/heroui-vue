@@ -3,8 +3,8 @@ import { ChevronRight as IconChevronRight } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
 
 /**
- * BreadcrumbSeparator — HeroUI `breadcrumbs__separator`: a small chevron between
- * crumbs. Decorative — `aria-hidden`. Defaults to a chevron; slot overrides.
+ * BreadcrumbSeparator — HeroUI BEM: `breadcrumbs__separator`.
+ * Decorative — `aria-hidden`. Defaults to a chevron; slot overrides.
  */
 export const BreadcrumbSeparator = defineComponent({
   name: 'BreadcrumbSeparator',
@@ -18,7 +18,7 @@ export const BreadcrumbSeparator = defineComponent({
         {...attrs}
         role="presentation"
         aria-hidden="true"
-        class={cn('[&>svg]:size-3.5', props.class)}
+        class={cn('breadcrumbs__separator', props.class)}
       >
         {slots.default ? slots.default() : <IconChevronRight />}
       </li>

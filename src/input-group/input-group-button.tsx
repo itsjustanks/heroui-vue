@@ -2,14 +2,13 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 import { Button } from '@/button'
 import type { ButtonVariants } from '@/button'
-import { inputGroupButtonVariants, type InputGroupButtonVariants } from './variants'
+import { type InputGroupButtonVariants } from './variants'
 
 /**
- * InputGroupButton — a compact button sized for an `InputGroup` addon. Faithful
- * port of `shadcn/input-group/InputGroupButton`.
+ * InputGroupButton — a compact button inside an `InputGroup` addon.
  *
- * Composes the shared `Button` primitive; `size`/`variant` defaults and the
- * `inputGroupButtonVariants` sizing are preserved verbatim.
+ * No direct HeroUI BEM class — styled by the surrounding prefix/suffix context.
+ * `data-slot="input-group-button"` is kept for structural selection.
  */
 export const InputGroupButton = defineComponent({
   name: 'InputGroupButton',
@@ -23,9 +22,10 @@ export const InputGroupButton = defineComponent({
     return () => (
       <Button
         {...attrs}
+        data-slot="input-group-button"
         data-size={props.size}
         variant={props.variant}
-        class={cn(inputGroupButtonVariants({ size: props.size }), props.class)}
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </Button>

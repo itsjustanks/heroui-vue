@@ -3,14 +3,13 @@ import { Toaster as SonnerBase, type ToasterProps } from 'vue-sonner'
 const Sonner: any = SonnerBase
 
 /**
- * Toaster — HeroUI-Vue toast region. A faithful port of `shadcn/sonner`: it
- * wraps the `vue-sonner` `<Toaster>` and forwards every prop verbatim, keeping
- * the class-keyed `toastOptions` so toast surfaces stay theme-aware.
+ * Toaster — HeroUI-Vue toast region (maps to HeroUI `toast` family).
  *
- * Only the `<script setup>` → `setup()` and `<template>` → JSX syntax changes.
- * Restyled to HeroUI v3's toast surface — `rounded-xl border border-border
- * bg-background text-foreground shadow-lg` (HeroUI `toast.css` overlay surface),
- * adapted to the repo's tokens.
+ * Wraps `vue-sonner` `<Toaster>` and applies HeroUI `toast` BEM class names via
+ * `toastOptions.classes`. The region root gets `toast-region`; individual toasts
+ * get `toast toast--default` (variant classes available: toast--accent,
+ * toast--danger, toast--success, toast--warning). Content slots map to
+ * `toast__title`, `toast__description`, `toast__action`, `toast__close-button`.
  */
 export const Toaster = defineComponent({
   name: 'SonnerToaster',
@@ -40,16 +39,15 @@ export const Toaster = defineComponent({
     return () => (
       <Sonner
         {...props}
-        class={['toaster group', props.class]}
+        class={['toast-region', props.class]}
         toast-options={{
           classes: {
-            toast:
-              'group toast group-[.toaster]:rounded-xl group-[.toaster]:border group-[.toaster]:border-border group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:shadow-lg',
-            description: 'group-[.toast]:text-muted-foreground',
-            actionButton:
-              'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
-            cancelButton:
-              'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground'
+            toast: 'toast toast--default',
+            title: 'toast__title',
+            description: 'toast__description',
+            actionButton: 'toast__action',
+            cancelButton: 'toast__action',
+            closeButton: 'toast__close-button'
           }
         }}
       />

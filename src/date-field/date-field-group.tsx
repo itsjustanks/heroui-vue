@@ -1,6 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import { dateInputGroupVariants, type TDateInputGroupVariants } from '@/time-field'
+import type { TDateInputGroupVariants } from '@/time-field'
 
 /**
  * DateFieldGroup — the segmented-input surface. HeroUI v3 `DateField.Group`.
@@ -27,7 +27,9 @@ export const DateFieldGroup = defineComponent({
         {...attrs}
         data-slot="date-field-group"
         class={cn(
-          dateInputGroupVariants({ variant: props.variant, fullWidth: props.fullWidth }),
+          'date-input-group',
+          props.variant === 'secondary' ? 'date-input-group--secondary' : 'date-input-group--primary',
+          props.fullWidth && 'date-input-group--full-width',
           props.class
         )}
       >

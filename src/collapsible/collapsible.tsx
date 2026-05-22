@@ -1,20 +1,22 @@
-import { defineComponent } from 'vue'
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { CollapsibleRoot } from 'reka-ui'
+import { cn } from '@/lib/utils'
 
 /**
  * Collapsible — root of the HeroUI-Vue collapsible (primitive library).
  *
- * HeroUI `disclosure` root. Thin wrapper over reka-ui `CollapsibleRoot` — logic
- * only, renders no DOM. Forwards all props/emits (`open`, `defaultOpen`,
- * `onUpdate:open`, `disabled`, …). The default slot receives the `open` scope
- * value from reka-ui so call sites can render against the open state.
+ * HeroUI v3 BEM: `disclosure` (maps collapsible → disclosure). Wraps reka-ui
+ * `CollapsibleRoot` and emits the `disclosure` BEM class.
  */
 export const Collapsible = defineComponent({
   name: 'Collapsible',
   inheritAttrs: false,
-  setup (_props, { attrs, slots }) {
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
     return () => (
-      <CollapsibleRoot {...attrs}>
+      <CollapsibleRoot {...attrs} class={cn('disclosure', props.class)}>
         {{
           default: ({ open }: { open: boolean }) => slots.default?.({ open })
         }}

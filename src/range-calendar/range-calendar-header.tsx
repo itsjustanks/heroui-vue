@@ -21,7 +21,7 @@ export const RangeCalendarHeader = defineComponent({
     return () => (
       <RekaRangeCalendarHeader
         {...forwardedProps.value}
-        class={cn('relative flex w-full items-center justify-between px-0.5 pb-4 pt-1', props.class)}
+        class={cn('range-calendar__header', props.class)}
       >
         {slots.default?.()}
       </RekaRangeCalendarHeader>

@@ -79,11 +79,17 @@ export const Meter = defineComponent({
         data-slot="meter"
         data-disabled={props.disabled || undefined}
         class={cn(
-          'grid w-full gap-1',
-          props.disabled && 'opacity-50',
+          'meter',
+          props.color === 'accent' ? 'meter--accent'
+            : props.color === 'danger' ? 'meter--danger'
+              : props.color === 'success' ? 'meter--success'
+                : props.color === 'warning' ? 'meter--warning'
+                  : 'meter--default',
+          props.size === 'sm' ? 'meter--sm'
+            : props.size === 'lg' ? 'meter--lg'
+              : 'meter--md',
           props.class
         )}
-        style={{ gridTemplateColumns: '1fr auto' }}
       >
         {slots.default?.()}
       </div>

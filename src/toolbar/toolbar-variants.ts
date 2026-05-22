@@ -2,22 +2,21 @@ import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 /**
- * toolbarVariants — cva for the HeroUI-Vue Toolbar primitive.
+ * toolbarVariants — HeroUI v3 `toolbar` BEM variant map.
  *
- * Faithful port of HeroUI v3 `toolbar.styles.ts` + `toolbar.css`. A toolbar is a
- * horizontal (or vertical) action bar. `isAttached` gives it a surface card
- * shell; `orientation` switches the flow axis.
+ * Emits HeroUI BEM class names from `toolbar.styles.js` + `toolbar.css`.
+ * Base is `toolbar`; orientation and attached modifier classes are appended.
  */
-export const toolbarVariants = cva('grid w-fit items-center gap-2', {
+export const toolbarVariants = cva('toolbar', {
   variants: {
     /** Flow axis. */
     orientation: {
-      horizontal: 'grid-flow-col',
-      vertical: 'grid-flow-row items-start justify-start'
+      horizontal: 'toolbar--horizontal',
+      vertical: 'toolbar--vertical'
     },
     /** When `true`, wraps controls in a rounded surface card. */
     isAttached: {
-      true: 'rounded-3xl bg-card p-1 shadow-md',
+      true: 'toolbar--attached',
       false: ''
     }
   },

@@ -35,11 +35,11 @@ export const DrawerContent = defineComponent({
         {...attrs}
         data-placement={props.placement}
         class={cn(
-          'pointer-events-none fixed inset-0 z-50 flex',
-          props.placement === 'bottom' && 'items-end justify-center',
-          props.placement === 'top' && 'items-start justify-center',
-          props.placement === 'left' && 'items-stretch justify-start',
-          props.placement === 'right' && 'items-stretch justify-end',
+          'drawer__content',
+          props.placement === 'bottom' && 'drawer__content--bottom',
+          props.placement === 'top' && 'drawer__content--top',
+          props.placement === 'left' && 'drawer__content--left',
+          props.placement === 'right' && 'drawer__content--right',
           props.class
         )}
       >

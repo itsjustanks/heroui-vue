@@ -20,14 +20,8 @@ export const MenubarItem = defineComponent({
     return () => (
       <RekaMenubarItem
         {...attrs}
-        class={cn(
-          'relative flex min-h-9 w-full cursor-pointer select-none items-center gap-3 rounded-lg px-2.5 py-1.5 text-sm outline-none transition-colors',
-          'data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-          '[&>svg]:size-4 [&>svg]:shrink-0',
-          props.inset && 'pl-8',
-          props.class
-        )}
+        data-slot="menu-item"
+        class={cn('menu-item menu-item--default', props.class)}
       >
         {slots.default?.()}
       </RekaMenubarItem>

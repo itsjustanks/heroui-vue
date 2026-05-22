@@ -25,14 +25,6 @@ type TSwatchItemInternal = {
 const ITEM_KEY: InjectionKey<TSwatchItemInternal> = Symbol('HeroColorSwatchItem')
 const useItem = (): TSwatchItemInternal | null => inject(ITEM_KEY, null)
 
-/** Size scale — mirrors HeroUI `color-swatch-picker.css`. */
-const ITEM_SIZE: Record<TSwatchSize, string> = {
-  xs: 'size-4',
-  sm: 'size-6',
-  md: 'size-8',
-  lg: 'size-9',
-  xl: 'size-10'
-}
 
 /** ColorSwatchPicker.Swatch — the colored fill of an item. */
 const ColorSwatchPickerSwatch = defineComponent({
@@ -48,7 +40,7 @@ const ColorSwatchPickerSwatch = defineComponent({
         {...attrs}
         data-slot="swatch"
         style={{ background: item?.color.value }}
-        class={cn('absolute inset-0 rounded-[inherit]', props.class)}
+        class={cn('color-swatch-picker__swatch', props.class)}
       />
     )
   }
@@ -69,11 +61,7 @@ const ColorSwatchPickerIndicator = defineComponent({
         <span
           {...attrs}
           data-slot="indicator"
-          class={cn(
-            'pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-white',
-            '[filter:drop-shadow(0_1px_1px_rgba(0,0,0,0.45))]',
-            props.class
-          )}
+          class={cn('color-swatch-picker__indicator', props.class)}
         >
           {slots.default
             ? slots.default()
@@ -121,17 +109,7 @@ const ColorSwatchPickerItem = defineComponent({
         data-selected={isSelected.value || undefined}
         data-disabled={props.isDisabled || undefined}
         onClick={() => { if (!props.isDisabled) picker?.select(hex.value) }}
-        class={cn(
-          'relative shrink-0 overflow-hidden outline-none transition-transform',
-          picker?.variant.value === 'square' ? 'rounded-md' : 'rounded-full',
-          ITEM_SIZE[picker?.size.value ?? 'md'],
-          'border border-border/60',
-          'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          !props.isDisabled && !isSelected.value && 'hover:scale-110',
-          isSelected.value && 'ring-2 ring-ring ring-offset-2 ring-offset-background',
-          props.isDisabled && 'cursor-not-allowed opacity-40',
-          props.class
-        )}
+        class={cn('color-swatch-picker__item', props.class)}
       >
         {slots.default
           ? slots.default()
@@ -208,8 +186,10 @@ export const ColorSwatchPicker = defineComponent({
         data-variant={props.variant}
         data-size={props.size}
         class={cn(
-          'flex flex-wrap gap-1.5',
-          props.layout === 'stack' && 'flex-col flex-nowrap',
+          'color-swatch-picker',
+          `color-swatch-picker--${props.layout}`,
+          `color-swatch-picker--${props.size}`,
+          `color-swatch-picker--${props.variant}`,
           props.class
         )}
       >

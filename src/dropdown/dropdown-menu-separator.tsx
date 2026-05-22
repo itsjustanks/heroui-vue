@@ -16,7 +16,8 @@ export const DropdownMenuSeparator = defineComponent({
     return () => (
       <RekaDropdownMenuSeparator
         {...attrs}
-        class={cn('my-1 ml-[3%] h-px w-[94%] bg-border', props.class)}
+        data-slot="separator"
+        class={cn('separator', props.class)}
       />
     )
   }

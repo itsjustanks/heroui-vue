@@ -11,7 +11,7 @@ export const ModalHeading = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <DialogTitle {...attrs} class={cn('align-middle text-base font-medium text-foreground', props.class)}>
+      <DialogTitle {...attrs} data-slot="modal-heading" class={cn('modal__heading', props.class)}>
         {slots.default?.()}
       </DialogTitle>
     )

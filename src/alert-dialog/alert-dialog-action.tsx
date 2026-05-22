@@ -1,9 +1,11 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { AlertDialogAction as RekaAlertDialogAction } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/button'
 
-/** AlertDialogAction — the confirm button: styled with the primary button variant. */
+/**
+ * AlertDialogAction — the confirm button.
+ * HeroUI BEM: `button button--primary` (danger-soft for destructive dialogs).
+ */
 export const AlertDialogAction = defineComponent({
   name: 'AlertDialogAction',
   inheritAttrs: false,
@@ -12,7 +14,7 @@ export const AlertDialogAction = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaAlertDialogAction {...attrs} class={cn(buttonVariants(), props.class)}>
+      <RekaAlertDialogAction {...attrs} class={cn('button button--primary', props.class)}>
         {slots.default?.()}
       </RekaAlertDialogAction>
     )

@@ -10,7 +10,7 @@ export const CardDescription = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <p {...attrs} class={cn('text-sm text-muted-foreground', props.class)}>
+      <p {...attrs} class={cn('card__description', props.class)}>
         {slots.default?.()}
       </p>
     )

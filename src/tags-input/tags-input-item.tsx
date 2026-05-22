@@ -16,16 +16,21 @@ export const TagsInputItem = defineComponent({
   name: 'TagsInputItem',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    /** HeroUI tag size. */
+    size: { type: String as PropType<'sm' | 'md' | 'lg'>, default: 'md' },
+    /** HeroUI tag variant. */
+    variant: { type: String as PropType<'default' | 'surface'>, default: 'default' }
   },
   setup (props, { attrs, slots }) {
     return () => (
       <RekaTagsInputItem
         {...(attrs as Record<string, any>)}
+        data-slot="tag"
         class={cn(
-          'flex h-6 items-center gap-0.5 rounded-md bg-secondary pl-2 pr-1 text-xs font-medium text-secondary-foreground',
-          'ring-offset-background data-[state=active]:ring-2 data-[state=active]:ring-ring data-[state=active]:ring-offset-2',
-          'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+          'tag',
+          `tag--${props.size}`,
+          `tag--${props.variant}`,
           props.class
         )}
       >

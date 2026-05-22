@@ -1,32 +1,34 @@
-import type { VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
+/**
+ * Alert status type — mirrors HeroUI v3 `alertVariants` status keys.
+ * BEM modifier classes: `alert--default`, `alert--accent`, `alert--success`,
+ * `alert--warning`, `alert--danger`.
+ */
+export type TAlertStatus = 'default' | 'accent' | 'success' | 'warning' | 'danger'
+
+// Legacy compat alias — consumers that imported TAlertVariants / AlertVariants continue to compile.
+export interface TAlertVariants {
+  /** @deprecated Use `status` prop on `Alert` instead */
+  variant?: TAlertStatus
+}
+
+/** @deprecated Use `TAlertStatus` directly */
+export type AlertVariants = TAlertVariants
+
+/** Map a status value to its HeroUI BEM modifier class. */
+export function alertStatusClass (status: TAlertStatus | undefined): string {
+  switch (status) {
+    case 'accent': return 'alert--accent'
+    case 'success': return 'alert--success'
+    case 'warning': return 'alert--warning'
+    case 'danger': return 'alert--danger'
+    default: return 'alert--default'
+  }
+}
 
 /**
- * Alert variants — HeroUI v3 `alert.css` adapted to the repo.
- *
- * HeroUI uses a `rounded-3xl` surface with semantic-color variant modifiers
- * (`alert--default/--danger/…`). Restyled here to `rounded-xl border` and the
- * repo's shadcn tokens (`bg-background`, `text-foreground`, `border-destructive`).
- * The icon-positioning utilities (`[&>svg]:absolute …`) are kept verbatim so the
- * leading-icon layout from the shadcn component is preserved.
+ * @deprecated — HeroUI BEM classes are now applied directly by the Alert component.
+ * Kept for import compatibility; returns an empty string.
  */
-export const alertVariants = cva(
-  'relative w-full rounded-xl border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',
-  {
-    variants: {
-      variant: {
-        default: 'bg-background text-foreground',
-        destructive:
-          'border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive'
-      }
-    },
-    defaultVariants: {
-      variant: 'default'
-    }
-  }
-)
-
-export type TAlertVariants = VariantProps<typeof alertVariants>
-
-/** Compat type alias — re-exported under the shadcn name from `index.ts`. */
-export type { TAlertVariants as AlertVariants }
+export function alertVariants (_opts?: { variant?: TAlertStatus }): string {
+  return ''
+}

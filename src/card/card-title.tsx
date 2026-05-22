@@ -10,7 +10,7 @@ export const CardTitle = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <h3 {...attrs} class={cn('text-2xl font-semibold leading-none tracking-tight', props.class)}>
+      <h3 {...attrs} class={cn('card__title', props.class)}>
         {slots.default?.()}
       </h3>
     )

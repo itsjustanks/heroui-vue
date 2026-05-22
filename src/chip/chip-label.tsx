@@ -15,7 +15,7 @@ export const ChipLabel = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <span {...attrs} data-slot="chip-label" class={cn('px-0.5', props.class)}>
+      <span {...attrs} data-slot="chip-label" class={cn('chip__label', props.class)}>
         {slots.default?.()}
       </span>
     )

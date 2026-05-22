@@ -24,7 +24,7 @@ export const TimeFieldInput = defineComponent({
       <div
         {...attrs}
         data-slot="time-field-input"
-        class={cn('flex items-center', props.class)}
+        class={cn('date-input-group__input', props.class)}
       >
         {rootContext.segmentContents.value.map((item: TTimeSegment) => (
           slots.default

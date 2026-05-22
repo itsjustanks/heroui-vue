@@ -21,12 +21,8 @@ export const LinkIcon = defineComponent({
         <span
           {...attrs}
           data-slot="link-icon"
-          data-default-icon={child ? undefined : ''}
-          class={cn(
-            'pointer-events-none inline-flex shrink-0 items-center justify-center self-center text-current opacity-60 transition-opacity',
-            !child && 'ml-0.5',
-            props.class
-          )}
+          data-default-icon={child ? undefined : 'true'}
+          class={cn('link__icon', props.class)}
         >
           {child ?? <IconExternalLink class="size-3" data-slot="link-default-icon" />}
         </span>

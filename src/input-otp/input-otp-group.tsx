@@ -18,7 +18,7 @@ export const InputOTPGroup = defineComponent({
       <div
         {...attrs}
         data-slot="input-otp-group"
-        class={cn('flex items-center gap-2', props.class)}
+        class={cn('input-otp__group', props.class)}
       >
         {slots.default?.()}
       </div>

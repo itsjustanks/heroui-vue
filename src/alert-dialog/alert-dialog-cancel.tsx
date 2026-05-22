@@ -1,9 +1,11 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { AlertDialogCancel as RekaAlertDialogCancel } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/button'
 
-/** AlertDialogCancel — the dismiss button: styled with the outline button variant. */
+/**
+ * AlertDialogCancel — the dismiss button.
+ * HeroUI BEM: `button button--secondary`.
+ */
 export const AlertDialogCancel = defineComponent({
   name: 'AlertDialogCancel',
   inheritAttrs: false,
@@ -12,7 +14,7 @@ export const AlertDialogCancel = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaAlertDialogCancel {...attrs} class={cn(buttonVariants({ variant: 'outline' }), 'mt-2 sm:mt-0', props.class)}>
+      <RekaAlertDialogCancel {...attrs} class={cn('button button--secondary', props.class)}>
         {slots.default?.()}
       </RekaAlertDialogCancel>
     )

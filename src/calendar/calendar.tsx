@@ -37,7 +37,7 @@ export const Calendar = defineComponent({
     return () => (
       <CalendarRoot
         {...(attrs as Record<string, any>)}
-        class={cn('p-3', props.class)}
+        class={cn('calendar', props.class)}
       >
         {{
           default: ({ grid, weekDays }: TCalendarGridSlot) => (
@@ -48,7 +48,7 @@ export const Calendar = defineComponent({
                 <CalendarNextButton />
               </CalendarHeader>
 
-              <div class="mt-4 flex flex-col gap-y-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
+              <div>
                 {grid.map((month) => (
                   <CalendarGrid key={month.value.toString()}>
                     <CalendarGridHead>

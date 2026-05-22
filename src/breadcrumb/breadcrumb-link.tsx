@@ -4,10 +4,8 @@ import { cn } from '@/lib/utils'
 
 /**
  * BreadcrumbLink — an interactive crumb.
- *
- * HeroUI `breadcrumbs__link`: NO underline (taste restyle), quiet
- * `text-muted-foreground` that resolves to `text-foreground` on hover. Renders
- * an `<a>` by default; `as` / `asChild` forward to reka-ui `Primitive`.
+ * HeroUI BEM: `breadcrumbs__link`. Hover underline is handled by the CSS.
+ * Renders an `<a>` by default; `as` / `asChild` forward to reka-ui `Primitive`.
  */
 export const BreadcrumbLink = defineComponent({
   name: 'BreadcrumbLink',
@@ -23,10 +21,7 @@ export const BreadcrumbLink = defineComponent({
         {...attrs}
         as={props.as}
         asChild={props.asChild}
-        class={cn(
-          'font-medium text-muted-foreground no-underline transition-colors hover:text-foreground',
-          props.class
-        )}
+        class={cn('breadcrumbs__link', props.class)}
       >
         {slots.default?.()}
       </Primitive>

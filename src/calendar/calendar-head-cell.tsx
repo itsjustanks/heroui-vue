@@ -19,7 +19,7 @@ export const CalendarHeadCell = defineComponent({
     return () => (
       <RekaCalendarHeadCell
         {...forwardedProps.value}
-        class={cn('w-9 rounded-lg text-xs font-medium text-muted-foreground', props.class)}
+        class={cn('calendar__header-cell', props.class)}
       >
         {slots.default?.()}
       </RekaCalendarHeadCell>

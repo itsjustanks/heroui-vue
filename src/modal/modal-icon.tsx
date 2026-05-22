@@ -12,7 +12,8 @@ export const ModalIcon = defineComponent({
     return () => (
       <div
         {...attrs}
-        class={cn('flex size-10 shrink-0 select-none items-center justify-center rounded-2xl', props.class)}
+        data-slot="modal-icon"
+        class={cn('modal__icon', props.class)}
       >
         {slots.default?.()}
       </div>

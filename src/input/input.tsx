@@ -2,13 +2,15 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { cn } from '@/lib/utils'
 
+type TInputVariant = 'primary' | 'secondary'
+
 /**
  * Input — HeroUI-Vue text-field control. Faithful port of `shadcn/input`.
  *
- * HeroUI `input.css`: `rounded-field` surface, `bg-field`, `text-sm`, smooth
- * focus-ring transition. Tokens adapted to the repo (`bg-background`,
- * `border-input`, `ring-ring`). Behaviour (passive `v-model`, `defaultValue`)
- * is identical to the shadcn source — `v-model` desugars to `value` + `onInput`.
+ * Emits HeroUI v3 BEM class names from `input.css`:
+ *   base: `input`
+ *   variant: `input--primary` | `input--secondary`
+ *   full-width: `input--full-width`
  */
 export const Input = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names -- faithful HeroUI/shadcn part name; never registered as a global `<input>` override
@@ -17,7 +19,9 @@ export const Input = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     defaultValue: { type: [String, Number] as PropType<string | number>, default: undefined },
-    modelValue: { type: [String, Number] as PropType<string | number>, default: undefined }
+    modelValue: { type: [String, Number] as PropType<string | number>, default: undefined },
+    variant: { type: String as PropType<TInputVariant>, default: 'primary' },
+    fullWidth: { type: Boolean, default: false }
   },
   emits: {
     'update:modelValue': (_payload: string | number) => true
@@ -36,11 +40,9 @@ export const Input = defineComponent({
           modelValue.value = (e.target as HTMLInputElement).value
         }}
         class={cn(
-          'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background',
-          'file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground',
-          'placeholder:text-muted-foreground',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          'disabled:cursor-not-allowed disabled:opacity-50',
+          'input',
+          props.variant === 'secondary' ? 'input--secondary' : 'input--primary',
+          props.fullWidth && 'input--full-width',
           props.class
         )}
       />

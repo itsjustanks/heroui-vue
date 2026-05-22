@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
-/** AlertDialogFooter — the bottom action row: end-aligned cancel/confirm actions. */
+/** AlertDialogFooter — HeroUI BEM: `alert-dialog__footer`. End-aligned action row. */
 export const AlertDialogFooter = defineComponent({
   name: 'AlertDialogFooter',
   inheritAttrs: false,
@@ -10,7 +10,7 @@ export const AlertDialogFooter = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:gap-x-2', props.class)}>
+      <div {...attrs} class={cn('alert-dialog__footer', props.class)}>
         {slots.default?.()}
       </div>
     )

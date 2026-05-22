@@ -2,49 +2,49 @@ import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 /**
- * typographyVariants — cva for the HeroUI-Vue Typography primitive.
+ * typographyVariants — HeroUI v3 `typography` BEM variant map.
  *
- * Faithful port of HeroUI v3 `typography.styles.ts` + `typography.css`. The
- * `type` scale (h1–h6, body/body-sm/body-xs, code) plus `align`, `color`,
- * `weight` and `truncate` are preserved verbatim; HeroUI tokens adapted to repo.
+ * Emits HeroUI BEM class names from `typography.styles.js` + `typography.css`.
+ * Base is `typography`; type, align, color, weight, and truncate modifiers
+ * are appended as BEM modifier classes.
  */
-export const typographyVariants = cva('text-foreground', {
+export const typographyVariants = cva('typography', {
   variants: {
     /** Text role / size step. */
     type: {
-      h1: 'text-4xl font-semibold tracking-tight',
-      h2: 'text-3xl font-semibold tracking-tight',
-      h3: 'text-2xl font-semibold tracking-tight',
-      h4: 'text-xl font-semibold tracking-tight',
-      h5: 'text-lg font-semibold tracking-tight',
-      h6: 'text-base font-semibold tracking-tight',
-      body: 'text-base leading-7',
-      'body-sm': 'text-sm leading-6',
-      'body-xs': 'text-xs leading-5',
-      code: 'rounded-md bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground'
+      h1: 'typography--h1',
+      h2: 'typography--h2',
+      h3: 'typography--h3',
+      h4: 'typography--h4',
+      h5: 'typography--h5',
+      h6: 'typography--h6',
+      body: 'typography--body',
+      'body-sm': 'typography--body-sm',
+      'body-xs': 'typography--body-xs',
+      code: 'typography--code'
     },
     /** Horizontal alignment. */
     align: {
-      start: 'text-left rtl:text-right',
-      center: 'text-center',
-      end: 'text-right rtl:text-left',
-      justify: 'text-justify'
+      start: 'typography--align-start',
+      center: 'typography--align-center',
+      end: 'typography--align-end',
+      justify: 'typography--align-justify'
     },
     /** Foreground color. */
     color: {
-      default: 'text-foreground',
-      muted: 'text-muted-foreground'
+      default: 'typography--color-default',
+      muted: 'typography--color-muted'
     },
     /** Font weight override. */
     weight: {
-      normal: 'font-normal',
-      medium: 'font-medium',
-      semibold: 'font-semibold',
-      bold: 'font-bold'
+      normal: 'typography--weight-normal',
+      medium: 'typography--weight-medium',
+      semibold: 'typography--weight-semibold',
+      bold: 'typography--weight-bold'
     },
     /** Single-line truncation with ellipsis. */
     truncate: {
-      true: 'block truncate'
+      true: 'typography--truncate'
     }
   },
   defaultVariants: {

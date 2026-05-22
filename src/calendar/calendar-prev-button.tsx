@@ -3,13 +3,11 @@ import { ChevronLeft as IconChevronLeft } from 'lucide-vue-next'
 import { CalendarPrev as RekaCalendarPrev, useForwardProps } from 'reka-ui'
 import type { CalendarPrevProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/button'
 
 /**
  * CalendarPrevButton — steps the calendar to the previous page.
  *
- * HeroUI `calendar__nav-button`: a compact `rounded-lg` icon button. Uses the
- * `ghost` button variant; reka-ui `data-disabled` handles the disabled state.
+ * HeroUI v3 BEM: `calendar__nav-button`.
  */
 export const CalendarPrevButton = defineComponent({
   name: 'CalendarPrevButton',
@@ -22,13 +20,11 @@ export const CalendarPrevButton = defineComponent({
     return () => (
       <RekaCalendarPrev
         {...forwardedProps.value}
-        class={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'size-7 rounded-lg p-0 text-muted-foreground hover:text-foreground',
-          props.class
-        )}
+        class={cn('calendar__nav-button', props.class)}
       >
-        {slots.default ? slots.default() : <IconChevronLeft class="size-4" />}
+        {slots.default
+          ? slots.default()
+          : <IconChevronLeft class="calendar__nav-button-icon" />}
       </RekaCalendarPrev>
     )
   }

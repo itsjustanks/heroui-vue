@@ -16,7 +16,7 @@ export const KbdGroup = defineComponent({
       <kbd
         {...attrs}
         data-slot="kbd-group"
-        class={cn('inline-flex items-center gap-1', props.class)}
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </kbd>

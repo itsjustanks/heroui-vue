@@ -2,7 +2,6 @@ import { computed, defineComponent, type HTMLAttributes, type PropType } from 'v
 import { cn } from '@/lib/utils'
 import { useProgressCircleContext } from './progress-circle-context'
 import { CENTER, CIRCUMFERENCE, RADIUS, STROKE_WIDTH } from './constants'
-import { progressCircleFillVariants } from './variants'
 
 /**
  * ProgressCircleFillCircle — the filled progress arc `<circle>`. HeroUI v3
@@ -40,11 +39,7 @@ export const ProgressCircleFillCircle = defineComponent({
         stroke-dasharray={CIRCUMFERENCE}
         stroke-dashoffset={strokeDashoffset.value}
         transform={`rotate(-90 ${CENTER} ${CENTER})`}
-        class={cn(
-          progressCircleFillVariants({ color: ctx.color.value }),
-          'transition-[stroke-dashoffset] duration-300 ease-out motion-reduce:transition-none',
-          props.class
-        )}
+        class={cn('progress-circle__fill-circle', props.class)}
       />
     )
   }

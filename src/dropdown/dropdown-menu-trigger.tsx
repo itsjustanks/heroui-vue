@@ -1,5 +1,6 @@
-import { defineComponent } from 'vue'
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DropdownMenuTrigger as RekaDropdownMenuTrigger } from 'reka-ui'
+import { cn } from '@/lib/utils'
 
 /**
  * DropdownMenuTrigger — opens the menu.
@@ -11,9 +12,12 @@ import { DropdownMenuTrigger as RekaDropdownMenuTrigger } from 'reka-ui'
 export const DropdownMenuTrigger = defineComponent({
   name: 'DropdownMenuTrigger',
   inheritAttrs: false,
-  setup (_props, { attrs, slots }) {
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
     return () => (
-      <RekaDropdownMenuTrigger {...attrs}>{slots.default?.()}</RekaDropdownMenuTrigger>
+      <RekaDropdownMenuTrigger {...attrs} class={cn('dropdown__trigger', props.class)}>{slots.default?.()}</RekaDropdownMenuTrigger>
     )
   }
 })

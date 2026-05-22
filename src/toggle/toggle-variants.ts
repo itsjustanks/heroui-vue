@@ -2,32 +2,33 @@ import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 /**
- * `toggleVariants` — HeroUI v3 `toggle-button` variant map.
+ * `toggleVariants` — HeroUI v3 `toggle-button` BEM variant map.
  *
- * Adapted from HeroUI `toggle-button.css`: `rounded-lg` surface, `bg-accent`
- * pressed state via reka-ui's `data-[state=on]`. Repo tokens throughout
- * (`bg-muted`, `bg-accent`, `border-input`, `ring-ring`).
+ * Emits HeroUI BEM class names from `toggle-button.styles.js` and
+ * `toggle-button.css`. Base is `toggle-button`; size and variant modifier
+ * classes are appended. `isIconOnly` adds `toggle-button--icon-only`.
  */
-export const toggleVariants = cva(
-  'inline-flex items-center justify-center rounded-lg text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gap-2',
-  {
-    variants: {
-      variant: {
-        default: 'bg-transparent',
-        outline:
-          'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground'
-      },
-      size: {
-        default: 'h-10 px-3 min-w-10',
-        sm: 'h-9 px-2.5 min-w-9',
-        lg: 'h-11 px-5 min-w-11'
-      }
+export const toggleVariants = cva('toggle-button', {
+  variants: {
+    variant: {
+      default: 'toggle-button--default',
+      ghost: 'toggle-button--ghost'
     },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default'
+    size: {
+      default: 'toggle-button--md',
+      sm: 'toggle-button--sm',
+      lg: 'toggle-button--lg'
+    },
+    isIconOnly: {
+      true: 'toggle-button--icon-only',
+      false: ''
     }
+  },
+  defaultVariants: {
+    variant: 'default',
+    size: 'default',
+    isIconOnly: false
   }
-)
+})
 
 export type TToggleVariants = VariantProps<typeof toggleVariants>

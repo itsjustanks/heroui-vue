@@ -30,14 +30,9 @@ export const ComboBoxPopover = defineComponent({
           {...attrs}
           sideOffset={props.sideOffset}
           position="popper"
-          class={cn(
-            'z-50 max-h-96 min-w-[var(--reka-combobox-trigger-width)] origin-[var(--reka-combobox-content-transform-origin)] overflow-hidden rounded-2xl border border-border bg-popover text-sm text-popover-foreground shadow-lg',
-            'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
-            'data-[side=bottom]:slide-in-from-top-1 data-[side=top]:slide-in-from-bottom-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1',
-            props.class
-          )}
+          class={cn('combo-box__popover', props.class)}
         >
-          <ComboboxViewport class="max-h-96 overflow-y-auto overscroll-contain p-1.5">
+          <ComboboxViewport>
             {slots.default?.()}
           </ComboboxViewport>
         </ComboboxContent>

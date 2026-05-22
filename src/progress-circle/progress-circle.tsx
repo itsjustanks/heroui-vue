@@ -65,8 +65,12 @@ export const ProgressCircle = defineComponent({
       <ProgressRoot
         {...attrs}
         modelValue={isIndeterminate.value ? null : percentage.value}
-        data-slot="progress-circle"
-        class={cn('inline-flex items-center justify-center', props.class)}
+        class={cn(
+          'progress-circle',
+          `progress-circle--${props.color}`,
+          `progress-circle--${props.size}`,
+          props.class
+        )}
       >
         {slots.default?.()}
       </ProgressRoot>

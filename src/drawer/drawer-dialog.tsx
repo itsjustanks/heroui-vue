@@ -3,12 +3,12 @@ import { DialogContent as RekaDialogContent } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import { DRAWER_PLACEMENT_KEY, type TDrawerPlacement } from './drawer-content'
 
-/** Per-placement panel sizing, edge rounding/border, and slide animation. */
+/** Per-placement BEM modifier classes for the dialog panel. */
 const PLACEMENT_CLASS: Record<TDrawerPlacement, string> = {
-  bottom: 'w-full max-h-[85vh] rounded-t-2xl border-t data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
-  top: 'w-full max-h-[85vh] rounded-b-2xl border-b data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top',
-  left: 'h-full w-80 max-w-[85vw] border-r sm:w-96 data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left',
-  right: 'h-full w-80 max-w-[85vw] border-l sm:w-96 data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right'
+  bottom: 'drawer__dialog--bottom',
+  top: 'drawer__dialog--top',
+  left: 'drawer__dialog--left',
+  right: 'drawer__dialog--right'
 }
 
 /**
@@ -28,8 +28,7 @@ export const DrawerDialog = defineComponent({
       <RekaDialogContent
         {...attrs}
         class={cn(
-          'pointer-events-auto relative flex flex-col gap-4 border-border bg-background p-6 text-foreground shadow-lg outline-none',
-          'data-[state=open]:animate-in data-[state=open]:duration-300 data-[state=closed]:animate-out data-[state=closed]:duration-200',
+          'drawer__dialog',
           PLACEMENT_CLASS[placement.value],
           props.class
         )}

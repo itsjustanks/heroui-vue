@@ -1,19 +1,23 @@
-import { defineComponent } from 'vue'
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { CollapsibleTrigger as RekaCollapsibleTrigger } from 'reka-ui'
+import { cn } from '@/lib/utils'
 
 /**
  * CollapsibleTrigger — toggles the collapsible open/closed.
  *
- * HeroUI `disclosure__trigger`. Thin wrapper over reka-ui `CollapsibleTrigger` —
- * forwards all props/attrs. Pass `as-child` to render a custom element as the
- * trigger itself rather than the default `<button>`.
+ * HeroUI v3 BEM: `disclosure__trigger`. Wraps reka-ui `CollapsibleTrigger`.
  */
 export const CollapsibleTrigger = defineComponent({
   name: 'CollapsibleTrigger',
   inheritAttrs: false,
-  setup (_props, { attrs, slots }) {
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
     return () => (
-      <RekaCollapsibleTrigger {...attrs}>{slots.default?.()}</RekaCollapsibleTrigger>
+      <RekaCollapsibleTrigger {...attrs} class={cn('disclosure__trigger', props.class)}>
+        {slots.default?.()}
+      </RekaCollapsibleTrigger>
     )
   }
 })

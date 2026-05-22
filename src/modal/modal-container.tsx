@@ -18,12 +18,9 @@ export const ModalContainer = defineComponent({
     return () => (
       <div
         {...attrs}
+        data-slot="modal-container"
         data-placement={props.placement}
-        class={cn(
-          'pointer-events-none fixed inset-0 z-50 flex w-full flex-col items-center p-4 sm:p-10',
-          props.placement === 'top' ? 'justify-start' : props.placement === 'bottom' ? 'justify-end' : 'justify-center',
-          props.class
-        )}
+        class={cn('modal__container', props.class)}
       >
         {slots.default?.()}
       </div>

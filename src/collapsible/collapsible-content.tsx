@@ -1,25 +1,29 @@
-import { defineComponent } from 'vue'
+import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { CollapsibleContent as RekaCollapsibleContent } from 'reka-ui'
+import { cn } from '@/lib/utils'
 
 /**
  * CollapsibleContent — the collapsible panel body.
  *
- * HeroUI `disclosure__content`: a height-animated region. The open/close height
- * transition relies on reka-ui's `--reka-collapsible-content-height` CSS var,
- * driven by the `collapsible-down` / `collapsible-up` keyframes. The exact
- * `data-[state]:animate-collapsible-*` classes are kept verbatim from the
- * shadcn-vue source so behaviour is identical.
+ * HeroUI v3 BEM: `disclosure__content`. The height animation is driven by
+ * reka-ui's `--reka-collapsible-content-height` CSS var, complemented by
+ * `disclosure__body` for inner padding.
  */
 export const CollapsibleContent = defineComponent({
   name: 'CollapsibleContent',
   inheritAttrs: false,
-  setup (_props, { attrs, slots }) {
+  props: {
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+  },
+  setup (props, { attrs, slots }) {
     return () => (
       <RekaCollapsibleContent
         {...attrs}
-        class="overflow-hidden transition-all data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down"
+        class={cn('disclosure__content', props.class)}
       >
-        {slots.default?.()}
+        <div class="disclosure__body">
+          {slots.default?.()}
+        </div>
       </RekaCollapsibleContent>
     )
   }

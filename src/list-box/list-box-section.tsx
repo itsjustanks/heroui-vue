@@ -19,7 +19,8 @@ export const ListBoxSection = defineComponent({
     return () => (
       <ListboxGroup
         {...attrs}
-        class={cn('flex w-full flex-col items-start gap-0', props.class)}
+        data-slot="list-box-section"
+        class={cn('list-box-section', props.class)}
       >
         {slots.default?.()}
       </ListboxGroup>

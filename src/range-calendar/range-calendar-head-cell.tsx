@@ -21,7 +21,7 @@ export const RangeCalendarHeadCell = defineComponent({
     return () => (
       <RekaRangeCalendarHeadCell
         {...forwardedProps.value}
-        class={cn('w-9 rounded-lg text-xs font-medium text-muted-foreground', props.class)}
+        class={cn('range-calendar__header-cell', props.class)}
       >
         {slots.default?.()}
       </RekaRangeCalendarHeadCell>

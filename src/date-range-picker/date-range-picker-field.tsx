@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { DateRangePickerField as RekaDateRangePickerField } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { dateInputGroupVariants, type TDateInputGroupVariants, type TTimeSegment } from '@/time-field'
+import { type TDateInputGroupVariants, type TTimeSegment } from '@/time-field'
 
 /** The `{ start, end }` segment pair handed to `DateRangePickerField`'s slot. */
 export type TDateRangeSegments = { start: TTimeSegment[]; end: TTimeSegment[] }
@@ -31,7 +31,9 @@ export const DateRangePickerField = defineComponent({
         {...attrs}
         data-slot="date-range-picker-field"
         class={cn(
-          dateInputGroupVariants({ variant: props.variant, fullWidth: props.fullWidth }),
+          'date-input-group',
+          props.variant === 'secondary' ? 'date-input-group--secondary' : 'date-input-group--primary',
+          props.fullWidth && 'date-input-group--full-width',
           props.class
         )}
       >

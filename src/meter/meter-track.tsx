@@ -1,7 +1,5 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
-import { useMeterContext } from './meter-context'
-import { meterTrackVariants } from './variants'
 
 /**
  * MeterTrack — the meter's track rail. HeroUI v3 `Meter.Track`.
@@ -17,13 +15,11 @@ export const MeterTrack = defineComponent({
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
   },
   setup (props, { attrs, slots }) {
-    const ctx = useMeterContext()
     return () => (
       <div
         {...attrs}
         data-slot="meter-track"
-        style={{ gridColumn: '1 / -1' }}
-        class={cn(meterTrackVariants({ size: ctx.size.value }), props.class)}
+        class={cn('meter__track', props.class)}
       >
         {slots.default?.()}
       </div>

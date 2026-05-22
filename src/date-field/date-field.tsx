@@ -37,7 +37,11 @@ export const DateField = defineComponent({
       <DateFieldRoot
         {...forwarded.value}
         data-slot="date-field"
-        class={cn('flex flex-col gap-1.5', props.fullWidth && 'w-full', props.class)}
+        class={cn(
+          'date-field',
+          props.fullWidth && 'date-field--full-width',
+          props.class
+        )}
       >
         {{
           // reka-ui `DateFieldRoot` exposes `segments`/`modelValue` — surface them

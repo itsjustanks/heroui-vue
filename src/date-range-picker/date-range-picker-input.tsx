@@ -29,7 +29,8 @@ export const DateRangePickerInput = defineComponent({
         return (
           <span
             {...attrs}
-            class={cn('px-px text-muted-foreground', props.class)}
+            data-slot="date-input-group__segment--literal"
+            class={cn('date-input-group__segment date-input-group__segment--literal', props.class)}
           >
             {props.segment.value}
           </span>
@@ -40,13 +41,8 @@ export const DateRangePickerInput = defineComponent({
           {...attrs}
           type={props.type}
           part={props.segment.part as SegmentPart}
-          class={cn(
-            'rounded px-0.5 py-0.5 text-foreground caret-transparent outline-none tabular-nums',
-            'focus:bg-primary focus:text-primary-foreground',
-            'data-[placeholder]:text-muted-foreground',
-            'aria-[valuetext=Empty]:text-muted-foreground',
-            props.class
-          )}
+          data-slot="date-input-group__segment"
+          class={cn('date-input-group__segment', props.class)}
         >
           {props.segment.value}
         </RekaDateRangePickerInput>

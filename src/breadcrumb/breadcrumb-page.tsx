@@ -3,9 +3,8 @@ import { cn } from '@/lib/utils'
 
 /**
  * BreadcrumbPage — the current (non-interactive) crumb.
- *
- * HeroUI `breadcrumbs__link[data-current]`: emphasised `text-foreground`, no
- * underline. Marked `aria-current="page"` and `aria-disabled`.
+ * HeroUI BEM: `breadcrumbs__link` with `data-current="true"` (CSS targets this for accent color).
+ * Marked `aria-current="page"` and `aria-disabled`.
  */
 export const BreadcrumbPage = defineComponent({
   name: 'BreadcrumbPage',
@@ -20,7 +19,8 @@ export const BreadcrumbPage = defineComponent({
         role="link"
         aria-disabled="true"
         aria-current="page"
-        class={cn('font-medium text-foreground', props.class)}
+        data-current="true"
+        class={cn('breadcrumbs__link', props.class)}
       >
         {slots.default?.()}
       </span>

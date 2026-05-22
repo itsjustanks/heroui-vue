@@ -3,20 +3,6 @@ import { cn } from '@/lib/utils'
 import { formatColor, parseColor, type TColorValue } from './color-utils'
 import { useColorPickerContext } from './color-picker-context'
 
-/** Swatch size scale — mirrors HeroUI `color-swatch.css`. */
-const SWATCH_SIZE = {
-  xs: 'size-4',
-  sm: 'size-6',
-  md: 'size-8',
-  lg: 'size-9',
-  xl: 'size-10'
-} as const
-
-/** Swatch shape — `color-swatch--circle` (default) / `--square`. */
-const SWATCH_SHAPE = {
-  circle: 'rounded-full',
-  square: 'rounded-md'
-} as const
 
 /** Render-props handed to the `style` function form. */
 export type TColorSwatchRenderProps = {
@@ -43,8 +29,8 @@ export const ColorSwatch = defineComponent({
     color: { type: [String, Object] as PropType<string | TColorValue>, default: undefined },
     /** Accessible name for the color. */
     colorName: { type: String, default: undefined },
-    shape: { type: String as PropType<keyof typeof SWATCH_SHAPE>, default: 'circle' },
-    size: { type: String as PropType<keyof typeof SWATCH_SIZE>, default: 'md' },
+    shape: { type: String as PropType<'circle' | 'square' | 'rounded'>, default: 'circle' },
+    size: { type: String as PropType<'xs' | 'sm' | 'md' | 'lg' | 'xl'>, default: 'md' },
     /** Inline styles, or a render-prop function with access to the color. */
     style: {
       type: [Object, Function] as PropType<CSSProperties | ((p: TColorSwatchRenderProps) => CSSProperties)>,
@@ -85,12 +71,9 @@ export const ColorSwatch = defineComponent({
         data-size={props.size}
         style={resolvedStyle.value}
         class={cn(
-          // Checkered transparency backdrop behind the color layer.
-          'relative shrink-0 overflow-hidden border border-border/60 bg-[length:8px_8px]',
-          'bg-[linear-gradient(45deg,#0000_25%,#80808033_25%_75%,#0000_75%),linear-gradient(45deg,#0000_25%,#80808033_25%_75%,#0000_75%)]',
-          'bg-[position:0_0,4px_4px]',
-          SWATCH_SIZE[props.size],
-          SWATCH_SHAPE[props.shape],
+          'color-swatch',
+          `color-swatch--${props.shape}`,
+          `color-swatch--${props.size}`,
           props.class
         )}
       />

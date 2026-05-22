@@ -22,7 +22,7 @@ export const TableEmpty = defineComponent({
         <TableCell
           {...attrs}
           colspan={props.colspan}
-          class={cn('whitespace-nowrap px-4 py-3 align-middle text-sm text-foreground', props.class)}
+          class={cn(props.class)}
         >
           <div class="flex items-center justify-center py-10">
             {slots.default?.()}

@@ -13,7 +13,7 @@ export const CardContent = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('p-6 pt-0', props.class)}>
+      <div {...attrs} class={cn('card__content', props.class)}>
         {slots.default?.()}
       </div>
     )

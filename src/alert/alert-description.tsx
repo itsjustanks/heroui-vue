@@ -1,7 +1,7 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
-/** AlertDescription — the alert body text (HeroUI `alert__description`): muted, `text-sm`. */
+/** AlertDescription — HeroUI BEM: `alert__description`. Muted body text. */
 export const AlertDescription = defineComponent({
   name: 'AlertDescription',
   inheritAttrs: false,
@@ -10,7 +10,7 @@ export const AlertDescription = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('text-sm [&_p]:leading-relaxed', props.class)}>
+      <div {...attrs} class={cn('alert__description', props.class)}>
         {slots.default?.()}
       </div>
     )

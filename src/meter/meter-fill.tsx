@@ -1,7 +1,6 @@
 import { defineComponent, type CSSProperties, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 import { useMeterContext } from './meter-context'
-import { meterFillVariants } from './variants'
 
 /**
  * MeterFill — the meter's filled bar. HeroUI v3 `Meter.Fill`.
@@ -25,10 +24,7 @@ export const MeterFill = defineComponent({
         {...attrs}
         data-slot="meter-fill"
         style={{ ...props.style, width: `${ctx.percentage.value}%` }}
-        class={cn(
-          meterFillVariants({ size: ctx.size.value, color: ctx.color.value }),
-          props.class
-        )}
+        class={cn('meter__fill', props.class)}
       />
     )
   }

@@ -4,8 +4,9 @@ import { cn } from '@/lib/utils'
 import { buttonVariants, type ButtonVariants } from './button-variants'
 
 /**
- * Button — HeroUI-Vue primitive over reka-ui `Primitive`. Faithful port of
- * `shadcn/button`: pill-shaped (`rounded-3xl`), six variants + six sizes.
+ * Button — HeroUI-Vue primitive over reka-ui `Primitive`.
+ *
+ * HeroUI BEM: `button` base + `button--{variant}` + `button--{size}` modifiers.
  * `as` / `asChild` polymorphism via reka-ui `Primitive`.
  */
 export const Button = defineComponent({
@@ -13,8 +14,10 @@ export const Button = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    variant: { type: String as PropType<ButtonVariants['variant']>, default: undefined },
-    size: { type: String as PropType<ButtonVariants['size']>, default: undefined },
+    variant: { type: String as PropType<ButtonVariants['variant']>, default: 'primary' },
+    size: { type: String as PropType<ButtonVariants['size']>, default: 'md' },
+    isIconOnly: { type: Boolean, default: false },
+    fullWidth: { type: Boolean, default: false },
     as: { type: [String, Object, Function] as PropType<PrimitiveProps['as']>, default: 'button' },
     asChild: { type: Boolean as PropType<PrimitiveProps['asChild']>, default: undefined }
   },
@@ -24,7 +27,10 @@ export const Button = defineComponent({
         {...attrs}
         as={props.as}
         asChild={props.asChild}
-        class={cn(buttonVariants({ variant: props.variant, size: props.size }), props.class)}
+        class={cn(
+          buttonVariants({ variant: props.variant, size: props.size, isIconOnly: props.isIconOnly, fullWidth: props.fullWidth }),
+          props.class
+        )}
       >
         {slots.default?.()}
       </Primitive>

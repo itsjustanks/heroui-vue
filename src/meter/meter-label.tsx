@@ -18,7 +18,7 @@ export const MeterLabel = defineComponent({
       <span
         {...attrs}
         data-slot="label"
-        class={cn('w-fit text-sm font-medium text-foreground', props.class)}
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </span>

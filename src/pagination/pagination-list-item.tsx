@@ -1,9 +1,6 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { PaginationListItem as RekaPaginationListItem } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { usePaginationContext } from './pagination-context'
-import { paginationLinkVariants } from './pagination-variants'
-
 /**
  * PaginationListItem — a single page-number button.
  *
@@ -20,17 +17,13 @@ export const PaginationListItem = defineComponent({
     value: { type: Number, required: true }
   },
   setup (props, { attrs, slots }) {
-    const context = usePaginationContext()
 
     return () => (
       <RekaPaginationListItem
         {...attrs}
         value={props.value}
         data-slot="pagination-item"
-        class={cn(
-          paginationLinkVariants({ size: context?.size.value }),
-          props.class
-        )}
+        class={cn('pagination__item pagination__link', props.class)}
       >
         {slots.default ? slots.default() : props.value}
       </RekaPaginationListItem>

@@ -21,15 +21,9 @@ export const DateRangePickerTrigger = defineComponent({
       <RekaDateRangePickerTrigger
         {...attrs}
         data-slot="date-range-picker-trigger"
-        class={cn(
-          'ml-auto flex size-6 shrink-0 items-center justify-center rounded-md text-muted-foreground outline-none',
-          'transition-colors hover:bg-accent hover:text-foreground',
-          'focus-visible:ring-2 focus-visible:ring-ring',
-          'disabled:pointer-events-none disabled:opacity-50',
-          props.class
-        )}
+        class={cn('date-range-picker__trigger', props.class)}
       >
-        {slots.default ? slots.default() : <IconCalendarDays class="size-4" />}
+        {slots.default ? slots.default() : <IconCalendarDays data-slot="date-range-picker-trigger-indicator" class="date-range-picker__trigger-indicator" />}
       </RekaDateRangePickerTrigger>
     )
   }

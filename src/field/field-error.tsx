@@ -43,7 +43,7 @@ export const FieldError = defineComponent({
           {...attrs}
           role="alert"
           data-slot="field-error"
-          class={cn('text-sm font-normal text-destructive', props.class)}
+          class={cn('field-error', props.class)}
         >
           {hasSlot
             ? slots.default?.()

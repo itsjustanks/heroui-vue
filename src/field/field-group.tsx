@@ -2,11 +2,10 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * FieldGroup — a container-query stack of `Field`s. Faithful port of
- * `shadcn/field/FieldGroup`.
+ * FieldGroup — a container-query stack of `Field`s.
  *
- * Establishes the `@container/field-group` so `responsive` fields can react to
- * the group width.
+ * Emits HeroUI v3 BEM class name from `fieldset.css`:
+ *   `fieldset__field_group`
  */
 export const FieldGroup = defineComponent({
   name: 'FieldGroup',
@@ -19,10 +18,7 @@ export const FieldGroup = defineComponent({
       <div
         {...attrs}
         data-slot="field-group"
-        class={cn(
-          'group/field-group @container/field-group flex w-full flex-col gap-7 data-[slot=checkbox-group]:gap-3 [&>[data-slot=field-group]]:gap-4',
-          props.class
-        )}
+        class={cn('fieldset__field_group', props.class)}
       >
         {slots.default?.()}
       </div>

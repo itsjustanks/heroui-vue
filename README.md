@@ -4,10 +4,9 @@ A faithful **Vue 3** port of [HeroUI v3](https://heroui.com) — accessible,
 composable UI components built on [reka-ui](https://reka-ui.com) (the Vue analog
 of React Aria).
 
-> **Status: early / work in progress.** This package was extracted from a
-> production in-app HeroUI-for-Vue library (~60 component families, build-green).
-> The next milestone — re-styling onto HeroUI's real `@heroui/styles` for 100%
-> visual parity, maintained via upstream — is specced in
+> **Status: work in progress.** All 61 component families render HeroUI v3's real
+> BEM class names and are styled by HeroUI's own `@heroui/styles` package.
+> Remaining: the lucide to gravity-ui icon swap, and visual QA. See
 > [`PROJECT.md`](./PROJECT.md).
 
 ## What it is
@@ -27,6 +26,14 @@ npm install heroui-vue
 
 ## Usage
 
+Import HeroUI's stylesheet once, at your app entry:
+
+```ts
+import '@heroui/styles'
+```
+
+Then use the components:
+
 ```ts
 import { Button, Card, CardHeader, CardContent } from 'heroui-vue'
 ```
@@ -44,8 +51,9 @@ Stateful components use `v-model`; every component accepts a `class` prop.
 
 - **reka-ui** — headless behaviour + accessibility.
 - **components** — Vue TSX; `defineComponent`, thin `{...attrs}` forwarding.
-- Currently styled with Tailwind utilities; migrating to HeroUI's real
-  `@heroui/styles` (see [`PROJECT.md`](./PROJECT.md)).
+- **styling** — components emit HeroUI v3 BEM class names; the visual layer is
+  HeroUI's own `@heroui/styles` (a dependency). HeroUI's CSS keys off native
+  pseudo-classes, which work directly over reka-ui's real DOM.
 
 ## Relationship to HeroUI
 

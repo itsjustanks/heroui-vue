@@ -108,14 +108,7 @@ const ColorSliderTrack = defineComponent({
         onPointerup={slider?.onPointerUp}
         onKeydown={slider?.onKeyDown}
         style={{ background: slider?.gradient.value }}
-        class={cn(
-          'relative h-3 w-full touch-none rounded-full outline-none',
-          // Checkered backdrop so the alpha gradient reads correctly.
-          'bg-[length:8px_8px] bg-[linear-gradient(45deg,#0000_25%,#80808033_25%_75%,#0000_75%),linear-gradient(45deg,#0000_25%,#80808033_25%_75%,#0000_75%)] bg-[position:0_0,4px_4px]',
-          'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          slider?.disabled.value && 'pointer-events-none',
-          props.class
-        )}
+        class={cn('color-slider__track', props.class)}
       >
         {slots.default?.()}
       </div>
@@ -136,10 +129,7 @@ const ColorSliderThumb = defineComponent({
       <div
         {...attrs}
         data-slot="thumb"
-        class={cn(
-          'pointer-events-none absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-background shadow-md ring-1 ring-black/20',
-          props.class
-        )}
+        class={cn('color-slider__thumb', props.class)}
         style={{ left: `${(slider?.ratio.value ?? 0) * 100}%` }}
       />
     )
@@ -156,7 +146,7 @@ const ColorSliderOutput = defineComponent({
   setup (props, { attrs, slots }) {
     const slider = useSlider()
     return () => (
-      <output {...attrs} class={cn('text-xs tabular-nums', props.class)}>
+      <output {...attrs} class={cn('color-slider__output', props.class)}>
         {slots.default ? slots.default() : slider?.output.value}
       </output>
     )
@@ -270,7 +260,7 @@ export const ColorSlider = defineComponent({
         aria-label={(attrs['aria-label'] as string | undefined) ?? `${props.channel} slider`}
         data-channel={props.channel}
         data-disabled={props.isDisabled || undefined}
-        class={cn('flex w-full flex-col gap-1', props.isDisabled && 'opacity-50', props.class)}
+        class={cn('color-slider', props.class)}
       >
         {slots.default
           ? slots.default()

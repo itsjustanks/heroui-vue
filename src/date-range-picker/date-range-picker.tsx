@@ -28,7 +28,7 @@ export const DateRangePicker = defineComponent({
     return () => (
       <DateRangePickerRoot
         {...(attrs as Record<string, any>)}
-        class={cn('flex flex-col gap-1.5', props.class)}
+        class={cn('date-range-picker', props.class)}
       >
         {slots.default?.()}
       </DateRangePickerRoot>

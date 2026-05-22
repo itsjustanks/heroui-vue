@@ -21,7 +21,7 @@ export const CheckboxGroupItemIndicator = defineComponent({
     return () => (
       <CheckboxIndicator
         {...attrs}
-        class={cn('grid place-content-center text-current', props.class)}
+        class={cn('checkbox__indicator', props.class)}
       >
         {slots.default ? slots.default() : <IconCheck class="size-3.5" />}
       </CheckboxIndicator>

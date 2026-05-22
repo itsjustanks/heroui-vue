@@ -17,7 +17,7 @@ export const SelectScrollDownButton = defineComponent({
     return () => (
       <RekaSelectScrollDownButton
         {...attrs}
-        class={cn('flex cursor-default items-center justify-center py-1 text-muted-foreground', props.class)}
+        class={cn(props.class)}
       >
         {slots.default ? slots.default() : <IconChevronDown class="size-4" />}
       </RekaSelectScrollDownButton>

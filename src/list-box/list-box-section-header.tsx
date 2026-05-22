@@ -19,7 +19,8 @@ export const ListBoxSectionHeader = defineComponent({
     return () => (
       <ListboxGroupLabel
         {...attrs}
-        class={cn('w-full px-2 py-1.5 text-xs font-medium text-muted-foreground', props.class)}
+        data-slot="label"
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </ListboxGroupLabel>

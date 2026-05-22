@@ -15,10 +15,13 @@ export const InputOTPSeparator = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} data-slot="input-otp-separator" role="separator">
-        {slots.default
-          ? slots.default()
-          : <div class={cn('h-0.5 w-1.5 shrink-0 rounded-sm bg-border', props.class)} />}
+      <div
+        {...attrs}
+        data-slot="input-otp-separator"
+        role="separator"
+        class={cn('input-otp__separator', props.class)}
+      >
+        {slots.default?.()}
       </div>
     )
   }

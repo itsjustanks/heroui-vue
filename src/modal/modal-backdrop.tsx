@@ -19,12 +19,12 @@ export const ModalBackdrop = defineComponent({
       <DialogPortal>
         <DialogOverlay
           {...attrs}
+          data-slot="modal-backdrop"
           class={cn(
-            'fixed inset-0 z-50',
-            'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
-            props.variant === 'opaque' && 'bg-black/50',
-            props.variant === 'blur' && 'bg-black/50 backdrop-blur-md',
-            props.variant === 'transparent' && 'bg-transparent',
+            'modal__backdrop',
+            props.variant === 'opaque' ? 'modal__backdrop--opaque'
+              : props.variant === 'blur' ? 'modal__backdrop--blur'
+                : 'modal__backdrop--transparent',
             props.class
           )}
         />

@@ -2,10 +2,10 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * FieldLegend — the legend for a `FieldSet`. Faithful port of
- * `shadcn/field/FieldLegend`.
+ * FieldLegend — the legend for a `FieldSet`.
  *
- * `variant` (`legend` / `label`) drives the text size via `data-variant`.
+ * Emits HeroUI v3 BEM class name from `fieldset.css`:
+ *   `fieldset__legend`
  */
 export const FieldLegend = defineComponent({
   name: 'FieldLegend',
@@ -20,12 +20,7 @@ export const FieldLegend = defineComponent({
         {...attrs}
         data-slot="field-legend"
         data-variant={props.variant}
-        class={cn(
-          'mb-3 font-medium',
-          'data-[variant=legend]:text-base',
-          'data-[variant=label]:text-sm',
-          props.class
-        )}
+        class={cn('fieldset__legend', props.class)}
       >
         {slots.default?.()}
       </legend>

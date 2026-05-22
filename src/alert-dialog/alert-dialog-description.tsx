@@ -2,7 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { AlertDialogDescription as RekaAlertDialogDescription } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
-/** AlertDialogDescription — the dialog body text, wired as the reka-ui alert-dialog description. */
+/** AlertDialogDescription — HeroUI BEM: `alert-dialog__body`. Muted body text. */
 export const AlertDialogDescription = defineComponent({
   name: 'AlertDialogDescription',
   inheritAttrs: false,
@@ -11,7 +11,7 @@ export const AlertDialogDescription = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaAlertDialogDescription {...attrs} class={cn('text-sm text-muted-foreground', props.class)}>
+      <RekaAlertDialogDescription {...attrs} class={cn('alert-dialog__body', props.class)}>
         {slots.default?.()}
       </RekaAlertDialogDescription>
     )

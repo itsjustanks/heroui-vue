@@ -19,7 +19,8 @@ export const ListBoxSeparator = defineComponent({
     return () => (
       <Separator
         {...attrs}
-        class={cn('my-1 ml-[3%] h-px w-[94%] shrink-0 bg-border', props.class)}
+        data-slot="separator"
+        class={cn(props.class)}
       />
     )
   }

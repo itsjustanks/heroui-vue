@@ -10,7 +10,7 @@ export const ModalBody = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('min-h-0 flex-1 text-sm leading-normal text-muted-foreground', props.class)}>
+      <div {...attrs} data-slot="modal-body" class={cn('modal__body', props.class)}>
         {slots.default?.()}
       </div>
     )

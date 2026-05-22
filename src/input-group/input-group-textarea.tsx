@@ -3,11 +3,11 @@ import { cn } from '@/lib/utils'
 import { Textarea } from '@/textarea'
 
 /**
- * InputGroupTextarea — the textarea control inside an `InputGroup`. Faithful
- * port of `shadcn/input-group/InputGroupTextarea`.
+ * InputGroupTextarea — the textarea control inside an `InputGroup`.
  *
- * Wraps the shared `Textarea` primitive (no HeroUI-Vue textarea port yet —
- * Phase 2) and strips its border/ring so the `InputGroup` owns the surface.
+ * Emits HeroUI v3 BEM class names from `input-group.css`:
+ *   `input-group__input` (same base as input, scoped via data-slot)
+ * with `data-slot="input-group-textarea"` so the group's CSS selectors work.
  */
 export const InputGroupTextarea = defineComponent({
   name: 'InputGroupTextarea',
@@ -19,11 +19,8 @@ export const InputGroupTextarea = defineComponent({
     return () => (
       <Textarea
         {...attrs}
-        data-slot="input-group-control"
-        class={cn(
-          'flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none ring-offset-transparent focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent',
-          props.class
-        )}
+        data-slot="input-group-textarea"
+        class={cn('input-group__input', props.class)}
       />
     )
   }

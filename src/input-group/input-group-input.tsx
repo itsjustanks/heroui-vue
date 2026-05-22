@@ -3,12 +3,11 @@ import { cn } from '@/lib/utils'
 import { Input } from '@/input'
 
 /**
- * InputGroupInput — the text control inside an `InputGroup`. Faithful port of
- * `shadcn/input-group/InputGroupInput`.
+ * InputGroupInput — the text control inside an `InputGroup`.
  *
- * Strips the standalone `Input` border/ring so the surrounding `InputGroup`
- * owns the surface and the shared focus ring. `data-slot="input-group-control"`
- * is the hook the group keys its focus state off.
+ * Emits HeroUI v3 BEM class name from `input-group.css`:
+ *   `input-group__input`
+ * with `data-slot="input-group-input"` so the group's CSS selectors work.
  */
 export const InputGroupInput = defineComponent({
   name: 'InputGroupInput',
@@ -20,11 +19,8 @@ export const InputGroupInput = defineComponent({
     return () => (
       <Input
         {...attrs}
-        data-slot="input-group-control"
-        class={cn(
-          'flex-1 rounded-none border-0 bg-transparent ring-offset-transparent focus-visible:ring-0 focus-visible:ring-transparent dark:bg-transparent',
-          props.class
-        )}
+        data-slot="input-group-input"
+        class={cn('input-group__input', props.class)}
       />
     )
   }

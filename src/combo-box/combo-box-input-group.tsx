@@ -23,8 +23,8 @@ export const ComboBoxInputGroup = defineComponent({
       <ComboboxAnchor
         {...attrs}
         class={cn(
-          'relative isolate inline-flex items-center',
-          props.fullWidth && 'w-full',
+          'combo-box__input-group',
+          props.fullWidth && 'combo-box__input-group--full-width',
           props.class
         )}
       >

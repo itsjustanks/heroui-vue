@@ -10,7 +10,7 @@ export const DrawerHeader = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('flex flex-col gap-3', props.class)}>
+      <div {...attrs} class={cn('drawer__header', props.class)}>
         {slots.default?.()}
       </div>
     )

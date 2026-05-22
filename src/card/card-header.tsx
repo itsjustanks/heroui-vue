@@ -13,7 +13,7 @@ export const CardHeader = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <div {...attrs} class={cn('flex flex-col gap-y-1.5 p-6', props.class)}>
+      <div {...attrs} class={cn('card__header', props.class)}>
         {slots.default?.()}
       </div>
     )

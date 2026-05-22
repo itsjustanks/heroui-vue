@@ -20,7 +20,7 @@ export const CheckboxGroupItemContent = defineComponent({
       <div
         {...attrs}
         data-slot="checkbox-content"
-        class={cn('flex min-w-0 select-none flex-col gap-0.5', props.class)}
+        class={cn('checkbox__content', props.class)}
       >
         {slots.default?.()}
       </div>

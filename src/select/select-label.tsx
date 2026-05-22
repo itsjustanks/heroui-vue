@@ -13,7 +13,8 @@ export const SelectLabel = defineComponent({
     return () => (
       <RekaSelectLabel
         {...attrs}
-        class={cn('py-1.5 pl-8 pr-2 text-xs font-medium text-muted-foreground', props.class)}
+        data-slot="label"
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </RekaSelectLabel>

@@ -23,14 +23,7 @@ export const ToolbarButton = defineComponent({
         as={props.as}
         asChild={props.asChild}
         data-slot="toolbar-button"
-        class={cn(
-          'inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-2xl px-3 text-sm font-medium',
-          'text-foreground transition-colors hover:bg-accent hover:text-accent-foreground',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-          'disabled:pointer-events-none disabled:opacity-50',
-          '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
-          props.class
-        )}
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </RekaToolbarButton>

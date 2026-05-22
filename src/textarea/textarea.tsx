@@ -18,7 +18,11 @@ export const Textarea = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     defaultValue: { type: [String, Number] as PropType<string | number>, default: undefined },
-    modelValue: { type: [String, Number] as PropType<string | number>, default: undefined }
+    modelValue: { type: [String, Number] as PropType<string | number>, default: undefined },
+    /** HeroUI variant — `primary` (bordered field) or `secondary` (muted surface). */
+    variant: { type: String as PropType<'primary' | 'secondary'>, default: 'primary' },
+    /** Stretch to fill container width. */
+    fullWidth: { type: Boolean, default: false }
   },
   emits: {
     'update:modelValue': (_payload: string | number) => true
@@ -37,12 +41,9 @@ export const Textarea = defineComponent({
           modelValue.value = (event.target as HTMLTextAreaElement).value
         }}
         class={cn(
-          'flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground shadow-sm',
-          'transition-[background-color,border-color,box-shadow] duration-150 ease-out motion-reduce:transition-none',
-          'placeholder:text-muted-foreground',
-          'hover:not-focus:border-ring/40',
-          'focus-visible:border-ring focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          'disabled:cursor-not-allowed disabled:opacity-50',
+          'textarea',
+          props.variant === 'secondary' ? 'textarea--secondary' : 'textarea--primary',
+          props.fullWidth && 'textarea--full-width',
           props.class
         )}
       />

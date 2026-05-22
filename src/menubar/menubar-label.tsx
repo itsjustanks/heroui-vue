@@ -15,11 +15,8 @@ export const MenubarLabel = defineComponent({
     return () => (
       <RekaMenubarLabel
         {...attrs}
-        class={cn(
-          'px-2.5 py-1.5 text-xs font-medium text-muted-foreground',
-          props.inset && 'pl-8',
-          props.class
-        )}
+        data-slot="label"
+        class={cn(props.class)}
       >
         {slots.default?.()}
       </RekaMenubarLabel>

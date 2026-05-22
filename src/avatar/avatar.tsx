@@ -1,27 +1,34 @@
 import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { AvatarRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { avatarVariant, type TAvatarVariants } from './avatar-variants'
+import { avatarSizeClass, type TAvatarColor, type TAvatarSize, type TAvatarVariantName } from './avatar-variants'
 
 /**
- * Avatar — root. HeroUI-Vue primitive over reka-ui `AvatarRoot`.
+ * Avatar — root.
  *
- * HeroUI `avatar.css`: a circular `bg-muted` surface that contains an image and
- * a fallback. Faithful port of `shadcn/avatar` — same `size` / `shape` props.
+ * HeroUI BEM: `avatar` base, `avatar--{size}` modifier, `avatar--soft` modifier.
+ * `color` flows down to AvatarFallback via slot — consumers pass it to `<AvatarFallback>` directly.
  */
 export const Avatar = defineComponent({
   name: 'Avatar',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    size: { type: String as PropType<TAvatarVariants['size']>, default: 'sm' },
-    shape: { type: String as PropType<TAvatarVariants['shape']>, default: 'circle' }
+    size: { type: String as PropType<TAvatarSize>, default: 'md' },
+    variant: { type: String as PropType<TAvatarVariantName>, default: 'default' },
+    /** @deprecated Pass color directly to AvatarFallback */
+    color: { type: String as PropType<TAvatarColor>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     return () => (
       <AvatarRoot
         {...attrs}
-        class={cn(avatarVariant({ size: props.size, shape: props.shape }), props.class)}
+        class={cn(
+          'avatar',
+          avatarSizeClass(props.size),
+          props.variant === 'soft' && 'avatar--soft',
+          props.class
+        )}
       >
         {slots.default?.()}
       </AvatarRoot>

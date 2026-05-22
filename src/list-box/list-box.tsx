@@ -28,10 +28,11 @@ export const ListBox = defineComponent({
     return () => (
       <ListboxRoot
         {...attrs}
+        data-slot="list-box"
         data-variant={props.variant}
         class={cn(
-          // HeroUI list-box.css: relative flex w-full flex-col gap-1 overflow-clip p-1.
-          'relative flex w-full flex-col gap-1 overflow-clip p-1 outline-none',
+          'list-box',
+          props.variant === 'danger' ? 'list-box--danger' : 'list-box--default',
           props.class
         )}
       >

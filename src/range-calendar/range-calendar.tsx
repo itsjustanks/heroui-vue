@@ -51,7 +51,7 @@ export const RangeCalendar = defineComponent({
     return () => (
       <RangeCalendarRoot
         {...forwarded.value}
-        class={cn('p-3', props.class)}
+        class={cn('range-calendar', props.class)}
       >
         {{
           default: ({ grid, weekDays }: TRangeCalendarGridSlot) => (
@@ -62,7 +62,7 @@ export const RangeCalendar = defineComponent({
                 <RangeCalendarNextButton />
               </RangeCalendarHeader>
 
-              <div class="mt-4 flex flex-col gap-y-4 sm:flex-row sm:gap-x-4 sm:gap-y-0">
+              <div>
                 {grid.map((month) => (
                   <RangeCalendarGrid key={month.value.toString()}>
                     <RangeCalendarGridHead>
@@ -74,7 +74,7 @@ export const RangeCalendar = defineComponent({
                     </RangeCalendarGridHead>
                     <RangeCalendarGridBody>
                       {month.rows.map((weekDates: any[], index: number) => (
-                        <RangeCalendarGridRow key={`weekDate-${index}`} class="mt-2 w-full">
+                        <RangeCalendarGridRow key={`weekDate-${index}`}>
                           {weekDates.map((weekDate) => (
                             <RangeCalendarCell key={weekDate.toString()} date={weekDate}>
                               <RangeCalendarCellTrigger day={weekDate} month={month.value} />

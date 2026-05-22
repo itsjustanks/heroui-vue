@@ -2,7 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { AlertDialogTitle as RekaAlertDialogTitle } from 'reka-ui'
 import { cn } from '@/lib/utils'
 
-/** AlertDialogTitle — the dialog title, wired as the reka-ui alert-dialog title. */
+/** AlertDialogTitle — HeroUI BEM: `alert-dialog__heading`. Dialog title text. */
 export const AlertDialogTitle = defineComponent({
   name: 'AlertDialogTitle',
   inheritAttrs: false,
@@ -11,7 +11,7 @@ export const AlertDialogTitle = defineComponent({
   },
   setup (props, { attrs, slots }) {
     return () => (
-      <RekaAlertDialogTitle {...attrs} class={cn('text-lg font-semibold', props.class)}>
+      <RekaAlertDialogTitle {...attrs} class={cn('alert-dialog__heading', props.class)}>
         {slots.default?.()}
       </RekaAlertDialogTitle>
     )

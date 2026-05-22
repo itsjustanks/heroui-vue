@@ -2,8 +2,7 @@ import { defineComponent, type HTMLAttributes, type PropType } from 'vue'
 import { cn } from '@/lib/utils'
 
 /**
- * TableRow — HeroUI `table__row` (`<tr>`). Hairline bottom border, `bg-muted/50`
- * hover, `data-[state=selected]:bg-muted` selected state.
+ * TableRow — HeroUI `table__row` (`<tr>`).
  */
 export const TableRow = defineComponent({
   name: 'TableRow',
@@ -15,10 +14,7 @@ export const TableRow = defineComponent({
     return () => (
       <tr
         {...attrs}
-        class={cn(
-          'border-b border-border transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted',
-          props.class
-        )}
+        class={cn('table__row', props.class)}
       >
         {slots.default?.()}
       </tr>

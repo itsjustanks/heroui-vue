@@ -20,7 +20,7 @@ export const RangeCalendarHeading = defineComponent({
     return () => (
       <RekaRangeCalendarHeading
         {...forwardedProps.value}
-        class={cn('flex-1 text-sm font-medium', props.class)}
+        class={cn('range-calendar__heading', props.class)}
       >
         {{
           default: ({ headingValue }: { headingValue: string }) => (
