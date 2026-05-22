@@ -1,4 +1,4 @@
-import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type InputHTMLAttributes, type PropType } from 'vue'
 import { ComboboxInput } from 'reka-ui'
 import { inputVariants, type InputVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
@@ -23,8 +23,35 @@ export const InputRoot = defineComponent({
   inheritAttrs: false,
   props: {
     class:        { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    id:           { type: String, default: undefined },
+    name:         { type: String, default: undefined },
+    type:         { type: String as PropType<InputHTMLAttributes['type']>, default: 'text' },
+    value:        { type: [String, Number] as PropType<string | number>, default: undefined },
     defaultValue: { type: [String, Number] as PropType<string | number>, default: undefined },
     modelValue:   { type: [String, Number] as PropType<string | number>, default: undefined },
+    placeholder:  { type: String, default: undefined },
+    disabled:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isDisabled:   { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    readonly:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    readOnly:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    required:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isRequired:   { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    autocomplete: { type: String, default: undefined },
+    autoComplete: { type: String, default: undefined },
+    autocapitalize: { type: String, default: undefined },
+    autoCapitalize: { type: String, default: undefined },
+    minlength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    minLength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    maxlength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    maxLength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    min:          { type: [String, Number] as PropType<string | number>, default: undefined },
+    max:          { type: [String, Number] as PropType<string | number>, default: undefined },
+    step:         { type: [String, Number] as PropType<string | number>, default: undefined },
+    pattern:      { type: String, default: undefined },
+    onInput:      { type: Function as PropType<(event: Event) => void>, default: undefined },
+    onChange:     { type: Function as PropType<(event: Event) => void>, default: undefined },
+    onFocus:      { type: Function as PropType<(event: FocusEvent) => void>, default: undefined },
+    onBlur:       { type: Function as PropType<(event: FocusEvent) => void>, default: undefined },
     /** Visual variant — falls back to parent TextField/ComboBox context. */
     variant:      { type: String as PropType<InputVariants['variant']>, default: undefined },
     /** Stretch to fill container width. @default false */
@@ -46,6 +73,21 @@ export const InputRoot = defineComponent({
       const isControlled = props.modelValue !== undefined
       const inputAttrs: Record<string, unknown> = {
         ...attrs,
+        id: props.id,
+        name: props.name,
+        type: props.type,
+        placeholder: props.placeholder,
+        disabled: props.isDisabled ?? props.disabled,
+        readonly: props.readOnly ?? props.readonly,
+        required: props.isRequired ?? props.required,
+        autocomplete: props.autoComplete ?? props.autocomplete,
+        autocapitalize: props.autoCapitalize ?? props.autocapitalize,
+        minlength: props.minLength ?? props.minlength,
+        maxlength: props.maxLength ?? props.maxlength,
+        min: props.min,
+        max: props.max,
+        step: props.step,
+        pattern: props.pattern,
         'data-slot': 'input',
         class: cn(inputVariants({ variant: resolvedVariant, fullWidth: props.fullWidth }), props.class),
       }
@@ -53,11 +95,19 @@ export const InputRoot = defineComponent({
       if (isControlled) {
         inputAttrs.value = props.modelValue
         inputAttrs.onInput = (e: Event) => {
+          props.onInput?.(e)
           emit('update:modelValue', (e.target as HTMLInputElement).value)
         }
+      } else if (props.value !== undefined) {
+        inputAttrs.value = props.value
+        inputAttrs.onInput = props.onInput
       } else if (props.defaultValue !== undefined) {
         inputAttrs.defaultValue = props.defaultValue
       }
+      if (!inputAttrs.onInput && props.onInput) inputAttrs.onInput = props.onInput
+      if (props.onChange) inputAttrs.onChange = props.onChange
+      if (props.onFocus) inputAttrs.onFocus = props.onFocus
+      if (props.onBlur) inputAttrs.onBlur = props.onBlur
 
       // Inside a ComboBox, render reka-ui's ComboboxInput so the combobox
       // filtering/open wiring is connected (HeroUI composes ComboBox with Input).

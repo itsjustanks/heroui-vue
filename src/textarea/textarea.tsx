@@ -1,4 +1,4 @@
-import { defineComponent, inject, type HTMLAttributes, type PropType } from 'vue'
+import { defineComponent, inject, type HTMLAttributes, type PropType, type TextareaHTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { textAreaVariants, type TextAreaVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
@@ -16,8 +16,31 @@ export const TextAreaRoot = defineComponent({
   inheritAttrs: false,
   props: {
     class:        { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    id:           { type: String, default: undefined },
+    name:         { type: String, default: undefined },
+    value:        { type: [String, Number] as PropType<string | number>, default: undefined },
     defaultValue: { type: [String, Number] as PropType<string | number>, default: undefined },
     modelValue:   { type: [String, Number] as PropType<string | number>, default: undefined },
+    placeholder:  { type: String, default: undefined },
+    disabled:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isDisabled:   { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    readonly:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    readOnly:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    required:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isRequired:   { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    autocomplete: { type: String, default: undefined },
+    autoComplete: { type: String, default: undefined },
+    rows:         { type: [String, Number] as PropType<TextareaHTMLAttributes['rows']>, default: undefined },
+    cols:         { type: [String, Number] as PropType<TextareaHTMLAttributes['cols']>, default: undefined },
+    minlength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    minLength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    maxlength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    maxLength:    { type: [String, Number] as PropType<string | number>, default: undefined },
+    wrap:         { type: String as PropType<TextareaHTMLAttributes['wrap']>, default: undefined },
+    onInput:      { type: Function as PropType<(event: Event) => void>, default: undefined },
+    onChange:     { type: Function as PropType<(event: Event) => void>, default: undefined },
+    onFocus:      { type: Function as PropType<(event: FocusEvent) => void>, default: undefined },
+    onBlur:       { type: Function as PropType<(event: FocusEvent) => void>, default: undefined },
     /** Visual variant — falls back to parent TextField context. */
     variant:      { type: String as PropType<TextAreaVariants['variant']>, default: undefined },
     /** Stretch to fill container width. @default false */
@@ -40,11 +63,27 @@ export const TextAreaRoot = defineComponent({
       return (
         <textarea
           {...attrs}
+          id={props.id}
+          name={props.name}
+          placeholder={props.placeholder}
+          disabled={props.isDisabled ?? props.disabled}
+          readonly={props.readOnly ?? props.readonly}
+          required={props.isRequired ?? props.required}
+          autocomplete={props.autoComplete ?? props.autocomplete}
+          rows={props.rows}
+          cols={props.cols}
+          minlength={props.minLength ?? props.minlength}
+          maxlength={props.maxLength ?? props.maxlength}
+          wrap={props.wrap}
           data-slot="textarea"
-          value={modelValue.value as string | number | undefined}
+          value={(props.modelValue !== undefined ? modelValue.value : props.value ?? modelValue.value) as string | number | undefined}
           onInput={(e: Event) => {
+            props.onInput?.(e)
             modelValue.value = (e.target as HTMLTextAreaElement).value
           }}
+          onChange={props.onChange}
+          onFocus={props.onFocus}
+          onBlur={props.onBlur}
           class={cn(
             textAreaVariants({ variant: resolvedVariant, fullWidth: props.fullWidth }),
             props.class

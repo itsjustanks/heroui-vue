@@ -20,18 +20,43 @@ export const ModalRoot = defineComponent({
   name: 'ModalRoot',
   inheritAttrs: false,
   props: {
+    open: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    modelValue: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isOpen: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    defaultOpen: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    onOpenChange: { type: Function as PropType<(open: boolean) => void>, default: undefined },
     isDismissable: { type: Boolean as PropType<boolean | undefined>, default: undefined },
     state: { type: Object as PropType<unknown>, default: undefined }
   },
-  setup (_props, { attrs, slots }) {
+  emits: {
+    'update:open': (_open: boolean) => true,
+    'update:modelValue': (_open: boolean) => true
+  },
+  setup (props, { attrs, emit, slots }) {
     const styles = computed(() => modalVariants())
     provide(MODAL_CONTEXT, { slots: styles })
 
-    return () => (
-      <DialogRoot data-slot="modal-root" {...attrs}>
-        {withAutoTrigger(slots.default?.(), DialogTrigger, 'ModalTrigger')}
-      </DialogRoot>
-    )
+    const handleOpenChange = (open: boolean) => {
+      props.onOpenChange?.(open)
+      emit('update:open', open)
+      emit('update:modelValue', open)
+    }
+
+    return () => {
+      const controlledOpen = props.isOpen ?? props.open ?? props.modelValue
+
+      return (
+        <DialogRoot
+          data-slot="modal-root"
+          {...attrs}
+          open={controlledOpen}
+          defaultOpen={props.defaultOpen}
+          onUpdate:open={handleOpenChange}
+        >
+          {withAutoTrigger(slots.default?.(), DialogTrigger, 'ModalTrigger')}
+        </DialogRoot>
+      )
+    }
   }
 })
 

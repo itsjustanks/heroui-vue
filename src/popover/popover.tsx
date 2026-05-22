@@ -1,4 +1,4 @@
-import { computed, defineComponent, provide } from 'vue'
+import { computed, defineComponent, provide, type PropType } from 'vue'
 import { PopoverRoot as RekaPopoverRoot, PopoverTrigger as RekaPopoverTrigger } from 'reka-ui'
 import { popoverVariants } from '@heroui/styles'
 import { withAutoTrigger } from '@/lib/auto-trigger'
@@ -19,15 +19,42 @@ import { POPOVER_CONTEXT } from './popover-context'
 export const PopoverRoot = defineComponent({
   name: 'PopoverRoot',
   inheritAttrs: false,
-  setup (_props, { attrs, slots }) {
+  props: {
+    open: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    modelValue: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    isOpen: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    defaultOpen: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    onOpenChange: { type: Function as PropType<(open: boolean) => void>, default: undefined }
+  },
+  emits: {
+    'update:open': (_open: boolean) => true,
+    'update:modelValue': (_open: boolean) => true
+  },
+  setup (props, { attrs, emit, slots }) {
     const styles = computed(() => popoverVariants())
     provide(POPOVER_CONTEXT, { slots: styles })
 
-    return () => (
-      <RekaPopoverRoot data-slot="popover-root" {...attrs}>
-        {withAutoTrigger(slots.default?.(), RekaPopoverTrigger, 'PopoverTrigger')}
-      </RekaPopoverRoot>
-    )
+    const handleOpenChange = (open: boolean) => {
+      props.onOpenChange?.(open)
+      emit('update:open', open)
+      emit('update:modelValue', open)
+    }
+
+    return () => {
+      const controlledOpen = props.isOpen ?? props.open ?? props.modelValue
+
+      return (
+        <RekaPopoverRoot
+          data-slot="popover-root"
+          {...attrs}
+          open={controlledOpen}
+          defaultOpen={props.defaultOpen}
+          onUpdate:open={handleOpenChange}
+        >
+          {withAutoTrigger(slots.default?.(), RekaPopoverTrigger, 'PopoverTrigger')}
+        </RekaPopoverRoot>
+      )
+    }
   }
 })
 

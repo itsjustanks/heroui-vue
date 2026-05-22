@@ -22,6 +22,9 @@ export const PopoverContent = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     align: { type: String as PropType<'start' | 'center' | 'end'>, default: 'center' },
+    placement: { type: String as PropType<'top' | 'bottom' | 'left' | 'right' | 'top start' | 'top end' | 'bottom start' | 'bottom end' | 'left start' | 'left end' | 'right start' | 'right end'>, default: undefined },
+    side: { type: String as PropType<'top' | 'bottom' | 'left' | 'right'>, default: undefined },
+    offset: { type: Number, default: undefined },
     sideOffset: { type: Number, default: 4 }
   },
   setup (props, { attrs, slots }) {
@@ -32,7 +35,12 @@ export const PopoverContent = defineComponent({
 
       return (
         <PopoverPortal>
-          <RekaPopoverContent align={props.align} sideOffset={props.sideOffset} asChild>
+          <RekaPopoverContent
+            align={props.placement?.endsWith('start') ? 'start' : props.placement?.endsWith('end') ? 'end' : props.align}
+            side={props.side ?? props.placement?.split(' ')[0] as 'top' | 'bottom' | 'left' | 'right' | undefined}
+            sideOffset={props.offset ?? props.sideOffset}
+            asChild
+          >
             {withDirectives(
               (
                 <div {...attrs} class={cn(styles.base(), props.class)}>

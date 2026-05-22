@@ -19,6 +19,17 @@ export const ButtonRoot = defineComponent({
   props: {
     ...reactClassProps,
     ...reactDisabledProps,
+    /** Native button type. */
+    type:       { type: String as PropType<'button' | 'submit' | 'reset'>, default: 'button' },
+    name:       { type: String, default: undefined },
+    value:      { type: [String, Number] as PropType<string | number>, default: undefined },
+    title:      { type: String, default: undefined },
+    /** HeroUI React press handler; mirrored to click for Vue consumers. */
+    onPress:    { type: Function as PropType<(event: MouseEvent | KeyboardEvent) => void>, default: undefined },
+    onClick:    { type: Function as PropType<(event: MouseEvent) => void>, default: undefined },
+    onKeydown:  { type: Function as PropType<(event: KeyboardEvent) => void>, default: undefined },
+    /** Loading/pending state from HeroUI React. */
+    isPending:  { type: Boolean, default: false },
     /** Visual variant. @default 'primary' */
     variant:    { type: String as PropType<ButtonVariants['variant']>, default: undefined },
     /** Size scale. @default 'md' */
@@ -40,6 +51,13 @@ export const ButtonRoot = defineComponent({
       const finalFullWidth = props.fullWidth ?? group?.fullWidth?.value
       const forwardedAttrs = reactPressAttrs(attrs)
       if (finalIsDisabled) forwardedAttrs.disabled = true
+      if (props.type) forwardedAttrs.type = props.type
+      if (props.name) forwardedAttrs.name = props.name
+      if (props.value !== undefined) forwardedAttrs.value = props.value
+      if (props.title) forwardedAttrs.title = props.title
+      if (props.onClick) forwardedAttrs.onClick = props.onClick
+      if (props.onPress && !forwardedAttrs.onClick) forwardedAttrs.onClick = props.onPress
+      if (props.onKeydown) forwardedAttrs.onKeydown = props.onKeydown
 
       return (
         <Primitive
@@ -48,6 +66,7 @@ export const ButtonRoot = defineComponent({
           asChild={props.asChild}
           data-slot="button"
           data-disabled={finalIsDisabled ? 'true' : undefined}
+          data-pending={props.isPending ? '' : undefined}
           aria-disabled={finalIsDisabled || undefined}
           class={cn(
             buttonVariants({
