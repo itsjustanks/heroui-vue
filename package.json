@@ -1,6 +1,6 @@
 {
   "name": "@itsjustanks/heroui-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A faithful Vue 3 port of HeroUI v3 — the full compound-component API, styled by @heroui/styles, built on reka-ui.",
   "type": "module",
   "license": "MIT",
