@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install && npm install --prefix playground",
+  "buildCommand": "npm run build --prefix playground",
+  "outputDirectory": "playground/dist",
+  "framework": null,
+  "github": {
+    "silent": true
+  }
+}

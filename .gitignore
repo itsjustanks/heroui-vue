@@ -4,5 +4,8 @@ dist
 .DS_Store
 .vite
 .cache
+.vercel
 coverage
 codemod-output
+.playwright-cli
+playground/render-audit.json
