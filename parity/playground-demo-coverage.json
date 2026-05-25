@@ -1,0 +1,582 @@
+{
+  "totals": {
+    "total": 594,
+    "ported": 594,
+    "slugSpecific": 544,
+    "flatFallback": 0,
+    "batched": 50,
+    "idAlias": 0,
+    "missing": 0
+  },
+  "byComponent": {
+    "accordion": {
+      "total": 10,
+      "ported": 10,
+      "slugSpecific": 0,
+      "flatFallback": 0,
+      "batched": 10,
+      "missing": []
+    },
+    "alert": {
+      "total": 1,
+      "ported": 1,
+      "slugSpecific": 1,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "alert-dialog": {
+      "total": 14,
+      "ported": 14,
+      "slugSpecific": 14,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "avatar": {
+      "total": 7,
+      "ported": 7,
+      "slugSpecific": 0,
+      "flatFallback": 0,
+      "batched": 7,
+      "missing": []
+    },
+    "badge": {
+      "total": 7,
+      "ported": 7,
+      "slugSpecific": 0,
+      "flatFallback": 0,
+      "batched": 7,
+      "missing": []
+    },
+    "breadcrumbs": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 0,
+      "flatFallback": 0,
+      "batched": 6,
+      "missing": []
+    },
+    "button": {
+      "total": 14,
+      "ported": 14,
+      "slugSpecific": 0,
+      "flatFallback": 0,
+      "batched": 14,
+      "missing": []
+    },
+    "button-group": {
+      "total": 8,
+      "ported": 8,
+      "slugSpecific": 8,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "card": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 0,
+      "flatFallback": 0,
+      "batched": 6,
+      "missing": []
+    },
+    "calendar": {
+      "total": 15,
+      "ported": 15,
+      "slugSpecific": 15,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "range-calendar": {
+      "total": 16,
+      "ported": 16,
+      "slugSpecific": 16,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "checkbox": {
+      "total": 15,
+      "ported": 15,
+      "slugSpecific": 15,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "checkbox-group": {
+      "total": 9,
+      "ported": 9,
+      "slugSpecific": 9,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "chip": {
+      "total": 4,
+      "ported": 4,
+      "slugSpecific": 4,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "color-field": {
+      "total": 12,
+      "ported": 12,
+      "slugSpecific": 12,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "color-picker": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "color-area": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "color-swatch": {
+      "total": 7,
+      "ported": 7,
+      "slugSpecific": 7,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "color-slider": {
+      "total": 8,
+      "ported": 8,
+      "slugSpecific": 8,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "close-button": {
+      "total": 3,
+      "ported": 3,
+      "slugSpecific": 3,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "color-swatch-picker": {
+      "total": 9,
+      "ported": 9,
+      "slugSpecific": 9,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "autocomplete": {
+      "total": 20,
+      "ported": 20,
+      "slugSpecific": 20,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "combo-box": {
+      "total": 18,
+      "ported": 18,
+      "slugSpecific": 18,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "drawer": {
+      "total": 8,
+      "ported": 8,
+      "slugSpecific": 8,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "disclosure": {
+      "total": 2,
+      "ported": 2,
+      "slugSpecific": 2,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "disclosure-group": {
+      "total": 2,
+      "ported": 2,
+      "slugSpecific": 2,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "dropdown": {
+      "total": 16,
+      "ported": 16,
+      "slugSpecific": 16,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "error-message": {
+      "total": 2,
+      "ported": 2,
+      "slugSpecific": 2,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "form": {
+      "total": 2,
+      "ported": 2,
+      "slugSpecific": 2,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "fieldset": {
+      "total": 2,
+      "ported": 2,
+      "slugSpecific": 2,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "input": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "date-field": {
+      "total": 16,
+      "ported": 16,
+      "slugSpecific": 16,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "date-picker": {
+      "total": 9,
+      "ported": 9,
+      "slugSpecific": 9,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "date-range-picker": {
+      "total": 10,
+      "ported": 10,
+      "slugSpecific": 10,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "input-otp": {
+      "total": 10,
+      "ported": 10,
+      "slugSpecific": 10,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "input-group": {
+      "total": 20,
+      "ported": 20,
+      "slugSpecific": 20,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "kbd": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "link": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "radio-group": {
+      "total": 11,
+      "ported": 11,
+      "slugSpecific": 11,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "skeleton": {
+      "total": 7,
+      "ported": 7,
+      "slugSpecific": 7,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "separator": {
+      "total": 7,
+      "ported": 7,
+      "slugSpecific": 7,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "spinner": {
+      "total": 3,
+      "ported": 3,
+      "slugSpecific": 3,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "surface": {
+      "total": 1,
+      "ported": 1,
+      "slugSpecific": 1,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "switch": {
+      "total": 15,
+      "ported": 15,
+      "slugSpecific": 15,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "tabs": {
+      "total": 8,
+      "ported": 8,
+      "slugSpecific": 8,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "tag-group": {
+      "total": 11,
+      "ported": 11,
+      "slugSpecific": 11,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "table": {
+      "total": 12,
+      "ported": 12,
+      "slugSpecific": 12,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "textarea": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "typography": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "textfield": {
+      "total": 12,
+      "ported": 12,
+      "slugSpecific": 12,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "time-field": {
+      "total": 14,
+      "ported": 14,
+      "slugSpecific": 14,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "toast": {
+      "total": 9,
+      "ported": 9,
+      "slugSpecific": 9,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "toggle-button": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "toggle-button-group": {
+      "total": 9,
+      "ported": 9,
+      "slugSpecific": 9,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "toolbar": {
+      "total": 4,
+      "ported": 4,
+      "slugSpecific": 4,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "tooltip": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "popover": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "label": {
+      "total": 1,
+      "ported": 1,
+      "slugSpecific": 1,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "list-box": {
+      "total": 8,
+      "ported": 8,
+      "slugSpecific": 8,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "meter": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "progress-bar": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "progress-circle": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "modal": {
+      "total": 13,
+      "ported": 13,
+      "slugSpecific": 13,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "number-field": {
+      "total": 16,
+      "ported": 16,
+      "slugSpecific": 16,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "pagination": {
+      "total": 8,
+      "ported": 8,
+      "slugSpecific": 8,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "select": {
+      "total": 18,
+      "ported": 18,
+      "slugSpecific": 18,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "search-field": {
+      "total": 14,
+      "ported": 14,
+      "slugSpecific": 14,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "scroll-shadow": {
+      "total": 6,
+      "ported": 6,
+      "slugSpecific": 6,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "slider": {
+      "total": 5,
+      "ported": 5,
+      "slugSpecific": 5,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "description": {
+      "total": 1,
+      "ported": 1,
+      "slugSpecific": 1,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    },
+    "field-error": {
+      "total": 1,
+      "ported": 1,
+      "slugSpecific": 1,
+      "flatFallback": 0,
+      "batched": 0,
+      "missing": []
+    }
+  },
+  "missingPerComponent": {}
+}
