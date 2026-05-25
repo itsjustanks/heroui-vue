@@ -20,19 +20,25 @@ import { cn } from '@/lib/utils'
  * breaking any CSS structural selectors that expect the indicator wrapper to
  * always exist.
  */
+let autoValueId = 0
+
 export const SelectItem = defineComponent({
   name: 'SelectItem',
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
-    value: { type: [String, Number] as PropType<string | number>, required: true },
+    /** Value matched against the parent Select's `modelValue`. When omitted,
+     *  mints a stable per-mount auto-id so React-style `<SelectItem key={i}>`
+     *  works (Vue does not forward `key` as a prop). */
+    value: { type: [String, Number] as PropType<string | number>, default: undefined },
     disabled: { type: Boolean as PropType<boolean | undefined>, default: undefined }
   },
   setup (props, { attrs, slots }) {
+    const autoValue = `select-item-${++autoValueId}`
     return () => (
       <RekaSelectItem
         {...(attrs as Record<string, any>)}
-        value={props.value}
+        value={props.value !== undefined ? props.value : autoValue}
         disabled={props.disabled}
         data-slot="list-box-item"
         class={cn('list-box-item list-box-item--default', props.class)}

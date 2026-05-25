@@ -3,13 +3,14 @@ import { MenubarRadioItem as RekaMenubarRadioItem } from 'reka-ui'
 import { menuItemVariants } from '@heroui/styles'
 import { cn } from '@/lib/utils'
 
+let autoValueId = 0
+
 /**
  * MenubarRadioItem — HeroUI `menu-item` with a leading dot indicator.
  *
- * The indicator span is always present in the DOM; HeroUI CSS targets
- * `[data-state="checked"] [data-slot="menu-item-indicator"]` to show/hide it.
- *
- * @prop value — required by reka-ui for the parent `MenubarRadioGroup`.
+ * Accepts `value: string | number`. When omitted, mints a stable per-mount
+ * auto-id so React-style `<MenubarRadioItem key={index}>` from ported demos
+ * works without an explicit value (Vue does not forward `key` as a prop).
  */
 export const MenubarRadioItem = defineComponent({
   name: 'MenubarRadioItem',
@@ -17,15 +18,16 @@ export const MenubarRadioItem = defineComponent({
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
     /** Unique value matched against `MenubarRadioGroup`'s `modelValue`. */
-    value: { type: String, required: true }
+    value: { type: [String, Number] as PropType<string | number>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     const styles = menuItemVariants()
+    const autoValue = `menubar-radio-item-${++autoValueId}`
 
     return () => (
       <RekaMenubarRadioItem
         {...attrs}
-        value={props.value}
+        value={props.value !== undefined ? String(props.value) : autoValue}
         data-slot="menu-item"
         class={cn(styles.item(), props.class)}
       >
