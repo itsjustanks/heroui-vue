@@ -27,3 +27,5 @@ export function YearPicker() {
     </RangeCalendar>
   );
 }
+
+export default YearPicker;

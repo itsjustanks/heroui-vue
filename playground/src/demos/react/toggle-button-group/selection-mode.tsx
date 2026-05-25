@@ -54,3 +54,5 @@ export function SelectionMode() {
     </div>
   );
 }
+
+export default SelectionMode;

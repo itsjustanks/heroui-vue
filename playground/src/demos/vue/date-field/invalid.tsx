@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `date-field/invalid` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/date-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { DateField, FieldError, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <DateField isInvalid isRequired class="w-[256px]" name="date">
+        <Label>Date</Label>
+        <DateField.Group>
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+        </DateField.Group>
+        <FieldError>Please enter a valid date</FieldError>
+      </DateField>
+      <DateField isInvalid class="w-[256px]" name="invalid-date">
+        <Label>Date</Label>
+        <DateField.Group>
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+        </DateField.Group>
+        <FieldError>Date must be in the future</FieldError>
+      </DateField>
+    </div>);

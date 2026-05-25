@@ -11,3 +11,5 @@ export function WithTextPrefix() {
     </TextField>
   );
 }
+
+export default WithTextPrefix;

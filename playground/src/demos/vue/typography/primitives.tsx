@@ -1,13 +1,13 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `typography/primitives` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/typography
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Typography } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex max-w-xl flex-col gap-4">
+      <Typography.Heading level={1}>Dashboard</Typography.Heading>
+      <Typography.Paragraph>
+        Convenience primitives are thin wrappers over Typography, so you can choose explicit
+        composition without learning a second styling system.
+      </Typography.Paragraph>
+      <Typography.Paragraph color="muted" size="sm">
+        Paragraph supports base, sm, and xs sizes.
+      </Typography.Paragraph>
+      <Typography.Code>Typography.Code</Typography.Code>
+    </div>);

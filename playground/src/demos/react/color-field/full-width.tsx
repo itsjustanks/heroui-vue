@@ -18,3 +18,5 @@ export function FullWidth() {
     </div>
   );
 }
+
+export default FullWidth;

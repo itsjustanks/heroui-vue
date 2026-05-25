@@ -37,3 +37,5 @@ export function RGBChannels() {
     </div>
   );
 }
+
+export default RGBChannels;

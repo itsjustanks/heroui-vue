@@ -1,13 +1,79 @@
-import { defineComponent } from 'vue'
+import { Accordion } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-full flex-col items-center gap-8">
+      <div class="w-full max-w-md space-y-2">
+        <h3 class="text-sm font-medium text-muted">Entire accordion disabled</h3>
+        <Accordion isDisabled class="w-full max-w-md">
+          <Accordion.Item>
+            <Accordion.Heading>
+              <Accordion.Trigger>
+                Disabled Item 1
+                <Accordion.Indicator />
+              </Accordion.Trigger>
+            </Accordion.Heading>
+            <Accordion.Panel>
+              <Accordion.Body>
+                This content cannot be accessed when the accordion is disabled.
+              </Accordion.Body>
+            </Accordion.Panel>
+          </Accordion.Item>
 
-/** Vue port of `accordion/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/accordion
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+          <Accordion.Item>
+            <Accordion.Heading>
+              <Accordion.Trigger>
+                Disabled Item 2
+                <Accordion.Indicator />
+              </Accordion.Trigger>
+            </Accordion.Heading>
+            <Accordion.Panel>
+              <Accordion.Body>
+                This content cannot be accessed when the accordion is disabled.
+              </Accordion.Body>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
+      </div>
+
+      <div class="w-full max-w-md space-y-2">
+        <h3 class="text-sm font-medium text-muted">Individual items disabled</h3>
+        <Accordion class="w-full max-w-md">
+          <Accordion.Item>
+            <Accordion.Heading>
+              <Accordion.Trigger>
+                Active Item
+                <Accordion.Indicator />
+              </Accordion.Trigger>
+            </Accordion.Heading>
+            <Accordion.Panel>
+              <Accordion.Body>This item is active and can be toggled normally.</Accordion.Body>
+            </Accordion.Panel>
+          </Accordion.Item>
+
+          <Accordion.Item isDisabled>
+            <Accordion.Heading>
+              <Accordion.Trigger>
+                Disabled Item
+                <Accordion.Indicator />
+              </Accordion.Trigger>
+            </Accordion.Heading>
+            <Accordion.Panel>
+              <Accordion.Body>
+                This content cannot be accessed when the item is disabled.
+              </Accordion.Body>
+            </Accordion.Panel>
+          </Accordion.Item>
+
+          <Accordion.Item>
+            <Accordion.Heading>
+              <Accordion.Trigger>
+                Another Active Item
+                <Accordion.Indicator />
+              </Accordion.Trigger>
+            </Accordion.Heading>
+            <Accordion.Panel>
+              <Accordion.Body>This item is also active and can be toggled.</Accordion.Body>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
+      </div>
+    </div>);

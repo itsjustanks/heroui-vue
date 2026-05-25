@@ -1,13 +1,46 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button-group/sizes` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <div class="flex flex-col items-start gap-2">
+        <p class="text-sm text-muted">Small</p>
+        <ButtonGroup size="sm" variant="secondary">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col items-start gap-2">
+        <p class="text-sm text-muted">Medium (default)</p>
+        <ButtonGroup size="md" variant="secondary">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col items-start gap-2">
+        <p class="text-sm text-muted">Large</p>
+        <ButtonGroup size="lg" variant="secondary">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+    </div>);

@@ -9,3 +9,5 @@ export function Basic() {
     </ToggleButton>
   );
 }
+
+export default Basic;

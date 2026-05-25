@@ -11,3 +11,5 @@ export function Basic() {
     </ColorSlider>
   );
 }
+
+export default Basic;

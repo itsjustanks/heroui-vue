@@ -70,3 +70,5 @@ export function WithValidation() {
     </DateRangePicker>
   );
 }
+
+export default WithValidation;

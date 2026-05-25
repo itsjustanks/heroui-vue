@@ -39,3 +39,5 @@ export function WithDisabledOptions() {
     </Select>
   );
 }
+
+export default WithDisabledOptions;

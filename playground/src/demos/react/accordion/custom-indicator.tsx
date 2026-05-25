@@ -67,3 +67,5 @@ export function CustomIndicator() {
     </Accordion>
   );
 }
+
+export default CustomIndicator;

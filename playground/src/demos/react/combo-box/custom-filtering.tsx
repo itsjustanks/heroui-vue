@@ -36,3 +36,5 @@ export function CustomFiltering() {
     </ComboBox>
   );
 }
+
+export default CustomFiltering;

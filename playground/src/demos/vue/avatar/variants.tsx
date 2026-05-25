@@ -1,13 +1,51 @@
-import { defineComponent } from 'vue'
+import { Person } from "@gravity-ui/icons";
+import { Avatar, Separator } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const colors = ["accent", "default", "success", "warning", "danger"] as const;
+  const variants = [{
+    content: "AG",
+    label: "letter",
+    type: "letter"
+  }, {
+    content: "AG",
+    label: "letter soft",
+    type: "letter-soft"
+  }, {
+    content: <Person />,
+    label: "icon",
+    type: "icon"
+  }, {
+    content: <Person />,
+    label: "icon soft",
+    type: "icon-soft"
+  }, {
+    content: ["https://img.heroui.chat/image/avatar?w=400&h=400&u=3", "https://img.heroui.chat/image/avatar?w=400&h=400&u=4", "https://img.heroui.chat/image/avatar?w=400&h=400&u=5", "https://img.heroui.chat/image/avatar?w=400&h=400&u=8", "https://img.heroui.chat/image/avatar?w=400&h=400&u=16"],
+    label: "img",
+    type: "img"
+  }] as const;
+  return () => <div class="flex flex-col gap-4">
+      {/* Color labels header */}
+      <div class="flex items-center gap-3">
+        <div class="w-24 shrink-0" />
+        {colors.map(color => <div key={color} class="flex w-20 shrink-0 items-center justify-center">
+            <span class="text-xs text-muted capitalize">{color}</span>
+          </div>)}
+      </div>
 
-/** Vue port of `avatar/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/avatar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Separator />
+
+      {/* Variant rows */}
+      {variants.map(variant => <div key={variant.label} class="flex items-center gap-3">
+          <div class="w-24 shrink-0 text-sm text-muted">{variant.label}</div>
+          {colors.map((color, colorIndex) => <div key={color} class="flex w-20 shrink-0 items-center justify-center">
+              <Avatar color={color} variant={variant.type.includes("soft") ? "soft" : undefined}>
+                {variant.type === "img" ? <>
+                    <Avatar.Image alt={`Avatar ${color}`} src={Array.isArray(variant.content) ? variant.content[colorIndex] : ""} />
+                    <Avatar.Fallback>{color.charAt(0).toUpperCase()}</Avatar.Fallback>
+                  </> : <Avatar.Fallback>{variant.content}</Avatar.Fallback>}
+              </Avatar>
+            </div>)}
+        </div>)}
+    </div>;
+});

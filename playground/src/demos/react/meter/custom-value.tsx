@@ -17,3 +17,5 @@ export function CustomValue() {
     </Meter>
   );
 }
+
+export default CustomValue;

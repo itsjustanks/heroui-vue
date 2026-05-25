@@ -7,3 +7,5 @@ export function ColorAreaWithDots() {
     </ColorArea>
   );
 }
+
+export default ColorAreaWithDots;

@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-field/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorField, Description, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <ColorField isDisabled class="w-[280px]" defaultValue="#0485F7" name="color">
+        <Label>Color</Label>
+        <ColorField.Group>
+          <ColorField.Input />
+        </ColorField.Group>
+        <Description>This color field is disabled</Description>
+      </ColorField>
+      <ColorField isDisabled class="w-[280px]" name="color-empty">
+        <Label>Color</Label>
+        <ColorField.Group>
+          <ColorField.Input placeholder="#000000" />
+        </ColorField.Group>
+        <Description>This color field is disabled</Description>
+      </ColorField>
+    </div>);

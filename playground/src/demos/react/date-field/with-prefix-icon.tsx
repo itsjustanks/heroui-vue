@@ -14,3 +14,5 @@ export function WithPrefixIcon() {
     </DateField>
   );
 }
+
+export default WithPrefixIcon;

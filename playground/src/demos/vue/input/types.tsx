@@ -1,13 +1,16 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input/types` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Input, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-80 flex-col gap-4">
+      <div class="flex flex-col gap-1">
+        <Label htmlFor="input-type-email">Email</Label>
+        <Input id="input-type-email" placeholder="jane@example.com" type="email" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <Label htmlFor="input-type-number">Age</Label>
+        <Input id="input-type-number" min={0} placeholder="30" type="number" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <Label htmlFor="input-type-password">Password</Label>
+        <Input id="input-type-password" placeholder="••••••••" type="password" />
+      </div>
+    </div>);

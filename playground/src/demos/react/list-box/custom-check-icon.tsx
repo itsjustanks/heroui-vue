@@ -57,3 +57,5 @@ export function CustomCheckIcon() {
     </Surface>
   );
 }
+
+export default CustomCheckIcon;

@@ -48,3 +48,5 @@ export function BadgeWithContent() {
     </div>
   );
 }
+
+export default BadgeWithContent;

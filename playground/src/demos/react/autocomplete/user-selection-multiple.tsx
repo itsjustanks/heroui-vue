@@ -138,3 +138,5 @@ export function UserSelectionMultiple() {
     </Autocomplete>
   );
 }
+
+export default UserSelectionMultiple;

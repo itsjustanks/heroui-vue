@@ -18,3 +18,5 @@ export function CustomIndicator() {
     </div>
   );
 }
+
+export default CustomIndicator;

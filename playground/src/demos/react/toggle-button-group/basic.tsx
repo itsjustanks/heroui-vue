@@ -22,3 +22,5 @@ export function Basic() {
     </ToggleButtonGroup>
   );
 }
+
+export default Basic;

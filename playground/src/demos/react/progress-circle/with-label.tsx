@@ -13,3 +13,5 @@ export function WithLabel() {
     </div>
   );
 }
+
+export default WithLabel;

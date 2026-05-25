@@ -40,3 +40,5 @@ export function InlineUsage() {
     </div>
   );
 }
+
+export default InlineUsage;

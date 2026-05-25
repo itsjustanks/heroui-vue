@@ -1,13 +1,25 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `chip/with-icon` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/chip
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ChevronDown, CircleCheckFill, CircleFill, Clock, Xmark } from "@gravity-ui/icons";
+import { Chip } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-wrap items-center gap-3">
+      <Chip>
+        <CircleFill width={6} />
+        <Chip.Label>Information</Chip.Label>
+      </Chip>
+      <Chip color="success">
+        <CircleCheckFill width={12} />
+        <Chip.Label>Completed</Chip.Label>
+      </Chip>
+      <Chip color="warning">
+        <Clock width={12} />
+        <Chip.Label>Pending</Chip.Label>
+      </Chip>
+      <Chip color="danger">
+        <Xmark width={12} />
+        <Chip.Label>Failed</Chip.Label>
+      </Chip>
+      <Chip color="accent">
+        <Chip.Label>Label</Chip.Label>
+        <ChevronDown width={12} />
+      </Chip>
+    </div>);

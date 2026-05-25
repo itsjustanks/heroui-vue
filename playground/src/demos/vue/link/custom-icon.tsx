@@ -1,13 +1,17 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `link/custom-icon` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/link
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ArrowUpRightFromSquare, Link as LinkIcon } from "@gravity-ui/icons";
+import { Link } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-3">
+      <Link href="#">
+        External link
+        <Link.Icon class="ml-1.5 size-3">
+          <ArrowUpRightFromSquare />
+        </Link.Icon>
+      </Link>
+      <Link class="gap-1" href="#">
+        Go to page
+        <Link.Icon class="size-3">
+          <LinkIcon />
+        </Link.Icon>
+      </Link>
+    </div>);

@@ -75,3 +75,5 @@ export function CustomValue() {
     </ComboBox>
   );
 }
+
+export default CustomValue;

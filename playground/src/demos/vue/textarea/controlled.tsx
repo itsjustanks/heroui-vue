@@ -1,13 +1,11 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `textarea/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/textarea
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, TextArea } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const [value, setValue] = React.useState("");
+  return () => <div class="flex w-96 flex-col gap-2">
+      <TextArea aria-describedby="textarea-controlled-description" aria-label="Announcement" placeholder="Compose an announcement..." value={value} onChange={event => setValue(event.target.value)} />
+      <Description id="textarea-controlled-description">
+        Characters: {value.length} / 280
+      </Description>
+    </div>;
+});

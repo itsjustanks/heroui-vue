@@ -1,13 +1,45 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox/full-rounded` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-3">
+        <Label class="text-muted">Rounded checkboxes</Label>
+        <Checkbox class="[&_[data-slot='checkbox-default-indicator--checkmark']]:size-2" name="small-rounded">
+          <Checkbox.Control class="size-3 rounded-full before:rounded-full">
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Small size</Label>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+      <div class="flex flex-col gap-3">
+        <Checkbox name="default-rounded">
+          <Checkbox.Control class="size-4 rounded-full before:rounded-full">
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Default size</Label>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+      <div class="flex flex-col gap-3">
+        <Checkbox name="large-rounded">
+          <Checkbox.Control class="size-5 rounded-full before:rounded-full">
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Large size</Label>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+      <div class="flex flex-col gap-3">
+        <Checkbox class="[&_[data-slot='checkbox-default-indicator--checkmark']]:size-4" name="xl-rounded">
+          <Checkbox.Control class="size-6 rounded-full before:rounded-full">
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Extra large size</Label>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+    </div>);

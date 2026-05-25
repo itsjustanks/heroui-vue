@@ -38,3 +38,5 @@ export function BadgeBasic() {
     </div>
   );
 }
+
+export default BadgeBasic;

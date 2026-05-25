@@ -24,3 +24,5 @@ export function DefaultValue() {
     </RangeCalendar>
   );
 }
+
+export default DefaultValue;

@@ -1,13 +1,35 @@
-import { defineComponent } from 'vue'
+import { Separator, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-2">
+        <Surface class="flex min-w-[320px] flex-col gap-3 rounded-3xl p-6" variant="default">
+          <h3 class="text-base font-semibold text-foreground">Default Surface</h3>
+          <Separator />
+          <p class="text-sm text-muted">Surface Content</p>
+        </Surface>
+      </div>
 
-/** Vue port of `separator/with-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/separator
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <div class="flex flex-col gap-2">
+        <Surface class="flex min-w-[320px] flex-col gap-3 rounded-3xl p-6" variant="secondary">
+          <h3 class="text-base font-semibold text-foreground">Secondary Surface</h3>
+          <Separator variant="secondary" />
+          <p class="text-sm text-muted">Surface Content</p>
+        </Surface>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <Surface class="flex min-w-[320px] flex-col gap-3 rounded-3xl p-6" variant="tertiary">
+          <h3 class="text-base font-semibold text-foreground">Tertiary Surface</h3>
+          <Separator variant="tertiary" />
+          <p class="text-sm text-muted">Surface Content</p>
+        </Surface>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <Surface class="flex min-w-[320px] flex-col gap-3 rounded-3xl border p-6" variant="transparent">
+          <h3 class="text-base font-semibold text-foreground">Transparent Surface</h3>
+          <Separator />
+          <p class="text-sm text-muted">Surface Content</p>
+        </Surface>
+      </div>
+    </div>);

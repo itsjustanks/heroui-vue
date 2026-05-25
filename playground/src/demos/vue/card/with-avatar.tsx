@@ -1,13 +1,33 @@
-import { defineComponent } from 'vue'
+import { Avatar, Card } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-wrap gap-4">
+      <Card class="w-[200px] gap-2">
+        <img alt="Indie Hackers community" class="pointer-events-none aspect-square w-14 rounded-2xl object-cover select-none" loading="lazy" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/demo1.jpg" />
+        <Card.Header>
+          <Card.Title>Indie Hackers</Card.Title>
+          <Card.Description>148 members</Card.Description>
+        </Card.Header>
+        <Card.Footer class="flex gap-2">
+          <Avatar aria-label="Martha's profile picture" class="size-5">
+            <Avatar.Image alt="Martha's avatar" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/red.jpg" />
+            <Avatar.Fallback class="text-xs">IH</Avatar.Fallback>
+          </Avatar>
+          <span class="text-xs">By Martha</span>
+        </Card.Footer>
+      </Card>
 
-/** Vue port of `card/with-avatar` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/card
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Card class="w-[200px] gap-2">
+        <img alt="AI Builders community" class="pointer-events-none aspect-square w-14 rounded-2xl object-cover select-none" loading="lazy" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/demo2.jpg" />
+        <Card.Header>
+          <Card.Title>AI Builders</Card.Title>
+          <Card.Description>362 members</Card.Description>
+        </Card.Header>
+        <Card.Footer class="flex gap-2">
+          <Avatar aria-label="John's profile picture" class="size-5">
+            <Avatar.Image alt="John's avatar - blue themed" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg" />
+            <Avatar.Fallback class="text-xs">B</Avatar.Fallback>
+          </Avatar>
+          <span class="text-xs">By John</span>
+        </Card.Footer>
+      </Card>
+    </div>);

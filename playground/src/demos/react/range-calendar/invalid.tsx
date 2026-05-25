@@ -48,3 +48,5 @@ export function Invalid() {
     </div>
   );
 }
+
+export default Invalid;

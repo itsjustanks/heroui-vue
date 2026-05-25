@@ -14,3 +14,5 @@ export function StackLayout() {
     </ColorSwatchPicker>
   );
 }
+
+export default StackLayout;

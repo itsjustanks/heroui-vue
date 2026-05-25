@@ -56,3 +56,5 @@ export function MultipleMonths() {
     </Calendar>
   );
 }
+
+export default MultipleMonths;

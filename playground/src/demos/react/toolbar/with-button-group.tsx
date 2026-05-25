@@ -62,3 +62,5 @@ export function WithButtonGroup() {
     </Toolbar>
   );
 }
+
+export default WithButtonGroup;

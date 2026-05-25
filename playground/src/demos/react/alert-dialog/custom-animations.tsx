@@ -99,3 +99,5 @@ export function CustomAnimations() {
     </div>
   );
 }
+
+export default CustomAnimations;

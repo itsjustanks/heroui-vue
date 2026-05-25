@@ -31,3 +31,5 @@ export function Basic() {
     </Tabs>
   );
 }
+
+export default Basic;

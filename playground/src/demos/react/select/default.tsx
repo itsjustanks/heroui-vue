@@ -39,3 +39,5 @@ export function Default() {
     </Select>
   );
 }
+
+export default Default;

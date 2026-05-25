@@ -1,13 +1,37 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `kbd/instructional` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/kbd
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Kbd } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="space-y-3">
+      <div class="rounded-lg bg-surface p-4">
+        <h4 class="mb-2 text-sm font-semibold">Quick Actions</h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            • Open search:{" "}
+            <Kbd>
+              <Kbd.Abbr keyValue="command" />
+              <Kbd.Content>K</Kbd.Content>
+            </Kbd>
+          </li>
+          <li>
+            • Toggle sidebar:{" "}
+            <Kbd>
+              <Kbd.Abbr keyValue="command" />
+              <Kbd.Content>B</Kbd.Content>
+            </Kbd>
+          </li>
+          <li>
+            • New file:{" "}
+            <Kbd>
+              <Kbd.Abbr keyValue="command" />
+              <Kbd.Content>N</Kbd.Content>
+            </Kbd>
+          </li>
+          <li>
+            • Quick save:{" "}
+            <Kbd>
+              <Kbd.Abbr keyValue="command" />
+              <Kbd.Content>S</Kbd.Content>
+            </Kbd>
+          </li>
+        </ul>
+      </div>
+    </div>);

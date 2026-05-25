@@ -19,3 +19,5 @@ export function WithIconPrefixAndCopySuffix() {
     </TextField>
   );
 }
+
+export default WithIconPrefixAndCopySuffix;

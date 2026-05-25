@@ -32,3 +32,5 @@ export function Default() {
     </Modal>
   );
 }
+
+export default Default;

@@ -53,3 +53,5 @@ export function FullRounded() {
     </div>
   );
 }
+
+export default FullRounded;

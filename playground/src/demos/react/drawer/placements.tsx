@@ -40,3 +40,5 @@ export function Placements() {
     </div>
   );
 }
+
+export default Placements;

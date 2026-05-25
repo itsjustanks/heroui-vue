@@ -19,3 +19,5 @@ export function Basic() {
     </RangeCalendar>
   );
 }
+
+export default Basic;

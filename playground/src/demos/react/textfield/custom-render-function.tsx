@@ -13,3 +13,5 @@ export function CustomRenderFunction() {
     </TextField>
   );
 }
+
+export default CustomRenderFunction;

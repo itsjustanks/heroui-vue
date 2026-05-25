@@ -65,3 +65,5 @@ export function Multiple() {
     </Accordion>
   );
 }
+
+export default Multiple;

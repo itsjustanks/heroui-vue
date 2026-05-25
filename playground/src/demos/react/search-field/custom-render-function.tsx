@@ -12,3 +12,5 @@ export function CustomRenderFunction() {
     </SearchField>
   );
 }
+
+export default CustomRenderFunction;

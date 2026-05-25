@@ -65,3 +65,5 @@ export function CustomRenderFunction() {
     </ListBox>
   );
 }
+
+export default CustomRenderFunction;

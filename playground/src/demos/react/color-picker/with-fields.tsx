@@ -82,3 +82,5 @@ export function WithFields() {
     </ColorPicker>
   );
 }
+
+export default WithFields;

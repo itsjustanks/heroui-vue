@@ -13,3 +13,5 @@ export function Disabled() {
     </Checkbox>
   );
 }
+
+export default Disabled;

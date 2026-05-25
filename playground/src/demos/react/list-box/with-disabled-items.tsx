@@ -62,3 +62,5 @@ export function WithDisabledItems() {
     </Surface>
   );
 }
+
+export default WithDisabledItems;

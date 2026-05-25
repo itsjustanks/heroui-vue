@@ -29,3 +29,5 @@ export function CustomStyles() {
     </Tabs>
   );
 }
+
+export default CustomStyles;

@@ -17,3 +17,5 @@ export function PopoverBasic() {
     </div>
   );
 }
+
+export default PopoverBasic;

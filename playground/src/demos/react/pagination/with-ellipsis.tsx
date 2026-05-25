@@ -64,3 +64,5 @@ export function PaginationWithEllipsis() {
     </div>
   );
 }
+
+export default PaginationWithEllipsis;

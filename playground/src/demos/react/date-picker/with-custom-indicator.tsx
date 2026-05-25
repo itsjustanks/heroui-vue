@@ -42,3 +42,5 @@ export function WithCustomIndicator() {
     </DatePicker>
   );
 }
+
+export default WithCustomIndicator;

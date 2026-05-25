@@ -74,3 +74,5 @@ export function CustomRenderFunction() {
     </Accordion>
   );
 }
+
+export default CustomRenderFunction;

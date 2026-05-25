@@ -59,3 +59,5 @@ export function CustomTrigger() {
     </Dropdown>
   );
 }
+
+export default CustomTrigger;

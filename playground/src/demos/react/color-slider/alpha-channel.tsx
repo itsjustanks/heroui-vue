@@ -11,3 +11,5 @@ export function AlphaChannel() {
     </ColorSlider>
   );
 }
+
+export default AlphaChannel;

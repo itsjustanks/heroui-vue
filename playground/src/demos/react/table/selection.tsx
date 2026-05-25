@@ -74,3 +74,5 @@ export function SelectionDemo() {
     </div>
   );
 }
+
+export default SelectionDemo;

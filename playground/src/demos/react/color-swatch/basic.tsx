@@ -11,3 +11,5 @@ export function ColorSwatchBasic() {
     </div>
   );
 }
+
+export default ColorSwatchBasic;

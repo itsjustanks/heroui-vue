@@ -1,13 +1,5 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `textarea/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/textarea
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Surface, TextArea } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="w-full rounded-3xl p-6">
+      <TextArea class="w-full min-w-[280px]" placeholder="Describe your product" variant="secondary" />
+    </Surface>);

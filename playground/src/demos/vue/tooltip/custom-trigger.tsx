@@ -1,13 +1,53 @@
-import { defineComponent } from 'vue'
+import { CircleCheckFill, CircleQuestion } from "@gravity-ui/icons";
+import { Avatar, Chip, Tooltip } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-6">
+      <Tooltip delay={0}>
+        <Tooltip.Trigger aria-label="User avatar">
+          <Avatar size="sm">
+            <Avatar.Image alt="Jane Doe" src="https://img.heroui.chat/image/avatar?w=400&h=400&u=4" />
+            <Avatar.Fallback>JD</Avatar.Fallback>
+          </Avatar>
+        </Tooltip.Trigger>
+        <Tooltip.Content showArrow>
+          <Tooltip.Arrow />
+          <div class="flex flex-col gap-0 py-1">
+            <p class="font-semibold">Jane Doe</p>
+            <p class="text-xs text-muted">jane@example.com</p>
+          </div>
+        </Tooltip.Content>
+      </Tooltip>
 
-/** Vue port of `tooltip/custom-trigger` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tooltip
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Tooltip delay={0}>
+        <Tooltip.Trigger aria-label="Status chip">
+          <Chip color="success">
+            <CircleCheckFill width={12} />
+            <Chip.Label>Active</Chip.Label>
+          </Chip>
+        </Tooltip.Trigger>
+        <Tooltip.Content class="flex items-center gap-1.5">
+          <span class="relative flex size-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+            <span class="relative inline-flex size-2 rounded-full bg-success" />
+          </span>
+          <p>Jane is currently online</p>
+        </Tooltip.Content>
+      </Tooltip>
+
+      <Tooltip delay={0}>
+        <Tooltip.Trigger aria-label="Info icon">
+          <div class="rounded-full bg-accent-soft p-2">
+            <CircleQuestion class="text-accent" />
+          </div>
+        </Tooltip.Trigger>
+        <Tooltip.Content showArrow>
+          <Tooltip.Arrow />
+          <div class="max-w-xs px-1 py-1.5">
+            <p class="mb-1 font-semibold">Help Information</p>
+            <p class="text-sm text-muted">
+              This is a helpful tooltip with more detailed information about this feature.
+            </p>
+          </div>
+        </Tooltip.Content>
+      </Tooltip>
+    </div>);

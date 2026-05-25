@@ -57,3 +57,5 @@ export function WithSubmenus() {
     </Dropdown>
   );
 }
+
+export default WithSubmenus;

@@ -34,3 +34,5 @@ export function Disabled() {
     </div>
   );
 }
+
+export default Disabled;

@@ -11,3 +11,5 @@ export function TextContent() {
     </div>
   );
 }
+
+export default TextContent;

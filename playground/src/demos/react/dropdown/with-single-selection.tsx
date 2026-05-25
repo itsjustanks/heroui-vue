@@ -45,3 +45,5 @@ export function WithSingleSelection() {
     </Dropdown>
   );
 }
+
+export default WithSingleSelection;

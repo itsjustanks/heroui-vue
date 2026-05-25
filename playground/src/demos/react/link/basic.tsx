@@ -8,3 +8,5 @@ export function LinkBasic() {
     </Link>
   );
 }
+
+export default LinkBasic;

@@ -1,13 +1,53 @@
-import { defineComponent } from 'vue'
+import { Button, ColorArea, ColorField, ColorPicker, ColorSlider, ColorSwatch, ColorSwatchPicker, Label, parseColor } from "@itsjustanks/heroui-vue";
+import { Icon } from "@iconify/react";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const color = ref(parseColor("#325578"));
+  const colorPresets = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899", "#f43f5e"];
+  const shuffleColor = () => {
+    const randomHue = Math.floor(Math.random() * 360);
+    const randomSaturation = 50 + Math.floor(Math.random() * 50); // 50-100%
+    const randomLightness = 40 + Math.floor(Math.random() * 30); // 40-70%
 
-/** Vue port of `color-picker/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-picker
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+    color.value = parseColor(`hsl(${randomHue}, ${randomSaturation}%, ${randomLightness}%)`);
+  };
+  return () => <div class="flex flex-col gap-4">
+      <ColorPicker value={color.value} onChange={setColor}>
+        <ColorPicker.Trigger>
+          <ColorSwatch size="lg" />
+          <Label>Pick a color</Label>
+        </ColorPicker.Trigger>
+        <ColorPicker.Popover class="gap-2">
+          <ColorSwatchPicker class="justify-center pt-2" size="xs">
+            {colorPresets.map(preset => <ColorSwatchPicker.Item key={preset} color={preset}>
+                <ColorSwatchPicker.Swatch />
+              </ColorSwatchPicker.Item>)}
+          </ColorSwatchPicker>
+          <ColorArea aria-label="Color area" class="max-w-full" colorSpace="hsb" xChannel="saturation" yChannel="brightness">
+            <ColorArea.Thumb />
+          </ColorArea>
+          <div class="flex items-center gap-2 px-1">
+            <ColorSlider aria-label="Hue slider" channel="hue" class="flex-1" colorSpace="hsb">
+              <ColorSlider.Track>
+                <ColorSlider.Thumb />
+              </ColorSlider.Track>
+            </ColorSlider>
+            <Button isIconOnly aria-label="Shuffle color" size="sm" variant="tertiary" onPress={shuffleColor}>
+              <Icon class="size-4" icon="gravity-ui:shuffle" />
+            </Button>
+          </div>
+          <ColorField aria-label="Color field">
+            <ColorField.Group variant="secondary">
+              <ColorField.Prefix>
+                <ColorSwatch size="xs" />
+              </ColorField.Prefix>
+              <ColorField.Input />
+            </ColorField.Group>
+          </ColorField>
+        </ColorPicker.Popover>
+      </ColorPicker>
+      <p class="w-60 text-sm text-muted">
+        Selected: <span class="font-medium">{color.value.toString("hex")}</span>
+      </p>
+    </div>;
+});

@@ -7,3 +7,5 @@ export function SpinnerBasic() {
     </div>
   );
 }
+
+export default SpinnerBasic;

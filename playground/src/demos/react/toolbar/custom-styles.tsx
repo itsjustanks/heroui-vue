@@ -37,3 +37,5 @@ export function Attached() {
     </Toolbar>
   );
 }
+
+export default Attached;

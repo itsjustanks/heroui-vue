@@ -18,3 +18,5 @@ export function Basic() {
     </ColorField>
   );
 }
+
+export default Basic;

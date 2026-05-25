@@ -53,3 +53,5 @@ export function ChipVariants() {
     </div>
   );
 }
+
+export default ChipVariants;

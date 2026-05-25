@@ -21,3 +21,5 @@ export function TooltipWithArrow() {
     </div>
   );
 }
+
+export default TooltipWithArrow;

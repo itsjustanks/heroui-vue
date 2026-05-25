@@ -16,3 +16,5 @@ export function RenderProps() {
     </Switch>
   );
 }
+
+export default RenderProps;

@@ -46,3 +46,5 @@ export function Navigation() {
     </Drawer>
   );
 }
+
+export default Navigation;

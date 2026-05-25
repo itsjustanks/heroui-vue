@@ -25,3 +25,5 @@ export function Variants() {
     </div>
   );
 }
+
+export default Variants;

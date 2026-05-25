@@ -1,13 +1,56 @@
-import { defineComponent } from 'vue'
+import { Button, Toast, ToastQueue } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const notificationQueue = new ToastQueue({
+    maxVisibleToasts: 2
+  });
+  const errorQueue = new ToastQueue({
+    maxVisibleToasts: 3
+  });
+  const successQueue = new ToastQueue({
+    maxVisibleToasts: 1
+  });
+  return () => <div class="flex h-full max-w-4xl items-center justify-center gap-4">
+      {/* Notification Queue */}
+      <Toast.Provider placement="bottom" queue={notificationQueue} />
+      <div class="flex justify-center gap-2">
+        <Button size="sm" variant="secondary" onPress={() => {
+        notificationQueue.add({
+          description: "You have a new message",
+          title: "New notification",
+          variant: "default"
+        });
+      }}>
+          Add notification (max 2)
+        </Button>
+      </div>
 
-/** Vue port of `toast/custom-queue` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/toast
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      {/* Error Queue */}
+      <Toast.Provider placement="bottom start" queue={errorQueue} />
+      <div class="flex justify-center gap-2">
+        <Button size="sm" variant="danger-soft" onPress={() => {
+        errorQueue.add({
+          description: "Failed to save changes",
+          title: "Error occurred",
+          variant: "danger"
+        });
+      }}>
+          Add error (max 3)
+        </Button>
+      </div>
+
+      {/* Success Queue */}
+      <Toast.Provider placement="bottom end" queue={successQueue} />
+      <div class="flex justify-center gap-2">
+        <Button class="text-success" size="sm" variant="secondary" onPress={() => {
+        successQueue.add({
+          description: `Operation ${Date.now()}`,
+          title: "Success!",
+          variant: "success"
+        });
+      }}>
+          Add success (max 1)
+        </Button>
+      </div>
+    </div>;
+});

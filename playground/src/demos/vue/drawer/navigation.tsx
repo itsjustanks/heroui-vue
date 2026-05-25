@@ -1,13 +1,51 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `drawer/navigation` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/drawer
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Bars, Bell, Envelope, Gear, House, Magnifier, Person } from "@gravity-ui/icons";
+import { Button, Drawer } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const navItems: {
+    icon: ComponentType<SVGProps<SVGSVGElement>>;
+    label: string;
+  }[] = [{
+    icon: House,
+    label: "Home"
+  }, {
+    icon: Magnifier,
+    label: "Search"
+  }, {
+    icon: Bell,
+    label: "Notifications"
+  }, {
+    icon: Envelope,
+    label: "Messages"
+  }, {
+    icon: Person,
+    label: "Profile"
+  }, {
+    icon: Gear,
+    label: "Settings"
+  }];
+  return () => <Drawer>
+      <Button variant="secondary">
+        <Bars />
+        Menu
+      </Button>
+      <Drawer.Backdrop>
+        <Drawer.Content placement="left">
+          <Drawer.Dialog>
+            <Drawer.CloseTrigger />
+            <Drawer.Header>
+              <Drawer.Heading>Navigation</Drawer.Heading>
+            </Drawer.Header>
+            <Drawer.Body>
+              <nav class="flex flex-col gap-1">
+                {navItems.map(item => <button key={item.label} class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-default" type="button">
+                    <item.icon class="size-5 text-muted" />
+                    {item.label}
+                  </button>)}
+              </nav>
+            </Drawer.Body>
+          </Drawer.Dialog>
+        </Drawer.Content>
+      </Drawer.Backdrop>
+    </Drawer>;
+});

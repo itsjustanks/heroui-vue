@@ -25,3 +25,5 @@ export function Default() {
     </Dropdown>
   );
 }
+
+export default Default;

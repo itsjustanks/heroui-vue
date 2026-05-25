@@ -7,3 +7,5 @@ export function ColorAreaBasic() {
     </ColorArea>
   );
 }
+
+export default ColorAreaBasic;

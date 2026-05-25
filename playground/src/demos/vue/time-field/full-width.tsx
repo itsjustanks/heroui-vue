@@ -1,13 +1,23 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `time-field/full-width` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/time-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ChevronDown, Clock } from "@gravity-ui/icons";
+import { Label, TimeField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="w-[400px] space-y-4">
+      <TimeField fullWidth name="time">
+        <Label>Time</Label>
+        <TimeField.Group fullWidth>
+          <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
+        </TimeField.Group>
+      </TimeField>
+      <TimeField fullWidth name="time-icons">
+        <Label>Time</Label>
+        <TimeField.Group fullWidth>
+          <TimeField.Prefix>
+            <Clock class="size-4 text-muted" />
+          </TimeField.Prefix>
+          <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
+          <TimeField.Suffix>
+            <ChevronDown class="size-4 text-muted" />
+          </TimeField.Suffix>
+        </TimeField.Group>
+      </TimeField>
+    </div>);

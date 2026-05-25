@@ -31,3 +31,5 @@ export function Secondary() {
     </Tabs>
   );
 }
+
+export default Secondary;

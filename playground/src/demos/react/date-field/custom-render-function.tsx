@@ -16,3 +16,5 @@ export function CustomRenderFunction() {
     </DateField>
   );
 }
+
+export default CustomRenderFunction;

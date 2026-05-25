@@ -1,13 +1,23 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `tag-group/custom-render-function` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tag-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { PlanetEarth, Rocket, ShoppingBag, SquareArticle } from "@gravity-ui/icons";
+import { Tag, TagGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <TagGroup aria-label="Tags" render={props => <div {...props} data-custom="foo" />} selectionMode="single">
+      <TagGroup.List>
+        <Tag id="default-news">
+          <SquareArticle />
+          News
+        </Tag>
+        <Tag id="default-travel">
+          <PlanetEarth />
+          Travel
+        </Tag>
+        <Tag id="default-gaming">
+          <Rocket />
+          Gaming
+        </Tag>
+        <Tag id="default-shopping">
+          <ShoppingBag />
+          Shopping
+        </Tag>
+      </TagGroup.List>
+    </TagGroup>);

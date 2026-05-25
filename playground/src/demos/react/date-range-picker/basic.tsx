@@ -46,3 +46,5 @@ export function Basic() {
     </DateRangePicker>
   );
 }
+
+export default Basic;

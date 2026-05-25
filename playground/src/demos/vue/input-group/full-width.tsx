@@ -1,13 +1,23 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input-group/full-width` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Envelope, Eye } from "@gravity-ui/icons";
+import { InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="w-[400px] space-y-4">
+      <TextField fullWidth name="email">
+        <Label>Email address</Label>
+        <InputGroup fullWidth>
+          <InputGroup.Prefix>
+            <Envelope class="size-4 text-muted" />
+          </InputGroup.Prefix>
+          <InputGroup.Input placeholder="name@email.com" />
+        </InputGroup>
+      </TextField>
+      <TextField fullWidth name="password">
+        <Label>Password</Label>
+        <InputGroup fullWidth>
+          <InputGroup.Input placeholder="Enter password" type="password" />
+          <InputGroup.Suffix>
+            <Eye class="size-4 text-muted" />
+          </InputGroup.Suffix>
+        </InputGroup>
+      </TextField>
+    </div>);

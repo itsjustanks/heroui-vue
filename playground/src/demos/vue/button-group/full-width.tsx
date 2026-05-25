@@ -1,13 +1,29 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button-group/full-width` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { TextAlignCenter, TextAlignLeft, TextAlignRight } from "@gravity-ui/icons";
+import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="w-[400px] space-y-3">
+      <ButtonGroup fullWidth>
+        <Button>First</Button>
+        <Button>
+          <ButtonGroup.Separator />
+          Second
+        </Button>
+        <Button>
+          <ButtonGroup.Separator />
+          Third
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup fullWidth>
+        <Button isIconOnly>
+          <TextAlignLeft />
+        </Button>
+        <Button isIconOnly>
+          <ButtonGroup.Separator />
+          <TextAlignCenter />
+        </Button>
+        <Button isIconOnly>
+          <ButtonGroup.Separator />
+          <TextAlignRight />
+        </Button>
+      </ButtonGroup>
+    </div>);

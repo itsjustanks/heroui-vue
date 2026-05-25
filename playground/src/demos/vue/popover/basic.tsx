@@ -1,13 +1,15 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `popover/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/popover
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Popover } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-4">
+      <Popover>
+        <Button>Click me</Button>
+        <Popover.Content class="max-w-64">
+          <Popover.Dialog>
+            <Popover.Heading>Popover Title</Popover.Heading>
+            <p class="mt-2 text-sm text-muted">
+              This is the popover content. You can put any content here.
+            </p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+    </div>);

@@ -64,3 +64,5 @@ export function CustomQueue() {
     </div>
   );
 }
+
+export default CustomQueue;

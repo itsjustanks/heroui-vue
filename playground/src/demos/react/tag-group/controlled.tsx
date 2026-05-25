@@ -27,3 +27,5 @@ export function TagGroupControlled() {
     </div>
   );
 }
+
+export default TagGroupControlled;

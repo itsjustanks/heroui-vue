@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `textfield/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/textfield
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Input, Label, TextArea, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const [name, setName] = React.useState("");
+  const [bio, setBio] = React.useState("");
+  return () => <div class="flex w-full max-w-64 flex-col gap-4">
+      <TextField name="name" value={name} onChange={setName}>
+        <Label>Display name</Label>
+        <Input placeholder="Jane" />
+        <Description>Characters: {name.length}</Description>
+      </TextField>
+      <TextField name="bio" value={bio} onChange={setBio}>
+        <Label>Bio</Label>
+        <TextArea placeholder="Tell us about yourself..." />
+        <Description>Characters: {bio.length} / 200</Description>
+      </TextField>
+    </div>;
+});

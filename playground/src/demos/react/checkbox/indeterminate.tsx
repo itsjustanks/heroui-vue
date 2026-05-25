@@ -25,3 +25,5 @@ export function Indeterminate() {
     </Checkbox>
   );
 }
+
+export default Indeterminate;

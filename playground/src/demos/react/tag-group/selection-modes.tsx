@@ -43,3 +43,5 @@ export function TagGroupSelectionModes() {
     </div>
   );
 }
+
+export default TagGroupSelectionModes;

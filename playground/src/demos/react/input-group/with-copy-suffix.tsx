@@ -16,3 +16,5 @@ export function WithCopySuffix() {
     </TextField>
   );
 }
+
+export default WithCopySuffix;

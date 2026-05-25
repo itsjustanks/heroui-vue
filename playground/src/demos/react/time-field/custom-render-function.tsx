@@ -14,3 +14,5 @@ export function CustomRenderFunction() {
     </TimeField>
   );
 }
+
+export default CustomRenderFunction;

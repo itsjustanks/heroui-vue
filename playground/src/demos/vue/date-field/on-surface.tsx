@@ -1,13 +1,22 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `date-field/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/date-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Calendar } from "@gravity-ui/icons";
+import { DateField, Description, Label, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="flex w-full max-w-sm flex-col gap-4 rounded-3xl p-6">
+      <DateField class="w-full" name="date">
+        <Label>Date</Label>
+        <DateField.Group variant="secondary">
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+        </DateField.Group>
+        <Description>Enter a date</Description>
+      </DateField>
+      <DateField class="w-full" name="date-2">
+        <Label>Appointment date</Label>
+        <DateField.Group variant="secondary">
+          <DateField.Prefix>
+            <Calendar class="size-4 text-muted" />
+          </DateField.Prefix>
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+        </DateField.Group>
+        <Description>Enter a date for your appointment</Description>
+      </DateField>
+    </Surface>);

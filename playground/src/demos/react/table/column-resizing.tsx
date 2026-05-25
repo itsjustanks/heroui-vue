@@ -79,3 +79,5 @@ export function ColumnResizing() {
     </Table>
   );
 }
+
+export default ColumnResizing;

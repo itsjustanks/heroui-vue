@@ -22,3 +22,5 @@ export function CustomRenderFunction() {
     </div>
   );
 }
+
+export default CustomRenderFunction;

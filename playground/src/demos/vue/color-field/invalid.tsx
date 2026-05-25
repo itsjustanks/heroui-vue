@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-field/invalid` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorField, FieldError, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <ColorField isInvalid isRequired class="w-[280px]" name="color">
+        <Label>Color</Label>
+        <ColorField.Group>
+          <ColorField.Input placeholder="#000000" />
+        </ColorField.Group>
+        <FieldError>Please enter a valid hex color</FieldError>
+      </ColorField>
+      <ColorField isInvalid class="w-[280px]" name="invalid-color">
+        <Label>Background Color</Label>
+        <ColorField.Group>
+          <ColorField.Input defaultValue="not-a-color" />
+        </ColorField.Group>
+        <FieldError>Invalid color format. Use hex (e.g., #FF5733)</FieldError>
+      </ColorField>
+    </div>);

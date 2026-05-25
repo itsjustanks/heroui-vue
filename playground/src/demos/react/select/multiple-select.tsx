@@ -51,3 +51,5 @@ export function MultipleSelect() {
     </Select>
   );
 }
+
+export default MultipleSelect;

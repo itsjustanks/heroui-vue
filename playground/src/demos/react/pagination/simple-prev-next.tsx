@@ -32,3 +32,5 @@ export function PaginationSimplePrevNext() {
     </Pagination>
   );
 }
+
+export default PaginationSimplePrevNext;

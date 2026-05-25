@@ -161,3 +161,5 @@ export function ColorAreaSpaceAndChannels() {
     </div>
   );
 }
+
+export default ColorAreaSpaceAndChannels;

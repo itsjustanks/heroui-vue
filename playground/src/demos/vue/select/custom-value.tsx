@@ -1,13 +1,82 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `select/custom-value` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/select
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Avatar, AvatarFallback, AvatarImage, Description, Label, ListBox, Select } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const users = [{
+    avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg",
+    email: "bob@heroui.com",
+    fallback: "B",
+    id: "1",
+    name: "Bob"
+  }, {
+    avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg",
+    email: "fred@heroui.com",
+    fallback: "F",
+    id: "2",
+    name: "Fred"
+  }, {
+    avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/purple.jpg",
+    email: "martha@heroui.com",
+    fallback: "M",
+    id: "3",
+    name: "Martha"
+  }, {
+    avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/red.jpg",
+    email: "john@heroui.com",
+    fallback: "J",
+    id: "4",
+    name: "John"
+  }, {
+    avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg",
+    email: "jane@heroui.com",
+    fallback: "J",
+    id: "5",
+    name: "Jane"
+  }];
+  return () => <Select class="w-[256px]" placeholder="Select a user">
+      <Label>User</Label>
+      <Select.Trigger>
+        <Select.Value>
+          {({
+          defaultChildren,
+          isPlaceholder,
+          state
+        }) => {
+          if (isPlaceholder || state.selectedItems.length === 0) {
+            return defaultChildren;
+          }
+          const selectedItems = state.selectedItems;
+          if (selectedItems.length > 1) {
+            return `${selectedItems.length} users selected`;
+          }
+          const selectedItem = users.find(user => user.id === selectedItems[0]?.key);
+          if (!selectedItem) {
+            return defaultChildren;
+          }
+          return <div class="flex items-center gap-2">
+                <Avatar class="size-4" size="sm">
+                  <AvatarImage src={selectedItem.avatarUrl} />
+                  <AvatarFallback>{selectedItem.fallback}</AvatarFallback>
+                </Avatar>
+                <span>{selectedItem.name}</span>
+              </div>;
+        }}
+        </Select.Value>
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox>
+          {users.map(user => <ListBox.Item key={user.id} id={user.id} textValue={user.name}>
+              <Avatar size="sm">
+                <AvatarImage src={user.avatarUrl} />
+                <AvatarFallback>{user.fallback}</AvatarFallback>
+              </Avatar>
+              <div class="flex flex-col">
+                <Label>{user.name}</Label>
+                <Description>{user.email}</Description>
+              </div>
+              <ListBox.ItemIndicator />
+            </ListBox.Item>)}
+        </ListBox>
+      </Select.Popover>
+    </Select>;
+});

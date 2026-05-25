@@ -51,3 +51,5 @@ export function WithKeyboardShortcut() {
     </div>
   );
 }
+
+export default WithKeyboardShortcut;

@@ -14,3 +14,5 @@ export function Disabled() {
     </ColorSwatchPicker>
   );
 }
+
+export default Disabled;

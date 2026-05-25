@@ -1,13 +1,13 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input-group/with-suffix-icon` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Envelope } from "@gravity-ui/icons";
+import { Description, InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <TextField class="w-full max-w-[280px]" name="email">
+      <Label>Email address</Label>
+      <InputGroup>
+        <InputGroup.Input class="w-full max-w-[280px]" placeholder="name@email.com" />
+        <InputGroup.Suffix>
+          <Envelope class="size-4 text-muted" />
+        </InputGroup.Suffix>
+      </InputGroup>
+      <Description>We don't send spam</Description>
+    </TextField>);

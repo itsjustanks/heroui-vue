@@ -1,13 +1,37 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `drawer/placements` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/drawer
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Drawer } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const placements = ["bottom", "top", "left", "right"] as const;
+  return () => <div class="flex flex-wrap gap-4">
+      {placements.map(placement => <Drawer key={placement}>
+          <Button variant="secondary">
+            {placement.charAt(0).toUpperCase() + placement.slice(1)}
+          </Button>
+          <Drawer.Backdrop>
+            <Drawer.Content placement={placement}>
+              <Drawer.Dialog>
+                <Drawer.CloseTrigger />
+                {placement === "bottom" && <Drawer.Handle />}
+                <Drawer.Header>
+                  <Drawer.Heading>
+                    {placement.charAt(0).toUpperCase() + placement.slice(1)} Drawer
+                  </Drawer.Heading>
+                </Drawer.Header>
+                <Drawer.Body>
+                  <p>
+                    This drawer slides in from the <strong>{placement}</strong> edge of the screen.
+                  </p>
+                </Drawer.Body>
+                <Drawer.Footer>
+                  <Button slot="close" variant="secondary">
+                    Cancel
+                  </Button>
+                  <Button slot="close">Done</Button>
+                </Drawer.Footer>
+                {placement === "top" && <Drawer.Handle />}
+              </Drawer.Dialog>
+            </Drawer.Content>
+          </Drawer.Backdrop>
+        </Drawer>)}
+    </div>;
+});

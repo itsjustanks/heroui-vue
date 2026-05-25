@@ -11,3 +11,5 @@ export function ColorSwatchTransparency() {
     </div>
   );
 }
+
+export default ColorSwatchTransparency;

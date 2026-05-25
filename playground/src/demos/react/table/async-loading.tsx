@@ -157,3 +157,5 @@ export function AsyncLoading() {
     </Table>
   );
 }
+
+export default AsyncLoading;

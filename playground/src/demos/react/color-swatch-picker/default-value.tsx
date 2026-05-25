@@ -14,3 +14,5 @@ export function DefaultValue() {
     </ColorSwatchPicker>
   );
 }
+
+export default DefaultValue;

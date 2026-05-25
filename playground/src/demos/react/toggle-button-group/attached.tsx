@@ -44,3 +44,5 @@ export function Attached() {
     </div>
   );
 }
+
+export default Attached;

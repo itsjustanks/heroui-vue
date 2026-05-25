@@ -25,3 +25,5 @@ export function LongPressTrigger() {
     </Dropdown>
   );
 }
+
+export default LongPressTrigger;

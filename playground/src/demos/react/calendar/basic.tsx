@@ -17,3 +17,5 @@ export function Basic() {
     </Calendar>
   );
 }
+
+export default Basic;

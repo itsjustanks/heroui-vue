@@ -12,3 +12,5 @@ export function Disabled() {
     </Slider>
   );
 }
+
+export default Disabled;

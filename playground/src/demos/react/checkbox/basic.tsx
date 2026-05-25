@@ -12,3 +12,5 @@ export function Basic() {
     </Checkbox>
   );
 }
+
+export default Basic;

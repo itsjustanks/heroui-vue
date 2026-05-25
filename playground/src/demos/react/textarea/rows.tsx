@@ -25,3 +25,5 @@ export function Rows() {
     </div>
   );
 }
+
+export default Rows;

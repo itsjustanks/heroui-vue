@@ -16,3 +16,5 @@ export const Prose = () => {
     </Typography.Prose>
   );
 };
+
+export default Prose;

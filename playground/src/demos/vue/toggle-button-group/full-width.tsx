@@ -1,13 +1,38 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `toggle-button-group/full-width` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/toggle-button-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Bold, Italic, Strikethrough, TextAlignCenter, TextAlignLeft, TextAlignRight, Underline } from "@gravity-ui/icons";
+import { ToggleButton, ToggleButtonGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="w-full max-w-md space-y-3">
+      <ToggleButtonGroup fullWidth selectionMode="multiple">
+        <ToggleButton isIconOnly aria-label="Bold" id="bold">
+          <Bold />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Italic" id="italic">
+          <ToggleButtonGroup.Separator />
+          <Italic />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Underline" id="underline">
+          <ToggleButtonGroup.Separator />
+          <Underline />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Strikethrough" id="strikethrough">
+          <ToggleButtonGroup.Separator />
+          <Strikethrough />
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <ToggleButtonGroup fullWidth selectionMode="single">
+        <ToggleButton id="left">
+          <TextAlignLeft />
+          Left
+        </ToggleButton>
+        <ToggleButton id="center">
+          <ToggleButtonGroup.Separator />
+          <TextAlignCenter />
+          Center
+        </ToggleButton>
+        <ToggleButton id="right">
+          <ToggleButtonGroup.Separator />
+          <TextAlignRight />
+          Right
+        </ToggleButton>
+      </ToggleButtonGroup>
+    </div>);

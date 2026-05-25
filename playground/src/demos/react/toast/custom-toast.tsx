@@ -59,3 +59,5 @@ export function CustomToast() {
     </div>
   );
 }
+
+export default CustomToast;

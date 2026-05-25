@@ -21,3 +21,5 @@ export function ColorAreaControlled() {
     </div>
   );
 }
+
+export default ColorAreaControlled;

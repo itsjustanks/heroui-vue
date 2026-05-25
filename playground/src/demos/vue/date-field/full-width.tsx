@@ -1,13 +1,23 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `date-field/full-width` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/date-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Calendar, ChevronDown } from "@gravity-ui/icons";
+import { DateField, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="w-[400px] space-y-4">
+      <DateField fullWidth name="date">
+        <Label>Date</Label>
+        <DateField.Group>
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+        </DateField.Group>
+      </DateField>
+      <DateField fullWidth name="date-icons">
+        <Label>Date</Label>
+        <DateField.Group>
+          <DateField.Prefix>
+            <Calendar class="size-4 text-muted" />
+          </DateField.Prefix>
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+          <DateField.Suffix>
+            <ChevronDown class="size-4 text-muted" />
+          </DateField.Suffix>
+        </DateField.Group>
+      </DateField>
+    </div>);

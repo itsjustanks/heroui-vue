@@ -21,3 +21,5 @@ export function RenderProps() {
     </Checkbox>
   );
 }
+
+export default RenderProps;

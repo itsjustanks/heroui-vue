@@ -1,13 +1,19 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `calendar/read-only` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/calendar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Calendar, Description } from "@itsjustanks/heroui-vue";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col items-center gap-4">
+      <Calendar isReadOnly aria-label="Event date" defaultValue={today(getLocalTimeZone())}>
+        <Calendar.Header>
+          <Calendar.Heading />
+          <Calendar.NavButton slot="previous" />
+          <Calendar.NavButton slot="next" />
+        </Calendar.Header>
+        <Calendar.Grid>
+          <Calendar.GridHeader>
+            {day => <Calendar.HeaderCell>{day}</Calendar.HeaderCell>}
+          </Calendar.GridHeader>
+          <Calendar.GridBody>{date => <Calendar.Cell date={date} />}</Calendar.GridBody>
+        </Calendar.Grid>
+      </Calendar>
+      <Description class="text-center">Calendar is read-only</Description>
+    </div>);

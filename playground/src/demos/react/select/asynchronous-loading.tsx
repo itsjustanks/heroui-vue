@@ -50,3 +50,5 @@ export function AsynchronousLoading() {
     </Select>
   );
 }
+
+export default AsynchronousLoading;

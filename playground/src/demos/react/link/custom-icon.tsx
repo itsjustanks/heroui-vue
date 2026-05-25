@@ -19,3 +19,5 @@ export function LinkCustomIcon() {
     </div>
   );
 }
+
+export default LinkCustomIcon;

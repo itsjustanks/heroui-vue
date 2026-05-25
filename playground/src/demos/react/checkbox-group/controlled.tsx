@@ -35,3 +35,5 @@ export function Controlled() {
     </CheckboxGroup>
   );
 }
+
+export default Controlled;

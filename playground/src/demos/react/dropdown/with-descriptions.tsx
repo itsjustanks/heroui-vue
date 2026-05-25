@@ -67,3 +67,5 @@ export function WithDescriptions() {
     </Dropdown>
   );
 }
+
+export default WithDescriptions;

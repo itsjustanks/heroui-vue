@@ -14,3 +14,5 @@ export function Basic() {
     </ColorSwatchPicker>
   );
 }
+
+export default Basic;

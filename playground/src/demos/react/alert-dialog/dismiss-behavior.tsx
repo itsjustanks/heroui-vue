@@ -84,3 +84,5 @@ export function DismissBehavior() {
     </div>
   );
 }
+
+export default DismissBehavior;

@@ -37,3 +37,5 @@ export function Basic() {
     </Toolbar>
   );
 }
+
+export default Basic;

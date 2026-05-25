@@ -1,13 +1,50 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `radio-group/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/radio-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, Radio, RadioGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Primary variant</p>
+        <RadioGroup defaultValue="option1" name="primary-plan" variant="primary">
+          <Radio value="option1">
+            <Radio.Control>
+              <Radio.Indicator />
+            </Radio.Control>
+            <Radio.Content>
+              <Label>Option 1</Label>
+              <Description>Standard styling with default background</Description>
+            </Radio.Content>
+          </Radio>
+          <Radio value="option2">
+            <Radio.Control>
+              <Radio.Indicator />
+            </Radio.Control>
+            <Radio.Content>
+              <Label>Option 2</Label>
+              <Description>Another option with primary styling</Description>
+            </Radio.Content>
+          </Radio>
+        </RadioGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Secondary variant</p>
+        <RadioGroup defaultValue="option1" name="secondary-plan" variant="secondary">
+          <Radio value="option1">
+            <Radio.Control>
+              <Radio.Indicator />
+            </Radio.Control>
+            <Radio.Content>
+              <Label>Option 1</Label>
+              <Description>Lower emphasis variant for use in surfaces</Description>
+            </Radio.Content>
+          </Radio>
+          <Radio value="option2">
+            <Radio.Control>
+              <Radio.Indicator />
+            </Radio.Control>
+            <Radio.Content>
+              <Label>Option 2</Label>
+              <Description>Another option with secondary styling</Description>
+            </Radio.Content>
+          </Radio>
+        </RadioGroup>
+      </div>
+    </div>);

@@ -14,3 +14,5 @@ export function WithPrefixIcon() {
     </TimeField>
   );
 }
+
+export default WithPrefixIcon;

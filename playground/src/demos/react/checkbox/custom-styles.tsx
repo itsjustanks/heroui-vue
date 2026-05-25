@@ -12,3 +12,5 @@ export function CustomStyles() {
     </Checkbox>
   );
 }
+
+export default CustomStyles;

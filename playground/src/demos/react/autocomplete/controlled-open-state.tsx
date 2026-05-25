@@ -62,3 +62,5 @@ export function ControlledOpenState() {
     </div>
   );
 }
+
+export default ControlledOpenState;

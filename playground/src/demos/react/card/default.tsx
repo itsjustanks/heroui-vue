@@ -26,3 +26,5 @@ export function Default() {
     </Card>
   );
 }
+
+export default Default;

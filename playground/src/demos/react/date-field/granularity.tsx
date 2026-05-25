@@ -79,3 +79,5 @@ export function Granularity() {
     </div>
   );
 }
+
+export default Granularity;

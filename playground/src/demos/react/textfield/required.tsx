@@ -9,3 +9,5 @@ export function Required() {
     </TextField>
   );
 }
+
+export default Required;

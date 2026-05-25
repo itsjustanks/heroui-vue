@@ -21,3 +21,5 @@ export function ReadOnly() {
     </div>
   );
 }
+
+export default ReadOnly;

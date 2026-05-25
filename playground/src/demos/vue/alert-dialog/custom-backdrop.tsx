@@ -1,13 +1,34 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `alert-dialog/custom-backdrop` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/alert-dialog
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { TriangleExclamation } from "@gravity-ui/icons";
+import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <AlertDialog>
+      <Button variant="danger">Delete Account</Button>
+      <AlertDialog.Backdrop class="bg-linear-to-t from-red-950/90 via-red-950/50 to-transparent dark:from-red-950/95 dark:via-red-950/60" variant="blur">
+        <AlertDialog.Container>
+          <AlertDialog.Dialog class="sm:max-w-[420px]">
+            <AlertDialog.CloseTrigger />
+            <AlertDialog.Header class="items-center text-center">
+              <AlertDialog.Icon status="danger">
+                <TriangleExclamation class="size-5" />
+              </AlertDialog.Icon>
+              <AlertDialog.Heading>Permanently delete your account?</AlertDialog.Heading>
+            </AlertDialog.Header>
+            <AlertDialog.Body>
+              <p>
+                This action cannot be undone. All your data, settings, and content will be
+                permanently removed from our servers. The dramatic red backdrop emphasizes the
+                severity and irreversibility of this decision.
+              </p>
+            </AlertDialog.Body>
+            <AlertDialog.Footer class="flex-col-reverse">
+              <Button class="w-full" slot="close">
+                Keep Account
+              </Button>
+              <Button class="w-full" slot="close" variant="danger">
+                Delete Forever
+              </Button>
+            </AlertDialog.Footer>
+          </AlertDialog.Dialog>
+        </AlertDialog.Container>
+      </AlertDialog.Backdrop>
+    </AlertDialog>);

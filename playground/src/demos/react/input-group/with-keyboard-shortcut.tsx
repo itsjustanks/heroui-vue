@@ -15,3 +15,5 @@ export function WithKeyboardShortcut() {
     </TextField>
   );
 }
+
+export default WithKeyboardShortcut;

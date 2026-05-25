@@ -11,3 +11,5 @@ export function Basic() {
     </Meter>
   );
 }
+
+export default Basic;

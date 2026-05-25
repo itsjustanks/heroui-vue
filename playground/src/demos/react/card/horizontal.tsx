@@ -31,3 +31,5 @@ export function Horizontal() {
     </Card>
   );
 }
+
+export default Horizontal;

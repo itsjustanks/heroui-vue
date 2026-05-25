@@ -21,3 +21,5 @@ export function BadgeSizes() {
     </div>
   );
 }
+
+export default BadgeSizes;

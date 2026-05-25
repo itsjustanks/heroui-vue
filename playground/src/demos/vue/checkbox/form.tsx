@@ -1,13 +1,46 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox/form` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Checkbox, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    alert(`Form submitted with:\n${Array.from(formData.entries()).map(([key, value]) => `${key}: ${value}`).join("\n")}`);
+  };
+  return () => <form class="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <Checkbox id="form-notifications" name="notifications" value="on">
+            <Checkbox.Control>
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+          </Checkbox>
+          <Checkbox.Content>
+            <Label htmlFor="form-notifications">Enable notifications</Label>
+          </Checkbox.Content>
+        </div>
+        <div class="flex items-center gap-3">
+          <Checkbox defaultSelected id="form-newsletter" name="newsletter" value="on">
+            <Checkbox.Control>
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+          </Checkbox>
+          <Checkbox.Content>
+            <Label htmlFor="form-newsletter">Subscribe to newsletter</Label>
+          </Checkbox.Content>
+        </div>
+        <div class="flex items-center gap-3">
+          <Checkbox id="form-marketing" name="marketing" value="on">
+            <Checkbox.Control>
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+          </Checkbox>
+          <Checkbox.Content>
+            <Label htmlFor="form-marketing">Receive marketing updates</Label>
+          </Checkbox.Content>
+        </div>
+      </div>
+      <Button class="mt-4" size="sm" type="submit" variant="primary">
+        Submit
+      </Button>
+    </form>;
+});

@@ -1,13 +1,36 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox-group/with-custom-indicator` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, CheckboxGroup, Description, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <CheckboxGroup name="features">
+      <Label>Features</Label>
+      <Description>Select the features you want</Description>
+      <Checkbox value="notifications">
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            {({
+          isSelected
+        }) => isSelected ? <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={2} viewBox="0 0 24 24">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg> : null}
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Email notifications</Label>
+          <Description>Receive updates via email</Description>
+        </Checkbox.Content>
+      </Checkbox>
+      <Checkbox value="newsletter">
+        <Checkbox.Control>
+          <Checkbox.Indicator>
+            {({
+          isSelected
+        }) => isSelected ? <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={2} viewBox="0 0 24 24">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg> : null}
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Newsletter</Label>
+          <Description>Get weekly newsletters</Description>
+        </Checkbox.Content>
+      </Checkbox>
+    </CheckboxGroup>);

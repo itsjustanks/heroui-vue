@@ -44,3 +44,5 @@ export function ChipStatuses() {
     </div>
   );
 }
+
+export default ChipStatuses;

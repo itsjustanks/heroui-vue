@@ -1,13 +1,16 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-field/full-width` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorField, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="w-[400px] space-y-4">
+      <ColorField fullWidth defaultValue="#10B981" name="color">
+        <Label>Brand Color</Label>
+        <ColorField.Group>
+          <ColorField.Input />
+        </ColorField.Group>
+      </ColorField>
+      <ColorField fullWidth defaultValue="#8B5CF6" name="color-with-suffix">
+        <Label>Theme Color</Label>
+        <ColorField.Group>
+          <ColorField.Input />
+        </ColorField.Group>
+      </ColorField>
+    </div>);

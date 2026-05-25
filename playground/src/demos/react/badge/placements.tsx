@@ -22,3 +22,5 @@ export function BadgePlacements() {
     </div>
   );
 }
+
+export default BadgePlacements;

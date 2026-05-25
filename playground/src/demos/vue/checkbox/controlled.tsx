@@ -1,13 +1,20 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const isSelected = ref(true);
+  return () => <div class="flex flex-col gap-3">
+      <div class="flex items-center gap-3">
+        <Checkbox id="email-notifications" isSelected={isSelected.value} onChange={setIsSelected}>
+          <Checkbox.Control>
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label htmlFor="email-notifications">Email notifications</Label>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+      <p class="text-sm text-muted">
+        Status: <span class="font-medium">{isSelected.value ? "Enabled" : "Disabled"}</span>
+      </p>
+    </div>;
+});

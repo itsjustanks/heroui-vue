@@ -54,3 +54,5 @@ export function Validation() {
     </Form>
   );
 }
+
+export default Validation;

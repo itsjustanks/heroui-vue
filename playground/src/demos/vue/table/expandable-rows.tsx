@@ -1,13 +1,91 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `table/expandable-rows` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/table
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Selection } from "@itsjustanks/heroui-vue";
+import { Button, Table, cn } from "@itsjustanks/heroui-vue";
+import { Icon } from "@iconify/react";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  type Row = {
+    children: Row[];
+    date: string;
+    id: string;
+    title: string;
+    type: string;
+  };
+  const data: Row[] = [{
+    children: [{
+      children: [{
+        children: [],
+        date: "7/10/2025",
+        id: "3",
+        title: "Weekly Report",
+        type: "File"
+      }, {
+        children: [],
+        date: "8/20/2025",
+        id: "4",
+        title: "Budget",
+        type: "File"
+      }],
+      date: "8/2/2025",
+      id: "2",
+      title: "Project",
+      type: "Directory"
+    }],
+    date: "10/20/2025",
+    id: "1",
+    title: "Documents",
+    type: "Directory"
+  }, {
+    children: [{
+      children: [],
+      date: "1/23/2026",
+      id: "6",
+      title: "Image 1",
+      type: "File"
+    }, {
+      children: [],
+      date: "2/3/2026",
+      id: "7",
+      title: "Image 2",
+      type: "File"
+    }],
+    date: "2/3/2026",
+    id: "5",
+    title: "Photos",
+    type: "Directory"
+  }];
+  const expandedKeys = ref(() => new Set(["1"]));
+  const renderExpandableRow = (item: Row) => {
+    return <Table.Row id={item.id} textValue={item.title}>
+        <Table.Cell textValue={item.title}>
+          {({
+          hasChildItems,
+          isDisabled,
+          isExpanded,
+          isTreeColumn
+        }) => <span class="flex items-center gap-1">
+              {hasChildItems && isTreeColumn ? <Button isIconOnly aria-label="Toggle row" isDisabled={isDisabled} size="sm" slot="chevron" variant="ghost">
+                  <Icon aria-hidden icon="gravity-ui:chevron-right" class={cn("size-4 text-muted transition-transform duration-150", isExpanded ? "rotate-90" : "")} />
+                </Button> : null}
+              <span>{item.title}</span>
+            </span>}
+        </Table.Cell>
+        <Table.Cell>{item.type}</Table.Cell>
+        <Table.Cell>{item.date}</Table.Cell>
+        <Table.Collection items={item.children}>{renderExpandableRow}</Table.Collection>
+      </Table.Row>;
+  };
+  return () => <Table>
+      <Table.ScrollContainer>
+        <Table.Content aria-label="Files" class="min-w-[520px]" expandedKeys={expandedKeys.value} treeColumn="name" onExpandedChange={setExpandedKeys}>
+          <Table.Header>
+            <Table.Column isRowHeader id="name">
+              Name
+            </Table.Column>
+            <Table.Column id="type">Type</Table.Column>
+            <Table.Column id="date">Date Modified</Table.Column>
+          </Table.Header>
+          <Table.Body items={data}>{renderExpandableRow}</Table.Body>
+        </Table.Content>
+      </Table.ScrollContainer>
+    </Table>;
+});

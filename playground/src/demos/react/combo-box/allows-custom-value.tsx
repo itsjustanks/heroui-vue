@@ -40,3 +40,5 @@ export function AllowsCustomValue() {
     </ComboBox>
   );
 }
+
+export default AllowsCustomValue;

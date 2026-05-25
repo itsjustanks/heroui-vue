@@ -1,13 +1,26 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `drawer/non-dismissable` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/drawer
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Drawer } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Drawer>
+      <Button variant="secondary">Important Action</Button>
+      <Drawer.Backdrop isDismissable={false}>
+        <Drawer.Content>
+          <Drawer.Dialog>
+            <Drawer.Header>
+              <Drawer.Heading>Confirm Action</Drawer.Heading>
+            </Drawer.Header>
+            <Drawer.Body>
+              <p>
+                This drawer cannot be dismissed by clicking outside or dragging. You must use one of
+                the buttons below.
+              </p>
+            </Drawer.Body>
+            <Drawer.Footer>
+              <Button slot="close" variant="secondary">
+                Cancel
+              </Button>
+              <Button slot="close">Confirm</Button>
+            </Drawer.Footer>
+          </Drawer.Dialog>
+        </Drawer.Content>
+      </Drawer.Backdrop>
+    </Drawer>);

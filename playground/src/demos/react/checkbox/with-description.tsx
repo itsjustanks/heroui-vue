@@ -13,3 +13,5 @@ export function WithDescription() {
     </Checkbox>
   );
 }
+
+export default WithDescription;

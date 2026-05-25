@@ -1,13 +1,28 @@
-import { defineComponent } from 'vue'
+import { ColorSwatch } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const colors = ["#0485F7", "#EF4444", "#F59E0B", "#10B981", "#D946EF"];
+  return () => <div class="flex flex-col gap-8">
+      {/* Glow effect */}
+      <div class="flex flex-col gap-2">
+        <span class="text-sm text-muted">Glow Effect</span>
+        <div class="flex items-center gap-4">
+          {colors.map(color => <ColorSwatch key={color} color={color} size="xl" style={() => ({
+          boxShadow: `0 0 20px 2px ${color}`
+        })} />)}
+        </div>
+      </div>
 
-/** Vue port of `color-swatch/custom-styles` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-swatch
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      {/* Gradient swatch */}
+      <div class="flex flex-col gap-2">
+        <span class="text-sm text-muted">Gradient</span>
+        <div class="flex items-center gap-4">
+          {colors.map(color => <ColorSwatch key={color} color={color} size="xl" style={({
+          color: c
+        }) => ({
+          background: `linear-gradient(135deg, ${c.toString("css")}, white)`
+        })} />)}
+        </div>
+      </div>
+    </div>;
+});

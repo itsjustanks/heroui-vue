@@ -211,3 +211,5 @@ export function CustomCells() {
     </Table>
   );
 }
+
+export default CustomCells;

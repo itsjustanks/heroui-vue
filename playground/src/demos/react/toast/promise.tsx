@@ -167,3 +167,5 @@ export function PromiseDemo() {
     </div>
   );
 }
+
+export default PromiseDemo;

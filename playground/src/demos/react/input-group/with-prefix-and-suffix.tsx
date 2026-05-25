@@ -13,3 +13,5 @@ export function WithPrefixAndSuffix() {
     </TextField>
   );
 }
+
+export default WithPrefixAndSuffix;

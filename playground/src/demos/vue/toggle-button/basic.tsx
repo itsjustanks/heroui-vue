@@ -1,13 +1,7 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `toggle-button/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/toggle-button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Heart } from "@gravity-ui/icons";
+import { ToggleButton } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <ToggleButton>
+      <Heart />
+      Like
+    </ToggleButton>);

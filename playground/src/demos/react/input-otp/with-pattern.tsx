@@ -21,3 +21,5 @@ export function WithPattern() {
     </div>
   );
 }
+
+export default WithPattern;

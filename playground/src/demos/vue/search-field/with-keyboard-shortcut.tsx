@@ -1,13 +1,48 @@
-import { defineComponent } from 'vue'
+import { Description, Kbd, Label, SearchField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [value, setValue] = React.useState("");
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Check for Shift+S
+      if (e.shiftKey && e.key === "S" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+      // Check for ESC key to blur the input
+      if (e.key === "Escape" && document.activeElement === inputRef.current) {
+        inputRef.current?.blur();
+      }
+    };
 
-/** Vue port of `search-field/with-keyboard-shortcut` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/search-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+    // Add global event listener
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+  return () => <div class="flex flex-col gap-4">
+      <div>
+        <SearchField name="search" value={value} onChange={setValue}>
+          <Label>Search</Label>
+          <SearchField.Group>
+            <SearchField.SearchIcon />
+            <SearchField.Input ref={inputRef} class="w-[280px]" placeholder="Search..." />
+            <SearchField.ClearButton />
+          </SearchField.Group>
+          <Description>Use keyboard shortcut to quickly focus this field</Description>
+        </SearchField>
+      </div>
+      <div class="text-default-500 flex items-center gap-2 text-sm">
+        <span>Press</span>
+        <Kbd>
+          <Kbd.Abbr keyValue="shift" />
+          <Kbd.Content>S</Kbd.Content>
+        </Kbd>
+        <span>to focus the search field</span>
+      </div>
+    </div>;
+});

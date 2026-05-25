@@ -11,3 +11,5 @@ export function CustomRenderFunction() {
     </Button>
   );
 }
+
+export default CustomRenderFunction;

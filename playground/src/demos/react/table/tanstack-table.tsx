@@ -220,3 +220,5 @@ export function TanstackTable() {
     </Table>
   );
 }
+
+export default TanstackTable;

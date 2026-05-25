@@ -14,3 +14,5 @@ export function Interactive() {
     </div>
   );
 }
+
+export default Interactive;

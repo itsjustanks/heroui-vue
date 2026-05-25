@@ -1,13 +1,86 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `autocomplete/tag-group-selection` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/autocomplete
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Key } from "@itsjustanks/heroui-vue";
+import { Autocomplete, EmptyState, Label, ListBox, SearchField, Tag, TagGroup, useFilter } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const tags = [{
+    id: "react",
+    name: "React"
+  }, {
+    id: "typescript",
+    name: "TypeScript"
+  }, {
+    id: "javascript",
+    name: "JavaScript"
+  }, {
+    id: "nodejs",
+    name: "Node.js"
+  }, {
+    id: "python",
+    name: "Python"
+  }, {
+    id: "vue",
+    name: "Vue"
+  }, {
+    id: "angular",
+    name: "Angular"
+  }, {
+    id: "nextjs",
+    name: "Next.js"
+  }];
+  const selectedKeys = ref([]);
+  const {
+    contains
+  } = useFilter({
+    sensitivity: "base"
+  });
+  const onRemoveTags = (keys: Set<Key>) => {
+    selectedKeys.value = (prev => prev.filter(key => !keys.has(key)))(selectedKeys.value);
+  };
+  return () => <Autocomplete class="w-[256px]" placeholder="Select tags" selectionMode="multiple" value={selectedKeys.value} onChange={keys => selectedKeys.value = keys as Key[]}>
+      <Label>Tags</Label>
+      <Autocomplete.Trigger>
+        <Autocomplete.Value>
+          {({
+          defaultChildren,
+          isPlaceholder,
+          state
+        }) => {
+          if (isPlaceholder || state.selectedItems.length === 0) {
+            return defaultChildren;
+          }
+          const selectedItemsKeys = state.selectedItems.map(item => item.key);
+          return <TagGroup size="sm" onRemove={onRemoveTags}>
+                <TagGroup.List>
+                  {selectedItemsKeys.map(selectedItemKey => {
+                const tag = tags.find(t => t.id === selectedItemKey);
+                if (!tag) return null;
+                return <Tag key={tag.id} id={tag.id}>
+                        {tag.name}
+                      </Tag>;
+              })}
+                </TagGroup.List>
+              </TagGroup>;
+        }}
+        </Autocomplete.Value>
+        <Autocomplete.ClearButton />
+        <Autocomplete.Indicator />
+      </Autocomplete.Trigger>
+      <Autocomplete.Popover>
+        <Autocomplete.Filter filter={contains}>
+          <SearchField autoFocus name="search" variant="secondary">
+            <SearchField.Group>
+              <SearchField.SearchIcon />
+              <SearchField.Input placeholder="Search tags..." />
+              <SearchField.ClearButton />
+            </SearchField.Group>
+          </SearchField>
+          <ListBox renderEmptyState={() => <EmptyState>No tags found</EmptyState>}>
+            {tags.map(tag => <ListBox.Item key={tag.id} id={tag.id} textValue={tag.name}>
+                {tag.name}
+                <ListBox.ItemIndicator />
+              </ListBox.Item>)}
+          </ListBox>
+        </Autocomplete.Filter>
+      </Autocomplete.Popover>
+    </Autocomplete>;
+});

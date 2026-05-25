@@ -14,3 +14,5 @@ export function LinkIconPlacement() {
     </div>
   );
 }
+
+export default LinkIconPlacement;

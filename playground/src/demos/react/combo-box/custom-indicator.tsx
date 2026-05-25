@@ -42,3 +42,5 @@ export function CustomIndicator() {
     </ComboBox>
   );
 }
+
+export default CustomIndicator;

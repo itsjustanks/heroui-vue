@@ -55,3 +55,5 @@ export function FormExample() {
     </Form>
   );
 }
+
+export default FormExample;

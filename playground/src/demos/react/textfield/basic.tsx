@@ -8,3 +8,5 @@ export function Basic() {
     </TextField>
   );
 }
+
+export default Basic;

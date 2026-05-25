@@ -1,13 +1,37 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `select/with-disabled-options` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/select
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, ListBox, Select } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Select class="w-[256px]" disabledKeys={["cat", "kangaroo"]} placeholder="Select an animal">
+      <Label>Animal</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox>
+          <ListBox.Item id="dog" textValue="Dog">
+            Dog
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="cat" textValue="Cat">
+            Cat
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="bird" textValue="Bird">
+            Bird
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="kangaroo" textValue="Kangaroo">
+            Kangaroo
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="elephant" textValue="Elephant">
+            Elephant
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="tiger" textValue="Tiger">
+            Tiger
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+        </ListBox>
+      </Select.Popover>
+    </Select>);

@@ -15,3 +15,5 @@ export function WithPrefixIcon() {
     </TextField>
   );
 }
+
+export default WithPrefixIcon;

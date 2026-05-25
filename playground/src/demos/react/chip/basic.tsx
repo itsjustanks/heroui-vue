@@ -11,3 +11,5 @@ export function ChipBasic() {
     </div>
   );
 }
+
+export default ChipBasic;

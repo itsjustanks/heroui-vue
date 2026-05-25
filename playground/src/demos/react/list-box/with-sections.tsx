@@ -61,3 +61,5 @@ export function WithSections() {
     </Surface>
   );
 }
+
+export default WithSections;

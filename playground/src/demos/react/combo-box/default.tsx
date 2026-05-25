@@ -39,3 +39,5 @@ export function Default() {
     </ComboBox>
   );
 }
+
+export default Default;

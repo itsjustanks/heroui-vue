@@ -26,3 +26,5 @@ export function CustomSvg() {
     </div>
   );
 }
+
+export default CustomSvg;

@@ -30,3 +30,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export default Sizes;

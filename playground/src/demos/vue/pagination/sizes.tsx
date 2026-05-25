@@ -1,13 +1,39 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `pagination/sizes` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/pagination
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Pagination } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+function SizePagination({
+  size
+}: {
+  size: "sm" | "md" | "lg";
+}) {
+  const [page, setPage] = useState(1);
+  const totalPages = 3;
+  return <div className="flex flex-col gap-2">
+      <span className="text-xs font-medium text-muted capitalize">{size}</span>
+      <Pagination className="justify-center" size={size}>
+        <Pagination.Content>
+          <Pagination.Item>
+            <Pagination.Previous isDisabled={page === 1} onPress={() => setPage(p => p - 1)}>
+              <Pagination.PreviousIcon />
+              <span>Previous</span>
+            </Pagination.Previous>
+          </Pagination.Item>
+          {Array.from({
+          length: totalPages
+        }, (_, i) => i + 1).map(p => <Pagination.Item key={p}>
+              <Pagination.Link isActive={p === page} onPress={() => setPage(p)}>
+                {p}
+              </Pagination.Link>
+            </Pagination.Item>)}
+          <Pagination.Item>
+            <Pagination.Next isDisabled={page === totalPages} onPress={() => setPage(p => p + 1)}>
+              <span>Next</span>
+              <Pagination.NextIcon />
+            </Pagination.Next>
+          </Pagination.Item>
+        </Pagination.Content>
+      </Pagination>
+    </div>;
+}
+export default defineComponent(() => () => <div class="flex flex-col gap-6">
+      {(["sm", "md", "lg"] as const).map(size => <SizePagination key={size} size={size} />)}
+    </div>);

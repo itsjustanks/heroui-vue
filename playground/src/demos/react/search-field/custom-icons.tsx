@@ -33,3 +33,5 @@ export function CustomIcons() {
     </div>
   );
 }
+
+export default CustomIcons;

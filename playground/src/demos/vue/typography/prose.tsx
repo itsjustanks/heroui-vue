@@ -1,13 +1,14 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `typography/prose` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/typography
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Typography } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Typography.Prose class="flex max-w-xl flex-col gap-3">
+      <h1>Prose title</h1>
+      <p>
+        Prose is for authored content where the markup is already semantic and HeroUI applies the
+        default typography rhythm.
+      </p>
+      <h2>Section title</h2>
+      <p>
+        Inline code like <code>render</code> receives the same code treatment as the Typography
+        primitive.
+      </p>
+    </Typography.Prose>);

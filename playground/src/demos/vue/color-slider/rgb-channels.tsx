@@ -1,13 +1,35 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-slider/rgb-channels` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-slider
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorSlider, ColorSwatch, Label } from "@itsjustanks/heroui-vue";
+import { parseColor } from "react-aria-components";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const color = ref(parseColor("rgb(255, 100, 50)"));
+  return () => <div class="flex w-full max-w-xs flex-col gap-4">
+      <ColorSlider channel="red" value={color.value} onChange={setColor}>
+        <Label>Red</Label>
+        <ColorSlider.Output />
+        <ColorSlider.Track>
+          <ColorSlider.Thumb />
+        </ColorSlider.Track>
+      </ColorSlider>
+      <ColorSlider channel="green" value={color.value} onChange={setColor}>
+        <Label>Green</Label>
+        <ColorSlider.Output />
+        <ColorSlider.Track>
+          <ColorSlider.Thumb />
+        </ColorSlider.Track>
+      </ColorSlider>
+      <ColorSlider channel="blue" value={color.value} onChange={setColor}>
+        <Label>Blue</Label>
+        <ColorSlider.Output />
+        <ColorSlider.Track>
+          <ColorSlider.Thumb />
+        </ColorSlider.Track>
+      </ColorSlider>
+      <div class="flex items-center gap-2">
+        <ColorSwatch color={color.value} size="sm" />
+        <p class="text-sm text-muted">
+          Current color: <code class="font-mono">{color.value.toString("rgb")}</code>
+        </p>
+      </div>
+    </div>;
+});

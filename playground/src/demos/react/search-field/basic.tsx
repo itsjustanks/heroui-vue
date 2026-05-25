@@ -12,3 +12,5 @@ export function Basic() {
     </SearchField>
   );
 }
+
+export default Basic;

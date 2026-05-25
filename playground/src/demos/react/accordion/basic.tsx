@@ -71,3 +71,5 @@ export function Basic() {
     </Accordion>
   );
 }
+
+export default Basic;

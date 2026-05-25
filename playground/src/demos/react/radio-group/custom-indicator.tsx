@@ -47,3 +47,5 @@ export function CustomIndicator() {
     </RadioGroup>
   );
 }
+
+export default CustomIndicator;

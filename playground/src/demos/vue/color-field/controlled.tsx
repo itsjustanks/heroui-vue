@@ -1,13 +1,29 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-field/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Color } from "@itsjustanks/heroui-vue";
+import { Button, ColorField, ColorSwatch, Description, Label, parseColor } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const value = ref(parseColor("#0485F7"));
+  return () => <div class="flex flex-col gap-4">
+      <ColorField class="w-[280px]" name="color" value={value.value} onChange={setValue}>
+        <Label>Color</Label>
+        <ColorField.Group>
+          <ColorField.Prefix>
+            <ColorSwatch color={value.value ?? undefined} size="xs" />
+          </ColorField.Prefix>
+          <ColorField.Input />
+        </ColorField.Group>
+        <Description>Current value: {value.value ? value.value.toString("hex") : "(empty)"}</Description>
+      </ColorField>
+      <div class="flex gap-2">
+        <Button variant="tertiary" onPress={() => value.value = parseColor("#EF4444")}>
+          Set Red
+        </Button>
+        <Button variant="tertiary" onPress={() => value.value = parseColor("#10B981")}>
+          Set Green
+        </Button>
+        <Button variant="tertiary" onPress={() => value.value = null}>
+          Clear
+        </Button>
+      </div>
+    </div>;
+});

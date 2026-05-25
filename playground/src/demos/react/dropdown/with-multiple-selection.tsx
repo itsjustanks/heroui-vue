@@ -45,3 +45,5 @@ export function WithMultipleSelection() {
     </Dropdown>
   );
 }
+
+export default WithMultipleSelection;

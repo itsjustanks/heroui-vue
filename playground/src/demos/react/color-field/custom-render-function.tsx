@@ -24,3 +24,5 @@ export function CustomRenderFunction() {
     </ColorField>
   );
 }
+
+export default CustomRenderFunction;

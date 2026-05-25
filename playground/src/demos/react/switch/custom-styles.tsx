@@ -26,3 +26,5 @@ export function CustomStyles() {
     </Switch>
   );
 }
+
+export default CustomStyles;

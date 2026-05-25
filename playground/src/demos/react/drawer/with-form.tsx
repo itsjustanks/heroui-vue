@@ -39,3 +39,5 @@ export function WithForm() {
     </Drawer>
   );
 }
+
+export default WithForm;

@@ -18,3 +18,5 @@ export function Types() {
     </div>
   );
 }
+
+export default Types;

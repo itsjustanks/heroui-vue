@@ -110,3 +110,5 @@ export function TagGroupWithListData() {
     </div>
   );
 }
+
+export default TagGroupWithListData;

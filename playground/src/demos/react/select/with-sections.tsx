@@ -74,3 +74,5 @@ export function WithSections() {
     </Select>
   );
 }
+
+export default WithSections;

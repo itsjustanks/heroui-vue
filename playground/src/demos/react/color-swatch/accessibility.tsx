@@ -9,3 +9,5 @@ export function ColorSwatchAccessibility() {
     </div>
   );
 }
+
+export default ColorSwatchAccessibility;

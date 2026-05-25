@@ -1,13 +1,50 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `combo-box/asynchronous-loading` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/combo-box
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Collection, ComboBox, EmptyState, Input, Label, ListBox, ListBoxLoadMoreItem, Spinner } from "@itsjustanks/heroui-vue";
+import { useAsyncList } from "@react-stately/data";
+import { defineComponent } from "vue";
+interface Character {
+  name: string;
+}
+export default defineComponent(() => {
+  const list = useAsyncList<Character>({
+    async load({
+      cursor,
+      filterText,
+      signal
+    }) {
+      if (cursor) {
+        cursor = cursor.replace(/^http:\/\//i, "https://");
+      }
+      const res = await fetch(cursor || `https://swapi.py4e.com/api/people/?search=${filterText}`, {
+        signal
+      });
+      const json = await res.json();
+      return {
+        cursor: json.next,
+        items: json.results
+      };
+    }
+  });
+  return () => <ComboBox allowsEmptyCollection class="w-[256px]" inputValue={list.filterText} onInputChange={list.setFilterText}>
+      <Label>Pick a Character</Label>
+      <ComboBox.InputGroup>
+        <Input placeholder="Star Wars characters..." />
+        <ComboBox.Trigger />
+      </ComboBox.InputGroup>
+      <ComboBox.Popover>
+        <ListBox renderEmptyState={() => <EmptyState />}>
+          <Collection items={list.items}>
+            {item => <ListBox.Item id={item.name} textValue={item.name}>
+                {item.name}
+                <ListBox.ItemIndicator />
+              </ListBox.Item>}
+          </Collection>
+          <ListBoxLoadMoreItem isLoading={list.loadingState === "loadingMore"} onLoadMore={list.loadMore}>
+            <div class="flex items-center justify-center gap-2 py-2">
+              <Spinner size="sm" />
+              <span class="muted text-sm">Loading more...</span>
+            </div>
+          </ListBoxLoadMoreItem>
+        </ListBox>
+      </ComboBox.Popover>
+    </ComboBox>;
+});

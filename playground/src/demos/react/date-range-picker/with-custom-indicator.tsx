@@ -50,3 +50,5 @@ export function WithCustomIndicator() {
     </DateRangePicker>
   );
 }
+
+export default WithCustomIndicator;

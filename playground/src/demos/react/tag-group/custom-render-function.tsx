@@ -29,3 +29,5 @@ export function CustomRenderFunction() {
     </TagGroup>
   );
 }
+
+export default CustomRenderFunction;

@@ -23,3 +23,5 @@ export function Required() {
     </div>
   );
 }
+
+export default Required;

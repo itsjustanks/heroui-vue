@@ -31,3 +31,5 @@ export function PaginationDisabled() {
     </Pagination>
   );
 }
+
+export default PaginationDisabled;

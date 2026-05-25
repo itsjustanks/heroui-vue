@@ -1,13 +1,24 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `date-field/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/date-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { DateValue } from "@internationalized/date";
+import { Button, DateField, Description, Label } from "@itsjustanks/heroui-vue";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const value = ref(null);
+  return () => <div class="flex flex-col gap-4">
+      <DateField class="w-[256px]" name="date" value={value.value} onChange={setValue}>
+        <Label>Date</Label>
+        <DateField.Group>
+          <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
+        </DateField.Group>
+        <Description>Current value: {value.value ? value.value.toString() : "(empty)"}</Description>
+      </DateField>
+      <div class="flex gap-2">
+        <Button variant="tertiary" onPress={() => value.value = today(getLocalTimeZone())}>
+          Set today
+        </Button>
+        <Button variant="tertiary" onPress={() => value.value = null}>
+          Clear
+        </Button>
+      </div>
+    </div>;
+});

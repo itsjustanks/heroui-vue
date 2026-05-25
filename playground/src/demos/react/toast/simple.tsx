@@ -27,3 +27,5 @@ export function Simple() {
     </div>
   );
 }
+
+export default Simple;

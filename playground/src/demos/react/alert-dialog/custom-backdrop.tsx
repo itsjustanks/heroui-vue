@@ -39,3 +39,5 @@ export function CustomBackdrop() {
     </AlertDialog>
   );
 }
+
+export default CustomBackdrop;

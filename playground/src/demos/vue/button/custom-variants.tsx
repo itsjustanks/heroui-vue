@@ -1,13 +1,47 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button/custom-variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { ButtonProps } from "@itsjustanks/heroui-vue";
+import type { VariantProps } from "tailwind-variants";
+import { Button, buttonVariants } from "@itsjustanks/heroui-vue";
+import { tv } from "tailwind-variants";
+import { defineComponent } from "vue";
+const myButtonVariants = tv({
+  base: "text-md font-semibold shadow-md text-shadow-lg data-[pending=true]:opacity-40",
+  defaultVariants: {
+    radius: "full",
+    variant: "primary"
+  },
+  extend: buttonVariants,
+  variants: {
+    radius: {
+      full: "rounded-full",
+      lg: "rounded-lg",
+      md: "rounded-md",
+      sm: "rounded-sm"
+    },
+    size: {
+      lg: "h-12 px-8",
+      md: "h-11 px-6",
+      sm: "h-10 px-4",
+      xl: "h-13 px-10"
+    },
+    variant: {
+      primary: "text-white dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+    }
+  }
+});
+type MyButtonVariants = VariantProps<typeof myButtonVariants>;
+export type MyButtonProps = Omit<ButtonProps, "className"> & MyButtonVariants & {
+  className?: string;
+};
+function CustomButton({
+  className,
+  radius,
+  variant,
+  ...props
+}: MyButtonProps) {
+  return <Button className={myButtonVariants({
+    className,
+    radius,
+    variant
+  })} {...props} />;
+}
+export default defineComponent(() => () => <CustomButton>Custom Button</CustomButton>);

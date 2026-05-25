@@ -33,3 +33,5 @@ export function WithValidation() {
     </div>
   );
 }
+
+export default WithValidation;

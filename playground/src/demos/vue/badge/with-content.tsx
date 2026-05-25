@@ -1,13 +1,45 @@
-import { defineComponent } from 'vue'
+import { Bell } from "@gravity-ui/icons";
+import { Avatar, Badge } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
+export default defineComponent(() => () => <div class="flex items-center gap-6">
+      <Badge.Anchor>
+        <Avatar>
+          <Avatar.Image src={AVATAR_URL} />
+          <Avatar.Fallback>JD</Avatar.Fallback>
+        </Avatar>
+        <Badge color="danger" size="sm">
+          5
+        </Badge>
+      </Badge.Anchor>
 
-/** Vue port of `badge/with-content` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/badge
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Badge.Anchor>
+        <Avatar>
+          <Avatar.Image src={AVATAR_URL} />
+          <Avatar.Fallback>JD</Avatar.Fallback>
+        </Avatar>
+        <Badge color="danger" size="sm">
+          New
+        </Badge>
+      </Badge.Anchor>
+
+      <Badge.Anchor>
+        <Avatar>
+          <Avatar.Image src={AVATAR_URL} />
+          <Avatar.Fallback>JD</Avatar.Fallback>
+        </Avatar>
+        <Badge color="danger" size="sm">
+          99+
+        </Badge>
+      </Badge.Anchor>
+
+      <Badge.Anchor>
+        <Avatar>
+          <Avatar.Image src={AVATAR_URL} />
+          <Avatar.Fallback>JD</Avatar.Fallback>
+        </Avatar>
+        <Badge color="accent" size="sm">
+          <Bell class="size-2.5" />
+        </Badge>
+      </Badge.Anchor>
+    </div>);

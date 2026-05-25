@@ -1,13 +1,17 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `slider/range` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/slider
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, Slider } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Slider class="w-full max-w-xs" defaultValue={[100, 500]} formatOptions={{
+  currency: "USD",
+  style: "currency"
+}} maxValue={1000} minValue={0} step={50}>
+      <Label>Price Range</Label>
+      <Slider.Output />
+      <Slider.Track>
+        {({
+      state
+    }) => <>
+            <Slider.Fill />
+            {state.values.map((_, i) => <Slider.Thumb key={i} index={i} />)}
+          </>}
+      </Slider.Track>
+    </Slider>);

@@ -13,3 +13,5 @@ export function Invalid() {
     </Checkbox>
   );
 }
+
+export default Invalid;

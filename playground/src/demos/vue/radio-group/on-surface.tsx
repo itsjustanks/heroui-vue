@@ -1,13 +1,35 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `radio-group/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/radio-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, Radio, RadioGroup, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="w-full rounded-3xl p-6">
+      <RadioGroup defaultValue="premium" name="plan" variant="secondary">
+        <Label>Plan selection</Label>
+        <Description>Choose the plan that suits you best</Description>
+        <Radio value="basic">
+          <Radio.Control>
+            <Radio.Indicator />
+          </Radio.Control>
+          <Radio.Content>
+            <Label>Basic Plan</Label>
+            <Description>Includes 100 messages per month</Description>
+          </Radio.Content>
+        </Radio>
+        <Radio value="premium">
+          <Radio.Control>
+            <Radio.Indicator />
+          </Radio.Control>
+          <Radio.Content>
+            <Label>Premium Plan</Label>
+            <Description>Includes 200 messages per month</Description>
+          </Radio.Content>
+        </Radio>
+        <Radio value="business">
+          <Radio.Control>
+            <Radio.Indicator />
+          </Radio.Control>
+          <Radio.Content>
+            <Label>Business Plan</Label>
+            <Description>Unlimited messages</Description>
+          </Radio.Content>
+        </Radio>
+      </RadioGroup>
+    </Surface>);

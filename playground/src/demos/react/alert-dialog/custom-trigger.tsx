@@ -44,3 +44,5 @@ export function CustomTrigger() {
     </AlertDialog>
   );
 }
+
+export default CustomTrigger;

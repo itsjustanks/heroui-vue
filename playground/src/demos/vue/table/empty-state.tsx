@@ -1,13 +1,21 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `table/empty-state` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/table
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { EmptyState, Table } from "@itsjustanks/heroui-vue";
+import { Icon } from "@iconify/react";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Table class="min-h-[200px]">
+      <Table.ScrollContainer>
+        <Table.Content aria-label="Empty table" class="h-full min-w-[600px]">
+          <Table.Header>
+            <Table.Column isRowHeader>Name</Table.Column>
+            <Table.Column>Role</Table.Column>
+            <Table.Column>Status</Table.Column>
+            <Table.Column>Email</Table.Column>
+          </Table.Header>
+          <Table.Body renderEmptyState={() => <EmptyState class="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
+                <Icon class="size-6 text-muted" icon="gravity-ui:tray" />
+                <span class="text-sm text-muted">No results found</span>
+              </EmptyState>}>
+            {[]}
+          </Table.Body>
+        </Table.Content>
+      </Table.ScrollContainer>
+    </Table>);

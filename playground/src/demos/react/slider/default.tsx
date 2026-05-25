@@ -12,3 +12,5 @@ export function Default() {
     </Slider>
   );
 }
+
+export default Default;

@@ -17,3 +17,5 @@ export function CustomIndicator() {
     </ColorSwatchPicker>
   );
 }
+
+export default CustomIndicator;

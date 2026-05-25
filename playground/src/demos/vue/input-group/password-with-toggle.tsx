@@ -1,13 +1,17 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input-group/password-with-toggle` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Eye, EyeSlash } from "@gravity-ui/icons";
+import { Button, InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const isVisible = ref(false);
+  return () => <TextField class="w-full max-w-[280px]" name="password">
+      <Label>Password</Label>
+      <InputGroup>
+        <InputGroup.Input class="w-full max-w-[280px]" type={isVisible.value ? "text" : "password"} value={isVisible.value ? "87$2h.3diua" : "••••••••"} />
+        <InputGroup.Suffix class="pr-0">
+          <Button isIconOnly aria-label={isVisible.value ? "Hide password" : "Show password"} size="sm" variant="ghost" onPress={() => isVisible.value = !isVisible.value}>
+            {isVisible.value ? <Eye class="size-4" /> : <EyeSlash class="size-4" />}
+          </Button>
+        </InputGroup.Suffix>
+      </InputGroup>
+    </TextField>;
+});

@@ -18,3 +18,5 @@ export function CustomRenderFunction() {
     </NumberField>
   );
 }
+
+export default CustomRenderFunction;

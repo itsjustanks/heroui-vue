@@ -68,3 +68,5 @@ export function PopoverInteractive() {
     </div>
   );
 }
+
+export default PopoverInteractive;

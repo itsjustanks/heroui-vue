@@ -44,3 +44,5 @@ export function SecondaryVertical() {
     </Tabs>
   );
 }
+
+export default SecondaryVertical;

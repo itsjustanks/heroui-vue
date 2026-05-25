@@ -13,3 +13,5 @@ export function Loading() {
     </Button>
   );
 }
+
+export default Loading;

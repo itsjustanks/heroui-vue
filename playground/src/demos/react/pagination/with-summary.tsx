@@ -70,3 +70,5 @@ export function PaginationWithSummary() {
     </Pagination>
   );
 }
+
+export default PaginationWithSummary;

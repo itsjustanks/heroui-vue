@@ -10,3 +10,5 @@ export function Indeterminate() {
     </ProgressCircle>
   );
 }
+
+export default Indeterminate;

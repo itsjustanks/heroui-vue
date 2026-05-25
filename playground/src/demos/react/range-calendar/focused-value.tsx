@@ -56,3 +56,5 @@ export function FocusedValue() {
     </div>
   );
 }
+
+export default FocusedValue;

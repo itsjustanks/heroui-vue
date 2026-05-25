@@ -1,13 +1,10 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `breadcrumbs/custom-separator` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/breadcrumbs
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Breadcrumbs } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Breadcrumbs separator={<svg viewBox="0 0 256 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M249.3 235.8c10.2 12.6 9.5 31.1-2.2 42.8l-128 128c-9.2 9.2-22.9 11.9-34.9 6.9S64.5 396.9 64.5 384l0-256c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l128 128 2.2 2.4z" />
+        </svg>}>
+      <Breadcrumbs.Item href="#">Home</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="#">Products</Breadcrumbs.Item>
+      <Breadcrumbs.Item href="#">Electronics</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Laptop</Breadcrumbs.Item>
+    </Breadcrumbs>);

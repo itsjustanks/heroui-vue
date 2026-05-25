@@ -10,3 +10,5 @@ export function Basic() {
     </TimeField>
   );
 }
+
+export default Basic;

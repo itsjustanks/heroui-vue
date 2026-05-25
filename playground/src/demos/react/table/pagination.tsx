@@ -110,3 +110,5 @@ export function PaginationDemo() {
     </Table>
   );
 }
+
+export default PaginationDemo;

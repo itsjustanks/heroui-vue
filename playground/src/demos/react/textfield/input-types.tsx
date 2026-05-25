@@ -30,3 +30,5 @@ export function InputTypes() {
     </div>
   );
 }
+
+export default InputTypes;

@@ -60,3 +60,5 @@ export function MultipleMonths() {
     </RangeCalendar>
   );
 }
+
+export default MultipleMonths;

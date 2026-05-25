@@ -56,3 +56,5 @@ export function Disabled() {
     </DateRangePicker>
   );
 }
+
+export default Disabled;

@@ -74,3 +74,5 @@ export function WithSections() {
     </ComboBox>
   );
 }
+
+export default WithSections;

@@ -62,3 +62,5 @@ export function WithSliders() {
     </ColorPicker>
   );
 }
+
+export default WithSliders;

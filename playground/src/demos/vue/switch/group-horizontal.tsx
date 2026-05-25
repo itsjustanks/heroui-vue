@@ -1,13 +1,28 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `switch/group-horizontal` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/switch
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, Switch, SwitchGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <SwitchGroup class="overflow-x-auto" orientation="horizontal">
+      <Switch name="notifications">
+        <Switch.Control>
+          <Switch.Thumb />
+        </Switch.Control>
+        <Switch.Content>
+          <Label class="text-sm">Notifications</Label>
+        </Switch.Content>
+      </Switch>
+      <Switch name="marketing">
+        <Switch.Control>
+          <Switch.Thumb />
+        </Switch.Control>
+        <Switch.Content>
+          <Label class="text-sm">Marketing</Label>
+        </Switch.Content>
+      </Switch>
+      <Switch name="social">
+        <Switch.Control>
+          <Switch.Thumb />
+        </Switch.Control>
+        <Switch.Content>
+          <Label class="text-sm">Social</Label>
+        </Switch.Content>
+      </Switch>
+    </SwitchGroup>);

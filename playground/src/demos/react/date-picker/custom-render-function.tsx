@@ -54,3 +54,5 @@ export function CustomRenderFunction() {
     </DatePicker>
   );
 }
+
+export default CustomRenderFunction;

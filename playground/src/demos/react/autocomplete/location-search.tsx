@@ -86,3 +86,5 @@ export function LocationSearch() {
     </Autocomplete>
   );
 }
+
+export default LocationSearch;

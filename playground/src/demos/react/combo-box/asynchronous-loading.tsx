@@ -69,3 +69,5 @@ export function AsynchronousLoading() {
     </ComboBox>
   );
 }
+
+export default AsynchronousLoading;

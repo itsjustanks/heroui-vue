@@ -1,13 +1,41 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `combo-box/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/combo-box
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Key } from "@itsjustanks/heroui-vue";
+import { ComboBox, Input, Label, ListBox } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const animals = [{
+    id: "cat",
+    name: "Cat"
+  }, {
+    id: "dog",
+    name: "Dog"
+  }, {
+    id: "bird",
+    name: "Bird"
+  }, {
+    id: "fish",
+    name: "Fish"
+  }, {
+    id: "hamster",
+    name: "Hamster"
+  }];
+  const selectedKey = ref("cat");
+  const selectedAnimal = animals.find(a => a.id === selectedKey.value);
+  return () => <div class="space-y-2">
+      <ComboBox class="w-[256px]" selectedKey={selectedKey.value} onSelectionChange={key => selectedKey.value = key}>
+        <Label>Animal (controlled)</Label>
+        <ComboBox.InputGroup>
+          <Input placeholder="Search animals..." />
+          <ComboBox.Trigger />
+        </ComboBox.InputGroup>
+        <ComboBox.Popover>
+          <ListBox>
+            {animals.map(animal => <ListBox.Item key={animal.id} id={animal.id} textValue={animal.name}>
+                {animal.name}
+                <ListBox.ItemIndicator />
+              </ListBox.Item>)}
+          </ListBox>
+        </ComboBox.Popover>
+      </ComboBox>
+      <p class="text-sm text-muted">Selected: {selectedAnimal?.name || "None"}</p>
+    </div>;
+});

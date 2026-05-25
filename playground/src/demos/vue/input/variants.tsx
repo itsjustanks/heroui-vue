@@ -1,13 +1,6 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Input } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-[240px] flex-col gap-2">
+      <Input fullWidth placeholder="Primary input" variant="primary" />
+      <Input fullWidth placeholder="Secondary input" variant="secondary" />
+    </div>);

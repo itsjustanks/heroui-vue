@@ -48,3 +48,5 @@ export function Default() {
     </ListBox>
   );
 }
+
+export default Default;

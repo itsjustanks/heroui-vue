@@ -30,3 +30,5 @@ export function GroupHorizontal() {
     </SwitchGroup>
   );
 }
+
+export default GroupHorizontal;

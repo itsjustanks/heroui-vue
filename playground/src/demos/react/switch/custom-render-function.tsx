@@ -10,3 +10,5 @@ export function CustomRenderFunction() {
     </Switch>
   );
 }
+
+export default CustomRenderFunction;

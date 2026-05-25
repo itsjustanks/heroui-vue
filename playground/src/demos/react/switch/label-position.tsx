@@ -22,3 +22,5 @@ export function LabelPosition() {
     </div>
   );
 }
+
+export default LabelPosition;

@@ -105,3 +105,5 @@ export function ExpandableRows() {
     </Table>
   );
 }
+
+export default ExpandableRows;

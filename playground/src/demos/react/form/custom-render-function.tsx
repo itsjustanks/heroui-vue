@@ -75,3 +75,5 @@ export function CustomRenderFunction() {
     </Form>
   );
 }
+
+export default CustomRenderFunction;

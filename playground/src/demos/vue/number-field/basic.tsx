@@ -1,13 +1,10 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `number-field/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/number-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, NumberField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <NumberField class="w-full max-w-64" defaultValue={1024} minValue={0} name="width">
+      <Label>Width</Label>
+      <NumberField.Group>
+        <NumberField.DecrementButton />
+        <NumberField.Input class="w-[120px]" />
+        <NumberField.IncrementButton />
+      </NumberField.Group>
+    </NumberField>);

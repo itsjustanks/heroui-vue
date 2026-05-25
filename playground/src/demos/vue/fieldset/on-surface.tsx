@@ -1,13 +1,63 @@
-import { defineComponent } from 'vue'
+import { FloppyDisk } from "@gravity-ui/icons";
+import { Button, Description, FieldError, Fieldset, Form, Input, Label, Surface, TextArea, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
 
-/** Vue port of `fieldset/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/fieldset
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+    // Convert FormData to plain object
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+    alert("Form submitted successfully!");
+  };
+  return () => <div class="flex items-center justify-center rounded-3xl bg-surface p-6">
+      <Surface class="w-full min-w-[380px]">
+        <Form onSubmit={onSubmit}>
+          <Fieldset class="w-full">
+            <Fieldset.Legend>Profile Settings</Fieldset.Legend>
+            <Description>Update your profile information.</Description>
+            <Fieldset.Group>
+              <TextField isRequired name="name" validate={value => {
+              if (value.length < 3) {
+                return "Name must be at least 3 characters";
+              }
+              return null;
+            }}>
+                <Label>Name</Label>
+                <Input placeholder="John Doe" variant="secondary" />
+                <FieldError />
+              </TextField>
+              <TextField isRequired name="email" type="email">
+                <Label>Email</Label>
+                <Input placeholder="john@example.com" variant="secondary" />
+                <FieldError />
+              </TextField>
+              <TextField isRequired name="bio" validate={value => {
+              if (value.length < 10) {
+                return "Bio must be at least 10 characters";
+              }
+              return null;
+            }}>
+                <Label>Bio</Label>
+                <TextArea placeholder="Tell us about yourself..." variant="secondary" />
+                <Description>Minimum 10 characters</Description>
+                <FieldError />
+              </TextField>
+            </Fieldset.Group>
+            <Fieldset.Actions>
+              <Button type="submit">
+                <FloppyDisk />
+                Save changes
+              </Button>
+              <Button type="reset" variant="tertiary">
+                Cancel
+              </Button>
+            </Fieldset.Actions>
+          </Fieldset>
+        </Form>
+      </Surface>
+    </div>;
+});

@@ -1,13 +1,16 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `separator/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/separator
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Separator } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="max-w-md">
+      <div class="space-y-1">
+        <h4 class="text-medium font-medium">HeroUI v3 Components</h4>
+        <p class="text-small text-default-400">Beautiful, fast and modern React UI library.</p>
+      </div>
+      <Separator class="my-4" />
+      <div class="text-small flex h-5 items-center space-x-4">
+        <div>Blog</div>
+        <Separator orientation="vertical" />
+        <div>Docs</div>
+        <Separator orientation="vertical" />
+        <div>Source</div>
+      </div>
+    </div>);

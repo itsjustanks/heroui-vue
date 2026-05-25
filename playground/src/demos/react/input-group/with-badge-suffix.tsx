@@ -14,3 +14,5 @@ export function WithBadgeSuffix() {
     </TextField>
   );
 }
+
+export default WithBadgeSuffix;

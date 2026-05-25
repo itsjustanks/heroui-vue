@@ -28,3 +28,5 @@ export function Basic() {
     </Drawer>
   );
 }
+
+export default Basic;

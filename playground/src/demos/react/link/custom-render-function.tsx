@@ -8,3 +8,5 @@ export function CustomRenderFunction() {
     </Link>
   );
 }
+
+export default CustomRenderFunction;

@@ -1,13 +1,88 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button-group/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm text-muted">Primary</p>
+        <ButtonGroup variant="primary">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm text-muted">Secondary</p>
+        <ButtonGroup variant="secondary">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm text-muted">Tertiary</p>
+        <ButtonGroup variant="tertiary">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm text-muted">Outline</p>
+        <ButtonGroup variant="outline">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm text-muted">Ghost</p>
+        <ButtonGroup variant="ghost">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm text-muted">Danger</p>
+        <ButtonGroup variant="danger">
+          <Button>First</Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Second
+          </Button>
+          <Button>
+            <ButtonGroup.Separator />
+            Third
+          </Button>
+        </ButtonGroup>
+      </div>
+    </div>);

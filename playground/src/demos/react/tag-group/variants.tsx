@@ -23,3 +23,5 @@ export function TagGroupVariants() {
     </div>
   );
 }
+
+export default TagGroupVariants;

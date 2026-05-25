@@ -93,3 +93,5 @@ export function TagGroupSelection() {
     </Autocomplete>
   );
 }
+
+export default TagGroupSelection;

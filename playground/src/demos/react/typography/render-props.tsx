@@ -12,3 +12,5 @@ export const RenderProps = () => {
     </div>
   );
 };
+
+export default RenderProps;

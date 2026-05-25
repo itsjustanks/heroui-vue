@@ -9,3 +9,5 @@ export function Basic() {
     />
   );
 }
+
+export default Basic;

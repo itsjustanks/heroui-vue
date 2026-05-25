@@ -1,13 +1,38 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `dropdown/with-multiple-selection` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/dropdown
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Selection } from "@itsjustanks/heroui-vue";
+import { Button, Dropdown, Header, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const selected = ref(new Set(["apple"]));
+  return () => <Dropdown>
+      <Button aria-label="Menu" variant="secondary">
+        Preferred Fruits
+      </Button>
+      <Dropdown.Popover class="min-w-[256px]">
+        <Dropdown.Menu selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={setSelected}>
+          <Dropdown.Section>
+            <Header>Select a fruit</Header>
+            <Dropdown.Item id="apple" textValue="Apple">
+              <Dropdown.ItemIndicator />
+              <Label>Apple</Label>
+            </Dropdown.Item>
+            <Dropdown.Item id="banana" textValue="Banana">
+              <Dropdown.ItemIndicator />
+              <Label>Banana</Label>
+            </Dropdown.Item>
+            <Dropdown.Item id="cherry" textValue="Cherry">
+              <Dropdown.ItemIndicator />
+              <Label>Cherry</Label>
+            </Dropdown.Item>
+          </Dropdown.Section>
+          <Dropdown.Item id="orange" textValue="Orange">
+            <Dropdown.ItemIndicator />
+            <Label>Orange</Label>
+          </Dropdown.Item>
+          <Dropdown.Item id="pear" textValue="Pear">
+            <Dropdown.ItemIndicator />
+            <Label>Pear</Label>
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown.Popover>
+    </Dropdown>;
+});

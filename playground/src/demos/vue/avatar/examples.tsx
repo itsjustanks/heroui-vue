@@ -1,77 +1,63 @@
-import { defineComponent } from 'vue'
-import { Avatar } from '@itsjustanks/heroui-vue'
-import { avatarUrls, currentExample } from '../../shared'
-
-function UserAvatar({ color, size, variant }: { color?: any; size?: any; variant?: any }) {
-  return (
-    <Avatar color={color} size={size} variant={variant}>
+import { Avatar } from "@itsjustanks/heroui-vue";
+import { avatarUrls, currentExample } from '../../shared';
+import { defineComponent } from "vue";
+function UserAvatar({
+  color,
+  size,
+  variant
+}: {
+  color?: any;
+  size?: any;
+  variant?: any;
+}) {
+  return <Avatar color={color} size={size} variant={variant}>
       <Avatar.Image alt="User avatar" src={avatarUrls.purple} />
       <Avatar.Fallback>JD</Avatar.Fallback>
-    </Avatar>
-  )
+    </Avatar>;
 }
-
-export default defineComponent(() => () => {
-  const example = currentExample()
-
+export default defineComponent(() => {
+  const example = currentExample();
   if (example === 'sizes') {
-    return (
-      <div class="demo-row">
+    return <div class="demo-row">
         <UserAvatar size="sm" />
         <UserAvatar size="md" />
         <UserAvatar size="lg" />
-      </div>
-    )
+      </div>;
   }
-
   if (example === 'colors') {
-    return (
-      <div class="demo-row">
+    return <div class="demo-row">
         <UserAvatar color="default" />
         <UserAvatar color="primary" />
         <UserAvatar color="success" />
         <UserAvatar color="warning" />
         <UserAvatar color="danger" />
-      </div>
-    )
+      </div>;
   }
-
   if (example === 'variants' || example === 'custom-styles') {
-    return (
-      <div class="demo-row">
+    return <div class="demo-row">
         <UserAvatar variant="solid" />
         <UserAvatar variant="flat" />
         <UserAvatar variant="faded" />
         <UserAvatar variant="bordered" />
-      </div>
-    )
+      </div>;
   }
-
   if (example === 'fallback') {
-    return (
-      <div class="demo-row">
+    return <div class="demo-row">
         <Avatar><Avatar.Fallback>JD</Avatar.Fallback></Avatar>
         <Avatar color="primary"><Avatar.Fallback>AB</Avatar.Fallback></Avatar>
         <Avatar color="success"><Avatar.Fallback>CD</Avatar.Fallback></Avatar>
-      </div>
-    )
+      </div>;
   }
-
   if (example === 'group') {
-    return (
-      <div class="demo-row">
+    return <div class="demo-row">
         <UserAvatar />
         <Avatar><Avatar.Image alt="Blue" src={avatarUrls.blue} /><Avatar.Fallback>B</Avatar.Fallback></Avatar>
         <Avatar><Avatar.Image alt="Orange" src={avatarUrls.orange} /><Avatar.Fallback>O</Avatar.Fallback></Avatar>
-      </div>
-    )
+      </div>;
   }
-
-  return (
-    <div class="demo-row">
+  return () => <div class="demo-row">
       <UserAvatar />
       <Avatar><Avatar.Image alt="Blue" src={avatarUrls.blue} /><Avatar.Fallback>B</Avatar.Fallback></Avatar>
       <Avatar><Avatar.Fallback>JR</Avatar.Fallback></Avatar>
-    </div>
-  )
-})
+    </div>;
+});

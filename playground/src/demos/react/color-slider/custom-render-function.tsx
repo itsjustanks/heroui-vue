@@ -16,3 +16,5 @@ export function CustomRenderFunction() {
     </ColorSlider>
   );
 }
+
+export default CustomRenderFunction;

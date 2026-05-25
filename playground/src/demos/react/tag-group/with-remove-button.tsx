@@ -76,3 +76,5 @@ export function TagGroupWithRemoveButton() {
     </div>
   );
 }
+
+export default TagGroupWithRemoveButton;

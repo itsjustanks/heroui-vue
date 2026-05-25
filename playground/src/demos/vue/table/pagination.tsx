@@ -1,13 +1,120 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `table/pagination` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/table
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Pagination, Table } from "@itsjustanks/heroui-vue";
+import { computed, defineComponent, ref } from "vue";
+const columns = [{
+  id: "name",
+  name: "Name"
+}, {
+  id: "role",
+  name: "Role"
+}, {
+  id: "status",
+  name: "Status"
+}, {
+  id: "email",
+  name: "Email"
+}];
+const users = [{
+  email: "kate@acme.com",
+  id: 1,
+  name: "Kate Moore",
+  role: "CEO",
+  status: "Active"
+}, {
+  email: "john@acme.com",
+  id: 2,
+  name: "John Smith",
+  role: "CTO",
+  status: "Active"
+}, {
+  email: "sara@acme.com",
+  id: 3,
+  name: "Sara Johnson",
+  role: "CMO",
+  status: "On Leave"
+}, {
+  email: "michael@acme.com",
+  id: 4,
+  name: "Michael Brown",
+  role: "CFO",
+  status: "Active"
+}, {
+  email: "emily@acme.com",
+  id: 5,
+  name: "Emily Davis",
+  role: "Product Manager",
+  status: "Inactive"
+}, {
+  email: "davis@acme.com",
+  id: 6,
+  name: "Davis Wilson",
+  role: "Lead Designer",
+  status: "Active"
+}, {
+  email: "olivia@acme.com",
+  id: 7,
+  name: "Olivia Martinez",
+  role: "Frontend Engineer",
+  status: "Active"
+}, {
+  email: "james@acme.com",
+  id: 8,
+  name: "James Taylor",
+  role: "Backend Engineer",
+  status: "Active"
+}];
+const ROWS_PER_PAGE = 4;
+export default defineComponent(() => {
+  const page = ref(1);
+  const totalPages = Math.ceil(users.length / ROWS_PER_PAGE);
+  const pages = Array.from({
+    length: totalPages
+  }, (_, i) => i + 1);
+  const paginatedItems = computed(() => {
+    const start = (page.value - 1) * ROWS_PER_PAGE;
+    return users.slice(start, start + ROWS_PER_PAGE);
+  });
+  const start = (page.value - 1) * ROWS_PER_PAGE + 1;
+  const end = Math.min(page.value * ROWS_PER_PAGE, users.length);
+  return () => <Table>
+      <Table.ScrollContainer>
+        <Table.Content aria-label="Table with pagination" class="min-w-[600px]">
+          <Table.Header columns={columns}>
+            {column => <Table.Column isRowHeader={column.id === "name"}>{column.name}</Table.Column>}
+          </Table.Header>
+          <Table.Body items={paginatedItems.value}>
+            {user => <Table.Row>
+                <Table.Collection items={columns}>
+                  {column => <Table.Cell>{user[column.id as keyof typeof user]}</Table.Cell>}
+                </Table.Collection>
+              </Table.Row>}
+          </Table.Body>
+        </Table.Content>
+      </Table.ScrollContainer>
+      <Table.Footer>
+        <Pagination size="sm">
+          <Pagination.Summary>
+            {start} to {end} of {users.length} results
+          </Pagination.Summary>
+          <Pagination.Content>
+            <Pagination.Item>
+              <Pagination.Previous isDisabled={page.value === 1} onPress={() => page.value = (p => Math.max(1, p - 1))(page.value)}>
+                <Pagination.PreviousIcon />
+                Prev
+              </Pagination.Previous>
+            </Pagination.Item>
+            {pages.map(p => <Pagination.Item key={p}>
+                <Pagination.Link isActive={p === page.value} onPress={() => page.value = p}>
+                  {p}
+                </Pagination.Link>
+              </Pagination.Item>)}
+            <Pagination.Item>
+              <Pagination.Next isDisabled={page.value === totalPages} onPress={() => page.value = (p => Math.min(totalPages, p + 1))(page.value)}>
+                Next
+                <Pagination.NextIcon />
+              </Pagination.Next>
+            </Pagination.Item>
+          </Pagination.Content>
+        </Pagination>
+      </Table.Footer>
+    </Table>;
+});

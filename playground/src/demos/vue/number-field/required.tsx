@@ -1,13 +1,21 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `number-field/required` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/number-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, NumberField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-full max-w-64 flex-col gap-4">
+      <NumberField isRequired minValue={0} name="quantity">
+        <Label>Quantity</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-[120px]" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+      </NumberField>
+      <NumberField isRequired defaultValue={1} maxValue={10} minValue={1} name="rating">
+        <Label>Rating</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-[120px]" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+        <Description>Rate from 1 to 10</Description>
+      </NumberField>
+    </div>);

@@ -19,3 +19,5 @@ export function WithCustomIcon() {
     </div>
   );
 }
+
+export default WithCustomIcon;

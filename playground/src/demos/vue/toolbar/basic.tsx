@@ -1,13 +1,28 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `toolbar/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/toolbar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Bold, Copy, Italic, Scissors, Underline } from "@gravity-ui/icons";
+import { Button, ButtonGroup, Separator, ToggleButton, ToggleButtonGroup, Toolbar } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Toolbar aria-label="Text formatting">
+      <ToggleButtonGroup aria-label="Text style" selectionMode="multiple">
+        <ToggleButton isIconOnly aria-label="Bold" id="bold">
+          <Bold />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Italic" id="italic">
+          <ToggleButtonGroup.Separator />
+          <Italic />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Underline" id="underline">
+          <ToggleButtonGroup.Separator />
+          <Underline />
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <Separator />
+      <ButtonGroup variant="tertiary">
+        <Button isIconOnly aria-label="Copy">
+          <Copy />
+        </Button>
+        <Button isIconOnly aria-label="Cut">
+          <ButtonGroup.Separator />
+          <Scissors />
+        </Button>
+      </ButtonGroup>
+    </Toolbar>);

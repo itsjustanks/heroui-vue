@@ -1,13 +1,45 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button-group/orientation` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { TextAlignCenter, TextAlignJustify, TextAlignLeft, TextAlignRight } from "@gravity-ui/icons";
+import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-start gap-8">
+      <div class="flex flex-col gap-2">
+        <span class="text-sm text-muted">Horizontal</span>
+        <ButtonGroup orientation="horizontal" variant="tertiary">
+          <Button isIconOnly>
+            <TextAlignLeft />
+          </Button>
+          <Button isIconOnly>
+            <ButtonGroup.Separator />
+            <TextAlignCenter />
+          </Button>
+          <Button isIconOnly>
+            <ButtonGroup.Separator />
+            <TextAlignRight />
+          </Button>
+          <Button isIconOnly>
+            <ButtonGroup.Separator />
+            <TextAlignJustify />
+          </Button>
+        </ButtonGroup>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span class="text-sm text-muted">Vertical</span>
+        <ButtonGroup orientation="vertical" variant="tertiary">
+          <Button isIconOnly>
+            <TextAlignLeft />
+          </Button>
+          <Button isIconOnly>
+            <ButtonGroup.Separator />
+            <TextAlignCenter />
+          </Button>
+          <Button isIconOnly>
+            <ButtonGroup.Separator />
+            <TextAlignRight />
+          </Button>
+          <Button isIconOnly>
+            <ButtonGroup.Separator />
+            <TextAlignJustify />
+          </Button>
+        </ButtonGroup>
+      </div>
+    </div>);

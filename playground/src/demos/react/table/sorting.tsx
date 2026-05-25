@@ -116,3 +116,5 @@ export function Sorting() {
     </Table>
   );
 }
+
+export default Sorting;

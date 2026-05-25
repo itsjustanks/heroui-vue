@@ -53,3 +53,5 @@ export function TooltipPlacement() {
     </div>
   );
 }
+
+export default TooltipPlacement;

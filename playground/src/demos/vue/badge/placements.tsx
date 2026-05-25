@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `badge/placements` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/badge
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Avatar, Badge } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
+export default defineComponent(() => {
+  const placements = ["top-right", "top-left", "bottom-right", "bottom-left"] as const;
+  return () => <div class="flex items-center gap-8">
+      {placements.map(placement => <div key={placement} class="flex flex-col items-center gap-2">
+          <Badge.Anchor>
+            <Avatar>
+              <Avatar.Image src={AVATAR_URL} />
+              <Avatar.Fallback>JD</Avatar.Fallback>
+            </Avatar>
+            <Badge color="accent" placement={placement} size="sm" />
+          </Badge.Anchor>
+          <span class="text-xs text-muted">{placement}</span>
+        </div>)}
+    </div>;
+});

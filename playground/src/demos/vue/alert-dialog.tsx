@@ -1,15 +1,8 @@
-import { defineComponent } from 'vue'
-import { AlertDialog, Button } from '@itsjustanks/heroui-vue'
+import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
 
-/**
- * AlertDialog demo — Vue TSX, heroui-vue compound API.
- *
- * Matches HeroUI v3's `alert-dialog/default` demo: the first child of the
- * AlertDialog root becomes the trigger automatically — no trigger wrapper.
- */
-export default defineComponent(() => {
-  return () => (
-    <div class="demo-row">
+/** React demo — AlertDialog (HeroUI v3), matches the HeroUI default demo. */
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="demo-row">
       <AlertDialog>
         <Button variant="danger">Delete Project</Button>
         <AlertDialog.Backdrop>
@@ -34,6 +27,4 @@ export default defineComponent(() => {
           </AlertDialog.Container>
         </AlertDialog.Backdrop>
       </AlertDialog>
-    </div>
-  )
-})
+    </div>);

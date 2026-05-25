@@ -26,3 +26,5 @@ export function SpinnerColors() {
     </div>
   );
 }
+
+export default SpinnerColors;

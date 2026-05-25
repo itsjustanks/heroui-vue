@@ -114,3 +114,5 @@ export function InputContainer() {
     </DateRangePicker>
   );
 }
+
+export default InputContainer;

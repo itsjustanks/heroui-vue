@@ -1,13 +1,20 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `tag-group/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tag-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Key } from "@itsjustanks/heroui-vue";
+import { Description, Label, Tag, TagGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const selected = ref(new Set(["news", "travel"]));
+  return () => <div class="flex flex-col gap-3">
+      <TagGroup selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={keys => selected.value = keys}>
+        <Label>Categories (controlled)</Label>
+        <TagGroup.List>
+          <Tag id="news">News</Tag>
+          <Tag id="travel">Travel</Tag>
+          <Tag id="gaming">Gaming</Tag>
+          <Tag id="shopping">Shopping</Tag>
+        </TagGroup.List>
+        <Description>
+          Selected: {Array.from(selected.value).length > 0 ? Array.from(selected.value).join(", ") : "None"}
+        </Description>
+      </TagGroup>
+    </div>;
+});

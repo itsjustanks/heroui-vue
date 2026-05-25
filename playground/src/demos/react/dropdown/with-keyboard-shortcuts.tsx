@@ -42,3 +42,5 @@ export function WithKeyboardShortcuts() {
     </Dropdown>
   );
 }
+
+export default WithKeyboardShortcuts;

@@ -61,3 +61,5 @@ export function WithSections() {
     </Dropdown>
   );
 }
+
+export default WithSections;

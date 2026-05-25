@@ -1,13 +1,29 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `pagination/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/pagination
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Pagination } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const page = ref(1);
+  const totalPages = 3;
+  return () => <Pagination class="justify-center">
+      <Pagination.Content>
+        <Pagination.Item>
+          <Pagination.Previous isDisabled onPress={() => page.value = (p => p - 1)(page.value)}>
+            <Pagination.PreviousIcon />
+            <span>Previous</span>
+          </Pagination.Previous>
+        </Pagination.Item>
+        {Array.from({
+        length: totalPages
+      }, (_, i) => i + 1).map(p => <Pagination.Item key={p}>
+            <Pagination.Link isActive={p === page.value} onPress={() => page.value = p}>
+              {p}
+            </Pagination.Link>
+          </Pagination.Item>)}
+        <Pagination.Item>
+          <Pagination.Next isDisabled onPress={() => page.value = (p => p + 1)(page.value)}>
+            <span>Next</span>
+            <Pagination.NextIcon />
+          </Pagination.Next>
+        </Pagination.Item>
+      </Pagination.Content>
+    </Pagination>;
+});

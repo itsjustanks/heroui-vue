@@ -12,3 +12,5 @@ export function Basic() {
     </NumberField>
   );
 }
+
+export default Basic;

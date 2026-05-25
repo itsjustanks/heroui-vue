@@ -68,3 +68,5 @@ export function CustomPortal() {
     </div>
   );
 }
+
+export default CustomPortal;

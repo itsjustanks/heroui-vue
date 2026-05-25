@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `time-field/invalid` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/time-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { FieldError, Label, TimeField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <TimeField isInvalid isRequired class="w-[256px]" name="time">
+        <Label>Time</Label>
+        <TimeField.Group>
+          <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
+        </TimeField.Group>
+        <FieldError>Please enter a valid time</FieldError>
+      </TimeField>
+      <TimeField isInvalid class="w-[256px]" name="invalid-time">
+        <Label>Time</Label>
+        <TimeField.Group>
+          <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
+        </TimeField.Group>
+        <FieldError>Time must be within business hours</FieldError>
+      </TimeField>
+    </div>);

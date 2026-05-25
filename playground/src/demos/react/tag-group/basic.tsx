@@ -25,3 +25,5 @@ export function TagGroupBasic() {
     </TagGroup>
   );
 }
+
+export default TagGroupBasic;

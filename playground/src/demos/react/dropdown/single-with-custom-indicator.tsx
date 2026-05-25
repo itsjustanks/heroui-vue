@@ -67,3 +67,5 @@ export function SingleWithCustomIndicator() {
     </Dropdown>
   );
 }
+
+export default SingleWithCustomIndicator;

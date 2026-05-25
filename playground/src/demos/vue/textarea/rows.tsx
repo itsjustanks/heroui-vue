@@ -1,13 +1,14 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `textarea/rows` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/textarea
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, TextArea } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-96 flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <Label htmlFor="textarea-rows-3">Short feedback</Label>
+        <TextArea aria-label="Short feedback" id="textarea-rows-3" placeholder="This week's highlights..." rows={3} />
+      </div>
+      <div class="flex flex-col gap-2">
+        <Label htmlFor="textarea-rows-6">Detailed notes</Label>
+        <TextArea aria-label="Detailed notes" id="textarea-rows-6" placeholder="Write out the full meeting notes..." rows={6} style={{
+      resize: "vertical"
+    }} />
+      </div>
+    </div>);

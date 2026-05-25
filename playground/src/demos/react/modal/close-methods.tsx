@@ -82,3 +82,5 @@ export function CloseMethods() {
     </div>
   );
 }
+
+export default CloseMethods;

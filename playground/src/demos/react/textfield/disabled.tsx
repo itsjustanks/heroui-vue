@@ -9,3 +9,5 @@ export function Disabled() {
     </TextField>
   );
 }
+
+export default Disabled;

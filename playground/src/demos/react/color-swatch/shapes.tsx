@@ -8,3 +8,5 @@ export function ColorSwatchShapes() {
     </div>
   );
 }
+
+export default ColorSwatchShapes;

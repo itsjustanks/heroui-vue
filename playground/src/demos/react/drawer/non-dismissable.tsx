@@ -28,3 +28,5 @@ export function NonDismissable() {
     </Drawer>
   );
 }
+
+export default NonDismissable;

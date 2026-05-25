@@ -1,13 +1,47 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `select/asynchronous-loading` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/select
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, ListBox, Select, Spinner } from "@itsjustanks/heroui-vue";
+import { useAsyncList } from "@react-stately/data";
+import { Collection, ListBoxLoadMoreItem } from "react-aria-components";
+import { defineComponent } from "vue";
+interface Pokemon {
+  name: string;
+}
+export default defineComponent(() => {
+  const list = useAsyncList<Pokemon>({
+    async load({
+      cursor,
+      signal
+    }) {
+      const res = await fetch(cursor || `https://pokeapi.co/api/v2/pokemon`, {
+        signal
+      });
+      const json = await res.json();
+      return {
+        cursor: json.next,
+        items: json.results
+      };
+    }
+  });
+  return () => <Select class="w-[256px]" placeholder="Select a Pokemon">
+      <Label>Pick a Pokemon</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox>
+          <Collection items={list.items}>
+            {(item: Pokemon) => <ListBox.Item id={item.name} textValue={item.name}>
+                {item.name}
+                <ListBox.ItemIndicator />
+              </ListBox.Item>}
+          </Collection>
+          <ListBoxLoadMoreItem isLoading={list.loadingState === "loadingMore"} onLoadMore={list.loadMore}>
+            <div class="flex items-center justify-center gap-2 py-2">
+              <Spinner size="sm" />
+              <span class="text-sm text-muted">Loading more...</span>
+            </div>
+          </ListBoxLoadMoreItem>
+        </ListBox>
+      </Select.Popover>
+    </Select>;
+});

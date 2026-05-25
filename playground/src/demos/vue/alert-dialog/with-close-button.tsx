@@ -1,13 +1,31 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `alert-dialog/with-close-button` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/alert-dialog
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <AlertDialog>
+      <Button variant="secondary">Show Information</Button>
+      <AlertDialog.Backdrop>
+        <AlertDialog.Container>
+          <AlertDialog.Dialog class="sm:max-w-[400px]">
+            <AlertDialog.CloseTrigger />
+            <AlertDialog.Header>
+              <AlertDialog.Icon status="accent" />
+              <AlertDialog.Heading>Less critical information</AlertDialog.Heading>
+              <p class="text-sm leading-relaxed text-muted">
+                Close button and backdrop dismiss are enabled
+              </p>
+            </AlertDialog.Header>
+            <AlertDialog.Body>
+              <p>
+                For less critical confirmations, you can enable both the close button and backdrop
+                dismissal. This provides users with multiple ways to exit the dialog.
+              </p>
+            </AlertDialog.Body>
+            <AlertDialog.Footer>
+              <Button slot="close" variant="tertiary">
+                Cancel
+              </Button>
+              <Button slot="close">Confirm</Button>
+            </AlertDialog.Footer>
+          </AlertDialog.Dialog>
+        </AlertDialog.Container>
+      </AlertDialog.Backdrop>
+    </AlertDialog>);

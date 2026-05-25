@@ -1,13 +1,33 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox-group/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, CheckboxGroup, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const selected = ref(["coding", "design"]);
+  return () => <CheckboxGroup class="min-w-[320px]" name="skills" value={selected.value} onChange={setSelected}>
+      <Label>Your skills</Label>
+      <Checkbox value="coding">
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Coding</Label>
+        </Checkbox.Content>
+      </Checkbox>
+      <Checkbox value="design">
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Design</Label>
+        </Checkbox.Content>
+      </Checkbox>
+      <Checkbox value="writing">
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Writing</Label>
+        </Checkbox.Content>
+      </Checkbox>
+      <Label class="my-4 text-sm text-muted">Selected: {selected.value.join(", ") || "None"}</Label>
+    </CheckboxGroup>;
+});

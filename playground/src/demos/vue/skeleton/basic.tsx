@@ -1,13 +1,10 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `skeleton/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/skeleton
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Skeleton } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="shadow-panel w-[250px] space-y-5 rounded-lg bg-transparent p-4">
+      <Skeleton class="h-32 rounded-lg" />
+      <div class="space-y-3">
+        <Skeleton class="h-3 w-3/5 rounded-lg" />
+        <Skeleton class="h-3 w-4/5 rounded-lg" />
+        <Skeleton class="h-3 w-2/5 rounded-lg" />
+      </div>
+    </div>);

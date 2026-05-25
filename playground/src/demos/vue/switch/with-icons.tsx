@@ -1,13 +1,47 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `switch/with-icons` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/switch
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { BellFill, BellSlash, Check, Microphone, MicrophoneSlash, Moon, Power, Sun, VolumeFill, VolumeSlashFill } from "@gravity-ui/icons";
+import { Switch } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const icons = {
+    check: {
+      off: Power,
+      on: Check,
+      selectedControlClass: "bg-green-500/80"
+    },
+    darkMode: {
+      off: Moon,
+      on: Sun,
+      selectedControlClass: ""
+    },
+    microphone: {
+      off: Microphone,
+      on: MicrophoneSlash,
+      selectedControlClass: "bg-red-500/80"
+    },
+    notification: {
+      off: BellSlash,
+      on: BellFill,
+      selectedControlClass: "bg-purple-500/80"
+    },
+    volume: {
+      off: VolumeFill,
+      on: VolumeSlashFill,
+      selectedControlClass: "bg-blue-500/80"
+    }
+  };
+  return () => <div class="flex gap-3">
+      {Object.entries(icons).map(([key, value]) => <Switch key={key} defaultSelected size="lg">
+          {({
+        isSelected
+      }) => <>
+              <Switch.Control class={isSelected ? value.selectedControlClass : ""}>
+                <Switch.Thumb>
+                  <Switch.Icon>
+                    {isSelected ? <value.on class="size-3 text-inherit opacity-100" /> : <value.off class="size-3 text-inherit opacity-70" />}
+                  </Switch.Icon>
+                </Switch.Thumb>
+              </Switch.Control>
+            </>}
+        </Switch>)}
+    </div>;
+});

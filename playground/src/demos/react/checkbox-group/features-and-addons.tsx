@@ -59,3 +59,5 @@ export function FeaturesAndAddOns() {
     </div>
   );
 }
+
+export default FeaturesAndAddOns;

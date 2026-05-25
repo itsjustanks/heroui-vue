@@ -1,13 +1,40 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `switch/form` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/switch
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Label, Switch, SwitchGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    alert(`Form submitted with:\n${Array.from(formData.entries()).map(([key, value]) => `${key}: ${value}`).join("\n")}`);
+  };
+  return () => <form class="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <SwitchGroup>
+        <Switch name="notifications" value="on">
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+          <Switch.Content>
+            <Label class="text-sm">Enable notifications</Label>
+          </Switch.Content>
+        </Switch>
+        <Switch defaultSelected name="newsletter" value="on">
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+          <Switch.Content>
+            <Label class="text-sm">Subscribe to newsletter</Label>
+          </Switch.Content>
+        </Switch>
+        <Switch name="marketing" value="on">
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
+          <Switch.Content>
+            <Label class="text-sm">Receive marketing updates</Label>
+          </Switch.Content>
+        </Switch>
+      </SwitchGroup>
+      <Button class="mt-4" size="sm" type="submit" variant="primary">
+        Submit
+      </Button>
+    </form>;
+});

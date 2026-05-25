@@ -58,3 +58,5 @@ export function TooltipCustomTrigger() {
     </div>
   );
 }
+
+export default TooltipCustomTrigger;

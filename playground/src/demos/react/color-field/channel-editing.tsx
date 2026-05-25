@@ -63,3 +63,5 @@ export function ChannelEditing() {
     </div>
   );
 }
+
+export default ChannelEditing;

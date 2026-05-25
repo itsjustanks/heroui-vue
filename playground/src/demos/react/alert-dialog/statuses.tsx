@@ -80,3 +80,5 @@ export function Statuses() {
     </div>
   );
 }
+
+export default Statuses;

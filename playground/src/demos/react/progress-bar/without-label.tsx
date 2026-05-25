@@ -9,3 +9,5 @@ export function WithoutLabel() {
     </ProgressBar>
   );
 }
+
+export default WithoutLabel;

@@ -12,3 +12,5 @@ export function DefaultSelected() {
     </Checkbox>
   );
 }
+
+export default DefaultSelected;

@@ -30,3 +30,5 @@ export function TagGroupSizes() {
     </div>
   );
 }
+
+export default TagGroupSizes;

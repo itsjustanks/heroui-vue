@@ -1,13 +1,38 @@
-import { defineComponent } from 'vue'
+import type { Color } from "@itsjustanks/heroui-vue";
+import { Button, ColorField, ColorSwatch, Description, Form, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const value = ref(null);
+  const isSubmitting = ref(false);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!value.value) {
+      return;
+    }
+    isSubmitting.value = true;
 
-/** Vue port of `color-field/form-example` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Color submitted:", {
+        color: value.value.toString("hex")
+      });
+      value.value = null;
+      isSubmitting.value = false;
+    }, 1500);
+  };
+  return () => <Form class="flex w-[280px] flex-col gap-4" onSubmit={handleSubmit}>
+      <ColorField fullWidth isRequired class="w-full" name="brand-color" value={value.value} onChange={setValue}>
+        <Label>Brand Color</Label>
+        <ColorField.Group>
+          <ColorField.Prefix>
+            <ColorSwatch color={value.value ?? undefined} size="xs" />
+          </ColorField.Prefix>
+          <ColorField.Input placeholder="#000000" />
+        </ColorField.Group>
+        <Description>Choose your brand's primary color</Description>
+      </ColorField>
+      <Button class="w-full" isDisabled={!value.value} isPending={isSubmitting.value} type="submit" variant="primary">
+        {isSubmitting.value ? "Saving..." : "Save Color"}
+      </Button>
+    </Form>;
+});

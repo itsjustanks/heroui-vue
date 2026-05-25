@@ -1,13 +1,16 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `typography/render-props` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/typography
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Typography } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex max-w-xl flex-col gap-4">
+      <Typography render={({
+    children,
+    ...domProps
+  }) => <h2 {...domProps}>{children}</h2>} type="h1">
+        H1 visual style, h2 semantic element
+      </Typography>
+      <Typography render={({
+    children,
+    ...domProps
+  }) => <span {...domProps}>{children}</span>}>
+        The render prop can swap the underlying element while preserving HeroUI props and styles.
+      </Typography>
+    </div>);

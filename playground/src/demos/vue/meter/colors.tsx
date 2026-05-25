@@ -1,13 +1,39 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `meter/colors` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/meter
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, Meter } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-64 flex-col gap-6">
+      <Meter color="default" value={50}>
+        <Label>Default</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+      <Meter color="accent" value={50}>
+        <Label>Accent</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+      <Meter color="success" value={50}>
+        <Label>Success</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+      <Meter color="warning" value={50}>
+        <Label>Warning</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+      <Meter color="danger" value={50}>
+        <Label>Danger</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+    </div>);

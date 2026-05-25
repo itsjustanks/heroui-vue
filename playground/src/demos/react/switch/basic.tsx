@@ -12,3 +12,5 @@ export function Basic() {
     </Switch>
   );
 }
+
+export default Basic;

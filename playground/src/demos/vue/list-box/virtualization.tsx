@@ -1,13 +1,39 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `list-box/virtualization` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/list-box
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, ListBox, ListLayout, Virtualizer } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+export default defineComponent(() => {
+  const firstNames = ["Emma", "Liam", "Olivia", "Noah", "Ava", "James", "Sophia", "Oliver", "Isabella", "Lucas", "Mia", "Ethan", "Charlotte", "Mason", "Amelia", "Logan", "Harper", "Alexander", "Ella", "Benjamin"];
+  const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Anderson", "Taylor", "Thomas", "Jackson", "White", "Harris", "Clark", "Lewis", "Robinson", "Walker"];
+  function generateUsers(n: number): User[] {
+    const users: User[] = [];
+    for (let i = 0; i < n; i++) {
+      const firstName = firstNames[i % firstNames.length];
+      const lastName = lastNames[Math.floor(i / firstNames.length) % lastNames.length];
+      const name = `${firstName} ${lastName}`;
+      users.push({
+        email: `${firstName?.toLowerCase()}.${lastName?.toLowerCase()}@acme.com`,
+        id: i + 1,
+        name
+      });
+    }
+    return users;
+  }
+  const users = generateUsers(1000);
+  return () => <Virtualizer layout={ListLayout} layoutOptions={{
+    rowHeight: 50
+  }}>
+      <ListBox aria-label="Virtualized list with 1000 items" class="h-[400px] w-[300px] overflow-y-auto" items={users}>
+        {user => <ListBox.Item id={user.id} textValue={user.name}>
+            <div class="flex flex-col">
+              <Label>{user.name}</Label>
+              <Description>{user.email}</Description>
+            </div>
+            <ListBox.ItemIndicator />
+          </ListBox.Item>}
+      </ListBox>
+    </Virtualizer>;
+});

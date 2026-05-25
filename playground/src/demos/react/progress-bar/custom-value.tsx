@@ -118,3 +118,5 @@ export function CustomValue() {
     </div>
   );
 }
+
+export default CustomValue;

@@ -40,3 +40,5 @@ export function WithDescription() {
     </Select>
   );
 }
+
+export default WithDescription;

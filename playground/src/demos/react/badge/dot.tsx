@@ -19,3 +19,5 @@ export function BadgeDot() {
     </div>
   );
 }
+
+export default BadgeDot;

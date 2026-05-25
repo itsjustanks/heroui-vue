@@ -9,3 +9,5 @@ export function Grid() {
     </div>
   );
 }
+
+export default Grid;

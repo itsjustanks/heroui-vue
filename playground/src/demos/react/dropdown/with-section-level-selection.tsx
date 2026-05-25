@@ -107,3 +107,5 @@ export function WithSectionLevelSelection() {
     </Dropdown>
   );
 }
+
+export default WithSectionLevelSelection;

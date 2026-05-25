@@ -40,3 +40,5 @@ export function WithDescription() {
     </ComboBox>
   );
 }
+
+export default WithDescription;

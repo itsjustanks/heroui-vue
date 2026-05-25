@@ -1,13 +1,20 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `number-field/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/number-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, NumberField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <NumberField defaultValue={100} minValue={0} name="primary-width" variant="primary">
+        <Label>Primary variant</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-[120px]" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+      </NumberField>
+      <NumberField defaultValue={100} minValue={0} name="secondary-width" variant="secondary">
+        <Label>Secondary variant</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-[120px]" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+      </NumberField>
+    </div>);

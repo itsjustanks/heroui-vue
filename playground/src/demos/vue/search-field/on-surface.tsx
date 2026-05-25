@@ -1,13 +1,22 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `search-field/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/search-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, SearchField, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="flex w-full max-w-sm flex-col gap-4 rounded-3xl p-6">
+      <SearchField name="search" variant="secondary">
+        <Label>Search</Label>
+        <SearchField.Group>
+          <SearchField.SearchIcon />
+          <SearchField.Input class="w-full" placeholder="Search..." />
+          <SearchField.ClearButton />
+        </SearchField.Group>
+        <Description>Enter keywords to search</Description>
+      </SearchField>
+      <SearchField name="search-2" variant="secondary">
+        <Label>Advanced search</Label>
+        <SearchField.Group>
+          <SearchField.SearchIcon />
+          <SearchField.Input class="w-full" placeholder="Advanced search..." />
+          <SearchField.ClearButton />
+        </SearchField.Group>
+        <Description>Use filters to refine your search</Description>
+      </SearchField>
+    </Surface>);

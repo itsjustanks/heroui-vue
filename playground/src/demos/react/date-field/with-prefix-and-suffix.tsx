@@ -18,3 +18,5 @@ export function WithPrefixAndSuffix() {
     </DateField>
   );
 }
+
+export default WithPrefixAndSuffix;

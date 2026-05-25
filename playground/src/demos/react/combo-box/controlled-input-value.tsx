@@ -45,3 +45,5 @@ export function ControlledInputValue() {
     </div>
   );
 }
+
+export default ControlledInputValue;

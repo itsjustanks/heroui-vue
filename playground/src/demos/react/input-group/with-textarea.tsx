@@ -87,3 +87,5 @@ export function WithTextArea() {
     </TextField>
   );
 }
+
+export default WithTextArea;

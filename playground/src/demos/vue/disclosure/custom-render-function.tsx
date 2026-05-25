@@ -1,13 +1,31 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `disclosure/custom-render-function` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/disclosure
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { QrCode } from "@gravity-ui/icons";
+import { Button, Disclosure } from "@itsjustanks/heroui-vue";
+import { Icon } from "@iconify/react";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const [isExpanded, setIsExpanded] = React.useState(true);
+  return () => <div class="w-full max-w-md text-center">
+      <Disclosure isExpanded={isExpanded} render={props => <div {...props} data-custom="foo" />} onExpandedChange={setIsExpanded}>
+        <Disclosure.Heading>
+          <Button slot="trigger" variant="secondary">
+            <QrCode />
+            Preview HeroUI Native
+            <Disclosure.Indicator />
+          </Button>
+        </Disclosure.Heading>
+        <Disclosure.Content render={props => <div data-custom="bar" {...props} />}>
+          <Disclosure.Body class="shadow-panel flex flex-col items-center rounded-3xl bg-surface p-4 text-center">
+            <p class="text-sm text-muted">
+              Scan this QR code with your camera app to preview the HeroUI native components.
+            </p>
+            <img alt="Expo Go QR Code" class="aspect-square w-full max-w-54 object-cover" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/images/qr-code-native.png" />
+            <p class="text-sm text-muted">Expo must be installed on your device.</p>
+            <Button class="mt-4" variant="primary">
+              <Icon icon="tabler:brand-apple-filled" />
+              Download on App Store
+            </Button>
+          </Disclosure.Body>
+        </Disclosure.Content>
+      </Disclosure>
+    </div>;
+});

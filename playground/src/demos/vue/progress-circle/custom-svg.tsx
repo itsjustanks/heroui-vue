@@ -1,13 +1,24 @@
-import { defineComponent } from 'vue'
+import { ProgressCircle } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-end gap-6">
+      <ProgressCircle aria-label="Thin circle" value={60}>
+        <ProgressCircle.Track strokeWidth={2} viewBox="0 0 36 36">
+          <ProgressCircle.TrackCircle cx={18} cy={18} r={17} strokeWidth={2} />
+          <ProgressCircle.FillCircle cx={18} cy={18} r={17} strokeWidth={2} />
+        </ProgressCircle.Track>
+      </ProgressCircle>
 
-/** Vue port of `progress-circle/custom-svg` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/progress-circle
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <ProgressCircle aria-label="Default circle" value={60}>
+        <ProgressCircle.Track>
+          <ProgressCircle.TrackCircle />
+          <ProgressCircle.FillCircle />
+        </ProgressCircle.Track>
+      </ProgressCircle>
+
+      <ProgressCircle aria-label="Thick circle" value={60}>
+        <ProgressCircle.Track strokeWidth={6} viewBox="0 0 36 36">
+          <ProgressCircle.TrackCircle cx={18} cy={18} r={15} strokeWidth={6} />
+          <ProgressCircle.FillCircle cx={18} cy={18} r={15} strokeWidth={6} />
+        </ProgressCircle.Track>
+      </ProgressCircle>
+    </div>);

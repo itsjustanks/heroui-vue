@@ -102,3 +102,5 @@ export function CustomValue() {
     </Select>
   );
 }
+
+export default CustomValue;

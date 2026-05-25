@@ -15,3 +15,5 @@ export function WithIconPrefixAndTextSuffix() {
     </TextField>
   );
 }
+
+export default WithIconPrefixAndTextSuffix;

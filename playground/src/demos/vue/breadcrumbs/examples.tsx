@@ -1,42 +1,36 @@
-import { defineComponent } from 'vue'
-import { Breadcrumbs } from '@itsjustanks/heroui-vue'
-import { currentExample } from '../../shared'
-
-function Crumbs({ disabled, separator = '/' }: { disabled?: boolean; separator?: string }) {
-  return (
-    <Breadcrumbs separator={separator}>
+import { Breadcrumbs } from "@itsjustanks/heroui-vue";
+import { currentExample } from '../../shared';
+import { defineComponent } from "vue";
+function Crumbs({
+  disabled,
+  separator = '/'
+}: {
+  disabled?: boolean;
+  separator?: string;
+}) {
+  return <Breadcrumbs separator={separator}>
       <Breadcrumbs.Item href="#">Home</Breadcrumbs.Item>
       <Breadcrumbs.Item href="#" isDisabled={disabled}>Components</Breadcrumbs.Item>
       <Breadcrumbs.Item href="#">Navigation</Breadcrumbs.Item>
       <Breadcrumbs.Item>Breadcrumbs</Breadcrumbs.Item>
-    </Breadcrumbs>
-  )
+    </Breadcrumbs>;
 }
-
-export default defineComponent(() => () => {
-  const example = currentExample()
-
+export default defineComponent(() => {
+  const example = currentExample();
   if (example === 'level-2') {
-    return (
-      <Breadcrumbs>
+    return <Breadcrumbs>
         <Breadcrumbs.Item href="#">Home</Breadcrumbs.Item>
         <Breadcrumbs.Item>Docs</Breadcrumbs.Item>
-      </Breadcrumbs>
-    )
+      </Breadcrumbs>;
   }
-
   if (example === 'level-3') {
-    return (
-      <Breadcrumbs>
+    return <Breadcrumbs>
         <Breadcrumbs.Item href="#">Home</Breadcrumbs.Item>
         <Breadcrumbs.Item href="#">Components</Breadcrumbs.Item>
         <Breadcrumbs.Item>Breadcrumbs</Breadcrumbs.Item>
-      </Breadcrumbs>
-    )
+      </Breadcrumbs>;
   }
-
-  if (example === 'custom-separator') return <Crumbs separator=">" />
-  if (example === 'disabled') return <Crumbs disabled />
-
-  return <Crumbs />
-})
+  if (example === 'custom-separator') return <Crumbs separator=">" />;
+  if (example === 'disabled') return <Crumbs disabled />;
+  return () => <Crumbs />;
+});

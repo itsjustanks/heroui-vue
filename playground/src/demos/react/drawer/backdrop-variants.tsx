@@ -36,3 +36,5 @@ export function BackdropVariants() {
     </div>
   );
 }
+
+export default BackdropVariants;

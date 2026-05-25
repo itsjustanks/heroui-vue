@@ -1,13 +1,50 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `date-range-picker/with-custom-indicator` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/date-range-picker
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { DateField, DateRangePicker, Description, Label, RangeCalendar } from "@itsjustanks/heroui-vue";
+import { Icon } from "@iconify/react";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <DateRangePicker class="w-72" endName="endDate" startName="startDate">
+      <Label>Trip dates</Label>
+      <DateField.Group fullWidth>
+        <DateField.Input slot="start">
+          {segment => <DateField.Segment segment={segment} />}
+        </DateField.Input>
+        <DateRangePicker.RangeSeparator />
+        <DateField.Input slot="end">
+          {segment => <DateField.Segment segment={segment} />}
+        </DateField.Input>
+        <DateField.Suffix>
+          <DateRangePicker.Trigger>
+            <DateRangePicker.TriggerIndicator>
+              <Icon class="size-4" icon="gravity-ui:chevron-down" />
+            </DateRangePicker.TriggerIndicator>
+          </DateRangePicker.Trigger>
+        </DateField.Suffix>
+      </DateField.Group>
+      <Description>Replace the default calendar icon by passing custom children.</Description>
+      <DateRangePicker.Popover>
+        <RangeCalendar aria-label="Trip dates">
+          <RangeCalendar.Header>
+            <RangeCalendar.YearPickerTrigger>
+              <RangeCalendar.YearPickerTriggerHeading />
+              <RangeCalendar.YearPickerTriggerIndicator />
+            </RangeCalendar.YearPickerTrigger>
+            <RangeCalendar.NavButton slot="previous" />
+            <RangeCalendar.NavButton slot="next" />
+          </RangeCalendar.Header>
+          <RangeCalendar.Grid>
+            <RangeCalendar.GridHeader>
+              {day => <RangeCalendar.HeaderCell>{day}</RangeCalendar.HeaderCell>}
+            </RangeCalendar.GridHeader>
+            <RangeCalendar.GridBody>
+              {date => <RangeCalendar.Cell date={date} />}
+            </RangeCalendar.GridBody>
+          </RangeCalendar.Grid>
+          <RangeCalendar.YearPickerGrid>
+            <RangeCalendar.YearPickerGridBody>
+              {({
+            year
+          }) => <RangeCalendar.YearPickerCell year={year} />}
+            </RangeCalendar.YearPickerGridBody>
+          </RangeCalendar.YearPickerGrid>
+        </RangeCalendar>
+      </DateRangePicker.Popover>
+    </DateRangePicker>);

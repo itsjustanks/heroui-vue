@@ -1,13 +1,85 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `autocomplete/email-recipients` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/autocomplete
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { Key } from "@itsjustanks/heroui-vue";
+import { Autocomplete, Description, EmptyState, Label, ListBox, SearchField, Tag, TagGroup, useFilter } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const emails = [{
+    email: "alice@example.com",
+    id: "alice@example.com",
+    name: "Alice Johnson"
+  }, {
+    email: "bob@example.com",
+    id: "bob@example.com",
+    name: "Bob Smith"
+  }, {
+    email: "charlie@example.com",
+    id: "charlie@example.com",
+    name: "Charlie Brown"
+  }, {
+    email: "diana@example.com",
+    id: "diana@example.com",
+    name: "Diana Prince"
+  }, {
+    email: "eve@example.com",
+    id: "eve@example.com",
+    name: "Eve Wilson"
+  }];
+  const selectedKeys = ref([]);
+  const {
+    contains
+  } = useFilter({
+    sensitivity: "base"
+  });
+  const onRemoveTags = (keys: Set<Key>) => {
+    selectedKeys.value = (prev => prev.filter(key => !keys.has(key)))(selectedKeys.value);
+  };
+  return () => <Autocomplete class="w-[256px]" placeholder="Add recipients" selectionMode="multiple" value={selectedKeys.value} onChange={keys => selectedKeys.value = keys as Key[]}>
+      <Label>To</Label>
+      <Autocomplete.Trigger>
+        <Autocomplete.Value>
+          {({
+          defaultChildren,
+          isPlaceholder,
+          state
+        }) => {
+          if (isPlaceholder || state.selectedItems.length === 0) {
+            return defaultChildren;
+          }
+          const selectedItemsKeys = state.selectedItems.map(item => item.key);
+          return <TagGroup size="sm" onRemove={onRemoveTags}>
+                <TagGroup.List>
+                  {selectedItemsKeys.map(selectedItemKey => {
+                const email = emails.find(e => e.id === selectedItemKey);
+                if (!email) return null;
+                return <Tag key={email.id} id={email.id}>
+                        {email.email}
+                      </Tag>;
+              })}
+                </TagGroup.List>
+              </TagGroup>;
+        }}
+        </Autocomplete.Value>
+        <Autocomplete.ClearButton />
+        <Autocomplete.Indicator />
+      </Autocomplete.Trigger>
+      <Autocomplete.Popover>
+        <Autocomplete.Filter filter={contains}>
+          <SearchField autoFocus name="search" variant="secondary">
+            <SearchField.Group>
+              <SearchField.SearchIcon />
+              <SearchField.Input placeholder="Search emails..." />
+              <SearchField.ClearButton />
+            </SearchField.Group>
+          </SearchField>
+          <ListBox renderEmptyState={() => <EmptyState>No recipients found</EmptyState>}>
+            {emails.map(email => <ListBox.Item key={email.id} id={email.id} textValue={email.email}>
+                <div class="flex flex-col">
+                  <Label>{email.name}</Label>
+                  <Description>{email.email}</Description>
+                </div>
+                <ListBox.ItemIndicator />
+              </ListBox.Item>)}
+          </ListBox>
+        </Autocomplete.Filter>
+      </Autocomplete.Popover>
+    </Autocomplete>;
+});

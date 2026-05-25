@@ -78,3 +78,5 @@ export const TypographyScale = () => {
     </div>
   );
 };
+
+export default TypographyScale;

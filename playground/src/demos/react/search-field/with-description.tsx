@@ -24,3 +24,5 @@ export function WithDescription() {
     </div>
   );
 }
+
+export default WithDescription;

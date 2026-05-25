@@ -127,3 +127,5 @@ export function MenuTrigger() {
     </div>
   );
 }
+
+export default MenuTrigger;

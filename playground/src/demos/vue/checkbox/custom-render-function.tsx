@@ -1,13 +1,10 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox/custom-render-function` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-3">
+      <Checkbox id="basic-terms" render={props => <label {...props} data-custom="bar" />}>
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+      </Checkbox>
+      <Label htmlFor="basic-terms">Accept terms and conditions</Label>
+    </div>);

@@ -124,3 +124,5 @@ export function Callbacks() {
     </div>
   );
 }
+
+export default Callbacks;

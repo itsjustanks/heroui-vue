@@ -1,13 +1,9 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `description/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/description
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Input, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-1">
+      <Label htmlFor="email">Email</Label>
+      <Input aria-describedby="email-description" class="w-64" id="email" placeholder="you@example.com" type="email" />
+      <Description id="email-description">
+        We'll never share your email with anyone else.
+      </Description>
+    </div>);

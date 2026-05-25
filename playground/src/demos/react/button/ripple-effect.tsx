@@ -11,3 +11,5 @@ export function RippleEffect() {
     </Button>
   );
 }
+
+export default RippleEffect;

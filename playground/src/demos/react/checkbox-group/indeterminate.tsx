@@ -53,3 +53,5 @@ export function Indeterminate() {
     </div>
   );
 }
+
+export default Indeterminate;

@@ -26,3 +26,5 @@ export function Disabled() {
     </CheckboxGroup>
   );
 }
+
+export default Disabled;

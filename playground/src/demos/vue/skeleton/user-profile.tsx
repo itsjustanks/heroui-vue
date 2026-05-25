@@ -1,13 +1,9 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `skeleton/user-profile` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/skeleton
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Skeleton } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-3">
+      <Skeleton class="h-10 w-10 shrink-0 rounded-full" />
+      <div class="flex-1 space-y-2">
+        <Skeleton class="h-3 w-36 rounded-lg" />
+        <Skeleton class="h-3 w-24 rounded-lg" />
+      </div>
+    </div>);

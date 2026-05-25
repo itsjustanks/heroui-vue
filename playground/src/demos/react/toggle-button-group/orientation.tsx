@@ -39,3 +39,5 @@ export function Orientation() {
     </div>
   );
 }
+
+export default Orientation;

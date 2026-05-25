@@ -1,13 +1,27 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `scroll-shadow/with-card` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/scroll-shadow
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Card, ScrollShadow } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Card class="max-w-[400px]">
+      <Card.Header>
+        <Card.Title>Terms and Conditions</Card.Title>
+        <Card.Description>Please review before proceeding</Card.Description>
+      </Card.Header>
+      <Card.Content class="p-0">
+        <ScrollShadow class="h-[300px] px-4" size={80}>
+          <div class="space-y-4">
+            {Array.from({
+          length: 10
+        }).map((_, idx) => <p key={`scroll-shadow-lorem-content-${idx}`}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non
+                risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor
+                quam. Morbi accumsan cursus enim, sed ultricies sapien.
+              </p>)}
+          </div>
+        </ScrollShadow>
+      </Card.Content>
+      <Card.Footer class="mt-4 flex flex-row gap-2">
+        <Button class="w-full" variant="secondary">
+          Cancel
+        </Button>
+        <Button class="w-full">Accept</Button>
+      </Card.Footer>
+    </Card>);

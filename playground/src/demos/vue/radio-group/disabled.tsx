@@ -1,13 +1,33 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `radio-group/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/radio-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, Radio, RadioGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <RadioGroup isDisabled defaultValue="pro" name="plan-disabled">
+      <Label>Subscription plan</Label>
+      <Description>Plan changes are temporarily paused while we roll out updates.</Description>
+      <Radio value="starter">
+        <Radio.Control>
+          <Radio.Indicator />
+        </Radio.Control>
+        <Radio.Content>
+          <Label>Starter</Label>
+          <Description>For side projects and small teams</Description>
+        </Radio.Content>
+      </Radio>
+      <Radio value="pro">
+        <Radio.Control>
+          <Radio.Indicator />
+        </Radio.Control>
+        <Radio.Content>
+          <Label>Pro</Label>
+          <Description>Advanced reporting and analytics</Description>
+        </Radio.Content>
+      </Radio>
+      <Radio value="teams">
+        <Radio.Control>
+          <Radio.Indicator />
+        </Radio.Control>
+        <Radio.Content>
+          <Label>Teams</Label>
+          <Description>Share access with up to 10 teammates</Description>
+        </Radio.Content>
+      </Radio>
+    </RadioGroup>);

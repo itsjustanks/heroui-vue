@@ -36,3 +36,5 @@ export function Vertical() {
     </div>
   );
 }
+
+export default Vertical;

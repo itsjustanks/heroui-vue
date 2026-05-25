@@ -14,3 +14,5 @@ export function CustomRenderFunction() {
     </ColorSwatchPicker>
   );
 }
+
+export default CustomRenderFunction;

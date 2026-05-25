@@ -50,3 +50,5 @@ export function MultiSelect() {
     </Surface>
   );
 }
+
+export default MultiSelect;

@@ -25,3 +25,5 @@ export function TagGroupDisabled() {
     </div>
   );
 }
+
+export default TagGroupDisabled;

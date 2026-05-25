@@ -14,3 +14,5 @@ export function WithSuffixIcon() {
     </TimeField>
   );
 }
+
+export default WithSuffixIcon;

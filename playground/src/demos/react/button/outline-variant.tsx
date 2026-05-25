@@ -20,3 +20,5 @@ export function OutlineVariant() {
     </div>
   );
 }
+
+export default OutlineVariant;

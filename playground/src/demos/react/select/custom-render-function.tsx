@@ -43,3 +43,5 @@ export function CustomRenderFunction() {
     </Select>
   );
 }
+
+export default CustomRenderFunction;

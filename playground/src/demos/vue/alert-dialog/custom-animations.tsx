@@ -1,13 +1,63 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `alert-dialog/custom-animations` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/alert-dialog
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ArrowUpFromLine, Sparkles } from "@gravity-ui/icons";
+import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const iconMap: Record<string, React.ComponentType<{
+  className?: string;
+}>> = {
+  "gravity-ui:arrow-up-from-line": ArrowUpFromLine,
+  "gravity-ui:sparkles": Sparkles
+};
+export default defineComponent(() => {
+  const animations = [{
+    classNames: {
+      backdrop: ["data-[entering]:duration-400", "data-[entering]:ease-[cubic-bezier(0.16,1,0.3,1)]", "data-[exiting]:duration-200", "data-[exiting]:ease-[cubic-bezier(0.7,0,0.84,0)]"].join(" "),
+      container: ["data-[entering]:animate-in", "data-[entering]:fade-in-0", "data-[entering]:zoom-in-95", "data-[entering]:duration-400", "data-[entering]:ease-[cubic-bezier(0.16,1,0.3,1)]", "data-[exiting]:animate-out", "data-[exiting]:fade-out-0", "data-[exiting]:zoom-out-95", "data-[exiting]:duration-200", "data-[exiting]:ease-[cubic-bezier(0.7,0,0.84,0)]"].join(" ")
+    },
+    description: "Physics-based elastic scaling. Simulates a high-damping spring system with fast transient response and prolonged settling time. Ideal for Alert Dialogs and Modals.",
+    icon: "gravity-ui:sparkles",
+    name: "Kinematic Scale"
+  }, {
+    classNames: {
+      backdrop: ["data-[entering]:duration-500", "data-[entering]:ease-[cubic-bezier(0.25,1,0.5,1)]", "data-[exiting]:duration-200", "data-[exiting]:ease-[cubic-bezier(0.5,0,0.75,0)]"].join(" "),
+      container: ["data-[entering]:animate-in", "data-[entering]:fade-in-0", "data-[entering]:slide-in-from-bottom-4", "data-[entering]:duration-500", "data-[entering]:ease-[cubic-bezier(0.25,1,0.5,1)]", "data-[exiting]:animate-out", "data-[exiting]:fade-out-0", "data-[exiting]:slide-out-to-bottom-2", "data-[exiting]:duration-200", "data-[exiting]:ease-[cubic-bezier(0.5,0,0.75,0)]"].join(" ")
+    },
+    description: "Simulates movement through a medium with fluid resistance. Eliminates mechanical linearity for a natural, grounded feel. Perfect for Bottom Sheets or Toasts.",
+    icon: "gravity-ui:arrow-up-from-line",
+    name: "Fluid Slide"
+  }];
+  return () => <div class="flex flex-wrap gap-4">
+      {animations.map(({
+      classNames,
+      description,
+      icon,
+      name
+    }) => {
+      const IconComponent = iconMap[icon];
+      return <AlertDialog key={name}>
+            <Button variant="secondary">{name}</Button>
+            <AlertDialog.Backdrop class={classNames.backdrop}>
+              <AlertDialog.Container class={classNames.container}>
+                <AlertDialog.Dialog class="sm:max-w-[400px]">
+                  <AlertDialog.CloseTrigger />
+                  <AlertDialog.Header>
+                    <AlertDialog.Icon status="accent">
+                      {!!IconComponent && <IconComponent class="size-5" />}
+                    </AlertDialog.Icon>
+                    <AlertDialog.Heading>{name} Animation</AlertDialog.Heading>
+                  </AlertDialog.Header>
+                  <AlertDialog.Body>
+                    <p class="mt-1">{description}</p>
+                  </AlertDialog.Body>
+                  <AlertDialog.Footer>
+                    <Button slot="close" variant="tertiary">
+                      Close
+                    </Button>
+                    <Button slot="close">Try Again</Button>
+                  </AlertDialog.Footer>
+                </AlertDialog.Dialog>
+              </AlertDialog.Container>
+            </AlertDialog.Backdrop>
+          </AlertDialog>;
+    })}
+    </div>;
+});

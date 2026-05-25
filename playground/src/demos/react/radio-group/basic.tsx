@@ -35,3 +35,5 @@ export function Basic() {
     </RadioGroup>
   );
 }
+
+export default Basic;

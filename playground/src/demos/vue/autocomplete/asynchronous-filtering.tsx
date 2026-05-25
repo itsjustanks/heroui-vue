@@ -1,13 +1,53 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `autocomplete/asynchronous-filtering` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/autocomplete
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Autocomplete, EmptyState, Label, ListBox, SearchField, Spinner } from "@itsjustanks/heroui-vue";
+import { useAsyncList } from "@react-stately/data";
+import { cn } from "tailwind-variants";
+import { defineComponent } from "vue";
+interface Character {
+  name: string;
+}
+export default defineComponent(() => {
+  const list = useAsyncList<Character>({
+    async load({
+      filterText,
+      signal
+    }) {
+      const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`, {
+        signal
+      });
+      const json = await res.json();
+      return {
+        items: json.results
+      };
+    }
+  });
+  return () => <Autocomplete allowsEmptyCollection class="w-[256px]" placeholder="Search..." selectionMode="single">
+      <Label>Search a Star Wars characters</Label>
+      <Autocomplete.Trigger>
+        <Autocomplete.Value />
+        <Autocomplete.ClearButton />
+        <Autocomplete.Indicator />
+      </Autocomplete.Trigger>
+      <Autocomplete.Popover>
+        <Autocomplete.Filter inputValue={list.filterText} onInputChange={list.setFilterText}>
+          <SearchField autoFocus class="sticky top-0 z-10" name="search" variant="secondary">
+            <SearchField.Group>
+              <SearchField.SearchIcon />
+              <SearchField.Input placeholder="Search characters..." />
+              <Spinner size="sm" class={cn("absolute top-1/2 right-2 -translate-y-1/2", {
+              "pointer-events-none opacity-0": !list.isLoading
+            })} />
+              <SearchField.ClearButton class={cn({
+              "pointer-events-none opacity-0": !!list.isLoading
+            })} />
+            </SearchField.Group>
+          </SearchField>
+          <ListBox class="max-h-[420px] overflow-y-auto" items={list.items} renderEmptyState={() => <EmptyState>No results found</EmptyState>}>
+            {(item: Character) => <ListBox.Item id={item.name} textValue={item.name}>
+                {item.name}
+                <ListBox.ItemIndicator />
+              </ListBox.Item>}
+          </ListBox>
+        </Autocomplete.Filter>
+      </Autocomplete.Popover>
+    </Autocomplete>;
+});

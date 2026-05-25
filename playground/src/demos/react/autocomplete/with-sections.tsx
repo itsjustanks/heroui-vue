@@ -105,3 +105,5 @@ export function WithSections() {
     </Autocomplete>
   );
 }
+
+export default WithSections;

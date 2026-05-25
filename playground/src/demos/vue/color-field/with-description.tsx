@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-field/with-description` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorField, Description, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <ColorField class="w-[280px]" defaultValue="#3B82F6" name="color">
+        <Label>Primary Color</Label>
+        <ColorField.Group>
+          <ColorField.Input />
+        </ColorField.Group>
+        <Description>Enter your brand's primary color</Description>
+      </ColorField>
+      <ColorField class="w-[280px]" defaultValue="#F59E0B" name="accent-color">
+        <Label>Accent Color</Label>
+        <ColorField.Group>
+          <ColorField.Input />
+        </ColorField.Group>
+        <Description>Used for highlights and CTAs</Description>
+      </ColorField>
+    </div>);

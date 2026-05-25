@@ -1,13 +1,59 @@
-import { defineComponent } from 'vue'
+import { Button, Popover } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="grid grid-cols-3 gap-4">
+      <div />
+      <Popover>
+        <Button class="w-full" variant="tertiary">
+          Top
+        </Button>
+        <Popover.Content placement="top">
+          <Popover.Dialog>
+            <Popover.Arrow />
+            <p class="text-sm">Top placement</p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+      <div />
 
-/** Vue port of `popover/placement` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/popover
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Popover>
+        <Button class="w-full" variant="tertiary">
+          Left
+        </Button>
+        <Popover.Content placement="left">
+          <Popover.Dialog>
+            <Popover.Arrow />
+            <p class="text-sm">Left placement</p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+
+      <div class="flex items-center justify-center">
+        <span class="text-sm text-muted">Click buttons</span>
+      </div>
+
+      <Popover>
+        <Button class="w-full" variant="tertiary">
+          Right
+        </Button>
+        <Popover.Content placement="right">
+          <Popover.Dialog>
+            <Popover.Arrow />
+            <p class="text-sm">Right placement</p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+
+      <div />
+      <Popover>
+        <Button class="w-full" variant="tertiary">
+          Bottom
+        </Button>
+        <Popover.Content placement="bottom">
+          <Popover.Dialog>
+            <Popover.Arrow />
+            <p class="text-sm">Bottom placement</p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+      <div />
+    </div>);

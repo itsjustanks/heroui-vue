@@ -14,3 +14,5 @@ export function WithSuffixIcon() {
     </DateField>
   );
 }
+
+export default WithSuffixIcon;

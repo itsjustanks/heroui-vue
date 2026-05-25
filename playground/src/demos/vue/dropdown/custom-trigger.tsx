@@ -1,13 +1,51 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `dropdown/custom-trigger` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/dropdown
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
+import { Avatar, Dropdown, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Dropdown>
+      <Dropdown.Trigger class="rounded-full">
+        <Avatar>
+          <Avatar.Image alt="Junior Garcia" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg" />
+          <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+        </Avatar>
+      </Dropdown.Trigger>
+      <Dropdown.Popover>
+        <div class="px-3 pt-3 pb-1">
+          <div class="flex items-center gap-2">
+            <Avatar size="sm">
+              <Avatar.Image alt="Jane" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg" />
+              <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+            </Avatar>
+            <div class="flex flex-col gap-0">
+              <p class="text-sm leading-5 font-medium">Jane Doe</p>
+              <p class="text-xs leading-none text-muted">jane@example.com</p>
+            </div>
+          </div>
+        </div>
+        <Dropdown.Menu>
+          <Dropdown.Item id="dashboard" textValue="Dashboard">
+            <Label>Dashboard</Label>
+          </Dropdown.Item>
+          <Dropdown.Item id="profile" textValue="Profile">
+            <Label>Profile</Label>
+          </Dropdown.Item>
+          <Dropdown.Item id="settings" textValue="Settings">
+            <div class="flex w-full items-center justify-between gap-2">
+              <Label>Settings</Label>
+              <Gear class="size-3.5 text-muted" />
+            </div>
+          </Dropdown.Item>
+          <Dropdown.Item id="new-project" textValue="New project">
+            <div class="flex w-full items-center justify-between gap-2">
+              <Label>Create Team</Label>
+              <Persons class="size-3.5 text-muted" />
+            </div>
+          </Dropdown.Item>
+          <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+            <div class="flex w-full items-center justify-between gap-2">
+              <Label>Log Out</Label>
+              <ArrowRightFromSquare class="size-3.5 text-danger" />
+            </div>
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown.Popover>
+    </Dropdown>);

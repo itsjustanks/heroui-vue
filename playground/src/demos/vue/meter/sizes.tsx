@@ -1,13 +1,25 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `meter/sizes` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/meter
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, Meter } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-64 flex-col gap-6">
+      <Meter color="success" size="sm" value={40}>
+        <Label>Small</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+      <Meter color="accent" size="md" value={60}>
+        <Label>Medium</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+      <Meter color="warning" size="lg" value={80}>
+        <Label>Large</Label>
+        <Meter.Output />
+        <Meter.Track>
+          <Meter.Fill />
+        </Meter.Track>
+      </Meter>
+    </div>);

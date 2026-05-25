@@ -25,3 +25,5 @@ export function CustomIcons() {
     </Calendar>
   );
 }
+
+export default CustomIcons;

@@ -1,13 +1,38 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `kbd/navigation` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/kbd
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Kbd } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-muted">Arrow Keys:</span>
+        <div class="flex items-center gap-2">
+          <Kbd>
+            <Kbd.Abbr keyValue="up" />
+          </Kbd>
+          <Kbd>
+            <Kbd.Abbr keyValue="down" />
+          </Kbd>
+          <Kbd>
+            <Kbd.Abbr keyValue="left" />
+          </Kbd>
+          <Kbd>
+            <Kbd.Abbr keyValue="right" />
+          </Kbd>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-sm text-muted">Page Navigation:</span>
+        <div class="flex items-center gap-2">
+          <Kbd>
+            <Kbd.Abbr keyValue="pageup" />
+          </Kbd>
+          <Kbd>
+            <Kbd.Abbr keyValue="pagedown" />
+          </Kbd>
+          <Kbd>
+            <Kbd.Abbr keyValue="home" />
+          </Kbd>
+          <Kbd>
+            <Kbd.Abbr keyValue="end" />
+          </Kbd>
+        </div>
+      </div>
+    </div>);

@@ -9,3 +9,5 @@ export function WithoutSeparator() {
     </ButtonGroup>
   );
 }
+
+export default WithoutSeparator;

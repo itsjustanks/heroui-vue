@@ -1,13 +1,9 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `close-button/interactive` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/close-button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { CloseButton } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const count = ref(0);
+  return () => <div class="flex flex-col items-center justify-center gap-4">
+      <CloseButton aria-label={`Close (clicked ${count.value} times)`} onPress={() => count.value = count.value + 1} />
+      <span class="text-sm text-muted">Clicked: {count.value} times</span>
+    </div>;
+});

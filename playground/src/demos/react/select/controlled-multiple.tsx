@@ -55,3 +55,5 @@ export function ControlledMultiple() {
     </div>
   );
 }
+
+export default ControlledMultiple;

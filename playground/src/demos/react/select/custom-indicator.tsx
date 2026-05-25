@@ -42,3 +42,5 @@ export function CustomIndicator() {
     </Select>
   );
 }
+
+export default CustomIndicator;

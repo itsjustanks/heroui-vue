@@ -1,13 +1,90 @@
-import { defineComponent } from 'vue'
+import { Button, FieldError, Form, Label, ListBox, Select } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
 
-/** Vue port of `select/required` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/select
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+    // Convert FormData to plain object
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+    alert("Form submitted successfully!");
+  };
+  return () => <Form class="flex w-[256px] flex-col gap-4" onSubmit={onSubmit}>
+      <Select isRequired class="w-full" name="state" placeholder="Select one">
+        <Label>State</Label>
+        <Select.Trigger>
+          <Select.Value />
+          <Select.Indicator />
+        </Select.Trigger>
+        <Select.Popover>
+          <ListBox>
+            <ListBox.Item id="florida" textValue="Florida">
+              Florida
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="delaware" textValue="Delaware">
+              Delaware
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="california" textValue="California">
+              California
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="texas" textValue="Texas">
+              Texas
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="new-york" textValue="New York">
+              New York
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="washington" textValue="Washington">
+              Washington
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+          </ListBox>
+        </Select.Popover>
+        <FieldError />
+      </Select>
+      <Select isRequired class="w-full" name="country" placeholder="Select a country">
+        <Label>Country</Label>
+        <Select.Trigger>
+          <Select.Value />
+          <Select.Indicator />
+        </Select.Trigger>
+        <Select.Popover>
+          <ListBox>
+            <ListBox.Item id="usa" textValue="United States">
+              United States
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="canada" textValue="Canada">
+              Canada
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="mexico" textValue="Mexico">
+              Mexico
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="uk" textValue="United Kingdom">
+              United Kingdom
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="france" textValue="France">
+              France
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+            <ListBox.Item id="germany" textValue="Germany">
+              Germany
+              <ListBox.ItemIndicator />
+            </ListBox.Item>
+          </ListBox>
+        </Select.Popover>
+        <FieldError />
+      </Select>
+      <Button type="submit">Submit</Button>
+    </Form>;
+});

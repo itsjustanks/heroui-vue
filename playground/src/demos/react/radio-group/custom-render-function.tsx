@@ -39,3 +39,5 @@ export function CustomRenderFunction() {
     </RadioGroup>
   );
 }
+
+export default CustomRenderFunction;

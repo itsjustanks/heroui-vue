@@ -18,3 +18,5 @@ export function WithPrefixAndSuffix() {
     </TimeField>
   );
 }
+
+export default WithPrefixAndSuffix;

@@ -68,3 +68,5 @@ export function BookingCalendar() {
     </div>
   );
 }
+
+export default BookingCalendar;

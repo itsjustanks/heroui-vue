@@ -65,3 +65,5 @@ export function WithIcons() {
     </div>
   );
 }
+
+export default WithIcons;

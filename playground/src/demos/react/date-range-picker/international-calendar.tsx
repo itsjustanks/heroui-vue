@@ -57,3 +57,5 @@ export function InternationalCalendar() {
     </I18nProvider>
   );
 }
+
+export default InternationalCalendar;

@@ -1,13 +1,30 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `toggle-button/sizes` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/toggle-button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Heart } from "@gravity-ui/icons";
+import { ToggleButton } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-6">
+      <div class="flex items-center gap-3">
+        <ToggleButton size="sm">
+          <Heart />
+          Small
+        </ToggleButton>
+        <ToggleButton size="md">
+          <Heart />
+          Medium
+        </ToggleButton>
+        <ToggleButton size="lg">
+          <Heart />
+          Large
+        </ToggleButton>
+      </div>
+      <div class="flex items-center gap-3">
+        <ToggleButton isIconOnly aria-label="Like" size="sm">
+          <Heart />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Like" size="md">
+          <Heart />
+        </ToggleButton>
+        <ToggleButton isIconOnly aria-label="Like" size="lg">
+          <Heart />
+        </ToggleButton>
+      </div>
+    </div>);

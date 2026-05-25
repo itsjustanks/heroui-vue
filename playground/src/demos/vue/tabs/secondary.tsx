@@ -1,13 +1,29 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `tabs/secondary` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tabs
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Tabs } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Tabs class="w-full max-w-md" variant="secondary">
+      <Tabs.ListContainer>
+        <Tabs.List aria-label="Options">
+          <Tabs.Tab id="overview">
+            Overview
+            <Tabs.Indicator />
+          </Tabs.Tab>
+          <Tabs.Tab id="analytics">
+            Analytics
+            <Tabs.Indicator />
+          </Tabs.Tab>
+          <Tabs.Tab id="reports">
+            Reports
+            <Tabs.Indicator />
+          </Tabs.Tab>
+        </Tabs.List>
+      </Tabs.ListContainer>
+      <Tabs.Panel class="pt-4" id="overview">
+        <p>View your project overview and recent activity.</p>
+      </Tabs.Panel>
+      <Tabs.Panel class="pt-4" id="analytics">
+        <p>Track your metrics and analyze performance data.</p>
+      </Tabs.Panel>
+      <Tabs.Panel class="pt-4" id="reports">
+        <p>Generate and download detailed reports.</p>
+      </Tabs.Panel>
+    </Tabs>);

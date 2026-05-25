@@ -33,3 +33,5 @@ export function WithStep() {
     </div>
   );
 }
+
+export default WithStep;

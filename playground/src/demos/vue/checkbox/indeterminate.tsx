@@ -1,13 +1,18 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox/indeterminate` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, Description, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const isIndeterminate = ref(true);
+  const isSelected = ref(false);
+  return () => <Checkbox id="select-all" isIndeterminate={isIndeterminate.value} isSelected={isSelected.value} onChange={(selected: boolean) => {
+    isSelected.value = selected;
+    isIndeterminate.value = false;
+  }}>
+      <Checkbox.Control>
+        <Checkbox.Indicator />
+      </Checkbox.Control>
+      <Checkbox.Content>
+        <Label htmlFor="select-all">Select all</Label>
+        <Description>Shows indeterminate state (dash icon)</Description>
+      </Checkbox.Content>
+    </Checkbox>;
+});

@@ -1,13 +1,17 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button/social` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button } from "@itsjustanks/heroui-vue";
+import { Icon } from "@iconify/react";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-full max-w-xs flex-col gap-3">
+      <Button class="w-full" variant="tertiary">
+        <Icon icon="devicon:google" />
+        Sign in with Google
+      </Button>
+      <Button class="w-full" variant="tertiary">
+        <Icon icon="mdi:github" />
+        Sign in with GitHub
+      </Button>
+      <Button class="w-full" variant="tertiary">
+        <Icon icon="ion:logo-apple" />
+        Sign in with Apple
+      </Button>
+    </div>);

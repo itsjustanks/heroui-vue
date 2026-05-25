@@ -25,3 +25,5 @@ export function Range() {
     </Slider>
   );
 }
+
+export default Range;

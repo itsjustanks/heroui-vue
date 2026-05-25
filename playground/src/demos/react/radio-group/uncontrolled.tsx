@@ -46,3 +46,5 @@ export function Uncontrolled() {
     </div>
   );
 }
+
+export default Uncontrolled;

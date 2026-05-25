@@ -1,13 +1,7 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `textfield/with-error` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/textfield
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { FieldError, Input, Label, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <TextField isInvalid class="w-full max-w-64" name="email" type="email">
+      <Label>Email</Label>
+      <Input placeholder="user@example.com" />
+      <FieldError>Please enter a valid email address</FieldError>
+    </TextField>);

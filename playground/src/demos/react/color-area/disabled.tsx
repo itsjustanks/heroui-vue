@@ -7,3 +7,5 @@ export function ColorAreaDisabled() {
     </ColorArea>
   );
 }
+
+export default ColorAreaDisabled;

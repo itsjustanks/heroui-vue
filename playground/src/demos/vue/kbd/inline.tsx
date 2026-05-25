@@ -1,13 +1,38 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `kbd/inline` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/kbd
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Kbd } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="space-y-4">
+      <p class="text-sm">
+        Press{" "}
+        <Kbd>
+          <Kbd.Content>Esc</Kbd.Content>
+        </Kbd>{" "}
+        to close the dialog.
+      </p>
+      <p class="text-sm">
+        Use{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>K</Kbd.Content>
+        </Kbd>{" "}
+        to open the command palette.
+      </p>
+      <p class="text-sm">
+        Navigate with{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="up" />
+        </Kbd>{" "}
+        and{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="down" />
+        </Kbd>{" "}
+        arrow keys.
+      </p>
+      <p class="text-sm">
+        Save your work with{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>S</Kbd.Content>
+        </Kbd>{" "}
+        regularly.
+      </p>
+    </div>);

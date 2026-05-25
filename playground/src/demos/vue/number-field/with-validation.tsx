@@ -1,13 +1,19 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `number-field/with-validation` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/number-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, FieldError, Label, NumberField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const [value, setValue] = React.useState<number | undefined>(undefined);
+  const isInvalid = value !== undefined && (value < 0 || value > 100);
+  return () => <div class="flex w-full max-w-64 flex-col gap-4">
+      <NumberField isRequired formatOptions={{
+      style: "percent"
+    }} isInvalid={isInvalid} maxValue={1} minValue={0} name="percentage" step={0.1} value={value} onChange={setValue}>
+        <Label>Percentage</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-[120px]" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+        {isInvalid ? <FieldError>Percentage must be between 0 and 100</FieldError> : <Description>Enter a value between 0 and 100</Description>}
+      </NumberField>
+    </div>;
+});

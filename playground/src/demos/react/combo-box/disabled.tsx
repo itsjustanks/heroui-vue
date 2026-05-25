@@ -39,3 +39,5 @@ export function Disabled() {
     </ComboBox>
   );
 }
+
+export default Disabled;

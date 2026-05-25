@@ -1,13 +1,29 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input-otp/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input-otp
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, InputOTP, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const [value, setValue] = React.useState("");
+  return () => <div class="flex w-[280px] flex-col gap-2">
+      <Label>Verify account</Label>
+      <InputOTP maxLength={6} value={value} onChange={setValue}>
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+          <InputOTP.Slot index={2} />
+        </InputOTP.Group>
+        <InputOTP.Separator />
+        <InputOTP.Group>
+          <InputOTP.Slot index={3} />
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP>
+      <Description>
+        {value.length > 0 ? <>
+            Value: {value} ({value.length}/6) •{" "}
+            <button class="font-medium text-foreground underline" onClick={() => setValue("")}>
+              Clear
+            </button>
+          </> : "Enter a 6-digit code"}
+      </Description>
+    </div>;
+});

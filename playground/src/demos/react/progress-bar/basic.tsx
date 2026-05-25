@@ -11,3 +11,5 @@ export function Basic() {
     </ProgressBar>
   );
 }
+
+export default Basic;

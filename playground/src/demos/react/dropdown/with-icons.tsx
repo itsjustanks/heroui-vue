@@ -47,3 +47,5 @@ export function WithIcons() {
     </Dropdown>
   );
 }
+
+export default WithIcons;

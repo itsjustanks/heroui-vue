@@ -1,13 +1,16 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `avatar/sizes` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/avatar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Avatar } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-4">
+      <Avatar size="sm">
+        <Avatar.Image alt="Small Avatar" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg" />
+        <Avatar.Fallback>SM</Avatar.Fallback>
+      </Avatar>
+      <Avatar size="md">
+        <Avatar.Image alt="Medium Avatar" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/purple.jpg" />
+        <Avatar.Fallback>MD</Avatar.Fallback>
+      </Avatar>
+      <Avatar size="lg">
+        <Avatar.Image alt="Large Avatar" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/red.jpg" />
+        <Avatar.Fallback>LG</Avatar.Fallback>
+      </Avatar>
+    </div>);

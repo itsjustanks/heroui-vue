@@ -1,13 +1,19 @@
-import { defineComponent } from 'vue'
+import { Button, Tooltip } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-4">
+      <Tooltip delay={0}>
+        <Button variant="secondary">With Arrow</Button>
+        <Tooltip.Content showArrow>
+          <Tooltip.Arrow />
+          <p>Tooltip with arrow indicator</p>
+        </Tooltip.Content>
+      </Tooltip>
 
-/** Vue port of `tooltip/with-arrow` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tooltip
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Tooltip delay={0}>
+        <Button variant="primary">Custom Offset</Button>
+        <Tooltip.Content showArrow offset={12}>
+          <Tooltip.Arrow />
+          <p>Custom offset from trigger</p>
+        </Tooltip.Content>
+      </Tooltip>
+    </div>);

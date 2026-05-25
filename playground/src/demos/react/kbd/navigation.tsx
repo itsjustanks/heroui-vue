@@ -40,3 +40,5 @@ export function NavigationKeys() {
     </div>
   );
 }
+
+export default NavigationKeys;

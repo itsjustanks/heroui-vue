@@ -48,10 +48,16 @@ function tooComplexForAutoPort (_src) {
 }
 
 function transformReact (src) {
-  // Keep upstream source nearly verbatim — only strip "use client" and
-  // swap the @heroui/react import path target so the React side resolves
-  // to the installed package, which it already does.
-  return src.replace(/^["']use client["'];?\s*\n?/m, '')
+  // Strip "use client" — Vite has no use for it.
+  let s = src.replace(/^["']use client["'];?\s*\n?/m, '')
+  // Playground loader expects a default export. Upstream uses named
+  // function exports (`export function Basic() {...}`); add a default
+  // alias when missing.
+  if (!/export\s+default\b/.test(s)) {
+    const m = s.match(/export\s+function\s+(\w+)\s*\(/) || s.match(/export\s+const\s+(\w+)\s*=/)
+    if (m) s += `\nexport default ${m[1]};\n`
+  }
+  return s
 }
 
 function transformVue (src) {

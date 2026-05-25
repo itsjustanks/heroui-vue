@@ -1,13 +1,36 @@
-import { defineComponent } from 'vue'
+import type { DateValue } from "@internationalized/date";
+import { Button, Calendar, Description } from "@itsjustanks/heroui-vue";
+import { parseDate } from "@internationalized/date";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const focusedDate = ref(parseDate("2025-06-15"));
+  return () => <div class="flex flex-col items-center gap-4">
+      <Calendar aria-label="Event date" focusedValue={focusedDate.value} onFocusChange={setFocusedDate}>
+        <Calendar.Header>
+          <Calendar.Heading />
+          <Calendar.NavButton slot="previous" />
+          <Calendar.NavButton slot="next" />
+        </Calendar.Header>
+        <Calendar.Grid>
+          <Calendar.GridHeader>
+            {day => <Calendar.HeaderCell>{day}</Calendar.HeaderCell>}
+          </Calendar.GridHeader>
+          <Calendar.GridBody>{date => <Calendar.Cell date={date} />}</Calendar.GridBody>
+        </Calendar.Grid>
+      </Calendar>
 
-/** Vue port of `calendar/focused-value` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/calendar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Description class="text-center">Focused: {focusedDate.value.toString()}</Description>
+
+      <div class="flex flex-wrap justify-center gap-2">
+        <Button size="sm" variant="secondary" onPress={() => focusedDate.value = parseDate("2025-01-01")}>
+          Go to Jan
+        </Button>
+        <Button size="sm" variant="secondary" onPress={() => focusedDate.value = parseDate("2025-06-15")}>
+          Go to Jun
+        </Button>
+        <Button size="sm" variant="secondary" onPress={() => focusedDate.value = parseDate("2025-12-25")}>
+          Go to Christmas
+        </Button>
+      </div>
+    </div>;
+});

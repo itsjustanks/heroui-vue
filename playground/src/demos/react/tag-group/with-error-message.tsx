@@ -31,3 +31,5 @@ export function TagGroupWithErrorMessage() {
     </TagGroup>
   );
 }
+
+export default TagGroupWithErrorMessage;

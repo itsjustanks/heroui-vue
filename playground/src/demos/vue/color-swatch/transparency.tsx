@@ -1,13 +1,9 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-swatch/transparency` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-swatch
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorSwatch } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-3">
+      <ColorSwatch aria-label="100% opacity" color="rgba(4, 133, 247, 1)" />
+      <ColorSwatch aria-label="75% opacity" color="rgba(4, 133, 247, 0.75)" />
+      <ColorSwatch aria-label="50% opacity" color="rgba(4, 133, 247, 0.5)" />
+      <ColorSwatch aria-label="25% opacity" color="rgba(4, 133, 247, 0.25)" />
+      <ColorSwatch aria-label="0% opacity" color="rgba(4, 133, 247, 0)" />
+    </div>);

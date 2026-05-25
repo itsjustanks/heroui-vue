@@ -27,3 +27,5 @@ export function ChipWithIcon() {
     </div>
   );
 }
+
+export default ChipWithIcon;

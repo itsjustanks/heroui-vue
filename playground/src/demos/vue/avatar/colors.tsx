@@ -1,13 +1,19 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `avatar/colors` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/avatar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Avatar } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-4">
+      <Avatar color="default">
+        <Avatar.Fallback>DF</Avatar.Fallback>
+      </Avatar>
+      <Avatar color="accent">
+        <Avatar.Fallback>AC</Avatar.Fallback>
+      </Avatar>
+      <Avatar color="success">
+        <Avatar.Fallback>SC</Avatar.Fallback>
+      </Avatar>
+      <Avatar color="warning">
+        <Avatar.Fallback>WR</Avatar.Fallback>
+      </Avatar>
+      <Avatar color="danger">
+        <Avatar.Fallback>DG</Avatar.Fallback>
+      </Avatar>
+    </div>);

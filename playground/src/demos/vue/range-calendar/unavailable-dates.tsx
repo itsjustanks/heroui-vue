@@ -1,13 +1,44 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `range-calendar/unavailable-dates` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/range-calendar
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import type { DateValue } from "@internationalized/date";
+import { Description, RangeCalendar } from "@itsjustanks/heroui-vue";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const now = today(getLocalTimeZone());
+  const blockedRanges = [[now.add({
+    days: 2
+  }), now.add({
+    days: 5
+  })], [now.add({
+    days: 12
+  }), now.add({
+    days: 13
+  })]] as const;
+  const isDateUnavailable = (date: DateValue) => {
+    return blockedRanges.some(([start, end]) => date.compare(start) >= 0 && date.compare(end) <= 0);
+  };
+  return () => <div class="flex flex-col items-center gap-4">
+      <RangeCalendar aria-label="Trip dates" defaultValue={{
+      end: now.add({
+        days: 9
+      }),
+      start: now.add({
+        days: 6
+      })
+    }} firstDayOfWeek="mon" isDateUnavailable={isDateUnavailable}>
+        <RangeCalendar.Header>
+          <RangeCalendar.Heading />
+          <RangeCalendar.NavButton slot="previous" />
+          <RangeCalendar.NavButton slot="next" />
+        </RangeCalendar.Header>
+        <RangeCalendar.Grid>
+          <RangeCalendar.GridHeader>
+            {day => <RangeCalendar.HeaderCell>{day}</RangeCalendar.HeaderCell>}
+          </RangeCalendar.GridHeader>
+          <RangeCalendar.GridBody>
+            {date => <RangeCalendar.Cell date={date} />}
+          </RangeCalendar.GridBody>
+        </RangeCalendar.Grid>
+      </RangeCalendar>
+      <Description class="text-center">Some days are unavailable</Description>
+    </div>;
+});

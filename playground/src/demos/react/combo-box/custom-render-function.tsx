@@ -39,3 +39,5 @@ export function CustomRenderFunction() {
     </ComboBox>
   );
 }
+
+export default CustomRenderFunction;

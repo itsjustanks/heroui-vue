@@ -71,3 +71,5 @@ export function Surface() {
     </Accordion>
   );
 }
+
+export default Surface;

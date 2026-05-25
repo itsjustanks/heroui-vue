@@ -40,3 +40,5 @@ export function Disabled() {
     </DatePicker>
   );
 }
+
+export default Disabled;

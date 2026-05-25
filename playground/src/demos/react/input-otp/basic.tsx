@@ -29,3 +29,5 @@ export function Basic() {
     </div>
   );
 }
+
+export default Basic;

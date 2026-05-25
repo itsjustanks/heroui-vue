@@ -40,3 +40,5 @@ export function CustomBackdrop() {
     </Modal>
   );
 }
+
+export default CustomBackdrop;

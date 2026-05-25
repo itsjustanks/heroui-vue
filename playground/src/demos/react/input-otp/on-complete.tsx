@@ -67,3 +67,5 @@ export function OnComplete() {
     </Form>
   );
 }
+
+export default OnComplete;

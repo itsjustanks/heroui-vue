@@ -36,3 +36,5 @@ export function Colors() {
     </div>
   );
 }
+
+export default Colors;

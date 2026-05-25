@@ -12,3 +12,5 @@ export function DefaultSelected() {
     </Switch>
   );
 }
+
+export default DefaultSelected;

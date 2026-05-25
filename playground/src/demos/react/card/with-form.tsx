@@ -45,3 +45,5 @@ export function WithForm() {
     </Card>
   );
 }
+
+export default WithForm;

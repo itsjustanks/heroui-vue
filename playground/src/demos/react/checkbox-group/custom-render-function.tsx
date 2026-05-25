@@ -35,3 +35,5 @@ export function CustomRenderFunction() {
     </CheckboxGroup>
   );
 }
+
+export default CustomRenderFunction;

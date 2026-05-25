@@ -10,3 +10,5 @@ export function CustomRenderFunction() {
     </ColorArea>
   );
 }
+
+export default CustomRenderFunction;

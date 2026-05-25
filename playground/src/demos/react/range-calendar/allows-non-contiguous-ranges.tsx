@@ -43,3 +43,5 @@ export function AllowsNonContiguousRanges() {
     </div>
   );
 }
+
+export default AllowsNonContiguousRanges;

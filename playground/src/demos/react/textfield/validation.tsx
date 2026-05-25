@@ -38,3 +38,5 @@ export function Validation() {
     </div>
   );
 }
+
+export default Validation;

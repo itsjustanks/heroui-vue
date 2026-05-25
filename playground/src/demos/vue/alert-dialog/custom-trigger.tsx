@@ -1,13 +1,42 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `alert-dialog/custom-trigger` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/alert-dialog
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { TrashBin } from "@gravity-ui/icons";
+import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <AlertDialog>
+      <AlertDialog.Trigger class="group flex items-center gap-3 rounded-2xl bg-surface p-4 shadow-xs select-none hover:bg-surface-secondary">
+        <div class="flex size-12 shrink-0 items-center justify-center rounded-xl bg-danger-soft text-danger-soft-foreground">
+          <TrashBin class="size-6" />
+        </div>
+        <div class="flex flex-1 flex-col gap-0.5">
+          <p class="text-sm font-semibold">Delete Item</p>
+          <p class="text-xs text-muted">Permanently remove this item</p>
+        </div>
+      </AlertDialog.Trigger>
+      <AlertDialog.Backdrop>
+        <AlertDialog.Container>
+          <AlertDialog.Dialog class="sm:max-w-[400px]">
+            <AlertDialog.CloseTrigger />
+            <AlertDialog.Header>
+              <AlertDialog.Icon status="danger">
+                <TrashBin class="size-5" />
+              </AlertDialog.Icon>
+              <AlertDialog.Heading>Delete this item?</AlertDialog.Heading>
+            </AlertDialog.Header>
+            <AlertDialog.Body>
+              <p>
+                Use <code>AlertDialog.Trigger</code> to create custom trigger elements beyond
+                standard buttons. This example shows a card-style trigger with icons and descriptive
+                text.
+              </p>
+            </AlertDialog.Body>
+            <AlertDialog.Footer>
+              <Button slot="close" variant="tertiary">
+                Cancel
+              </Button>
+              <Button slot="close" variant="danger">
+                Delete Item
+              </Button>
+            </AlertDialog.Footer>
+          </AlertDialog.Dialog>
+        </AlertDialog.Container>
+      </AlertDialog.Backdrop>
+    </AlertDialog>);

@@ -35,3 +35,5 @@ export function Disabled() {
     </RadioGroup>
   );
 }
+
+export default Disabled;

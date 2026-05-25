@@ -23,3 +23,5 @@ export function ManualVariantOverride() {
     </div>
   );
 }
+
+export default ManualVariantOverride;

@@ -1,26 +1,17 @@
-import { defineComponent } from 'vue'
-import { Button, ButtonGroup } from '@itsjustanks/heroui-vue'
-import { currentExample } from '../shared'
-
-export default defineComponent(() => () => {
-  const example = currentExample('basic')
-  const variant = example === 'variants' ? 'outline' : undefined
-  const size = example === 'sizes' ? 'sm' : undefined
-  const fullWidth = example === 'full-width'
-  const orientation = example === 'orientation' ? 'vertical' : 'horizontal'
-  const disabled = example === 'disabled'
-  const showSeparator = example !== 'without-separator'
-
-  return (
-    <div class="demo-col">
+import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
+import { currentExample } from '../shared';
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const example = currentExample('basic');
+  const variant = example === 'variants' ? 'outline' : undefined;
+  const size = example === 'sizes' ? 'sm' : undefined;
+  const fullWidth = example === 'full-width';
+  const orientation = example === 'orientation' ? 'vertical' : 'horizontal';
+  const disabled = example === 'disabled';
+  const showSeparator = example !== 'without-separator';
+  return () => <div class="demo-col">
       <div class="demo-row">
-        <ButtonGroup
-          variant={variant}
-          size={size}
-          fullWidth={fullWidth}
-          orientation={orientation}
-          isDisabled={disabled}
-        >
+        <ButtonGroup variant={variant} size={size} fullWidth={fullWidth} orientation={orientation} isDisabled={disabled}>
           <Button>Previous</Button>
           <Button>
             {showSeparator && <ButtonGroup.Separator />}
@@ -54,6 +45,5 @@ export default defineComponent(() => () => {
           </Button>
         </ButtonGroup>
       </div>}
-    </div>
-  )
-})
+    </div>;
+});

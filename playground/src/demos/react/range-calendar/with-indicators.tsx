@@ -33,3 +33,5 @@ export function WithIndicators() {
     </RangeCalendar>
   );
 }
+
+export default WithIndicators;

@@ -62,3 +62,5 @@ export function CustomStyles() {
     </Accordion>
   );
 }
+
+export default CustomStyles;

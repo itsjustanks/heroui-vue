@@ -57,3 +57,5 @@ export function TagGroupWithPrefix() {
     </div>
   );
 }
+
+export default TagGroupWithPrefix;

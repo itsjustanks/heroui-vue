@@ -93,3 +93,5 @@ export function WithFormatOptions() {
     </div>
   );
 }
+
+export default WithFormatOptions;

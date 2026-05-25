@@ -18,3 +18,5 @@ export function DefaultValue() {
     </Calendar>
   );
 }
+
+export default DefaultValue;

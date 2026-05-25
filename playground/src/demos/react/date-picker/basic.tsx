@@ -38,3 +38,5 @@ export function Basic() {
     </DatePicker>
   );
 }
+
+export default Basic;

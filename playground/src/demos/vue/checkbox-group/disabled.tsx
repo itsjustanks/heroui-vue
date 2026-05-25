@@ -1,13 +1,24 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox-group/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, CheckboxGroup, Description, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <CheckboxGroup isDisabled name="disabled-features">
+      <Label>Features</Label>
+      <Description>Feature selection is temporarily disabled</Description>
+      <Checkbox value="feature1">
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Feature 1</Label>
+          <Description>This feature is coming soon</Description>
+        </Checkbox.Content>
+      </Checkbox>
+      <Checkbox value="feature2">
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Feature 2</Label>
+          <Description>This feature is coming soon</Description>
+        </Checkbox.Content>
+      </Checkbox>
+    </CheckboxGroup>);

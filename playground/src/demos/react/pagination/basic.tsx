@@ -31,3 +31,5 @@ export function PaginationBasic() {
     </Pagination>
   );
 }
+
+export default PaginationBasic;

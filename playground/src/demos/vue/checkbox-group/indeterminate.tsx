@@ -1,13 +1,46 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox-group/indeterminate` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, CheckboxGroup, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const selected = ref(["coding"]);
+  const allOptions = ["coding", "design", "writing"];
+  return () => <div>
+      <Checkbox isIndeterminate={selected.value.length > 0 && selected.value.length < allOptions.length} isSelected={selected.value.length === allOptions.length} name="select-all" onChange={(isSelected: boolean) => {
+      selected.value = isSelected ? allOptions : [];
+    }}>
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.Content>
+          <Label>Select all</Label>
+        </Checkbox.Content>
+      </Checkbox>
+      <div class="ml-6 flex flex-col gap-2">
+        <CheckboxGroup value={selected.value} onChange={setSelected}>
+          <Checkbox value="coding">
+            <Checkbox.Control>
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+            <Checkbox.Content>
+              <Label>Coding</Label>
+            </Checkbox.Content>
+          </Checkbox>
+          <Checkbox value="design">
+            <Checkbox.Control>
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+            <Checkbox.Content>
+              <Label>Design</Label>
+            </Checkbox.Content>
+          </Checkbox>
+          <Checkbox value="writing">
+            <Checkbox.Control>
+              <Checkbox.Indicator />
+            </Checkbox.Control>
+            <Checkbox.Content>
+              <Label>Writing</Label>
+            </Checkbox.Content>
+          </Checkbox>
+        </CheckboxGroup>
+      </div>
+    </div>;
+});

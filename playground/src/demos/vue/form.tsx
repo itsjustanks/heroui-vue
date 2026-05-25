@@ -1,17 +1,16 @@
-import { defineComponent } from 'vue'
-import { Button, Description, Form, Input, Label, TextField } from '@itsjustanks/heroui-vue'
-
+import { Button, Description, Form, Input, Label, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
 export default defineComponent(() => {
-  const onSubmit = (e: Event) => {
-    e.preventDefault()
-    const formData = new FormData(e.target as HTMLFormElement)
-    const data: Record<string, string> = {}
-    formData.forEach((value, key) => { data[key] = value.toString() })
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`)
-  }
-
-  return () => (
-    <Form class="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+  };
+  return () => <Form class="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
       <TextField name="email" type="email">
         <Label>Email</Label>
         <Input placeholder="john@example.com" />
@@ -27,6 +26,5 @@ export default defineComponent(() => {
         <Button type="submit">Submit</Button>
         <Button type="reset" variant="secondary">Reset</Button>
       </div>
-    </Form>
-  )
-})
+    </Form>;
+});

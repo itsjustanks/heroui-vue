@@ -40,3 +40,5 @@ export function WithSurface() {
     </div>
   );
 }
+
+export default WithSurface;

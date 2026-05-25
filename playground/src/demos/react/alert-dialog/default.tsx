@@ -32,3 +32,5 @@ export function Default() {
     </AlertDialog>
   );
 }
+
+export default Default;

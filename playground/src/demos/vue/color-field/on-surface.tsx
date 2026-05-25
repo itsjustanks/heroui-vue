@@ -1,13 +1,11 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-field/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorField, Description, Label, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="w-[320px] p-4">
+      <ColorField defaultValue="#3B82F6" name="color">
+        <Label>Theme Color</Label>
+        <ColorField.Group variant="secondary">
+          <ColorField.Input />
+        </ColorField.Group>
+        <Description>Select your theme color</Description>
+      </ColorField>
+    </Surface>);

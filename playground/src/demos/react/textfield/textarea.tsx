@@ -9,3 +9,5 @@ export function TextAreaExample() {
     </TextField>
   );
 }
+
+export default TextAreaExample;

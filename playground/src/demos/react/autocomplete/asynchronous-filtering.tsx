@@ -68,3 +68,5 @@ export function AsynchronousFiltering() {
     </Autocomplete>
   );
 }
+
+export default AsynchronousFiltering;

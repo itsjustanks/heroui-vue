@@ -186,3 +186,5 @@ export function FormatOptions() {
     </div>
   );
 }
+
+export default FormatOptions;

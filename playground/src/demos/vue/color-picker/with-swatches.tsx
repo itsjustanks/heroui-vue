@@ -1,13 +1,28 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `color-picker/with-swatches` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/color-picker
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ColorArea, ColorPicker, ColorSlider, ColorSwatch, ColorSwatchPicker, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const presets = ["#ef4444", "#f97316", "#eab308", "#22c55e", "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899", "#f43f5e"];
+  return () => <ColorPicker defaultValue="#F43F5E">
+      <ColorPicker.Trigger>
+        <ColorSwatch size="lg" />
+        <Label>Brand Color</Label>
+      </ColorPicker.Trigger>
+      <ColorPicker.Popover>
+        <ColorArea aria-label="Color area" class="max-w-full" colorSpace="hsb" xChannel="saturation" yChannel="brightness">
+          <ColorArea.Thumb />
+        </ColorArea>
+        <ColorSlider aria-label="Hue slider" channel="hue" class="gap-1 px-1" colorSpace="hsb">
+          <Label>Hue</Label>
+          <ColorSlider.Output class="text-muted" />
+          <ColorSlider.Track>
+            <ColorSlider.Thumb />
+          </ColorSlider.Track>
+        </ColorSlider>
+        <ColorSwatchPicker class="justify-center px-1" size="xs">
+          {presets.map(preset => <ColorSwatchPicker.Item key={preset} color={preset}>
+              <ColorSwatchPicker.Swatch />
+            </ColorSwatchPicker.Item>)}
+        </ColorSwatchPicker>
+      </ColorPicker.Popover>
+    </ColorPicker>;
+});

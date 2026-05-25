@@ -15,3 +15,5 @@ export function WithSuffixIcon() {
     </TextField>
   );
 }
+
+export default WithSuffixIcon;

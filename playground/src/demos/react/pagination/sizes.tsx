@@ -44,3 +44,5 @@ export function PaginationSizes() {
     </div>
   );
 }
+
+export default PaginationSizes;

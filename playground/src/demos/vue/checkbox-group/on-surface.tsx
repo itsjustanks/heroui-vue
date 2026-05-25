@@ -1,13 +1,35 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox-group/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, CheckboxGroup, Description, Label, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="w-full rounded-3xl p-6">
+      <CheckboxGroup name="interests" variant="secondary">
+        <Label>Select your interests</Label>
+        <Description>Choose all that apply</Description>
+        <Checkbox value="coding">
+          <Checkbox.Control>
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Coding</Label>
+            <Description>Love building software</Description>
+          </Checkbox.Content>
+        </Checkbox>
+        <Checkbox value="design">
+          <Checkbox.Control>
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Design</Label>
+            <Description>Enjoy creating beautiful interfaces</Description>
+          </Checkbox.Content>
+        </Checkbox>
+        <Checkbox value="writing">
+          <Checkbox.Control>
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label>Writing</Label>
+            <Description>Passionate about content creation</Description>
+          </Checkbox.Content>
+        </Checkbox>
+      </CheckboxGroup>
+    </Surface>);

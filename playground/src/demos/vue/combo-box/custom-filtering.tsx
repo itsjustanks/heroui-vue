@@ -1,13 +1,38 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `combo-box/custom-filtering` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/combo-box
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ComboBox, Input, Label, ListBox } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const animals = [{
+    id: "cat",
+    name: "Cat"
+  }, {
+    id: "dog",
+    name: "Dog"
+  }, {
+    id: "bird",
+    name: "Bird"
+  }, {
+    id: "fish",
+    name: "Fish"
+  }, {
+    id: "hamster",
+    name: "Hamster"
+  }];
+  return () => <ComboBox class="w-[256px]" defaultFilter={(text, inputValue) => {
+    if (!inputValue) return true;
+    return text.toLowerCase().includes(inputValue.toLowerCase());
+  }}>
+      <Label>Animal (custom filter)</Label>
+      <ComboBox.InputGroup>
+        <Input placeholder="Search animals..." />
+        <ComboBox.Trigger />
+      </ComboBox.InputGroup>
+      <ComboBox.Popover>
+        <ListBox>
+          {animals.map(animal => <ListBox.Item key={animal.id} id={animal.id} textValue={animal.name}>
+              {animal.name}
+              <ListBox.ItemIndicator />
+            </ListBox.Item>)}
+        </ListBox>
+      </ComboBox.Popover>
+    </ComboBox>;
+});

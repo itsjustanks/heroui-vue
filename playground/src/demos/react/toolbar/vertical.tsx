@@ -37,3 +37,5 @@ export function Vertical() {
     </Toolbar>
   );
 }
+
+export default Vertical;

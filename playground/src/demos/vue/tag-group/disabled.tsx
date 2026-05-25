@@ -1,13 +1,23 @@
-import { defineComponent } from 'vue'
+import { Description, Label, Tag, TagGroup } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <TagGroup selectionMode="single">
+        <Label>Disabled Tags</Label>
+        <TagGroup.List>
+          <Tag isDisabled>News</Tag>
+          <Tag>Travel</Tag>
+          <Tag isDisabled>Gaming</Tag>
+        </TagGroup.List>
+        <Description>Some tags are disabled</Description>
+      </TagGroup>
 
-/** Vue port of `tag-group/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tag-group
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <TagGroup disabledKeys={["travel"]} selectionMode="single">
+        <Label>Disabled Keys</Label>
+        <TagGroup.List>
+          <Tag id="news">News</Tag>
+          <Tag id="travel">Travel</Tag>
+          <Tag id="gaming">Gaming</Tag>
+        </TagGroup.List>
+        <Description>Tags disabled via disabledKeys prop</Description>
+      </TagGroup>
+    </div>);

@@ -93,3 +93,5 @@ export function Virtualization() {
     </Virtualizer>
   );
 }
+
+export default Virtualization;

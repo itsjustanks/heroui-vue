@@ -1,13 +1,32 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `accordion/without-separator` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/accordion
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ChevronDown, CreditCard, Receipt, ShoppingBag } from "@gravity-ui/icons";
+import { Accordion } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const items = [{
+  content: "Browse our products, add items to your cart, and proceed to checkout. You'll need to provide shipping and payment information to complete your purchase.",
+  icon: <ShoppingBag />,
+  title: "How do I place an order?"
+}, {
+  content: "Yes, you can modify or cancel your order before it's shipped. Once your order is processed, you can't make changes.",
+  icon: <Receipt />,
+  title: "Can I modify or cancel my order?"
+}, {
+  content: "We accept all major credit cards, including Visa, Mastercard, and American Express.",
+  icon: <CreditCard />,
+  title: "What payment methods do you accept?"
+}];
+export default defineComponent(() => () => <Accordion hideSeparator class="w-full max-w-md">
+      {items.map((item, index) => <Accordion.Item key={index}>
+          <Accordion.Heading>
+            <Accordion.Trigger>
+              {item.icon ? <span class="mr-3 size-4 shrink-0 text-muted">{item.icon}</span> : null}
+              {item.title}
+              <Accordion.Indicator>
+                <ChevronDown />
+              </Accordion.Indicator>
+            </Accordion.Trigger>
+          </Accordion.Heading>
+          <Accordion.Panel>
+            <Accordion.Body>{item.content}</Accordion.Body>
+          </Accordion.Panel>
+        </Accordion.Item>)}
+    </Accordion>);

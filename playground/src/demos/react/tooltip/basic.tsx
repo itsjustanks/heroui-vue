@@ -22,3 +22,5 @@ export function TooltipBasic() {
     </div>
   );
 }
+
+export default TooltipBasic;

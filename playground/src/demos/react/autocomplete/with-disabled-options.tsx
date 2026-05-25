@@ -62,3 +62,5 @@ export function WithDisabledOptions() {
     </Autocomplete>
   );
 }
+
+export default WithDisabledOptions;

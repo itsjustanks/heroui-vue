@@ -1,13 +1,16 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `typography/default` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/typography
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Typography } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex max-w-xl flex-col gap-4">
+      <Typography type="h1">Build better interfaces</Typography>
+      <Typography type="h2">Typography that stays semantic</Typography>
+      <Typography type="h3">Composable by default</Typography>
+      <Typography type="h4">Small heading</Typography>
+      <Typography>
+        HeroUI Typography uses React Aria Components Text as the primitive, with semantic typography
+        types and render-prop polymorphism.
+      </Typography>
+      <Typography color="muted" type="body-sm">
+        Smaller muted body copy for secondary descriptions.
+      </Typography>
+      <Typography type="code">pnpm add @heroui/react</Typography>
+    </div>);

@@ -54,3 +54,5 @@ export function WithSwatches() {
     </ColorPicker>
   );
 }
+
+export default WithSwatches;

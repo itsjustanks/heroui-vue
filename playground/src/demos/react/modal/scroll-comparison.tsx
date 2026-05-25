@@ -64,3 +64,5 @@ export function ScrollComparison() {
     </div>
   );
 }
+
+export default ScrollComparison;

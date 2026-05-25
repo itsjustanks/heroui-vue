@@ -29,3 +29,5 @@ export function PasswordWithToggle() {
     </TextField>
   );
 }
+
+export default PasswordWithToggle;

@@ -1,13 +1,42 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `tabs/secondary-vertical` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/tabs
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Tabs } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Tabs class="w-full max-w-lg" orientation="vertical" variant="secondary">
+      <Tabs.ListContainer>
+        <Tabs.List aria-label="Vertical tabs">
+          <Tabs.Tab id="account">
+            Account
+            <Tabs.Indicator />
+          </Tabs.Tab>
+          <Tabs.Tab id="security">
+            Security
+            <Tabs.Indicator />
+          </Tabs.Tab>
+          <Tabs.Tab id="notifications">
+            Notifications
+            <Tabs.Indicator />
+          </Tabs.Tab>
+          <Tabs.Tab id="billing">
+            Billing
+            <Tabs.Indicator />
+          </Tabs.Tab>
+        </Tabs.List>
+      </Tabs.ListContainer>
+      <Tabs.Panel class="px-4" id="account">
+        <h3 class="mb-2 font-semibold">Account Settings</h3>
+        <p class="text-sm text-muted">Manage your account information and preferences.</p>
+      </Tabs.Panel>
+      <Tabs.Panel class="px-4" id="security">
+        <h3 class="mb-2 font-semibold">Security Settings</h3>
+        <p class="text-sm text-muted">
+          Configure two-factor authentication and password settings.
+        </p>
+      </Tabs.Panel>
+      <Tabs.Panel class="px-4" id="notifications">
+        <h3 class="mb-2 font-semibold">Notification Preferences</h3>
+        <p class="text-sm text-muted">Choose how and when you want to receive notifications.</p>
+      </Tabs.Panel>
+      <Tabs.Panel class="px-4" id="billing">
+        <h3 class="mb-2 font-semibold">Billing Information</h3>
+        <p class="text-sm text-muted">View and manage your subscription and payment methods.</p>
+      </Tabs.Panel>
+    </Tabs>);

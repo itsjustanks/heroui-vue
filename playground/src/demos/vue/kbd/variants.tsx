@@ -1,13 +1,61 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `kbd/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/kbd
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Kbd } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-2">
+        <span>Copy:</span>
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>C</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>C</Kbd.Content>
+        </Kbd>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>Paste:</span>
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>V</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>V</Kbd.Content>
+        </Kbd>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>Cut:</span>
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>X</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>X</Kbd.Content>
+        </Kbd>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>Undo:</span>
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>Z</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>Z</Kbd.Content>
+        </Kbd>
+      </div>
+      <div class="flex items-center gap-2">
+        <span>Redo:</span>
+        <Kbd>
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Abbr keyValue="shift" />
+          <Kbd.Content>Z</Kbd.Content>
+        </Kbd>
+        <Kbd variant="light">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Abbr keyValue="shift" />
+          <Kbd.Content>Z</Kbd.Content>
+        </Kbd>
+      </div>
+    </div>);

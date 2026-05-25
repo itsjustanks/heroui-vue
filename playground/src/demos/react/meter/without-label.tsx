@@ -9,3 +9,5 @@ export function WithoutLabel() {
     </Meter>
   );
 }
+
+export default WithoutLabel;

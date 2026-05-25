@@ -25,3 +25,5 @@ export function CustomStyles() {
     </Calendar>
   );
 }
+
+export default CustomStyles;

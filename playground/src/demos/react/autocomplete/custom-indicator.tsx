@@ -55,3 +55,5 @@ export function CustomIndicator() {
     </Autocomplete>
   );
 }
+
+export default CustomIndicator;

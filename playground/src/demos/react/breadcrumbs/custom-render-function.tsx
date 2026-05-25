@@ -18,3 +18,5 @@ export function CustomRenderFunction() {
     </Breadcrumbs>
   );
 }
+
+export default CustomRenderFunction;

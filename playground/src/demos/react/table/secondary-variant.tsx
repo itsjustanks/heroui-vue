@@ -42,3 +42,5 @@ export function SecondaryVariant() {
     </Table>
   );
 }
+
+export default SecondaryVariant;

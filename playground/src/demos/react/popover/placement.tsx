@@ -61,3 +61,5 @@ export function PopoverPlacement() {
     </div>
   );
 }
+
+export default PopoverPlacement;

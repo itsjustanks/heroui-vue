@@ -44,3 +44,5 @@ export function Vertical() {
     </Tabs>
   );
 }
+
+export default Vertical;

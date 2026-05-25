@@ -13,3 +13,5 @@ export function IconOnly() {
     </div>
   );
 }
+
+export default IconOnly;

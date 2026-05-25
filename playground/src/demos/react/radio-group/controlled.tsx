@@ -42,3 +42,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export default Controlled;

@@ -11,3 +11,5 @@ export function ColorSwatchSizes() {
     </div>
   );
 }
+
+export default ColorSwatchSizes;

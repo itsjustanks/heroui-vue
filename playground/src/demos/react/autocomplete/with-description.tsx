@@ -61,3 +61,5 @@ export function WithDescription() {
     </Autocomplete>
   );
 }
+
+export default WithDescription;

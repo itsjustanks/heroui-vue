@@ -1,13 +1,19 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `card/default` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/card
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { CircleDollar } from "@gravity-ui/icons";
+import { Card, Link } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Card class="w-[400px]">
+      <CircleDollar aria-label="Dollar sign icon" class="text-primary size-6" role="img" />
+      <Card.Header>
+        <Card.Title>Become an Acme Creator!</Card.Title>
+        <Card.Description>
+          Visit the Acme Creator Hub to sign up today and start earning credits from your fans and
+          followers.
+        </Card.Description>
+      </Card.Header>
+      <Card.Footer>
+        <Link aria-label="Go to Acme Creator Hub (opens in new tab)" href="https://heroui.com" rel="noopener noreferrer" target="_blank">
+          Creator Hub
+          <Link.Icon aria-hidden="true" />
+        </Link>
+      </Card.Footer>
+    </Card>);

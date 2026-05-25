@@ -36,3 +36,5 @@ export function SpecialKeys() {
     </div>
   );
 }
+
+export default SpecialKeys;

@@ -33,3 +33,5 @@ export function CustomIcon() {
     </AlertDialog>
   );
 }
+
+export default CustomIcon;

@@ -37,3 +37,5 @@ export function WithContent() {
     </div>
   );
 }
+
+export default WithContent;

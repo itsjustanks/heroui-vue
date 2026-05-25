@@ -54,3 +54,5 @@ export function WithChevrons() {
     </NumberField>
   );
 }
+
+export default WithChevrons;

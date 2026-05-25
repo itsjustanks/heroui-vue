@@ -75,3 +75,5 @@ export function ThreeMonths() {
     </RangeCalendar>
   );
 }
+
+export default ThreeMonths;

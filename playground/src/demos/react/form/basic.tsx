@@ -71,3 +71,5 @@ export function Basic() {
     </Form>
   );
 }
+
+export default Basic;

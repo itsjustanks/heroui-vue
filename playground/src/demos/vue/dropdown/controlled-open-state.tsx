@@ -1,13 +1,31 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `dropdown/controlled-open-state` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/dropdown
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Dropdown, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const open = ref(false);
+  return () => <div class="flex min-w-sm flex-col items-center justify-center gap-4">
+      <p class="text-sm text-muted">
+        Dropdown is: <strong>{open.value ? "open" : "closed"}</strong>
+      </p>
+      <Dropdown isOpen={open.value} onOpenChange={setOpen}>
+        <Button aria-label="Menu" variant="secondary">
+          Actions
+        </Button>
+        <Dropdown.Popover>
+          <Dropdown.Menu>
+            <Dropdown.Item id="new-file" textValue="New file">
+              <Label>New file</Label>
+            </Dropdown.Item>
+            <Dropdown.Item id="open-file" textValue="Open file">
+              <Label>Open file</Label>
+            </Dropdown.Item>
+            <Dropdown.Item id="save-file" textValue="Save file">
+              <Label>Save file</Label>
+            </Dropdown.Item>
+            <Dropdown.Item id="delete-file" textValue="Delete file" variant="danger">
+              <Label>Delete file</Label>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown.Popover>
+      </Dropdown>
+    </div>;
+});

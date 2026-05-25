@@ -57,3 +57,5 @@ export function WithForm() {
     </Modal>
   );
 }
+
+export default WithForm;

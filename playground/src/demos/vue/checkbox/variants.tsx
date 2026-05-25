@@ -1,13 +1,28 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `checkbox/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/checkbox
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Checkbox, Description, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Primary variant</p>
+        <Checkbox id="primary" name="primary" variant="primary">
+          <Checkbox.Control>
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label htmlFor="primary">Primary checkbox</Label>
+            <Description>Standard styling with default background</Description>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Secondary variant</p>
+        <Checkbox id="secondary" name="secondary" variant="secondary">
+          <Checkbox.Control>
+            <Checkbox.Indicator />
+          </Checkbox.Control>
+          <Checkbox.Content>
+            <Label htmlFor="secondary">Secondary checkbox</Label>
+            <Description>Lower emphasis variant for use in surfaces</Description>
+          </Checkbox.Content>
+        </Checkbox>
+      </div>
+    </div>);

@@ -1,13 +1,24 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `spinner/colors` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/spinner
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Spinner } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-8">
+      <div class="flex flex-col items-center gap-2">
+        <Spinner color="current" />
+        <span class="text-xs text-muted">Current</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <Spinner color="accent" />
+        <span class="text-xs text-muted">Accent</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <Spinner color="success" />
+        <span class="text-xs text-muted">Success</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <Spinner color="warning" />
+        <span class="text-xs text-muted">Warning</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <Spinner color="danger" />
+        <span class="text-xs text-muted">Danger</span>
+      </div>
+    </div>);

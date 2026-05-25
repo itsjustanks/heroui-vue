@@ -19,3 +19,5 @@ export function Social() {
     </div>
   );
 }
+
+export default Social;

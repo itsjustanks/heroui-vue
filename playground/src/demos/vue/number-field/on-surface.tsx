@@ -1,13 +1,24 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `number-field/on-surface` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/number-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Description, Label, NumberField, Surface } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Surface class="flex w-full max-w-[280px] flex-col gap-4 rounded-3xl p-6">
+      <NumberField defaultValue={1024} minValue={0} name="width" variant="secondary">
+        <Label>Width</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-full" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+        <Description>Enter the width in pixels</Description>
+      </NumberField>
+      <NumberField defaultValue={0.5} formatOptions={{
+    style: "percent"
+  }} maxValue={1} minValue={0} name="percentage" step={0.1} variant="secondary">
+        <Label>Percentage</Label>
+        <NumberField.Group>
+          <NumberField.DecrementButton />
+          <NumberField.Input class="w-full" />
+          <NumberField.IncrementButton />
+        </NumberField.Group>
+        <Description>Value must be between 0 and 100</Description>
+      </NumberField>
+    </Surface>);

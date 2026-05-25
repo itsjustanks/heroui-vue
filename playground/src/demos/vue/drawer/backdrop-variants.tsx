@@ -1,13 +1,33 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `drawer/backdrop-variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/drawer
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Drawer } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const variants = ["opaque", "blur", "transparent"] as const;
+  return () => <div class="flex flex-wrap gap-4">
+      {variants.map(variant => <Drawer key={variant}>
+          <Button variant="secondary">{variant.charAt(0).toUpperCase() + variant.slice(1)}</Button>
+          <Drawer.Backdrop variant={variant}>
+            <Drawer.Content>
+              <Drawer.Dialog>
+                <Drawer.Handle />
+                <Drawer.CloseTrigger />
+                <Drawer.Header>
+                  <Drawer.Heading>
+                    Backdrop: {variant.charAt(0).toUpperCase() + variant.slice(1)}
+                  </Drawer.Heading>
+                </Drawer.Header>
+                <Drawer.Body>
+                  <p>
+                    This drawer uses the <code>{variant}</code> backdrop variant.
+                  </p>
+                </Drawer.Body>
+                <Drawer.Footer>
+                  <Button class="w-full" slot="close">
+                    Close
+                  </Button>
+                </Drawer.Footer>
+              </Drawer.Dialog>
+            </Drawer.Content>
+          </Drawer.Backdrop>
+        </Drawer>)}
+    </div>;
+});

@@ -42,3 +42,5 @@ export function Basic() {
     </Table>
   );
 }
+
+export default Basic;

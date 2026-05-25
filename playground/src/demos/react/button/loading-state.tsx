@@ -21,3 +21,5 @@ export function LoadingState() {
     </Button>
   );
 }
+
+export default LoadingState;

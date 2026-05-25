@@ -37,3 +37,5 @@ export function Channels() {
     </div>
   );
 }
+
+export default Channels;

@@ -16,3 +16,5 @@ export function CustomRenderFunction() {
     </Slider>
   );
 }
+
+export default CustomRenderFunction;

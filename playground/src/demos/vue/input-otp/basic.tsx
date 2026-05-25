@@ -1,13 +1,27 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input-otp/basic` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input-otp
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { InputOTP, Label, Link } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-[280px] flex-col gap-2">
+      <div class="flex flex-col gap-1">
+        <Label>Verify account</Label>
+        <p class="text-sm text-muted">We&apos;ve sent a code to a****@gmail.com</p>
+      </div>
+      <InputOTP maxLength={6}>
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+          <InputOTP.Slot index={2} />
+        </InputOTP.Group>
+        <InputOTP.Separator />
+        <InputOTP.Group>
+          <InputOTP.Slot index={3} />
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP>
+      <div class="flex items-center gap-[5px] px-1 pt-1">
+        <p class="text-sm text-muted">Didn&apos;t receive a code?</p>
+        <Link class="text-foreground underline" href="#">
+          Resend
+        </Link>
+      </div>
+    </div>);

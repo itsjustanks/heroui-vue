@@ -1,13 +1,49 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `select/multiple-select` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/select
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, ListBox, Select } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Select class="w-[256px]" placeholder="Select countries" selectionMode="multiple">
+      <Label>Countries to Visit</Label>
+      <Select.Trigger>
+        <Select.Value />
+        <Select.Indicator />
+      </Select.Trigger>
+      <Select.Popover>
+        <ListBox selectionMode="multiple">
+          <ListBox.Item id="argentina" textValue="Argentina">
+            Argentina
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="venezuela" textValue="Venezuela">
+            Venezuela
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="japan" textValue="Japan">
+            Japan
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="france" textValue="France">
+            France
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="italy" textValue="Italy">
+            Italy
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="spain" textValue="Spain">
+            Spain
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="thailand" textValue="Thailand">
+            Thailand
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="new-zealand" textValue="New Zealand">
+            New Zealand
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+          <ListBox.Item id="iceland" textValue="Iceland">
+            Iceland
+            <ListBox.ItemIndicator />
+          </ListBox.Item>
+        </ListBox>
+      </Select.Popover>
+    </Select>);

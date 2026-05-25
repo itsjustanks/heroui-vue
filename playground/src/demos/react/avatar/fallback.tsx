@@ -34,3 +34,5 @@ export function Fallback() {
     </div>
   );
 }
+
+export default Fallback;

@@ -27,3 +27,5 @@ export function UnavailableDates() {
     </div>
   );
 }
+
+export default UnavailableDates;

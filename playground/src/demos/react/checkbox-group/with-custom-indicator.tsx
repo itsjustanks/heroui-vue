@@ -56,3 +56,5 @@ export function WithCustomIndicator() {
     </CheckboxGroup>
   );
 }
+
+export default WithCustomIndicator;

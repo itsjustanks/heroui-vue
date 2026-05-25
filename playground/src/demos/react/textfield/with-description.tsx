@@ -9,3 +9,5 @@ export function WithDescription() {
     </TextField>
   );
 }
+
+export default WithDescription;

@@ -78,3 +78,5 @@ export function FAQ() {
     </div>
   );
 }
+
+export default FAQ;

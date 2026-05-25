@@ -12,3 +12,5 @@ export function WithLoadingSuffix() {
     </TextField>
   );
 }
+
+export default WithLoadingSuffix;

@@ -1,13 +1,31 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `drawer/scrollable-content` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/drawer
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Drawer } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Drawer>
+      <Button variant="secondary">Terms & Conditions</Button>
+      <Drawer.Backdrop>
+        <Drawer.Content>
+          <Drawer.Dialog>
+            <Drawer.Handle />
+            <Drawer.CloseTrigger />
+            <Drawer.Header>
+              <Drawer.Heading>Terms & Conditions</Drawer.Heading>
+            </Drawer.Header>
+            <Drawer.Body>
+              {Array.from({
+            length: 20
+          }).map((_, i) => <p key={i} class="mb-3">
+                  Paragraph {i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                  pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet hendrerit
+                  risus, sed porttitor quam.
+                </p>)}
+            </Drawer.Body>
+            <Drawer.Footer>
+              <Button slot="close" variant="secondary">
+                Decline
+              </Button>
+              <Button slot="close">Accept</Button>
+            </Drawer.Footer>
+          </Drawer.Dialog>
+        </Drawer.Content>
+      </Drawer.Backdrop>
+    </Drawer>);

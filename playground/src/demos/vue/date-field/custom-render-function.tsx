@@ -1,13 +1,10 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `date-field/custom-render-function` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/date-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { DateField, Label } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <DateField class="w-[256px]" name="date" render={props => <div {...props} data-custom="date-field" />}>
+      <Label render={props => <span {...props} data-custom="date-field-label" />}>Date</Label>
+      <DateField.Group render={props => <div {...props} data-custom="date-field-group" />}>
+        <DateField.Input render={props => <div {...props} data-custom="date-field-input" />}>
+          {segment => <DateField.Segment segment={segment} />}
+        </DateField.Input>
+      </DateField.Group>
+    </DateField>);

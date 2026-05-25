@@ -26,3 +26,5 @@ export function ErrorMessageWithTagGroup() {
     </TagGroup>
   );
 }
+
+export default ErrorMessageWithTagGroup;

@@ -1,13 +1,7 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button/custom-render-function` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <Button render={(props, {
+  isPressed
+}) => <button {...props} data-custom={isPressed ? "pressed" : "bar"} />}>
+      Press me
+    </Button>);

@@ -94,3 +94,5 @@ export function EmailRecipients() {
     </Autocomplete>
   );
 }
+
+export default EmailRecipients;

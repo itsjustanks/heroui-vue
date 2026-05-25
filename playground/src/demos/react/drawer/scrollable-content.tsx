@@ -33,3 +33,5 @@ export function ScrollableContent() {
     </Drawer>
   );
 }
+
+export default ScrollableContent;

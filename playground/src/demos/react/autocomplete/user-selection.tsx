@@ -127,3 +127,5 @@ export function UserSelection() {
     </Autocomplete>
   );
 }
+
+export default UserSelection;

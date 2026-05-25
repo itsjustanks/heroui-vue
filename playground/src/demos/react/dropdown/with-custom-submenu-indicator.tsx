@@ -82,3 +82,5 @@ export function WithCustomSubmenuIndicator() {
     </Dropdown>
   );
 }
+
+export default WithCustomSubmenuIndicator;

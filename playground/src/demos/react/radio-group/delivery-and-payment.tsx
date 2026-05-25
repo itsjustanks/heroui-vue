@@ -119,3 +119,5 @@ export function DeliveryAndPayment() {
     </div>
   );
 }
+
+export default DeliveryAndPayment;

@@ -27,3 +27,5 @@ export function MinMaxDates() {
     </div>
   );
 }
+
+export default MinMaxDates;

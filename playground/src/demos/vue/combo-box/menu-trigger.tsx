@@ -1,13 +1,125 @@
-import { defineComponent } from 'vue'
+import { ComboBox, Description, Input, Label, ListBox } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Focus (default)</p>
+        <ComboBox class="w-[256px]" menuTrigger="focus">
+          <Label>Favorite Animal</Label>
+          <ComboBox.InputGroup>
+            <Input placeholder="Search animals..." />
+            <ComboBox.Trigger />
+          </ComboBox.InputGroup>
+          <ComboBox.Popover>
+            <ListBox>
+              <ListBox.Item id="aardvark" textValue="Aardvark">
+                Aardvark
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="cat" textValue="Cat">
+                Cat
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="dog" textValue="Dog">
+                Dog
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="kangaroo" textValue="Kangaroo">
+                Kangaroo
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="panda" textValue="Panda">
+                Panda
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="snake" textValue="Snake">
+                Snake
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+            </ListBox>
+          </ComboBox.Popover>
+          <Description>Popover opens when the input is focused</Description>
+        </ComboBox>
+      </div>
 
-/** Vue port of `combo-box/menu-trigger` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/combo-box
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Input</p>
+        <ComboBox class="w-[256px]" menuTrigger="input">
+          <Label>Favorite Animal</Label>
+          <ComboBox.InputGroup>
+            <Input placeholder="Search animals..." />
+            <ComboBox.Trigger />
+          </ComboBox.InputGroup>
+          <ComboBox.Popover>
+            <ListBox>
+              <ListBox.Item id="aardvark" textValue="Aardvark">
+                Aardvark
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="cat" textValue="Cat">
+                Cat
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="dog" textValue="Dog">
+                Dog
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="kangaroo" textValue="Kangaroo">
+                Kangaroo
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="panda" textValue="Panda">
+                Panda
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="snake" textValue="Snake">
+                Snake
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+            </ListBox>
+          </ComboBox.Popover>
+          <Description>Popover opens when the user edits the input text</Description>
+        </ComboBox>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <p class="text-sm font-medium text-muted">Manual</p>
+        <ComboBox class="w-[256px]" menuTrigger="manual">
+          <Label>Favorite Animal</Label>
+          <ComboBox.InputGroup>
+            <Input placeholder="Search animals..." />
+            <ComboBox.Trigger />
+          </ComboBox.InputGroup>
+          <ComboBox.Popover>
+            <ListBox>
+              <ListBox.Item id="aardvark" textValue="Aardvark">
+                Aardvark
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="cat" textValue="Cat">
+                Cat
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="dog" textValue="Dog">
+                Dog
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="kangaroo" textValue="Kangaroo">
+                Kangaroo
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="panda" textValue="Panda">
+                Panda
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+              <ListBox.Item id="snake" textValue="Snake">
+                Snake
+                <ListBox.ItemIndicator />
+              </ListBox.Item>
+            </ListBox>
+          </ComboBox.Popover>
+          <Description>
+            Popover only opens when the trigger button is pressed or arrow keys are used
+          </Description>
+        </ComboBox>
+      </div>
+    </div>);

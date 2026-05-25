@@ -1,13 +1,32 @@
-import { defineComponent } from 'vue'
+import { Ellipsis } from "@gravity-ui/icons";
+import { Button, Popover } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex items-center gap-4">
+      <Popover>
+        <Button variant="secondary">With Arrow</Button>
+        <Popover.Content class="max-w-64">
+          <Popover.Dialog>
+            <Popover.Arrow />
+            <Popover.Heading>Popover with Arrow</Popover.Heading>
+            <p class="mt-2 text-sm text-muted">
+              The arrow shows which element triggered the popover.
+            </p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
 
-/** Vue port of `popover/with-arrow` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/popover
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <Popover>
+        <Button isIconOnly variant="tertiary">
+          <Ellipsis />
+        </Button>
+        <Popover.Content class="max-w-64" offset={10}>
+          <Popover.Dialog>
+            <Popover.Arrow />
+            <Popover.Heading>Popover with Arrow</Popover.Heading>
+            <p class="mt-2 text-sm text-muted">
+              The arrow shows which element triggered the popover.
+            </p>
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+    </div>);

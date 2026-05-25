@@ -1,13 +1,46 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `input-otp/on-complete` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/input-otp
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button, Form, InputOTP, Label, Spinner } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const [value, setValue] = React.useState("");
+  const [isComplete, setIsComplete] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const handleComplete = (code: string) => {
+    setIsComplete(true);
+    console.log("Code complete:", code);
+  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setValue("");
+      setIsComplete(false);
+    }, 2000);
+  };
+  return () => <Form class="flex w-[280px] flex-col gap-2" onSubmit={handleSubmit}>
+      <Label>Verify account</Label>
+      <InputOTP maxLength={6} value={value} onComplete={handleComplete} onChange={val => {
+      setValue(val);
+      setIsComplete(false);
+    }}>
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+          <InputOTP.Slot index={2} />
+        </InputOTP.Group>
+        <InputOTP.Separator />
+        <InputOTP.Group>
+          <InputOTP.Slot index={3} />
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP>
+      <Button class="mt-2 w-full" isDisabled={!isComplete} isPending={isSubmitting} type="submit" variant="primary">
+        {isSubmitting ? <>
+            <Spinner color="current" size="sm" />
+            Verifying...
+          </> : "Verify Code"}
+      </Button>
+    </Form>;
+});

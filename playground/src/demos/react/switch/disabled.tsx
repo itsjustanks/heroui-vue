@@ -12,3 +12,5 @@ export function Disabled() {
     </Switch>
   );
 }
+
+export default Disabled;

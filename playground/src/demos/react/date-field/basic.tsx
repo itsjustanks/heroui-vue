@@ -10,3 +10,5 @@ export function Basic() {
     </DateField>
   );
 }
+
+export default Basic;

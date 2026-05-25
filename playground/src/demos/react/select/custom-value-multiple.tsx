@@ -106,3 +106,5 @@ export function CustomValueMultiple() {
     </Select>
   );
 }
+
+export default CustomValueMultiple;

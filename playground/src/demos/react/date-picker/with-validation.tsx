@@ -55,3 +55,5 @@ export function WithValidation() {
     </DatePicker>
   );
 }
+
+export default WithValidation;

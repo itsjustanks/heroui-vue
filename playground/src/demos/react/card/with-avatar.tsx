@@ -51,3 +51,5 @@ export function WithAvatar() {
     </div>
   );
 }
+
+export default WithAvatar;

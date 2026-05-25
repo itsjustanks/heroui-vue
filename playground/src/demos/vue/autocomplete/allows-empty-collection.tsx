@@ -1,13 +1,29 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `autocomplete/allows-empty-collection` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/autocomplete
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Autocomplete, EmptyState, Label, ListBox, SearchField, useFilter } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => {
+  const {
+    contains
+  } = useFilter({
+    sensitivity: "base"
+  });
+  return () => <Autocomplete allowsEmptyCollection class="w-[256px]" placeholder="Select one" selectionMode="single">
+      <Label>State</Label>
+      <Autocomplete.Trigger>
+        <Autocomplete.Value />
+        <Autocomplete.ClearButton />
+        <Autocomplete.Indicator />
+      </Autocomplete.Trigger>
+      <Autocomplete.Popover>
+        <Autocomplete.Filter filter={contains}>
+          <SearchField autoFocus name="search" variant="secondary">
+            <SearchField.Group>
+              <SearchField.SearchIcon />
+              <SearchField.Input placeholder="Search states..." />
+              <SearchField.ClearButton />
+            </SearchField.Group>
+          </SearchField>
+          <ListBox renderEmptyState={() => <EmptyState>No results found</EmptyState>} />
+        </Autocomplete.Filter>
+      </Autocomplete.Popover>
+    </Autocomplete>;
+});

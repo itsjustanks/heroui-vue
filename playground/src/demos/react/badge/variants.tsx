@@ -33,3 +33,5 @@ export function BadgeVariants() {
     </div>
   );
 }
+
+export default BadgeVariants;

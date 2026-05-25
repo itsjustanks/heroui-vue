@@ -1,13 +1,19 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `toggle-button/controlled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/toggle-button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Heart, HeartFill } from "@gravity-ui/icons";
+import { ToggleButton } from "@itsjustanks/heroui-vue";
+import { defineComponent, ref } from "vue";
+export default defineComponent(() => {
+  const isSelected = ref(false);
+  return () => <div class="flex flex-col gap-4">
+      <ToggleButton isSelected={isSelected.value} onChange={setIsSelected}>
+        {({
+        isSelected: selected
+      }) => <>
+            {selected ? <HeartFill /> : <Heart />}
+            {selected ? "Liked" : "Like"}
+          </>}
+      </ToggleButton>
+      <p class="text-sm text-muted">
+        Status: <span class="font-medium">{isSelected.value ? "Selected" : "Not selected"}</span>
+      </p>
+    </div>;
+});

@@ -33,3 +33,5 @@ export function WithCloseButton() {
     </AlertDialog>
   );
 }
+
+export default WithCloseButton;

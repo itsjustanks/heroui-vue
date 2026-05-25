@@ -1,13 +1,28 @@
-import { defineComponent } from 'vue'
+import { Input, Label, TextField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex w-full max-w-64 flex-col gap-4">
+      <TextField name="password" type="password">
+        <Label>Password</Label>
+        <Input placeholder="••••••••" />
+      </TextField>
 
-/** Vue port of `textfield/input-types` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/textfield
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+      <TextField name="age" type="number">
+        <Label>Age</Label>
+        <Input max="150" min="0" placeholder="21" />
+      </TextField>
+
+      <TextField name="email" type="email">
+        <Label>Email</Label>
+        <Input placeholder="user@example.com" />
+      </TextField>
+
+      <TextField name="website" type="url">
+        <Label>Website</Label>
+        <Input placeholder="https://example.com" />
+      </TextField>
+
+      <TextField name="phone" type="tel">
+        <Label>Phone</Label>
+        <Input placeholder="+1 (555) 000-0000" />
+      </TextField>
+    </div>);

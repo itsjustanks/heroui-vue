@@ -34,3 +34,5 @@ export function PopoverWithArrow() {
     </div>
   );
 }
+
+export default PopoverWithArrow;

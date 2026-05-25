@@ -76,3 +76,5 @@ export function PaginationControlled() {
     </Pagination>
   );
 }
+
+export default PaginationControlled;

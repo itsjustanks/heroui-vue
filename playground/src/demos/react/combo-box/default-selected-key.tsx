@@ -39,3 +39,5 @@ export function DefaultSelectedKey() {
     </ComboBox>
   );
 }
+
+export default DefaultSelectedKey;

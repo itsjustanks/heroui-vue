@@ -224,3 +224,5 @@ export function WithImages() {
     </div>
   );
 }
+
+export default WithImages;

@@ -11,3 +11,5 @@ export function WithTextSuffix() {
     </TextField>
   );
 }
+
+export default WithTextSuffix;

@@ -41,3 +41,5 @@ export function CustomTrigger() {
     </Modal>
   );
 }
+
+export default CustomTrigger;

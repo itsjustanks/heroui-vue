@@ -32,3 +32,5 @@ export function AnimationTypes() {
     </div>
   );
 }
+
+export default AnimationTypes;

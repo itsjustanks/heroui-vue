@@ -1,13 +1,26 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `badge/variants` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/badge
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Avatar, Badge, Separator } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
+export default defineComponent(() => {
+  const variants = ["primary", "secondary", "soft"] as const;
+  const colors = ["accent", "default", "success", "warning", "danger"] as const;
+  return () => <div class="flex flex-col gap-8">
+      {variants.map((variant, index) => <React.Fragment key={variant}>
+          <div class="flex flex-col gap-4">
+            <h3 class="text-sm font-semibold text-muted capitalize">{variant}</h3>
+            <div class="flex items-center gap-6">
+              {colors.map(color => <Badge.Anchor key={color}>
+                  <Avatar>
+                    <Avatar.Image src={AVATAR_URL} />
+                    <Avatar.Fallback>JD</Avatar.Fallback>
+                  </Avatar>
+                  <Badge color={color} size="sm" variant={variant}>
+                    5
+                  </Badge>
+                </Badge.Anchor>)}
+            </div>
+          </div>
+          {index < variants.length - 1 && <Separator />}
+        </React.Fragment>)}
+    </div>;
+});

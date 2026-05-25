@@ -9,3 +9,5 @@ export function SingleShimmer() {
     </div>
   );
 }
+
+export default SingleShimmer;

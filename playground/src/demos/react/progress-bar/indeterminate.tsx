@@ -10,3 +10,5 @@ export function Indeterminate() {
     </ProgressBar>
   );
 }
+
+export default Indeterminate;

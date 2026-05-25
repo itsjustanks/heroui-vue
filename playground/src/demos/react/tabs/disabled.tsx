@@ -31,3 +31,5 @@ export function Disabled() {
     </Tabs>
   );
 }
+
+export default Disabled;

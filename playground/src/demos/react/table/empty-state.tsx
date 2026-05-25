@@ -27,3 +27,5 @@ export function EmptyStateDemo() {
     </Table>
   );
 }
+
+export default EmptyStateDemo;

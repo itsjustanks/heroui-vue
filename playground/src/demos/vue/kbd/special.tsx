@@ -1,13 +1,34 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `kbd/special` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/kbd
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Kbd } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="space-y-3">
+      <p class="text-sm">
+        Press{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="enter" />
+        </Kbd>{" "}
+        to confirm or{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="escape" />
+        </Kbd>{" "}
+        to cancel.
+      </p>
+      <p class="text-sm">
+        Use{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="tab" />
+        </Kbd>{" "}
+        to navigate between form fields and{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="shift" />
+          <Kbd.Abbr keyValue="tab" />
+        </Kbd>{" "}
+        to go back.
+      </p>
+      <p class="text-sm">
+        Hold{" "}
+        <Kbd>
+          <Kbd.Abbr keyValue="space" />
+        </Kbd>{" "}
+        to temporarily enable panning mode.
+      </p>
+    </div>);

@@ -1,13 +1,41 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `accordion/custom-styles` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/accordion
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { ChevronDown } from "@gravity-ui/icons";
+import { Accordion, cn } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const items = [{
+  content: "Stay informed about your account activity with real-time notifications. ",
+  iconUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/3dicons/bell-small.png",
+  subtitle: "Receive account activity updates",
+  title: "Set Up Notifications"
+}, {
+  content: "Enhance your browsing experience by installing our official browser extension",
+  iconUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/3dicons/compass-small.png",
+  subtitle: "Connect you browser to your account",
+  title: "Set up Browser Extension"
+}, {
+  content: "Begin your journey into the world of digital collectibles by creating your first NFT. ",
+  iconUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/3dicons/mint-collective-small.png",
+  subtitle: "Create your first collectible",
+  title: "Mint Collectible"
+}];
+export default defineComponent(() => () => <Accordion class="bg-surface-1/10 w-full max-w-md rounded-2xl" variant="surface">
+      {items.map((item, index) => <Accordion.Item key={index} class={cn("group/item", "first:[&_[data-slot=accordion-trigger]]:rounded-t-2xl",
+  // First trigger we want to round the top
+  "last:[&:not(:has([data-slot=accordion-trigger][aria-expanded='true']))_[data-slot=accordion-trigger]]:rounded-b-2xl" // Last trigger we want to round the bottom
+  )}>
+          <Accordion.Heading>
+            <Accordion.Trigger class="hover:bgsurface group flex items-center gap-2 transition-none">
+              {item.iconUrl ? <img alt={item.title} class="h-11 w-11 transition-[scale,rotate] duration-300 ease-out group-hover/item:scale-120 group-hover/item:-rotate-10 group-hover/item:drop-shadow-lg" src={item.iconUrl} /> : null}
+              <div class="flex flex-col gap-0">
+                <span class="leading-5 font-medium">{item.title}</span>
+                <span class="leading-6 font-normal text-muted/80">{item.subtitle}</span>
+              </div>
+              <Accordion.Indicator class="text-muted/50 [&>svg]:size-4">
+                <ChevronDown />
+              </Accordion.Indicator>
+            </Accordion.Trigger>
+          </Accordion.Heading>
+          <Accordion.Panel>
+            <Accordion.Body class="text-muted/80">{item.content}</Accordion.Body>
+          </Accordion.Panel>
+        </Accordion.Item>)}
+    </Accordion>);

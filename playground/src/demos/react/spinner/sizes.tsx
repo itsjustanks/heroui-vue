@@ -22,3 +22,5 @@ export function SpinnerSizes() {
     </div>
   );
 }
+
+export default SpinnerSizes;

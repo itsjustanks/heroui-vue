@@ -45,3 +45,5 @@ export function CustomRenderFunction() {
     </Tabs>
   );
 }
+
+export default CustomRenderFunction;

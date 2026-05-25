@@ -1,13 +1,20 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `button/disabled` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/button
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Button } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <div class="flex flex-wrap gap-3">
+      <Button isDisabled>Primary</Button>
+      <Button isDisabled variant="secondary">
+        Secondary
+      </Button>
+      <Button isDisabled variant="tertiary">
+        Tertiary
+      </Button>
+      <Button isDisabled variant="outline">
+        Outline
+      </Button>
+      <Button isDisabled variant="ghost">
+        Ghost
+      </Button>
+      <Button isDisabled variant="danger">
+        Danger
+      </Button>
+    </div>);

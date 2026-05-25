@@ -9,3 +9,5 @@ export function WithoutLabel() {
     </Switch>
   );
 }
+
+export default WithoutLabel;

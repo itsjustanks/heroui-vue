@@ -91,3 +91,5 @@ export function MultipleSelect() {
     </Autocomplete>
   );
 }
+
+export default MultipleSelect;

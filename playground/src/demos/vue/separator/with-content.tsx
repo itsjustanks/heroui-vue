@@ -1,13 +1,27 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `separator/with-content` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/separator
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Separator } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+const items = [{
+  iconUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/3dicons/bell-small.png",
+  subtitle: "Receive account activity updates",
+  title: "Set Up Notifications"
+}, {
+  iconUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/3dicons/compass-small.png",
+  subtitle: "Connect your browser to your account",
+  title: "Set up Browser Extension"
+}, {
+  iconUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/3dicons/mint-collective-small.png",
+  subtitle: "Create your first collectible",
+  title: "Mint Collectible"
+}];
+export default defineComponent(() => () => <div class="max-w-md space-y-4">
+      {items.map((item, index) => <div key={index}>
+          <div class="flex items-center gap-3">
+            <img alt={item.title} class="size-12" src={item.iconUrl} />
+            <div class="flex-1 space-y-0">
+              <h4 class="text-small font-medium">{item.title}</h4>
+              <p class="text-sm text-muted">{item.subtitle}</p>
+            </div>
+          </div>
+          {index < items.length - 1 && <Separator class="my-4" />}
+        </div>)}
+    </div>);

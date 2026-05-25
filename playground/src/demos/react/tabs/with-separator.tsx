@@ -33,3 +33,5 @@ export function WithSeparator() {
     </Tabs>
   );
 }
+
+export default WithSeparator;

@@ -16,3 +16,5 @@ export function Disabled() {
     </ColorSlider>
   );
 }
+
+export default Disabled;

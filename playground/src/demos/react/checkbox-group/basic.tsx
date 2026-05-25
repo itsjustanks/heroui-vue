@@ -35,3 +35,5 @@ export function Basic() {
     </CheckboxGroup>
   );
 }
+
+export default Basic;

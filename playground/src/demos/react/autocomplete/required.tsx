@@ -118,3 +118,5 @@ export function Required() {
     </Form>
   );
 }
+
+export default Required;

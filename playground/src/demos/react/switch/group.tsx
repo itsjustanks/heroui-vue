@@ -30,3 +30,5 @@ export function Group() {
     </SwitchGroup>
   );
 }
+
+export default Group;

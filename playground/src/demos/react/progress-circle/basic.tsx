@@ -10,3 +10,5 @@ export function Basic() {
     </ProgressCircle>
   );
 }
+
+export default Basic;

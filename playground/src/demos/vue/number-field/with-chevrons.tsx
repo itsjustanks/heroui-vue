@@ -1,13 +1,24 @@
-import { defineComponent } from 'vue'
-
-/** Vue port of `number-field/with-chevrons` is not yet authored.
- *  Upstream React source contains constructs (hooks/types/generics) that the
- *  auto-porter can't yet transform. See React side for the upstream example,
- *  or contribute a Vue version at this path.
- *  @see https://www.heroui.com/docs/react/components/number-field
- */
-export default defineComponent(() => () => (
-  <div class="demo-col" style={{ color: 'var(--color-muted-foreground)', fontSize: '0.875rem' }}>
-    <p>Vue port pending — see the React side for the upstream example.</p>
-  </div>
-))
+import { Label, NumberField } from "@itsjustanks/heroui-vue";
+import { defineComponent } from "vue";
+export default defineComponent(() => () => <NumberField class="w-full max-w-64" defaultValue={99} minValue={0} name="amount" formatOptions={{
+  currency: "EUR",
+  currencySign: "accounting",
+  style: "currency"
+}}>
+      <Label>Number field with chevrons</Label>
+      <NumberField.Group>
+        <NumberField.Input />
+        <div class="flex h-[calc(100%+2px)] flex-col border-l border-field-placeholder/15">
+          <NumberField.IncrementButton class="-ml-px flex h-1/2 w-6 flex-1 rounded-none border-r-0 border-l-0 pt-0.5 text-sm">
+            <svg aria-hidden="true" height="11" viewBox="0 0 16 16" width="11" xmlns="http://www.w3.org/2000/svg">
+              <path clipRule="evenodd" d="M13.03 10.53a.75.75 0 0 1-1.06 0L8 6.56l-3.97 3.97a.75.75 0 1 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1 0 1.06" fill="currentColor" fillRule="evenodd" />
+            </svg>
+          </NumberField.IncrementButton>
+          <NumberField.DecrementButton class="-ml-px flex h-1/2 w-6 flex-1 rounded-none border-r-0 border-l-0 pb-0.5 text-sm">
+            <svg aria-hidden="true" height="11" viewBox="0 0 16 16" width="11" xmlns="http://www.w3.org/2000/svg">
+              <path clipRule="evenodd" d="M2.97 5.47a.75.75 0 0 1 1.06 0L8 9.44l3.97-3.97a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 0 1 0-1.06" fill="currentColor" fillRule="evenodd" />
+            </svg>
+          </NumberField.DecrementButton>
+        </div>
+      </NumberField.Group>
+    </NumberField>);
