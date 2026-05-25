@@ -18,15 +18,29 @@ export const AccordionRoot = defineComponent({
     /** Visual variant. */
     variant: { type: String as PropType<AccordionVariants['variant']>, default: undefined },
     /** Hide separator between items. */
-    hideSeparator: { type: Boolean, default: false }
+    hideSeparator: { type: Boolean, default: false },
+    /** Selection mode. @default 'single' (matches HeroUI v3 React) */
+    type: { type: String as PropType<'single' | 'multiple'>, default: 'single' },
+    /** Allow closing the open item in `single` mode. @default true */
+    collapsible: { type: Boolean, default: true },
+    /** Default expanded item(s) for uncontrolled use. */
+    defaultValue: { type: [String, Array] as PropType<string | string[]>, default: undefined },
+    /** Controlled value. */
+    modelValue: { type: [String, Array] as PropType<string | string[]>, default: undefined }
   },
-  setup (props, { attrs, slots }) {
+  emits: ['update:modelValue'],
+  setup (props, { attrs, slots, emit }) {
     const styles = computed(() => accordionVariants({ variant: props.variant }))
     provide(ACCORDION_CONTEXT, { slots: styles, hideSeparator: computed(() => props.hideSeparator) })
 
     return () => (
       <RekaAccordionRoot
-        {...attrs}
+        {...(attrs as Record<string, any>)}
+        type={props.type as any}
+        collapsible={props.collapsible}
+        defaultValue={props.defaultValue as any}
+        modelValue={props.modelValue as any}
+        onUpdate:modelValue={(v: any) => emit('update:modelValue', v)}
         data-slot="accordion"
         class={cn(styles.value.base(), props.class)}
       >

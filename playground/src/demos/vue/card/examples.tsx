@@ -1,12 +1,10 @@
-import { Avatar, Button, Card, Input, Label } from "@itsjustanks/heroui-vue";
-import { avatarUrls, currentExample } from '../../shared';
-import { defineComponent } from "vue";
-function DefaultCard({
-  variant = 'default'
-}: {
-  variant?: any;
-}) {
-  return <Card className="w-[400px]" variant={variant}>
+import { defineComponent } from 'vue'
+import { Avatar, Button, Card, Input, Label } from '@itsjustanks/heroui-vue'
+import { avatarUrls, currentExample } from '../../shared'
+
+function DefaultCard({ variant = 'default' }: { variant?: any }) {
+  return (
+    <Card class="w-[400px]" variant={variant}>
       <Card.Header>
         <Card.Title>Become an Acme Creator!</Card.Title>
         <Card.Description>
@@ -16,12 +14,16 @@ function DefaultCard({
       <Card.Footer>
         <a href="https://heroui.com" rel="noopener noreferrer" target="_blank">Creator Hub</a>
       </Card.Footer>
-    </Card>;
+    </Card>
+  )
 }
-export default defineComponent(() => {
-  const example = currentExample('default');
+
+export default defineComponent(() => () => {
+  const example = currentExample('default')
+
   if (example === 'horizontal') {
-    return <Card class="w-[480px]">
+    return (
+      <Card class="w-[480px]">
         <Card.Content class="flex flex-row items-center gap-4">
           <Avatar><Avatar.Image alt="Creator" src={avatarUrls.orange} /><Avatar.Fallback>AC</Avatar.Fallback></Avatar>
           <div>
@@ -29,37 +31,51 @@ export default defineComponent(() => {
             <Card.Description>Launch your first content subscription.</Card.Description>
           </div>
         </Card.Content>
-      </Card>;
+      </Card>
+    )
   }
+
   if (example === 'variants') {
-    return <div class="demo-grid demo-grid--2">
+    return (
+      <div class="demo-grid demo-grid--2">
         <DefaultCard />
         <DefaultCard variant="surface" />
-      </div>;
+      </div>
+    )
   }
+
   if (example === 'with-avatar') {
-    return <Card class="w-[400px]">
+    return (
+      <Card class="w-[400px]">
         <Card.Header class="flex items-center gap-3">
           <Avatar><Avatar.Image alt="Jane Doe" src={avatarUrls.purple} /><Avatar.Fallback>JD</Avatar.Fallback></Avatar>
           <div><Card.Title>Jane Doe</Card.Title><Card.Description>Product designer</Card.Description></div>
         </Card.Header>
-      </Card>;
+      </Card>
+    )
   }
+
   if (example === 'with-form') {
-    return <Card class="w-[400px]">
+    return (
+      <Card class="w-[400px]">
         <Card.Header><Card.Title>Join the waitlist</Card.Title></Card.Header>
         <Card.Content class="demo-col">
           <Label>Email</Label>
           <Input placeholder="you@example.com" />
         </Card.Content>
         <Card.Footer><Button>Submit</Button></Card.Footer>
-      </Card>;
+      </Card>
+    )
   }
+
   if (example === 'with-images') {
-    return <Card class="w-[400px]">
+    return (
+      <Card class="w-[400px]">
         <img alt="HeroUI gradient" class="h-36 w-full object-cover" src="https://images.unsplash.com/photo-1557683316-973673baf926?w=800&auto=format&fit=crop" />
         <Card.Header><Card.Title>Visual Story</Card.Title><Card.Description>A media card with image content.</Card.Description></Card.Header>
-      </Card>;
+      </Card>
+    )
   }
-  return () => <DefaultCard />;
-});
+
+  return <DefaultCard />
+})
