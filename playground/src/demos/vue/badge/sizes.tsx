@@ -15,3 +15,4 @@ export default defineComponent(() => {
         </Badge.Anchor>)}
     </div>;
 });
+export default BadgeSizes;

@@ -1,7 +1,7 @@
 import {ArrowRight} from "@gravity-ui/icons";
 import {Button, Dropdown, Label} from "@heroui/react";
 
-export function WithCustomSubmenuIndicator() {
+function WithCustomSubmenuIndicator() {
   return (
     <Dropdown>
       <Button aria-label="Menu" variant="secondary">

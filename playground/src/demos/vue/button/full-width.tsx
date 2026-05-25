@@ -1,4 +1,4 @@
-import { Plus } from "@gravity-ui/icons";
+import { Plus } from "../../../gravity-icons-vue";
 import { Button } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="w-[400px] space-y-3">
@@ -8,3 +8,4 @@ export default defineComponent(() => () => <div class="w-[400px] space-y-3">
         With Icon
       </Button>
     </div>);
+export default FullWidth;

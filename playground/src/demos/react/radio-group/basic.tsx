@@ -1,6 +1,6 @@
 import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <RadioGroup defaultValue="premium" name="plan">
       <Label>Plan selection</Label>

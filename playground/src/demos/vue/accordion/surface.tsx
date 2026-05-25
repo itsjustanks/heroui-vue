@@ -1,4 +1,4 @@
-import { ArrowsRotateLeft, Box, ChevronDown, CreditCard, PlanetEarth, Receipt, ShoppingBag } from "@gravity-ui/icons";
+import { ArrowsRotateLeft, Box, ChevronDown, CreditCard, PlanetEarth, Receipt, ShoppingBag } from "../../../gravity-icons-vue";
 import { Accordion } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const items = [{
@@ -42,3 +42,4 @@ export default defineComponent(() => () => <Accordion class="w-full max-w-md" va
           </Accordion.Panel>
         </Accordion.Item>)}
     </Accordion>);
+export default Surface;

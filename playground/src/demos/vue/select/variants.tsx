@@ -40,3 +40,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Select.Popover>
       </Select>
     </div>);
+export default Variants;

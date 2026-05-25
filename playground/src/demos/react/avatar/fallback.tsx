@@ -1,7 +1,7 @@
 import {Person} from "@gravity-ui/icons";
 import {Avatar} from "@heroui/react";
 
-export function Fallback() {
+function Fallback() {
   return (
     <div className="flex items-center gap-4">
       {/* Text fallback */}

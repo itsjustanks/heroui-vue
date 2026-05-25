@@ -1,7 +1,7 @@
 import {ChevronDown, Clock} from "@gravity-ui/icons";
 import {Description, Label, TimeField} from "@heroui/react";
 
-export function WithPrefixAndSuffix() {
+function WithPrefixAndSuffix() {
   return (
     <TimeField className="w-[256px]" name="time">
       <Label>Time</Label>

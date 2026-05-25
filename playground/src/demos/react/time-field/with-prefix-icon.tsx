@@ -1,7 +1,7 @@
 import {Clock} from "@gravity-ui/icons";
 import {Label, TimeField} from "@heroui/react";
 
-export function WithPrefixIcon() {
+function WithPrefixIcon() {
   return (
     <TimeField className="w-[256px]" name="time">
       <Label>Time</Label>

@@ -8,3 +8,4 @@ export default defineComponent(() => () => <NumberField class="w-full max-w-64" 
         <NumberField.IncrementButton />
       </NumberField.Group>
     </NumberField>);
+export default Basic;

@@ -9,7 +9,7 @@ import {
 } from "@gravity-ui/icons";
 import {ToggleButton, ToggleButtonGroup} from "@heroui/react";
 
-export function SelectionMode() {
+function SelectionMode() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">

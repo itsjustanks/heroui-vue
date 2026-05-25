@@ -1,4 +1,4 @@
-import { FloppyDisk, FolderOpen, SquarePlus, TrashBin } from "@gravity-ui/icons";
+import { FloppyDisk, FolderOpen, SquarePlus, TrashBin } from "../../../gravity-icons-vue";
 import { Button, Description, Dropdown, Kbd, Label } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Dropdown>
@@ -63,3 +63,4 @@ export default defineComponent(() => () => <Dropdown>
         </Dropdown.Menu>
       </Dropdown.Popover>
     </Dropdown>);
+export default WithDescriptions;

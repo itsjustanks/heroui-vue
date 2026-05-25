@@ -1,6 +1,6 @@
 import {Avatar} from "@heroui/react";
 
-export function CustomStyles() {
+function CustomStyles() {
   return (
     <div className="flex items-center gap-4">
       {/* Custom size with Tailwind classes */}

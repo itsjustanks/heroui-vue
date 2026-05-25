@@ -31,3 +31,4 @@ export default defineComponent(() => {
         </Drawer>)}
     </div>;
 });
+export default BackdropVariants;

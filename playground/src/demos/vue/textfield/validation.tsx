@@ -19,3 +19,4 @@ export default defineComponent(() => {
       </TextField>
     </div>;
 });
+export default Validation;

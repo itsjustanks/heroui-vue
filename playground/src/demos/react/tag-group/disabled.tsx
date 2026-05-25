@@ -1,6 +1,6 @@
 import {Description, Label, Tag, TagGroup} from "@heroui/react";
 
-export function TagGroupDisabled() {
+function TagGroupDisabled() {
   return (
     <div className="flex flex-col gap-4">
       <TagGroup selectionMode="single">

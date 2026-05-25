@@ -5,7 +5,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const value = ref(today(getLocalTimeZone()));
   return () => <div class="flex w-64 flex-col gap-4">
-      <DatePicker name="date" value={value.value} onChange={setValue}>
+      <DatePicker name="date" value={value.value} onChange={v => value.value = v}>
         <Label>Date</Label>
         <DateField.Group fullWidth>
           <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
@@ -52,3 +52,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

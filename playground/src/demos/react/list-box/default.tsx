@@ -1,6 +1,6 @@
 import {Avatar, Description, Label, ListBox} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <ListBox aria-label="Users" className="w-[220px]" selectionMode="single">
       <ListBox.Item id="1" textValue="Bob">

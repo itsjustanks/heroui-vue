@@ -34,3 +34,4 @@ export default defineComponent(() => {
         </AlertDialog>)}
     </div>;
 });
+export default Placements;

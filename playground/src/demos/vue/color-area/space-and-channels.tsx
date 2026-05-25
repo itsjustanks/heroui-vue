@@ -134,7 +134,7 @@ export default defineComponent(() => {
         </Select>
       </div>
       {/* Color Area */}
-      <ColorArea colorSpace={colorSpace.value} value={color.value} xChannel={xChannel.value} yChannel={yChannel.value} onChange={setColor}>
+      <ColorArea colorSpace={colorSpace.value} value={color.value} xChannel={xChannel.value} yChannel={yChannel.value} onChange={v => color.value = v}>
         <ColorArea.Thumb />
       </ColorArea>
 
@@ -149,3 +149,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default ColorAreaSpaceAndChannels;

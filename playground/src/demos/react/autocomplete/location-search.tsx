@@ -16,7 +16,7 @@ interface City {
   country: string;
 }
 
-export function LocationSearch() {
+function LocationSearch() {
   const allCities: City[] = [
     {country: "USA", name: "New York"},
     {country: "USA", name: "Los Angeles"},

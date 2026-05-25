@@ -5,7 +5,18 @@
 import './theme.css'
 
 export * from './icons'
+export { cn } from './lib/utils'
 export { vHerouiState, type HerouiStateOptions } from './composables/use-heroui-state'
+export { useFilter, type UseFilterOptions, type UseFilterReturn } from './composables/use-filter'
+export { useOverlayState, type UseOverlayStateOptions, type OverlayState } from './composables/use-overlay-state'
+/**
+ * Minimal React-Aria-compatible stubs so ported demos that import these names
+ * resolve. None of them have a working Vue implementation yet — they return
+ * inert sensible defaults so the demos compile and render their non-virtualized
+ * paths. Hand-port the affected demos for real behaviour.
+ */
+export { useLocale } from './composables/react-aria-stubs'
+export { Collection, ListBoxLoadMoreItem, ListLayout, TableLayout, Virtualizer, useListData } from './composables/react-aria-stubs'
 export * from './accordion'
 export * from './alert-dialog'
 export * from './alert'

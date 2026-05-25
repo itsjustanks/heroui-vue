@@ -4,3 +4,4 @@ export default defineComponent(() => () => <Link href="#" render={props => <span
       Call to action
       <Link.Icon />
     </Link>);
+export default CustomRenderFunction;

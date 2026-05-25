@@ -1,4 +1,4 @@
-import { ChevronsExpandVertical } from "@gravity-ui/icons";
+import { ChevronsExpandVertical } from "../../../gravity-icons-vue";
 import { ComboBox, Input, Label, ListBox } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <ComboBox class="w-[256px]">
@@ -38,3 +38,4 @@ export default defineComponent(() => () => <ComboBox class="w-[256px]">
         </ListBox>
       </ComboBox.Popover>
     </ComboBox>);
+export default CustomIndicator;

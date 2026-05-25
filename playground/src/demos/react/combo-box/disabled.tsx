@@ -1,6 +1,6 @@
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <ComboBox isDisabled className="w-[256px]" defaultSelectedKey="cat">
       <Label>Favorite Animal</Label>

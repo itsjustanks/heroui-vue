@@ -34,7 +34,7 @@ const channelsBySpace: Record<ColorSpace, ChannelOption[]> = {
   ],
 };
 
-export function ColorAreaSpaceAndChannels() {
+function ColorAreaSpaceAndChannels() {
   const [colorSpace, setColorSpace] = useState<ColorSpace>("hsb");
   const [color, setColor] = useState(() => parseColor("hsb(219, 58%, 93%)"));
 

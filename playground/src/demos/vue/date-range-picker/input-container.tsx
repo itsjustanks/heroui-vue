@@ -87,3 +87,4 @@ export default defineComponent(() => {
         </>}
     </DateRangePicker>;
 });
+export default InputContainer;

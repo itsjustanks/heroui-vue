@@ -1,7 +1,7 @@
 import {Rocket} from "@gravity-ui/icons";
 import {Button, Modal} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   const sizes = ["xs", "sm", "md", "lg", "cover", "full"] as const;
 
   return (

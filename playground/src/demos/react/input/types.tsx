@@ -1,6 +1,6 @@
 import {Input, Label} from "@heroui/react";
 
-export function Types() {
+function Types() {
   return (
     <div className="flex w-80 flex-col gap-4">
       <div className="flex flex-col gap-1">

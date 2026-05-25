@@ -1,6 +1,6 @@
 import {Label, Switch, SwitchGroup} from "@heroui/react";
 
-export function GroupHorizontal() {
+function GroupHorizontal() {
   return (
     <SwitchGroup className="overflow-x-auto" orientation="horizontal">
       <Switch name="notifications">

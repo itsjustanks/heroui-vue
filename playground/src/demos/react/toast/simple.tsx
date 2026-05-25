@@ -1,6 +1,6 @@
 import {Button, toast} from "@heroui/react";
 
-export function Simple() {
+function Simple() {
   return (
     <div className="flex h-full max-w-xl flex-col items-center justify-center">
       <div className="flex w-full flex-wrap items-center justify-center gap-4">

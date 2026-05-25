@@ -6,3 +6,4 @@ export default defineComponent(() => () => <ProgressBar isIndeterminate aria-lab
         <ProgressBar.Fill />
       </ProgressBar.Track>
     </ProgressBar>);
+export default Indeterminate;

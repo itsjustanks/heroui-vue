@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex flex-wrap gap-3">
         Danger
       </Button>
     </div>);
+export default Disabled;

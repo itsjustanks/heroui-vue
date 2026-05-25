@@ -1,4 +1,4 @@
-import { Envelope } from "@gravity-ui/icons";
+import { Envelope } from "../../../gravity-icons-vue";
 import { Button, Input, Label, Modal, Surface, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Modal>
@@ -53,3 +53,4 @@ export default defineComponent(() => () => <Modal>
         </Modal.Container>
       </Modal.Backdrop>
     </Modal>);
+export default WithForm;

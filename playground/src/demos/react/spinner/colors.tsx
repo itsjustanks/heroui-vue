@@ -1,6 +1,6 @@
 import {Spinner} from "@heroui/react";
 
-export function SpinnerColors() {
+function SpinnerColors() {
   return (
     <div className="flex items-center gap-8">
       <div className="flex flex-col items-center gap-2">

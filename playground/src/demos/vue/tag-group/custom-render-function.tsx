@@ -1,4 +1,4 @@
-import { PlanetEarth, Rocket, ShoppingBag, SquareArticle } from "@gravity-ui/icons";
+import { PlanetEarth, Rocket, ShoppingBag, SquareArticle } from "../../../gravity-icons-vue";
 import { Tag, TagGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <TagGroup aria-label="Tags" render={props => <div {...props} data-custom="foo" />} selectionMode="single">
@@ -21,3 +21,4 @@ export default defineComponent(() => () => <TagGroup aria-label="Tags" render={p
         </Tag>
       </TagGroup.List>
     </TagGroup>);
+export default CustomRenderFunction;

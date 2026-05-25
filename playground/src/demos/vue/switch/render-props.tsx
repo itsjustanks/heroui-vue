@@ -12,3 +12,4 @@ export default defineComponent(() => () => <Switch>
           </Switch.Content>
         </>}
     </Switch>);
+export default RenderProps;

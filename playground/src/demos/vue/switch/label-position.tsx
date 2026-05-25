@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Switch.Control>
       </Switch>
     </div>);
+export default LabelPosition;

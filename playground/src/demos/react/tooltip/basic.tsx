@@ -1,7 +1,7 @@
 import {CircleInfo} from "@gravity-ui/icons";
 import {Button, Tooltip} from "@heroui/react";
 
-export function TooltipBasic() {
+function TooltipBasic() {
   return (
     <div className="flex items-center gap-4">
       <Tooltip delay={0}>

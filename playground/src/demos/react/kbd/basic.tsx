@@ -1,6 +1,6 @@
 import {Kbd} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <div className="flex items-center gap-4">
       <Kbd>

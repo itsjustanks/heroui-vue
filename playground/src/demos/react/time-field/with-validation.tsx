@@ -4,7 +4,7 @@ import {Description, FieldError, Label, TimeField} from "@heroui/react";
 import {parseTime} from "@internationalized/date";
 import {useState} from "react";
 
-export function WithValidation() {
+function WithValidation() {
   const [value, setValue] = useState<Time | null>(null);
   const minTime = parseTime("09:00");
   const maxTime = parseTime("17:00");

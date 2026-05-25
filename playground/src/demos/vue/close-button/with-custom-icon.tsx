@@ -1,4 +1,4 @@
-import { CircleXmark, Xmark } from "@gravity-ui/icons";
+import { CircleXmark, Xmark } from "../../../gravity-icons-vue";
 import { CloseButton } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-center gap-4">
@@ -15,3 +15,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         <span class="text-xs text-muted">Alternative Icon</span>
       </div>
     </div>);
+export default WithCustomIcon;

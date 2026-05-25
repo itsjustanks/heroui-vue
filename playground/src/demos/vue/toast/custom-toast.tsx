@@ -34,3 +34,4 @@ export default defineComponent(() => {
       </Button>
     </div>;
 });
+export default CustomToast;

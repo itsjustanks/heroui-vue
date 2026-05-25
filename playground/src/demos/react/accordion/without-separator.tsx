@@ -21,7 +21,7 @@ const items = [
   },
 ];
 
-export function WithoutSeparator() {
+function WithoutSeparator() {
   return (
     <Accordion hideSeparator className="w-full max-w-md">
       {items.map((item, index) => (

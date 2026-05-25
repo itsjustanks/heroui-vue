@@ -25,3 +25,4 @@ export default defineComponent(() => {
       <Description class="text-center">Weekends are unavailable</Description>
     </div>;
 });
+export default UnavailableDates;

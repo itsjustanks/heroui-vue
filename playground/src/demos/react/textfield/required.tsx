@@ -1,6 +1,6 @@
 import {Description, Input, Label, TextField} from "@heroui/react";
 
-export function Required() {
+function Required() {
   return (
     <TextField isRequired className="w-full max-w-64" name="fullName">
       <Label>Full Name</Label>

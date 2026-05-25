@@ -1,7 +1,7 @@
 import {Person} from "@gravity-ui/icons";
 import {Avatar, Separator} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   const colors = ["accent", "default", "success", "warning", "danger"] as const;
   const variants = [
     {content: "AG", label: "letter", type: "letter"},

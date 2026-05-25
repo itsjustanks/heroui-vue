@@ -15,3 +15,4 @@ export default defineComponent(() => () => <Slider class="w-full max-w-xs" defau
           </>}
       </Slider.Track>
     </Slider>);
+export default Range;

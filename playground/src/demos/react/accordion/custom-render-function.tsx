@@ -47,7 +47,7 @@ const items = [
   },
 ];
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <Accordion
       className="w-full max-w-md"

@@ -36,3 +36,4 @@ export default defineComponent(() => () => <Form class="flex flex-col gap-4 px-4
       </CheckboxGroup>
       <Button type="submit">Submit</Button>
     </Form>);
+export default Validation;

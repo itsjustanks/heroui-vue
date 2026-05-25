@@ -1,6 +1,6 @@
 import {Button, ButtonGroup} from "@heroui/react";
 
-export function WithoutSeparator() {
+function WithoutSeparator() {
   return (
     <ButtonGroup>
       <Button>First</Button>

@@ -45,3 +45,4 @@ export default defineComponent(() => {
       </Select.Popover>
     </Select>;
 });
+export default AsynchronousLoading;

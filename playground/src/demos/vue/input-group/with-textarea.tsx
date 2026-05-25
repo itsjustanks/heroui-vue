@@ -1,4 +1,4 @@
-import { ArrowUp, At, Microphone, PlugConnection, Plus } from "@gravity-ui/icons";
+import { ArrowUp, At, Microphone, PlugConnection, Plus } from "../../../gravity-icons-vue";
 import { Button, InputGroup, Kbd, Spinner, TextField, Tooltip } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
@@ -65,3 +65,4 @@ export default defineComponent(() => {
       </InputGroup>
     </TextField>;
 });
+export default WithTextArea;

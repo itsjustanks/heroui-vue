@@ -9,3 +9,4 @@ export default defineComponent(() => () => <Checkbox id="description-notificatio
         <Description>Get notified when someone mentions you in a comment</Description>
       </Checkbox.Content>
     </Checkbox>);
+export default WithDescription;

@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Checkbox id="custom">
         <Label htmlFor="custom">Custom styled checkbox</Label>
       </Checkbox.Content>
     </Checkbox>);
+export default CustomStyles;

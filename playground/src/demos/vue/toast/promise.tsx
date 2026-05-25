@@ -152,3 +152,4 @@ export default defineComponent(() => () => <div class="flex h-full max-w-2xl fle
         </div>
       </div>
     </div>);
+export default PromiseDemo;

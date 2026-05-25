@@ -12,3 +12,4 @@ export default defineComponent(() => () => <Typography.Prose class="flex max-w-x
         primitive.
       </p>
     </Typography.Prose>);
+export default Prose;

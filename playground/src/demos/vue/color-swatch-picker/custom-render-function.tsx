@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSwatchPicker render={props => <
           <ColorSwatchPicker.Indicator />
         </ColorSwatchPicker.Item>)}
     </ColorSwatchPicker>);
+export default CustomRenderFunction;

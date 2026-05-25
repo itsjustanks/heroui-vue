@@ -1,6 +1,6 @@
 import {Label, Slider} from "@heroui/react";
 
-export function Range() {
+function Range() {
   return (
     <Slider
       className="w-full max-w-xs"

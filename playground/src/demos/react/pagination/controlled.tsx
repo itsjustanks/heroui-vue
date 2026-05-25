@@ -1,7 +1,7 @@
 import {Pagination} from "@heroui/react";
 import {useState} from "react";
 
-export function PaginationControlled() {
+function PaginationControlled() {
   const [page, setPage] = useState(1);
   const totalPages = 12;
   const itemsPerPage = 10;

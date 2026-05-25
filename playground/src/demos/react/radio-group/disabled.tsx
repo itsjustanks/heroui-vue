@@ -1,6 +1,6 @@
 import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <RadioGroup isDisabled defaultValue="pro" name="plan-disabled">
       <Label>Subscription plan</Label>

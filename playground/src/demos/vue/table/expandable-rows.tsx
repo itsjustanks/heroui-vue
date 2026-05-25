@@ -76,7 +76,7 @@ export default defineComponent(() => {
   };
   return () => <Table>
       <Table.ScrollContainer>
-        <Table.Content aria-label="Files" class="min-w-[520px]" expandedKeys={expandedKeys.value} treeColumn="name" onExpandedChange={setExpandedKeys}>
+        <Table.Content aria-label="Files" class="min-w-[520px]" expandedKeys={expandedKeys.value} treeColumn="name" onExpandedChange={v => expandedKeys.value = v}>
           <Table.Header>
             <Table.Column isRowHeader id="name">
               Name
@@ -89,3 +89,4 @@ export default defineComponent(() => {
       </Table.ScrollContainer>
     </Table>;
 });
+export default ExpandableRows;

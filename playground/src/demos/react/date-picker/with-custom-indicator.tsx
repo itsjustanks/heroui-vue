@@ -1,7 +1,7 @@
 import {Calendar, DateField, DatePicker, Description, Label} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
-export function WithCustomIndicator() {
+function WithCustomIndicator() {
   return (
     <DatePicker className="w-64" name="date">
       <Label>Date</Label>

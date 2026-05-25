@@ -42,3 +42,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Surface>
       </div>
     </div>);
+export default Variants;

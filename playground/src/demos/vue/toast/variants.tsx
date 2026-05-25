@@ -1,4 +1,4 @@
-import { HardDrive, Persons } from "@gravity-ui/icons";
+import { HardDrive, Persons } from "../../../gravity-icons-vue";
 import { Button, toast } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const noop = () => {};
@@ -60,3 +60,4 @@ export default defineComponent(() => () => <div class="flex h-full max-w-xl flex
         </Button>
       </div>
     </div>);
+export default Variants;

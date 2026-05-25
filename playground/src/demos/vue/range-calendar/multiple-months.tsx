@@ -61,3 +61,4 @@ export default defineComponent(() => () => <RangeCalendar aria-label="Trip dates
         </div>
       </div>
     </RangeCalendar>);
+export default MultipleMonths;

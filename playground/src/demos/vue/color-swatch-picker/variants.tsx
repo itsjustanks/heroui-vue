@@ -21,3 +21,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </ColorSwatchPicker>
       </div>
     </div>);
+export default Variants;

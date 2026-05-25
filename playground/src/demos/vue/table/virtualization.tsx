@@ -56,3 +56,4 @@ export default defineComponent(() => {
       </Table>
     </Virtualizer>;
 });
+export default Virtualization;

@@ -1,7 +1,7 @@
 import {Calendar, DateField, DatePicker, Description, Label} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 
-export function Disabled() {
+function Disabled() {
   return (
     <DatePicker isDisabled className="w-64" name="date" value={today(getLocalTimeZone())}>
       <Label>Date</Label>

@@ -28,7 +28,7 @@ export default defineComponent(() => {
     name: "Washington"
   }];
   return () => <Surface class="w-[380px] space-y-4 rounded-3xl p-6">
-      <Autocomplete fullWidth placeholder="Select one" selectionMode="single" value={selectedKey.value} variant="secondary" onChange={setSelectedKey}>
+      <Autocomplete fullWidth placeholder="Select one" selectionMode="single" value={selectedKey.value} variant="secondary" onChange={v => selectedKey.value = v}>
         <Label>State</Label>
         <Autocomplete.Trigger>
           <Autocomplete.Value />
@@ -55,3 +55,4 @@ export default defineComponent(() => {
       </Autocomplete>
     </Surface>;
 });
+export default FullWidth;

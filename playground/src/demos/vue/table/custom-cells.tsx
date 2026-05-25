@@ -83,7 +83,7 @@ export default defineComponent(() => {
   });
   return () => <Table>
       <Table.ScrollContainer>
-        <Table.Content aria-label="Table with custom cells" class="min-w-[800px]" selectedKeys={selectedKeys.value} selectionMode="multiple" sortDescriptor={sortDescriptor.value} onSelectionChange={setSelectedKeys} onSortChange={setSortDescriptor}>
+        <Table.Content aria-label="Table with custom cells" class="min-w-[800px]" selectedKeys={selectedKeys.value} selectionMode="multiple" sortDescriptor={sortDescriptor.value} onSelectionChange={v => selectedKeys.value = v} onSortChange={v => sortDescriptor.value = v}>
           <Table.Header>
             <Table.Column class="pr-0">
               <Checkbox aria-label="Select all" slot="selection">
@@ -170,3 +170,4 @@ export default defineComponent(() => {
       </Table.ScrollContainer>
     </Table>;
 });
+export default CustomCells;

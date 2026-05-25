@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="max-w-md">
         <div>Source</div>
       </div>
     </div>);
+export default CustomRenderFunction;

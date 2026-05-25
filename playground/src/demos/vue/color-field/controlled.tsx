@@ -4,7 +4,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const value = ref(parseColor("#0485F7"));
   return () => <div class="flex flex-col gap-4">
-      <ColorField class="w-[280px]" name="color" value={value.value} onChange={setValue}>
+      <ColorField class="w-[280px]" name="color" value={value.value} onChange={v => value.value = v}>
         <Label>Color</Label>
         <ColorField.Group>
           <ColorField.Prefix>
@@ -27,3 +27,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

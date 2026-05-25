@@ -1,4 +1,4 @@
-import { Envelope } from "@gravity-ui/icons";
+import { Envelope } from "../../../gravity-icons-vue";
 import { Description, InputGroup, Label, Surface, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Surface class="rounded-2xl p-6">
@@ -13,3 +13,4 @@ export default defineComponent(() => () => <Surface class="rounded-2xl p-6">
         <Description>We'll never share this with anyone else</Description>
       </TextField>
     </Surface>);
+export default OnSurface;

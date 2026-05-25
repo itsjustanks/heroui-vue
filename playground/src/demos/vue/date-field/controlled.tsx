@@ -5,7 +5,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const value = ref(null);
   return () => <div class="flex flex-col gap-4">
-      <DateField class="w-[256px]" name="date" value={value.value} onChange={setValue}>
+      <DateField class="w-[256px]" name="date" value={value.value} onChange={v => value.value = v}>
         <Label>Date</Label>
         <DateField.Group>
           <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
@@ -22,3 +22,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

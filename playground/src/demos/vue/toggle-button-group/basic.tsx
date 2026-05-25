@@ -1,4 +1,4 @@
-import { Bold, Italic, Strikethrough, Underline } from "@gravity-ui/icons";
+import { Bold, Italic, Strikethrough, Underline } from "../../../gravity-icons-vue";
 import { ToggleButton, ToggleButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <ToggleButtonGroup selectionMode="multiple">
@@ -18,3 +18,4 @@ export default defineComponent(() => () => <ToggleButtonGroup selectionMode="mul
         <Strikethrough />
       </ToggleButton>
     </ToggleButtonGroup>);
+export default Basic;

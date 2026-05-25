@@ -1,6 +1,6 @@
 import {ColorSlider, Label} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <ColorSlider
       channel="hue"

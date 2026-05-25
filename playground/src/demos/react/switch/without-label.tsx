@@ -1,6 +1,6 @@
 import {Switch} from "@heroui/react";
 
-export function WithoutLabel() {
+function WithoutLabel() {
   return (
     <Switch aria-label="Enable notifications">
       <Switch.Control>

@@ -9,3 +9,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       </ProgressCircle>
       <Label>75% Complete</Label>
     </div>);
+export default WithLabel;

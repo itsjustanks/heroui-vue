@@ -1,6 +1,6 @@
 import {Label, Switch, SwitchGroup} from "@heroui/react";
 
-export function Group() {
+function Group() {
   return (
     <SwitchGroup>
       <Switch name="notifications">

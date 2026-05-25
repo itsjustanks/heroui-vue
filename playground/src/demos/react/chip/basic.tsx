@@ -1,6 +1,6 @@
 import {Chip} from "@heroui/react";
 
-export function ChipBasic() {
+function ChipBasic() {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <Chip>Default</Chip>

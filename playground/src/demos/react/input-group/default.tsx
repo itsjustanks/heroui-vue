@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {InputGroup, Label, TextField} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <TextField className="w-full max-w-[280px]" name="email">
       <Label>Email address</Label>

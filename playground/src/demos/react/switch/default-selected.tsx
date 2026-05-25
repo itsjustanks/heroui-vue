@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function DefaultSelected() {
+function DefaultSelected() {
   return (
     <Switch defaultSelected>
       <Switch.Control>

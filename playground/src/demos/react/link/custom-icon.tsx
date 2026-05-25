@@ -1,7 +1,7 @@
 import {ArrowUpRightFromSquare, Link as LinkIcon} from "@gravity-ui/icons";
 import {Link} from "@heroui/react";
 
-export function LinkCustomIcon() {
+function LinkCustomIcon() {
   return (
     <div className="flex flex-col gap-3">
       <Link href="#">

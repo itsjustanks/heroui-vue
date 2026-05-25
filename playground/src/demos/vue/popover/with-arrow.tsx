@@ -1,4 +1,4 @@
-import { Ellipsis } from "@gravity-ui/icons";
+import { Ellipsis } from "../../../gravity-icons-vue";
 import { Button, Popover } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-center gap-4">
@@ -30,3 +30,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         </Popover.Content>
       </Popover>
     </div>);
+export default PopoverWithArrow;

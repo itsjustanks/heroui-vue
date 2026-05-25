@@ -9,3 +9,4 @@ export default defineComponent(() => () => <div class="flex flex-wrap gap-3">
       <Button variant="danger">Danger</Button>
       <Button variant="danger-soft">Danger Soft</Button>
     </div>);
+export default Variants;

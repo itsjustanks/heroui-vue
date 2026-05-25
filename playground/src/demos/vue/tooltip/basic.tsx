@@ -1,4 +1,4 @@
-import { CircleInfo } from "@gravity-ui/icons";
+import { CircleInfo } from "../../../gravity-icons-vue";
 import { Button, Tooltip } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-center gap-4">
@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         </Tooltip.Content>
       </Tooltip>
     </div>);
+export default TooltipBasic;

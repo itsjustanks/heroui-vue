@@ -4,7 +4,7 @@ import {Bold, Italic, Strikethrough, Underline} from "@gravity-ui/icons";
 import {ToggleButton, ToggleButtonGroup} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [selectedKeys, setSelectedKeys] = useState(new Set<Key>(["bold"]));
 
   return (

@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {Label, ListBox, Select} from "@heroui/react";
 import React from "react";
 
-export function ControlledMultiple() {
+function ControlledMultiple() {
   const [selected, setSelected] = React.useState<Key[]>(["california", "texas"]);
 
   return (

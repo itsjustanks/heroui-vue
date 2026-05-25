@@ -1,7 +1,7 @@
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 import {useState} from "react";
 
-export function ControlledInputValue() {
+function ControlledInputValue() {
   const [inputValue, setInputValue] = useState("");
 
   return (

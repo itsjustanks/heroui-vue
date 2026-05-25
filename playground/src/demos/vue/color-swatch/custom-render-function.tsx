@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       <ColorSwatch aria-label="Green" color="#10B981" render={props => <div {...props} data-custom="green" />} />
       <ColorSwatch aria-label="Fuchsia" color="#D946EF" render={props => <div {...props} data-custom="fuchsia" />} />
     </div>);
+export default CustomRenderFunction;

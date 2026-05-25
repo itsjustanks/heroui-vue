@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSlider channel="hue" class="w-f
         <ColorSlider.Thumb />
       </ColorSlider.Track>
     </ColorSlider>);
+export default CustomRenderFunction;

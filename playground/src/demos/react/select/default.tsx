@@ -1,6 +1,6 @@
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <Select className="w-[256px]" placeholder="Select one">
       <Label>State</Label>

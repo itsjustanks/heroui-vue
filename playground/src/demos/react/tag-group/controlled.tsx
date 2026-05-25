@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {Description, Label, Tag, TagGroup} from "@heroui/react";
 import {useState} from "react";
 
-export function TagGroupControlled() {
+function TagGroupControlled() {
   const [selected, setSelected] = useState<Iterable<Key>>(new Set(["news", "travel"]));
 
   return (

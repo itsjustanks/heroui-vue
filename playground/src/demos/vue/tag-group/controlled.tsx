@@ -18,3 +18,4 @@ export default defineComponent(() => {
       </TagGroup>
     </div>;
 });
+export default TagGroupControlled;

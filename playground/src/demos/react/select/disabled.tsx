@@ -1,6 +1,6 @@
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col gap-4">
       <Select isDisabled className="w-[256px]" defaultValue="california" placeholder="Select one">

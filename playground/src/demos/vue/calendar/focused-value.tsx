@@ -5,7 +5,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const focusedDate = ref(parseDate("2025-06-15"));
   return () => <div class="flex flex-col items-center gap-4">
-      <Calendar aria-label="Event date" focusedValue={focusedDate.value} onFocusChange={setFocusedDate}>
+      <Calendar aria-label="Event date" focusedValue={focusedDate.value} onFocusChange={v => focusedDate.value = v}>
         <Calendar.Header>
           <Calendar.Heading />
           <Calendar.NavButton slot="previous" />
@@ -34,3 +34,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default FocusedValue;

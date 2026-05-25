@@ -31,7 +31,7 @@ export default defineComponent(() => {
   return () => <div class="flex flex-col gap-3">
       <Table>
         <Table.ScrollContainer>
-          <Table.Content aria-label="Table with selection" class="min-w-[600px]" selectedKeys={selectedKeys.value} selectionMode="multiple" onSelectionChange={setSelectedKeys}>
+          <Table.Content aria-label="Table with selection" class="min-w-[600px]" selectedKeys={selectedKeys.value} selectionMode="multiple" onSelectionChange={v => selectedKeys.value = v}>
             <Table.Header>
               <Table.Column class="pr-0">
                 <Checkbox aria-label="Select all" slot="selection">
@@ -71,3 +71,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default SelectionDemo;

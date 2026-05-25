@@ -13,3 +13,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         <Avatar.Fallback>JR</Avatar.Fallback>
       </Avatar>
     </div>);
+export default Basic;

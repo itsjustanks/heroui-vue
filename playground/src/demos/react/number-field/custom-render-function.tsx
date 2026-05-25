@@ -1,6 +1,6 @@
 import {Label, NumberField} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <NumberField
       className="w-full max-w-64"

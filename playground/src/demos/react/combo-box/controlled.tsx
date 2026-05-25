@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const animals = [
     {
       id: "cat",

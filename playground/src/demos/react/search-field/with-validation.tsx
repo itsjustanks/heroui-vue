@@ -1,7 +1,7 @@
 import {Description, FieldError, Label, SearchField} from "@heroui/react";
 import React from "react";
 
-export function WithValidation() {
+function WithValidation() {
   const [value, setValue] = React.useState("");
   const isInvalid = value.length > 0 && value.length < 3;
 

@@ -99,7 +99,7 @@ const columns = [
   {id: "email", name: "Email"},
 ];
 
-export function AsyncLoading() {
+function AsyncLoading() {
   const [items, setItems] = useState<User[]>(() => allUsers.slice(0, ITEMS_PER_PAGE));
   const [isLoading, setIsLoading] = useState(false);
   const isLoadingRef = useRef(false);

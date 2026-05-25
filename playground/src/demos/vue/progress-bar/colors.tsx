@@ -37,3 +37,4 @@ export default defineComponent(() => () => <div class="flex w-64 flex-col gap-6"
         </ProgressBar.Track>
       </ProgressBar>
     </div>);
+export default Colors;

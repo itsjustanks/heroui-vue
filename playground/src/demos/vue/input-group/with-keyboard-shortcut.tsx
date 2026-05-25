@@ -11,3 +11,4 @@ export default defineComponent(() => () => <TextField aria-label="Command" class
         </InputGroup.Suffix>
       </InputGroup>
     </TextField>);
+export default WithKeyboardShortcut;

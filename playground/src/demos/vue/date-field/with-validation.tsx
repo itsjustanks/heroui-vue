@@ -7,7 +7,7 @@ export default defineComponent(() => {
   const todayDate = today(getLocalTimeZone());
   const isInvalid = value.value !== null && value.value.compare(todayDate) < 0;
   return () => <div class="flex flex-col gap-4">
-      <DateField isRequired class="w-[256px]" isInvalid={isInvalid} minValue={todayDate} name="date" value={value.value} onChange={setValue}>
+      <DateField isRequired class="w-[256px]" isInvalid={isInvalid} minValue={todayDate} name="date" value={value.value} onChange={v => value.value = v}>
         <Label>Date</Label>
         <DateField.Group>
           <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
@@ -16,3 +16,4 @@ export default defineComponent(() => {
       </DateField>
     </div>;
 });
+export default WithValidation;

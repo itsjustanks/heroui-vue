@@ -3,7 +3,7 @@ import type {TimeValue} from "@heroui/react";
 import {DateField, DateRangePicker, Label, RangeCalendar, TimeField} from "@heroui/react";
 import {getLocalTimeZone, parseZonedDateTime} from "@internationalized/date";
 
-export function InputContainer() {
+function InputContainer() {
   const localTimeZone = getLocalTimeZone();
 
   const defaultValue = {

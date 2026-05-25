@@ -1,7 +1,7 @@
 import {Button, Description, Label, NumberField} from "@heroui/react";
 import React from "react";
 
-export function Controlled() {
+function Controlled() {
   const [value, setValue] = React.useState(1024);
 
   return (

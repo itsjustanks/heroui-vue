@@ -40,7 +40,7 @@ const hourCycleOptions: {label: string; value: HourCycle}[] = [
   {label: "24-hour", value: 24},
 ];
 
-export function FormatOptions() {
+function FormatOptions() {
   const [granularity, setGranularity] = useState<Granularity>("minute");
   const [hourCycle, setHourCycle] = useState<HourCycle>(12);
   const [hideTimeZone, setHideTimeZone] = useState(false);

@@ -26,3 +26,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <Input placeholder="+1 (555) 000-0000" />
       </TextField>
     </div>);
+export default InputTypes;

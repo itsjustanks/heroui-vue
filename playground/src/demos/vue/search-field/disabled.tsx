@@ -20,3 +20,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>This search field is disabled</Description>
       </SearchField>
     </div>);
+export default Disabled;

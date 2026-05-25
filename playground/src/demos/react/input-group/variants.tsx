@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {InputGroup, Label, TextField} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-col gap-4">
       <TextField className="w-[280px]" name="primary">

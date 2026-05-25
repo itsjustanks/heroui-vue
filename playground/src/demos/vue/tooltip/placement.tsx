@@ -49,3 +49,4 @@ export default defineComponent(() => () => <div class="grid grid-cols-3 gap-4">
       </Tooltip>
       <div />
     </div>);
+export default TooltipPlacement;

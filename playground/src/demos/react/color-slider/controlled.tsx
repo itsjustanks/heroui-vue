@@ -2,7 +2,7 @@ import {ColorSlider, ColorSwatch, Label} from "@heroui/react";
 import {useState} from "react";
 import {parseColor} from "react-aria-components";
 
-export function Controlled() {
+function Controlled() {
   const [color, setColor] = useState(parseColor("hsl(200, 100%, 50%)"));
 
   return (

@@ -1,6 +1,6 @@
 import {Label, SearchField} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <SearchField name="search">
       <Label>Search</Label>

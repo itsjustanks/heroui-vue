@@ -6,3 +6,4 @@ export default defineComponent(() => () => <DateField class="w-[256px]" name="da
         <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
       </DateField.Group>
     </DateField>);
+export default Basic;

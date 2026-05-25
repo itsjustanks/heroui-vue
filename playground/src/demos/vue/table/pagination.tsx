@@ -118,3 +118,4 @@ export default defineComponent(() => {
       </Table.Footer>
     </Table>;
 });
+export default PaginationDemo;

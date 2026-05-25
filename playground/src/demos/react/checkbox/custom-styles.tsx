@@ -1,6 +1,6 @@
 import {Checkbox, Label} from "@heroui/react";
 
-export function CustomStyles() {
+function CustomStyles() {
   return (
     <Checkbox id="custom">
       <Checkbox.Control className="border-2 border-purple-500 data-[selected=true]:border-purple-500 data-[selected=true]:bg-purple-500">

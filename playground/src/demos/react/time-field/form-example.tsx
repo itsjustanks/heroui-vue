@@ -5,7 +5,7 @@ import {Button, Description, FieldError, Form, Label, TimeField} from "@heroui/r
 import {parseTime} from "@internationalized/date";
 import {useState} from "react";
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = useState<Time | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const minTime = parseTime("09:00");

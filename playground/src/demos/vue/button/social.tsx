@@ -15,3 +15,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-xs flex
         Sign in with Apple
       </Button>
     </div>);
+export default Social;

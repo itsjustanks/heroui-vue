@@ -12,3 +12,4 @@ export default defineComponent(() => () => <div class="flex w-96 flex-col gap-4"
     }} />
       </div>
     </div>);
+export default Rows;

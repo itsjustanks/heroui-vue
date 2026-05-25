@@ -32,3 +32,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-6">
         <Badge color="success" placement="bottom-right" size="sm" />
       </Badge.Anchor>
     </div>);
+export default BadgeBasic;

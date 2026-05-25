@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       <ColorSwatch aria-label="Green" color="#10B981" />
       <ColorSwatch aria-label="Fuchsia" color="#D946EF" />
     </div>);
+export default ColorSwatchBasic;

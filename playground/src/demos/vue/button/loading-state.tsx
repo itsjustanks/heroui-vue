@@ -1,4 +1,4 @@
-import { Paperclip } from "@gravity-ui/icons";
+import { Paperclip } from "../../../gravity-icons-vue";
 import { Button, Spinner } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
@@ -16,3 +16,4 @@ export default defineComponent(() => {
         </>}
     </Button>;
 });
+export default LoadingState;

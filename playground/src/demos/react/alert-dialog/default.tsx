@@ -1,6 +1,6 @@
 import {AlertDialog, Button} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <AlertDialog>
       <Button variant="danger">Delete Project</Button>

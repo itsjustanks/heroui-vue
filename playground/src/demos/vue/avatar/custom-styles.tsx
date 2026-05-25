@@ -30,3 +30,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         <span class="absolute right-0 bottom-0 size-3 rounded-full bg-green-500 ring-2 ring-background" />
       </div>
     </div>);
+export default CustomStyles;

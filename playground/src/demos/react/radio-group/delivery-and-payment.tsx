@@ -2,7 +2,7 @@ import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import clsx from "clsx";
 
-export function DeliveryAndPayment() {
+function DeliveryAndPayment() {
   const deliveryOptions = [
     {
       description: "4-10 business days",

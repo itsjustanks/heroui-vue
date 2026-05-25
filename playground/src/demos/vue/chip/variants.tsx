@@ -1,4 +1,4 @@
-import { CircleDashed } from "@gravity-ui/icons";
+import { CircleDashed } from "../../../gravity-icons-vue";
 import { Chip, Separator } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -37,3 +37,4 @@ export default defineComponent(() => {
         </React.Fragment>)}
     </div>;
 });
+export default ChipVariants;

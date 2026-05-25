@@ -1,6 +1,6 @@
 import {ProgressCircle} from "@heroui/react";
 
-export function Colors() {
+function Colors() {
   return (
     <div className="flex items-center gap-6">
       <ProgressCircle aria-label="Default" color="default" value={60}>

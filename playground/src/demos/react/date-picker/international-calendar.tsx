@@ -2,7 +2,7 @@ import {Calendar, DateField, DatePicker, Label} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {I18nProvider} from "react-aria-components";
 
-export function InternationalCalendar() {
+function InternationalCalendar() {
   return (
     <I18nProvider locale="hi-IN-u-ca-indian">
       <DatePicker

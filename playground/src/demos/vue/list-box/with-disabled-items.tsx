@@ -1,4 +1,4 @@
-import { Pencil, SquarePlus, TrashBin } from "@gravity-ui/icons";
+import { Pencil, SquarePlus, TrashBin } from "../../../gravity-icons-vue";
 import { Description, Header, Kbd, Label, ListBox, Separator, Surface } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Surface class="w-[256px] rounded-3xl shadow-surface">
@@ -52,3 +52,4 @@ export default defineComponent(() => () => <Surface class="w-[256px] rounded-3xl
         </ListBox.Section>
       </ListBox>
     </Surface>);
+export default WithDisabledItems;

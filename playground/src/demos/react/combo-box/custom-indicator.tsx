@@ -1,7 +1,7 @@
 import {ChevronsExpandVertical} from "@gravity-ui/icons";
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 
-export function CustomIndicator() {
+function CustomIndicator() {
   return (
     <ComboBox className="w-[256px]">
       <Label>Favorite Animal</Label>

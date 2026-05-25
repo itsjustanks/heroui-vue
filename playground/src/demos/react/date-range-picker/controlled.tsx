@@ -9,7 +9,7 @@ type DateRange = {
   end: DateValue;
 };
 
-export function Controlled() {
+function Controlled() {
   const start = today(getLocalTimeZone());
   const [value, setValue] = useState<DateRange | null>({end: start.add({days: 4}), start});
 

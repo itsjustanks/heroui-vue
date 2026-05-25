@@ -1,6 +1,6 @@
 import {Button, Checkbox, CheckboxGroup, FieldError, Form, Label} from "@heroui/react";
 
-export function Validation() {
+function Validation() {
   return (
     <Form
       className="flex flex-col gap-4 px-4"

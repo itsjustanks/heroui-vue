@@ -22,3 +22,4 @@ export default defineComponent(() => () => <Tabs class="w-full max-w-lg text-cen
         </Tabs.List>
       </Tabs.ListContainer>
     </Tabs>);
+export default CustomStyles;

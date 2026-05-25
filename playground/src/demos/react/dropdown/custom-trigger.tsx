@@ -1,7 +1,7 @@
 import {ArrowRightFromSquare, Gear, Persons} from "@gravity-ui/icons";
 import {Avatar, Dropdown, Label} from "@heroui/react";
 
-export function CustomTrigger() {
+function CustomTrigger() {
   return (
     <Dropdown>
       <Dropdown.Trigger className="rounded-full">

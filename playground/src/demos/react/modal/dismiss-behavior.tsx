@@ -1,7 +1,7 @@
 import {CircleInfo} from "@gravity-ui/icons";
 import {Button, Modal} from "@heroui/react";
 
-export function DismissBehavior() {
+function DismissBehavior() {
   return (
     <div className="flex max-w-sm flex-col gap-6">
       <div className="flex flex-col gap-2">

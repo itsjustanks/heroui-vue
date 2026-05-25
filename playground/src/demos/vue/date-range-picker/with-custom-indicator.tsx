@@ -48,3 +48,4 @@ export default defineComponent(() => () => <DateRangePicker class="w-72" endName
         </RangeCalendar>
       </DateRangePicker.Popover>
     </DateRangePicker>);
+export default WithCustomIndicator;

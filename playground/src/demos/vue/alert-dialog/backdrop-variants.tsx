@@ -32,3 +32,4 @@ export default defineComponent(() => {
         </AlertDialog>)}
     </div>;
 });
+export default BackdropVariants;

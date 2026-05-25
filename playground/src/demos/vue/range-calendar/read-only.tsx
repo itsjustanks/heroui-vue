@@ -24,3 +24,4 @@ export default defineComponent(() => () => <div class="flex flex-col items-cente
       </RangeCalendar>
       <Description class="text-center">Range calendar is read-only</Description>
     </div>);
+export default ReadOnly;

@@ -3,7 +3,7 @@ import type {ComponentType, SVGProps} from "react";
 import {Bars, Bell, Envelope, Gear, House, Magnifier, Person} from "@gravity-ui/icons";
 import {Button, Drawer} from "@heroui/react";
 
-export function Navigation() {
+function Navigation() {
   const navItems: {icon: ComponentType<SVGProps<SVGSVGElement>>; label: string}[] = [
     {icon: House, label: "Home"},
     {icon: Magnifier, label: "Search"},

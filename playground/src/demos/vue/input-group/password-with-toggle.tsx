@@ -1,4 +1,4 @@
-import { Eye, EyeSlash } from "@gravity-ui/icons";
+import { Eye, EyeSlash } from "../../../gravity-icons-vue";
 import { Button, InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
@@ -15,3 +15,4 @@ export default defineComponent(() => {
       </InputGroup>
     </TextField>;
 });
+export default PasswordWithToggle;

@@ -8,7 +8,7 @@ export default defineComponent(() => {
         Preferred Fruits
       </Button>
       <Dropdown.Popover class="min-w-[256px]">
-        <Dropdown.Menu selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={setSelected}>
+        <Dropdown.Menu selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={v => selected.value = v}>
           <Dropdown.Section>
             <Header>Select a fruit</Header>
             <Dropdown.Item id="apple" textValue="Apple">
@@ -36,3 +36,4 @@ export default defineComponent(() => {
       </Dropdown.Popover>
     </Dropdown>;
 });
+export default WithMultipleSelection;

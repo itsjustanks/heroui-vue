@@ -3,7 +3,7 @@ import {Avatar, Badge} from "@heroui/react";
 
 const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
 
-export function BadgeWithContent() {
+function BadgeWithContent() {
   return (
     <div className="flex items-center gap-6">
       <Badge.Anchor>

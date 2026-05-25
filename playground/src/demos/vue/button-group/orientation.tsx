@@ -1,4 +1,4 @@
-import { TextAlignCenter, TextAlignJustify, TextAlignLeft, TextAlignRight } from "@gravity-ui/icons";
+import { TextAlignCenter, TextAlignJustify, TextAlignLeft, TextAlignRight } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-start gap-8">
@@ -43,3 +43,4 @@ export default defineComponent(() => () => <div class="flex items-start gap-8">
         </ButtonGroup>
       </div>
     </div>);
+export default Orientation;

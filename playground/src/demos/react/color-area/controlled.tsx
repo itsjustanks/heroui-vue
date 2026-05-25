@@ -3,7 +3,7 @@ import type {Color} from "@heroui/react";
 import {ColorArea, ColorSwatch, parseColor} from "@heroui/react";
 import {useState} from "react";
 
-export function ColorAreaControlled() {
+function ColorAreaControlled() {
   const [color, setColor] = useState<Color>(parseColor("#9B80FF"));
 
   return (

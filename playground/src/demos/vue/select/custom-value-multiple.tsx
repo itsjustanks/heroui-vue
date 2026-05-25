@@ -79,3 +79,4 @@ export default defineComponent(() => {
       </Select.Popover>
     </Select>;
 });
+export default CustomValueMultiple;

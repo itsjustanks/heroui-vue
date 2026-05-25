@@ -119,7 +119,7 @@ function SortableColumnHeader({
 // --- Component ------------------------------------------------------------
 const PAGE_SIZE = 4;
 
-export function TanstackTable() {
+function TanstackTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
 
   // eslint-disable-next-line react-hooks/incompatible-library
@@ -221,4 +221,5 @@ export function TanstackTable() {
   );
 }
 
-export default TanstackTable;
+
+export default toSortDescriptor;

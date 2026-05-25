@@ -31,3 +31,4 @@ export default defineComponent(() => () => <CheckboxGroup name="interests" rende
         </Checkbox.Content>
       </Checkbox>
     </CheckboxGroup>);
+export default CustomRenderFunction;

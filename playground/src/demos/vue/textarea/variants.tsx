@@ -4,3 +4,4 @@ export default defineComponent(() => () => <div class="flex w-[280px] flex-col g
       <TextArea fullWidth placeholder="Primary textarea" variant="primary" />
       <TextArea fullWidth placeholder="Secondary textarea" variant="secondary" />
     </div>);
+export default Variants;

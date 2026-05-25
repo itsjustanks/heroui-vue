@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="flex max-w-xl flex-col ga
       </Typography>
       <Typography type="code">pnpm add @heroui/react</Typography>
     </div>);
+export default Default;

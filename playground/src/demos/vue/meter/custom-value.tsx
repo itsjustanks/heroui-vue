@@ -10,3 +10,4 @@ export default defineComponent(() => () => <Meter class="w-64" formatOptions={{
         <Meter.Fill />
       </Meter.Track>
     </Meter>);
+export default CustomValue;

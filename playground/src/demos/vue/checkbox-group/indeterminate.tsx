@@ -15,7 +15,7 @@ export default defineComponent(() => {
         </Checkbox.Content>
       </Checkbox>
       <div class="ml-6 flex flex-col gap-2">
-        <CheckboxGroup value={selected.value} onChange={setSelected}>
+        <CheckboxGroup value={selected.value} onChange={v => selected.value = v}>
           <Checkbox value="coding">
             <Checkbox.Control>
               <Checkbox.Indicator />
@@ -44,3 +44,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Indeterminate;

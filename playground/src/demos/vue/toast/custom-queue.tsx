@@ -54,3 +54,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default CustomQueue;

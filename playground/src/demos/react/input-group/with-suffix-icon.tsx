@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {Description, InputGroup, Label, TextField} from "@heroui/react";
 
-export function WithSuffixIcon() {
+function WithSuffixIcon() {
   return (
     <TextField className="w-full max-w-[280px]" name="email">
       <Label>Email address</Label>

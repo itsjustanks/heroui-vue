@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         <Avatar.Fallback>LG</Avatar.Fallback>
       </Avatar>
     </div>);
+export default Sizes;

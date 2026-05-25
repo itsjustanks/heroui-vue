@@ -3,7 +3,7 @@ import type {DateValue} from "@internationalized/date";
 import {Description, RangeCalendar} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 
-export function UnavailableDates() {
+function UnavailableDates() {
   const now = today(getLocalTimeZone());
   const blockedRanges = [
     [now.add({days: 2}), now.add({days: 5})],

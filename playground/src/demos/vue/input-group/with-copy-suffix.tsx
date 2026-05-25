@@ -1,4 +1,4 @@
-import { Copy } from "@gravity-ui/icons";
+import { Copy } from "../../../gravity-icons-vue";
 import { Button, InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <TextField class="w-full max-w-[280px]" defaultValue="heroui.com" name="website">
@@ -12,3 +12,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-[280px
         </InputGroup.Suffix>
       </InputGroup>
     </TextField>);
+export default WithCopySuffix;

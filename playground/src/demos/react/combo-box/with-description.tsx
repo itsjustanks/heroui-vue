@@ -1,6 +1,6 @@
 import {ComboBox, Description, Input, Label, ListBox} from "@heroui/react";
 
-export function WithDescription() {
+function WithDescription() {
   return (
     <ComboBox className="w-[256px]">
       <Label>Favorite Animal</Label>

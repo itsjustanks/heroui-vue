@@ -1,4 +1,4 @@
-import { Calendar } from "@gravity-ui/icons";
+import { Calendar } from "../../../gravity-icons-vue";
 import { DateField, Description, Label, Surface } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Surface class="flex w-full max-w-sm flex-col gap-4 rounded-3xl p-6">
@@ -20,3 +20,4 @@ export default defineComponent(() => () => <Surface class="flex w-full max-w-sm 
         <Description>Enter a date for your appointment</Description>
       </DateField>
     </Surface>);
+export default OnSurface;

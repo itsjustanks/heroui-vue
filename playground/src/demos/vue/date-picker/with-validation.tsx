@@ -6,7 +6,7 @@ export default defineComponent(() => {
   const value = ref(null);
   const currentDate = today(getLocalTimeZone());
   const isInvalid = value.value != null && value.value.compare(currentDate) < 0;
-  return () => <DatePicker isRequired class="w-64" isInvalid={isInvalid} minValue={currentDate} name="date" value={value.value} onChange={setValue}>
+  return () => <DatePicker isRequired class="w-64" isInvalid={isInvalid} minValue={currentDate} name="date" value={value.value} onChange={v => value.value = v}>
       <Label>Appointment date</Label>
       <DateField.Group fullWidth>
         <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
@@ -44,3 +44,4 @@ export default defineComponent(() => {
       </DatePicker.Popover>
     </DatePicker>;
 });
+export default WithValidation;

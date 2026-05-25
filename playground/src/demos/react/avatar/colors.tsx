@@ -1,6 +1,6 @@
 import {Avatar} from "@heroui/react";
 
-export function Colors() {
+function Colors() {
   return (
     <div className="flex items-center gap-4">
       <Avatar color="default">

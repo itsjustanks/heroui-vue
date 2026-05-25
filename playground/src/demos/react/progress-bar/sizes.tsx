@@ -1,6 +1,6 @@
 import {Label, ProgressBar} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex w-64 flex-col gap-6">
       <ProgressBar aria-label="Small" size="sm" value={40}>

@@ -1,6 +1,6 @@
 import {Checkbox, Label} from "@heroui/react";
 
-export function CustomIndicator() {
+function CustomIndicator() {
   return (
     <div className="flex gap-4">
       <Checkbox defaultSelected name="heart">

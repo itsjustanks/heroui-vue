@@ -1,6 +1,6 @@
 import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 
-export function CustomIndicator() {
+function CustomIndicator() {
   return (
     <RadioGroup defaultValue="premium" name="plan-custom-indicator">
       <Label>Plan selection</Label>

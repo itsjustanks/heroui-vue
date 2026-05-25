@@ -1,6 +1,6 @@
 import {Tabs} from "@heroui/react";
 
-export function Secondary() {
+function Secondary() {
   return (
     <Tabs className="w-full max-w-md" variant="secondary">
       <Tabs.ListContainer>

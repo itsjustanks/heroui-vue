@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       <ColorSwatch aria-label="25% opacity" color="rgba(4, 133, 247, 0.25)" />
       <ColorSwatch aria-label="0% opacity" color="rgba(4, 133, 247, 0)" />
     </div>);
+export default ColorSwatchTransparency;

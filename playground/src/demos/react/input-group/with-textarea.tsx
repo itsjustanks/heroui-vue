@@ -2,7 +2,7 @@ import {ArrowUp, At, Microphone, PlugConnection, Plus} from "@gravity-ui/icons";
 import {Button, InputGroup, Kbd, Spinner, TextField, Tooltip} from "@heroui/react";
 import {useState} from "react";
 
-export function WithTextArea() {
+function WithTextArea() {
   const [value, setValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

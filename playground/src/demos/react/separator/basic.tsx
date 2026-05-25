@@ -1,6 +1,6 @@
 import {Separator} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <div className="max-w-md">
       <div className="space-y-1">

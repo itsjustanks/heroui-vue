@@ -17,3 +17,4 @@ export default defineComponent(() => {
       </NumberField>
     </div>;
 });
+export default WithValidation;

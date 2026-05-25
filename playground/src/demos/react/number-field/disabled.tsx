@@ -1,6 +1,6 @@
 import {Description, Label, NumberField} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex w-full max-w-64 flex-col gap-4">
       <NumberField isDisabled defaultValue={1024} minValue={0} name="width">

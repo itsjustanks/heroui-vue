@@ -1,6 +1,6 @@
 import {Description, Label, Switch} from "@heroui/react";
 
-export function WithDescription() {
+function WithDescription() {
   return (
     <div className="max-w-sm">
       <Switch>

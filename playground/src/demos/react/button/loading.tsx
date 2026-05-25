@@ -1,7 +1,7 @@
 import {Button, Spinner} from "@heroui/react";
 import React from "react";
 
-export function Loading() {
+function Loading() {
   return (
     <Button isPending>
       {({isPending}) => (

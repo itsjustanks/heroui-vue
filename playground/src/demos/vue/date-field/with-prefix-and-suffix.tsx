@@ -1,4 +1,4 @@
-import { Calendar, ChevronDown } from "@gravity-ui/icons";
+import { Calendar, ChevronDown } from "../../../gravity-icons-vue";
 import { DateField, Description, Label } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <DateField class="w-[256px]" name="date">
@@ -14,3 +14,4 @@ export default defineComponent(() => () => <DateField class="w-[256px]" name="da
       </DateField.Group>
       <Description>Enter a date</Description>
     </DateField>);
+export default WithPrefixAndSuffix;

@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSlider isDisabled channel="hue"
         <ColorSlider.Thumb />
       </ColorSlider.Track>
     </ColorSlider>);
+export default Disabled;

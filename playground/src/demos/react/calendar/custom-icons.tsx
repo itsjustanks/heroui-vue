@@ -1,6 +1,6 @@
 import {Calendar} from "@heroui/react";
 
-export function CustomIcons() {
+function CustomIcons() {
   return (
     <Calendar aria-label="Event date">
       <Calendar.Header>

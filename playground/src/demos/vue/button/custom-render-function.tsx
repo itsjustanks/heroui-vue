@@ -5,3 +5,4 @@ export default defineComponent(() => () => <Button render={(props, {
 }) => <button {...props} data-custom={isPressed ? "pressed" : "bar"} />}>
       Press me
     </Button>);
+export default CustomRenderFunction;

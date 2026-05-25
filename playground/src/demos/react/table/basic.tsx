@@ -1,6 +1,6 @@
 import {Table} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <Table>
       <Table.ScrollContainer>

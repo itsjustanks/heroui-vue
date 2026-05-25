@@ -1,6 +1,6 @@
 import {Card} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-col gap-4">
       <Card className="w-[320px]" variant="transparent">

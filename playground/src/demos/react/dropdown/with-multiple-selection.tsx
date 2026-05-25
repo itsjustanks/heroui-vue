@@ -3,7 +3,7 @@ import type {Selection} from "@heroui/react";
 import {Button, Dropdown, Header, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function WithMultipleSelection() {
+function WithMultipleSelection() {
   const [selected, setSelected] = useState<Selection>(new Set(["apple"]));
 
   return (

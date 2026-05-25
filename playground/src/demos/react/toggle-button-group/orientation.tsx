@@ -1,7 +1,7 @@
 import {Bold, Italic, Underline} from "@gravity-ui/icons";
 import {ToggleButton, ToggleButtonGroup} from "@heroui/react";
 
-export function Orientation() {
+function Orientation() {
   return (
     <div className="flex items-start gap-8">
       <div className="flex flex-col gap-2">

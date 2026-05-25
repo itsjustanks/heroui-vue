@@ -1,6 +1,6 @@
 import {ColorSwatch} from "@heroui/react";
 
-export function ColorSwatchAccessibility() {
+function ColorSwatchAccessibility() {
   return (
     <div className="flex items-center gap-3">
       <ColorSwatch aria-label="Primary brand color" color="#0485F7" colorName="Ocean Blue" />

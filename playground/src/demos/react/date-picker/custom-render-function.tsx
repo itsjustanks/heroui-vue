@@ -1,6 +1,6 @@
 import {Calendar, DateField, DatePicker, Label} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <DatePicker
       className="w-64"

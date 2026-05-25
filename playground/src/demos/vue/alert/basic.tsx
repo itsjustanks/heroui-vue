@@ -87,3 +87,4 @@ export default defineComponent(() => () => <div class="grid w-full max-w-xl gap-
         </Alert.Content>
       </Alert>
     </div>);
+export default Basic;

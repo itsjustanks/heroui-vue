@@ -4,7 +4,7 @@ import {Button, Table, cn} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import {useState} from "react";
 
-export function ExpandableRows() {
+function ExpandableRows() {
   type Row = {
     children: Row[];
     date: string;

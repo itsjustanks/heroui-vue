@@ -13,3 +13,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         </Popover.Content>
       </Popover>
     </div>);
+export default PopoverBasic;

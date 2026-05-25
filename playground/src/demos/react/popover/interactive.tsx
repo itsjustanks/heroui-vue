@@ -1,7 +1,7 @@
 import {Avatar, Button, Popover} from "@heroui/react";
 import {useState} from "react";
 
-export function PopoverInteractive() {
+function PopoverInteractive() {
   const [isFollowing, setIsFollowing] = useState(false);
 
   return (

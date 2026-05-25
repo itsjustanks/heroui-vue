@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function RenderProps() {
+function RenderProps() {
   return (
     <Switch>
       {({isSelected}) => (

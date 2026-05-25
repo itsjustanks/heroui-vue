@@ -1,6 +1,6 @@
 import {Button, Dropdown, Kbd, Label} from "@heroui/react";
 
-export function WithKeyboardShortcuts() {
+function WithKeyboardShortcuts() {
   return (
     <Dropdown>
       <Button aria-label="Menu" variant="secondary">

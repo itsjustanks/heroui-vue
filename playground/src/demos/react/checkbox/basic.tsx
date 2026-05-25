@@ -1,6 +1,6 @@
 import {Checkbox, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <Checkbox id="basic-terms">
       <Checkbox.Control>

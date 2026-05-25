@@ -1,7 +1,7 @@
 import {Check, Power} from "@gravity-ui/icons";
 import {Switch} from "@heroui/react";
 
-export function CustomStyles() {
+function CustomStyles() {
   return (
     <Switch>
       {({isSelected}) => (

@@ -1,7 +1,7 @@
 import {Calendar, Description} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 
-export function MinMaxDates() {
+function MinMaxDates() {
   const now = today(getLocalTimeZone());
   const minDate = now;
   const maxDate = now.add({months: 3});

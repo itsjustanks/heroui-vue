@@ -25,3 +25,4 @@ export default defineComponent(() => () => <div class="flex w-[280px] flex-col g
         </Link>
       </div>
     </div>);
+export default Basic;

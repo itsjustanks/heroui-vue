@@ -8,7 +8,7 @@ export default defineComponent(() => {
   const maxTime = parseTime("17:00");
   const isInvalid = value.value !== null && (value.value.compare(minTime) < 0 || value.value.compare(maxTime) > 0);
   return () => <div class="flex flex-col gap-4">
-      <TimeField isRequired class="w-[256px]" isInvalid={isInvalid} maxValue={maxTime} minValue={minTime} name="time" value={value.value} onChange={setValue}>
+      <TimeField isRequired class="w-[256px]" isInvalid={isInvalid} maxValue={maxTime} minValue={minTime} name="time" value={value.value} onChange={v => value.value = v}>
         <Label>Time</Label>
         <TimeField.Group>
           <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
@@ -17,3 +17,4 @@ export default defineComponent(() => {
       </TimeField>
     </div>;
 });
+export default WithValidation;

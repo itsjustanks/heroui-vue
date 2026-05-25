@@ -15,3 +15,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>Required field</Description>
       </DateField>
     </div>);
+export default Required;

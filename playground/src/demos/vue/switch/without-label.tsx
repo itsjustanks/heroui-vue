@@ -5,3 +5,4 @@ export default defineComponent(() => () => <Switch aria-label="Enable notificati
         <Switch.Thumb />
       </Switch.Control>
     </Switch>);
+export default WithoutLabel;

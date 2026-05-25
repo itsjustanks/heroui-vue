@@ -5,3 +5,4 @@ export default defineComponent(() => () => <ButtonGroup>
       <Button>Second</Button>
       <Button>Third</Button>
     </ButtonGroup>);
+export default WithoutSeparator;

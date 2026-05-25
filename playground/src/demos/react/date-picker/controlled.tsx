@@ -4,7 +4,7 @@ import {Button, Calendar, DateField, DatePicker, Description, Label} from "@hero
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [value, setValue] = useState<DateValue | null>(today(getLocalTimeZone()));
 
   return (

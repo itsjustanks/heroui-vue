@@ -23,3 +23,4 @@ export default defineComponent(() => () => <Calendar aria-label="Custom styled c
         </Calendar.YearPickerGridBody>
       </Calendar.YearPickerGrid>
     </Calendar>);
+export default CustomStyles;

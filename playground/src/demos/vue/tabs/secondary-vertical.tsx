@@ -40,3 +40,4 @@ export default defineComponent(() => () => <Tabs class="w-full max-w-lg" orienta
         <p class="text-sm text-muted">View and manage your subscription and payment methods.</p>
       </Tabs.Panel>
     </Tabs>);
+export default SecondaryVertical;

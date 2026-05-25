@@ -1,6 +1,6 @@
 import {Description, Label, NumberField} from "@heroui/react";
 
-export function WithStep() {
+function WithStep() {
   return (
     <div className="flex w-full max-w-64 flex-col gap-4">
       <NumberField defaultValue={0} maxValue={100} minValue={0} name="step1" step={1}>

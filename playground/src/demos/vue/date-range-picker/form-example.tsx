@@ -21,7 +21,7 @@ export default defineComponent(() => {
     }, 1200);
   };
   return () => <Form class="flex w-72 flex-col gap-3" onSubmit={handleSubmit}>
-      <DateRangePicker isRequired endName="tripEndDate" isInvalid={isInvalid} minValue={currentDate} startName="tripStartDate" value={value.value} onChange={setValue}>
+      <DateRangePicker isRequired endName="tripEndDate" isInvalid={isInvalid} minValue={currentDate} startName="tripStartDate" value={value.value} onChange={v => value.value = v}>
         <Label>Trip dates</Label>
         <DateField.Group fullWidth>
           <DateField.Input slot="start">
@@ -71,3 +71,4 @@ export default defineComponent(() => {
       </Button>
     </Form>;
 });
+export default FormExample;

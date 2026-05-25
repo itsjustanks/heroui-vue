@@ -1,7 +1,7 @@
 import {ChevronsExpandVertical} from "@gravity-ui/icons";
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function CustomIndicator() {
+function CustomIndicator() {
   return (
     <Select className="w-[256px]" placeholder="Select one">
       <Label>State</Label>

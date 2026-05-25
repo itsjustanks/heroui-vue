@@ -1,6 +1,6 @@
 import {Avatar, Description, Label, ListBox} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <ListBox
       aria-label="Users"

@@ -15,7 +15,7 @@ const formatOptionsMap: Record<string, Intl.NumberFormatOptions> = {
   unit: {style: "unit", unit: "mile"},
 };
 
-export function CustomValue() {
+function CustomValue() {
   const [value, setValue] = useState(750);
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(1000);

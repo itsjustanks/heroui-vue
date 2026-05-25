@@ -17,3 +17,4 @@ export default defineComponent(() => () => <div class="flex h-48 gap-4">
         </ColorSlider.Track>
       </ColorSlider>
     </div>);
+export default Vertical;

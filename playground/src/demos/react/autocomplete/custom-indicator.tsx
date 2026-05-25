@@ -4,7 +4,7 @@ import {Autocomplete, EmptyState, Label, ListBox, SearchField, useFilter} from "
 import {Icon} from "@iconify/react";
 import {useState} from "react";
 
-export function CustomIndicator() {
+function CustomIndicator() {
   const [selectedKey, setSelectedKey] = useState<Key | null>(null);
   const {contains} = useFilter({sensitivity: "base"});
 

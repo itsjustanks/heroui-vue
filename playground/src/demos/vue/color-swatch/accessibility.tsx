@@ -5,3 +5,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       <ColorSwatch aria-label="Error state color" color="#EF4444" colorName="Coral Red" />
       <ColorSwatch aria-label="Warning color" color="#F59E0B" colorName="Sunset Orange" />
     </div>);
+export default ColorSwatchAccessibility;

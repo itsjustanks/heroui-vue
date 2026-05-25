@@ -30,7 +30,7 @@ const fetchUser = (): Promise<{name: string; email: string}> => {
   });
 };
 
-export function PromiseDemo() {
+function PromiseDemo() {
   return (
     <div className="flex h-full max-w-2xl flex-col items-center justify-center gap-8">
       {/* Promise API Section */}

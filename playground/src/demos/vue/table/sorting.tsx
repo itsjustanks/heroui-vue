@@ -71,7 +71,7 @@ export default defineComponent(() => {
   });
   return () => <Table>
       <Table.ScrollContainer>
-        <Table.Content aria-label="Sortable table" class="min-w-[600px]" sortDescriptor={sortDescriptor.value} onSortChange={setSortDescriptor}>
+        <Table.Content aria-label="Sortable table" class="min-w-[600px]" sortDescriptor={sortDescriptor.value} onSortChange={v => sortDescriptor.value = v}>
           <Table.Header>
             <Table.Column allowsSorting isRowHeader id="name">
               {({
@@ -106,3 +106,4 @@ export default defineComponent(() => {
       </Table.ScrollContainer>
     </Table>;
 });
+export default Sorting;

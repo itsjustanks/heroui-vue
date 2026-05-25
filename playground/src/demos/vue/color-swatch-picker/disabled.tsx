@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSwatchPicker>
           <ColorSwatchPicker.Indicator />
         </ColorSwatchPicker.Item>)}
     </ColorSwatchPicker>);
+export default Disabled;

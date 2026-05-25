@@ -37,3 +37,4 @@ function SizePagination({
 export default defineComponent(() => () => <div class="flex flex-col gap-6">
       {(["sm", "md", "lg"] as const).map(size => <SizePagination key={size} size={size} />)}
     </div>);
+export default PaginationSizes;

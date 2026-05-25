@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function MultipleSelect() {
+function MultipleSelect() {
   const [selectedKeys, setSelectedKeys] = useState<Key[]>([]);
   const {contains} = useFilter({sensitivity: "base"});
 

@@ -131,7 +131,7 @@ export default defineComponent(() => {
         pageSize: PAGE_SIZE
       }
     },
-    onSortingChange: setSorting,
+    onSortingChange: v => sorting.value = v,
     state: {
       sorting: sorting.value
     }
@@ -195,3 +195,4 @@ export default defineComponent(() => {
       </Table.Footer>
     </Table>;
 });
+export default TanstackTable;

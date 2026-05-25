@@ -1,5 +1,5 @@
 import type { DateValue } from "@internationalized/date";
-import { CircleQuestion } from "@gravity-ui/icons";
+import { CircleQuestion } from "../../../gravity-icons-vue";
 import { DateField, Label, ListBox, Select, Tooltip } from "@itsjustanks/heroui-vue";
 import { parseDate, parseZonedDateTime } from "@internationalized/date";
 import { defineComponent, ref } from "vue";
@@ -65,3 +65,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Granularity;

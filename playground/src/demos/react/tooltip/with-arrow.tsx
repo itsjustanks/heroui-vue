@@ -1,6 +1,6 @@
 import {Button, Tooltip} from "@heroui/react";
 
-export function TooltipWithArrow() {
+function TooltipWithArrow() {
   return (
     <div className="flex items-center gap-4">
       <Tooltip delay={0}>

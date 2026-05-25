@@ -15,7 +15,7 @@ export default defineComponent(() => {
     start
   });
   return () => <div class="flex w-72 flex-col gap-4">
-      <DateRangePicker endName="endDate" startName="startDate" value={value.value} onChange={setValue}>
+      <DateRangePicker endName="endDate" startName="startDate" value={value.value} onChange={v => value.value = v}>
         <Label>Trip dates</Label>
         <DateField.Group fullWidth>
           <DateField.Input slot="start">
@@ -80,3 +80,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

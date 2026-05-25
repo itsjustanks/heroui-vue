@@ -1,7 +1,7 @@
 import {Button, Form, InputOTP, Label, Spinner} from "@heroui/react";
 import React from "react";
 
-export function OnComplete() {
+function OnComplete() {
   const [value, setValue] = React.useState("");
   const [isComplete, setIsComplete] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);

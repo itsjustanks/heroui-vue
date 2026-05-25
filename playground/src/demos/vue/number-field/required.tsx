@@ -19,3 +19,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <Description>Rate from 1 to 10</Description>
       </NumberField>
     </div>);
+export default Required;

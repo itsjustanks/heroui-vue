@@ -7,3 +7,4 @@ export default defineComponent(() => {
       <span class="px-1 text-sm text-muted">https://{value || "your-domain"}</span>
     </div>;
 });
+export default Controlled;

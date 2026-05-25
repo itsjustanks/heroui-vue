@@ -1,7 +1,7 @@
 import {Button} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
-export function Social() {
+function Social() {
   return (
     <div className="flex w-full max-w-xs flex-col gap-3">
       <Button className="w-full" variant="tertiary">

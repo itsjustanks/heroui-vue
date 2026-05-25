@@ -14,3 +14,4 @@ export default defineComponent(() => () => <Calendar aria-label="Event date" def
         <Calendar.GridBody>{date => <Calendar.Cell date={date} />}</Calendar.GridBody>
       </Calendar.Grid>
     </Calendar>);
+export default DefaultValue;

@@ -138,13 +138,13 @@ export default defineComponent(() => {
       </div>
 
       <div class="flex min-w-80 flex-col gap-2">
-        <Switch isSelected={hideTimeZone.value} onChange={setHideTimeZone}>
+        <Switch isSelected={hideTimeZone.value} onChange={v => hideTimeZone.value = v}>
           <Switch.Control>
             <Switch.Thumb />
           </Switch.Control>
           <Label class="text-sm">Hide timezone</Label>
         </Switch>
-        <Switch isSelected={shouldForceLeadingZeros.value} onChange={setShouldForceLeadingZeros}>
+        <Switch isSelected={shouldForceLeadingZeros.value} onChange={v => shouldForceLeadingZeros.value = v}>
           <Switch.Control>
             <Switch.Thumb />
           </Switch.Control>
@@ -153,3 +153,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default FormatOptions;

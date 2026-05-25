@@ -21,3 +21,4 @@ export default defineComponent(() => () => <Dropdown trigger="longPress">
         </Dropdown.Menu>
       </Dropdown.Popover>
     </Dropdown>);
+export default LongPressTrigger;

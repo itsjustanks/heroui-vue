@@ -1,6 +1,6 @@
 import {Checkbox, Description, Label} from "@heroui/react";
 
-export function Invalid() {
+function Invalid() {
   return (
     <Checkbox isInvalid name="agreement">
       <Checkbox.Control>

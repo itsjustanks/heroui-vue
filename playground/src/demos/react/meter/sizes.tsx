@@ -1,6 +1,6 @@
 import {Label, Meter} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex w-64 flex-col gap-6">
       <Meter color="success" size="sm" value={40}>

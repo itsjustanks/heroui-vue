@@ -1,7 +1,7 @@
 import {Button, Description, FieldError, Form, Label, Radio, RadioGroup} from "@heroui/react";
 import React from "react";
 
-export function Validation() {
+function Validation() {
   const [message, setMessage] = React.useState<string | null>(null);
 
   return (

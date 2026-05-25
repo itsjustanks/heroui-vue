@@ -6,7 +6,7 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">
         Dropdown is: <strong>{open.value ? "open" : "closed"}</strong>
       </p>
-      <Dropdown isOpen={open.value} onOpenChange={setOpen}>
+      <Dropdown isOpen={open.value} onOpenChange={v => open.value = v}>
         <Button aria-label="Menu" variant="secondary">
           Actions
         </Button>
@@ -29,3 +29,4 @@ export default defineComponent(() => {
       </Dropdown>
     </div>;
 });
+export default ControlledOpenState;

@@ -12,7 +12,7 @@ export default defineComponent(() => {
     color.value = parseColor(`hsl(${randomHue}, ${randomSaturation}%, ${randomLightness}%)`);
   };
   return () => <div class="flex flex-col gap-4">
-      <ColorPicker value={color.value} onChange={setColor}>
+      <ColorPicker value={color.value} onChange={v => color.value = v}>
         <ColorPicker.Trigger>
           <ColorSwatch size="lg" />
           <Label>Pick a color</Label>
@@ -51,3 +51,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Controlled;

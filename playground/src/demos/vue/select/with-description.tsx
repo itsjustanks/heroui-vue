@@ -36,3 +36,4 @@ export default defineComponent(() => () => <Select class="w-[256px]" placeholder
       </Select.Popover>
       <Description>Select your state of residence</Description>
     </Select>);
+export default WithDescription;

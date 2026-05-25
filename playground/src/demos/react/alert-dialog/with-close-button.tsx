@@ -1,6 +1,6 @@
 import {AlertDialog, Button} from "@heroui/react";
 
-export function WithCloseButton() {
+function WithCloseButton() {
   return (
     <AlertDialog>
       <Button variant="secondary">Show Information</Button>

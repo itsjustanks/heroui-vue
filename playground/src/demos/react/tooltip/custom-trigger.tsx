@@ -1,7 +1,7 @@
 import {CircleCheckFill, CircleQuestion} from "@gravity-ui/icons";
 import {Avatar, Chip, Tooltip} from "@heroui/react";
 
-export function TooltipCustomTrigger() {
+function TooltipCustomTrigger() {
   return (
     <div className="flex items-center gap-6">
       <Tooltip delay={0}>

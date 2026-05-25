@@ -44,3 +44,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </ButtonGroup>
       </div>
     </div>);
+export default Sizes;

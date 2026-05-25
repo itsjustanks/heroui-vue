@@ -2,7 +2,7 @@ import { Checkbox, CheckboxGroup, Label } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const selected = ref(["coding", "design"]);
-  return () => <CheckboxGroup class="min-w-[320px]" name="skills" value={selected.value} onChange={setSelected}>
+  return () => <CheckboxGroup class="min-w-[320px]" name="skills" value={selected.value} onChange={v => selected.value = v}>
       <Label>Your skills</Label>
       <Checkbox value="coding">
         <Checkbox.Control>
@@ -31,3 +31,4 @@ export default defineComponent(() => {
       <Label class="my-4 text-sm text-muted">Selected: {selected.value.join(", ") || "None"}</Label>
     </CheckboxGroup>;
 });
+export default Controlled;

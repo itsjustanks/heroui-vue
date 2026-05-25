@@ -1,4 +1,4 @@
-import { CircleCheckFill, CircleQuestion } from "@gravity-ui/icons";
+import { CircleCheckFill, CircleQuestion } from "../../../gravity-icons-vue";
 import { Avatar, Chip, Tooltip } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-center gap-6">
@@ -51,3 +51,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-6">
         </Tooltip.Content>
       </Tooltip>
     </div>);
+export default TooltipCustomTrigger;

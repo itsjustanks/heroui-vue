@@ -1,4 +1,4 @@
-import { QrCode } from "@gravity-ui/icons";
+import { QrCode } from "../../../gravity-icons-vue";
 import { Button, Disclosure } from "@itsjustanks/heroui-vue";
 import { Icon } from "@iconify/react";
 import { defineComponent } from "vue";
@@ -29,3 +29,4 @@ export default defineComponent(() => {
       </Disclosure>
     </div>;
 });
+export default CustomRenderFunction;

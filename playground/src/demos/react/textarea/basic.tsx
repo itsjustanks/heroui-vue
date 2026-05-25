@@ -1,6 +1,6 @@
 import {TextArea} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <TextArea
       aria-label="Quick project update"

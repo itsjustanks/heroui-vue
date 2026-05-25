@@ -1,6 +1,6 @@
 import {Button, Drawer, Input, Label, TextField} from "@heroui/react";
 
-export function WithForm() {
+function WithForm() {
   return (
     <Drawer>
       <Button variant="secondary">Edit Profile</Button>

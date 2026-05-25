@@ -1,7 +1,7 @@
 import {Pencil, SquarePlus, TrashBin} from "@gravity-ui/icons";
 import {Description, Header, Kbd, Label, ListBox, Separator, Surface} from "@heroui/react";
 
-export function WithDisabledItems() {
+function WithDisabledItems() {
   return (
     <Surface className="w-[256px] rounded-3xl shadow-surface">
       <ListBox

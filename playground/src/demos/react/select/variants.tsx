@@ -1,6 +1,6 @@
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-col gap-4">
       <Select className="w-[256px]" placeholder="Select one" variant="primary">

@@ -36,3 +36,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </div>
       </div>
     </div>);
+export default NavigationKeys;

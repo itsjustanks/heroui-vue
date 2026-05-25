@@ -11,3 +11,4 @@ export default defineComponent(() => () => <div class="max-w-sm">
         </Switch.Content>
       </Switch>
     </div>);
+export default WithDescription;

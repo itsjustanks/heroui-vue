@@ -1,7 +1,7 @@
 import {Calendar} from "@heroui/react";
 import {parseDate} from "@internationalized/date";
 
-export function DefaultValue() {
+function DefaultValue() {
   return (
     <Calendar aria-label="Event date" defaultValue={parseDate("2025-02-14")}>
       <Calendar.Header>

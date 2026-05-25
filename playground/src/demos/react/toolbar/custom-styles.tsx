@@ -8,7 +8,7 @@ import {
   Toolbar,
 } from "@heroui/react";
 
-export function Attached() {
+function Attached() {
   return (
     <Toolbar isAttached aria-label="Text formatting">
       <ToggleButtonGroup aria-label="Text style" selectionMode="multiple">

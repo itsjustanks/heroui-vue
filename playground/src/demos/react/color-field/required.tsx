@@ -1,6 +1,6 @@
 import {ColorField, Description, Label} from "@heroui/react";
 
-export function Required() {
+function Required() {
   return (
     <div className="flex flex-col gap-4">
       <ColorField isRequired className="w-[280px]" name="color">

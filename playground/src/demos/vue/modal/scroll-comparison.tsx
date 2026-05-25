@@ -56,3 +56,4 @@ export default defineComponent(() => {
       </Modal>
     </div>;
 });
+export default ScrollComparison;

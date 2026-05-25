@@ -16,3 +16,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <FieldError>Time must be within business hours</FieldError>
       </TimeField>
     </div>);
+export default Invalid;

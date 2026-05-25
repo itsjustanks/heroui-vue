@@ -7,7 +7,7 @@ const iconMap: Record<string, React.ComponentType<{className?: string}>> = {
   "gravity-ui:sparkles": Sparkles,
 };
 
-export function CustomAnimations() {
+function CustomAnimations() {
   const animations = [
     {
       classNames: {

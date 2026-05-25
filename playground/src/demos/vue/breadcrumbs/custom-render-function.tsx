@@ -14,3 +14,4 @@ export default defineComponent(() => () => <Breadcrumbs render={props => <ol {..
         Laptop
       </Breadcrumbs.Item>
     </Breadcrumbs>);
+export default CustomRenderFunction;

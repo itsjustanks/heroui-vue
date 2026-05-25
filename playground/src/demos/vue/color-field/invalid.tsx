@@ -16,3 +16,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <FieldError>Invalid color format. Use hex (e.g., #FF5733)</FieldError>
       </ColorField>
     </div>);
+export default Invalid;

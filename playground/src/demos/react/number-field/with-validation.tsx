@@ -1,7 +1,7 @@
 import {Description, FieldError, Label, NumberField} from "@heroui/react";
 import React from "react";
 
-export function WithValidation() {
+function WithValidation() {
   const [value, setValue] = React.useState<number | undefined>(undefined);
   const isInvalid = value !== undefined && (value < 0 || value > 100);
 

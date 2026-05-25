@@ -1,6 +1,6 @@
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 
-export function DefaultSelectedKey() {
+function DefaultSelectedKey() {
   return (
     <ComboBox className="w-[256px]" defaultSelectedKey="cat">
       <Label>Favorite Animal</Label>

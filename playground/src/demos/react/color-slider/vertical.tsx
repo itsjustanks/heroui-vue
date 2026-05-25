@@ -1,6 +1,6 @@
 import {ColorSlider} from "@heroui/react";
 
-export function Vertical() {
+function Vertical() {
   return (
     <div className="flex h-48 gap-4">
       <ColorSlider

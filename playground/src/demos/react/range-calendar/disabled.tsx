@@ -1,6 +1,6 @@
 import {Description, RangeCalendar} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col items-center gap-4">
       <RangeCalendar isDisabled aria-label="Trip dates">

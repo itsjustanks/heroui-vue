@@ -1,6 +1,6 @@
 import {Table} from "@heroui/react";
 
-export function SecondaryVariant() {
+function SecondaryVariant() {
   return (
     <Table variant="secondary">
       <Table.ScrollContainer>

@@ -1,7 +1,7 @@
 import {Ban, Check, CircleFill, CircleInfo, TriangleExclamation} from "@gravity-ui/icons";
 import {Chip} from "@heroui/react";
 
-export function ChipStatuses() {
+function ChipStatuses() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center gap-3">

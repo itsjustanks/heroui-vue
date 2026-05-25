@@ -1,4 +1,4 @@
-import { Bell } from "@gravity-ui/icons";
+import { Bell } from "../../../gravity-icons-vue";
 import { Avatar, Badge } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
@@ -43,3 +43,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-6">
         </Badge>
       </Badge.Anchor>
     </div>);
+export default BadgeWithContent;

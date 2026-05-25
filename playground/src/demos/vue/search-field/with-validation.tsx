@@ -15,3 +15,4 @@ export default defineComponent(() => {
       </SearchField>
     </div>;
 });
+export default WithValidation;

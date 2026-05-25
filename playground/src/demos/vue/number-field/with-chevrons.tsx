@@ -22,3 +22,4 @@ export default defineComponent(() => () => <NumberField class="w-full max-w-64" 
         </div>
       </NumberField.Group>
     </NumberField>);
+export default WithChevrons;

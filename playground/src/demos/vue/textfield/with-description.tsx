@@ -5,3 +5,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-64" na
       <Input placeholder="Enter username" />
       <Description>Choose a unique username for your account</Description>
     </TextField>);
+export default WithDescription;

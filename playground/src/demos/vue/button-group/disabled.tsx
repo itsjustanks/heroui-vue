@@ -30,3 +30,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </ButtonGroup>
       </div>
     </div>);
+export default Disabled;

@@ -22,3 +22,4 @@ export default defineComponent(() => () => <Surface class="flex w-full max-w-[28
         <Description>Value must be between 0 and 100</Description>
       </NumberField>
     </Surface>);
+export default OnSurface;

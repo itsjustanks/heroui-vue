@@ -28,7 +28,7 @@ const users = [
   },
 ];
 
-export function Group() {
+function Group() {
   return (
     <div className="flex flex-col gap-6">
       {/* Basic avatar group */}

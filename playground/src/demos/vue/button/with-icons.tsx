@@ -1,4 +1,4 @@
-import { Envelope, Globe, Plus, TrashBin } from "@gravity-ui/icons";
+import { Envelope, Globe, Plus, TrashBin } from "../../../gravity-icons-vue";
 import { Button } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-wrap gap-3">
@@ -19,3 +19,4 @@ export default defineComponent(() => () => <div class="flex flex-wrap gap-3">
         Delete
       </Button>
     </div>);
+export default WithIcons;

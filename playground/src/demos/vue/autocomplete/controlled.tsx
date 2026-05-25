@@ -29,7 +29,7 @@ export default defineComponent(() => {
   });
   const selectedState = states.find(s => s.id === state.value);
   return () => <div class="space-y-2">
-      <Autocomplete class="w-[256px]" placeholder="Select a state" selectionMode="single" value={state.value} onChange={setState}>
+      <Autocomplete class="w-[256px]" placeholder="Select a state" selectionMode="single" value={state.value} onChange={v => state.value = v}>
         <Label>State (controlled)</Label>
         <Autocomplete.Trigger>
           <Autocomplete.Value />
@@ -57,3 +57,4 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">Selected: {selectedState?.name || "None"}</p>
     </div>;
 });
+export default Controlled;

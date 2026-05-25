@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {FieldError, InputGroup, Label, TextField} from "@heroui/react";
 
-export function Invalid() {
+function Invalid() {
   return (
     <div className="flex flex-col gap-4">
       <TextField isInvalid isRequired className="w-full max-w-[280px]" name="email">

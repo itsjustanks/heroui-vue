@@ -1,6 +1,6 @@
 import {ColorSwatch} from "@heroui/react";
 
-export function ColorSwatchBasic() {
+function ColorSwatchBasic() {
   return (
     <div className="flex items-center gap-3">
       <ColorSwatch aria-label="Blue" color="#0485F7" />

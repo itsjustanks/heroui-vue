@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {Autocomplete, EmptyState, Label, ListBox, SearchField, useFilter} from "@heroui/react";
 import {useState} from "react";
 
-export function WithDisabledOptions() {
+function WithDisabledOptions() {
   const [selectedKey, setSelectedKey] = useState<Key | null>(null);
   const {contains} = useFilter({sensitivity: "base"});
 

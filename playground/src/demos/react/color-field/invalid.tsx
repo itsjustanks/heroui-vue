@@ -1,6 +1,6 @@
 import {ColorField, FieldError, Label} from "@heroui/react";
 
-export function Invalid() {
+function Invalid() {
   return (
     <div className="flex flex-col gap-4">
       <ColorField isInvalid isRequired className="w-[280px]" name="color">

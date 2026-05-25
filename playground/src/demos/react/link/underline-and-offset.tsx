@@ -1,6 +1,6 @@
 import {Link} from "@heroui/react";
 
-export function LinkUnderlineAndOffset() {
+function LinkUnderlineAndOffset() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">

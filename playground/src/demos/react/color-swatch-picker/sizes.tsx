@@ -4,7 +4,7 @@ const colors = ["#F43F5E", "#D946EF", "#8B5CF6", "#3B82F6", "#06B6D4", "#10B981"
 
 const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex flex-col gap-6">
       {sizes.map((size) => (

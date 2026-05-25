@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Slider isDisabled class="w-full max-
         <Slider.Thumb />
       </Slider.Track>
     </Slider>);
+export default Disabled;

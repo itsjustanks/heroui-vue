@@ -9,7 +9,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function ControlledOpenState() {
+function ControlledOpenState() {
   const [isOpen, setIsOpen] = useState(false);
   const {contains} = useFilter({sensitivity: "base"});
 

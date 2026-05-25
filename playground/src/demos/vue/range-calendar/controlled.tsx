@@ -39,7 +39,7 @@ export default defineComponent(() => {
         </Button>
       </ButtonGroup>
 
-      <RangeCalendar aria-label="Trip dates" firstDayOfWeek="mon" focusedValue={focusedDate.value} value={value.value} onChange={setValue} onFocusChange={setFocusedDate}>
+      <RangeCalendar aria-label="Trip dates" firstDayOfWeek="mon" focusedValue={focusedDate.value} value={value.value} onChange={v => value.value = v} onFocusChange={v => focusedDate.value = v}>
         <RangeCalendar.Header>
           <RangeCalendar.Heading />
           <RangeCalendar.NavButton slot="previous" />
@@ -88,3 +88,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

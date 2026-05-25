@@ -4,7 +4,7 @@ import {Check} from "@gravity-ui/icons";
 import {Avatar, Description, Label, ListBox, Surface} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [selected, setSelected] = useState<Selection>(new Set(["1"]));
 
   const selectedItems = Array.from(selected);

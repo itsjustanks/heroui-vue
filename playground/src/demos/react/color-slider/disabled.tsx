@@ -1,6 +1,6 @@
 import {ColorSlider, Label} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <ColorSlider
       isDisabled

@@ -7,3 +7,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-[280px
         <InputGroup.Input class="w-full max-w-[280px]" />
       </InputGroup>
     </TextField>);
+export default WithTextPrefix;

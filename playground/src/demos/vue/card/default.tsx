@@ -1,4 +1,4 @@
-import { CircleDollar } from "@gravity-ui/icons";
+import { CircleDollar } from "../../../gravity-icons-vue";
 import { Card, Link } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Card class="w-[400px]">
@@ -17,3 +17,4 @@ export default defineComponent(() => () => <Card class="w-[400px]">
         </Link>
       </Card.Footer>
     </Card>);
+export default Default;

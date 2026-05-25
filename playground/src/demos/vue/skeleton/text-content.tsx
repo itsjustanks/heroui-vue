@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="w-full max-w-md space-y-3
       <Skeleton class="h-4 w-full rounded" />
       <Skeleton class="h-4 w-3/6 rounded" />
     </div>);
+export default TextContent;

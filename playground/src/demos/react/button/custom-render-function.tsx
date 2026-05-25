@@ -1,6 +1,6 @@
 import {Button} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <Button
       render={(props, {isPressed}) => (

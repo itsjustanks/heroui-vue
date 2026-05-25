@@ -1,4 +1,4 @@
-import { CircleInfo } from "@gravity-ui/icons";
+import { CircleInfo } from "../../../gravity-icons-vue";
 import { Button, Modal } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex max-w-sm flex-col gap-6">
@@ -76,3 +76,4 @@ export default defineComponent(() => () => <div class="flex max-w-sm flex-col ga
         </Modal>
       </div>
     </div>);
+export default DismissBehavior;

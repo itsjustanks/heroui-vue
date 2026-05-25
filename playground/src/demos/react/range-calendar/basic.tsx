@@ -1,6 +1,6 @@
 import {RangeCalendar} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <RangeCalendar aria-label="Trip dates" firstDayOfWeek="mon">
       <RangeCalendar.Header>

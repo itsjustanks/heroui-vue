@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ProgressBar aria-label="Loading" cla
         <ProgressBar.Fill />
       </ProgressBar.Track>
     </ProgressBar>);
+export default Basic;

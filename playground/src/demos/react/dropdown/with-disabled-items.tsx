@@ -1,7 +1,7 @@
 import {Bars, Pencil, SquarePlus, TrashBin} from "@gravity-ui/icons";
 import {Button, Description, Dropdown, Header, Kbd, Label, Separator} from "@heroui/react";
 
-export function WithDisabledItems() {
+function WithDisabledItems() {
   return (
     <Dropdown>
       <Button isIconOnly aria-label="Menu" variant="secondary">

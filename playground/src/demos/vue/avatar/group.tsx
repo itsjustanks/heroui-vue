@@ -45,3 +45,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </Avatar>
       </div>
     </div>);
+export default Group;

@@ -1,6 +1,6 @@
 import {Checkbox, Label} from "@heroui/react";
 
-export function DefaultSelected() {
+function DefaultSelected() {
   return (
     <Checkbox defaultSelected id="default-notifications">
       <Checkbox.Control>

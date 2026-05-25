@@ -1,6 +1,6 @@
 import {Label, Slider} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <Slider isDisabled className="w-full max-w-xs" defaultValue={30}>
       <Label>Volume</Label>

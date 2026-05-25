@@ -3,7 +3,7 @@ import { ColorField, ColorSwatch, Label, parseColor } from "@itsjustanks/heroui-
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const color = ref(parseColor("#0485F7"));
-  return () => <ColorField class="w-[280px]" name="color" render={props => <div {...props} data-custom="foo" />} value={color.value} onChange={setColor}>
+  return () => <ColorField class="w-[280px]" name="color" render={props => <div {...props} data-custom="foo" />} value={color.value} onChange={v => color.value = v}>
       <Label>Color</Label>
       <ColorField.Group render={props => <div {...props} data-custom="foo" />}>
         <ColorField.Prefix>
@@ -13,3 +13,4 @@ export default defineComponent(() => {
       </ColorField.Group>
     </ColorField>;
 });
+export default CustomRenderFunction;

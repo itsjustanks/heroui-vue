@@ -1,7 +1,7 @@
 import {Rocket} from "@gravity-ui/icons";
 import {Button, Modal} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <Modal>
       <Button variant="secondary">Open Modal</Button>

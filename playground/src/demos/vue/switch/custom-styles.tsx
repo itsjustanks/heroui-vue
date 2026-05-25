@@ -1,4 +1,4 @@
-import { Check, Power } from "@gravity-ui/icons";
+import { Check, Power } from "../../../gravity-icons-vue";
 import { Switch } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Switch>
@@ -14,3 +14,4 @@ export default defineComponent(() => () => <Switch>
           </Switch.Control>
         </>}
     </Switch>);
+export default CustomStyles;

@@ -59,3 +59,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Kbd>
       </div>
     </div>);
+export default Variants;

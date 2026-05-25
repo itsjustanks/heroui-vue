@@ -33,3 +33,4 @@ export default defineComponent(() => () => <Surface class="w-full rounded-3xl p-
         </Radio>
       </RadioGroup>
     </Surface>);
+export default OnSurface;

@@ -1,7 +1,7 @@
 import {Button, Label, Modal, Radio, RadioGroup} from "@heroui/react";
 import {useState} from "react";
 
-export function ScrollComparison() {
+function ScrollComparison() {
   const [scroll, setScroll] = useState<"inside" | "outside">("inside");
 
   return (

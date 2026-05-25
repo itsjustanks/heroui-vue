@@ -1,4 +1,4 @@
-import { Check } from "@gravity-ui/icons";
+import { Check } from "../../../gravity-icons-vue";
 import { Avatar, Description, Label, ListBox, Surface } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Surface class="w-[256px] rounded-3xl shadow-surface">
@@ -50,3 +50,4 @@ export default defineComponent(() => () => <Surface class="w-[256px] rounded-3xl
         </ListBox.Item>
       </ListBox>
     </Surface>);
+export default CustomCheckIcon;

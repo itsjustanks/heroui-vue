@@ -1,6 +1,6 @@
 import {CloseButton} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return <CloseButton />;
 }
 

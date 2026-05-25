@@ -83,3 +83,4 @@ export default defineComponent(() => {
       </Autocomplete.Popover>
     </Autocomplete>;
 });
+export default EmailRecipients;

@@ -1,4 +1,4 @@
-import { FloppyDisk } from "@gravity-ui/icons";
+import { FloppyDisk } from "../../../gravity-icons-vue";
 import { Button, Description, FieldError, Fieldset, Form, Input, Label, Surface, TextArea, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -61,3 +61,4 @@ export default defineComponent(() => {
       </Surface>
     </div>;
 });
+export default OnSurface;

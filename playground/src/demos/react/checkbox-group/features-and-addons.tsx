@@ -2,7 +2,7 @@ import {Bell, Comment, Envelope} from "@gravity-ui/icons";
 import {Checkbox, CheckboxGroup, Description, Label} from "@heroui/react";
 import clsx from "clsx";
 
-export function FeaturesAndAddOns() {
+function FeaturesAndAddOns() {
   const addOns = [
     {
       description: "Receive updates via email",

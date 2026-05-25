@@ -1,6 +1,6 @@
 import {Separator} from "@heroui/react";
 
-export function Vertical() {
+function Vertical() {
   return (
     <div className="text-small flex h-5 items-center space-x-4">
       <div>Blog</div>

@@ -70,3 +70,4 @@ export default defineComponent(() => () => <Select class="w-[256px]" placeholder
         </ListBox>
       </Select.Popover>
     </Select>);
+export default WithSections;

@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Checkbox id="basic-terms">
         <Label htmlFor="basic-terms">Accept terms and conditions</Label>
       </Checkbox.Content>
     </Checkbox>);
+export default Basic;

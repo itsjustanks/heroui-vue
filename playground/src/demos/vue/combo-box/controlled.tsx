@@ -39,3 +39,4 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">Selected: {selectedAnimal?.name || "None"}</p>
     </div>;
 });
+export default Controlled;

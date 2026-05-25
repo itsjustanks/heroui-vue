@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex flex-col items-cente
       </RangeCalendar>
       <Description class="text-center">Range calendar is disabled</Description>
     </div>);
+export default Disabled;

@@ -1,7 +1,7 @@
 import {Label, Switch} from "@heroui/react";
 import React from "react";
 
-export function Controlled() {
+function Controlled() {
   const [isSelected, setIsSelected] = React.useState(false);
 
   return (

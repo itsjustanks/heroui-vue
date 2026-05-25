@@ -1,6 +1,6 @@
 import {Autocomplete, EmptyState, Label, ListBox, SearchField, useFilter} from "@heroui/react";
 
-export function AllowsEmptyCollection() {
+function AllowsEmptyCollection() {
   const {contains} = useFilter({sensitivity: "base"});
 
   return (

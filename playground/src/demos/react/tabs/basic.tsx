@@ -1,6 +1,6 @@
 import {Tabs} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <Tabs className="w-full max-w-md">
       <Tabs.ListContainer>

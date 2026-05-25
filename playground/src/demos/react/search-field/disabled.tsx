@@ -1,6 +1,6 @@
 import {Description, Label, SearchField} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col gap-4">
       <SearchField isDisabled name="search" value="Disabled search">

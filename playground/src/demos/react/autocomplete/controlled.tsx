@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {Autocomplete, EmptyState, Label, ListBox, SearchField, useFilter} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const states = [
     {id: "california", name: "California"},
     {id: "texas", name: "Texas"},

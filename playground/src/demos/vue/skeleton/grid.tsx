@@ -5,3 +5,4 @@ export default defineComponent(() => () => <div class="grid w-full max-w-xl grid
       <Skeleton class="h-24 rounded-xl" />
       <Skeleton class="h-24 rounded-xl" />
     </div>);
+export default Grid;

@@ -31,3 +31,4 @@ export default defineComponent(() => () => <div class="flex flex-wrap gap-4">
         </Card.Footer>
       </Card>
     </div>);
+export default WithAvatar;

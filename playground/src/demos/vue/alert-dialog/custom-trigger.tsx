@@ -1,4 +1,4 @@
-import { TrashBin } from "@gravity-ui/icons";
+import { TrashBin } from "../../../gravity-icons-vue";
 import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <AlertDialog>
@@ -40,3 +40,4 @@ export default defineComponent(() => () => <AlertDialog>
         </AlertDialog.Container>
       </AlertDialog.Backdrop>
     </AlertDialog>);
+export default CustomTrigger;

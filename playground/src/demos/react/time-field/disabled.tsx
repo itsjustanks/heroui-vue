@@ -1,7 +1,7 @@
 import {Description, Label, TimeField} from "@heroui/react";
 import {Time, getLocalTimeZone, now} from "@internationalized/date";
 
-export function Disabled() {
+function Disabled() {
   const currentTime = now(getLocalTimeZone());
   const timeValue = new Time(currentTime.hour, currentTime.minute, currentTime.second);
 

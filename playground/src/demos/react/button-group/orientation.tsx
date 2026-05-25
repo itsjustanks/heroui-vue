@@ -1,7 +1,7 @@
 import {TextAlignCenter, TextAlignJustify, TextAlignLeft, TextAlignRight} from "@gravity-ui/icons";
 import {Button, ButtonGroup} from "@heroui/react";
 
-export function Orientation() {
+function Orientation() {
   return (
     <div className="flex items-start gap-8">
       <div className="flex flex-col gap-2">

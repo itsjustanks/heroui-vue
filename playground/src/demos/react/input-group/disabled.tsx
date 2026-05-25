@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {InputGroup, Label, TextField} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col gap-4">
       <TextField

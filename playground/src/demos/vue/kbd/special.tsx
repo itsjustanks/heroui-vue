@@ -32,3 +32,4 @@ export default defineComponent(() => () => <div class="space-y-3">
         to temporarily enable panning mode.
       </p>
     </div>);
+export default SpecialKeys;

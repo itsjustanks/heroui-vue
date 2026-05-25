@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSwatchPicker defaultValue="#8B5
           <ColorSwatchPicker.Indicator />
         </ColorSwatchPicker.Item>)}
     </ColorSwatchPicker>);
+export default DefaultValue;

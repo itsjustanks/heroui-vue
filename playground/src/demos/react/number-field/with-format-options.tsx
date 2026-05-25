@@ -1,6 +1,6 @@
 import {Description, Label, NumberField} from "@heroui/react";
 
-export function WithFormatOptions() {
+function WithFormatOptions() {
   return (
     <div className="flex w-full max-w-64 flex-col gap-4">
       <NumberField

@@ -9,3 +9,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-[280px
       </InputGroup>
       <Description>What customers would pay</Description>
     </TextField>);
+export default WithPrefixAndSuffix;

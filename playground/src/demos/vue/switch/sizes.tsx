@@ -26,3 +26,4 @@ export default defineComponent(() => () => <div class="flex gap-6">
         </Switch.Content>
       </Switch>
     </div>);
+export default Sizes;

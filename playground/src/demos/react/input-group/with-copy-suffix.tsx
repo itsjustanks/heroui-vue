@@ -1,7 +1,7 @@
 import {Copy} from "@gravity-ui/icons";
 import {Button, InputGroup, Label, TextField} from "@heroui/react";
 
-export function WithCopySuffix() {
+function WithCopySuffix() {
   return (
     <TextField className="w-full max-w-[280px]" defaultValue="heroui.com" name="website">
       <Label>Website</Label>

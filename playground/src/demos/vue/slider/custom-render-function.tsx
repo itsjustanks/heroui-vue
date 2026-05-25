@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Slider class="w-full max-w-xs" defau
         <Slider.Thumb />
       </Slider.Track>
     </Slider>);
+export default CustomRenderFunction;

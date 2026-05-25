@@ -9,7 +9,7 @@ import {
 } from "@gravity-ui/icons";
 import {ToggleButton, ToggleButtonGroup} from "@heroui/react";
 
-export function FullWidth() {
+function FullWidth() {
   return (
     <div className="w-full max-w-md space-y-3">
       <ToggleButtonGroup fullWidth selectionMode="multiple">

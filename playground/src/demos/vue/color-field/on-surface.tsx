@@ -9,3 +9,4 @@ export default defineComponent(() => () => <Surface class="w-[320px] p-4">
         <Description>Select your theme color</Description>
       </ColorField>
     </Surface>);
+export default OnSurface;

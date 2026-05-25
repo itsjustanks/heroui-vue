@@ -1,6 +1,6 @@
 import {Label, Meter} from "@heroui/react";
 
-export function Colors() {
+function Colors() {
   return (
     <div className="flex w-64 flex-col gap-6">
       <Meter color="default" value={50}>

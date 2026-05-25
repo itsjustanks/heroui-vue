@@ -4,7 +4,7 @@ const colors = ["#F43F5E", "#D946EF", "#8B5CF6", "#3B82F6", "#06B6D4", "#10B981"
 export default defineComponent(() => {
   const value = ref(parseColor("#F43F5E"));
   return () => <div class="flex flex-col gap-4">
-      <ColorSwatchPicker value={value.value} onChange={setValue}>
+      <ColorSwatchPicker value={value.value} onChange={v => value.value = v}>
         {colors.map(color => <ColorSwatchPicker.Item key={color} color={color}>
             <ColorSwatchPicker.Swatch />
             <ColorSwatchPicker.Indicator />
@@ -15,3 +15,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Controlled;

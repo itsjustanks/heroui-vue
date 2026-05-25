@@ -1,4 +1,4 @@
-import { Ban, Check, CircleFill, CircleInfo, TriangleExclamation } from "@gravity-ui/icons";
+import { Ban, Check, CircleFill, CircleInfo, TriangleExclamation } from "../../../gravity-icons-vue";
 import { Chip } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col gap-4">
@@ -40,3 +40,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Chip>
       </div>
     </div>);
+export default ChipStatuses;

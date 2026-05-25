@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex flex-wrap items-cent
       <Chip color="warning">Warning</Chip>
       <Chip color="danger">Danger</Chip>
     </div>);
+export default ChipBasic;

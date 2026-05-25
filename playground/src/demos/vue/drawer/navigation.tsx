@@ -1,4 +1,4 @@
-import { Bars, Bell, Envelope, Gear, House, Magnifier, Person } from "@gravity-ui/icons";
+import { Bars, Bell, Envelope, Gear, House, Magnifier, Person } from "../../../gravity-icons-vue";
 import { Button, Drawer } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -49,3 +49,4 @@ export default defineComponent(() => {
       </Drawer.Backdrop>
     </Drawer>;
 });
+export default Navigation;

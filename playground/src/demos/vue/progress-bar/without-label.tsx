@@ -5,3 +5,4 @@ export default defineComponent(() => () => <ProgressBar aria-label="Loading prog
         <ProgressBar.Fill />
       </ProgressBar.Track>
     </ProgressBar>);
+export default WithoutLabel;

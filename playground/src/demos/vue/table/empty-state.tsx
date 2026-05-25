@@ -19,3 +19,4 @@ export default defineComponent(() => () => <Table class="min-h-[200px]">
         </Table.Content>
       </Table.ScrollContainer>
     </Table>);
+export default EmptyStateDemo;

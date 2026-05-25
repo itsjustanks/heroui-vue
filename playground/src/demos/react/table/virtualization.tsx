@@ -7,7 +7,7 @@ interface User {
   email: string;
 }
 
-export function Virtualization() {
+function Virtualization() {
   const roles = [
     "Software Engineer",
     "Senior Engineer",

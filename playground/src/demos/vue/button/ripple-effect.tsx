@@ -6,3 +6,4 @@ export default defineComponent(() => () => <Button variant="secondary">
       <Ripple />
       Click me
     </Button>);
+export default RippleEffect;

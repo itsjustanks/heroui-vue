@@ -123,3 +123,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-8">
         </ComboBox>
       </div>
     </div>);
+export default MenuTrigger;

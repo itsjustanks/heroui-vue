@@ -75,3 +75,4 @@ export default defineComponent(() => () => <Table>
         </Table.Content>
       </Table.ResizableContainer>
     </Table>);
+export default ColumnResizing;

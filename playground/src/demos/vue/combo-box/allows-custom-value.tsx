@@ -36,3 +36,4 @@ export default defineComponent(() => () => <ComboBox allowsCustomValue class="w-
       </ComboBox.Popover>
       <Description>You can type any animal name, even if it's not in the list</Description>
     </ComboBox>);
+export default AllowsCustomValue;

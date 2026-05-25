@@ -18,7 +18,7 @@ export default defineComponent(() => {
   });
   const isInvalid = value.value.end.compare(value.value.start) > 7;
   return () => <div class="flex flex-col items-center gap-4">
-      <RangeCalendar aria-label="Trip dates" firstDayOfWeek="mon" isInvalid={isInvalid} value={value.value} onChange={setValue}>
+      <RangeCalendar aria-label="Trip dates" firstDayOfWeek="mon" isInvalid={isInvalid} value={value.value} onChange={v => value.value = v}>
         <RangeCalendar.Header>
           <RangeCalendar.Heading />
           <RangeCalendar.NavButton slot="previous" />
@@ -36,3 +36,4 @@ export default defineComponent(() => {
       {isInvalid ? <p class="text-sm text-danger">Maximum stay duration is 1 week</p> : <Description class="text-center">Select a stay of up to 7 days</Description>}
     </div>;
 });
+export default Invalid;

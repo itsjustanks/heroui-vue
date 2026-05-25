@@ -45,3 +45,4 @@ export default defineComponent(() => {
       {!!message && <p class="text-sm text-muted">{message}</p>}
     </Form>;
 });
+export default Validation;

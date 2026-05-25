@@ -37,3 +37,4 @@ export default defineComponent(() => {
       </ListBox>
     </Virtualizer>;
 });
+export default Virtualization;

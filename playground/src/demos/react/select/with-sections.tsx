@@ -1,6 +1,6 @@
 import {Header, Label, ListBox, Select, Separator} from "@heroui/react";
 
-export function WithSections() {
+function WithSections() {
   return (
     <Select className="w-[256px]" placeholder="Select a country">
       <Label>Country</Label>

@@ -1,7 +1,7 @@
 import {CircleDollar} from "@gravity-ui/icons";
 import {Card, Link} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <Card className="w-[400px]">
       <CircleDollar aria-label="Dollar sign icon" className="text-primary size-6" role="img" />

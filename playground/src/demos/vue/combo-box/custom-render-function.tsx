@@ -35,3 +35,4 @@ export default defineComponent(() => () => <ComboBox class="w-[256px]" render={p
         </ListBox>
       </ComboBox.Popover>
     </ComboBox>);
+export default CustomRenderFunction;

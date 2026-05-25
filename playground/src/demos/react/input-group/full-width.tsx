@@ -1,7 +1,7 @@
 import {Envelope, Eye} from "@gravity-ui/icons";
 import {InputGroup, Label, TextField} from "@heroui/react";
 
-export function FullWidth() {
+function FullWidth() {
   return (
     <div className="w-[400px] space-y-4">
       <TextField fullWidth name="email">

@@ -1,6 +1,6 @@
 import {Tabs} from "@heroui/react";
 
-export function CustomStyles() {
+function CustomStyles() {
   return (
     <Tabs className="w-full max-w-lg text-center">
       <Tabs.ListContainer>

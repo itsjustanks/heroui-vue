@@ -4,3 +4,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-64" na
       <Label>Email</Label>
       <Input placeholder="Enter your email" />
     </TextField>);
+export default Basic;

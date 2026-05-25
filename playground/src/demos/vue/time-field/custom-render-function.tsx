@@ -6,3 +6,4 @@ export default defineComponent(() => () => <TimeField class="w-[256px]" name="ti
         <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
       </TimeField.Group>
     </TimeField>);
+export default CustomRenderFunction;

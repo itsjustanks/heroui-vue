@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function LabelPosition() {
+function LabelPosition() {
   return (
     <div className="flex flex-col gap-4">
       <Switch>

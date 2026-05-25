@@ -1,4 +1,4 @@
-import { Envelope } from "@gravity-ui/icons";
+import { Envelope } from "../../../gravity-icons-vue";
 import { InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <TextField class="w-full max-w-[280px]" name="email">
@@ -10,3 +10,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-[280px
         <InputGroup.Input class="w-full max-w-[280px]" placeholder="name@email.com" />
       </InputGroup>
     </TextField>);
+export default Default;

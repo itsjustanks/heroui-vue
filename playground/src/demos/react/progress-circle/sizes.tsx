@@ -1,6 +1,6 @@
 import {ProgressCircle} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex items-center gap-6">
       <ProgressCircle aria-label="Loading" size="sm" value={40}>

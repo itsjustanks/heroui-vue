@@ -6,3 +6,4 @@ export default defineComponent(() => () => <Switch render={props => <label {...p
       </Switch.Control>
       <Label class="text-sm">Enable notifications</Label>
     </Switch>);
+export default CustomRenderFunction;

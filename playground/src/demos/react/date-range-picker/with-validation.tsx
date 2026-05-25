@@ -9,7 +9,7 @@ type DateRange = {
   end: DateValue;
 };
 
-export function WithValidation() {
+function WithValidation() {
   const [value, setValue] = useState<DateRange | null>(null);
   const currentDate = today(getLocalTimeZone());
   const isInvalid =

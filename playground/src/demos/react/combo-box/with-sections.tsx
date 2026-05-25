@@ -1,6 +1,6 @@
 import {ComboBox, Header, Input, Label, ListBox, Separator} from "@heroui/react";
 
-export function WithSections() {
+function WithSections() {
   return (
     <ComboBox className="w-[256px]">
       <Label>Country</Label>

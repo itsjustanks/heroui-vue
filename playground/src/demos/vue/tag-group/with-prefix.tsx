@@ -1,4 +1,4 @@
-import { PlanetEarth, Rocket, ShoppingBag, SquareArticle } from "@gravity-ui/icons";
+import { PlanetEarth, Rocket, ShoppingBag, SquareArticle } from "../../../gravity-icons-vue";
 import { Avatar, Description, Label, Tag, TagGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col gap-8">
@@ -53,3 +53,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-8">
         <Description>Tags with avatars</Description>
       </TagGroup>
     </div>);
+export default TagGroupWithPrefix;

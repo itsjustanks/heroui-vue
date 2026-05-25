@@ -1,4 +1,4 @@
-import { Rocket } from "@gravity-ui/icons";
+import { Rocket } from "../../../gravity-icons-vue";
 import { Button, Modal } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -49,3 +49,4 @@ export default defineComponent(() => {
         </Modal>)}
     </div>;
 });
+export default Sizes;

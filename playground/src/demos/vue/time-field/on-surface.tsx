@@ -1,4 +1,4 @@
-import { Clock } from "@gravity-ui/icons";
+import { Clock } from "../../../gravity-icons-vue";
 import { Description, Label, Surface, TimeField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Surface class="flex w-full max-w-sm flex-col gap-4 rounded-3xl p-6">
@@ -20,3 +20,4 @@ export default defineComponent(() => () => <Surface class="flex w-full max-w-sm 
         <Description>Enter a time for your appointment</Description>
       </TimeField>
     </Surface>);
+export default OnSurface;

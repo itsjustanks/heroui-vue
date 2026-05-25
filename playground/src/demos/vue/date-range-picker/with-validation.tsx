@@ -10,7 +10,7 @@ export default defineComponent(() => {
   const value = ref(null);
   const currentDate = today(getLocalTimeZone());
   const isInvalid = value.value != null && (value.value.start.compare(currentDate) < 0 || value.value.end.compare(value.value.start) < 0);
-  return () => <DateRangePicker isRequired class="w-72" endName="endDate" isInvalid={isInvalid} minValue={currentDate} startName="startDate" value={value.value} onChange={setValue}>
+  return () => <DateRangePicker isRequired class="w-72" endName="endDate" isInvalid={isInvalid} minValue={currentDate} startName="startDate" value={value.value} onChange={v => value.value = v}>
       <Label>Booking period</Label>
       <DateField.Group fullWidth>
         <DateField.Input slot="start">
@@ -56,3 +56,4 @@ export default defineComponent(() => {
       </DateRangePicker.Popover>
     </DateRangePicker>;
 });
+export default WithValidation;

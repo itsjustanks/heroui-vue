@@ -10,3 +10,4 @@ export default defineComponent(() => () => <div class="flex h-64 items-center ju
         </Slider.Track>
       </Slider>
     </div>);
+export default Vertical;

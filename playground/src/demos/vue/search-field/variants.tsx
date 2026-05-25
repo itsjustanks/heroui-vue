@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </SearchField.Group>
       </SearchField>
     </div>);
+export default Variants;

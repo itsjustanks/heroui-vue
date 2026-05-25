@@ -1,4 +1,4 @@
-import { Bell, Comment, Envelope } from "@gravity-ui/icons";
+import { Bell, Comment, Envelope } from "../../../gravity-icons-vue";
 import { Checkbox, CheckboxGroup, Description, Label } from "@itsjustanks/heroui-vue";
 import clsx from "clsx";
 import { defineComponent } from "vue";
@@ -42,3 +42,4 @@ export default defineComponent(() => {
       </section>
     </div>;
 });
+export default FeaturesAndAddOns;

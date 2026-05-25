@@ -35,3 +35,4 @@ export default defineComponent(() => () => <Select class="w-[256px]" disabledKey
         </ListBox>
       </Select.Popover>
     </Select>);
+export default WithDisabledOptions;

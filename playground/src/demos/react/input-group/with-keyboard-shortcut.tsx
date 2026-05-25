@@ -1,6 +1,6 @@
 import {InputGroup, Kbd, TextField} from "@heroui/react";
 
-export function WithKeyboardShortcut() {
+function WithKeyboardShortcut() {
   return (
     <TextField aria-label="Command" className="w-full max-w-[280px]" name="command">
       <InputGroup>

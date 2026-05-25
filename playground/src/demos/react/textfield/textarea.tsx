@@ -1,6 +1,6 @@
 import {Description, Label, TextArea, TextField} from "@heroui/react";
 
-export function TextAreaExample() {
+function TextAreaExample() {
   return (
     <TextField className="w-full max-w-64" name="message">
       <Label>Message</Label>

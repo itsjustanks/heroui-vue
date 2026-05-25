@@ -1,6 +1,6 @@
 import {Label, ProgressBar} from "@heroui/react";
 
-export function Colors() {
+function Colors() {
   return (
     <div className="flex w-64 flex-col gap-6">
       <ProgressBar aria-label="Default" color="default" value={50}>

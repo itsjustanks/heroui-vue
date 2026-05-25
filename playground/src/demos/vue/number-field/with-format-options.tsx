@@ -64,3 +64,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <Description>Unit format with kilograms</Description>
       </NumberField>
     </div>);
+export default WithFormatOptions;

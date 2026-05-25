@@ -32,3 +32,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Radio>
       </RadioGroup>
     </div>);
+export default Horizontal;

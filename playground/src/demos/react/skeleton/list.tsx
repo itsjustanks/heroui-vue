@@ -1,6 +1,6 @@
 import {Skeleton} from "@heroui/react";
 
-export function List() {
+function List() {
   return (
     <div className="w-full max-w-sm space-y-4">
       {Array.from({length: 3}).map((_, index) => (

@@ -3,7 +3,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const inputValue = ref("");
   return () => <div class="space-y-2">
-      <ComboBox class="w-[256px]" inputValue={inputValue.value} onInputChange={setInputValue}>
+      <ComboBox class="w-[256px]" inputValue={inputValue.value} onInputChange={v => inputValue.value = v}>
         <Label>Search (controlled input)</Label>
         <ComboBox.InputGroup>
           <Input placeholder="Type to search..." />
@@ -41,3 +41,4 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">Input value: {inputValue.value || "(empty)"}</p>
     </div>;
 });
+export default ControlledInputValue;

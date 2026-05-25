@@ -1,7 +1,7 @@
 import {Envelope, Globe, Plus, TrashBin} from "@gravity-ui/icons";
 import {Button} from "@heroui/react";
 
-export function WithIcons() {
+function WithIcons() {
   return (
     <div className="flex flex-wrap gap-3">
       <Button>

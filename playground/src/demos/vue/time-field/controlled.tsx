@@ -5,7 +5,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const value = ref(null);
   return () => <div class="flex flex-col gap-4">
-      <TimeField class="w-[256px]" name="time" value={value.value} onChange={setValue}>
+      <TimeField class="w-[256px]" name="time" value={value.value} onChange={v => value.value = v}>
         <Label>Time</Label>
         <TimeField.Group>
           <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
@@ -25,3 +25,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

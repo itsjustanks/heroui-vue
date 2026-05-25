@@ -1,6 +1,6 @@
 import {Checkbox, CheckboxGroup, Description, Label} from "@heroui/react";
 
-export function WithCustomIndicator() {
+function WithCustomIndicator() {
   return (
     <CheckboxGroup name="features">
       <Label>Features</Label>

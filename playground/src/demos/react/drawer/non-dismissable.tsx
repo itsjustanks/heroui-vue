@@ -1,6 +1,6 @@
 import {Button, Drawer} from "@heroui/react";
 
-export function NonDismissable() {
+function NonDismissable() {
   return (
     <Drawer>
       <Button variant="secondary">Important Action</Button>

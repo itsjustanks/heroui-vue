@@ -1,6 +1,6 @@
 import {Autocomplete, EmptyState, Label, ListBox, SearchField, useFilter} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   const {contains} = useFilter({sensitivity: "base"});
 
   const items = [

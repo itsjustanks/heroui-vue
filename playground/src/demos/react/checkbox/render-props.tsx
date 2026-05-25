@@ -1,6 +1,6 @@
 import {Checkbox, Description, Label} from "@heroui/react";
 
-export function RenderProps() {
+function RenderProps() {
   return (
     <Checkbox id="render-props-terms">
       {({isSelected}) => (

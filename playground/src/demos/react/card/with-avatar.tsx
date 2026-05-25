@@ -1,6 +1,6 @@
 import {Avatar, Card} from "@heroui/react";
 
-export function WithAvatar() {
+function WithAvatar() {
   return (
     <div className="flex flex-wrap gap-4">
       <Card className="w-[200px] gap-2">

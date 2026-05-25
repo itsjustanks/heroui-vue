@@ -31,3 +31,4 @@ export default defineComponent(() => () => <RadioGroup isDisabled defaultValue="
         </Radio.Content>
       </Radio>
     </RadioGroup>);
+export default Disabled;

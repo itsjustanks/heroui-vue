@@ -1,6 +1,6 @@
 import {Button} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex items-center gap-3">
       <Button size="sm">Small</Button>

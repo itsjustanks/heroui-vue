@@ -1,6 +1,6 @@
 import {ColorSwatch} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <div className="flex items-center gap-3">
       <ColorSwatch

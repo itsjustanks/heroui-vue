@@ -1,4 +1,4 @@
-import { Bold, Italic, Strikethrough, Underline } from "@gravity-ui/icons";
+import { Bold, Italic, Strikethrough, Underline } from "../../../gravity-icons-vue";
 import { ToggleButton, ToggleButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col gap-6">
@@ -63,3 +63,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </ToggleButtonGroup>
       </div>
     </div>);
+export default Sizes;

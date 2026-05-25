@@ -1,6 +1,6 @@
 import {Button, Drawer} from "@heroui/react";
 
-export function ScrollableContent() {
+function ScrollableContent() {
   return (
     <Drawer>
       <Button variant="secondary">Terms & Conditions</Button>

@@ -1,6 +1,6 @@
 import {Chip, Table} from "@heroui/react";
 
-export function ColumnResizing() {
+function ColumnResizing() {
   return (
     <Table>
       <Table.ResizableContainer>

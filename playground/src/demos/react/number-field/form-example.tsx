@@ -1,7 +1,7 @@
 import {Button, Description, FieldError, Form, Label, NumberField, Spinner} from "@heroui/react";
 import React from "react";
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = React.useState<number | undefined>(undefined);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const STOCK_AVAILABLE = 3;

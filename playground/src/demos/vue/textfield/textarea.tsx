@@ -5,3 +5,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-64" na
       <TextArea placeholder="Write your message here..." rows={4} />
       <Description>Maximum 500 characters</Description>
     </TextField>);
+export default TextAreaExample;

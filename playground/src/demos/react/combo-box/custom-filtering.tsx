@@ -1,6 +1,6 @@
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 
-export function CustomFiltering() {
+function CustomFiltering() {
   const animals = [
     {id: "cat", name: "Cat"},
     {id: "dog", name: "Dog"},

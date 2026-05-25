@@ -1,6 +1,6 @@
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <ComboBox className="w-[256px]" render={(props) => <div {...props} data-custom="foo" />}>
       <Label>Favorite Animal</Label>

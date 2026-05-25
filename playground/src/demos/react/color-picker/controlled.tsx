@@ -12,7 +12,7 @@ import {
 import {Icon} from "@iconify/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [color, setColor] = useState(parseColor("#325578"));
 
   const colorPresets = [

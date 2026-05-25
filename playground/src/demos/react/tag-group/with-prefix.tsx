@@ -1,7 +1,7 @@
 import {PlanetEarth, Rocket, ShoppingBag, SquareArticle} from "@gravity-ui/icons";
 import {Avatar, Description, Label, Tag, TagGroup} from "@heroui/react";
 
-export function TagGroupWithPrefix() {
+function TagGroupWithPrefix() {
   return (
     <div className="flex flex-col gap-8">
       <TagGroup selectionMode="single">

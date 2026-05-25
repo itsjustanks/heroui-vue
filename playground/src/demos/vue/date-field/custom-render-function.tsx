@@ -8,3 +8,4 @@ export default defineComponent(() => () => <DateField class="w-[256px]" name="da
         </DateField.Input>
       </DateField.Group>
     </DateField>);
+export default CustomRenderFunction;

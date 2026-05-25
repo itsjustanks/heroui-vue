@@ -1,7 +1,7 @@
 import {Description, FieldError, Input, Label, TextArea, TextField} from "@heroui/react";
 import React from "react";
 
-export function Validation() {
+function Validation() {
   const [username, setUsername] = React.useState("");
   const [bio, setBio] = React.useState("");
 

@@ -97,3 +97,4 @@ export default defineComponent(() => {
       </Autocomplete>
     </div>;
 });
+export default Disabled;

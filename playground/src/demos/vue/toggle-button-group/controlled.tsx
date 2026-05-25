@@ -1,11 +1,11 @@
 import type { Key } from "@itsjustanks/heroui-vue";
-import { Bold, Italic, Strikethrough, Underline } from "@gravity-ui/icons";
+import { Bold, Italic, Strikethrough, Underline } from "../../../gravity-icons-vue";
 import { ToggleButton, ToggleButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const selectedKeys = ref(new Set<Key>(["bold"]));
   return () => <div class="flex flex-col gap-4">
-      <ToggleButtonGroup selectedKeys={selectedKeys.value} selectionMode="multiple" onSelectionChange={setSelectedKeys}>
+      <ToggleButtonGroup selectedKeys={selectedKeys.value} selectionMode="multiple" onSelectionChange={v => selectedKeys.value = v}>
         <ToggleButton isIconOnly aria-label="Bold" id="bold">
           <Bold />
         </ToggleButton>
@@ -30,3 +30,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Controlled;

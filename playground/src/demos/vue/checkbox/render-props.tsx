@@ -17,3 +17,4 @@ export default defineComponent(() => () => <Checkbox id="render-props-terms">
           </Checkbox.Content>
         </>}
     </Checkbox>);
+export default RenderProps;

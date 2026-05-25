@@ -38,3 +38,4 @@ export default defineComponent(() => () => <Table>
         </Table.Content>
       </Table.ScrollContainer>
     </Table>);
+export default Basic;

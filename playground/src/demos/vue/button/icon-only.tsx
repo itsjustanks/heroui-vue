@@ -1,4 +1,4 @@
-import { Ellipsis, Gear, TrashBin } from "@gravity-ui/icons";
+import { Ellipsis, Gear, TrashBin } from "../../../gravity-icons-vue";
 import { Button } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex gap-3">
@@ -12,3 +12,4 @@ export default defineComponent(() => () => <div class="flex gap-3">
         <TrashBin />
       </Button>
     </div>);
+export default IconOnly;

@@ -1,7 +1,7 @@
 import {PlanetEarth, Rocket, ShoppingBag, SquareArticle} from "@gravity-ui/icons";
 import {Tag, TagGroup} from "@heroui/react";
 
-export function TagGroupBasic() {
+function TagGroupBasic() {
   return (
     <TagGroup aria-label="Tags" selectionMode="single">
       <TagGroup.List>

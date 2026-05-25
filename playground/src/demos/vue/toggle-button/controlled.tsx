@@ -1,10 +1,10 @@
-import { Heart, HeartFill } from "@gravity-ui/icons";
+import { Heart, HeartFill } from "../../../gravity-icons-vue";
 import { ToggleButton } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const isSelected = ref(false);
   return () => <div class="flex flex-col gap-4">
-      <ToggleButton isSelected={isSelected.value} onChange={setIsSelected}>
+      <ToggleButton isSelected={isSelected.value} onChange={v => isSelected.value = v}>
         {({
         isSelected: selected
       }) => <>
@@ -17,3 +17,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Controlled;

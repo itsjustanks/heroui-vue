@@ -1,4 +1,4 @@
-import { ChevronDown, CircleCheckFill, CircleFill, Clock, Xmark } from "@gravity-ui/icons";
+import { ChevronDown, CircleCheckFill, CircleFill, Clock, Xmark } from "../../../gravity-icons-vue";
 import { Chip } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-wrap items-center gap-3">
@@ -23,3 +23,4 @@ export default defineComponent(() => () => <div class="flex flex-wrap items-cent
         <ChevronDown width={12} />
       </Chip>
     </div>);
+export default ChipWithIcon;

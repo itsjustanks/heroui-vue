@@ -1,6 +1,6 @@
 import {DateField, Label} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <DateField
       className="w-[256px]"

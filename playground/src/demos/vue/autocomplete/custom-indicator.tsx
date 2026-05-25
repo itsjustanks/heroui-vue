@@ -28,7 +28,7 @@ export default defineComponent(() => {
     id: "washington",
     name: "Washington"
   }];
-  return () => <Autocomplete class="w-[256px]" placeholder="Select one" selectionMode="single" value={selectedKey.value} onChange={setSelectedKey}>
+  return () => <Autocomplete class="w-[256px]" placeholder="Select one" selectionMode="single" value={selectedKey.value} onChange={v => selectedKey.value = v}>
       <Label>State</Label>
       <Autocomplete.Trigger>
         <Autocomplete.Value />
@@ -56,3 +56,4 @@ export default defineComponent(() => {
       </Autocomplete.Popover>
     </Autocomplete>;
 });
+export default CustomIndicator;

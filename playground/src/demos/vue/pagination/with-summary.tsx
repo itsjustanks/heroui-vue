@@ -51,3 +51,4 @@ export default defineComponent(() => {
       </Pagination.Content>
     </Pagination>;
 });
+export default PaginationWithSummary;

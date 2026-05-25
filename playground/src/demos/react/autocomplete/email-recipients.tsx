@@ -13,7 +13,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function EmailRecipients() {
+function EmailRecipients() {
   const emails = [
     {email: "alice@example.com", id: "alice@example.com", name: "Alice Johnson"},
     {email: "bob@example.com", id: "bob@example.com", name: "Bob Smith"},

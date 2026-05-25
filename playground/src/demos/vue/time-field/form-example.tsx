@@ -1,5 +1,5 @@
 import type { Time } from "@internationalized/date";
-import { Clock } from "@gravity-ui/icons";
+import { Clock } from "../../../gravity-icons-vue";
 import { Button, Description, FieldError, Form, Label, TimeField } from "@itsjustanks/heroui-vue";
 import { parseTime } from "@internationalized/date";
 import { defineComponent, ref } from "vue";
@@ -26,7 +26,7 @@ export default defineComponent(() => {
     }, 1500);
   };
   return () => <Form class="flex w-[280px] flex-col gap-4" onSubmit={handleSubmit}>
-      <TimeField isRequired class="w-full" isInvalid={isInvalid} maxValue={maxTime} minValue={minTime} name="time" value={value.value} onChange={setValue}>
+      <TimeField isRequired class="w-full" isInvalid={isInvalid} maxValue={maxTime} minValue={minTime} name="time" value={value.value} onChange={v => value.value = v}>
         <Label>Appointment time</Label>
         <TimeField.Group>
           <TimeField.Prefix>
@@ -41,3 +41,4 @@ export default defineComponent(() => {
       </Button>
     </Form>;
 });
+export default FormExample;

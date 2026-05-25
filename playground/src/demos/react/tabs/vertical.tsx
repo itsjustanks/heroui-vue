@@ -1,6 +1,6 @@
 import {Tabs} from "@heroui/react";
 
-export function Vertical() {
+function Vertical() {
   return (
     <Tabs className="w-full max-w-lg" orientation="vertical">
       <Tabs.ListContainer>

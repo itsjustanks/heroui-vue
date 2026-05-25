@@ -1,6 +1,6 @@
 import {FieldError, Label, SearchField} from "@heroui/react";
 
-export function Validation() {
+function Validation() {
   return (
     <div className="flex flex-col gap-4">
       <SearchField isInvalid isRequired name="search" value="ab">

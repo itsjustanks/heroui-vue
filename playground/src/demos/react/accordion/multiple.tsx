@@ -1,6 +1,6 @@
 import {Accordion} from "@heroui/react";
 
-export function Multiple() {
+function Multiple() {
   return (
     <Accordion allowsMultipleExpanded className="w-full max-w-md">
       <Accordion.Item>

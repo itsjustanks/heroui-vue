@@ -1,6 +1,6 @@
 import {Button, Popover} from "@heroui/react";
 
-export function PopoverPlacement() {
+function PopoverPlacement() {
   return (
     <div className="grid grid-cols-3 gap-4">
       <div />

@@ -1,5 +1,5 @@
 import type { DateValue } from "@internationalized/date";
-import { Calendar } from "@gravity-ui/icons";
+import { Calendar } from "../../../gravity-icons-vue";
 import { Button, DateField, Description, FieldError, Form, Label } from "@itsjustanks/heroui-vue";
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { defineComponent, ref } from "vue";
@@ -25,7 +25,7 @@ export default defineComponent(() => {
     }, 1500);
   };
   return () => <Form class="flex w-[280px] flex-col gap-4" onSubmit={handleSubmit}>
-      <DateField isRequired class="w-full" isInvalid={isInvalid} minValue={todayDate} name="date" value={value.value} onChange={setValue}>
+      <DateField isRequired class="w-full" isInvalid={isInvalid} minValue={todayDate} name="date" value={value.value} onChange={v => value.value = v}>
         <Label>Appointment date</Label>
         <DateField.Group>
           <DateField.Prefix>
@@ -40,3 +40,4 @@ export default defineComponent(() => {
       </Button>
     </Form>;
 });
+export default FormExample;

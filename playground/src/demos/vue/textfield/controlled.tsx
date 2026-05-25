@@ -16,3 +16,4 @@ export default defineComponent(() => {
       </TextField>
     </div>;
 });
+export default Controlled;

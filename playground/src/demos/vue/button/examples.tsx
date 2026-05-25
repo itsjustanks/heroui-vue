@@ -1,4 +1,4 @@
-import { Magnifier, Plus, Xmark } from '@gravity-ui/icons';
+import { Magnifier, Plus, Xmark } from "../../../gravity-icons-vue";
 import { Button } from "@itsjustanks/heroui-vue";
 import { currentExample } from '../../shared';
 import { defineComponent } from "vue";

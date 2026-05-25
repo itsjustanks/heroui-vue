@@ -1,6 +1,6 @@
 import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 
-export function Horizontal() {
+function Horizontal() {
   return (
     <div className="flex flex-col gap-4">
       <Label>Subscription plan</Label>

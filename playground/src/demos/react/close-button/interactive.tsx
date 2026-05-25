@@ -1,7 +1,7 @@
 import {CloseButton} from "@heroui/react";
 import {useState} from "react";
 
-export function Interactive() {
+function Interactive() {
   const [count, setCount] = useState(0);
 
   return (

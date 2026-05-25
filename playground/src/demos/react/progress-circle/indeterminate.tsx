@@ -1,6 +1,6 @@
 import {ProgressCircle} from "@heroui/react";
 
-export function Indeterminate() {
+function Indeterminate() {
   return (
     <ProgressCircle isIndeterminate aria-label="Loading">
       <ProgressCircle.Track>

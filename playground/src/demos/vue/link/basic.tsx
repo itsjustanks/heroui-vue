@@ -4,3 +4,4 @@ export default defineComponent(() => () => <Link href="#">
       Call to action
       <Link.Icon />
     </Link>);
+export default LinkBasic;

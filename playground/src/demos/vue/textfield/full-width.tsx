@@ -11,3 +11,4 @@ export default defineComponent(() => () => <div class="w-[400px] space-y-4">
         <FieldError>Password must be longer than 8 characters</FieldError>
       </TextField>
     </div>);
+export default FullWidth;

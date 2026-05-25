@@ -11,3 +11,4 @@ export default defineComponent(() => () => <div class="flex w-[280px] flex-col g
         </InputOTP.Group>
       </InputOTP>
     </div>);
+export default FourDigits;

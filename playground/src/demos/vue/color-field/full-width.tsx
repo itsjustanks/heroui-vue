@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="w-[400px] space-y-4">
         </ColorField.Group>
       </ColorField>
     </div>);
+export default FullWidth;

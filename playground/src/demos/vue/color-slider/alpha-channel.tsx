@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSlider channel="alpha" class="w
         <ColorSlider.Thumb />
       </ColorSlider.Track>
     </ColorSlider>);
+export default AlphaChannel;

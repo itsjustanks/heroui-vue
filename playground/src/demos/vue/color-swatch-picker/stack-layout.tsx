@@ -7,3 +7,4 @@ export default defineComponent(() => () => <ColorSwatchPicker layout="stack">
           <ColorSwatchPicker.Indicator />
         </ColorSwatchPicker.Item>)}
     </ColorSwatchPicker>);
+export default StackLayout;

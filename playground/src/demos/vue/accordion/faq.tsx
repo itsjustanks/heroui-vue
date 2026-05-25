@@ -1,4 +1,4 @@
-import { ChevronDown } from "@gravity-ui/icons";
+import { ChevronDown } from "../../../gravity-icons-vue";
 import { Accordion } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -54,3 +54,4 @@ export default defineComponent(() => {
         </div>)}
     </div>;
 });
+export default FAQ;

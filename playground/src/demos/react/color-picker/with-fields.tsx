@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function WithFields() {
+function WithFields() {
   const [colorSpace, setColorSpace] = useState<ColorSpace>("hsl");
 
   const colorChannelsByColorSpace: Record<ColorSpace, ColorChannel[]> = {

@@ -12,7 +12,7 @@ import {
 } from "@gravity-ui/icons";
 import {Switch} from "@heroui/react";
 
-export function WithIcons() {
+function WithIcons() {
   const icons = {
     check: {
       off: Power,

@@ -8,7 +8,7 @@ import {
   Toolbar,
 } from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <Toolbar aria-label="Text formatting">
       <ToggleButtonGroup aria-label="Text style" selectionMode="multiple">

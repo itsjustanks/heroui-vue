@@ -1,7 +1,7 @@
 import {Checkbox, Description, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function Indeterminate() {
+function Indeterminate() {
   const [isIndeterminate, setIsIndeterminate] = useState(true);
   const [isSelected, setIsSelected] = useState(false);
 

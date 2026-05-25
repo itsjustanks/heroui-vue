@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <Switch isDisabled>
       <Switch.Control>

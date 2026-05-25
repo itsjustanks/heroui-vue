@@ -1,7 +1,7 @@
 import {Gear} from "@gravity-ui/icons";
 import {Button, Modal} from "@heroui/react";
 
-export function CustomTrigger() {
+function CustomTrigger() {
   return (
     <Modal>
       <Modal.Trigger className="group flex items-center gap-3 rounded-2xl bg-surface p-4 shadow-xs select-none hover:bg-surface-secondary">

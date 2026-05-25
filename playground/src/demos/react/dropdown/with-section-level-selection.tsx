@@ -3,7 +3,7 @@ import type {Selection} from "@heroui/react";
 import {Button, Dropdown, Header, Kbd, Label, Separator} from "@heroui/react";
 import {useState} from "react";
 
-export function WithSectionLevelSelection() {
+function WithSectionLevelSelection() {
   const [textStyles, setTextStyles] = useState<Selection>(new Set(["bold", "italic"]));
   const [textAlignment, setTextAlignment] = useState<Selection>(new Set(["left"]));
 

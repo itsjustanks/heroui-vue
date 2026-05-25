@@ -1,6 +1,6 @@
 import {Description, InputOTP, Label} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex w-[280px] flex-col gap-2">
       <Label isDisabled>Verify account</Label>

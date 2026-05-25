@@ -1,6 +1,6 @@
 import {Meter} from "@heroui/react";
 
-export function WithoutLabel() {
+function WithoutLabel() {
   return (
     <Meter aria-label="Storage usage" className="w-64" value={45}>
       <Meter.Track>

@@ -1,7 +1,7 @@
 import {Heart, HeartFill} from "@gravity-ui/icons";
 import {ToggleButton} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex items-center gap-3">
       <ToggleButton isDisabled>

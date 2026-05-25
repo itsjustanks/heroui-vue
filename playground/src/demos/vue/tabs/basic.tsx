@@ -27,3 +27,4 @@ export default defineComponent(() => () => <Tabs class="w-full max-w-md">
         <p>Generate and download detailed reports.</p>
       </Tabs.Panel>
     </Tabs>);
+export default Basic;

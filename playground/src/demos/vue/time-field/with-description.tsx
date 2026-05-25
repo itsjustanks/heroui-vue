@@ -16,3 +16,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>Enter the end time</Description>
       </TimeField>
     </div>);
+export default WithDescription;

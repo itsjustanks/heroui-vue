@@ -24,3 +24,4 @@ export default defineComponent(() => {
         </React.Fragment>)}
     </div>;
 });
+export default BadgeVariants;

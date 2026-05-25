@@ -1,6 +1,6 @@
 import {AlertDialog, Button} from "@heroui/react";
 
-export function BackdropVariants() {
+function BackdropVariants() {
   const variants = ["opaque", "blur", "transparent"] as const;
 
   return (

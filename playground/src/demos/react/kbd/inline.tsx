@@ -1,6 +1,6 @@
 import {Kbd} from "@heroui/react";
 
-export function InlineUsage() {
+function InlineUsage() {
   return (
     <div className="space-y-4">
       <p className="text-sm">

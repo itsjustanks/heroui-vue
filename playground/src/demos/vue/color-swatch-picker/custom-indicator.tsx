@@ -1,4 +1,4 @@
-import { HeartFill } from "@gravity-ui/icons";
+import { HeartFill } from "../../../gravity-icons-vue";
 import { ColorSwatchPicker } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -12,3 +12,4 @@ export default defineComponent(() => {
         </ColorSwatchPicker.Item>)}
     </ColorSwatchPicker>;
 });
+export default CustomIndicator;

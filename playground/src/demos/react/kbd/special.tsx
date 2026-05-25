@@ -1,6 +1,6 @@
 import {Kbd} from "@heroui/react";
 
-export function SpecialKeys() {
+function SpecialKeys() {
   return (
     <div className="space-y-3">
       <p className="text-sm">

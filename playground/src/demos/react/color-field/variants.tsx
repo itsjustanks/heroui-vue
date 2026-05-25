@@ -1,6 +1,6 @@
 import {ColorField, Label} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-col gap-4">
       <ColorField className="w-[280px]" defaultValue="#0485F7" name="primary-color">

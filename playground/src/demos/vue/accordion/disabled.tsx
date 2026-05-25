@@ -77,3 +77,4 @@ export default defineComponent(() => () => <div class="flex w-full flex-col item
         </Accordion>
       </div>
     </div>);
+export default Disabled;

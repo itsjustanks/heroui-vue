@@ -4,7 +4,7 @@ import {DateField, Description, FieldError, Label} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {useState} from "react";
 
-export function WithValidation() {
+function WithValidation() {
   const [value, setValue] = useState<DateValue | null>(null);
   const todayDate = today(getLocalTimeZone());
   const isInvalid = value !== null && value.compare(todayDate) < 0;

@@ -4,7 +4,7 @@ import {Button, DateField, Description, Label} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [value, setValue] = useState<DateValue | null>(null);
 
   return (

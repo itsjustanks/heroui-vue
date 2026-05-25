@@ -1,6 +1,6 @@
 import {Button, Toast, ToastQueue} from "@heroui/react";
 
-export function CustomQueue() {
+function CustomQueue() {
   const notificationQueue = new ToastQueue({maxVisibleToasts: 2});
   const errorQueue = new ToastQueue({maxVisibleToasts: 3});
   const successQueue = new ToastQueue({maxVisibleToasts: 1});

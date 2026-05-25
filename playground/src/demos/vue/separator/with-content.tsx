@@ -25,3 +25,4 @@ export default defineComponent(() => () => <div class="max-w-md space-y-4">
           {index < items.length - 1 && <Separator class="my-4" />}
         </div>)}
     </div>);
+export default WithContent;

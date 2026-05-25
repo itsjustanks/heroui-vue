@@ -2,7 +2,7 @@ import {Avatar, Badge} from "@heroui/react";
 
 const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
 
-export function BadgeDot() {
+function BadgeDot() {
   const colors = ["accent", "success", "warning", "danger"] as const;
 
   return (

@@ -11,3 +11,4 @@ export default defineComponent(() => () => <div class="w-full max-w-sm space-y-4
           </div>
         </div>)}
     </div>);
+export default List;

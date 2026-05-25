@@ -1,7 +1,7 @@
 import {Checkbox, CheckboxGroup, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function Indeterminate() {
+function Indeterminate() {
   const [selected, setSelected] = useState(["coding"]);
   const allOptions = ["coding", "design", "writing"];
 

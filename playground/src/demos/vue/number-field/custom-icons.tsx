@@ -19,3 +19,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <Description>Custom icon children</Description>
       </NumberField>
     </div>);
+export default CustomIcons;

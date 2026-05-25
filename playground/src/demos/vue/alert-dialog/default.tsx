@@ -28,3 +28,4 @@ export default defineComponent(() => () => <AlertDialog>
         </AlertDialog.Container>
       </AlertDialog.Backdrop>
     </AlertDialog>);
+export default Default;

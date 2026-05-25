@@ -1,7 +1,7 @@
 import {RangeCalendar} from "@heroui/react";
 import {I18nProvider} from "react-aria-components";
 
-export function InternationalCalendar() {
+function InternationalCalendar() {
   return (
     <I18nProvider locale="hi-IN-u-ca-indian">
       <RangeCalendar aria-label="Trip dates">

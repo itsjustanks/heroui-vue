@@ -56,3 +56,4 @@ export default defineComponent(() => {
       </DateRangePicker>
     </I18nProvider>;
 });
+export default InternationalCalendar;

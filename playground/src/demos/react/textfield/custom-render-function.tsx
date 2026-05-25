@@ -1,6 +1,6 @@
 import {Input, Label, TextField} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <TextField
       className="w-full max-w-64"

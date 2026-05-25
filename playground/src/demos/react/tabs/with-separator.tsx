@@ -1,6 +1,6 @@
 import {Tabs} from "@heroui/react";
 
-export function WithSeparator() {
+function WithSeparator() {
   return (
     <Tabs className="w-full max-w-md">
       <Tabs.ListContainer>

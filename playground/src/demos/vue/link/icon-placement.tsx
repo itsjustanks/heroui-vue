@@ -10,3 +10,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-3">
         Icon at start
       </Link>
     </div>);
+export default LinkIconPlacement;

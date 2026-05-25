@@ -11,7 +11,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function FullWidth() {
+function FullWidth() {
   const [selectedKey, setSelectedKey] = useState<Key | null>(null);
   const {contains} = useFilter({sensitivity: "base"});
 

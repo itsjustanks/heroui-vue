@@ -1,6 +1,6 @@
 import {Checkbox, CheckboxGroup, Description, Label} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <CheckboxGroup isDisabled name="disabled-features">
       <Label>Features</Label>

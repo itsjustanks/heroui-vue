@@ -1,6 +1,6 @@
 import {Checkbox, Description, Label} from "@heroui/react";
 
-export function WithDescription() {
+function WithDescription() {
   return (
     <Checkbox id="description-notifications">
       <Checkbox.Control>

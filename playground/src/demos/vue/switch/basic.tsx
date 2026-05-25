@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Switch>
         <Label class="text-sm">Enable notifications</Label>
       </Switch.Content>
     </Switch>);
+export default Basic;

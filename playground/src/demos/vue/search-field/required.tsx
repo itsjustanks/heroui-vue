@@ -19,3 +19,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>Minimum 3 characters required</Description>
       </SearchField>
     </div>);
+export default Required;

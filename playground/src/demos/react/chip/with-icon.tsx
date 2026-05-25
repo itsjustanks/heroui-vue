@@ -1,7 +1,7 @@
 import {ChevronDown, CircleCheckFill, CircleFill, Clock, Xmark} from "@gravity-ui/icons";
 import {Chip} from "@heroui/react";
 
-export function ChipWithIcon() {
+function ChipWithIcon() {
   return (
     <div className="flex flex-wrap items-center gap-3">
       <Chip>

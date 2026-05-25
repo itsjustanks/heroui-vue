@@ -44,3 +44,4 @@ export default defineComponent(() => {
       </Button>
     </form>;
 });
+export default Form;

@@ -22,3 +22,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <Description>Value must be between 0 and 100</Description>
       </NumberField>
     </div>);
+export default Disabled;

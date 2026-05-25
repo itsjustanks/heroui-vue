@@ -1,7 +1,7 @@
 import {DateField, Description, Label} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col gap-4">
       <DateField isDisabled className="w-[256px]" name="date" value={today(getLocalTimeZone())}>

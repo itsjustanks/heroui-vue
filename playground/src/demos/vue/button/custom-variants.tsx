@@ -45,3 +45,4 @@ function CustomButton({
   })} {...props} />;
 }
 export default defineComponent(() => () => <CustomButton>Custom Button</CustomButton>);
+export default CustomVariants;

@@ -16,3 +16,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>Used for highlights and CTAs</Description>
       </ColorField>
     </div>);
+export default WithDescription;

@@ -1,7 +1,7 @@
 import {Sparkles} from "@gravity-ui/icons";
 import {Button, Modal} from "@heroui/react";
 
-export function CustomBackdrop() {
+function CustomBackdrop() {
   return (
     <Modal>
       <Button variant="secondary">Custom Backdrop</Button>

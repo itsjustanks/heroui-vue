@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Checkbox defaultSelected id="default
         <Label htmlFor="default-notifications">Enable email notifications</Label>
       </Checkbox.Content>
     </Checkbox>);
+export default DefaultSelected;

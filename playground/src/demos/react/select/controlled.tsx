@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {Label, ListBox, Select} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const states = [
     {
       id: "california",

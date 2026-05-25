@@ -14,3 +14,4 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">Switch is {isSelected ? "on" : "off"}</p>
     </div>;
 });
+export default Controlled;

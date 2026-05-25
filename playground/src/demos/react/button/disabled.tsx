@@ -1,6 +1,6 @@
 import {Button} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-wrap gap-3">
       <Button isDisabled>Primary</Button>

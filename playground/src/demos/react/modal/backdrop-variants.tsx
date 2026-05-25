@@ -1,7 +1,7 @@
 import {Rocket} from "@gravity-ui/icons";
 import {Button, Modal} from "@heroui/react";
 
-export function BackdropVariants() {
+function BackdropVariants() {
   const variants = ["opaque", "blur", "transparent"] as const;
 
   return (

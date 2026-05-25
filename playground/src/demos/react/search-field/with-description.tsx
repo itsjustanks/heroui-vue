@@ -1,6 +1,6 @@
 import {Description, Label, SearchField} from "@heroui/react";
 
-export function WithDescription() {
+function WithDescription() {
   return (
     <div className="flex flex-col gap-4">
       <SearchField name="search">

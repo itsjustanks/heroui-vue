@@ -1,6 +1,6 @@
 import {Checkbox, CheckboxGroup, Description, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <CheckboxGroup name="interests">
       <Label>Select your interests</Label>

@@ -1,6 +1,6 @@
 import {Label, Meter} from "@heroui/react";
 
-export function CustomValue() {
+function CustomValue() {
   return (
     <Meter
       className="w-64"

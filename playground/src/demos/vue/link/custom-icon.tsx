@@ -1,4 +1,4 @@
-import { ArrowUpRightFromSquare, Link as LinkIcon } from "@gravity-ui/icons";
+import { ArrowUpRightFromSquare, Link as LinkIcon } from "../../../gravity-icons-vue";
 import { Link } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col gap-3">
@@ -15,3 +15,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-3">
         </Link.Icon>
       </Link>
     </div>);
+export default LinkCustomIcon;

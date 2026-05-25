@@ -38,3 +38,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Uncontrolled;

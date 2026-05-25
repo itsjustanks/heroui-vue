@@ -18,3 +18,4 @@ export default defineComponent(() => () => <ColorPicker defaultValue="#0485F7">
         </ColorSlider>
       </ColorPicker.Popover>
     </ColorPicker>);
+export default Basic;

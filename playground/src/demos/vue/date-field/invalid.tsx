@@ -16,3 +16,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <FieldError>Date must be in the future</FieldError>
       </DateField>
     </div>);
+export default Invalid;

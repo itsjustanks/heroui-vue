@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {Button, Input, Label, Modal, Surface, TextField} from "@heroui/react";
 
-export function WithForm() {
+function WithForm() {
   return (
     <Modal>
       <Button variant="secondary">Open Contact Form</Button>

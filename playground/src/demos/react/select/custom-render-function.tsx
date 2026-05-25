@@ -1,6 +1,6 @@
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <Select
       className="w-[256px]"

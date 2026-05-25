@@ -1,6 +1,6 @@
 import {Button, Dropdown, Label} from "@heroui/react";
 
-export function LongPressTrigger() {
+function LongPressTrigger() {
   return (
     <Dropdown trigger="longPress">
       <Button aria-label="Menu" variant="secondary">

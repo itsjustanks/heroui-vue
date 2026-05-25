@@ -52,7 +52,7 @@ export default defineComponent(() => {
     setTimeout(() => isLoading.value = false, 300);
     return contains(text, inputValue);
   };
-  return () => <Autocomplete class="w-[256px]" placeholder="Search for a city" selectionMode="single" value={selectedKey.value} onChange={setSelectedKey}>
+  return () => <Autocomplete class="w-[256px]" placeholder="Search for a city" selectionMode="single" value={selectedKey.value} onChange={v => selectedKey.value = v}>
       <Label>City</Label>
       <Autocomplete.Trigger>
         <Autocomplete.Value />
@@ -81,3 +81,4 @@ export default defineComponent(() => {
       </Autocomplete.Popover>
     </Autocomplete>;
 });
+export default LocationSearch;

@@ -13,7 +13,7 @@ import {
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {useState} from "react";
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = useState<DateValue | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const currentDate = today(getLocalTimeZone());

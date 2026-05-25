@@ -2,7 +2,7 @@ import {CircleDashed} from "@gravity-ui/icons";
 import {Chip, Separator} from "@heroui/react";
 import React from "react";
 
-export function ChipVariants() {
+function ChipVariants() {
   const sizes = ["lg", "md", "sm"] as const;
   const variants = ["primary", "secondary", "tertiary", "soft"] as const;
   const colors = ["accent", "default", "success", "warning", "danger"] as const;

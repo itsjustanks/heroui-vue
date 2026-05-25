@@ -6,7 +6,7 @@ interface User {
   email: string;
 }
 
-export function Virtualization() {
+function Virtualization() {
   const firstNames = [
     "Emma",
     "Liam",

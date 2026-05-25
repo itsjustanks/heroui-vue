@@ -41,3 +41,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </Card.Content>
       </Card>
     </div>);
+export default Variants;

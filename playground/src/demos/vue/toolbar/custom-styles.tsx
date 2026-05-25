@@ -1,4 +1,4 @@
-import { Bold, Copy, Italic, Scissors, Underline } from "@gravity-ui/icons";
+import { Bold, Copy, Italic, Scissors, Underline } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup, Separator, ToggleButton, ToggleButtonGroup, Toolbar } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Toolbar isAttached aria-label="Text formatting">
@@ -26,3 +26,4 @@ export default defineComponent(() => () => <Toolbar isAttached aria-label="Text 
         </Button>
       </ButtonGroup>
     </Toolbar>);
+export default Attached;

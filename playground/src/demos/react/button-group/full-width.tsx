@@ -1,7 +1,7 @@
 import {TextAlignCenter, TextAlignLeft, TextAlignRight} from "@gravity-ui/icons";
 import {Button, ButtonGroup} from "@heroui/react";
 
-export function FullWidth() {
+function FullWidth() {
   return (
     <div className="w-[400px] space-y-3">
       <ButtonGroup fullWidth>

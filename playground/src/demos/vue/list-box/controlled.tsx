@@ -1,5 +1,5 @@
 import type { Selection } from "@itsjustanks/heroui-vue";
-import { Check } from "@gravity-ui/icons";
+import { Check } from "../../../gravity-icons-vue";
 import { Avatar, Description, Label, ListBox, Surface } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
@@ -7,7 +7,7 @@ export default defineComponent(() => {
   const selectedItems = Array.from(selected.value);
   return () => <div class="space-y-4">
       <Surface class="w-[256px] rounded-3xl shadow-surface">
-        <ListBox aria-label="Users" selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={setSelected}>
+        <ListBox aria-label="Users" selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={v => selected.value = v}>
           <ListBox.Item id="1" textValue="Bob">
             <Avatar size="sm">
               <Avatar.Image alt="Bob" src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg" />
@@ -60,3 +60,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Controlled;

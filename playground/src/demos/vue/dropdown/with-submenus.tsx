@@ -53,3 +53,4 @@ export default defineComponent(() => () => <Dropdown>
         </Dropdown.Menu>
       </Dropdown.Popover>
     </Dropdown>);
+export default WithSubmenus;

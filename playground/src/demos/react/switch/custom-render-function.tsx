@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <Switch render={(props) => <label {...props} data-custom="foo" />}>
       <Switch.Control>

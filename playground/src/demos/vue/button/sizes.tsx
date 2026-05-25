@@ -5,3 +5,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
     </div>);
+export default Sizes;

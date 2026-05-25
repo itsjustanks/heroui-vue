@@ -1,6 +1,6 @@
 import {Button, ButtonGroup} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col items-start gap-2">

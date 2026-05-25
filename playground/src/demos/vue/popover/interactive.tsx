@@ -53,3 +53,4 @@ export default defineComponent(() => {
       </Popover>
     </div>;
 });
+export default PopoverInteractive;

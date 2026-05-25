@@ -1,6 +1,6 @@
 import {Button, ButtonGroup} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">

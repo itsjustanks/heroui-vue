@@ -1,6 +1,6 @@
 import {Link} from "@heroui/react";
 
-export function LinkIconPlacement() {
+function LinkIconPlacement() {
   return (
     <div className="flex flex-col gap-3">
       <Link href="#">

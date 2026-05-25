@@ -43,3 +43,4 @@ export default defineComponent(() => () => <RadioGroup defaultValue="premium" na
         </Radio.Content>
       </Radio>
     </RadioGroup>);
+export default CustomIndicator;

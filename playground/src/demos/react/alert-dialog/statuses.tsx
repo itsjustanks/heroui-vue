@@ -1,6 +1,6 @@
 import {AlertDialog, Button} from "@heroui/react";
 
-export function Statuses() {
+function Statuses() {
   const examples = [
     {
       actions: {

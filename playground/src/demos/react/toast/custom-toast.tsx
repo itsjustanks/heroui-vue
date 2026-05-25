@@ -10,7 +10,7 @@ import {
   ToastTitle,
 } from "@heroui/react";
 
-export function CustomToast() {
+function CustomToast() {
   const customQueue = new ToastQueue();
 
   return (

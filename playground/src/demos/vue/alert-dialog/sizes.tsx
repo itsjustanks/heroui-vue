@@ -1,4 +1,4 @@
-import { Rocket } from "@gravity-ui/icons";
+import { Rocket } from "../../../gravity-icons-vue";
 import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -44,3 +44,4 @@ export default defineComponent(() => {
         </AlertDialog>)}
     </div>;
 });
+export default Sizes;

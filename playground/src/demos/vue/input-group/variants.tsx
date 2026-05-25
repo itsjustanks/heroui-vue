@@ -1,4 +1,4 @@
-import { Envelope } from "@gravity-ui/icons";
+import { Envelope } from "../../../gravity-icons-vue";
 import { InputGroup, Label, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col gap-4">
@@ -21,3 +21,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </InputGroup>
       </TextField>
     </div>);
+export default Variants;

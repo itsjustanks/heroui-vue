@@ -1,7 +1,7 @@
 import {Checkbox, CheckboxGroup, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [selected, setSelected] = useState(["coding", "design"]);
 
   return (

@@ -17,7 +17,7 @@ import {
   Toolbar,
 } from "@heroui/react";
 
-export function WithButtonGroup() {
+function WithButtonGroup() {
   return (
     <Toolbar aria-label="Editor toolbar">
       <ButtonGroup variant="tertiary">

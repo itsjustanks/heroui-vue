@@ -47,7 +47,7 @@ const items = [
   },
 ];
 
-export function Basic() {
+function Basic() {
   return (
     <Accordion className="w-full max-w-md">
       {items.map((item, index) => (

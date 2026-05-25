@@ -6,7 +6,7 @@ interface Character {
   name: string;
 }
 
-export function AsynchronousFiltering() {
+function AsynchronousFiltering() {
   const list = useAsyncList<Character>({
     async load({filterText, signal}) {
       const res = await fetch(`https://swapi.py4e.com/api/people/?search=${filterText}`, {

@@ -6,13 +6,13 @@ export default defineComponent(() => {
   return () => <div class="flex flex-col gap-4">
       <p class="text-sm text-muted">Edit individual HSL channels:</p>
       <div class="flex gap-4">
-        <ColorField channel="hue" class="w-[100px]" colorSpace="hsl" name="hue" value={color.value} onChange={setColor}>
+        <ColorField channel="hue" class="w-[100px]" colorSpace="hsl" name="hue" value={color.value} onChange={v => color.value = v}>
           <Label>Hue</Label>
           <ColorField.Group>
             <ColorField.Input />
           </ColorField.Group>
         </ColorField>
-        <ColorField channel="saturation" class="w-[100px]" colorSpace="hsl" name="saturation" value={color.value} onChange={setColor}>
+        <ColorField channel="saturation" class="w-[100px]" colorSpace="hsl" name="saturation" value={color.value} onChange={v => color.value = v}>
           <Label>Saturation</Label>
           <ColorField.Group>
             <ColorField.Input />
@@ -21,7 +21,7 @@ export default defineComponent(() => {
             </ColorField.Suffix>
           </ColorField.Group>
         </ColorField>
-        <ColorField channel="lightness" class="w-[100px]" colorSpace="hsl" name="lightness" value={color.value} onChange={setColor}>
+        <ColorField channel="lightness" class="w-[100px]" colorSpace="hsl" name="lightness" value={color.value} onChange={v => color.value = v}>
           <Label>Lightness</Label>
           <ColorField.Group>
             <ColorField.Input />
@@ -37,3 +37,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default ChannelEditing;

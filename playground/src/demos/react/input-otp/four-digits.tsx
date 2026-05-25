@@ -1,6 +1,6 @@
 import {InputOTP, Label} from "@heroui/react";
 
-export function FourDigits() {
+function FourDigits() {
   return (
     <div className="flex w-[280px] flex-col gap-2">
       <Label>Enter PIN</Label>

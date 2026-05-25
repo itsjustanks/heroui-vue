@@ -1,6 +1,6 @@
 import {Calendar} from "@heroui/react";
 
-export function CustomStyles() {
+function CustomStyles() {
   return (
     <Calendar aria-label="Custom styled calendar">
       <Calendar.Header>

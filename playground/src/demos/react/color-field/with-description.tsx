@@ -1,6 +1,6 @@
 import {ColorField, Description, Label} from "@heroui/react";
 
-export function WithDescription() {
+function WithDescription() {
   return (
     <div className="flex flex-col gap-4">
       <ColorField className="w-[280px]" defaultValue="#3B82F6" name="color">

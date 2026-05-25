@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-1">
         We'll never share your email with anyone else.
       </Description>
     </div>);
+export default Basic;

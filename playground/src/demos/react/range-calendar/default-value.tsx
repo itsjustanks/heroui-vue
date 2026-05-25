@@ -1,7 +1,7 @@
 import {RangeCalendar} from "@heroui/react";
 import {parseDate} from "@internationalized/date";
 
-export function DefaultValue() {
+function DefaultValue() {
   return (
     <RangeCalendar
       aria-label="Trip dates"

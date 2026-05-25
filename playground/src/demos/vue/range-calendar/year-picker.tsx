@@ -25,3 +25,4 @@ export default defineComponent(() => () => <RangeCalendar aria-label="Trip dates
         </RangeCalendar.YearPickerGridBody>
       </RangeCalendar.YearPickerGrid>
     </RangeCalendar>);
+export default YearPicker;

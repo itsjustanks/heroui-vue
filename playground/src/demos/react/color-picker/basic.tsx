@@ -1,6 +1,6 @@
 import {ColorArea, ColorPicker, ColorSlider, ColorSwatch, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <ColorPicker defaultValue="#0485F7">
       <ColorPicker.Trigger>

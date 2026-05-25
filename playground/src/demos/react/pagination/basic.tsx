@@ -1,7 +1,7 @@
 import {Pagination} from "@heroui/react";
 import {useState} from "react";
 
-export function PaginationBasic() {
+function PaginationBasic() {
   const [page, setPage] = useState(1);
   const totalPages = 3;
 

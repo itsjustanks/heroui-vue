@@ -34,7 +34,7 @@ export default defineComponent(() => {
       <div class="flex flex-col gap-4">
         <h3 class="text-lg font-semibold">Single Select Variants</h3>
         <div class="flex flex-col gap-4">
-          <Autocomplete class="w-[256px]" placeholder="Select one" selectionMode="single" value={selectedKey1.value} variant="primary" onChange={setSelectedKey1}>
+          <Autocomplete class="w-[256px]" placeholder="Select one" selectionMode="single" value={selectedKey1.value} variant="primary" onChange={v => selectedKey1.value = v}>
             <Label>Primary variant</Label>
             <Autocomplete.Trigger>
               <Autocomplete.Value />
@@ -59,7 +59,7 @@ export default defineComponent(() => {
               </Autocomplete.Filter>
             </Autocomplete.Popover>
           </Autocomplete>
-          <Autocomplete class="w-[256px]" placeholder="Select one" selectionMode="single" value={selectedKey2.value} variant="secondary" onChange={setSelectedKey2}>
+          <Autocomplete class="w-[256px]" placeholder="Select one" selectionMode="single" value={selectedKey2.value} variant="secondary" onChange={v => selectedKey2.value = v}>
             <Label>Secondary variant</Label>
             <Autocomplete.Trigger>
               <Autocomplete.Value />
@@ -187,3 +187,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Variants;

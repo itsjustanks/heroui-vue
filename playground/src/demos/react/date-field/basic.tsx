@@ -1,6 +1,6 @@
 import {DateField, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <DateField className="w-[256px]" name="date">
       <Label>Date</Label>

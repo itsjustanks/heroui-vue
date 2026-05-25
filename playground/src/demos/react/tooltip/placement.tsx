@@ -1,6 +1,6 @@
 import {Button, Tooltip} from "@heroui/react";
 
-export function TooltipPlacement() {
+function TooltipPlacement() {
   return (
     <div className="grid grid-cols-3 gap-4">
       <div />

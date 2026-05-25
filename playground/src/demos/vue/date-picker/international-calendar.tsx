@@ -40,3 +40,4 @@ export default defineComponent(() => () => <I18nProvider locale="hi-IN-u-ca-indi
         </DatePicker.Popover>
       </DatePicker>
     </I18nProvider>);
+export default InternationalCalendar;

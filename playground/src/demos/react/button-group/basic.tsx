@@ -18,7 +18,7 @@ import {
 } from "@gravity-ui/icons";
 import {Button, ButtonGroup, Chip, Description, Dropdown, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <div className="flex flex-col items-start gap-6">
       {/* Single button with dropdown */}

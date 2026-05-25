@@ -1,6 +1,6 @@
 import {Tabs} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <Tabs className="w-full max-w-md">
       <Tabs.ListContainer>

@@ -1,6 +1,6 @@
 import {Accordion} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex w-full flex-col items-center gap-8">
       <div className="w-full max-w-md space-y-2">

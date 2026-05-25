@@ -1,6 +1,6 @@
 import {Label, Slider} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <Slider
       className="w-full max-w-xs"

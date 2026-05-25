@@ -1,6 +1,6 @@
 import {DateField, Description, Label} from "@heroui/react";
 
-export function Required() {
+function Required() {
   return (
     <div className="flex flex-col gap-4">
       <DateField isRequired className="w-[256px]" name="date">

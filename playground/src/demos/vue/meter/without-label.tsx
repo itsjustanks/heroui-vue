@@ -5,3 +5,4 @@ export default defineComponent(() => () => <Meter aria-label="Storage usage" cla
         <Meter.Fill />
       </Meter.Track>
     </Meter>);
+export default WithoutLabel;

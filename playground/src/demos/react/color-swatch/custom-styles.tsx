@@ -1,6 +1,6 @@
 import {ColorSwatch} from "@heroui/react";
 
-export function ColorSwatchCustomStyles() {
+function ColorSwatchCustomStyles() {
   const colors = ["#0485F7", "#EF4444", "#F59E0B", "#10B981", "#D946EF"];
 
   return (

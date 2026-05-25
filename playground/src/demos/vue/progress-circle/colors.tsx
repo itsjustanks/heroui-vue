@@ -32,3 +32,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-6">
         </ProgressCircle.Track>
       </ProgressCircle>
     </div>);
+export default Colors;

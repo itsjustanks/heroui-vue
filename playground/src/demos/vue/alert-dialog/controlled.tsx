@@ -109,3 +109,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

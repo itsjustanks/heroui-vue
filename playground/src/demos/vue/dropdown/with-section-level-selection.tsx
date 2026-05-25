@@ -35,7 +35,7 @@ export default defineComponent(() => {
             </Dropdown.Item>
           </Dropdown.Section>
           <Separator />
-          <Dropdown.Section selectedKeys={textStyles.value} selectionMode="multiple" onSelectionChange={setTextStyles}>
+          <Dropdown.Section selectedKeys={textStyles.value} selectionMode="multiple" onSelectionChange={v => textStyles.value = v}>
             <Header>Text Style</Header>
             <Dropdown.Item id="bold" textValue="Bold">
               <Dropdown.ItemIndicator />
@@ -63,7 +63,7 @@ export default defineComponent(() => {
             </Dropdown.Item>
           </Dropdown.Section>
           <Separator />
-          <Dropdown.Section selectedKeys={textAlignment.value} selectionMode="single" onSelectionChange={setTextAlignment}>
+          <Dropdown.Section selectedKeys={textAlignment.value} selectionMode="single" onSelectionChange={v => textAlignment.value = v}>
             <Header>Text Alignment</Header>
             <Dropdown.Item id="left" textValue="Left">
               <Dropdown.ItemIndicator type="dot" />
@@ -94,3 +94,4 @@ export default defineComponent(() => {
       </Dropdown.Popover>
     </Dropdown>;
 });
+export default WithSectionLevelSelection;

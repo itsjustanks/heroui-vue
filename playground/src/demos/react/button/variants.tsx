@@ -1,6 +1,6 @@
 import {Button} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-wrap gap-3">
       <Button>Primary</Button>

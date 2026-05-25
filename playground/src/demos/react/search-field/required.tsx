@@ -1,6 +1,6 @@
 import {Description, Label, SearchField} from "@heroui/react";
 
-export function Required() {
+function Required() {
   return (
     <div className="flex flex-col gap-4">
       <SearchField isRequired name="search">

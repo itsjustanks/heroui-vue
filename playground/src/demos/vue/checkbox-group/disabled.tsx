@@ -22,3 +22,4 @@ export default defineComponent(() => () => <CheckboxGroup isDisabled name="disab
         </Checkbox.Content>
       </Checkbox>
     </CheckboxGroup>);
+export default Disabled;

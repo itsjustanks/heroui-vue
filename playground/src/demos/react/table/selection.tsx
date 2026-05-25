@@ -10,7 +10,7 @@ const users = [
   {email: "michael@acme.com", id: 4, name: "Michael Brown", role: "CFO", status: "Active"},
 ];
 
-export function SelectionDemo() {
+function SelectionDemo() {
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set());
 
   return (

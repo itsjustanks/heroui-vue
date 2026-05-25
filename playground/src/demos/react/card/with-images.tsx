@@ -1,7 +1,7 @@
 import {CircleDollar} from "@gravity-ui/icons";
 import {Avatar, Button, Card, CloseButton, Link} from "@heroui/react";
 
-export function WithImages() {
+function WithImages() {
   return (
     <div className="flex w-full items-center justify-center">
       <div className="grid w-full max-w-2xl grid-cols-12 gap-4 p-4">

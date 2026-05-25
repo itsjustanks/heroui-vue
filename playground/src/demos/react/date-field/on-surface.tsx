@@ -1,7 +1,7 @@
 import {Calendar} from "@gravity-ui/icons";
 import {DateField, Description, Label, Surface} from "@heroui/react";
 
-export function OnSurface() {
+function OnSurface() {
   return (
     <Surface className="flex w-full max-w-sm flex-col gap-4 rounded-3xl p-6">
       <DateField className="w-full" name="date">

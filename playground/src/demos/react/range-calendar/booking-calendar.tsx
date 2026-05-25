@@ -10,7 +10,7 @@ type DateRange = {
   end: DateValue;
 };
 
-export function BookingCalendar() {
+function BookingCalendar() {
   const [selectedRange, setSelectedRange] = useState<DateRange | null>(null);
   const {locale} = useLocale();
   const blockedDates = [5, 6, 12, 13, 14, 20];

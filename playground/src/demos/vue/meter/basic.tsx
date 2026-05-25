@@ -7,3 +7,4 @@ export default defineComponent(() => () => <Meter aria-label="Storage" class="w-
         <Meter.Fill />
       </Meter.Track>
     </Meter>);
+export default Basic;

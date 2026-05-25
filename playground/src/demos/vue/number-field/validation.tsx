@@ -22,3 +22,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <FieldError>Percentage must be between 0 and 100</FieldError>
       </NumberField>
     </div>);
+export default Validation;

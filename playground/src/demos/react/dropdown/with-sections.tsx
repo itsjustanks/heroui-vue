@@ -1,7 +1,7 @@
 import {EllipsisVertical, Pencil, SquarePlus, TrashBin} from "@gravity-ui/icons";
 import {Button, Description, Dropdown, Header, Kbd, Label, Separator} from "@heroui/react";
 
-export function WithSections() {
+function WithSections() {
   return (
     <Dropdown>
       <Button isIconOnly aria-label="Menu" variant="secondary">

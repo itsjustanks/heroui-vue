@@ -1,4 +1,4 @@
-import { Clock } from "@gravity-ui/icons";
+import { Clock } from "../../../gravity-icons-vue";
 import { Label, TimeField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <TimeField class="w-[256px]" name="time">
@@ -10,3 +10,4 @@ export default defineComponent(() => () => <TimeField class="w-[256px]" name="ti
         <TimeField.Input>{segment => <TimeField.Segment segment={segment} />}</TimeField.Input>
       </TimeField.Group>
     </TimeField>);
+export default WithPrefixIcon;

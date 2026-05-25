@@ -8,7 +8,7 @@ import {
   Select,
 } from "@heroui/react";
 
-export function CustomValue() {
+function CustomValue() {
   const users = [
     {
       avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg",

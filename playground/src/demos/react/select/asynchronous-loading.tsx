@@ -6,7 +6,7 @@ interface Pokemon {
   name: string;
 }
 
-export function AsynchronousLoading() {
+function AsynchronousLoading() {
   const list = useAsyncList<Pokemon>({
     async load({cursor, signal}) {
       const res = await fetch(cursor || `https://pokeapi.co/api/v2/pokemon`, {signal});

@@ -1,7 +1,7 @@
 import {TrashBin} from "@gravity-ui/icons";
 import {AlertDialog, Button} from "@heroui/react";
 
-export function CustomTrigger() {
+function CustomTrigger() {
   return (
     <AlertDialog>
       <AlertDialog.Trigger className="group flex items-center gap-3 rounded-2xl bg-surface p-4 shadow-xs select-none hover:bg-surface-secondary">

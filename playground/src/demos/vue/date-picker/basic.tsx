@@ -36,3 +36,4 @@ export default defineComponent(() => () => <DatePicker class="w-64" name="date">
         </Calendar>
       </DatePicker.Popover>
     </DatePicker>);
+export default Basic;

@@ -5,3 +5,4 @@ export default defineComponent(() => () => <TextField isInvalid class="w-full ma
       <Input placeholder="user@example.com" />
       <FieldError>Please enter a valid email address</FieldError>
     </TextField>);
+export default WithError;

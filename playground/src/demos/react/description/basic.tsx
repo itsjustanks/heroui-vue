@@ -1,6 +1,6 @@
 import {Description, Input, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <div className="flex flex-col gap-1">
       <Label htmlFor="email">Email</Label>

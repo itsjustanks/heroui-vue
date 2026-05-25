@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="text-small flex h-5 items
       <Separator orientation="vertical" />
       <div>Source</div>
     </div>);
+export default Vertical;

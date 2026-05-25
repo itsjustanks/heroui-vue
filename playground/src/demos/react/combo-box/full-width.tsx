@@ -1,6 +1,6 @@
 import {ComboBox, Input, Label, ListBox} from "@heroui/react";
 
-export function FullWidth() {
+function FullWidth() {
   return (
     <div className="w-[400px] space-y-4">
       <ComboBox fullWidth>

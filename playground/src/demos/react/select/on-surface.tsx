@@ -1,6 +1,6 @@
 import {Button, FieldError, Form, Label, ListBox, Select, Surface} from "@heroui/react";
 
-export function OnSurface() {
+function OnSurface() {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);

@@ -1,6 +1,6 @@
 import {Button, Dropdown, Label} from "@heroui/react";
 
-export function WithSubmenus() {
+function WithSubmenus() {
   return (
     <Dropdown>
       <Button aria-label="Menu" variant="secondary">

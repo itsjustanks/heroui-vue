@@ -1,6 +1,6 @@
 import {Checkbox, CheckboxGroup, Description, Label} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <CheckboxGroup name="interests" render={(props) => <div {...props} data-custom="foo" />}>
       <Label>Select your interests</Label>

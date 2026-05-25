@@ -1,6 +1,6 @@
 import {Skeleton} from "@heroui/react";
 
-export function UserProfile() {
+function UserProfile() {
   return (
     <div className="flex items-center gap-3">
       <Skeleton className="h-10 w-10 shrink-0 rounded-full" />

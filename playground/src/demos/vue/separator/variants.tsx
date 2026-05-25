@@ -8,3 +8,4 @@ export default defineComponent(() => () => <div class="flex max-w-md flex-col it
       <div>Tertiary Variant</div>
       <Separator variant="tertiary" />
     </div>);
+export default Variants;

@@ -4,3 +4,4 @@ export default defineComponent(() => () => <div class="flex w-[240px] flex-col g
       <Input fullWidth placeholder="Primary input" variant="primary" />
       <Input fullWidth placeholder="Secondary input" variant="secondary" />
     </div>);
+export default Variants;

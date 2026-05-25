@@ -20,7 +20,14 @@ export default defineConfig({
     tailwindcss(),
     vue(),
     vueJsx({ exclude: /\/demos\/react\// }),
-    react({ include: /\/demos\/react\/.*\.tsx$/ })
+    /**
+     * React Fast Refresh's scope tracker chokes on the ported HeroUI demos
+     * (rolldown error: "exported identifier not declared in Babel's scope
+     * tracker") because each demo is a single small component file with
+     * hooks and a trailing default export. Disabling Fast Refresh keeps the
+     * demos compiling; full-page reload on edit is acceptable for parity work.
+     */
+    react({ include: /\/demos\/react\/.*\.tsx$/, fastRefresh: false })
   ],
   resolve: {
     alias: {

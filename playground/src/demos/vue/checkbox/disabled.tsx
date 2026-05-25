@@ -9,3 +9,4 @@ export default defineComponent(() => () => <Checkbox isDisabled id="feature">
         <Description>This feature is coming soon</Description>
       </Checkbox.Content>
     </Checkbox>);
+export default Disabled;

@@ -4,7 +4,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const color = ref(parseColor("hsl(200, 100%, 50%)"));
   return () => <div class="flex w-full max-w-xs flex-col gap-4">
-      <ColorSlider channel="hue" value={color.value} onChange={setColor}>
+      <ColorSlider channel="hue" value={color.value} onChange={v => color.value = v}>
         <Label>Hue</Label>
         <ColorSlider.Output />
         <ColorSlider.Track>
@@ -19,3 +19,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

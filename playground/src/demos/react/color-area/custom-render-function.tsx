@@ -1,6 +1,6 @@
 import {ColorArea} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <ColorArea
       defaultValue="rgb(116, 52, 255)"

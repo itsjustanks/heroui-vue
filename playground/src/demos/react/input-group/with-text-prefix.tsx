@@ -1,6 +1,6 @@
 import {InputGroup, Label, TextField} from "@heroui/react";
 
-export function WithTextPrefix() {
+function WithTextPrefix() {
   return (
     <TextField className="w-full max-w-[280px]" defaultValue="heroui.com" name="website">
       <Label>Website</Label>

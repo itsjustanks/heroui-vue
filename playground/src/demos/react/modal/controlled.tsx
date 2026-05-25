@@ -2,7 +2,7 @@ import {CircleCheck} from "@gravity-ui/icons";
 import {Button, Modal, useOverlayState} from "@heroui/react";
 import React from "react";
 
-export function Controlled() {
+function Controlled() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const state = useOverlayState();

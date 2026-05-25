@@ -3,7 +3,7 @@ import {getLocalTimeZone, isToday} from "@internationalized/date";
 
 const datesWithEvents = [3, 7, 12, 15, 21, 28];
 
-export function WithIndicators() {
+function WithIndicators() {
   return (
     <RangeCalendar aria-label="Trip dates">
       <RangeCalendar.Header>

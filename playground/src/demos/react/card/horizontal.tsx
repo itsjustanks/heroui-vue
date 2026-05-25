@@ -1,6 +1,6 @@
 import {Button, Card, CloseButton} from "@heroui/react";
 
-export function Horizontal() {
+function Horizontal() {
   return (
     <Card className="w-full items-stretch md:flex-row">
       <div className="relative h-[140px] w-full shrink-0 overflow-hidden rounded-2xl sm:h-[120px] sm:w-[120px]">

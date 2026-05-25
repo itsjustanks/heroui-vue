@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex gap-6">
       <Switch size="sm">

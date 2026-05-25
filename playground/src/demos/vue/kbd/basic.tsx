@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         <Kbd.Content>D</Kbd.Content>
       </Kbd>
     </div>);
+export default Basic;

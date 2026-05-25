@@ -22,3 +22,4 @@ export default defineComponent(() => () => <div class="flex items-end gap-6">
         </ProgressCircle.Track>
       </ProgressCircle>
     </div>);
+export default CustomSvg;

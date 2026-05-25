@@ -1,6 +1,6 @@
 import {AlertDialog, Button} from "@heroui/react";
 
-export function CloseMethods() {
+function CloseMethods() {
   return (
     <div className="flex max-w-2xl flex-col gap-8">
       <div className="flex flex-col gap-2">

@@ -1,6 +1,6 @@
 import {Label, Switch} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <Switch>
       <Switch.Control>

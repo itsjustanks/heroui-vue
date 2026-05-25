@@ -14,7 +14,7 @@ interface Character {
   name: string;
 }
 
-export function AsynchronousLoading() {
+function AsynchronousLoading() {
   const list = useAsyncList<Character>({
     async load({cursor, filterText, signal}) {
       if (cursor) {

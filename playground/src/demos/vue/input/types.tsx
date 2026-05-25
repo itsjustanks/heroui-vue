@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="flex w-80 flex-col gap-4"
         <Input id="input-type-password" placeholder="••••••••" type="password" />
       </div>
     </div>);
+export default Types;

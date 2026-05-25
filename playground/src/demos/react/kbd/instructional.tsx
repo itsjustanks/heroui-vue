@@ -1,6 +1,6 @@
 import {Kbd} from "@heroui/react";
 
-export function InstructionalText() {
+function InstructionalText() {
   return (
     <div className="space-y-3">
       <div className="rounded-lg bg-surface p-4">

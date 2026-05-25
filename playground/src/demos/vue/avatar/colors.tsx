@@ -17,3 +17,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         <Avatar.Fallback>DG</Avatar.Fallback>
       </Avatar>
     </div>);
+export default Colors;

@@ -1,5 +1,5 @@
 import type { Key } from "@itsjustanks/heroui-vue";
-import { ChevronsDown, CircleChevronDown, Minus, Plus } from "@gravity-ui/icons";
+import { ChevronsDown, CircleChevronDown, Minus, Plus } from "../../../gravity-icons-vue";
 import { Accordion } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -57,3 +57,4 @@ export default defineComponent(() => {
       </Accordion.Item>
     </Accordion>;
 });
+export default CustomIndicator;

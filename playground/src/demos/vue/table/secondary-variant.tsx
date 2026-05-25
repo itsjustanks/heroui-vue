@@ -38,3 +38,4 @@ export default defineComponent(() => () => <Table variant="secondary">
         </Table.Content>
       </Table.ScrollContainer>
     </Table>);
+export default SecondaryVariant;

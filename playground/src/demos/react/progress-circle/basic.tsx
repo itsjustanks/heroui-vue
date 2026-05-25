@@ -1,6 +1,6 @@
 import {ProgressCircle} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <ProgressCircle aria-label="Loading" value={60}>
       <ProgressCircle.Track>

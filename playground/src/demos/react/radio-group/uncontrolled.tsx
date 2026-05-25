@@ -1,7 +1,7 @@
 import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 import React from "react";
 
-export function Uncontrolled() {
+function Uncontrolled() {
   const [selection, setSelection] = React.useState("pro");
 
   return (

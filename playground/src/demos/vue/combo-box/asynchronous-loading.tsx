@@ -48,3 +48,4 @@ export default defineComponent(() => {
       </ComboBox.Popover>
     </ComboBox>;
 });
+export default AsynchronousLoading;

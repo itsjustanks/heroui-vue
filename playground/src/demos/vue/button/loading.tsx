@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Button isPending>
           Uploading...
         </>}
     </Button>);
+export default Loading;

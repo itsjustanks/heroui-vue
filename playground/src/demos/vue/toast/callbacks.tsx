@@ -75,3 +75,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Callbacks;

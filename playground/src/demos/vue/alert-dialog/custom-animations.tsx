@@ -1,4 +1,4 @@
-import { ArrowUpFromLine, Sparkles } from "@gravity-ui/icons";
+import { ArrowUpFromLine, Sparkles } from "../../../gravity-icons-vue";
 import { AlertDialog, Button } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const iconMap: Record<string, React.ComponentType<{
@@ -61,3 +61,4 @@ export default defineComponent(() => {
     })}
     </div>;
 });
+export default CustomAnimations;

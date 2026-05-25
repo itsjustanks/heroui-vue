@@ -23,7 +23,7 @@ const items = [
   },
 ];
 
-export function Controlled() {
+function Controlled() {
   const [expandedKeys, setExpandedKeys] = React.useState(
     new Set<string | number>(["getting-started"]),
   );

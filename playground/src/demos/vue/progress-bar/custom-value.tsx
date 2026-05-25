@@ -105,3 +105,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default CustomValue;

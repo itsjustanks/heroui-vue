@@ -16,3 +16,4 @@ export default defineComponent(() => {
       </Checkbox.Content>
     </Checkbox>;
 });
+export default Indeterminate;

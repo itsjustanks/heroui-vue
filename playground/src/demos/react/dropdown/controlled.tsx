@@ -3,7 +3,7 @@ import type {Selection} from "@heroui/react";
 import {Button, Dropdown, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [selected, setSelected] = useState<Selection>(new Set(["bold"]));
 
   const selectedItems = Array.from(selected);

@@ -1,7 +1,7 @@
 import {Globe} from "@gravity-ui/icons";
 import {InputGroup, Label, TextField} from "@heroui/react";
 
-export function WithIconPrefixAndTextSuffix() {
+function WithIconPrefixAndTextSuffix() {
   return (
     <TextField className="w-full max-w-[280px]" defaultValue="heroui" name="website">
       <Label>Website</Label>

@@ -4,7 +4,7 @@ import {Button, Description, RangeCalendar} from "@heroui/react";
 import {parseDate} from "@internationalized/date";
 import {useState} from "react";
 
-export function FocusedValue() {
+function FocusedValue() {
   const [focusedDate, setFocusedDate] = useState<DateValue>(parseDate("2025-06-15"));
 
   return (

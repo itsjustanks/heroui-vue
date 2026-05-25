@@ -1,6 +1,6 @@
 import {Label, SearchField} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <SearchField name="search" render={(props) => <div {...props} data-custom="foo" />}>
       <Label>Search</Label>

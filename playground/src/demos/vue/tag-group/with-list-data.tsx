@@ -78,3 +78,4 @@ export default defineComponent(() => {
         </div>}
     </div>;
 });
+export default TagGroupWithListData;

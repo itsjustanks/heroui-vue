@@ -27,3 +27,4 @@ export default defineComponent(() => {
       </Pagination.Content>
     </Pagination>;
 });
+export default PaginationSimplePrevNext;

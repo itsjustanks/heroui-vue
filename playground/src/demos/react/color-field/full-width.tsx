@@ -1,6 +1,6 @@
 import {ColorField, Label} from "@heroui/react";
 
-export function FullWidth() {
+function FullWidth() {
   return (
     <div className="w-[400px] space-y-4">
       <ColorField fullWidth defaultValue="#10B981" name="color">

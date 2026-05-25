@@ -22,3 +22,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-8">
         <span class="text-xs text-muted">Danger</span>
       </div>
     </div>);
+export default SpinnerColors;

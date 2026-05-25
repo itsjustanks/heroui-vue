@@ -1,7 +1,7 @@
 import {Description, Kbd, Label, SearchField} from "@heroui/react";
 import React from "react";
 
-export function WithKeyboardShortcut() {
+function WithKeyboardShortcut() {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [value, setValue] = React.useState("");
 

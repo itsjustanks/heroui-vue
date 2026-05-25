@@ -1,4 +1,4 @@
-import { ChevronsExpandVertical } from "@gravity-ui/icons";
+import { ChevronsExpandVertical } from "../../../gravity-icons-vue";
 import { Label, ListBox, Select } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Select class="w-[256px]" placeholder="Select one">
@@ -38,3 +38,4 @@ export default defineComponent(() => () => <Select class="w-[256px]" placeholder
         </ListBox>
       </Select.Popover>
     </Select>);
+export default CustomIndicator;

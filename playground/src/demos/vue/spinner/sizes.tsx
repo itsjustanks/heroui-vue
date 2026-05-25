@@ -18,3 +18,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-8">
         <span class="text-xs text-muted">Extra Large</span>
       </div>
     </div>);
+export default SpinnerSizes;

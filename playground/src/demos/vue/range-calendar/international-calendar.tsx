@@ -28,3 +28,4 @@ export default defineComponent(() => () => <I18nProvider locale="hi-IN-u-ca-indi
         </RangeCalendar.YearPickerGrid>
       </RangeCalendar>
     </I18nProvider>);
+export default InternationalCalendar;

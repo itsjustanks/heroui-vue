@@ -35,3 +35,4 @@ export default defineComponent(() => () => <ListBox aria-label="Users" class="w-
         <ListBox.ItemIndicator />
       </ListBox.Item>
     </ListBox>);
+export default Default;

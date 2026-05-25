@@ -21,3 +21,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>Tags disabled via disabledKeys prop</Description>
       </TagGroup>
     </div>);
+export default TagGroupDisabled;

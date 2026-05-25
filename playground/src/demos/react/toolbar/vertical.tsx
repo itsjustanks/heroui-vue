@@ -8,7 +8,7 @@ import {
   Toolbar,
 } from "@heroui/react";
 
-export function Vertical() {
+function Vertical() {
   return (
     <Toolbar aria-label="Tools" orientation="vertical">
       <ToggleButtonGroup aria-label="Text style" selectionMode="multiple">

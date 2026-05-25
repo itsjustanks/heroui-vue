@@ -35,3 +35,4 @@ export default defineComponent(() => () => <div class="space-y-3">
         </ul>
       </div>
     </div>);
+export default InstructionalText;

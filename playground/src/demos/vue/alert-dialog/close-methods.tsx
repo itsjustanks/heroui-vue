@@ -71,3 +71,4 @@ export default defineComponent(() => () => <div class="flex max-w-2xl flex-col g
         </AlertDialog>
       </div>
     </div>);
+export default CloseMethods;

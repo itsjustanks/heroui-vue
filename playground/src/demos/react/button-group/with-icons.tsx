@@ -1,7 +1,7 @@
 import {Globe, Plus, TrashBin} from "@gravity-ui/icons";
 import {Button, ButtonGroup} from "@heroui/react";
 
-export function WithIcons() {
+function WithIcons() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col items-start gap-2">

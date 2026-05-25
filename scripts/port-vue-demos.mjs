@@ -84,15 +84,19 @@ function transform (src) {
     if (!t.isImportDeclaration(node)) continue
     const src = node.source.value
     if (src === '@heroui/react') node.source.value = '@itsjustanks/heroui-vue'
+    if (src === '@gravity-ui/icons') {
+      // React-icon package. Repoint to our Vue shim that exports the same
+      // PascalCase names backed by raw SVGs. Demos live at
+      // playground/src/demos/vue/<component>/<slug>.tsx so the shim is at
+      // ../../../gravity-icons-vue (3 up: slug → component → vue → demos → src).
+      node.source.value = '../../../gravity-icons-vue'
+    }
     if (src === 'react') {
-      // Drop entirely; we'll add `vue` imports below. But preserve any
-      // type-only re-exports we don't recognize? For now: drop.
-      // Filter specifiers: keep none.
       node.specifiers = []
       node.importKind = 'value'
     }
   }
-  // Remove empty import nodes.
+  // Remove empty import nodes (react drop).
   ast.program.body = ast.program.body.filter((n) =>
     !(t.isImportDeclaration(n) && n.specifiers.length === 0 && /^(react)$/.test(n.source.value))
   )
@@ -268,6 +272,32 @@ function transform (src) {
     },
     Identifier (p) {
       const name = p.node.name
+
+      // Setter passed as a reference, e.g. `onChange={setSelected}` —
+      // wrap as `(v) => (selected.value = v)`. Skip when called (handled by
+      // CallExpression above) or in import/declaration positions.
+      if (setterToState.has(name)) {
+        const par = p.parent
+        const inCall = t.isCallExpression(par) && par.callee === p.node
+        const inDecl = t.isVariableDeclarator(par) && par.id === p.node
+        const inMemberProp = t.isMemberExpression(par) && par.property === p.node && !par.computed
+        const inObjKey = t.isObjectProperty(par) && par.key === p.node && !par.computed && !par.shorthand
+        const inImport = t.isImportSpecifier(par) || t.isExportSpecifier(par)
+        if (!inCall && !inDecl && !inMemberProp && !inObjKey && !inImport) {
+          const stateName = setterToState.get(name)
+          p.replaceWith(t.arrowFunctionExpression(
+            [t.identifier('v')],
+            t.assignmentExpression(
+              '=',
+              t.memberExpression(t.identifier(stateName), t.identifier('value')),
+              t.identifier('v')
+            )
+          ))
+          p.skip()
+          return
+        }
+      }
+
       if (!refNames.has(name) && !computedNames.has(name)) return
       const parent = p.parent
       // LHS of variable declaration — skip

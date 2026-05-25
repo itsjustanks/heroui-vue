@@ -1,7 +1,7 @@
 import {Button, Description, Form, InputOTP, Label} from "@heroui/react";
 import React from "react";
 
-export function WithValidation() {
+function WithValidation() {
   const [value, setValue] = React.useState("");
   const [isInvalid, setIsInvalid] = React.useState(false);
 

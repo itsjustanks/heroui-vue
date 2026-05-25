@@ -45,3 +45,4 @@ export default defineComponent(() => {
       </Form>
     </div>;
 });
+export default WithValidation;

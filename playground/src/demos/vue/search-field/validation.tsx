@@ -20,3 +20,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <FieldError>Invalid characters in search query</FieldError>
       </SearchField>
     </div>);
+export default Validation;

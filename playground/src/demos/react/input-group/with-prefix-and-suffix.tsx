@@ -1,6 +1,6 @@
 import {Description, InputGroup, Label, TextField} from "@heroui/react";
 
-export function WithPrefixAndSuffix() {
+function WithPrefixAndSuffix() {
   return (
     <TextField className="w-full max-w-[280px]" defaultValue="10" name="price">
       <Label>Set a price</Label>

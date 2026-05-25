@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp } from "@gravity-ui/icons";
+import { ChevronDown, ChevronUp } from "../../../gravity-icons-vue";
 import { Accordion, Button, useDisclosureGroupNavigation } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const items = [{
@@ -56,3 +56,4 @@ export default defineComponent(() => {
       </Accordion>
     </div>;
 });
+export default Controlled;

@@ -13,7 +13,7 @@ export default defineComponent(() => {
           Actions
         </Button>
         <Dropdown.Popover>
-          <Dropdown.Menu selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={setSelected}>
+          <Dropdown.Menu selectedKeys={selected.value} selectionMode="multiple" onSelectionChange={v => selected.value = v}>
             <Dropdown.Item id="bold" textValue="Bold">
               <Label>Bold</Label>
               <Dropdown.ItemIndicator />
@@ -31,3 +31,4 @@ export default defineComponent(() => {
       </Dropdown>
     </div>;
 });
+export default Controlled;

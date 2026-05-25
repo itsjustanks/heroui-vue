@@ -10,7 +10,7 @@ import {Icon} from "@iconify/react";
 import React from "react";
 import {cn} from "tailwind-variants";
 
-export function Controlled() {
+function Controlled() {
   const [expandedKeys, setExpandedKeys] = React.useState(new Set<string | number>(["preview"]));
   const itemIds = ["preview", "download"]; // Track our disclosure items
 

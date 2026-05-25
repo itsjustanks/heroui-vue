@@ -1,6 +1,6 @@
 import {Skeleton} from "@heroui/react";
 
-export function TextContent() {
+function TextContent() {
   return (
     <div className="w-full max-w-md space-y-3">
       <Skeleton className="h-4 w-full rounded" />

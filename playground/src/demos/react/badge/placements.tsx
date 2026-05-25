@@ -2,7 +2,7 @@ import {Avatar, Badge} from "@heroui/react";
 
 const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
 
-export function BadgePlacements() {
+function BadgePlacements() {
   const placements = ["top-right", "top-left", "bottom-right", "bottom-left"] as const;
 
   return (

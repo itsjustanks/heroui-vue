@@ -5,7 +5,7 @@ const ORANGE_AVATAR_URL =
   "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg";
 const BLUE_AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg";
 
-export function BadgeBasic() {
+function BadgeBasic() {
   return (
     <div className="flex items-center gap-6">
       <Badge.Anchor>

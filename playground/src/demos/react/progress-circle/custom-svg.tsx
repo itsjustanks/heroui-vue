@@ -1,6 +1,6 @@
 import {ProgressCircle} from "@heroui/react";
 
-export function CustomSvg() {
+function CustomSvg() {
   return (
     <div className="flex items-end gap-6">
       <ProgressCircle aria-label="Thin circle" value={60}>

@@ -24,3 +24,4 @@ export default defineComponent(() => () => <Calendar aria-label="Event date">
         </Calendar.GridBody>
       </Calendar.Grid>
     </Calendar>);
+export default WithIndicators;

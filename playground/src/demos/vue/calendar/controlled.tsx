@@ -34,7 +34,7 @@ export default defineComponent(() => {
         </Button>
       </ButtonGroup>
 
-      <Calendar aria-label="Event date" focusedValue={focusedDate.value} value={value.value} onChange={setValue} onFocusChange={setFocusedDate}>
+      <Calendar aria-label="Event date" focusedValue={focusedDate.value} value={value.value} onChange={v => value.value = v} onFocusChange={v => focusedDate.value = v}>
         <Calendar.Header>
           <Calendar.Heading />
           <Calendar.NavButton slot="previous" />
@@ -73,3 +73,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

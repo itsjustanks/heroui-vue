@@ -4,21 +4,21 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const color = ref(parseColor("rgb(255, 100, 50)"));
   return () => <div class="flex w-full max-w-xs flex-col gap-4">
-      <ColorSlider channel="red" value={color.value} onChange={setColor}>
+      <ColorSlider channel="red" value={color.value} onChange={v => color.value = v}>
         <Label>Red</Label>
         <ColorSlider.Output />
         <ColorSlider.Track>
           <ColorSlider.Thumb />
         </ColorSlider.Track>
       </ColorSlider>
-      <ColorSlider channel="green" value={color.value} onChange={setColor}>
+      <ColorSlider channel="green" value={color.value} onChange={v => color.value = v}>
         <Label>Green</Label>
         <ColorSlider.Output />
         <ColorSlider.Track>
           <ColorSlider.Thumb />
         </ColorSlider.Track>
       </ColorSlider>
-      <ColorSlider channel="blue" value={color.value} onChange={setColor}>
+      <ColorSlider channel="blue" value={color.value} onChange={v => color.value = v}>
         <Label>Blue</Label>
         <ColorSlider.Output />
         <ColorSlider.Track>
@@ -33,3 +33,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default RGBChannels;

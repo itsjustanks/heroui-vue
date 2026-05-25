@@ -26,3 +26,4 @@ export default defineComponent(() => () => <SwitchGroup>
         </Switch.Content>
       </Switch>
     </SwitchGroup>);
+export default Group;

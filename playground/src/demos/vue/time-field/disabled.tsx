@@ -21,3 +21,4 @@ export default defineComponent(() => {
       </TimeField>
     </div>;
 });
+export default Disabled;

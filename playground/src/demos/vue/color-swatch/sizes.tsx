@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       <ColorSwatch color="#10B981" size="lg" />
       <ColorSwatch color="#D946EF" size="xl" />
     </div>);
+export default ColorSwatchSizes;

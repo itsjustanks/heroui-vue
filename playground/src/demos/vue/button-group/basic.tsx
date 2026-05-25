@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronLeft, ChevronRight, CodeFork, Ellipsis, Picture, Pin, QrCode, Star, TextAlignCenter, TextAlignJustify, TextAlignLeft, TextAlignRight, ThumbsDown, ThumbsUp, Video } from "@gravity-ui/icons";
+import { ChevronDown, ChevronLeft, ChevronRight, CodeFork, Ellipsis, Picture, Pin, QrCode, Star, TextAlignCenter, TextAlignJustify, TextAlignLeft, TextAlignRight, ThumbsDown, ThumbsUp, Video } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup, Chip, Description, Dropdown, Label } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col items-start gap-6">
@@ -168,3 +168,4 @@ export default defineComponent(() => () => <div class="flex flex-col items-start
         </ButtonGroup>
       </div>
     </div>);
+export default Basic;

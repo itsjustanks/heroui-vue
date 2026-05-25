@@ -1,6 +1,6 @@
 import {Separator, Surface} from "@heroui/react";
 
-export function ManualVariantOverride() {
+function ManualVariantOverride() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">

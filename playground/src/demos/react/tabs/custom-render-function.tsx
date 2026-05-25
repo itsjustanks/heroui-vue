@@ -2,7 +2,7 @@ import {Tabs} from "@heroui/react";
 // next/link not available in this playground — use a plain anchor instead.
 const Link = (props: any) => <a {...props} />;
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <Tabs className="w-full max-w-md" render={(props) => <div {...props} data-custom="foo" />}>
       <Tabs.ListContainer>

@@ -2,7 +2,7 @@ import {ColorSlider, ColorSwatch, Label} from "@heroui/react";
 import {useState} from "react";
 import {parseColor} from "react-aria-components";
 
-export function RGBChannels() {
+function RGBChannels() {
   const [color, setColor] = useState(parseColor("rgb(255, 100, 50)"));
 
   return (

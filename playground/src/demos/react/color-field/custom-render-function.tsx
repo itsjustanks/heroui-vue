@@ -3,7 +3,7 @@ import type {Color} from "@heroui/react";
 import {ColorField, ColorSwatch, Label, parseColor} from "@heroui/react";
 import {useState} from "react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   const [color, setColor] = useState<Color | null>(parseColor("#0485F7"));
 
   return (

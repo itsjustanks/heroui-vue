@@ -21,7 +21,7 @@ export default defineComponent(() => {
     }, 1500);
   };
   return () => <Form class="flex w-[280px] flex-col gap-4" onSubmit={handleSubmit}>
-      <ColorField fullWidth isRequired class="w-full" name="brand-color" value={value.value} onChange={setValue}>
+      <ColorField fullWidth isRequired class="w-full" name="brand-color" value={value.value} onChange={v => value.value = v}>
         <Label>Brand Color</Label>
         <ColorField.Group>
           <ColorField.Prefix>
@@ -36,3 +36,4 @@ export default defineComponent(() => {
       </Button>
     </Form>;
 });
+export default FormExample;

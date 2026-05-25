@@ -1,6 +1,6 @@
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function MultipleSelect() {
+function MultipleSelect() {
   return (
     <Select className="w-[256px]" placeholder="Select countries" selectionMode="multiple">
       <Label>Countries to Visit</Label>

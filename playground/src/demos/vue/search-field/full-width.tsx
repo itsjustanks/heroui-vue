@@ -10,3 +10,4 @@ export default defineComponent(() => () => <div class="w-[400px] space-y-4">
         </SearchField.Group>
       </SearchField>
     </div>);
+export default FullWidth;

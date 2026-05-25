@@ -1,6 +1,6 @@
 import {Label, Tag, TagGroup} from "@heroui/react";
 
-export function TagGroupSizes() {
+function TagGroupSizes() {
   return (
     <div className="flex flex-col gap-6">
       <TagGroup selectionMode="single" size="sm">

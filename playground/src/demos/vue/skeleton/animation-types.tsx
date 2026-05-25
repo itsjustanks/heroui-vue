@@ -28,3 +28,4 @@ export default defineComponent(() => () => <div class="grid w-full max-w-xl grid
         </div>
       </div>
     </div>);
+export default AnimationTypes;

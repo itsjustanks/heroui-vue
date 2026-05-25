@@ -34,3 +34,4 @@ export default defineComponent(() => () => <CheckboxGroup name="features">
         </Checkbox.Content>
       </Checkbox>
     </CheckboxGroup>);
+export default WithCustomIndicator;

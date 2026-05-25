@@ -45,3 +45,4 @@ export default defineComponent(() => () => <div class="flex gap-4">
         </Checkbox.Content>
       </Checkbox>
     </div>);
+export default CustomIndicator;

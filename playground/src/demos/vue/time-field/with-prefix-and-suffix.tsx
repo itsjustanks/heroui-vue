@@ -1,4 +1,4 @@
-import { ChevronDown, Clock } from "@gravity-ui/icons";
+import { ChevronDown, Clock } from "../../../gravity-icons-vue";
 import { Description, Label, TimeField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <TimeField class="w-[256px]" name="time">
@@ -14,3 +14,4 @@ export default defineComponent(() => () => <TimeField class="w-[256px]" name="ti
       </TimeField.Group>
       <Description>Enter a time</Description>
     </TimeField>);
+export default WithPrefixAndSuffix;

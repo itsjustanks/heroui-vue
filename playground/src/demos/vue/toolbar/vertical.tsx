@@ -1,4 +1,4 @@
-import { ArrowUturnCcwLeft, ArrowUturnCwRight, Bold, Italic, Underline } from "@gravity-ui/icons";
+import { ArrowUturnCcwLeft, ArrowUturnCwRight, Bold, Italic, Underline } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup, Separator, ToggleButton, ToggleButtonGroup, Toolbar } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Toolbar aria-label="Tools" orientation="vertical">
@@ -26,3 +26,4 @@ export default defineComponent(() => () => <Toolbar aria-label="Tools" orientati
         </Button>
       </ButtonGroup>
     </Toolbar>);
+export default Vertical;

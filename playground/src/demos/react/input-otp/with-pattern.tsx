@@ -1,6 +1,6 @@
 import {Description, InputOTP, Label, REGEXP_ONLY_CHARS} from "@heroui/react";
 
-export function WithPattern() {
+function WithPattern() {
   return (
     <div className="flex w-[280px] flex-col gap-2">
       <Label>Enter code (letters only)</Label>

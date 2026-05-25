@@ -1,6 +1,6 @@
 import {Button, Popover} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <div className="flex items-center gap-4">
       <Popover>

@@ -42,3 +42,4 @@ export default defineComponent(() => {
       </ColorPicker.Popover>
     </ColorPicker>;
 });
+export default WithSliders;

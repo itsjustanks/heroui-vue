@@ -39,7 +39,7 @@ const users = [
 
 const ROWS_PER_PAGE = 4;
 
-export function PaginationDemo() {
+function PaginationDemo() {
   const [page, setPage] = useState(1);
   const totalPages = Math.ceil(users.length / ROWS_PER_PAGE);
   const pages = Array.from({length: totalPages}, (_, i) => i + 1);

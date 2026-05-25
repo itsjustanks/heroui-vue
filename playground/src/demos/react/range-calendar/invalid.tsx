@@ -9,7 +9,7 @@ type DateRange = {
   end: DateValue;
 };
 
-export function Invalid() {
+function Invalid() {
   const now = today(getLocalTimeZone());
   const [value, setValue] = useState<DateRange>({
     end: now.add({days: 14}),

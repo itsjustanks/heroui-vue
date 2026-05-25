@@ -46,3 +46,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default WithKeyboardShortcut;

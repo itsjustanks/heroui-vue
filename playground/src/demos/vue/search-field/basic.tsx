@@ -8,3 +8,4 @@ export default defineComponent(() => () => <SearchField name="search">
         <SearchField.ClearButton />
       </SearchField.Group>
     </SearchField>);
+export default Basic;

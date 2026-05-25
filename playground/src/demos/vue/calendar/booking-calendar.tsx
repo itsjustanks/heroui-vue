@@ -13,7 +13,7 @@ export default defineComponent(() => {
     return isWeekend(date, locale) || bookedDates.includes(date.day);
   };
   return () => <div class="flex flex-col items-center gap-4">
-      <Calendar aria-label="Booking date" isDateUnavailable={isDateUnavailable} minValue={today(getLocalTimeZone())} value={selectedDate.value} onChange={setSelectedDate}>
+      <Calendar aria-label="Booking date" isDateUnavailable={isDateUnavailable} minValue={today(getLocalTimeZone())} value={selectedDate.value} onChange={v => selectedDate.value = v}>
         <Calendar.Header>
           <Calendar.Heading />
           <Calendar.NavButton slot="previous" />
@@ -52,3 +52,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default BookingCalendar;

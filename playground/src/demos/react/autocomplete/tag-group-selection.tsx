@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function TagGroupSelection() {
+function TagGroupSelection() {
   const tags = [
     {id: "react", name: "React"},
     {id: "typescript", name: "TypeScript"},

@@ -1,6 +1,6 @@
 import {ColorField, Description, Label} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col gap-4">
       <ColorField isDisabled className="w-[280px]" defaultValue="#0485F7" name="color">

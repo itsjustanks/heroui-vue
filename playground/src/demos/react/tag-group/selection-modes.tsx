@@ -3,7 +3,7 @@ import type {Key} from "@heroui/react";
 import {Description, Label, Tag, TagGroup} from "@heroui/react";
 import {useState} from "react";
 
-export function TagGroupSelectionModes() {
+function TagGroupSelectionModes() {
   const [singleSelected, setSingleSelected] = useState<Iterable<Key>>(new Set(["news"]));
   const [multipleSelected, setMultipleSelected] = useState<Iterable<Key>>(
     new Set(["news", "travel"]),

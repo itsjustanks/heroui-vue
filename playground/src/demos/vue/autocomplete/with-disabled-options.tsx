@@ -8,7 +8,7 @@ export default defineComponent(() => {
   } = useFilter({
     sensitivity: "base"
   });
-  return () => <Autocomplete class="w-[256px]" disabledKeys={["cat", "kangaroo"]} placeholder="Select an animal" selectionMode="single" value={selectedKey.value} onChange={setSelectedKey}>
+  return () => <Autocomplete class="w-[256px]" disabledKeys={["cat", "kangaroo"]} placeholder="Select an animal" selectionMode="single" value={selectedKey.value} onChange={v => selectedKey.value = v}>
       <Label>Animal</Label>
       <Autocomplete.Trigger>
         <Autocomplete.Value />
@@ -54,3 +54,4 @@ export default defineComponent(() => {
       </Autocomplete.Popover>
     </Autocomplete>;
 });
+export default WithDisabledOptions;

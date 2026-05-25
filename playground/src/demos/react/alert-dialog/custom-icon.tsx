@@ -1,7 +1,7 @@
 import {LockOpen} from "@gravity-ui/icons";
 import {AlertDialog, Button} from "@heroui/react";
 
-export function CustomIcon() {
+function CustomIcon() {
   return (
     <AlertDialog>
       <Button variant="secondary">Reset Password</Button>

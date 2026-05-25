@@ -1,7 +1,7 @@
 import {Button, Checkbox, Label} from "@heroui/react";
 import React from "react";
 
-export function Form() {
+function Form() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);

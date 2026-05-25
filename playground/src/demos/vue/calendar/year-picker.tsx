@@ -23,3 +23,4 @@ export default defineComponent(() => () => <Calendar aria-label="Event date">
         </Calendar.YearPickerGridBody>
       </Calendar.YearPickerGrid>
     </Calendar>);
+export default YearPicker;

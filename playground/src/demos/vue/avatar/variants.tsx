@@ -1,4 +1,4 @@
-import { Person } from "@gravity-ui/icons";
+import { Person } from "../../../gravity-icons-vue";
 import { Avatar, Separator } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -49,3 +49,4 @@ export default defineComponent(() => {
         </div>)}
     </div>;
 });
+export default Variants;

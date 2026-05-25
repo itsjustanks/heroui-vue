@@ -1,6 +1,6 @@
 import {Button, Drawer} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <Drawer>
       <Button variant="secondary">Open Drawer</Button>

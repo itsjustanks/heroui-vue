@@ -1,7 +1,7 @@
 import {TriangleExclamation} from "@gravity-ui/icons";
 import {AlertDialog, Button} from "@heroui/react";
 
-export function CustomBackdrop() {
+function CustomBackdrop() {
   return (
     <AlertDialog>
       <Button variant="danger">Delete Account</Button>

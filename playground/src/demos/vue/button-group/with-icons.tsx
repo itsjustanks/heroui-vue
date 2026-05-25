@@ -1,4 +1,4 @@
-import { Globe, Plus, TrashBin } from "@gravity-ui/icons";
+import { Globe, Plus, TrashBin } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex flex-col gap-6">
@@ -38,3 +38,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </ButtonGroup>
       </div>
     </div>);
+export default WithIcons;

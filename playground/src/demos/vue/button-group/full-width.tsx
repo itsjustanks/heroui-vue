@@ -1,4 +1,4 @@
-import { TextAlignCenter, TextAlignLeft, TextAlignRight } from "@gravity-ui/icons";
+import { TextAlignCenter, TextAlignLeft, TextAlignRight } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="w-[400px] space-y-3">
@@ -27,3 +27,4 @@ export default defineComponent(() => () => <div class="w-[400px] space-y-3">
         </Button>
       </ButtonGroup>
     </div>);
+export default FullWidth;

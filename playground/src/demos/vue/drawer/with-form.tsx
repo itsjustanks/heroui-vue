@@ -35,3 +35,4 @@ export default defineComponent(() => () => <Drawer>
         </Drawer.Content>
       </Drawer.Backdrop>
     </Drawer>);
+export default WithForm;

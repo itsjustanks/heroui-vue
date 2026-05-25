@@ -6,3 +6,4 @@ export default defineComponent(() => () => <ProgressCircle aria-label="Loading" 
         <ProgressCircle.FillCircle />
       </ProgressCircle.Track>
     </ProgressCircle>);
+export default Basic;

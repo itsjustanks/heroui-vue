@@ -1,6 +1,6 @@
 import {Separator} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex max-w-md flex-col items-center gap-3">
       <div>Default Variant</div>

@@ -1,6 +1,6 @@
 import {Checkbox, Label} from "@heroui/react";
 
-export function WithLabel() {
+function WithLabel() {
   return (
     <Checkbox id="label-marketing">
       <Checkbox.Control>

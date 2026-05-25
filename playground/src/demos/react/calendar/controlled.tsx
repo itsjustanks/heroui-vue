@@ -11,7 +11,7 @@ import {
 import {useState} from "react";
 import {useLocale} from "react-aria-components";
 
-export function Controlled() {
+function Controlled() {
   const [value, setValue] = useState<DateValue | null>(null);
   const [focusedDate, setFocusedDate] = useState<DateValue>(parseDate("2025-12-25"));
   const {locale} = useLocale();

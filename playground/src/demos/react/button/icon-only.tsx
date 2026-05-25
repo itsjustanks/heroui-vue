@@ -1,7 +1,7 @@
 import {Ellipsis, Gear, TrashBin} from "@gravity-ui/icons";
 import {Button} from "@heroui/react";
 
-export function IconOnly() {
+function IconOnly() {
   return (
     <div className="flex gap-3">
       <Button isIconOnly variant="tertiary">

@@ -10,3 +10,4 @@ export default defineComponent(() => () => <TextField aria-label="Email address"
         </InputGroup.Suffix>
       </InputGroup>
     </TextField>);
+export default WithBadgeSuffix;

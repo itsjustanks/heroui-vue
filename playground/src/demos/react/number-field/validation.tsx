@@ -1,6 +1,6 @@
 import {FieldError, Label, NumberField} from "@heroui/react";
 
-export function Validation() {
+function Validation() {
   return (
     <div className="flex w-full max-w-64 flex-col gap-4">
       <NumberField isInvalid isRequired minValue={0} name="quantity" value={-5}>

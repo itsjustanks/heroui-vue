@@ -31,3 +31,4 @@ export default defineComponent(() => () => <CheckboxGroup name="interests">
         </Checkbox.Content>
       </Checkbox>
     </CheckboxGroup>);
+export default Basic;

@@ -2,7 +2,7 @@ import {Pagination} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import {useState} from "react";
 
-export function PaginationCustomIcons() {
+function PaginationCustomIcons() {
   const [page, setPage] = useState(1);
   const totalPages = 3;
 

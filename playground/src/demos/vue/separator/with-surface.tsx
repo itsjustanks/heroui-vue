@@ -33,3 +33,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-8">
         </Surface>
       </div>
     </div>);
+export default WithSurface;

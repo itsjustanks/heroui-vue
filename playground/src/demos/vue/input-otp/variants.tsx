@@ -34,3 +34,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </InputOTP>
       </div>
     </div>);
+export default Variants;

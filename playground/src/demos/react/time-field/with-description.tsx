@@ -1,6 +1,6 @@
 import {Description, Label, TimeField} from "@heroui/react";
 
-export function WithDescription() {
+function WithDescription() {
   return (
     <div className="flex flex-col gap-4">
       <TimeField className="w-[256px]" name="time">

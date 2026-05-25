@@ -17,3 +17,4 @@ export default defineComponent(() => () => <div class="flex flex-col items-cente
       </Calendar>
       <Description class="text-center">Calendar is read-only</Description>
     </div>);
+export default ReadOnly;

@@ -44,3 +44,4 @@ export default defineComponent(() => {
       </Button>
     </Form>;
 });
+export default OnComplete;

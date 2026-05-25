@@ -15,3 +15,4 @@ export default defineComponent(() => () => <RangeCalendar aria-label="Trip dates
         </RangeCalendar.GridBody>
       </RangeCalendar.Grid>
     </RangeCalendar>);
+export default Basic;

@@ -1,6 +1,6 @@
 import {DateField, DateRangePicker, Label, RangeCalendar} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <DateRangePicker className="w-72" endName="endDate" startName="startDate">
       <Label>Trip dates</Label>

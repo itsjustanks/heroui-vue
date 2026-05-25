@@ -2,7 +2,7 @@ import {Avatar, Badge} from "@heroui/react";
 
 const AVATAR_URL = "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/green.jpg";
 
-export function BadgeSizes() {
+function BadgeSizes() {
   const sizes = ["sm", "md", "lg"] as const;
 
   return (

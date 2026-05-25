@@ -3,7 +3,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
   const isOpen = ref(false);
   return () => <div class="space-y-4">
-      <Select class="w-[256px]" isOpen={isOpen.value} placeholder="Select one" onOpenChange={setIsOpen}>
+      <Select class="w-[256px]" isOpen={isOpen.value} placeholder="Select one" onOpenChange={v => isOpen.value = v}>
         <Label>State</Label>
         <Select.Trigger>
           <Select.Value />
@@ -42,3 +42,4 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">Select is {isOpen.value ? "open" : "closed"}</p>
     </div>;
 });
+export default ControlledOpenState;

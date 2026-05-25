@@ -86,3 +86,4 @@ export default defineComponent(() => {
       </section>
     </div>;
 });
+export default DeliveryAndPayment;

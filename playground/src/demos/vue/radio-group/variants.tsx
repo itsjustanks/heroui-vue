@@ -48,3 +48,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-8">
         </RadioGroup>
       </div>
     </div>);
+export default Variants;

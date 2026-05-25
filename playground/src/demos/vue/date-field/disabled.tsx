@@ -17,3 +17,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>This date field is disabled</Description>
       </DateField>
     </div>);
+export default Disabled;

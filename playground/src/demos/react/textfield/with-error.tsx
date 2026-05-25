@@ -1,6 +1,6 @@
 import {FieldError, Input, Label, TextField} from "@heroui/react";
 
-export function WithError() {
+function WithError() {
   return (
     <TextField isInvalid className="w-full max-w-64" name="email" type="email">
       <Label>Email</Label>

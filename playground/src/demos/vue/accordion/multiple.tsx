@@ -61,3 +61,4 @@ export default defineComponent(() => () => <Accordion allowsMultipleExpanded cla
         </Accordion.Panel>
       </Accordion.Item>
     </Accordion>);
+export default Multiple;

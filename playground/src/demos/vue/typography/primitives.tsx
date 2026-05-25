@@ -11,3 +11,4 @@ export default defineComponent(() => () => <div class="flex max-w-xl flex-col ga
       </Typography.Paragraph>
       <Typography.Code>Typography.Code</Typography.Code>
     </div>);
+export default Primitives;

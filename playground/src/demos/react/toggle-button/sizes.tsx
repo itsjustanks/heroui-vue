@@ -1,7 +1,7 @@
 import {Heart} from "@gravity-ui/icons";
 import {ToggleButton} from "@heroui/react";
 
-export function Sizes() {
+function Sizes() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center gap-3">

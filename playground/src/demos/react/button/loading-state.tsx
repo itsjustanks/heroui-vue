@@ -2,7 +2,7 @@ import {Paperclip} from "@gravity-ui/icons";
 import {Button, Spinner} from "@heroui/react";
 import React, {useState} from "react";
 
-export function LoadingState() {
+function LoadingState() {
   const [isLoading, setLoading] = useState(false);
 
   const handlePress = () => {

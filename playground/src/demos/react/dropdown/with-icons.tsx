@@ -1,7 +1,7 @@
 import {FloppyDisk, FolderOpen, SquarePlus, TrashBin} from "@gravity-ui/icons";
 import {Button, Dropdown, Kbd, Label} from "@heroui/react";
 
-export function WithIcons() {
+function WithIcons() {
   return (
     <Dropdown>
       <Button aria-label="Menu" variant="secondary">

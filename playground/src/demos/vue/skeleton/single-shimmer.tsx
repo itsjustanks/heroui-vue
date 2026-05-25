@@ -5,3 +5,4 @@ export default defineComponent(() => () => <div class="skeleton--shimmer relativ
       <Skeleton animationType="none" class="h-24 rounded-xl" />
       <Skeleton animationType="none" class="h-24 rounded-xl" />
     </div>);
+export default SingleShimmer;

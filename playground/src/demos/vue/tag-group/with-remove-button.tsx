@@ -1,5 +1,5 @@
 import type { Key } from "@itsjustanks/heroui-vue";
-import { CircleXmarkFill } from "@gravity-ui/icons";
+import { CircleXmarkFill } from "../../../gravity-icons-vue";
 import { Description, EmptyState, Label, Tag, TagGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent, ref } from "vue";
 export default defineComponent(() => {
@@ -70,3 +70,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default TagGroupWithRemoveButton;

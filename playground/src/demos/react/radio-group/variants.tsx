@@ -1,6 +1,6 @@
 import {Description, Label, Radio, RadioGroup} from "@heroui/react";
 
-export function Variants() {
+function Variants() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">

@@ -1,4 +1,4 @@
-import { Heart, HeartFill } from "@gravity-ui/icons";
+import { Heart, HeartFill } from "../../../gravity-icons-vue";
 import { ToggleButton } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-center gap-3">
@@ -11,3 +11,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
         Like
       </ToggleButton>
     </div>);
+export default Disabled;

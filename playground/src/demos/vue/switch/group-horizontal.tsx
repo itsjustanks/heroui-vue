@@ -26,3 +26,4 @@ export default defineComponent(() => () => <SwitchGroup class="overflow-x-auto" 
         </Switch.Content>
       </Switch>
     </SwitchGroup>);
+export default GroupHorizontal;

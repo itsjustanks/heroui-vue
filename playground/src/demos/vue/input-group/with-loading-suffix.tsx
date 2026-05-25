@@ -8,3 +8,4 @@ export default defineComponent(() => () => <TextField class="w-full max-w-[280px
         </InputGroup.Suffix>
       </InputGroup>
     </TextField>);
+export default WithLoadingSuffix;

@@ -1,7 +1,7 @@
 import {Calendar} from "@gravity-ui/icons";
 import {DateField, Label} from "@heroui/react";
 
-export function WithSuffixIcon() {
+function WithSuffixIcon() {
   return (
     <DateField className="w-[256px]" name="date">
       <Label>Date</Label>

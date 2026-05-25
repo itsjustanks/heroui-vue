@@ -1,6 +1,6 @@
 import {Label, Slider} from "@heroui/react";
 
-export function Default() {
+function Default() {
   return (
     <Slider className="w-full max-w-xs" defaultValue={30}>
       <Label>Volume</Label>

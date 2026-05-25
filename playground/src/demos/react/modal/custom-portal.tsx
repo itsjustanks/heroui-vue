@@ -1,7 +1,7 @@
 import {Button, Modal} from "@heroui/react";
 import {useCallback, useRef, useState} from "react";
 
-export function CustomPortal() {
+function CustomPortal() {
   const portalRef = useRef<HTMLDivElement>(null);
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 

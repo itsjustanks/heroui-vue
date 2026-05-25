@@ -36,3 +36,4 @@ export default defineComponent(() => () => <ComboBox class="w-[256px]">
       </ComboBox.Popover>
       <Description>Search and select your favorite animal</Description>
     </ComboBox>);
+export default WithDescription;

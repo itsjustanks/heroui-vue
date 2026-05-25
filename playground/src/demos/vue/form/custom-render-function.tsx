@@ -1,4 +1,4 @@
-import { Check } from "@gravity-ui/icons";
+import { Check } from "../../../gravity-icons-vue";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -54,3 +54,4 @@ export default defineComponent(() => {
       </div>
     </Form>;
 });
+export default CustomRenderFunction;

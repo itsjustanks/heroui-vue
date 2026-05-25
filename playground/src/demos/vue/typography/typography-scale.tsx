@@ -60,3 +60,4 @@ export default defineComponent(() => () => <div class="flex w-full flex-col divi
           <Typography type={row.type}>{row.sample}</Typography>
         </div>)}
     </div>);
+export default TypographyScale;

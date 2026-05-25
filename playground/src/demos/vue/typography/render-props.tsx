@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="flex max-w-xl flex-col ga
         The render prop can swap the underlying element while preserving HeroUI props and styles.
       </Typography>
     </div>);
+export default RenderProps;

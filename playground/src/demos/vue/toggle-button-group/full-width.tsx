@@ -1,4 +1,4 @@
-import { Bold, Italic, Strikethrough, TextAlignCenter, TextAlignLeft, TextAlignRight, Underline } from "@gravity-ui/icons";
+import { Bold, Italic, Strikethrough, TextAlignCenter, TextAlignLeft, TextAlignRight, Underline } from "../../../gravity-icons-vue";
 import { ToggleButton, ToggleButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="w-full max-w-md space-y-3">
@@ -36,3 +36,4 @@ export default defineComponent(() => () => <div class="w-full max-w-md space-y-3
         </ToggleButton>
       </ToggleButtonGroup>
     </div>);
+export default FullWidth;

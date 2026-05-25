@@ -29,3 +29,4 @@ export default defineComponent(() => () => <div class="flex w-full max-w-64 flex
         <Description>Increments by 10</Description>
       </NumberField>
     </div>);
+export default WithStep;

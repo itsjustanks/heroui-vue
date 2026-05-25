@@ -19,3 +19,4 @@ export default defineComponent(() => {
       <ErrorMessage>{!!isInvalid.value && <>Please select at least one category</>}</ErrorMessage>
     </TagGroup>;
 });
+export default TagGroupWithErrorMessage;

@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {Description, InputGroup, Label, TextField} from "@heroui/react";
 
-export function Required() {
+function Required() {
   return (
     <div className="flex flex-col gap-4">
       <TextField isRequired className="w-full max-w-[280px]" name="email">

@@ -1,6 +1,6 @@
 import {AlertDialog, Button} from "@heroui/react";
 
-export function Placements() {
+function Placements() {
   const placements = ["auto", "top", "center", "bottom"] as const;
 
   return (

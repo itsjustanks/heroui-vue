@@ -37,3 +37,4 @@ export default defineComponent(() => () => <Surface class="w-[256px] rounded-3xl
         </ListBox.Item>
       </ListBox>
     </Surface>);
+export default MultiSelect;

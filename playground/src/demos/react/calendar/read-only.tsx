@@ -1,7 +1,7 @@
 import {Calendar, Description} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 
-export function ReadOnly() {
+function ReadOnly() {
   return (
     <div className="flex flex-col items-center gap-4">
       <Calendar isReadOnly aria-label="Event date" defaultValue={today(getLocalTimeZone())}>

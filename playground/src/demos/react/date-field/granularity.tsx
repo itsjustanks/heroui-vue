@@ -5,7 +5,7 @@ import {DateField, Label, ListBox, Select, Tooltip} from "@heroui/react";
 import {parseDate, parseZonedDateTime} from "@internationalized/date";
 import {useState} from "react";
 
-export function Granularity() {
+function Granularity() {
   const granularityOptions = [
     {id: "day", label: "Day"},
     {id: "hour", label: "Hour"},

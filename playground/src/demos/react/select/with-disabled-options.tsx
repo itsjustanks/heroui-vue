@@ -1,6 +1,6 @@
 import {Label, ListBox, Select} from "@heroui/react";
 
-export function WithDisabledOptions() {
+function WithDisabledOptions() {
   return (
     <Select className="w-[256px]" disabledKeys={["cat", "kangaroo"]} placeholder="Select an animal">
       <Label>Animal</Label>

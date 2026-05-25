@@ -19,3 +19,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         <Description>Custom icon children</Description>
       </SearchField>
     </div>);
+export default CustomIcons;

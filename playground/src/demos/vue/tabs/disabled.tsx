@@ -27,3 +27,4 @@ export default defineComponent(() => () => <Tabs class="w-full max-w-md">
         <p>This tab is also available for selection.</p>
       </Tabs.Panel>
     </Tabs>);
+export default Disabled;

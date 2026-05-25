@@ -38,3 +38,4 @@ export default defineComponent(() => () => <DatePicker isDisabled class="w-64" n
         </Calendar>
       </DatePicker.Popover>
     </DatePicker>);
+export default Disabled;

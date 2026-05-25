@@ -1,6 +1,6 @@
 import {Label, Tag, TagGroup} from "@heroui/react";
 
-export function TagGroupVariants() {
+function TagGroupVariants() {
   return (
     <div className="flex flex-col gap-8">
       <TagGroup selectionMode="single" variant="default">

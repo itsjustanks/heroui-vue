@@ -2,7 +2,7 @@ import {DateField, DateRangePicker, Label, RangeCalendar} from "@heroui/react";
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {I18nProvider} from "react-aria-components";
 
-export function InternationalCalendar() {
+function InternationalCalendar() {
   const start = today(getLocalTimeZone());
 
   return (

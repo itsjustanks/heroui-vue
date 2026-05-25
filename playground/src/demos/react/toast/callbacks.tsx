@@ -1,7 +1,7 @@
 import {Button, toast} from "@heroui/react";
 import React from "react";
 
-export function Callbacks() {
+function Callbacks() {
   const [closedHistory, setClosedHistory] = React.useState<Array<{message: string; time: string}>>(
     [],
   );

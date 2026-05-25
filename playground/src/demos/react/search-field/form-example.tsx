@@ -1,7 +1,7 @@
 import {Button, Description, FieldError, Form, Label, SearchField, Spinner} from "@heroui/react";
 import React from "react";
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = React.useState("");
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const MIN_LENGTH = 3;

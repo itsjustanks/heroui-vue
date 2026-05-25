@@ -4,7 +4,7 @@ export default defineComponent(() => {
   const isSelected = ref(true);
   return () => <div class="flex flex-col gap-3">
       <div class="flex items-center gap-3">
-        <Checkbox id="email-notifications" isSelected={isSelected.value} onChange={setIsSelected}>
+        <Checkbox id="email-notifications" isSelected={isSelected.value} onChange={v => isSelected.value = v}>
           <Checkbox.Control>
             <Checkbox.Indicator />
           </Checkbox.Control>
@@ -18,3 +18,4 @@ export default defineComponent(() => {
       </p>
     </div>;
 });
+export default Controlled;

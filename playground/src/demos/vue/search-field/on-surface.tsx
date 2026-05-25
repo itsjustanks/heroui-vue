@@ -20,3 +20,4 @@ export default defineComponent(() => () => <Surface class="flex w-full max-w-sm 
         <Description>Use filters to refine your search</Description>
       </SearchField>
     </Surface>);
+export default OnSurface;

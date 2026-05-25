@@ -1,6 +1,6 @@
 import {Input, Label, TextField} from "@heroui/react";
 
-export function InputTypes() {
+function InputTypes() {
   return (
     <div className="flex w-full max-w-64 flex-col gap-4">
       <TextField name="password" type="password">

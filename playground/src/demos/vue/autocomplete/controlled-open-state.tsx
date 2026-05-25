@@ -27,7 +27,7 @@ export default defineComponent(() => {
     name: "Washington"
   }];
   return () => <div class="space-y-4">
-      <Autocomplete class="w-[256px]" isOpen={isOpen.value} placeholder="Select one" selectionMode="single" onOpenChange={setIsOpen}>
+      <Autocomplete class="w-[256px]" isOpen={isOpen.value} placeholder="Select one" selectionMode="single" onOpenChange={v => isOpen.value = v}>
         <Label>State</Label>
         <Autocomplete.Trigger>
           <Autocomplete.Value />
@@ -56,3 +56,4 @@ export default defineComponent(() => {
       <p class="text-sm text-muted">Autocomplete is {isOpen.value ? "open" : "closed"}</p>
     </div>;
 });
+export default ControlledOpenState;

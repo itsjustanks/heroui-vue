@@ -1,6 +1,6 @@
 import {InputOTP, Label, Link} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <div className="flex w-[280px] flex-col gap-2">
       <div className="flex flex-col gap-1">

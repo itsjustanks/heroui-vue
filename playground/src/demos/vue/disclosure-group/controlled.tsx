@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, QrCode } from "@gravity-ui/icons";
+import { ChevronDown, ChevronUp, QrCode } from "../../../gravity-icons-vue";
 import { Button, Disclosure, DisclosureGroup, Separator, useDisclosureGroupNavigation } from "@itsjustanks/heroui-vue";
 import { Icon } from "@iconify/react";
 import { cn } from "tailwind-variants";
@@ -88,3 +88,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default Controlled;

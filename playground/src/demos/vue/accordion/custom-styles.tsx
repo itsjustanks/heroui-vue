@@ -1,4 +1,4 @@
-import { ChevronDown } from "@gravity-ui/icons";
+import { ChevronDown } from "../../../gravity-icons-vue";
 import { Accordion, cn } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const items = [{
@@ -39,3 +39,4 @@ export default defineComponent(() => () => <Accordion class="bg-surface-1/10 w-f
           </Accordion.Panel>
         </Accordion.Item>)}
     </Accordion>);
+export default CustomStyles;

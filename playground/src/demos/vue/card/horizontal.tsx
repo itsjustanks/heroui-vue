@@ -22,3 +22,4 @@ export default defineComponent(() => () => <Card class="w-full items-stretch md:
         </Card.Footer>
       </div>
     </Card>);
+export default Horizontal;

@@ -24,7 +24,7 @@ const items = [
   },
 ];
 
-export function CustomStyles() {
+function CustomStyles() {
   return (
     <Accordion className="bg-surface-1/10 w-full max-w-md rounded-2xl" variant="surface">
       {items.map((item, index) => (

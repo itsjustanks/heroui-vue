@@ -4,7 +4,7 @@ import {CircleXmarkFill} from "@gravity-ui/icons";
 import {Description, EmptyState, Label, Tag, TagGroup} from "@heroui/react";
 import {useState} from "react";
 
-export function TagGroupWithRemoveButton() {
+function TagGroupWithRemoveButton() {
   type TagItem = {id: string; name: string};
 
   const [tags, setTags] = useState<TagItem[]>([

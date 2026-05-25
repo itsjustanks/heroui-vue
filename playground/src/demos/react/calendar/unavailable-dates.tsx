@@ -4,7 +4,7 @@ import {Calendar, Description} from "@heroui/react";
 import {isWeekend} from "@internationalized/date";
 import {useLocale} from "react-aria-components";
 
-export function UnavailableDates() {
+function UnavailableDates() {
   const {locale} = useLocale();
   const isDateUnavailable = (date: DateValue) => isWeekend(date, locale);
 

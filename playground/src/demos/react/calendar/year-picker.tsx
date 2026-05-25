@@ -1,6 +1,6 @@
 import {Calendar} from "@heroui/react";
 
-export function YearPicker() {
+function YearPicker() {
   return (
     <Calendar aria-label="Event date">
       <Calendar.Header>

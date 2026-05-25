@@ -19,3 +19,4 @@ export default defineComponent(() => () => <div class="flex h-full max-w-xl flex
         </Button>
       </div>
     </div>);
+export default Simple;

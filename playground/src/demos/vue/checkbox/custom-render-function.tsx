@@ -8,3 +8,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
       </Checkbox>
       <Label htmlFor="basic-terms">Accept terms and conditions</Label>
     </div>);
+export default CustomRenderFunction;

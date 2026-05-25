@@ -1,6 +1,6 @@
 import {DateField, FieldError, Label} from "@heroui/react";
 
-export function Invalid() {
+function Invalid() {
   return (
     <div className="flex flex-col gap-4">
       <DateField isInvalid isRequired className="w-[256px]" name="date">

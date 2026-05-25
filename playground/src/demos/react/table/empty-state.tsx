@@ -1,7 +1,7 @@
 import {EmptyState, Table} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
-export function EmptyStateDemo() {
+function EmptyStateDemo() {
   return (
     <Table className="min-h-[200px]">
       <Table.ScrollContainer>

@@ -2,7 +2,7 @@ import type {Key} from "@heroui/react";
 
 import {Avatar, Description, EmptyState, Label, Tag, TagGroup, useListData} from "@heroui/react";
 
-export function TagGroupWithListData() {
+function TagGroupWithListData() {
   type User = {
     id: string;
     name: string;

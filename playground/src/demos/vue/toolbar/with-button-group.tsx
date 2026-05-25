@@ -1,4 +1,4 @@
-import { ArrowUturnCcwLeft, ArrowUturnCwRight, Bold, Italic, TextAlignCenter, TextAlignLeft, TextAlignRight, Underline } from "@gravity-ui/icons";
+import { ArrowUturnCcwLeft, ArrowUturnCwRight, Bold, Italic, TextAlignCenter, TextAlignLeft, TextAlignRight, Underline } from "../../../gravity-icons-vue";
 import { Button, ButtonGroup, Separator, ToggleButton, ToggleButtonGroup, Toolbar } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Toolbar aria-label="Editor toolbar">
@@ -42,3 +42,4 @@ export default defineComponent(() => () => <Toolbar aria-label="Editor toolbar">
         </Button>
       </ButtonGroup>
     </Toolbar>);
+export default WithButtonGroup;

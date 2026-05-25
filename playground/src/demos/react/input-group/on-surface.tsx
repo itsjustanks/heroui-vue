@@ -1,7 +1,7 @@
 import {Envelope} from "@gravity-ui/icons";
 import {Description, InputGroup, Label, Surface, TextField} from "@heroui/react";
 
-export function OnSurface() {
+function OnSurface() {
   return (
     <Surface className="rounded-2xl p-6">
       <TextField className="w-full max-w-[280px]" name="email">

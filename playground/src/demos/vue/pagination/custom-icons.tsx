@@ -32,3 +32,4 @@ export default defineComponent(() => {
       </Pagination.Content>
     </Pagination>;
 });
+export default PaginationCustomIcons;

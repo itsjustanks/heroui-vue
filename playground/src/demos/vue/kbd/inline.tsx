@@ -36,3 +36,4 @@ export default defineComponent(() => () => <div class="space-y-4">
         regularly.
       </p>
     </div>);
+export default InlineUsage;

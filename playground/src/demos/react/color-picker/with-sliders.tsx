@@ -3,7 +3,7 @@ import type {ColorChannel, ColorSpace} from "@heroui/react";
 import {ColorPicker, ColorSlider, ColorSwatch, Label, ListBox, Select} from "@heroui/react";
 import {useState} from "react";
 
-export function WithSliders() {
+function WithSliders() {
   const [colorSpace, setColorSpace] = useState<ColorSpace>("hsl");
 
   const colorChannelsByColorSpace: Record<ColorSpace, ColorChannel[]> = {

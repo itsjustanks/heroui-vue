@@ -8,3 +8,4 @@ export default defineComponent(() => () => <Checkbox id="label-marketing">
         <Label htmlFor="label-marketing">Send me marketing emails</Label>
       </Checkbox.Content>
     </Checkbox>);
+export default WithLabel;

@@ -1,6 +1,6 @@
 import {Label, TimeField} from "@heroui/react";
 
-export function CustomRenderFunction() {
+function CustomRenderFunction() {
   return (
     <TimeField
       className="w-[256px]"

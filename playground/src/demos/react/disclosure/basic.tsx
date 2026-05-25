@@ -3,7 +3,7 @@ import {Button, Disclosure} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import React from "react";
 
-export function Basic() {
+function Basic() {
   const [isExpanded, setIsExpanded] = React.useState(true);
 
   return (

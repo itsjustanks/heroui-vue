@@ -14,7 +14,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function UserSelection() {
+function UserSelection() {
   const users = [
     {
       avatarUrl: "https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg",

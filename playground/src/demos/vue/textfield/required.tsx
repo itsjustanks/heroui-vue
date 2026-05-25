@@ -5,3 +5,4 @@ export default defineComponent(() => () => <TextField isRequired class="w-full m
       <Input placeholder="John Doe" />
       <Description>This field is required</Description>
     </TextField>);
+export default Required;

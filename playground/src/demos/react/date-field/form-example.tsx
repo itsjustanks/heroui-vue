@@ -5,7 +5,7 @@ import {Button, DateField, Description, FieldError, Form, Label} from "@heroui/r
 import {getLocalTimeZone, today} from "@internationalized/date";
 import {useState} from "react";
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = useState<DateValue | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const todayDate = today(getLocalTimeZone());

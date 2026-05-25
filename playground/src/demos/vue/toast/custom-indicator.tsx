@@ -1,4 +1,4 @@
-import { Star } from "@gravity-ui/icons";
+import { Star } from "../../../gravity-icons-vue";
 import { Button, toast } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex h-full max-w-xl flex-col items-center justify-center">
@@ -8,3 +8,4 @@ export default defineComponent(() => () => <div class="flex h-full max-w-xl flex
         Custom indicator
       </Button>
     </div>);
+export default CustomIndicator;

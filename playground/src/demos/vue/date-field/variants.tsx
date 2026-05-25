@@ -14,3 +14,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-4">
         </DateField.Group>
       </DateField>
     </div>);
+export default Variants;

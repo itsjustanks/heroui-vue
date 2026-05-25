@@ -8,3 +8,4 @@ export default defineComponent(() => () => <div class="shadow-panel w-[250px] sp
         <Skeleton class="h-3 w-2/5 rounded-lg" />
       </div>
     </div>);
+export default Basic;

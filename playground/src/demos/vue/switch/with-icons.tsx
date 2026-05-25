@@ -1,4 +1,4 @@
-import { BellFill, BellSlash, Check, Microphone, MicrophoneSlash, Moon, Power, Sun, VolumeFill, VolumeSlashFill } from "@gravity-ui/icons";
+import { BellFill, BellSlash, Check, Microphone, MicrophoneSlash, Moon, Power, Sun, VolumeFill, VolumeSlashFill } from "../../../gravity-icons-vue";
 import { Switch } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => {
@@ -45,3 +45,4 @@ export default defineComponent(() => {
         </Switch>)}
     </div>;
 });
+export default WithIcons;

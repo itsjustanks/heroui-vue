@@ -19,7 +19,7 @@ const items = [
   },
 ];
 
-export function WithContent() {
+function WithContent() {
   return (
     <div className="max-w-md space-y-4">
       {items.map((item, index) => (

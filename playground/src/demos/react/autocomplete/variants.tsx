@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function Variants() {
+function Variants() {
   const [selectedKey1, setSelectedKey1] = useState<Key | null>(null);
   const [selectedKey2, setSelectedKey2] = useState<Key | null>(null);
   const [selectedKeys1, setSelectedKeys1] = useState<Key[]>([]);

@@ -12,7 +12,7 @@ import {
 } from "@heroui/react";
 import {useState} from "react";
 
-export function WithSections() {
+function WithSections() {
   const [selectedKey, setSelectedKey] = useState<Key | null>(null);
   const {contains} = useFilter({sensitivity: "base"});
 

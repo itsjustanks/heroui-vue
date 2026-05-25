@@ -6,3 +6,4 @@ export default defineComponent(() => () => <ProgressCircle isIndeterminate aria-
         <ProgressCircle.FillCircle />
       </ProgressCircle.Track>
     </ProgressCircle>);
+export default Indeterminate;

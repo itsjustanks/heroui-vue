@@ -1,7 +1,7 @@
 import {Alert, Button, CloseButton, Spinner} from "@heroui/react";
 import React from "react";
 
-export function Basic() {
+function Basic() {
   return (
     <div className="grid w-full max-w-xl gap-4">
       {/* Default - General information */}

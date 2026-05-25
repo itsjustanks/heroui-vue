@@ -46,3 +46,4 @@ export default defineComponent(() => {
       </Pagination>
     </div>;
 });
+export default PaginationWithEllipsis;

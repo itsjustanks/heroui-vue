@@ -183,3 +183,4 @@ export default defineComponent(() => {
       </Table.ScrollContainer>
     </Table>;
 });
+export default AsyncLoading;

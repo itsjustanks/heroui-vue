@@ -7,3 +7,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-3">
         <Skeleton class="h-3 w-24 rounded-lg" />
       </div>
     </div>);
+export default UserProfile;

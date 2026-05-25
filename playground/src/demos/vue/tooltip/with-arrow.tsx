@@ -17,3 +17,4 @@ export default defineComponent(() => () => <div class="flex items-center gap-4">
         </Tooltip.Content>
       </Tooltip>
     </div>);
+export default TooltipWithArrow;

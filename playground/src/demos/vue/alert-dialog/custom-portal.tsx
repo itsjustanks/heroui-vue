@@ -62,3 +62,4 @@ export default defineComponent(() => {
       </div>
     </div>;
 });
+export default CustomPortal;

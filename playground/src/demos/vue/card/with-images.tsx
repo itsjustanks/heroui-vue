@@ -1,4 +1,4 @@
-import { CircleDollar } from "@gravity-ui/icons";
+import { CircleDollar } from "../../../gravity-icons-vue";
 import { Avatar, Button, Card, CloseButton, Link } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex w-full items-center justify-center">
@@ -174,3 +174,4 @@ export default defineComponent(() => () => <div class="flex w-full items-center 
         </div>
       </div>
     </div>);
+export default WithImages;

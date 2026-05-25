@@ -43,3 +43,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </Checkbox>
       </div>
     </div>);
+export default FullRounded;

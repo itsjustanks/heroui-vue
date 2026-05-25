@@ -1,6 +1,6 @@
 import {FieldError, Label, TimeField} from "@heroui/react";
 
-export function Invalid() {
+function Invalid() {
   return (
     <div className="flex flex-col gap-4">
       <TimeField isInvalid isRequired className="w-[256px]" name="time">

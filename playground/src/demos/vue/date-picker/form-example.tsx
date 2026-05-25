@@ -19,7 +19,7 @@ export default defineComponent(() => {
     }, 1200);
   };
   return () => <Form class="flex w-64 flex-col gap-3" onSubmit={handleSubmit}>
-      <DatePicker isRequired isInvalid={isInvalid} minValue={currentDate} name="appointmentDate" value={value.value} onChange={setValue}>
+      <DatePicker isRequired isInvalid={isInvalid} minValue={currentDate} name="appointmentDate" value={value.value} onChange={v => value.value = v}>
         <Label>Appointment date</Label>
         <DateField.Group fullWidth>
           <DateField.Input>{segment => <DateField.Segment segment={segment} />}</DateField.Input>
@@ -61,3 +61,4 @@ export default defineComponent(() => {
       </Button>
     </Form>;
 });
+export default FormExample;

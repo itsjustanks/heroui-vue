@@ -2,7 +2,7 @@ import {Heart, HeartFill} from "@gravity-ui/icons";
 import {ToggleButton} from "@heroui/react";
 import {useState} from "react";
 
-export function Controlled() {
+function Controlled() {
   const [isSelected, setIsSelected] = useState(false);
 
   return (

@@ -29,3 +29,4 @@ export default defineComponent(() => () => <Tabs class="w-full max-w-md" render=
         <p>Generate and download detailed reports.</p>
       </Tabs.Panel>
     </Tabs>);
+export default CustomRenderFunction;

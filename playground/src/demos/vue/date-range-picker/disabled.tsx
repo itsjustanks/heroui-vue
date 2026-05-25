@@ -54,3 +54,4 @@ export default defineComponent(() => {
       </DateRangePicker.Popover>
     </DateRangePicker>;
 });
+export default Disabled;

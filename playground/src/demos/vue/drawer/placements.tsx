@@ -35,3 +35,4 @@ export default defineComponent(() => {
         </Drawer>)}
     </div>;
 });
+export default Placements;

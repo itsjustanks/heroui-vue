@@ -5,3 +5,4 @@ export default defineComponent(() => () => <TextField isDisabled class="w-full m
       <Input placeholder="Auto-generated" />
       <Description>This field cannot be edited</Description>
     </TextField>);
+export default Disabled;

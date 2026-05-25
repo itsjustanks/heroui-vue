@@ -1,6 +1,6 @@
 import {RangeCalendar} from "@heroui/react";
 
-export function YearPicker() {
+function YearPicker() {
   return (
     <RangeCalendar aria-label="Trip dates">
       <RangeCalendar.Header>

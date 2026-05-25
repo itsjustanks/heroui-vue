@@ -5,7 +5,7 @@ import {getLocalTimeZone, isWeekend, today} from "@internationalized/date";
 import {useState} from "react";
 import {useLocale} from "react-aria-components";
 
-export function BookingCalendar() {
+function BookingCalendar() {
   const [selectedDate, setSelectedDate] = useState<DateValue | null>(null);
   const {locale} = useLocale();
 

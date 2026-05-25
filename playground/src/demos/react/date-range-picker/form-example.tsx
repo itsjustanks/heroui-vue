@@ -18,7 +18,7 @@ type DateRange = {
   end: DateValue;
 };
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = useState<DateRange | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const currentDate = today(getLocalTimeZone());

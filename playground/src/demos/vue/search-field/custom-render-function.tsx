@@ -8,3 +8,4 @@ export default defineComponent(() => () => <SearchField name="search" render={pr
         <SearchField.ClearButton />
       </SearchField.Group>
     </SearchField>);
+export default CustomRenderFunction;

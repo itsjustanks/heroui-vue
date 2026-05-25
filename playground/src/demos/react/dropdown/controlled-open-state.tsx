@@ -1,7 +1,7 @@
 import {Button, Dropdown, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function ControlledOpenState() {
+function ControlledOpenState() {
   const [open, setOpen] = useState(false);
 
   return (

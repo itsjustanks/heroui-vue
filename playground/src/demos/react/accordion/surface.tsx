@@ -47,7 +47,7 @@ const items = [
   },
 ];
 
-export function Surface() {
+function Surface() {
   return (
     <Accordion className="w-full max-w-md" variant="surface">
       {items.map((item, index) => (

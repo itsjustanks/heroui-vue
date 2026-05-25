@@ -1,7 +1,7 @@
 import {Bold, Italic, Underline} from "@gravity-ui/icons";
 import {ToggleButton, ToggleButtonGroup} from "@heroui/react";
 
-export function Disabled() {
+function Disabled() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">

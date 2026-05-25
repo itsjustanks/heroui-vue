@@ -1,6 +1,6 @@
 import {ColorSwatch} from "@heroui/react";
 
-export function ColorSwatchTransparency() {
+function ColorSwatchTransparency() {
   return (
     <div className="flex items-center gap-3">
       <ColorSwatch aria-label="100% opacity" color="rgba(4, 133, 247, 1)" />

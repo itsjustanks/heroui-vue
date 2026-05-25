@@ -3,7 +3,7 @@ import {Ripple} from "m3-ripple";
 
 import "m3-ripple/ripple.css";
 
-export function RippleEffect() {
+function RippleEffect() {
   return (
     <Button variant="secondary">
       <Ripple />

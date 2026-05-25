@@ -3,7 +3,7 @@ import type {Color} from "@heroui/react";
 import {Button, ColorField, ColorSwatch, Description, Form, Label} from "@heroui/react";
 import {useState} from "react";
 
-export function FormExample() {
+function FormExample() {
   const [value, setValue] = useState<Color | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 

@@ -1,4 +1,4 @@
-import { ChevronDown, CreditCard, Receipt, ShoppingBag } from "@gravity-ui/icons";
+import { ChevronDown, CreditCard, Receipt, ShoppingBag } from "../../../gravity-icons-vue";
 import { Accordion } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 const items = [{
@@ -30,3 +30,4 @@ export default defineComponent(() => () => <Accordion hideSeparator class="w-ful
           </Accordion.Panel>
         </Accordion.Item>)}
     </Accordion>);
+export default WithoutSeparator;

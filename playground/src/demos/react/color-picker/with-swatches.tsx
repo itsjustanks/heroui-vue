@@ -7,7 +7,7 @@ import {
   Label,
 } from "@heroui/react";
 
-export function WithSwatches() {
+function WithSwatches() {
   const presets = [
     "#ef4444",
     "#f97316",

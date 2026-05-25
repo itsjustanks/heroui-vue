@@ -50,3 +50,4 @@ export default defineComponent(() => {
       <Button type="submit">Submit</Button>
     </Form>;
 });
+export default Required;

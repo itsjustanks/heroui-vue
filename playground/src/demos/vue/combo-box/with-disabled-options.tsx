@@ -35,3 +35,4 @@ export default defineComponent(() => () => <ComboBox class="w-[256px]" disabledK
         </ListBox>
       </ComboBox.Popover>
     </ComboBox>);
+export default WithDisabledOptions;

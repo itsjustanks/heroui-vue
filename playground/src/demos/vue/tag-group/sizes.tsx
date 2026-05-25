@@ -26,3 +26,4 @@ export default defineComponent(() => () => <div class="flex flex-col gap-6">
         </TagGroup.List>
       </TagGroup>
     </div>);
+export default TagGroupSizes;

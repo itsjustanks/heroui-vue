@@ -1,6 +1,6 @@
 import {Calendar, DateField, DatePicker, Label} from "@heroui/react";
 
-export function Basic() {
+function Basic() {
   return (
     <DatePicker className="w-64" name="date">
       <Label>Date</Label>

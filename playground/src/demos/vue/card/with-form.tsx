@@ -41,3 +41,4 @@ export default defineComponent(() => {
       </Form>
     </Card>;
 });
+export default WithForm;

@@ -1,7 +1,7 @@
 import {Description, Input, Label, TextArea, TextField} from "@heroui/react";
 import React from "react";
 
-export function Controlled() {
+function Controlled() {
   const [name, setName] = React.useState("");
   const [bio, setBio] = React.useState("");
 

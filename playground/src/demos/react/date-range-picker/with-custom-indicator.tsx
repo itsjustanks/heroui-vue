@@ -1,7 +1,7 @@
 import {DateField, DateRangePicker, Description, Label, RangeCalendar} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
-export function WithCustomIndicator() {
+function WithCustomIndicator() {
   return (
     <DateRangePicker className="w-72" endName="endDate" startName="startDate">
       <Label>Trip dates</Label>

@@ -1,4 +1,4 @@
-import { Bold, Italic, Underline } from "@gravity-ui/icons";
+import { Bold, Italic, Underline } from "../../../gravity-icons-vue";
 import { ToggleButton, ToggleButtonGroup } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <div class="flex items-start gap-8">
@@ -35,3 +35,4 @@ export default defineComponent(() => () => <div class="flex items-start gap-8">
         </ToggleButtonGroup>
       </div>
     </div>);
+export default Orientation;

@@ -78,3 +78,4 @@ export default defineComponent(() => () => <RangeCalendar aria-label="Vacation p
         </div>
       </div>
     </RangeCalendar>);
+export default ThreeMonths;

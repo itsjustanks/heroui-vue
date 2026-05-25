@@ -62,3 +62,4 @@ export default defineComponent(() => {
       </div>
     </Form>;
 });
+export default FormExample;

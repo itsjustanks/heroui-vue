@@ -7,3 +7,4 @@ export default defineComponent(() => {
       <span class="text-sm text-muted">Clicked: {count.value} times</span>
     </div>;
 });
+export default Interactive;

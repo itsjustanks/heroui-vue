@@ -1,6 +1,6 @@
 import {InputGroup, Spinner, TextField} from "@heroui/react";
 
-export function WithLoadingSuffix() {
+function WithLoadingSuffix() {
   return (
     <TextField className="w-full max-w-[280px]" defaultValue="Sending..." name="status">
       <InputGroup>

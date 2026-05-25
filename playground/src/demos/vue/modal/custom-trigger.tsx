@@ -1,4 +1,4 @@
-import { Gear } from "@gravity-ui/icons";
+import { Gear } from "../../../gravity-icons-vue";
 import { Button, Modal } from "@itsjustanks/heroui-vue";
 import { defineComponent } from "vue";
 export default defineComponent(() => () => <Modal>
@@ -37,3 +37,4 @@ export default defineComponent(() => () => <Modal>
         </Modal.Container>
       </Modal.Backdrop>
     </Modal>);
+export default CustomTrigger;
