@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Card`, `Card.Header`, `Card.Title`,
  * `Card.Description`, `Card.Content`, `Card.Footer`. The flat part exports
  * (`CardHeader`, …) are available too, for callers that prefer named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/card
  */
 import { CardRoot } from './card'
 import { CardHeader } from './card-header'

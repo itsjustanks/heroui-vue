@@ -1,3 +1,6 @@
+/**
+ * @see https://www.heroui.com/docs/react/components/text-area
+ */
 import { TextAreaRoot } from './textarea'
 
 /* -------------------------------------------------------------------------------------------------

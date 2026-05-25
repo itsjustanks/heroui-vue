@@ -9,6 +9,8 @@
  * for callers that prefer direct imports. `TooltipProvider` is a reka-ui
  * infrastructure helper (shared delay/skip timing) and has no HeroUI React
  * equivalent — exported flat only.
+ *
+ * @see https://www.heroui.com/docs/react/components/tooltip
  */
 import { TooltipRoot } from './tooltip'
 import { TooltipTrigger } from './tooltip-trigger'

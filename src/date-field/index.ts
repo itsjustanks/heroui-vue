@@ -9,6 +9,8 @@
  *   `DateField.Segment`        — individual date segment (DateInputGroup.Segment)
  *   `DateField.Prefix`         — leading adornment (DateInputGroup.Prefix)
  *   `DateField.Suffix`         — trailing adornment (DateInputGroup.Suffix)
+ *
+ * @see https://www.heroui.com/docs/react/components/date-field
  */
 import {
   DateInputGroupInput,

@@ -12,6 +12,8 @@
  * calendar inside the popover uses `DatePickerCalendar` — reka-ui scopes its
  * calendar primitives per picker, so the standalone `Calendar` cannot wire to
  * the picker value; `DatePickerCalendar` renders the identical `Calendar` DOM.
+ *
+ * @see https://www.heroui.com/docs/react/components/date-picker
  */
 import { DatePickerRoot } from './date-picker'
 import { DatePickerTrigger } from './date-picker-trigger'

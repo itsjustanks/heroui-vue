@@ -15,11 +15,13 @@
  * Additional helpers (not in HeroUI v3 but retained for reka-ui parity):
  *   `DropdownSub`              — sub-root (DropdownMenuSub)
  *   `DropdownSubPopover`       — nested submenu popover surface (carries overlay shim)
+ *
+ * @see https://www.heroui.com/docs/react/components/dropdown
  */
 import { DropdownRoot } from './dropdown-root'
 import { DropdownTrigger } from './dropdown-trigger'
 import { DropdownPopover } from './dropdown-popover'
-import { DropdownMenu } from './dropdown-menu'
+import { DropdownMenu as DropdownMenuList } from './dropdown-menu'
 import { DropdownSection } from './dropdown-section'
 import { DropdownItem } from './dropdown-item'
 import { DropdownItemIndicator } from './dropdown-item-indicator'
@@ -27,25 +29,45 @@ import { DropdownSubmenuIndicator } from './dropdown-submenu-indicator'
 import { DropdownSubmenuTrigger } from './dropdown-submenu-trigger'
 import { DropdownSub } from './dropdown-sub'
 import { DropdownSubPopover } from './dropdown-sub-popover'
+import { Separator } from '@/separator'
+import { h } from 'vue'
+
+const DropdownContent = (props: any, { slots, attrs }: any) => h(
+  DropdownPopover,
+  { ...attrs, class: props?.class, side: props?.side, align: props?.align, sideOffset: props?.sideOffset },
+  () => h(DropdownMenuList, null, () => slots.default?.())
+)
+
+const DropdownLabel = (props: any, { slots, attrs }: any) => h('div', { ...attrs, class: props?.class }, slots.default?.())
+
+const DropdownSeparator = (props: any, { attrs }: any) => h(Separator, { ...attrs, class: props?.class })
 
 /** Compound component — matches HeroUI v3 `Dropdown` API exactly. */
 export const Dropdown = Object.assign(DropdownRoot, {
   Root: DropdownRoot,
   Trigger: DropdownTrigger,
   Popover: DropdownPopover,
-  Menu: DropdownMenu,
+  /** @deprecated Use `Dropdown.Popover` with `Dropdown.Menu`. */
+  Content: DropdownContent,
+  Menu: DropdownMenuList,
   Section: DropdownSection,
+  Group: DropdownSection,
+  Label: DropdownLabel,
   Item: DropdownItem,
+  Separator: DropdownSeparator,
   ItemIndicator: DropdownItemIndicator,
   SubmenuIndicator: DropdownSubmenuIndicator,
   SubmenuTrigger: DropdownSubmenuTrigger,
 })
 
+/** @deprecated Use `Dropdown`. Kept for shadcn-style migration call sites. */
+export const DropdownMenu = Dropdown
+
 export {
   DropdownRoot,
   DropdownTrigger,
   DropdownPopover,
-  DropdownMenu,
+  DropdownMenuList,
   DropdownSection,
   DropdownItem,
   DropdownItemIndicator,

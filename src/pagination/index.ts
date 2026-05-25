@@ -6,6 +6,8 @@
  * `Pagination.Link`, `Pagination.Next`, `Pagination.NextIcon`,
  * `Pagination.Previous`, `Pagination.PreviousIcon`, `Pagination.Summary`.
  * Flat part exports use the `Pagination*` prefix.
+ *
+ * @see https://www.heroui.com/docs/react/components/pagination
  */
 import { PaginationRoot } from './pagination-root'
 import { PaginationContent } from './pagination-list'

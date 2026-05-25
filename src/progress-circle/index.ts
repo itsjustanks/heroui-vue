@@ -5,6 +5,8 @@
  * `.Root` / `.Track` / `.TrackCircle` / `.FillCircle` dot-notation parts.
  * The flat exports are available for named imports. Built over reka-ui
  * `ProgressRoot` for ARIA `progressbar` role semantics.
+ *
+ * @see https://www.heroui.com/docs/react/components/progress-circle
  */
 import { ProgressCircleRoot } from './progress-circle'
 import { ProgressCircleTrack } from './progress-circle-track'

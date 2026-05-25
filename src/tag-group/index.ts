@@ -21,6 +21,8 @@
  * Kept (convenience):
  *   TagsInputItemText  → re-exported as TagItemText for label-only use inside TagRoot.
  *   TagsInputInput     → re-exported as TagGroupInput for the free-text input field.
+ *
+ * @see https://www.heroui.com/docs/react/components/tag-group
  */
 import { TagGroupRoot } from './tags-input'
 import { TagGroupList } from './tags-input-list'
@@ -49,6 +51,12 @@ export const Tag = Object.assign(TagRoot, {
  * Named exports
  * -----------------------------------------------------------------------------------------------*/
 export { TagGroupRoot, TagGroupList, TagRoot, TagRemoveButton, TagItemText, TagGroupInput }
+export { TAG_GROUP_CONTEXT } from './tag-group-context'
+import { TAG_GROUP_CONTEXT } from './tag-group-context'
+import type { TagGroupContext as _TagGroupContext } from './tag-group-context'
+/** React-style value alias for `TAG_GROUP_CONTEXT`; type with the same name merges into this binding. */
+export const TagGroupContext = TAG_GROUP_CONTEXT
+export type TagGroupContext = _TagGroupContext
 
 /* -------------------------------------------------------------------------------------------------
  * Variants

@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Separator`, `Separator.Root`.
  * Flat export `SeparatorRoot` available for named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/separator
  */
 import { SeparatorRoot } from './separator'
 

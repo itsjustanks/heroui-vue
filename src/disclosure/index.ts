@@ -12,6 +12,8 @@
  *   `Disclosure.Content`    → DisclosureContent
  *   `Disclosure.Body`       → DisclosureBody
  *   `Disclosure.Indicator`  → DisclosureIndicator
+ *
+ * @see https://www.heroui.com/docs/react/components/disclosure
  */
 import { CollapsibleRoot } from './collapsible'
 import { CollapsibleHeading } from './collapsible-heading'
@@ -40,6 +42,16 @@ export {
   CollapsibleContent,
   CollapsibleBody,
   CollapsibleIndicator
+}
+
+/* Canonical HeroUI v3 flat exports — same implementations, parity names. */
+export {
+  CollapsibleRoot       as DisclosureRoot,
+  CollapsibleHeading    as DisclosureHeading,
+  CollapsibleTrigger    as DisclosureTrigger,
+  CollapsibleContent    as DisclosureContent,
+  CollapsibleBody       as DisclosureBody,
+  CollapsibleIndicator  as DisclosureIndicator
 }
 
 export { disclosureVariants } from '@heroui/styles'

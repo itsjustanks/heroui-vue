@@ -9,6 +9,8 @@
  *   ColorField (.Root, .Group, .Input, .Prefix, .Suffix)
  *   ColorSwatch (.Root)
  *   ColorSwatchPicker (.Root, .Item, .Swatch, .Indicator)
+ *
+ * @see https://www.heroui.com/docs/react/components/color-picker
  */
 import ColorPickerRoot, { ColorPickerTrigger, ColorPickerPopover } from './color-picker'
 import ColorAreaRoot, { ColorAreaThumb } from './color-area'

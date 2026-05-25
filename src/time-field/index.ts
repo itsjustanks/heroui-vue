@@ -9,6 +9,8 @@
  *   `TimeField.Segment`        — individual time segment (DateInputGroup.Segment)
  *   `TimeField.Prefix`         — leading adornment (DateInputGroup.Prefix)
  *   `TimeField.Suffix`         — trailing adornment (DateInputGroup.Suffix)
+ *
+ * @see https://www.heroui.com/docs/react/components/time-field
  */
 import {
   DateInputGroupInput,

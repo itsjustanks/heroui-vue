@@ -9,6 +9,26 @@ export { vHerouiState, type HerouiStateOptions } from './composables/use-heroui-
 export * from './accordion'
 export * from './alert-dialog'
 export * from './alert'
+/* Autocomplete — canonical Autocomplete-named exports live in src/autocomplete/. */
+export {
+  Autocomplete,
+  AutocompleteRoot,
+  AutocompleteInputGroup,
+  AutocompleteTrigger,
+  AutocompleteIndicator,
+  AutocompletePopover,
+  AutocompleteInput,
+  AutocompleteValue,
+  AutocompleteFilter,
+  AutocompleteItem,
+  AutocompleteItemIndicator,
+  AutocompleteGroup,
+  AutocompleteSeparator,
+  AutocompleteEmpty,
+  AutocompleteClearButton,
+  autocompleteVariants,
+  type AutocompleteVariants
+} from './autocomplete'
 export * from './avatar'
 export * from './badge'
 export * from './breadcrumbs'
@@ -21,7 +41,7 @@ export * from './checkbox-group'
 export * from './checkbox'
 export * from './chip'
 export * from './close-button'
-export * from './disclosure'
+export * from './color-input-group'
 export * from './color-picker'
 export * from './combo-box'
 export * from './date-field'
@@ -29,10 +49,28 @@ export * from './date-input-group'
 export * from './date-picker'
 export * from './date-range-picker'
 export * from './description'
+export * from './disclosure'
+export * from './disclosure-group'
 export * from './drawer'
 export * from './dropdown'
 export * from './empty-state'
-export * from './field'
+export * from './error-message'
+/* field — exports field-level primitives. FieldError/Fieldset live in their own dedicated folders. */
+export {
+  fieldVariants,
+  type FieldVariants,
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle
+} from './field'
+export * from './field-error'
+export * from './fieldset'
 export { Form, FormRoot } from './form'
 export * from './header'
 export * from './input-group'
@@ -42,7 +80,24 @@ export * from './item'
 export * from './kbd'
 export * from './label'
 export * from './link'
-export * from './list-box'
+/* ListBox — Item/Section live in their own canonical folders. */
+export {
+  ListBox,
+  ListBoxRoot,
+  ListBoxItemIndicator,
+  listboxVariants,
+  listboxItemVariants,
+  listboxSectionVariants,
+  type ListBoxVariants,
+  type ListBoxItemVariants,
+  type ListBoxSectionVariants
+} from './list-box'
+export * from './list-box-item'
+export * from './list-box-section'
+/* Menu — MenuItem/MenuSection live in their own canonical folders. */
+export { Menu, MenuRoot, menuVariants, type MenuVariants } from './menu'
+export * from './menu-item'
+export * from './menu-section'
 export * from './menubar'
 export * from './meter'
 export * from './modal'
@@ -51,6 +106,7 @@ export * from './pagination'
 export * from './popover'
 export * from './progress-circle'
 export * from './progress-bar'
+export * from './radio'
 export * from './radio-group'
 export * from './range-calendar'
 export * from './scroll-shadow'

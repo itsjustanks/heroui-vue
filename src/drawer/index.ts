@@ -8,6 +8,8 @@
  * Compound API (mirrors HeroUI v3 React `index.ts`):
  *   Drawer / Drawer.Root, .Trigger, .Backdrop, .Content, .Dialog,
  *   .Header, .Heading, .Body, .Footer, .Handle, .CloseTrigger
+ *
+ * @see https://www.heroui.com/docs/react/components/drawer
  */
 import DrawerRoot from './drawer'
 import DrawerTrigger from './drawer-trigger'

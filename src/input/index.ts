@@ -1,3 +1,6 @@
+/**
+ * @see https://www.heroui.com/docs/react/components/input
+ */
 import { InputRoot } from './input'
 
 /* -------------------------------------------------------------------------------------------------

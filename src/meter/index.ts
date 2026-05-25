@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Meter`, `Meter.Root`, `Meter.Output`, `Meter.Track`, `Meter.Fill`.
  * Flat exports: `MeterRoot`, `MeterOutput`, `MeterTrack`, `MeterFill`.
+ *
+ * @see https://www.heroui.com/docs/react/components/meter
  */
 import { MeterRoot } from './meter'
 import { MeterOutput } from './meter-output'

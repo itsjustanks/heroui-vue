@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Checkbox`, `Checkbox.Root`, `Checkbox.Control`,
  * `Checkbox.Indicator`, `Checkbox.Content`. Flat named exports available too.
+ *
+ * @see https://www.heroui.com/docs/react/components/checkbox
  */
 import { CheckboxRoot, CheckboxControl, CheckboxIndicator, CheckboxContent } from './checkbox'
 

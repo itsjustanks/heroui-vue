@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Typography` (= `TypographyRoot`) with
  * `.Root` / `.Heading` / `.Paragraph` / `.Code` / `.Prose` dot-notation parts.
  * The flat exports (`TypographyRoot`, `Heading`, …) are available for named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/typography
  */
 import { TypographyRoot } from './typography-root'
 import { Heading } from './typography-heading'

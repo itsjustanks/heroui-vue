@@ -4,6 +4,8 @@
  * Compound APIs (HeroUI v3):
  *   RadioGroup         → RadioGroup (Root only)
  *   Radio              → Radio.Root, Radio.Control, Radio.Indicator, Radio.Content
+ *
+ * @see https://www.heroui.com/docs/react/components/radio-group
  */
 import { RadioGroupRoot } from './radio-group'
 import { RadioRoot, RadioControl, RadioIndicator, RadioContent } from './radio-group-item'

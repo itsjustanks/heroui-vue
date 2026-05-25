@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Spinner`, `Spinner.Root`.
  * Flat export `SpinnerRoot` available for named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/spinner
  */
 import { SpinnerRoot } from './spinner'
 

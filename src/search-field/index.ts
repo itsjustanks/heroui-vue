@@ -11,6 +11,8 @@
  * HeroUI builds on React-Aria's `SearchField`; reka-ui has no equivalent, so
  * the small query-string state lives in `SearchFieldRoot` and is shared via
  * context. The BEM classes come from `@heroui/styles` `searchFieldVariants`.
+ *
+ * @see https://www.heroui.com/docs/react/components/search-field
  */
 import { SearchFieldRoot } from './search-field'
 import { SearchFieldGroup } from './search-field-group'

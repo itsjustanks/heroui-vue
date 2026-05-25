@@ -8,6 +8,8 @@
  * Compound API (mirrors HeroUI v3 React `index.ts`):
  *   Modal / Modal.Root, .Trigger, .Backdrop, .Container, .Dialog,
  *   .Header, .Icon, .Heading, .Body, .Footer, .CloseTrigger
+ *
+ * @see https://www.heroui.com/docs/react/components/modal
  */
 import ModalRoot from './modal'
 import ModalTrigger from './modal-trigger'

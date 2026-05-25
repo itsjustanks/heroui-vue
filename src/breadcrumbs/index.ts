@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Breadcrumbs`, `Breadcrumbs.Root`, `Breadcrumbs.Item`.
  * Flat exports: `BreadcrumbsRoot`, `BreadcrumbsItem`.
+ *
+ * @see https://www.heroui.com/docs/react/components/breadcrumbs
  */
 import { BreadcrumbsRoot } from './breadcrumb'
 import { BreadcrumbsItem } from './breadcrumb-item'

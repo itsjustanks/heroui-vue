@@ -25,6 +25,8 @@
  *
  * Keeps reka-ui primitives (`CalendarRoot`, `CalendarGrid`, `CalendarCell`,
  * `CalendarCellTrigger`, …) and `@internationalized/date` as the date engine.
+ *
+ * @see https://www.heroui.com/docs/react/components/calendar
  */
 import { CalendarRoot } from './calendar'
 import { CalendarHeader } from './calendar-header'
@@ -89,7 +91,13 @@ export {
 
 export {
   YearPickerContext,
-  useYearPicker
+  YearPickerStateContext,
+  useYearPicker,
+  useYearPickerState
+} from '@/calendar-year-picker'
+export type {
+  YearPickerContextValue,
+  YearPickerStateContextValue
 } from '@/calendar-year-picker'
 export { calendarVariants } from '@heroui/styles'
 export type { CalendarVariants } from '@heroui/styles'

@@ -12,6 +12,8 @@
  *   `DateInputGroup.Segment`
  *   `DateInputGroup.Prefix`
  *   `DateInputGroup.Suffix`
+ *
+ * @see https://www.heroui.com/docs/react/components/date-input-group
  */
 import { DateInputGroupRoot } from './date-input-group'
 import { DateInputGroupInput } from './date-input-group-input'

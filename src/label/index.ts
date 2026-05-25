@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Label`, `Label.Root`.
  * Flat export `LabelRoot` available for named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/label
  */
 import { LabelRoot } from './label'
 

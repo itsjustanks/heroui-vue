@@ -13,6 +13,8 @@
  * reka-ui's `DateRangePickerField`). The calendar inside the popover uses
  * `DateRangePickerCalendar` — reka-ui scopes its range-calendar primitives per
  * picker, so the standalone `RangeCalendar` cannot wire to the picker value.
+ *
+ * @see https://www.heroui.com/docs/react/components/date-range-picker
  */
 import { DateRangePickerRoot } from './date-range-picker'
 import { DateRangePickerTrigger } from './date-range-picker-trigger'

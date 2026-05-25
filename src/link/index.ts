@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Link` (= `LinkRoot`) with `.Root` / `.Icon`
  * dot-notation parts. The flat part exports (`LinkRoot`, `LinkIcon`) are
  * available too. Built over reka-ui `Primitive` for `as`/`asChild`.
+ *
+ * @see https://www.heroui.com/docs/react/components/link
  */
 import { LinkRoot } from './link-root'
 import { LinkIcon } from './link-icon'

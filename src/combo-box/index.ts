@@ -6,6 +6,8 @@
  *
  * HeroUI v3 ships this family as both `ComboBox` and `Autocomplete` (same
  * component, two doc entries). Both name sets are exported; `ComboBox*` is canonical.
+ *
+ * @see https://www.heroui.com/docs/react/components/combo-box
  */
 import { ComboBoxRoot } from './combo-box'
 import { ComboBoxInputGroup } from './combo-box-input-group'
@@ -32,18 +34,8 @@ export { ComboBoxGroup } from './combo-box-group'
 export { ComboBoxSeparator } from './combo-box-separator'
 export { ComboBoxEmpty } from './combo-box-empty'
 
-// Autocomplete aliases — HeroUI's `Autocomplete` family is the same combobox.
-export { ComboBoxRoot as Autocomplete }
-export { ComboBoxRoot as AutocompleteRoot }
-export { ComboBoxInputGroup as AutocompleteInputGroup }
-export { ComboBoxInput as AutocompleteInput } from './combo-box-input'
-export { ComboBoxTrigger as AutocompleteIndicator }
-export { ComboBoxPopover as AutocompletePopover }
-export { ComboBoxItem as AutocompleteItem } from './combo-box-item'
-export { ComboBoxItemIndicator as AutocompleteItemIndicator } from './combo-box-item-indicator'
-export { ComboBoxGroup as AutocompleteGroup } from './combo-box-group'
-export { ComboBoxSeparator as AutocompleteSeparator } from './combo-box-separator'
-export { ComboBoxEmpty as AutocompleteEmpty } from './combo-box-empty'
+// Note: `Autocomplete*` aliases are exported from `src/autocomplete/` —
+// see `import { Autocomplete } from 'heroui-vue/autocomplete'`.
 
 export { comboBoxVariants } from '@heroui/styles'
 export type { ComboBoxVariants } from '@heroui/styles'

@@ -9,6 +9,8 @@
  *   `Accordion.Panel`      → AccordionPanel (DisclosurePanel)
  *   `Accordion.Body`       → AccordionBody
  *   `Accordion.Indicator`  → AccordionIndicator
+ *
+ * @see https://www.heroui.com/docs/react/components/accordion
  */
 import { AccordionRoot } from './accordion'
 import { AccordionItem } from './accordion-item'

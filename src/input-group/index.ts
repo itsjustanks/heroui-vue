@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `InputGroup`, `InputGroup.Root`, `InputGroup.Input`,
  * `InputGroup.TextArea`, `InputGroup.Prefix`, `InputGroup.Suffix`.
  * Flat exports mirror HeroUI v3 React named exports exactly.
+ *
+ * @see https://www.heroui.com/docs/react/components/input-group
  */
 import { InputGroupRoot } from './input-group'
 import { InputGroupInput } from './input-group-input'

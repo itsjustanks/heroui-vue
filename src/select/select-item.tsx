@@ -24,12 +24,16 @@ export const SelectItem = defineComponent({
   name: 'SelectItem',
   inheritAttrs: false,
   props: {
-    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined }
+    class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    value: { type: [String, Number] as PropType<string | number>, required: true },
+    disabled: { type: Boolean as PropType<boolean | undefined>, default: undefined }
   },
   setup (props, { attrs, slots }) {
     return () => (
       <RekaSelectItem
         {...(attrs as Record<string, any>)}
+        value={props.value}
+        disabled={props.disabled}
         data-slot="list-box-item"
         class={cn('list-box-item list-box-item--default', props.class)}
       >

@@ -7,6 +7,8 @@
  *
  * Flat named exports (`PopoverRoot`, `PopoverTrigger`, …) are also available
  * for callers that prefer direct imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/popover
  */
 import { PopoverRoot } from './popover'
 import { PopoverTrigger } from './popover-trigger'

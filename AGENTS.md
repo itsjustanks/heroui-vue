@@ -126,6 +126,38 @@ import { Button } from 'heroui-vue'
 </template>
 ```
 
+## Extras Beyond Canonical HeroUI Surface
+
+The folders below are not on HeroUI React's component list. Keep them, but
+treat them as extensions — don't try to keep them in parity with upstream.
+
+| Folder | Why it exists |
+| --- | --- |
+| `compat/` | shadcn/reka-ui aliases (`Breadcrumb`, `ScrollArea`, `ToggleGroup`, `TagsInput`, `Progress`, `Textarea`) for apps migrating from local `@/components/*` wrappers. |
+| `composables/` | shared Vue composables (`vHerouiState`, etc.). |
+| `empty-state/` | matches upstream `@heroui/styles` `empty-state` folder; not yet in the canonical docs list. |
+| `header/` | matches upstream `@heroui/styles` `header` folder; not yet in the canonical docs list. |
+| `menubar/` | horizontal menubar surface (Pro-style). The Vue `Menu`/`MenuItem`/`MenuSection` canonical re-exports point here. |
+| `item/` | shared list-item primitive shared by ListBox/Menu rows. |
+| `shimmer/` | shimmer animation primitive used by `Skeleton`. |
+| `switch-group/` | grouping container for related `Switch` components. |
+| `calendar-year-picker/` | year-picker sub-surface shared by `Calendar` and `RangeCalendar`. |
+| `date-input-group/` | shared segmented date input used by `DateField`/`DatePicker`. |
+| `icons/` | bundled icon set (HeroUI gravity icons). |
+| `lib/` | internal helpers (`cn`, etc.). |
+
+## Naming Conventions
+
+- Folder names mirror `@heroui/styles` package dirs, not the docs URL slugs.
+  e.g., `src/textarea/` (not `text-area`) and `src/textfield/` (not `text-field`).
+- Public component names always match HeroUI React (`TextArea`, `TextField`,
+  `ProgressBar`, `Disclosure`, `Autocomplete`, …).
+- For canonical components that share an implementation folder (e.g.
+  `color-area`, `color-field`, `color-input-group`, `radio`, `list-box-item`,
+  `list-box-section`, `menu`, `menu-item`, `menu-section`, `field-error`,
+  `fieldset`, `error-message`, `autocomplete`, `disclosure-group`), thin
+  re-export folders mirror the upstream layout so imports work the React way.
+
 ## Guardrails
 
 - Parity beats novelty. Do not redesign components.
@@ -134,3 +166,6 @@ import { Button } from 'heroui-vue'
 - If upstream HeroUI changes, update the Vue port and parity checks rather than
   documenting around drift.
 - Keep `CLAUDE.md` as an alias only; update this file for durable guidance.
+- Every public `src/<component>/index.ts` should carry a JSDoc `@see` link to
+  `https://www.heroui.com/docs/react/components/<slug>` so the canonical doc
+  is one hover away. Run `node scripts/add-doc-urls.mjs` to top up missing ones.

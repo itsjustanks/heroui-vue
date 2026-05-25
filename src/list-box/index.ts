@@ -12,21 +12,30 @@
  * (`list-box-item`) and `ListBox.Section` from `list-box-section`.
  * This Vue port merges them all under one directory for simplicity while
  * keeping the same public compound API.
+ *
+ * @see https://www.heroui.com/docs/react/components/list-box
  */
 import { ListBoxRoot } from './list-box'
 import { ListBoxItemRoot } from './list-box-item'
 import { ListBoxItemIndicator } from './list-box-item-indicator'
 import { ListBoxSection } from './list-box-section'
 
+/** Sub-compound — `ListBox.Item` itself exposes `.Root` and `.Indicator` (HeroUI v3). */
+const ListBoxItem = Object.assign(ListBoxItemRoot, {
+  Root:      ListBoxItemRoot,
+  Indicator: ListBoxItemIndicator,
+})
+
 /** Compound component — `ListBox.Item`, `ListBox.ItemIndicator`, `ListBox.Section` (HeroUI v3 API). */
 export const ListBox = Object.assign(ListBoxRoot, {
   Root:          ListBoxRoot,
-  Item:          ListBoxItemRoot,
+  Item:          ListBoxItem,
   ItemIndicator: ListBoxItemIndicator,
+  Indicator:     ListBoxItemIndicator,
   Section:       ListBoxSection,
 })
 
-export { ListBoxRoot, ListBoxItemRoot, ListBoxItemIndicator, ListBoxSection }
+export { ListBoxRoot, ListBoxItem, ListBoxItemRoot, ListBoxItemIndicator, ListBoxSection }
 
 export { listboxVariants }       from '@heroui/styles'
 export { listboxItemVariants }   from '@heroui/styles'

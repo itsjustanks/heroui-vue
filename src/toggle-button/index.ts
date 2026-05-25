@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `ToggleButton`, `ToggleButton.Root`.
  * Flat export: `ToggleButtonRoot`.
+ *
+ * @see https://www.heroui.com/docs/react/components/toggle-button
  */
 import { ToggleButtonRoot } from './toggle'
 

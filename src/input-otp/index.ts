@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `InputOTP`, `InputOTP.Root`, `InputOTP.Group`,
  * `InputOTP.Slot`, `InputOTP.Separator`.
  * Flat exports mirror HeroUI v3 React named exports exactly.
+ *
+ * @see https://www.heroui.com/docs/react/components/input-otp
  */
 import { InputOTPRoot } from './input-otp-root'
 import { InputOTPGroup } from './input-otp-group'

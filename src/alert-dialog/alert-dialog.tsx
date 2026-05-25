@@ -19,19 +19,43 @@ export const AlertDialogRoot = defineComponent({
   name: 'AlertDialog',
   inheritAttrs: false,
   props: {
+    open: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    modelValue: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    defaultOpen: { type: Boolean as PropType<boolean | undefined>, default: undefined },
+    onOpenChange: { type: Function as PropType<(open: boolean) => void>, default: undefined },
     isDismissable: { type: Boolean as PropType<boolean | undefined>, default: undefined },
     isKeyboardDismissDisabled: { type: Boolean as PropType<boolean | undefined>, default: undefined }
   },
-  setup (_props, { attrs, slots }) {
+  emits: {
+    'update:open': (_open: boolean) => true,
+    'update:modelValue': (_open: boolean) => true
+  },
+  setup (props, { attrs, emit, slots }) {
     const styles = computed(() => alertDialogVariants())
     const placement = computed<'auto' | 'top' | 'center' | 'bottom'>(() => 'auto')
     provide(ALERT_DIALOG_CONTEXT, { slots: styles, placement })
 
-    return () => (
-      <RekaAlertDialogRoot {...attrs} data-slot="alert-dialog-root">
-        {withAutoTrigger(slots.default?.(), RekaAlertDialogTrigger, 'AlertDialogTrigger')}
-      </RekaAlertDialogRoot>
-    )
+    const handleOpenChange = (open: boolean) => {
+      props.onOpenChange?.(open)
+      emit('update:open', open)
+      emit('update:modelValue', open)
+    }
+
+    return () => {
+      const controlledOpen = props.open ?? props.modelValue
+
+      return (
+        <RekaAlertDialogRoot
+          {...attrs}
+          data-slot="alert-dialog-root"
+          open={controlledOpen}
+          defaultOpen={props.defaultOpen}
+          onUpdate:open={handleOpenChange}
+        >
+          {withAutoTrigger(slots.default?.(), RekaAlertDialogTrigger, 'AlertDialogTrigger')}
+        </RekaAlertDialogRoot>
+      )
+    }
   }
 })
 

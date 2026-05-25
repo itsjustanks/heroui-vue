@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `NumberField`, `NumberField.Root`, `NumberField.Group`,
  * `NumberField.Input`, `NumberField.IncrementButton`, `NumberField.DecrementButton`.
  * Flat exports mirror HeroUI v3 React named exports exactly.
+ *
+ * @see https://www.heroui.com/docs/react/components/number-field
  */
 import { NumberFieldRoot } from './number-field'
 import { NumberFieldGroup } from './number-field-group'

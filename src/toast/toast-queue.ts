@@ -13,6 +13,12 @@ import { toast as sonnerToast } from 'vue-sonner'
 /** Default toast timeout in milliseconds (matches HeroUI / sonner). */
 export const DEFAULT_TOAST_TIMEOUT = 4000
 
+/** Maximum number of toasts shown at once before older ones are queued (HeroUI parity). */
+export const DEFAULT_MAX_VISIBLE_TOAST = 3
+
+/** Default gap (px) between stacked toasts (HeroUI parity). */
+export const DEFAULT_GAP = 14
+
 export interface ToastQueueOptions {
   /** The maximum number of toasts to display at a time (visual only). */
   maxVisibleToasts?: number

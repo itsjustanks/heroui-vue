@@ -19,6 +19,8 @@
  *   `Table.ResizableContainer`— TableResizableContainer (Vue anatomy shim)
  *
  * Removed (breaking change from v0): TableHead, TableCaption, TableEmpty.
+ *
+ * @see https://www.heroui.com/docs/react/components/table
  */
 import { TableRoot } from './table'
 import { TableScrollContainer } from './table-scroll-container'

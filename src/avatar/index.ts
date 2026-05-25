@@ -7,6 +7,8 @@
  *
  * Behaviour delegates to reka-ui `AvatarRoot` / `AvatarImage` / `AvatarFallback`;
  * all styling comes from `@heroui/styles` `avatarVariants`.
+ *
+ * @see https://www.heroui.com/docs/react/components/avatar
  */
 import { AvatarRoot } from './avatar'
 import { AvatarImage } from './avatar-image'

@@ -129,15 +129,21 @@ export const demos: DemoMeta[] = upstreamExamples.map((example) => ({
   ported: hasLoaders(example)
 }))
 export const portedDemos: DemoMeta[] = demos.filter((demo) => demo.ported)
-export const categories: string[] = [...new Set(upstreamComponents.map((component) => component.category))]
-export const componentGroups: ComponentGroup[] = upstreamComponents.map((component) => {
-  const examples = demos.filter((demo) => demo.componentId === component.id)
-  return {
-    ...component,
-    portedCount: examples.filter((example) => example.ported).length,
-    examples
-  }
-})
+export const categories: string[] = [...new Set(upstreamComponents.map((component) => component.category))].sort()
+export const componentGroups: ComponentGroup[] = upstreamComponents
+  .slice()
+  .sort((a, b) => a.title.localeCompare(b.title))
+  .map((component) => {
+    const examples = demos
+      .filter((demo) => demo.componentId === component.id)
+      .slice()
+      .sort((a, b) => a.title.localeCompare(b.title))
+    return {
+      ...component,
+      portedCount: examples.filter((example) => example.ported).length,
+      examples
+    }
+  })
 
 const demoLoaders: Record<string, {
   vue: () => Promise<{ default: Component }>

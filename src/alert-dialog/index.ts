@@ -13,6 +13,8 @@
  *   `AlertDialog.Footer`          → AlertDialogFooter
  *   `AlertDialog.Icon`            → AlertDialogIcon
  *   `AlertDialog.CloseTrigger`    → AlertDialogCloseTrigger
+ *
+ * @see https://www.heroui.com/docs/react/components/alert-dialog
  */
 import { AlertDialogRoot } from './alert-dialog'
 import { AlertDialogTrigger } from './alert-dialog-trigger'
@@ -25,6 +27,31 @@ import { AlertDialogBody } from './alert-dialog-body'
 import { AlertDialogFooter } from './alert-dialog-footer'
 import { AlertDialogIcon } from './alert-dialog-icon'
 import { AlertDialogCloseTrigger } from './alert-dialog-close-trigger'
+import { Button } from '@/button'
+import { h } from 'vue'
+
+const AlertDialogContent = (props: any, { slots, attrs }: any) => h(
+  AlertDialogBackdrop,
+  null,
+  () => h(
+    AlertDialogContainer,
+    { size: props?.size ?? 'md', placement: props?.placement ?? 'center' },
+    () => h(AlertDialogDialog, { ...attrs, class: props?.class }, () => slots.default?.())
+  )
+)
+
+const AlertDialogDescription = AlertDialogBody
+const AlertDialogTitle = AlertDialogHeading
+const AlertDialogCancel = (props: any, { slots, attrs }: any) => h(
+  AlertDialogCloseTrigger,
+  null,
+  () => h(Button, { ...attrs, variant: props?.variant ?? 'secondary', class: props?.class }, () => slots.default?.())
+)
+const AlertDialogAction = (props: any, { slots, attrs }: any) => h(
+  Button,
+  { ...attrs, variant: props?.variant ?? 'danger', class: props?.class },
+  () => slots.default?.()
+)
 
 /** Compound component — `AlertDialog.Trigger`, `AlertDialog.Backdrop`, … (HeroUI v3 API). */
 export const AlertDialog = Object.assign(AlertDialogRoot, {
@@ -38,7 +65,17 @@ export const AlertDialog = Object.assign(AlertDialogRoot, {
   Body: AlertDialogBody,
   Footer: AlertDialogFooter,
   Icon: AlertDialogIcon,
-  CloseTrigger: AlertDialogCloseTrigger
+  CloseTrigger: AlertDialogCloseTrigger,
+  /** @deprecated Use Backdrop > Container > Dialog. */
+  Content: AlertDialogContent,
+  /** @deprecated Use Heading. */
+  Title: AlertDialogTitle,
+  /** @deprecated Use Body. */
+  Description: AlertDialogDescription,
+  /** @deprecated Use CloseTrigger + Button. */
+  Cancel: AlertDialogCancel,
+  /** @deprecated Use Button. */
+  Action: AlertDialogAction
 })
 
 export {

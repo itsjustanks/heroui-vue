@@ -29,6 +29,7 @@ export const InputRoot = defineComponent({
     value:        { type: [String, Number] as PropType<string | number>, default: undefined },
     defaultValue: { type: [String, Number] as PropType<string | number>, default: undefined },
     modelValue:   { type: [String, Number] as PropType<string | number>, default: undefined },
+    modelValueKebab: { type: [String, Number] as PropType<string | number>, default: undefined },
     placeholder:  { type: String, default: undefined },
     disabled:     { type: Boolean as PropType<boolean | undefined>, default: undefined },
     isDisabled:   { type: Boolean as PropType<boolean | undefined>, default: undefined },
@@ -70,7 +71,9 @@ export const InputRoot = defineComponent({
         ?? textFieldCtx?.variant.value
         ?? comboBoxCtx?.variant?.value
 
-      const isControlled = props.modelValue !== undefined
+      const kebabModelValue = (attrs as Record<string, unknown>)['model-value'] as string | number | undefined
+      const resolvedModelValue = props.modelValue ?? props.modelValueKebab ?? kebabModelValue
+      const isControlled = resolvedModelValue !== undefined
       const inputAttrs: Record<string, unknown> = {
         ...attrs,
         id: props.id,
@@ -93,7 +96,7 @@ export const InputRoot = defineComponent({
       }
 
       if (isControlled) {
-        inputAttrs.value = props.modelValue
+        inputAttrs.value = resolvedModelValue
         inputAttrs.onInput = (e: Event) => {
           props.onInput?.(e)
           emit('update:modelValue', (e.target as HTMLInputElement).value)

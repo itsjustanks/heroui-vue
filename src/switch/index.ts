@@ -3,6 +3,8 @@
  *
  * Compound API (HeroUI v3): `Switch`, `Switch.Root`, `Switch.Control`,
  * `Switch.Thumb`, `Switch.Icon`, `Switch.Content`. Flat named exports available too.
+ *
+ * @see https://www.heroui.com/docs/react/components/switch
  */
 import { SwitchRoot, SwitchControl, SwitchThumb, SwitchIcon, SwitchContent } from './switch'
 

@@ -16,3 +16,6 @@ export interface ToggleButtonGroupContext {
 /** Provided by `ToggleButtonGroup`, consumed by `ToggleButtonGroupSeparator`. */
 export const TOGGLE_BUTTON_GROUP_CONTEXT: InjectionKey<ToggleButtonGroupContext> =
   Symbol('heroui-vue-toggle-button-group')
+
+/** Marker key — set on direct children of `ToggleButtonGroup` so they can read context. */
+export const TOGGLE_BUTTON_GROUP_CHILD = '__toggle_button_group_child'

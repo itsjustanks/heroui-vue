@@ -20,6 +20,9 @@ export const DropdownPopover = defineComponent({
   inheritAttrs: false,
   props: {
     class: { type: [String, Array, Object] as PropType<HTMLAttributes['class']>, default: undefined },
+    side: { type: String as PropType<'top' | 'right' | 'bottom' | 'left' | undefined>, default: undefined },
+    align: { type: String as PropType<'start' | 'center' | 'end' | undefined>, default: undefined },
+    alignOffset: { type: Number, default: undefined },
     sideOffset: { type: Number, default: 4 }
   },
   setup (props, { attrs, slots }) {
@@ -27,7 +30,13 @@ export const DropdownPopover = defineComponent({
 
     return () => (
       <DropdownMenuPortal>
-        <RekaDropdownMenuContent sideOffset={props.sideOffset} asChild>
+        <RekaDropdownMenuContent
+          side={props.side}
+          align={props.align}
+          alignOffset={props.alignOffset}
+          sideOffset={props.sideOffset}
+          asChild
+        >
           {withDirectives(
             (
               <div

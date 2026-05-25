@@ -5,6 +5,8 @@
  * `Tabs.List`, `Tabs.Tab`, `Tabs.Indicator`, `Tabs.Separator`, `Tabs.Panel`.
  * Flat part exports: `TabsRoot`, `TabListContainer`, `TabList`, `Tab`,
  * `TabIndicator`, `TabSeparator`, `TabPanel`.
+ *
+ * @see https://www.heroui.com/docs/react/components/tabs
  */
 import { TabsRoot } from './tabs'
 import { TabListContainer, TabList } from './tabs-list'

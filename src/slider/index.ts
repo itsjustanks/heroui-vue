@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Slider`, `Slider.Root`, `Slider.Output`,
  * `Slider.Track`, `Slider.Fill`, `Slider.Thumb`, `Slider.Marks`.
  * Flat exports mirror HeroUI v3 React named exports exactly.
+ *
+ * @see https://www.heroui.com/docs/react/components/slider
  */
 import { SliderRoot } from './slider'
 import { SliderOutput } from './slider-output'

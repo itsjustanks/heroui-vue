@@ -5,6 +5,8 @@
  * `.Root` / `.Output` / `.Track` / `.Fill` dot-notation parts. The flat
  * exports are available for named imports. Built over reka-ui `ProgressRoot`
  * for ARIA `progressbar` role semantics.
+ *
+ * @see https://www.heroui.com/docs/react/components/progress-bar
  */
 import { ProgressBarRoot } from './progress-bar-root'
 import { ProgressBarOutput } from './progress-bar-output'

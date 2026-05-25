@@ -1,6 +1,8 @@
 /**
  * Description — a faithful Vue port of HeroUI v3 `Description`.
  * Compound API: `Description`, `Description.Root`.
+ *
+ * @see https://www.heroui.com/docs/react/components/description
  */
 import { DescriptionRoot } from './description'
 

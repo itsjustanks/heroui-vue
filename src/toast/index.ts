@@ -21,6 +21,8 @@
  * heroui-vue's runtime is `vue-sonner`; the compound parts above are faithful
  * BEM transcriptions (see `toast-parts.tsx`) for use inside a `Toast.Provider`
  * custom render function, and `Toast.Provider` wraps vue-sonner's `Toaster`.
+ *
+ * @see https://www.heroui.com/docs/react/components/toast
  */
 import ToastProvider from './sonner'
 import { toast } from 'vue-sonner'
@@ -77,7 +79,7 @@ export { toast }
 /* -------------------------------------------------------------------------------------------------
  * Constants
  * -----------------------------------------------------------------------------------------------*/
-export { DEFAULT_TOAST_TIMEOUT } from './toast-queue'
+export { DEFAULT_TOAST_TIMEOUT, DEFAULT_MAX_VISIBLE_TOAST, DEFAULT_GAP } from './toast-queue'
 export type { ToastQueueOptions, ToastContentValue } from './toast-queue'
 
 /* -------------------------------------------------------------------------------------------------

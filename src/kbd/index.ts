@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Kbd`, `Kbd.Root`, `Kbd.Abbr`, `Kbd.Content`.
  * Flat part exports (`KbdRoot`, `KbdAbbr`, `KbdContent`) are available for
  * callers that prefer named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/kbd
  */
 import { KbdRoot } from './kbd'
 import { KbdAbbr } from './kbd-abbr'

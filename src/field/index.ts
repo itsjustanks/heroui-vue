@@ -5,6 +5,8 @@
  * Export names (components, the `fieldVariants` cva, and the `FieldVariants`
  * type) mirror `shadcn-vue` exactly so call-site migration is a pure
  * import-path swap.
+ *
+ * @see https://www.heroui.com/docs/react/components/field
  */
 export { fieldVariants } from './variants'
 export type { FieldVariants } from './variants'

@@ -3,12 +3,15 @@
  *
  * Compound API (HeroUI v3): `Select`, `Select.Root`, `Select.Trigger`,
  * `Select.Value`, `Select.Indicator`, `Select.Popover`.
+ *
+ * @see https://www.heroui.com/docs/react/components/select
  */
 import { SelectRoot } from './select'
 import { SelectTrigger } from './select-trigger'
 import { SelectValue } from './select-value'
 import { SelectIndicator } from './select-indicator'
 import { SelectPopover } from './select-popover'
+import { SelectItem } from './select-item'
 
 /** Compound component — `Select.Trigger`, `Select.Value`, … (HeroUI v3 API). */
 export const Select = Object.assign(SelectRoot, {
@@ -16,7 +19,11 @@ export const Select = Object.assign(SelectRoot, {
   Trigger: SelectTrigger,
   Value: SelectValue,
   Indicator: SelectIndicator,
-  Popover: SelectPopover
+  Popover: SelectPopover,
+  /** @deprecated Use `Select.Popover`. */
+  Content: SelectPopover,
+  /** @deprecated Import `SelectItem` directly. */
+  Item: SelectItem
 })
 
 export { SelectRoot, SelectTrigger, SelectValue, SelectIndicator, SelectPopover }

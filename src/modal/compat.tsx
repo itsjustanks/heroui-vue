@@ -19,8 +19,6 @@ import ModalCloseTrigger from './modal-close-trigger'
  * import-path swap, then converge on the real `Modal.*` compound API later.
  */
 
-/** Root — same role as HeroUI `Modal`. */
-export const Dialog = ModalRoot
 /** Trigger. */
 export const DialogTrigger = ModalTrigger
 /** Header — maps to `Modal.Header`. */
@@ -80,4 +78,17 @@ export const DialogClose = defineComponent({
   setup (_props, { attrs, slots }) {
     return () => <RekaDialogClose {...attrs}>{slots.default?.()}</RekaDialogClose>
   }
+})
+
+/** Root — same role as HeroUI `Modal`, with shadcn-style parts attached. */
+export const Dialog = Object.assign(ModalRoot, {
+  Root: ModalRoot,
+  Trigger: DialogTrigger,
+  Content: DialogContent,
+  ScrollContent: DialogScrollContent,
+  Header: DialogHeader,
+  Title: DialogTitle,
+  Footer: DialogFooter,
+  Description: DialogDescription,
+  Close: DialogClose
 })

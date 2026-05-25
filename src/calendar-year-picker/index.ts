@@ -1,3 +1,6 @@
+/**
+ * @see https://www.heroui.com/docs/react/components/calendar
+ */
 import {
   CalendarYearPickerCell,
   CalendarYearPickerGrid,
@@ -27,7 +30,13 @@ export {
 
 export {
   YEAR_PICKER_CONTEXT as YearPickerContext,
-  useYearPicker
+  YEAR_PICKER_CONTEXT as YearPickerStateContext,
+  useYearPicker,
+  useYearPickerState
+} from './year-picker-context'
+export type {
+  YearPickerContextValue,
+  YearPickerStateContextValue
 } from './year-picker-context'
 export { calendarYearPickerVariants } from '@heroui/styles'
 export type { CalendarYearPickerVariants } from '@heroui/styles'

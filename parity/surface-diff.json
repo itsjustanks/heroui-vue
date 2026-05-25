@@ -1,0 +1,3502 @@
+{
+  "accordion": {
+    "upstream_folder": "accordion",
+    "repo_folder": "accordion",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Accordion",
+        "parts": [
+          "Root",
+          "Item",
+          "Heading",
+          "Trigger",
+          "Panel",
+          "Indicator",
+          "Body"
+        ]
+      },
+      "flatExports": [
+        "AccordionRoot",
+        "AccordionItem",
+        "AccordionHeading",
+        "AccordionTrigger",
+        "AccordionPanel",
+        "AccordionIndicator",
+        "AccordionBody",
+        "accordionVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Item",
+        "Heading",
+        "Trigger",
+        "Panel",
+        "Body",
+        "Indicator"
+      ],
+      "exports": [
+        "Accordion",
+        "AccordionRoot",
+        "AccordionItem",
+        "AccordionHeading",
+        "AccordionTrigger",
+        "AccordionPanel",
+        "AccordionContent",
+        "AccordionBody",
+        "AccordionIndicator",
+        "accordionVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "alert": {
+    "upstream_folder": "alert",
+    "repo_folder": "alert",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Alert",
+        "parts": [
+          "Root",
+          "Indicator",
+          "Content",
+          "Title",
+          "Description"
+        ]
+      },
+      "flatExports": [
+        "AlertRoot",
+        "AlertIndicator",
+        "AlertContent",
+        "AlertTitle",
+        "AlertDescription",
+        "alertVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Indicator",
+        "Content",
+        "Title",
+        "Description"
+      ],
+      "exports": [
+        "Alert",
+        "AlertRoot",
+        "AlertIndicator",
+        "AlertContent",
+        "AlertTitle",
+        "AlertDescription",
+        "alertVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "alert-dialog": {
+    "upstream_folder": "alert-dialog",
+    "repo_folder": "alert-dialog",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "AlertDialog",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Backdrop",
+          "Container",
+          "Dialog",
+          "Header",
+          "Heading",
+          "Body",
+          "Footer",
+          "Icon",
+          "CloseTrigger"
+        ]
+      },
+      "flatExports": [
+        "AlertDialogRoot",
+        "AlertDialogTrigger",
+        "AlertDialogBackdrop",
+        "AlertDialogContainer",
+        "AlertDialogDialog",
+        "AlertDialogHeader",
+        "AlertDialogHeading",
+        "AlertDialogBody",
+        "AlertDialogFooter",
+        "AlertDialogIcon",
+        "AlertDialogCloseTrigger",
+        "alertDialogVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Backdrop",
+        "Container",
+        "Dialog",
+        "Header",
+        "Heading",
+        "Body",
+        "Footer",
+        "Icon",
+        "CloseTrigger",
+        "Content",
+        "Title",
+        "Description",
+        "Cancel",
+        "Action"
+      ],
+      "exports": [
+        "AlertDialog",
+        "AlertDialogRoot",
+        "AlertDialogTrigger",
+        "AlertDialogBackdrop",
+        "AlertDialogContainer",
+        "AlertDialogDialog",
+        "AlertDialogHeader",
+        "AlertDialogHeading",
+        "AlertDialogBody",
+        "AlertDialogFooter",
+        "AlertDialogIcon",
+        "AlertDialogCloseTrigger",
+        "alertDialogVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "autocomplete": {
+    "upstream_folder": "autocomplete",
+    "repo_folder": "autocomplete",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Autocomplete",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Value",
+          "Indicator",
+          "Popover",
+          "Filter",
+          "ClearButton"
+        ]
+      },
+      "flatExports": [
+        "AutocompleteClearButton",
+        "AutocompleteFilter",
+        "AutocompleteTrigger",
+        "AutocompleteIndicator",
+        "AutocompletePopover",
+        "AutocompleteRoot",
+        "AutocompleteValue",
+        "autocompleteVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "InputGroup",
+        "Trigger",
+        "Indicator",
+        "Popover",
+        "Input",
+        "Value",
+        "Filter",
+        "Item",
+        "ItemIndicator",
+        "Group",
+        "Separator",
+        "Empty",
+        "ClearButton"
+      ],
+      "exports": [
+        "Autocomplete",
+        "AutocompleteRoot",
+        "AutocompleteInputGroup",
+        "AutocompleteTrigger",
+        "AutocompleteIndicator",
+        "AutocompletePopover",
+        "AutocompleteInput",
+        "AutocompleteValue",
+        "AutocompleteFilter",
+        "AutocompleteItem",
+        "AutocompleteItemIndicator",
+        "AutocompleteGroup",
+        "AutocompleteSeparator",
+        "AutocompleteEmpty",
+        "AutocompleteClearButton",
+        "autocompleteVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "avatar": {
+    "upstream_folder": "avatar",
+    "repo_folder": "avatar",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Avatar",
+        "parts": [
+          "Root",
+          "Image",
+          "Fallback"
+        ]
+      },
+      "flatExports": [
+        "AvatarRoot",
+        "AvatarImage",
+        "AvatarFallback",
+        "avatarVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Image",
+        "Fallback"
+      ],
+      "exports": [
+        "Avatar",
+        "AvatarRoot",
+        "AvatarImage",
+        "AvatarFallback",
+        "avatarVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "badge": {
+    "upstream_folder": "badge",
+    "repo_folder": "badge",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Badge",
+        "parts": [
+          "Anchor",
+          "Label",
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "BadgeRoot",
+        "BadgeLabel",
+        "BadgeAnchor",
+        "badgeVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Anchor",
+        "Label",
+        "Root"
+      ],
+      "exports": [
+        "Badge",
+        "BadgeRoot",
+        "BadgeLabel",
+        "BadgeAnchor",
+        "badgeVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "breadcrumbs": {
+    "upstream_folder": "breadcrumbs",
+    "repo_folder": "breadcrumbs",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Breadcrumbs",
+        "parts": [
+          "Root",
+          "Item"
+        ]
+      },
+      "flatExports": [
+        "BreadcrumbsRoot",
+        "BreadcrumbsItem",
+        "breadcrumbsVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Item"
+      ],
+      "exports": [
+        "Breadcrumbs",
+        "BreadcrumbsRoot",
+        "BreadcrumbsItem",
+        "breadcrumbsVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "button": {
+    "upstream_folder": "button",
+    "repo_folder": "button",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Button",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "ButtonRoot",
+        "BUTTON_GROUP_CHILD",
+        "buttonVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Button",
+        "ButtonRoot",
+        "BUTTON_GROUP_CHILD",
+        "buttonVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "button-group": {
+    "upstream_folder": "button-group",
+    "repo_folder": "button-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ButtonGroup",
+        "parts": [
+          "Root",
+          "Separator"
+        ]
+      },
+      "flatExports": [
+        "ButtonGroupRoot",
+        "ButtonGroupSeparator",
+        "ButtonGroupContext",
+        "BUTTON_GROUP_CHILD",
+        "buttonGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Separator"
+      ],
+      "exports": [
+        "ButtonGroup",
+        "ButtonGroupContext",
+        "ButtonGroupRoot",
+        "ButtonGroupSeparator",
+        "BUTTON_GROUP_CONTEXT",
+        "BUTTON_GROUP_CHILD",
+        "buttonGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "calendar": {
+    "upstream_folder": "calendar",
+    "repo_folder": "calendar",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "CalendarRoot",
+        "CalendarHeader",
+        "CalendarHeading",
+        "CalendarNavButton",
+        "CalendarGrid",
+        "CalendarGridHeader",
+        "CalendarGridBody",
+        "CalendarHeaderCell",
+        "CalendarCell",
+        "CalendarCellIndicator",
+        "YearPickerContext",
+        "YearPickerStateContext",
+        "useYearPicker",
+        "useYearPickerState",
+        "calendarVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Calendar",
+        "CalendarRoot",
+        "CalendarHeader",
+        "CalendarHeading",
+        "CalendarNavButton",
+        "CalendarGrid",
+        "CalendarGridHeader",
+        "CalendarGridBody",
+        "CalendarGridRow",
+        "CalendarHeaderCell",
+        "CalendarCell",
+        "CalendarCellIndicator",
+        "CalendarYearPickerTrigger",
+        "CalendarYearPickerTriggerHeading",
+        "CalendarYearPickerTriggerIndicator",
+        "CalendarYearPickerGrid",
+        "CalendarYearPickerGridBody",
+        "CalendarYearPickerCell",
+        "YearPickerContext",
+        "YearPickerStateContext",
+        "useYearPicker",
+        "useYearPickerState",
+        "calendarVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "calendar-year-picker": {
+    "upstream_folder": "calendar-year-picker",
+    "repo_folder": "calendar-year-picker",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "CalendarYearPickerTrigger",
+        "CalendarYearPickerTriggerHeading",
+        "CalendarYearPickerTriggerIndicator",
+        "CalendarYearPickerGrid",
+        "CalendarYearPickerGridBody",
+        "CalendarYearPickerCell",
+        "YearPickerContext",
+        "useYearPicker",
+        "YearPickerStateContext",
+        "useYearPickerState",
+        "calendarYearPickerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "CalendarYearPicker",
+        "CalendarYearPickerCell",
+        "CalendarYearPickerGrid",
+        "CalendarYearPickerGridBody",
+        "CalendarYearPickerTrigger",
+        "CalendarYearPickerTriggerHeading",
+        "CalendarYearPickerTriggerIndicator",
+        "YearPickerContext",
+        "YearPickerStateContext",
+        "useYearPicker",
+        "useYearPickerState",
+        "calendarYearPickerVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "card": {
+    "upstream_folder": "card",
+    "repo_folder": "card",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Card",
+        "parts": [
+          "Root",
+          "Header",
+          "Title",
+          "Description",
+          "Content",
+          "Footer"
+        ]
+      },
+      "flatExports": [
+        "CardRoot",
+        "CardHeader",
+        "CardTitle",
+        "CardDescription",
+        "CardContent",
+        "CardFooter",
+        "cardVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Header",
+        "Title",
+        "Description",
+        "Content",
+        "Footer"
+      ],
+      "exports": [
+        "Card",
+        "CardRoot",
+        "CardHeader",
+        "CardTitle",
+        "CardDescription",
+        "CardContent",
+        "CardFooter",
+        "cardVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "checkbox": {
+    "upstream_folder": "checkbox",
+    "repo_folder": "checkbox",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Checkbox",
+        "parts": [
+          "Root",
+          "Control",
+          "Indicator",
+          "Content"
+        ]
+      },
+      "flatExports": [
+        "CheckboxContent",
+        "CheckboxControl",
+        "CheckboxIndicator",
+        "CheckboxRoot",
+        "checkboxVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Control",
+        "Indicator",
+        "Content"
+      ],
+      "exports": [
+        "Checkbox",
+        "CheckboxRoot",
+        "CheckboxControl",
+        "CheckboxIndicator",
+        "CheckboxContent",
+        "checkboxVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "checkbox-group": {
+    "upstream_folder": "checkbox-group",
+    "repo_folder": "checkbox-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "CheckboxGroup",
+        "checkboxGroupVariants",
+        "type CheckboxGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "CheckboxGroup",
+        "CheckboxGroupRoot",
+        "CHECKBOX_GROUP_CONTEXT",
+        "checkboxGroupVariants"
+      ]
+    },
+    "issues": [
+      "Missing flat exports: type CheckboxGroupVariants"
+    ]
+  },
+  "chip": {
+    "upstream_folder": "chip",
+    "repo_folder": "chip",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Chip",
+        "parts": [
+          "Root",
+          "Label"
+        ]
+      },
+      "flatExports": [
+        "ChipRoot",
+        "ChipLabel",
+        "chipVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Label"
+      ],
+      "exports": [
+        "Chip",
+        "ChipRoot",
+        "ChipLabel",
+        "chipVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "close-button": {
+    "upstream_folder": "close-button",
+    "repo_folder": "close-button",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "CloseButton",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "CloseButtonRoot",
+        "closeButtonVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "CloseButton",
+        "CloseButtonRoot",
+        "closeButtonVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-area": {
+    "upstream_folder": "color-area",
+    "repo_folder": "color-picker",
+    "hosted_in": "color-picker",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ColorArea",
+        "parts": [
+          "Root",
+          "Thumb"
+        ]
+      },
+      "flatExports": [
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "colorAreaVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Thumb"
+      ],
+      "exports": [
+        "ColorPicker",
+        "ColorArea",
+        "ColorSlider",
+        "ColorField",
+        "ColorSwatch",
+        "ColorSwatchPicker",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "ColorPickerPopover",
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "ColorSliderRoot",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "ColorSliderOutput",
+        "ColorFieldRoot",
+        "ColorFieldGroup",
+        "ColorFieldInput",
+        "ColorFieldPrefix",
+        "ColorFieldSuffix",
+        "ColorSwatchRoot",
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorPickerVariants",
+        "colorAreaVariants",
+        "colorSliderVariants",
+        "colorFieldVariants",
+        "colorInputGroupVariants",
+        "colorSwatchVariants",
+        "colorSwatchPickerVariants",
+        "parseColor",
+        "formatColor",
+        "normalizeColor",
+        "useColorPickerContext",
+        "provideColorPickerContext"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-field": {
+    "upstream_folder": "color-field",
+    "repo_folder": "color-picker",
+    "hosted_in": "color-picker",
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ColorFieldRoot",
+        "colorFieldVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "ColorPicker",
+        "ColorArea",
+        "ColorSlider",
+        "ColorField",
+        "ColorSwatch",
+        "ColorSwatchPicker",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "ColorPickerPopover",
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "ColorSliderRoot",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "ColorSliderOutput",
+        "ColorFieldRoot",
+        "ColorFieldGroup",
+        "ColorFieldInput",
+        "ColorFieldPrefix",
+        "ColorFieldSuffix",
+        "ColorSwatchRoot",
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorPickerVariants",
+        "colorAreaVariants",
+        "colorSliderVariants",
+        "colorFieldVariants",
+        "colorInputGroupVariants",
+        "colorSwatchVariants",
+        "colorSwatchPickerVariants",
+        "parseColor",
+        "formatColor",
+        "normalizeColor",
+        "useColorPickerContext",
+        "provideColorPickerContext"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-input-group": {
+    "upstream_folder": "color-input-group",
+    "repo_folder": "color-input-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ColorInputGroup",
+        "parts": [
+          "Root",
+          "Input",
+          "Prefix",
+          "Suffix"
+        ]
+      },
+      "flatExports": [
+        "ColorInputGroupInput",
+        "ColorInputGroupPrefix",
+        "ColorInputGroupRoot",
+        "ColorInputGroupSuffix",
+        "colorInputGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Input",
+        "Prefix",
+        "Suffix"
+      ],
+      "exports": [
+        "ColorInputGroup",
+        "ColorInputGroupRoot",
+        "ColorInputGroupInput",
+        "ColorInputGroupPrefix",
+        "ColorInputGroupSuffix",
+        "colorInputGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-picker": {
+    "upstream_folder": "color-picker",
+    "repo_folder": "color-picker",
+    "hosted_in": "color-picker",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ColorPicker",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Popover"
+        ]
+      },
+      "flatExports": [
+        "ColorPickerPopover",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "colorPickerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Popover"
+      ],
+      "exports": [
+        "ColorPicker",
+        "ColorArea",
+        "ColorSlider",
+        "ColorField",
+        "ColorSwatch",
+        "ColorSwatchPicker",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "ColorPickerPopover",
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "ColorSliderRoot",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "ColorSliderOutput",
+        "ColorFieldRoot",
+        "ColorFieldGroup",
+        "ColorFieldInput",
+        "ColorFieldPrefix",
+        "ColorFieldSuffix",
+        "ColorSwatchRoot",
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorPickerVariants",
+        "colorAreaVariants",
+        "colorSliderVariants",
+        "colorFieldVariants",
+        "colorInputGroupVariants",
+        "colorSwatchVariants",
+        "colorSwatchPickerVariants",
+        "parseColor",
+        "formatColor",
+        "normalizeColor",
+        "useColorPickerContext",
+        "provideColorPickerContext"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-slider": {
+    "upstream_folder": "color-slider",
+    "repo_folder": "color-picker",
+    "hosted_in": "color-picker",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ColorSlider",
+        "parts": [
+          "Root",
+          "Output",
+          "Track",
+          "Thumb"
+        ]
+      },
+      "flatExports": [
+        "ColorSliderRoot",
+        "ColorSliderOutput",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "colorSliderVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Output",
+        "Track",
+        "Thumb"
+      ],
+      "exports": [
+        "ColorPicker",
+        "ColorArea",
+        "ColorSlider",
+        "ColorField",
+        "ColorSwatch",
+        "ColorSwatchPicker",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "ColorPickerPopover",
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "ColorSliderRoot",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "ColorSliderOutput",
+        "ColorFieldRoot",
+        "ColorFieldGroup",
+        "ColorFieldInput",
+        "ColorFieldPrefix",
+        "ColorFieldSuffix",
+        "ColorSwatchRoot",
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorPickerVariants",
+        "colorAreaVariants",
+        "colorSliderVariants",
+        "colorFieldVariants",
+        "colorInputGroupVariants",
+        "colorSwatchVariants",
+        "colorSwatchPickerVariants",
+        "parseColor",
+        "formatColor",
+        "normalizeColor",
+        "useColorPickerContext",
+        "provideColorPickerContext"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-swatch": {
+    "upstream_folder": "color-swatch",
+    "repo_folder": "color-picker",
+    "hosted_in": "color-picker",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ColorSwatch",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "ColorSwatchRoot",
+        "colorSwatchVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "ColorPicker",
+        "ColorArea",
+        "ColorSlider",
+        "ColorField",
+        "ColorSwatch",
+        "ColorSwatchPicker",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "ColorPickerPopover",
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "ColorSliderRoot",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "ColorSliderOutput",
+        "ColorFieldRoot",
+        "ColorFieldGroup",
+        "ColorFieldInput",
+        "ColorFieldPrefix",
+        "ColorFieldSuffix",
+        "ColorSwatchRoot",
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorPickerVariants",
+        "colorAreaVariants",
+        "colorSliderVariants",
+        "colorFieldVariants",
+        "colorInputGroupVariants",
+        "colorSwatchVariants",
+        "colorSwatchPickerVariants",
+        "parseColor",
+        "formatColor",
+        "normalizeColor",
+        "useColorPickerContext",
+        "provideColorPickerContext"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "color-swatch-picker": {
+    "upstream_folder": "color-swatch-picker",
+    "repo_folder": "color-picker",
+    "hosted_in": "color-picker",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ColorSwatchPicker",
+        "parts": [
+          "Root",
+          "Item",
+          "Swatch",
+          "Indicator"
+        ]
+      },
+      "flatExports": [
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorSwatchPickerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Item",
+        "Swatch",
+        "Indicator"
+      ],
+      "exports": [
+        "ColorPicker",
+        "ColorArea",
+        "ColorSlider",
+        "ColorField",
+        "ColorSwatch",
+        "ColorSwatchPicker",
+        "ColorPickerRoot",
+        "ColorPickerTrigger",
+        "ColorPickerPopover",
+        "ColorAreaRoot",
+        "ColorAreaThumb",
+        "ColorSliderRoot",
+        "ColorSliderTrack",
+        "ColorSliderThumb",
+        "ColorSliderOutput",
+        "ColorFieldRoot",
+        "ColorFieldGroup",
+        "ColorFieldInput",
+        "ColorFieldPrefix",
+        "ColorFieldSuffix",
+        "ColorSwatchRoot",
+        "ColorSwatchPickerRoot",
+        "ColorSwatchPickerItem",
+        "ColorSwatchPickerSwatch",
+        "ColorSwatchPickerIndicator",
+        "colorPickerVariants",
+        "colorAreaVariants",
+        "colorSliderVariants",
+        "colorFieldVariants",
+        "colorInputGroupVariants",
+        "colorSwatchVariants",
+        "colorSwatchPickerVariants",
+        "parseColor",
+        "formatColor",
+        "normalizeColor",
+        "useColorPickerContext",
+        "provideColorPickerContext"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "combo-box": {
+    "upstream_folder": "combo-box",
+    "repo_folder": "combo-box",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ComboBox",
+        "parts": [
+          "Root",
+          "InputGroup",
+          "Trigger",
+          "Popover"
+        ]
+      },
+      "flatExports": [
+        "ComboBoxInputGroup",
+        "ComboBoxPopover",
+        "ComboBoxRoot",
+        "ComboBoxTrigger",
+        "ComboBoxContext",
+        "comboBoxVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "InputGroup",
+        "Trigger",
+        "Popover"
+      ],
+      "exports": [
+        "ComboBox",
+        "ComboBoxRoot",
+        "ComboBoxInputGroup",
+        "ComboBoxTrigger",
+        "ComboBoxPopover",
+        "ComboBoxContext",
+        "ComboBoxInput",
+        "ComboBoxItem",
+        "ComboBoxItemIndicator",
+        "ComboBoxGroup",
+        "ComboBoxSeparator",
+        "ComboBoxEmpty",
+        "comboBoxVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "date-field": {
+    "upstream_folder": "date-field",
+    "repo_folder": "date-field",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "DateFieldRoot",
+        "dateFieldVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "DateField",
+        "DateFieldRoot",
+        "dateFieldVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "date-input-group": {
+    "upstream_folder": "date-input-group",
+    "repo_folder": "date-input-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "DateInputGroup",
+        "parts": [
+          "Root",
+          "Input",
+          "InputContainer",
+          "Segment",
+          "Prefix",
+          "Suffix"
+        ]
+      },
+      "flatExports": [
+        "DateInputGroupInput",
+        "DateInputGroupInputContainer",
+        "DateInputGroupPrefix",
+        "DateInputGroupRoot",
+        "DateInputGroupSegment",
+        "DateInputGroupSuffix",
+        "dateInputGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Input",
+        "InputContainer",
+        "Segment",
+        "Prefix",
+        "Suffix"
+      ],
+      "exports": [
+        "DateInputGroup",
+        "DateInputGroupRoot",
+        "DateInputGroupInput",
+        "DateInputGroupInputContainer",
+        "DateInputGroupSegment",
+        "DateInputGroupPrefix",
+        "DateInputGroupSuffix",
+        "DATE_FIELD_KIND",
+        "DATE_INPUT_GROUP_CONTEXT",
+        "DATE_SEGMENTS",
+        "dateInputGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "date-picker": {
+    "upstream_folder": "date-picker",
+    "repo_folder": "date-picker",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "DatePickerRoot",
+        "DatePickerTrigger",
+        "DatePickerTriggerIndicator",
+        "DatePickerPopover",
+        "datePickerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "DatePicker",
+        "DatePickerRoot",
+        "DatePickerTrigger",
+        "DatePickerTriggerIndicator",
+        "DatePickerPopover",
+        "/** @deprecated Use `DatePickerPopover` */\n  DatePickerContent",
+        "/** reka-ui-wired calendar for use inside `DatePicker.Popover`. */\n  DatePickerCalendar",
+        "datePickerVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "date-range-picker": {
+    "upstream_folder": "date-range-picker",
+    "repo_folder": "date-range-picker",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "DateRangePickerRoot",
+        "DateRangePickerTrigger",
+        "DateRangePickerTriggerIndicator",
+        "DateRangePickerRangeSeparator",
+        "DateRangePickerPopover",
+        "dateRangePickerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "DateRangePicker",
+        "DateRangePickerRoot",
+        "DateRangePickerTrigger",
+        "DateRangePickerTriggerIndicator",
+        "DateRangePickerRangeSeparator",
+        "DateRangePickerPopover",
+        "/** reka-ui-wired range calendar for use inside `DateRangePicker.Popover`. */\n  DateRangePickerCalendar",
+        "dateRangePickerVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "description": {
+    "upstream_folder": "description",
+    "repo_folder": "description",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Description",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "DescriptionRoot",
+        "descriptionVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Description",
+        "DescriptionRoot",
+        "descriptionVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "disclosure": {
+    "upstream_folder": "disclosure",
+    "repo_folder": "disclosure",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Disclosure",
+        "parts": [
+          "Root",
+          "Heading",
+          "Trigger",
+          "Content",
+          "Body",
+          "Indicator"
+        ]
+      },
+      "flatExports": [
+        "DisclosureRoot",
+        "DisclosureHeading",
+        "DisclosureTrigger",
+        "DisclosureContent",
+        "DisclosureBody",
+        "DisclosureIndicator",
+        "disclosureVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Heading",
+        "Trigger",
+        "Content",
+        "Body",
+        "Indicator"
+      ],
+      "exports": [
+        "Disclosure",
+        "Collapsible",
+        "CollapsibleRoot",
+        "CollapsibleHeading",
+        "CollapsibleTrigger",
+        "CollapsibleContent",
+        "CollapsibleBody",
+        "CollapsibleIndicator",
+        "DisclosureRoot",
+        "DisclosureHeading",
+        "DisclosureTrigger",
+        "DisclosureContent",
+        "DisclosureBody",
+        "DisclosureIndicator",
+        "disclosureVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "disclosure-group": {
+    "upstream_folder": "disclosure-group",
+    "repo_folder": "disclosure-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "DisclosureGroup",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "DisclosureGroupRoot",
+        "disclosureGroupVariants",
+        "useDisclosureGroupNavigation"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "DisclosureGroup",
+        "DisclosureGroupRoot",
+        "useDisclosureGroupNavigation",
+        "disclosureGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "drawer": {
+    "upstream_folder": "drawer",
+    "repo_folder": "drawer",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "DrawerRoot",
+        "DrawerTrigger",
+        "DrawerBackdrop",
+        "DrawerContent",
+        "DrawerDialog",
+        "DrawerHeader",
+        "DrawerHeading",
+        "DrawerBody",
+        "DrawerFooter",
+        "DrawerHandle",
+        "DrawerCloseTrigger",
+        "drawerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Drawer",
+        "DrawerRoot",
+        "DrawerTrigger",
+        "DrawerBackdrop",
+        "DrawerContent",
+        "DrawerDialog",
+        "DrawerHeader",
+        "DrawerHeading",
+        "DrawerBody",
+        "DrawerFooter",
+        "DrawerHandle",
+        "DrawerCloseTrigger",
+        "drawerVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "dropdown": {
+    "upstream_folder": "dropdown",
+    "repo_folder": "dropdown",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Dropdown",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Popover",
+          "Menu",
+          "Section",
+          "Item",
+          "ItemIndicator",
+          "SubmenuIndicator",
+          "SubmenuTrigger"
+        ]
+      },
+      "flatExports": [
+        "DropdownItem",
+        "DropdownItemIndicator",
+        "DropdownMenu",
+        "DropdownPopover",
+        "DropdownRoot",
+        "DropdownSection",
+        "DropdownSubmenuIndicator",
+        "DropdownSubmenuTrigger",
+        "DropdownTrigger",
+        "dropdownVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Popover",
+        "Content",
+        "Menu",
+        "Section",
+        "Group",
+        "Label",
+        "Item",
+        "Separator",
+        "ItemIndicator",
+        "SubmenuIndicator",
+        "SubmenuTrigger"
+      ],
+      "exports": [
+        "Dropdown",
+        "DropdownMenu",
+        "DropdownRoot",
+        "DropdownTrigger",
+        "DropdownPopover",
+        "DropdownMenuList",
+        "DropdownSection",
+        "DropdownItem",
+        "DropdownItemIndicator",
+        "DropdownSubmenuIndicator",
+        "DropdownSubmenuTrigger",
+        "DropdownSub",
+        "DropdownSubPopover",
+        "dropdownVariants",
+        "menuItemVariants",
+        "menuSectionVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "empty-state": {
+    "upstream_folder": "empty-state",
+    "repo_folder": "empty-state",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "EmptyState",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "EmptyStateRoot",
+        "emptyStateVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "EmptyState",
+        "EmptyStateRoot",
+        "emptyStateVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "error-message": {
+    "upstream_folder": "error-message",
+    "repo_folder": "error-message",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ErrorMessage",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "ErrorMessageRoot",
+        "errorMessageVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "ErrorMessage",
+        "ErrorMessageRoot",
+        "errorMessageVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "field-error": {
+    "upstream_folder": "field-error",
+    "repo_folder": "field-error",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "FieldError",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "FieldErrorRoot",
+        "fieldErrorVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "FieldError",
+        "FieldErrorRoot",
+        "fieldErrorVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "fieldset": {
+    "upstream_folder": "fieldset",
+    "repo_folder": "fieldset",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Fieldset",
+        "parts": [
+          "Root",
+          "Legend",
+          "Group",
+          "Actions"
+        ]
+      },
+      "flatExports": [
+        "FieldsetRoot",
+        "FieldsetLegend",
+        "FieldGroup",
+        "FieldsetActions",
+        "fieldsetVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Legend",
+        "Group",
+        "Actions"
+      ],
+      "exports": [
+        "Fieldset",
+        "FieldsetRoot",
+        "FieldsetLegend",
+        "FieldGroup",
+        "FieldsetActions",
+        "fieldsetVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "form": {
+    "upstream_folder": "form",
+    "repo_folder": "form",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Form",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "FormRoot"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Form",
+        "FormRoot"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "header": {
+    "upstream_folder": "header",
+    "repo_folder": "header",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "HeaderRoot",
+        "headerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Header",
+        "HeaderRoot",
+        "headerVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "input": {
+    "upstream_folder": "input",
+    "repo_folder": "input",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Input",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "InputRoot",
+        "inputVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Input",
+        "InputRoot",
+        "inputVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "input-group": {
+    "upstream_folder": "input-group",
+    "repo_folder": "input-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "InputGroup",
+        "parts": [
+          "Root",
+          "Input",
+          "TextArea",
+          "Prefix",
+          "Suffix"
+        ]
+      },
+      "flatExports": [
+        "InputGroupInput",
+        "InputGroupPrefix",
+        "InputGroupRoot",
+        "InputGroupSuffix",
+        "InputGroupTextArea",
+        "inputGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Input",
+        "TextArea",
+        "Prefix",
+        "Suffix"
+      ],
+      "exports": [
+        "InputGroup",
+        "InputGroupRoot",
+        "InputGroupInput",
+        "InputGroupTextArea",
+        "InputGroupPrefix",
+        "InputGroupSuffix",
+        "inputGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "input-otp": {
+    "upstream_folder": "input-otp",
+    "repo_folder": "input-otp",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "InputOTP",
+        "parts": [
+          "Root",
+          "Group",
+          "Slot",
+          "Separator"
+        ]
+      },
+      "flatExports": [
+        "InputOTPRoot",
+        "InputOTPGroup",
+        "InputOTPSlot",
+        "InputOTPSeparator",
+        "inputOTPVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Group",
+        "Slot",
+        "Separator"
+      ],
+      "exports": [
+        "InputOTP",
+        "REGEXP_ONLY_DIGITS",
+        "REGEXP_ONLY_CHARS",
+        "REGEXP_ONLY_DIGITS_AND_CHARS",
+        "InputOTPRoot",
+        "InputOTPGroup",
+        "InputOTPSlot",
+        "InputOTPSeparator",
+        "inputOTPVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "kbd": {
+    "upstream_folder": "kbd",
+    "repo_folder": "kbd",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Kbd",
+        "parts": [
+          "Root",
+          "Abbr",
+          "Content"
+        ]
+      },
+      "flatExports": [
+        "KbdRoot",
+        "KbdAbbr",
+        "KbdContent",
+        "kbdVariants",
+        "kbdKeysMap",
+        "kbdKeysLabelMap"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Abbr",
+        "Content"
+      ],
+      "exports": [
+        "Kbd",
+        "KbdRoot",
+        "KbdAbbr",
+        "KbdContent",
+        "kbdVariants",
+        "kbdKeysMap",
+        "kbdKeysLabelMap"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "label": {
+    "upstream_folder": "label",
+    "repo_folder": "label",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Label",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "LabelRoot",
+        "labelVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Label",
+        "LabelRoot",
+        "labelVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "link": {
+    "upstream_folder": "link",
+    "repo_folder": "link",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Link",
+        "parts": [
+          "Root",
+          "Icon"
+        ]
+      },
+      "flatExports": [
+        "LinkRoot",
+        "LinkIcon",
+        "linkVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Icon"
+      ],
+      "exports": [
+        "Link",
+        "LinkRoot",
+        "LinkIcon",
+        "linkVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "list-box": {
+    "upstream_folder": "list-box",
+    "repo_folder": "list-box",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ListBox",
+        "parts": [
+          "Root",
+          "Indicator",
+          "ItemIndicator",
+          "Section"
+        ]
+      },
+      "flatExports": [
+        "ListBoxRoot",
+        "listboxVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Item",
+        "ItemIndicator",
+        "Indicator",
+        "Section"
+      ],
+      "exports": [
+        "ListBox",
+        "ListBoxRoot",
+        "ListBoxItem",
+        "ListBoxItemRoot",
+        "ListBoxItemIndicator",
+        "ListBoxSection",
+        "listboxVariants",
+        "listboxItemVariants",
+        "listboxSectionVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "list-box-item": {
+    "upstream_folder": "list-box-item",
+    "repo_folder": "list-box-item",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ListBoxItem",
+        "parts": [
+          "Root",
+          "Indicator"
+        ]
+      },
+      "flatExports": [
+        "ListBoxItemRoot",
+        "ListBoxItemIndicator",
+        "listboxItemVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Indicator"
+      ],
+      "exports": [
+        "ListBoxItem",
+        "ListBoxItemRoot",
+        "ListBoxItemIndicator",
+        "listboxItemVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "list-box-section": {
+    "upstream_folder": "list-box-section",
+    "repo_folder": "list-box-section",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ListBoxSectionRoot",
+        "listboxSectionVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "ListBoxSection",
+        "ListBoxSectionRoot",
+        "listboxSectionVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "menu": {
+    "upstream_folder": "menu",
+    "repo_folder": "menu",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Menu",
+        "parts": [
+          "Root",
+          "Indicator",
+          "SubmenuIndicator",
+          "ItemIndicator",
+          "Section"
+        ]
+      },
+      "flatExports": [
+        "MenuRoot",
+        "menuVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Item",
+        "Indicator",
+        "ItemIndicator",
+        "SubmenuIndicator",
+        "Section"
+      ],
+      "exports": [
+        "Menu",
+        "MenuRoot",
+        "MenuItem",
+        "MenuItemRoot",
+        "MenuItemIndicator",
+        "MenuSectionRoot",
+        "menuVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "menu-item": {
+    "upstream_folder": "menu-item",
+    "repo_folder": "menu-item",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "MenuItem",
+        "parts": [
+          "Root",
+          "Indicator",
+          "SubmenuIndicator"
+        ]
+      },
+      "flatExports": [
+        "MenuItemRoot",
+        "MenuItemIndicator",
+        "MenuItemSubmenuIndicator",
+        "menuItemVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Indicator",
+        "SubmenuIndicator"
+      ],
+      "exports": [
+        "MenuItem",
+        "MenuItemRoot",
+        "MenuItemIndicator",
+        "MenuItemSubmenuIndicator",
+        "menuItemVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "menu-section": {
+    "upstream_folder": "menu-section",
+    "repo_folder": "menu-section",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "MenuSectionRoot",
+        "menuSectionVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "MenuSection",
+        "MenuSectionRoot",
+        "menuSectionVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "meter": {
+    "upstream_folder": "meter",
+    "repo_folder": "meter",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "MeterRoot",
+        "MeterOutput",
+        "MeterTrack",
+        "MeterFill",
+        "meterVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Meter",
+        "MeterRoot",
+        "MeterOutput",
+        "MeterTrack",
+        "MeterFill",
+        "meterVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "modal": {
+    "upstream_folder": "modal",
+    "repo_folder": "modal",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Modal",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Backdrop",
+          "Container",
+          "Dialog",
+          "Header",
+          "Icon",
+          "Heading",
+          "Body",
+          "Footer",
+          "CloseTrigger"
+        ]
+      },
+      "flatExports": [
+        "ModalRoot",
+        "ModalTrigger",
+        "ModalBackdrop",
+        "ModalContainer",
+        "ModalDialog",
+        "ModalHeader",
+        "ModalIcon",
+        "ModalHeading",
+        "ModalBody",
+        "ModalFooter",
+        "ModalCloseTrigger",
+        "modalVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Backdrop",
+        "Container",
+        "Dialog",
+        "Header",
+        "Icon",
+        "Heading",
+        "Body",
+        "Footer",
+        "CloseTrigger"
+      ],
+      "exports": [
+        "Modal",
+        "ModalRoot",
+        "ModalTrigger",
+        "ModalBackdrop",
+        "ModalContainer",
+        "ModalDialog",
+        "ModalHeader",
+        "ModalIcon",
+        "ModalHeading",
+        "ModalBody",
+        "ModalFooter",
+        "ModalCloseTrigger",
+        "modalVariants",
+        "Dialog",
+        "DialogTrigger",
+        "DialogContent",
+        "DialogScrollContent",
+        "DialogHeader",
+        "DialogTitle",
+        "DialogFooter",
+        "DialogDescription",
+        "DialogClose"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "number-field": {
+    "upstream_folder": "number-field",
+    "repo_folder": "number-field",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "NumberField",
+        "parts": [
+          "Root",
+          "Group",
+          "Input",
+          "IncrementButton",
+          "DecrementButton"
+        ]
+      },
+      "flatExports": [
+        "NumberFieldDecrementButton",
+        "NumberFieldGroup",
+        "NumberFieldIncrementButton",
+        "NumberFieldInput",
+        "NumberFieldRoot",
+        "numberFieldVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Group",
+        "Input",
+        "IncrementButton",
+        "DecrementButton"
+      ],
+      "exports": [
+        "NumberField",
+        "NumberFieldRoot",
+        "NumberFieldGroup",
+        "NumberFieldInput",
+        "NumberFieldIncrementButton",
+        "NumberFieldDecrementButton",
+        "numberFieldVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "pagination": {
+    "upstream_folder": "pagination",
+    "repo_folder": "pagination",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "PaginationRoot",
+        "PaginationSummary",
+        "PaginationContent",
+        "PaginationItem",
+        "PaginationLink",
+        "PaginationPrevious",
+        "PaginationPreviousIcon",
+        "PaginationNext",
+        "PaginationNextIcon",
+        "PaginationEllipsis",
+        "paginationVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Pagination",
+        "PaginationRoot",
+        "PaginationContent",
+        "PaginationEllipsis",
+        "PaginationItem",
+        "PaginationLink",
+        "PaginationNext",
+        "PaginationNextIcon",
+        "PaginationPrevious",
+        "PaginationPreviousIcon",
+        "PaginationSummary",
+        "paginationVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "popover": {
+    "upstream_folder": "popover",
+    "repo_folder": "popover",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Popover",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Dialog",
+          "Arrow",
+          "Content",
+          "Heading"
+        ]
+      },
+      "flatExports": [
+        "PopoverArrow",
+        "PopoverContent",
+        "PopoverDialog",
+        "PopoverHeading",
+        "PopoverRoot",
+        "PopoverTrigger",
+        "popoverVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Dialog",
+        "Arrow",
+        "Content",
+        "Heading"
+      ],
+      "exports": [
+        "Popover",
+        "PopoverRoot",
+        "PopoverTrigger",
+        "PopoverDialog",
+        "PopoverArrow",
+        "PopoverContent",
+        "PopoverHeading",
+        "popoverVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "progress-bar": {
+    "upstream_folder": "progress-bar",
+    "repo_folder": "progress-bar",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ProgressBarRoot",
+        "ProgressBarOutput",
+        "ProgressBarTrack",
+        "ProgressBarFill",
+        "progressBarVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "ProgressBar",
+        "ProgressBarRoot",
+        "ProgressBarOutput",
+        "ProgressBarTrack",
+        "ProgressBarFill",
+        "progressBarVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "progress-circle": {
+    "upstream_folder": "progress-circle",
+    "repo_folder": "progress-circle",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ProgressCircleRoot",
+        "ProgressCircleTrack",
+        "ProgressCircleTrackCircle",
+        "ProgressCircleFillCircle",
+        "progressCircleVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "ProgressCircle",
+        "ProgressCircleRoot",
+        "ProgressCircleTrack",
+        "ProgressCircleTrackCircle",
+        "ProgressCircleFillCircle",
+        "progressCircleVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "radio": {
+    "upstream_folder": "radio",
+    "repo_folder": "radio",
+    "hosted_in": "radio",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Radio",
+        "parts": [
+          "Root",
+          "Control",
+          "Indicator",
+          "Content"
+        ]
+      },
+      "flatExports": [
+        "RadioContent",
+        "RadioControl",
+        "RadioIndicator",
+        "RadioRoot",
+        "radioVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Radio",
+        "RadioRoot",
+        "RadioControl",
+        "RadioIndicator",
+        "RadioContent",
+        "radioVariants"
+      ]
+    },
+    "issues": [
+      "Missing compound const Radio = Object.assign(...)"
+    ]
+  },
+  "radio-group": {
+    "upstream_folder": "radio-group",
+    "repo_folder": "radio-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "RadioGroup",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "RadioGroupRoot",
+        "radioGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "RadioGroup",
+        "Radio",
+        "RadioGroupRoot",
+        "RadioRoot",
+        "RadioControl",
+        "RadioIndicator",
+        "RadioContent",
+        "radioGroupVariants",
+        "radioVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "range-calendar": {
+    "upstream_folder": "range-calendar",
+    "repo_folder": "range-calendar",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "RangeCalendarRoot",
+        "RangeCalendarHeader",
+        "RangeCalendarHeading",
+        "RangeCalendarNavButton",
+        "RangeCalendarGrid",
+        "RangeCalendarGridHeader",
+        "RangeCalendarGridBody",
+        "RangeCalendarHeaderCell",
+        "RangeCalendarCell",
+        "RangeCalendarCellIndicator",
+        "YearPickerContext",
+        "YearPickerStateContext",
+        "useYearPicker",
+        "useYearPickerState",
+        "rangeCalendarVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "RangeCalendar",
+        "RangeCalendarRoot",
+        "RangeCalendarHeader",
+        "RangeCalendarHeading",
+        "RangeCalendarNavButton",
+        "RangeCalendarGrid",
+        "RangeCalendarGridHeader",
+        "RangeCalendarGridBody",
+        "RangeCalendarGridRow",
+        "RangeCalendarHeaderCell",
+        "RangeCalendarCell",
+        "RangeCalendarCellIndicator",
+        "CalendarYearPickerTrigger",
+        "CalendarYearPickerTriggerHeading",
+        "CalendarYearPickerTriggerIndicator",
+        "CalendarYearPickerGrid",
+        "CalendarYearPickerGridBody",
+        "CalendarYearPickerCell",
+        "YearPickerContext",
+        "YearPickerStateContext",
+        "useYearPicker",
+        "useYearPickerState",
+        "rangeCalendarVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "scroll-shadow": {
+    "upstream_folder": "scroll-shadow",
+    "repo_folder": "scroll-shadow",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ScrollShadowRoot",
+        "scrollShadowVariants",
+        "useScrollShadow"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "ScrollShadow",
+        "ScrollShadowRoot",
+        "useScrollShadow",
+        "scrollShadowVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "search-field": {
+    "upstream_folder": "search-field",
+    "repo_folder": "search-field",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "SearchField",
+        "parts": [
+          "Root",
+          "Group",
+          "Input",
+          "SearchIcon",
+          "ClearButton"
+        ]
+      },
+      "flatExports": [
+        "SearchFieldClearButton",
+        "SearchFieldGroup",
+        "SearchFieldInput",
+        "SearchFieldRoot",
+        "SearchFieldSearchIcon",
+        "searchFieldVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Group",
+        "Input",
+        "SearchIcon",
+        "ClearButton"
+      ],
+      "exports": [
+        "SearchField",
+        "SearchFieldRoot",
+        "SearchFieldGroup",
+        "SearchFieldInput",
+        "SearchFieldSearchIcon",
+        "SearchFieldClearButton",
+        "searchFieldVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "select": {
+    "upstream_folder": "select",
+    "repo_folder": "select",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Select",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Value",
+          "Indicator",
+          "Popover"
+        ]
+      },
+      "flatExports": [
+        "SelectIndicator",
+        "SelectPopover",
+        "SelectRoot",
+        "SelectTrigger",
+        "SelectValue",
+        "selectVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Value",
+        "Indicator",
+        "Popover",
+        "Content",
+        "Item"
+      ],
+      "exports": [
+        "Select",
+        "SelectRoot",
+        "SelectTrigger",
+        "SelectValue",
+        "SelectIndicator",
+        "SelectPopover",
+        "SelectContent",
+        "SelectGroup",
+        "SelectItem",
+        "SelectItemText",
+        "SelectLabel",
+        "SelectScrollDownButton",
+        "SelectScrollUpButton",
+        "SelectSeparator",
+        "selectVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "separator": {
+    "upstream_folder": "separator",
+    "repo_folder": "separator",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Separator",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "SeparatorRoot",
+        "separatorVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Separator",
+        "SeparatorRoot",
+        "separatorVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "skeleton": {
+    "upstream_folder": "skeleton",
+    "repo_folder": "skeleton",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Skeleton",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "SkeletonRoot",
+        "skeletonVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Skeleton",
+        "SkeletonRoot",
+        "skeletonVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "slider": {
+    "upstream_folder": "slider",
+    "repo_folder": "slider",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Slider",
+        "parts": [
+          "Root",
+          "Output",
+          "Track",
+          "Fill",
+          "Thumb",
+          "Marks"
+        ]
+      },
+      "flatExports": [
+        "SliderRoot",
+        "SliderOutput",
+        "SliderTrack",
+        "SliderFill",
+        "SliderThumb",
+        "SliderMarks",
+        "sliderVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Output",
+        "Track",
+        "Fill",
+        "Thumb",
+        "Marks"
+      ],
+      "exports": [
+        "Slider",
+        "SliderRoot",
+        "SliderOutput",
+        "SliderTrack",
+        "SliderFill",
+        "SliderThumb",
+        "SliderMarks",
+        "sliderVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "spinner": {
+    "upstream_folder": "spinner",
+    "repo_folder": "spinner",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Spinner",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "SpinnerRoot",
+        "spinnerVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Spinner",
+        "SpinnerRoot",
+        "spinnerVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "surface": {
+    "upstream_folder": "surface",
+    "repo_folder": "surface",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Surface",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "SurfaceRoot",
+        "SurfaceContext",
+        "surfaceVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "Surface",
+        "SurfaceContext",
+        "SurfaceRoot",
+        "SURFACE_CONTEXT",
+        "surfaceVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "switch": {
+    "upstream_folder": "switch",
+    "repo_folder": "switch",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Switch",
+        "parts": [
+          "Root",
+          "Content",
+          "Control",
+          "Thumb",
+          "Icon"
+        ]
+      },
+      "flatExports": [
+        "SwitchRoot",
+        "SwitchContent",
+        "SwitchControl",
+        "SwitchIcon",
+        "SwitchThumb",
+        "switchVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Control",
+        "Thumb",
+        "Icon",
+        "Content"
+      ],
+      "exports": [
+        "Switch",
+        "SwitchRoot",
+        "SwitchControl",
+        "SwitchThumb",
+        "SwitchIcon",
+        "SwitchContent",
+        "switchVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "switch-group": {
+    "upstream_folder": "switch-group",
+    "repo_folder": "switch-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "SwitchGroup",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "SwitchGroupRoot",
+        "switchGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "SwitchGroup",
+        "SwitchGroupRoot",
+        "SWITCH_GROUP_CONTEXT",
+        "switchGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "table": {
+    "upstream_folder": "table",
+    "repo_folder": "table",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "TableRoot",
+        "TableScrollContainer",
+        "TableContent",
+        "TableHeader",
+        "TableColumn",
+        "TableColumnResizer",
+        "TableBody",
+        "TableRow",
+        "TableCell",
+        "TableFooter",
+        "TableCollection",
+        "TableLoadMoreItem",
+        "TableLoadMoreContent",
+        "TableResizableContainer",
+        "tableVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Table",
+        "TableRoot",
+        "TableScrollContainer",
+        "TableContent",
+        "TableHeader",
+        "TableColumn",
+        "TableColumnResizer",
+        "TableBody",
+        "TableRow",
+        "TableCell",
+        "TableFooter",
+        "TableCollection",
+        "TableLoadMoreItem",
+        "TableLoadMoreContent",
+        "TableResizableContainer",
+        "tableVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "tabs": {
+    "upstream_folder": "tabs",
+    "repo_folder": "tabs",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Tabs",
+        "parts": [
+          "Root",
+          "ListContainer",
+          "List",
+          "Tab",
+          "Indicator",
+          "Separator",
+          "Panel"
+        ]
+      },
+      "flatExports": [
+        "TabsRoot",
+        "TabListContainer",
+        "TabList",
+        "Tab",
+        "TabIndicator",
+        "TabSeparator",
+        "TabPanel",
+        "tabsVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "ListContainer",
+        "List",
+        "Tab",
+        "Indicator",
+        "Separator",
+        "Panel"
+      ],
+      "exports": [
+        "Tabs",
+        "TabsRoot",
+        "TabListContainer",
+        "TabList",
+        "Tab",
+        "TabIndicator",
+        "TabSeparator",
+        "TabPanel",
+        "tabsVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "tag": {
+    "upstream_folder": "tag",
+    "repo_folder": "tag-group",
+    "hosted_in": "tag-group",
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Tag",
+        "parts": [
+          "Root",
+          "RemoveButton"
+        ]
+      },
+      "flatExports": [
+        "TagRoot",
+        "TagRemoveButton",
+        "tagVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "RemoveButton"
+      ],
+      "exports": [
+        "TagGroup",
+        "Tag",
+        "TagGroupContext",
+        "TagGroupRoot",
+        "TagGroupList",
+        "TagRoot",
+        "TagRemoveButton",
+        "TagItemText",
+        "TagGroupInput",
+        "TAG_GROUP_CONTEXT",
+        "tagGroupVariants",
+        "tagVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "tag-group": {
+    "upstream_folder": "tag-group",
+    "repo_folder": "tag-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "TagGroup",
+        "parts": [
+          "Root",
+          "List"
+        ]
+      },
+      "flatExports": [
+        "TagGroupRoot",
+        "TagGroupList",
+        "TagGroupContext",
+        "tagGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "List"
+      ],
+      "exports": [
+        "TagGroup",
+        "Tag",
+        "TagGroupContext",
+        "TagGroupRoot",
+        "TagGroupList",
+        "TagRoot",
+        "TagRemoveButton",
+        "TagItemText",
+        "TagGroupInput",
+        "TAG_GROUP_CONTEXT",
+        "tagGroupVariants",
+        "tagVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "textarea": {
+    "upstream_folder": "textarea",
+    "repo_folder": "textarea",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "TextArea",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "TextAreaRoot",
+        "textAreaVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "TextArea",
+        "TextAreaRoot",
+        "textAreaVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "textfield": {
+    "upstream_folder": "textfield",
+    "repo_folder": "textfield",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "TextField",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "TextFieldRoot",
+        "TextFieldContext",
+        "textFieldVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "TextField",
+        "TextFieldContext",
+        "TextFieldRoot",
+        "TEXT_FIELD_CONTEXT",
+        "textFieldVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "time-field": {
+    "upstream_folder": "time-field",
+    "repo_folder": "time-field",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "TimeFieldRoot",
+        "timeFieldVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "TimeField",
+        "TimeFieldRoot",
+        "timeFieldVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "toast": {
+    "upstream_folder": "toast",
+    "repo_folder": "toast",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ToastProvider",
+        "ToastContent",
+        "ToastIndicator",
+        "ToastTitle",
+        "ToastDescription",
+        "ToastActionButton",
+        "ToastCloseButton",
+        "toastVariants",
+        "ToastQueue",
+        "toast",
+        "toastQueue",
+        "DEFAULT_MAX_VISIBLE_TOAST",
+        "DEFAULT_GAP",
+        "DEFAULT_TOAST_TIMEOUT"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Toast",
+        "ToastProvider",
+        "ToastRoot",
+        "ToastContent",
+        "ToastIndicator",
+        "ToastTitle",
+        "ToastDescription",
+        "ToastActionButton",
+        "ToastCloseButton",
+        "Toaster",
+        "ToastQueue",
+        "toastQueue",
+        "toast",
+        "DEFAULT_TOAST_TIMEOUT",
+        "DEFAULT_MAX_VISIBLE_TOAST",
+        "DEFAULT_GAP",
+        "toastVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "toggle-button": {
+    "upstream_folder": "toggle-button",
+    "repo_folder": "toggle-button",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ToggleButton",
+        "parts": [
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "ToggleButtonRoot",
+        "toggleButtonVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root"
+      ],
+      "exports": [
+        "ToggleButton",
+        "ToggleButtonRoot",
+        "toggleButtonVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "toggle-button-group": {
+    "upstream_folder": "toggle-button-group",
+    "repo_folder": "toggle-button-group",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "ToggleButtonGroup",
+        "parts": [
+          "Root",
+          "Separator"
+        ]
+      },
+      "flatExports": [
+        "ToggleButtonGroupRoot",
+        "ToggleButtonGroupSeparator",
+        "ToggleButtonGroupContext",
+        "TOGGLE_BUTTON_GROUP_CHILD",
+        "toggleButtonGroupVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Separator"
+      ],
+      "exports": [
+        "ToggleButtonGroup",
+        "ToggleButtonGroupContext",
+        "ToggleButtonGroupRoot",
+        "ToggleButtonGroupSeparator",
+        "TOGGLE_BUTTON_GROUP_CONTEXT",
+        "TOGGLE_BUTTON_GROUP_CHILD",
+        "toggleButtonGroupVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "toolbar": {
+    "upstream_folder": "toolbar",
+    "repo_folder": "toolbar",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": null,
+      "flatExports": [
+        "ToolbarRoot",
+        "toolbarVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": null,
+      "exports": [
+        "Toolbar",
+        "ToolbarRoot",
+        "toolbarVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "tooltip": {
+    "upstream_folder": "tooltip",
+    "repo_folder": "tooltip",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Tooltip",
+        "parts": [
+          "Root",
+          "Trigger",
+          "Content",
+          "Arrow"
+        ]
+      },
+      "flatExports": [
+        "TooltipRoot",
+        "TooltipTrigger",
+        "TooltipContent",
+        "TooltipArrow",
+        "tooltipVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Trigger",
+        "Content",
+        "Arrow"
+      ],
+      "exports": [
+        "Tooltip",
+        "TooltipRoot",
+        "TooltipTrigger",
+        "TooltipContent",
+        "TooltipArrow",
+        "TooltipProvider",
+        "tooltipVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  },
+  "typography": {
+    "upstream_folder": "typography",
+    "repo_folder": "typography",
+    "hosted_in": null,
+    "missing_folder": false,
+    "upstream": {
+      "compound": {
+        "name": "Typography",
+        "parts": [
+          "Code",
+          "Heading",
+          "Paragraph",
+          "Prose",
+          "Root"
+        ]
+      },
+      "flatExports": [
+        "Code",
+        "Heading",
+        "Paragraph",
+        "Prose",
+        "TypographyRoot",
+        "typographyVariants"
+      ]
+    },
+    "repo": {
+      "compound_parts": [
+        "Root",
+        "Heading",
+        "Paragraph",
+        "Code",
+        "Prose"
+      ],
+      "exports": [
+        "Typography",
+        "TypographyRoot",
+        "Heading",
+        "Paragraph",
+        "Code",
+        "Prose",
+        "typographyVariants"
+      ]
+    },
+    "issues": [],
+    "ok": true
+  }
+}

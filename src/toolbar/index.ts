@@ -7,6 +7,8 @@
  * HeroUI v3 ships only `ToolbarRoot` as a named compound part — there is no
  * `ToolbarButton`, `ToolbarLink`, or `ToolbarSeparator`. Toolbar content is
  * composed from plain `Button` / `Separator` placed directly inside `Toolbar`.
+ *
+ * @see https://www.heroui.com/docs/react/components/toolbar
  */
 import { ToolbarRoot } from './toolbar-root'
 

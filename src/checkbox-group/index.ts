@@ -12,6 +12,8 @@
  *       <Checkbox.Content><Label>…</Label><Description>…</Description></Checkbox.Content>
  *     </Checkbox>
  *   </CheckboxGroup>
+ *
+ * @see https://www.heroui.com/docs/react/components/checkbox-group
  */
 import { CheckboxGroupRoot } from './checkbox-group'
 

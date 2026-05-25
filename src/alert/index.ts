@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Alert`, `Alert.Root`, `Alert.Indicator`,
  * `Alert.Content`, `Alert.Title`, `Alert.Description`.
  * Flat named exports are also available for callers that prefer named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/alert
  */
 import { AlertRoot } from './alert'
 import { AlertIndicator } from './alert-indicator'

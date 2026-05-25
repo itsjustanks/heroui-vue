@@ -4,6 +4,8 @@
  * Compound API (HeroUI v3): `Badge`, `Badge.Anchor`, `Badge.Label`, `Badge.Root`.
  * Flat named exports (`BadgeRoot`, `BadgeLabel`, `BadgeAnchor`) are also
  * available for callers that prefer named imports.
+ *
+ * @see https://www.heroui.com/docs/react/components/badge
  */
 import { BadgeRoot } from './badge'
 import { BadgeLabel } from './badge-label'
