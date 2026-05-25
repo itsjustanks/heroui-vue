@@ -1,0 +1,661 @@
+{
+  "accordion": {
+    "repoFolder": "accordion",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "alert": {
+    "repoFolder": "alert",
+    "variants": [
+      "status"
+    ],
+    "declaredProps": [
+      "status"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "alert-dialog": {
+    "repoFolder": "alert-dialog",
+    "variants": [
+      "status",
+      "variant"
+    ],
+    "declaredProps": [
+      "status",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "autocomplete": {
+    "repoFolder": "combo-box",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "avatar": {
+    "repoFolder": "avatar",
+    "variants": [
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "badge": {
+    "repoFolder": "badge",
+    "variants": [
+      "placement",
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "placement",
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "button": {
+    "repoFolder": "button",
+    "variants": [
+      "isIconOnly",
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "isIconOnly",
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "button-group": {
+    "repoFolder": "button-group",
+    "variants": [
+      "orientation"
+    ],
+    "declaredProps": [
+      "orientation"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "card": {
+    "repoFolder": "card",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "checkbox": {
+    "repoFolder": "checkbox",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "checkbox-group": {
+    "repoFolder": "checkbox-group",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "chip": {
+    "repoFolder": "chip",
+    "variants": [
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "close-button": {
+    "repoFolder": "close-button",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "color-area": {
+    "repoFolder": "color-picker",
+    "variants": [
+      "showDots"
+    ],
+    "declaredProps": [
+      "showDots"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "color-field": {
+    "repoFolder": "color-picker",
+    "variants": [
+      "fullWidth"
+    ],
+    "declaredProps": [
+      "fullWidth"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "color-input-group": {
+    "repoFolder": "color-picker",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "color-swatch": {
+    "repoFolder": "color-picker",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "color-swatch-picker": {
+    "repoFolder": "color-picker",
+    "variants": [
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "combo-box": {
+    "repoFolder": "combo-box",
+    "variants": [
+      "fullWidth"
+    ],
+    "declaredProps": [
+      "fullWidth"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "date-field": {
+    "repoFolder": "date-field",
+    "variants": [
+      "fullWidth"
+    ],
+    "declaredProps": [
+      "fullWidth"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "date-input-group": {
+    "repoFolder": "date-input-group",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "drawer": {
+    "repoFolder": "drawer",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "input": {
+    "repoFolder": "input",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "input-group": {
+    "repoFolder": "input-group",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "input-otp": {
+    "repoFolder": "input-otp",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "kbd": {
+    "repoFolder": "kbd",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "label": {
+    "repoFolder": "label",
+    "variants": [
+      "isInvalid",
+      "isRequired"
+    ],
+    "declaredProps": [
+      "isInvalid",
+      "isRequired"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "list-box": {
+    "repoFolder": "list-box",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "list-box-item": {
+    "repoFolder": "list-box",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "menu-item": {
+    "repoFolder": "menubar",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "meter": {
+    "repoFolder": "meter",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "modal": {
+    "repoFolder": "modal",
+    "variants": [
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "number-field": {
+    "repoFolder": "number-field",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "pagination": {
+    "repoFolder": "pagination",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "progress-bar": {
+    "repoFolder": "progress-bar",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "progress-circle": {
+    "repoFolder": "progress-circle",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "radio-group": {
+    "repoFolder": "radio-group",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "scroll-shadow": {
+    "repoFolder": "scroll-shadow",
+    "variants": [
+      "orientation",
+      "variant"
+    ],
+    "declaredProps": [
+      "orientation",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "search-field": {
+    "repoFolder": "search-field",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "select": {
+    "repoFolder": "select",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "separator": {
+    "repoFolder": "separator",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "skeleton": {
+    "repoFolder": "skeleton",
+    "variants": [
+      "animationType"
+    ],
+    "declaredProps": [
+      "animationType"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "spinner": {
+    "repoFolder": "spinner",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "surface": {
+    "repoFolder": "surface",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "switch": {
+    "repoFolder": "switch",
+    "variants": [
+      "size"
+    ],
+    "declaredProps": [
+      "size"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "switch-group": {
+    "repoFolder": "switch-group",
+    "variants": [
+      "orientation"
+    ],
+    "declaredProps": [
+      "orientation"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "table": {
+    "repoFolder": "table",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "tabs": {
+    "repoFolder": "tabs",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "tag": {
+    "repoFolder": "tag-group",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "textarea": {
+    "repoFolder": "textarea",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "textfield": {
+    "repoFolder": "textfield",
+    "variants": [
+      "fullWidth"
+    ],
+    "declaredProps": [
+      "fullWidth"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "time-field": {
+    "repoFolder": "time-field",
+    "variants": [
+      "fullWidth"
+    ],
+    "declaredProps": [
+      "fullWidth"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "toast": {
+    "repoFolder": "toast",
+    "variants": [
+      "variant"
+    ],
+    "declaredProps": [
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "toggle-button": {
+    "repoFolder": "toggle-button",
+    "variants": [
+      "size",
+      "variant"
+    ],
+    "declaredProps": [
+      "size",
+      "variant"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "toggle-button-group": {
+    "repoFolder": "toggle-button-group",
+    "variants": [
+      "isDetached",
+      "orientation"
+    ],
+    "declaredProps": [
+      "isDetached",
+      "orientation"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "toolbar": {
+    "repoFolder": "toolbar",
+    "variants": [
+      "orientation"
+    ],
+    "declaredProps": [
+      "orientation"
+    ],
+    "missing": [],
+    "status": "ok"
+  },
+  "typography": {
+    "repoFolder": "typography",
+    "variants": [
+      "color",
+      "truncate",
+      "type",
+      "weight"
+    ],
+    "declaredProps": [
+      "color",
+      "truncate",
+      "type",
+      "weight"
+    ],
+    "missing": [],
+    "status": "ok"
+  }
+}
